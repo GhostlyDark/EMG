@@ -1,0 +1,14 @@
+{
+  "name": "emg",
+  "productName": "EMG",
+  "description": "Electron Mupen GUI",
+  "version": "0.1.0",
+  "main": "main.js",
+  "author": "GhostlyDark",
+  "homepage": "https://evilgames.eu",
+  "license": "GPLv3",
+  "dependencies": {
+    "@electron/remote": "^2.0.1",
+	"electron": "^15.0.0"
+  }
+}

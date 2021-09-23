@@ -1,0 +1,2224 @@
+<!DOCTYPE html>
+<html class="dark palette-ocean">
+<head>
+<title>EMG</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta charset="utf-8"><meta name="theme-color" content="rgb(15,55,175)"><link rel="icon" href="img/emg.png">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none';form-action 'none';base-uri 'none';img-src 'self' data:;script-src 'self';style-src 'self';font-src 'self';block-all-mixed-content">
+<link rel="stylesheet" href="style/ghostly.css"><link rel="stylesheet" href="style/emg.css">
+</head>
+<body>
+<div id="background"></div><div id="overlay"></div>
+<script src="load.js"></script><script src="emg.js"></script>
+<main>
+<header>
+<ul>
+<li>
+<a id="mainSettings" class="dropbutton" href="#settings">Main</a>
+  <div id="mainSettingsDropdown" class="dropdown">
+    <a href="#coreAnchor">Core</a>
+    <a href="#pluginsAnchor">Plugins</a>
+	<a href="#rspAnchor">RSP</a>
+    <a href="#advancedAnchor">Advanced</a>
+	<a href="#audioAnchor">Audio</a>
+	<a href="#64ddAnchor">64DD</a>
+  </div>
+</li>
+<li>
+<a id="inputSettings" class="dropbutton" href="#settings">Input</a>
+  <div id="inputSettingsDropdown" class="dropdown">
+    <a href="#controller1Anchor">Controller 1</a>
+    <a href="#controller2Anchor">Controller 2</a>
+	<a href="#controller3Anchor">Controller 3</a>
+	<a href="#controller4Anchor">Controller 4</a>
+	<a href="#gcaAnchor">GC Adapter</a>
+	<a href="#hotkeysAnchor">Hotkeys</a>
+	<a href="#transferpakAnchor">Transferpak</a>
+  </div>
+</li>
+<li>
+<a id="videoSettings" class="dropbutton" href="#settings">Video</a>
+  <div id="videoSettingsDropdown" class="dropdown">
+    <a href="#angrylionAnchor">Angrylion Plus</a>
+    <a href="#gliden64Anchor">GLideN64</a>
+    <a href="#parallelAnchor">Parallel</a>
+	<a href="#riceAnchor">Rice</a>
+	<a href="#glide64mk2Anchor">Glide64 MK2</a>
+  </div>
+</li>
+<li><a id="launch" href="#boot">Launch</a></li>
+</ul>
+</header>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<div id="coreAnchor" class="anchor"></div>
+<p class="headline">Main</p>
+<p>&nbsp;</p>
+<p class="sub">Core</p>
+<p>&nbsp;</p>
+<p title="Click the box below or drag and drop an .n64, .v64 or .z64 ROM into the box." class="mt--5">Input ROM</p>
+<p>&nbsp;</p>
+<div id="fileInput" class="box mt--5"><span id="fileText"></span></div>
+<p>&nbsp;</p>
+<select name="recent" id="recent">
+<option id="optionDefault" disabled selected>Recent Files</option>
+<option id="option0"></option>
+<option id="option1"></option>
+<option id="option2"></option>
+<option id="option3"></option>
+<option id="option4"></option>
+<option id="option5"></option>
+<option id="option6"></option>
+<option id="option7"></option>
+<option id="option8"></option>
+<option id="option9"></option>
+</select><button class="floatright" id="clearRecent">Clear</button>
+<p>&nbsp;</p><p>&nbsp;</p>
+<div id="listCheats"><button>List Cheats</button></div>
+<p>&nbsp;</p>
+<div id="cheatList"></div>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p><input id="vsync" type="checkbox" data-store="vsync"><label for="vsync">V-Sync</label></p>
+<p>&nbsp;</p>
+<p><input id="fullScreen" type="checkbox" data-store="fullScreen"><label for="fullScreen">Fullscreen</label></p>
+<p>&nbsp;</p>
+<p title="Disable extra memory."><input id="exp" type="checkbox" data-store="exp"><label for="exp">Force 4 MB</label></p>
+<p>&nbsp;</p>
+<select class="width200m" name="resolution" id="resolution">
+<option disabled>4:3</option>
+<option data-width="320" data-height="240" value="320x240">320x240</option>
+<option data-width="640" data-height="480" value="640x480">640x480</option>
+<option data-width="960" data-height="720" value="960x720" selected>960x720</option>
+<option data-width="1280" data-height="960" value="1280x960">1280x960</option>
+<option data-width="1440" data-height="1080" value="1440x1080">1440x1080</option>
+<option data-width="1600" data-height="1200" value="1600x1200">1600x1200</option>
+<option data-width="1920" data-height="1440" value="1920x1440">1920x1440</option>
+<option data-width="2560" data-height="1920" value="2560x1920">2560x1920</option>
+<option data-width="3840" data-height="2880" value="3840x2880">3840x2880</option>
+<option data-width="7680" data-height="5760" value="7680x5760">7680x5760</option>
+<option disabled></option>
+<option disabled>16:9</option>
+<option data-width="320" data-height="180" value="320x180">320x180</option>
+<option data-width="640" data-height="360" value="640x480">640x360</option>
+<option data-width="960" data-height="540" value="960x540">960x540</option>
+<option data-width="1280" data-height="720" value="1280x720">1280x720</option>
+<option data-width="1440" data-height="810" value="1440x810">1440x810</option>
+<option data-width="1600" data-height="900" value="1600x900">1600x900</option>
+<option data-width="1920" data-height="1080" value="1920x1080">1920x1080</option>
+<option data-width="2560" data-height="1440" value="2560x1440">2560x1440</option>
+<option data-width="3840" data-height="2160" value="3840x2160">3840x2160</option>
+<option data-width="7680" data-height="4320" value="7680x4320">7680x4320</option>
+</select><label for="resolution">Resolution</label>
+<p>&nbsp;</p>
+<div title="Dynamic Recompiler offers the best performance. Use Interpreter when encountering issues."><select class="width200m" name="emumode" id="emumode">
+<option value="0">Pure Interpreter</option>
+<option value="1">Cached Interpreter</option>
+<option value="2" selected>Dynamic Recompiler</option>
+</select><label for="emumode">R4300 Emulator</label></div>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<div id="pluginsAnchor" class="anchor"></div>
+<p class="sub">Plugins</p>
+<p>&nbsp;</p>
+<div title="Angrylion Plus: LLE, GLideN64: HLE (recommended) and LLE, Parallel: LLE, Glide64 MK2: HLE, Rice: HLE"><select class="width250m" name="gfx" id="gfx">
+<option disabled>Modern</option>
+<option value="mupen64plus-video-angrylion-plus">Angrylion Plus</option>
+<option value="mupen64plus-video-GLideN64" selected>GLideN64</option>
+<option value="mupen64plus-video-parallel">Parallel</option>
+<option disabled></option>
+<option disabled>Legacy</option>
+<option value="mupen64plus-video-glide64mk2">Glide64 MK2</option>
+<option value="mupen64plus-video-rice">Rice</option>
+</select><label for="gfx">Graphics Plugin</label></div>
+<p>&nbsp;</p>
+<select class="width250m" name="audio" id="audio">
+<option value="mupen64plus-audio-sdl" selected>Mupen64Plus Audio SDL</option>
+</select><label for="audio">Audio Plugin</label>
+<p>&nbsp;</p>
+<div title="GameCube Adapter: Only works with official Wii U GameCube Adapter, Raphnetraw: Only works with Raphnetraw adapters"><select class="width250m" name="input" id="input">
+<option value="mupen64plus-input-gca">GameCube Adapter</option>
+<option value="mupen64plus-input-sdl" selected>Mupen64Plus Input SDL</option>
+<option value="mupen64plus-input-raphnetraw">Raphnetraw</option>
+</select><label for="input">Input Plugin</label></div>
+<p>&nbsp;</p>
+<div title="Mupen64Plus HLE: HLE only, Static Interpreter: HLE and LLE, Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
+<option value="mupen64plus-rsp-hle" selected>Mupen64Plus HLE</option>
+<option value="mupen64plus-rsp-cxd4-sse2">Static Interpreter</option>
+<option value="mupen64plus-rsp-parallel">Parallel RSP</option>
+</select><label for="rsp">RSP Plugin</label></div>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<div id="rspAnchor" class="anchor"></div>
+<p class="sub">RSP</p>
+<p>&nbsp;</p>
+<p title="Use High Level Emulation for Graphics."><input id="rspGFX" type="checkbox" data-store="rspGFX" checked><label for="rspGFX">GFX HLE</label></p>
+<p>&nbsp;</p>
+<p title="Use High Level Emulation for Audio. Not recommended."><input id="rspAudio" type="checkbox" data-store="rspAudio"><label for="rspAudio">Audio HLE</label></p>
+<p>&nbsp;</p>
+<p title="Force CPU-RSP signals synchronization."><input id="WaitForCPUHost" type="checkbox" data-store="WaitForCPUHost"><label for="WaitForCPUHost">Wait for CPU Host</label></p>
+<p>&nbsp;</p>
+<p title="Support CPU-RSP semaphore lock."><input id="SupportCPUSemaphoreLock" type="checkbox" data-store="SupportCPUSemaphoreLock"><label for="SupportCPUSemaphoreLock">CPU Semaphore Lock</label></p>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<div id="advancedAnchor" class="anchor"></div>
+<p class="sub">Advanced</p>
+<p>&nbsp;</p>
+<p title="Disables speed limit, V-Sync and mutes audio. Useful for performance testing."><input id="nospeedlimit" type="checkbox" data-store="nospeedlimit"><label for="nospeedlimit">Disable Speed Limit</label></p>
+<p>&nbsp;</p>
+<p title="Enable Mupen64Plus On-Screen Display. Only works with legacy video plugins."><input id="osd" type="checkbox" data-store="osd" checked><label for="osd">On-Screen Display</label></p>
+<p>&nbsp;</p>
+<p title="Randomize PI/SI Interrupt Timing."><input id="RandomizeInterrupt" type="checkbox" data-store="RandomizeInterrupt" checked><label for="RandomizeInterrupt">Randomize Interrupt</label></p>
+<p>&nbsp;</p>
+<p title="Disable compiled jump commands in dynamic recompiler (not recommended)."><input id="NoCompiledJump" type="checkbox" data-store="NoCompiledJump"><label for="NoCompiledJump">Disable Compiled Jump</label></p>
+<p>&nbsp;</p>
+<p title="Increment the save state slot after each save operation."><input id="AutoStateSlotIncrement" type="checkbox" data-store="AutoStateSlotIncrement"><label for="AutoStateSlotIncrement">Auto increment state slot</label></p>
+<p>&nbsp;</p>
+<p title="Save state slot (0-9) to use when starting emulation."><span class="numberDecrease" id="decreaseCurrentStateSlot">-</span><input id="CurrentStateSlot" min="0" max="9" value="0" type="number"><span class="numberIncrease" id="increaseCurrentStateSlot">+</span><label for="CurrentStateSlot">Default state slot</label></p>
+<p>&nbsp;</p>
+<p title="Force number of cycles per emulated instruction (speed hack, not recommended). Leave at 0 to disable."><span class="numberDecrease" id="decreaseCountPerOp">-</span><input id="CountPerOp" min="0" max="6" value="0" type="number"><span class="numberIncrease" id="increaseCountPerOp">+</span><label for="CountPerOp">Counter Factor</label></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p title="Path to directory where screenshots are saved. Keep blank for default. Click the box below to change it.">Path to Screenshots&nbsp;&nbsp;<button class="floatright" id="resetScreenshotPath">Reset</button><br><br><div id="ScreenshotPath" class="box"><span id="ScreenshotPathText"></span></div></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p title="Path to directory where emulator save states (snapshots) are saved. Keep blank for default. Click the box below to change it.">Path to Save States&nbsp;&nbsp;<button class="floatright" id="resetSaveStatePath">Reset</button><br><br><div id="SaveStatePath" class="box"><span id="SaveStatePathText"></span></div></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p title="Path to directory where SRAM/EEPROM data (in-game saves) are stored. Keep blank for default. Click the box below to change it.">Path to Save Files</a>&nbsp;&nbsp;<button class="floatright" id="resetSaveSRAMPath">Reset</button><br><br><div id="SaveSRAMPath" class="box"><span id="SaveSRAMPathText"></span></div></p>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<div id="audioAnchor" class="anchor"></div>
+<p class="sub">Audio</p>
+<p>&nbsp;</p>
+<p title="Swap left and right channels."><input id="SWAP_CHANNELS" type="checkbox" data-store="SWAP_CHANNELS"><label for="SWAP_CHANNELS">Swap Channels</label></p>
+<p>&nbsp;</p>
+<p><input id="AUDIO_SYNC" type="checkbox" data-store="AUDIO_SYNC" checked><label for="AUDIO_SYNC">Synchronize Video/Audio</label></p>
+<p>&nbsp;</p>
+<p title="Percentage change each time the volume is increased or decreased."><span class="numberDecrease" id="decreaseVOLUME_ADJUST">-</span><input id="VOLUME_ADJUST" min="1" max="100" value="5" type="number"><span class="numberIncrease" id="increaseVOLUME_ADJUST">+</span><label for="VOLUME_ADJUST">Volume Step (in %)</label></p>
+<p>&nbsp;</p>
+<p title="Default volume when a game is started."><span class="numberDecrease" id="decreaseVOLUME_DEFAULT">-</span><input id="VOLUME_DEFAULT" min="0" max="100" value="80" type="number"><span class="numberIncrease" id="increaseVOLUME_DEFAULT">+</span><label for="VOLUME_DEFAULT">Default Volume (in %)</label></p>
+<p>&nbsp;</p>
+<div title="Decreasing this value will reduce audio latency but requires a faster PC to avoid choppiness. Increasing this will increase audio latency but reduce the chance of drop-outs."><select class="width200m" name="SECONDARY_BUFFER_SIZE" id="SECONDARY_BUFFER_SIZE">
+<option data-buffer="Audio-SDL[PRIMARY_BUFFER_TARGET]=2048" value="Audio-SDL[SECONDARY_BUFFER_SIZE]=1024" selected>1024</option>
+<option data-buffer="Audio-SDL[PRIMARY_BUFFER_TARGET]=4096" value="Audio-SDL[SECONDARY_BUFFER_SIZE]=2048">2048</option>
+<option data-buffer="Audio-SDL[PRIMARY_BUFFER_TARGET]=8192" value="Audio-SDL[SECONDARY_BUFFER_SIZE]=4096">4096</option>
+</select><label for="SECONDARY_BUFFER_SIZE">Buffer Size</label></div>
+<p>&nbsp;</p>
+<div title="Frequency used if ROM doesn't change it."><select class="width200m" name="DEFAULT_FREQUENCY" id="DEFAULT_FREQUENCY">
+<option value="Audio-SDL[DEFAULT_FREQUENCY]=22050">22050 Hz</option>
+<option value="Audio-SDL[DEFAULT_FREQUENCY]=33600" selected>33600 Hz</option>
+<option value="Audio-SDL[DEFAULT_FREQUENCY]=44100">44100 Hz</option>
+</select><label for="DEFAULT_FREQUENCY">Default Frequency</label></div>
+<p>&nbsp;</p>
+<div title="Trivial for fastest, lowest-quality algorithm."><select class="width200m" name="RESAMPLE" id="RESAMPLE">
+<option value="Audio-SDL[RESAMPLE]=src-sinc-best-quality">SRC Sinc Best</option>
+<option value="Audio-SDL[RESAMPLE]=src-sinc-medium-quality">SRC Sinc Medium</option>
+<option value="Audio-SDL[RESAMPLE]=src-sinc-fastest">SRC Sinc Fastest</option>
+<option value="Audio-SDL[RESAMPLE]=src-zero-order-hold">SRC Zero</option>
+<option value="Audio-SDL[RESAMPLE]=src-linear">SRC Linear</option>
+<option value="Audio-SDL[RESAMPLE]=speex-fixed-10">SPEEX Fixed 10</option>
+<option value="Audio-SDL[RESAMPLE]=speex-fixed-9">SPEEX Fixed 9</option>
+<option value="Audio-SDL[RESAMPLE]=speex-fixed-8">SPEEX Fixed 8</option>
+<option value="Audio-SDL[RESAMPLE]=speex-fixed-7">SPEEX Fixed 7</option>
+<option value="Audio-SDL[RESAMPLE]=speex-fixed-6">SPEEX Fixed 6</option>
+<option value="Audio-SDL[RESAMPLE]=speex-fixed-5">SPEEX Fixed 5</option>
+<option value="Audio-SDL[RESAMPLE]=speex-fixed-4" selected>SPEEX Fixed 4</option>
+<option value="Audio-SDL[RESAMPLE]=speex-fixed-3">SPEEX Fixed 3</option>
+<option value="Audio-SDL[RESAMPLE]=speex-fixed-2">SPEEX Fixed 2</option>
+<option value="Audio-SDL[RESAMPLE]=speex-fixed-1">SPEEX Fixed 1</option>
+<option value="Audio-SDL[RESAMPLE]=speex-fixed-0">SPEEX Fixed 0</option>
+<option value="Audio-SDL[RESAMPLE]=trivial">Trivial</option>
+</select><label for="RESAMPLE">Resampling Algorithm</label></div>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<div id="64ddAnchor" class="anchor"></div>
+<p class="sub">64DD</p>
+<p>&nbsp;</p>
+<select name="SaveDiskFormat" id="SaveDiskFormat">
+<option value="Core[SaveDiskFormat]=0">Full Disk Copy</option>
+<option value="Core[SaveDiskFormat]=1" selected>RAM Area Only</option>
+</select><label for="SaveDiskFormat">64DD Save Format</label>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p title="Path 64DD BIOS file. Click the box or drag and drop the file into the box below.">Path to 64DD IPL ROM&nbsp;&nbsp;<button class="floatright" id="clearIPLROM">Clear</button><br><br><div id="IPLROM" class="box"><span id="IPLROMText"></span></div></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p title="Path to 64DD ROM file. Click the box or drag and drop the .ndd file into the box below.">Path to 64DD Disk&nbsp;&nbsp;<button class="floatright" id="clearDisk">Clear</button><br><br><div id="Disk" class="box"><span id="DiskText"></span></div></p>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<div id="controller1Anchor" class="anchor"></div>
+<p class="headline">Input</p>
+<p>&nbsp;</p>
+<p class="sub">Controller 1</p>
+<p>&nbsp;</p>
+<p><input id="plugged1" type="checkbox" data-store="plugged1" checked><label for="plugged1">Plugged</label></p>
+<p>&nbsp;</p>
+<p title="Analog Stick is mapped to mouse movement and mouse buttons are able to be mapped alongside keyboard controls."><input id="mouse1" type="checkbox" data-store="mouse1"><label for="mouse1">Enable Mouse</label></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<select class="width175m" name="mouse1_1" id="mouse1_1">
+<option value="" selected>None</option>
+<option value="a">A Button</option>
+<option value="b">B Button</option>
+<option value="l">L Button</option>
+<option value="r">R Button</option>
+<option value="z">Z-Trigger</option>
+</select><label for="mouse1_1">Mouse Button: Left</label>
+<p>&nbsp;</p>
+<select class="width175m" name="mouse1_2" id="mouse1_2">
+<option value="" selected>None</option>
+<option value="a">A Button</option>
+<option value="b">B Button</option>
+<option value="l">L Button</option>
+<option value="r">R Button</option>
+<option value="z">Z-Trigger</option>
+</select><label for="mouse1_2">Mouse Button: Middle</label>
+<p>&nbsp;</p>
+<select class="width175m" name="mouse1_3" id="mouse1_3">
+<option value="" selected>None</option>
+<option value="a">A Button</option>
+<option value="b">B Button</option>
+<option value="l">L Button</option>
+<option value="r">R Button</option>
+<option value="z">Z-Trigger</option>
+</select><label for="mouse1_3">Mouse Button: Right</label>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p><input id="MouseSensitivity1X" name="MouseSensitivity1X" type="range" min="0.25" max="10.00" step="0.25" value="2.00"><label for="MouseSensitivity1X">Mouse Sensitivity X</label><button class="floatright" id="resetMouseSensitivity1X">Reset</button><span class="gc" id="MouseSensitivity1XText">2.00</span></p>
+<p>&nbsp;</p>
+<p><input id="MouseSensitivity1Y" name="MouseSensitivity1Y" type="range" min="0.25" max="10.00" step="0.25" value="2.00"><label for="MouseSensitivity1Y">Mouse Sensitivity Y</label><button class="floatright" id="resetMouseSensitivity1Y">Reset</button><span class="gc" id="MouseSensitivity1YText">2.00</span></p>
+<p>&nbsp;</p>
+<p><input id="AnalogDeadzone1X" name="AnalogDeadzone1X" type="range" min="0" max="32768" step="512" value="4096"><label for="AnalogDeadzone1X">Analog Deadzone X</label><button class="floatright" id="resetAnalogDeadzone1X">Reset</button><span class="gc" id="AnalogDeadzone1XText">4096</span></p>
+<p>&nbsp;</p>
+<p><input id="AnalogDeadzone1Y" name="AnalogDeadzone1Y" type="range" min="0" max="32768" step="512" value="4096"><label for="AnalogDeadzone1Y">Analog Deadzone Y</label><button class="floatright" id="resetAnalogDeadzone1Y">Reset</button><span class="gc" id="AnalogDeadzone1YText">4096</span></p>
+<p>&nbsp;</p>
+<p><input id="AnalogPeak1X" name="AnalogPeak1X" type="range" min="0" max="32768" step="512" value="32768"><label for="AnalogPeak1X">Analog Peak X</label><button class="floatright" id="resetAnalogPeak1X">Reset</button><span class="gc" id="AnalogPeak1XText">32768</span></p>
+<p>&nbsp;</p>
+<p><input id="AnalogPeak1Y" name="AnalogPeak1Y" type="range" min="0" max="32768" step="512" value="32768"><label for="AnalogPeak1Y">Analog Peak Y</label><button class="floatright" id="resetAnalogPeak1Y">Reset</button><span class="gc" id="AnalogPeak1YText">32768</span></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<div title="Fully Automatic: Try to configure everything automatically. Semi-automatic: Configure buttons automatically with given SDL Device Name. Manual: Do nothing automatically."><select class="width175m" name="mode1" id="mode1">
+<option value="Input-SDL-Control1[mode]=0">Manual</option>
+<option value="Input-SDL-Control1[mode]=1">Semi-automatic</option>
+<option value="Input-SDL-Control1[mode]=2" selected>Fully Automatic</option>
+</select><label for="mode1">Configuration Mode</label></div>
+<p>&nbsp;</p>
+<select class="width175m" name="plugin1" id="plugin1">
+<option value="Input-SDL-Control1[plugin]=1">None</option>
+<option value="Input-SDL-Control1[plugin]=2">Memory Pak</option>
+<option value="Input-SDL-Control1[plugin]=4">Transfer Pak</option>
+<option value="Input-SDL-Control1[plugin]=5" selected>Rumble Pak</option>
+</select><label for="plugin1">Controller Plugin</label>
+<p>&nbsp;</p>
+<p><input class="width250m left" id="name1" value="Keyboard" type="text"><label for="name1">SDL Device Name</label><button class="floatright" id="resetname1">Reset</button></p>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<ul class="ul-buttons">
+<li id="ul_c1_keyboard">Keyboard</li>
+<li title="Secondary bindings (second box) needs to be of a different button type to work. Works: Axis and Button, Hat and Button. Does not work: Button and Button." id="ul_c1_controller" class="active">Controller</li>
+</ul>
+<p>&nbsp;</p>
+<div id="c1_keyboard" class="hotkeys hide">
+<p><label for="StickU1">Stick Up</label><input data-key="" value="" type="text" id="StickU1" readonly><button id="clearStickU1">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="StickL1">Stick Left</label><input data-key="" value="" type="text" id="StickL1" readonly><button id="clearStickL1">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="StickR1">Stick Right</label><input data-key="" value="" type="text" id="StickR1" readonly><button id="clearStickR1">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="StickD1">Stick Down</label><input data-key="" value="" type="text" id="StickD1" readonly><button id="clearStickD1">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="CButtonU1">C-Up</label><input data-key="" value="" type="text" id="CButtonU1" readonly><button id="clearCButtonU1">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="CButtonL1">C-Left</label><input data-key="" value="" type="text" id="CButtonL1" readonly><button id="clearCButtonL1">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="CButtonR1">C-Right</label><input data-key="" value="" type="text" id="CButtonR1" readonly><button id="clearCButtonR1">Clear</button>
+<p>&nbsp;</p>
+<p><label for="CButtonD1">C-Down</label><input data-key="" value="" type="text" id="CButtonD1" readonly><button id="clearCButtonD1">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="DPadU1">D-Pad Up</label><input data-key="" value="" type="text" id="DPadU1" readonly><button id="clearDPadU1">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="DPadL1">D-Pad Left</label><input data-key="" value="" type="text" id="DPadL1" readonly><button id="clearDPadL1">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="DPadR1">D-Pad Right</label><input data-key="" value="" type="text" id="DPadR1" readonly><button id="clearDPadR1">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="DPadD1">D-Pad Down</label><input data-key="" value="" type="text" id="DPadD1" readonly><button id="clearDPadD1">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="Start1">Start</label><input data-key="" value="" type="text" id="Start1" readonly><button id="clearStart1">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="AButton1">A</label><input data-key="" value="" type="text" id="AButton1" readonly><button id="clearAButton1">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="BButton1">B</label><input data-key="" value="" type="text" id="BButton1" readonly><button id="clearBButton1">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="LTrig1">L</label><input data-key="" value="" type="text" id="LTrig1" readonly><button id="clearLTrig1">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="RTrig1">R</label><input data-key="" value="" type="text" id="RTrig1" readonly><button id="clearRTrig1">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="ZTrig1">Z</label><input data-key="" value="" type="text" id="ZTrig1" readonly><button id="clearZTrig1">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="MempakSwitch1">Memory Pak</label><input data-key="" value="" type="text" id="MempakSwitch1" readonly><button id="clearMempakSwitch1">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="RumblepakSwitch1">Rumble Pak</label><input data-key="" value="" type="text" id="RumblepakSwitch1" readonly><button id="clearRumblepakSwitch1">Clear</button></p>
+</div>
+<div id="c1_controller" class="hotkeys">
+<p><label for="StickU1c">Stick Up</label><input value="" type="text" id="StickU1c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="StickU1cb" readonly><button id="clearStickU1c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="StickL1c">Stick Left</label><input value="" type="text" id="StickL1c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="StickL1cb" readonly><button id="clearStickL1c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="StickR1c">Stick Right</label><input value="" type="text" id="StickR1c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="StickR1cb" readonly><button id="clearStickR1c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="StickD1c">Stick Down</label><input value="" type="text" id="StickD1c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="StickD1cb" readonly><button id="clearStickD1c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="CButtonU1c">C-Up</label><input value="" type="text" id="CButtonU1c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="CButtonU1cb" readonly><button id="clearCButtonU1c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="CButtonL1c">C-Left</label><input value="" type="text" id="CButtonL1c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="CButtonL1cb" readonly><button id="clearCButtonL1c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="CButtonR1c">C-Right</label><input value="" type="text" id="CButtonR1c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="CButtonR1cb" readonly><button id="clearCButtonR1c">Clear</button>
+<p>&nbsp;</p>
+<p><label for="CButtonD1c">C-Down</label><input value="" type="text" id="CButtonD1c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="CButtonD1cb" readonly><button id="clearCButtonD1c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="DPadU1c">D-Pad Up</label><input value="" type="text" id="DPadU1c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="DPadU1cb" readonly><button id="clearDPadU1c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="DPadL1c">D-Pad Left</label><input value="" type="text" id="DPadL1c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="DPadL1cb" readonly><button id="clearDPadL1c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="DPadR1c">D-Pad Right</label><input value="" type="text" id="DPadR1c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="DPadR1cb" readonly><button id="clearDPadR1c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="DPadD1c">D-Pad Down</label><input value="" type="text" id="DPadD1c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="DPadD1cb" readonly><button id="clearDPadD1c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="Start1c">Start</label><input value="" type="text" id="Start1c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="Start1cb" readonly><button id="clearStart1c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="AButton1c">A</label><input value="" type="text" id="AButton1c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="AButton1cb" readonly><button id="clearAButton1c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="BButton1c">B</label><input value="" type="text" id="BButton1c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="BButton1cb" readonly><button id="clearBButton1c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="LTrig1c">L</label><input value="" type="text" id="LTrig1c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="LTrig1cb" readonly><button id="clearLTrig1c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="RTrig1c">R</label><input value="" type="text" id="RTrig1c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="RTrig1cb" readonly><button id="clearRTrig1c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="ZTrig1c">Z</label><input value="" type="text" id="ZTrig1c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="ZTrig1cb" readonly><button id="clearZTrig1c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="MempakSwitch1c">Memory Pak</label><input value="" type="text" id="MempakSwitch1c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="MempakSwitch1cb" readonly><button id="clearMempakSwitch1c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="RumblepakSwitch1c">Rumble Pak</label><input value="" type="text" id="RumblepakSwitch1c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="RumblepakSwitch1cb" readonly><button id="clearRumblepakSwitch1c">Clear</button></p>
+</div>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<div id="controller2Anchor" class="anchor"></div>
+<p class="sub">Controller 2</p>
+<p>&nbsp;</p>
+<p><input id="plugged2" type="checkbox" data-store="plugged2" checked><label for="plugged2">Plugged</label></p>
+<p>&nbsp;</p>
+<p title="Analog Stick is mapped to mouse movement and mouse buttons are able to be mapped alongside keyboard controls."><input id="mouse2" type="checkbox" data-store="mouse2"><label for="mouse2">Enable Mouse</label></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<select class="width175m" name="mouse2_1" id="mouse2_1">
+<option value="" selected>None</option>
+<option value="a">A Button</option>
+<option value="b">B Button</option>
+<option value="l">L Button</option>
+<option value="r">R Button</option>
+<option value="z">Z-Trigger</option>
+</select><label for="mouse2_1">Mouse Button: Left</label>
+<p>&nbsp;</p>
+<select class="width175m" name="mouse2_2" id="mouse2_2">
+<option value="" selected>None</option>
+<option value="a">A Button</option>
+<option value="b">B Button</option>
+<option value="l">L Button</option>
+<option value="r">R Button</option>
+<option value="z">Z-Trigger</option>
+</select><label for="mouse2_2">Mouse Button: Middle</label>
+<p>&nbsp;</p>
+<select class="width175m" name="mouse2_3" id="mouse2_3">
+<option value="" selected>None</option>
+<option value="a">A Button</option>
+<option value="b">B Button</option>
+<option value="l">L Button</option>
+<option value="r">R Button</option>
+<option value="z">Z-Trigger</option>
+</select><label for="mouse2_3">Mouse Button: Right</label>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p><input id="MouseSensitivity2X" name="MouseSensitivity2X" type="range" min="0.25" max="10.00" step="0.25" value="2.00"><label for="MouseSensitivity2X">Mouse Sensitivity X</label><button class="floatright" id="resetMouseSensitivity2X">Reset</button><span class="gc" id="MouseSensitivity2XText">2.00</span></p>
+<p>&nbsp;</p>
+<p><input id="MouseSensitivity2Y" name="MouseSensitivity2Y" type="range" min="0.25" max="10.00" step="0.25" value="2.00"><label for="MouseSensitivity2Y">Mouse Sensitivity Y</label><button class="floatright" id="resetMouseSensitivity2Y">Reset</button><span class="gc" id="MouseSensitivity2YText">2.00</span></p>
+<p>&nbsp;</p>
+<p><input id="AnalogDeadzone2X" name="AnalogDeadzone2X" type="range" min="0" max="32768" step="512" value="4096"><label for="AnalogDeadzone2X">Analog Deadzone X</label><button class="floatright" id="resetAnalogDeadzone2X">Reset</button><span class="gc" id="AnalogDeadzone2XText">4096</span></p>
+<p>&nbsp;</p>
+<p><input id="AnalogDeadzone2Y" name="AnalogDeadzone2Y" type="range" min="0" max="32768" step="512" value="4096"><label for="AnalogDeadzone2Y">Analog Deadzone Y</label><button class="floatright" id="resetAnalogDeadzone2Y">Reset</button><span class="gc" id="AnalogDeadzone2YText">4096</span></p>
+<p>&nbsp;</p>
+<p><input id="AnalogPeak2X" name="AnalogPeak2X" type="range" min="0" max="32768" step="512" value="32768"><label for="AnalogPeak2X">Analog Peak X</label><button class="floatright" id="resetAnalogPeak2X">Reset</button><span class="gc" id="AnalogPeak2XText">32768</span></p>
+<p>&nbsp;</p>
+<p><input id="AnalogPeak2Y" name="AnalogPeak2Y" type="range" min="0" max="32768" step="512" value="32768"><label for="AnalogPeak2Y">Analog Peak Y</label><button class="floatright" id="resetAnalogPeak2Y">Reset</button><span class="gc" id="AnalogPeak2YText">32768</span></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<div title="Fully Automatic: Try to configure everything automatically. Semi-automatic: Configure buttons automatically with given SDL Device Name. Manual: Do nothing automatically."><select class="width175m" name="mode2" id="mode2">
+<option value="Input-SDL-Control2[mode]=0">Manual</option>
+<option value="Input-SDL-Control2[mode]=1">Semi-automatic</option>
+<option value="Input-SDL-Control2[mode]=2" selected>Fully Automatic</option>
+</select><label for="mode2">Configuration Mode</label></div>
+<p>&nbsp;</p>
+<select class="width175m" name="plugin2" id="plugin2">
+<option value="Input-SDL-Control2[plugin]=1">None</option>
+<option value="Input-SDL-Control2[plugin]=2">Memory Pak</option>
+<option value="Input-SDL-Control2[plugin]=4">Transfer Pak</option>
+<option value="Input-SDL-Control2[plugin]=5" selected>Rumble Pak</option>
+</select><label for="plugin2">Controller Plugin</label>
+<p>&nbsp;</p>
+<p><input class="width250m left" id="name2" value="Keyboard" type="text"><label for="name2">SDL Device Name</label><button class="floatright" id="resetname2">Reset</button></p>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<ul class="ul-buttons">
+<li id="ul_c2_keyboard">Keyboard</li>
+<li title="Secondary bindings (second box) needs to be of a different button type to work. Works: Axis and Button, Hat and Button. Does not work: Button and Button." id="ul_c2_controller" class="active">Controller</li>
+</ul>
+<p>&nbsp;</p>
+<div  id="c2_keyboard" class="hotkeys hide">
+<p><label for="StickU2">Stick Up</label><input data-key="" value="" type="text" id="StickU2" readonly><button id="clearStickU2">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="StickL2">Stick Left</label><input data-key="" value="" type="text" id="StickL2" readonly><button id="clearStickL2">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="StickR2">Stick Right</label><input data-key="" value="" type="text" id="StickR2" readonly><button id="clearStickR2">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="StickD2">Stick Down</label><input data-key="" value="" type="text" id="StickD2" readonly><button id="clearStickD2">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="CButtonU2">C-Up</label><input data-key="" value="" type="text" id="CButtonU2" readonly><button id="clearCButtonU2">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="CButtonL2">C-Left</label><input data-key="" value="" type="text" id="CButtonL2" readonly><button id="clearCButtonL2">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="CButtonR2">C-Right</label><input data-key="" value="" type="text" id="CButtonR2" readonly><button id="clearCButtonR2">Clear</button>
+<p>&nbsp;</p>
+<p><label for="CButtonD2">C-Down</label><input data-key="" value="" type="text" id="CButtonD2" readonly><button id="clearCButtonD2">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="DPadU2">D-Pad Up</label><input data-key="" value="" type="text" id="DPadU2" readonly><button id="clearDPadU2">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="DPadL2">D-Pad Left</label><input data-key="" value="" type="text" id="DPadL2" readonly><button id="clearDPadL2">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="DPadR2">D-Pad Right</label><input data-key="" value="" type="text" id="DPadR2" readonly><button id="clearDPadR2">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="DPadD2">D-Pad Down</label><input data-key="" value="" type="text" id="DPadD2" readonly><button id="clearDPadD2">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="Start2">Start</label><input data-key="" value="" type="text" id="Start2" readonly><button id="clearStart2">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="AButton2">A</label><input data-key="" value="" type="text" id="AButton2" readonly><button id="clearAButton2">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="BButton2">B</label><input data-key="" value="" type="text" id="BButton2" readonly><button id="clearBButton2">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="LTrig2">L</label><input data-key="" value="" type="text" id="LTrig2" readonly><button id="clearLTrig2">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="RTrig2">R</label><input data-key="" value="" type="text" id="RTrig2" readonly><button id="clearRTrig2">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="ZTrig2">Z</label><input data-key="" value="" type="text" id="ZTrig2" readonly><button id="clearZTrig2">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="MempakSwitch2">Memory Pak</label><input data-key="" value="" type="text" id="MempakSwitch2" readonly><button id="clearMempakSwitch2">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="RumblepakSwitch2">Rumble Pak</label><input data-key="" value="" type="text" id="RumblepakSwitch2" readonly><button id="clearRumblepakSwitch2">Clear</button></p>
+</div>
+<div id="c2_controller" class="hotkeys">
+<p><label for="StickU2c">Stick Up</label><input value="" type="text" id="StickU2c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="StickU2cb" readonly><button id="clearStickU2c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="StickL2c">Stick Left</label><input value="" type="text" id="StickL2c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="StickL2cb" readonly><button id="clearStickL2c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="StickR2c">Stick Right</label><input value="" type="text" id="StickR2c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="StickR2cb" readonly><button id="clearStickR2c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="StickD2c">Stick Down</label><input value="" type="text" id="StickD2c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="StickD2cb" readonly><button id="clearStickD2c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="CButtonU2c">C-Up</label><input value="" type="text" id="CButtonU2c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="CButtonU2cb" readonly><button id="clearCButtonU2c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="CButtonL2c">C-Left</label><input value="" type="text" id="CButtonL2c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="CButtonL2cb" readonly><button id="clearCButtonL2c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="CButtonR2c">C-Right</label><input value="" type="text" id="CButtonR2c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="CButtonR2cb" readonly><button id="clearCButtonR2c">Clear</button>
+<p>&nbsp;</p>
+<p><label for="CButtonD2c">C-Down</label><input value="" type="text" id="CButtonD2c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="CButtonD2cb" readonly><button id="clearCButtonD2c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="DPadU2c">D-Pad Up</label><input value="" type="text" id="DPadU2c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="DPadU2cb" readonly><button id="clearDPadU2c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="DPadL2c">D-Pad Left</label><input value="" type="text" id="DPadL2c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="DPadL2cb" readonly><button id="clearDPadL2c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="DPadR2c">D-Pad Right</label><input value="" type="text" id="DPadR2c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="DPadR2cb" readonly><button id="clearDPadR2c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="DPadD2c">D-Pad Down</label><input value="" type="text" id="DPadD2c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="DPadD2cb" readonly><button id="clearDPadD2c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="Start2c">Start</label><input value="" type="text" id="Start2c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="Start2cb" readonly><button id="clearStart2c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="AButton2c">A</label><input value="" type="text" id="AButton2c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="AButton2cb" readonly><button id="clearAButton2c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="BButton2c">B</label><input value="" type="text" id="BButton2c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="BButton2cb" readonly><button id="clearBButton2c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="LTrig2c">L</label><input value="" type="text" id="LTrig2c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="LTrig2cb" readonly><button id="clearLTrig2c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="RTrig2c">R</label><input value="" type="text" id="RTrig2c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="RTrig2cb" readonly><button id="clearRTrig2c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="ZTrig2c">Z</label><input value="" type="text" id="ZTrig2c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="ZTrig2cb" readonly><button id="clearZTrig2c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="MempakSwitch2c">Memory Pak</label><input value="" type="text" id="MempakSwitch2c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="MempakSwitch2cb" readonly><button id="clearMempakSwitch2c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="RumblepakSwitch2c">Rumble Pak</label><input value="" type="text" id="RumblepakSwitch2c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="RumblepakSwitch2cb" readonly><button id="clearRumblepakSwitch2c">Clear</button></p>
+</div>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<div id="controller3Anchor" class="anchor"></div>
+<p class="sub">Controller 3</p>
+<p>&nbsp;</p>
+<p><input id="plugged3" type="checkbox" data-store="plugged3" checked><label for="plugged3">Plugged</label></p>
+<p>&nbsp;</p>
+<p title="Analog Stick is mapped to mouse movement and mouse buttons are able to be mapped alongside keyboard controls."><input id="mouse3" type="checkbox" data-store="mouse3"><label for="mouse3">Enable Mouse</label></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<select class="width175m" name="mouse3_1" id="mouse3_1">
+<option value="" selected>None</option>
+<option value="a">A Button</option>
+<option value="b">B Button</option>
+<option value="l">L Button</option>
+<option value="r">R Button</option>
+<option value="z">Z-Trigger</option>
+</select><label for="mouse3_1">Mouse Button: Left</label>
+<p>&nbsp;</p>
+<select class="width175m" name="mouse3_2" id="mouse3_2">
+<option value="" selected>None</option>
+<option value="a">A Button</option>
+<option value="b">B Button</option>
+<option value="l">L Button</option>
+<option value="r">R Button</option>
+<option value="z">Z-Trigger</option>
+</select><label for="mouse3_2">Mouse Button: Middle</label>
+<p>&nbsp;</p>
+<select class="width175m" name="mouse3_3" id="mouse3_3">
+<option value="" selected>None</option>
+<option value="a">A Button</option>
+<option value="b">B Button</option>
+<option value="l">L Button</option>
+<option value="r">R Button</option>
+<option value="z">Z-Trigger</option>
+</select><label for="mouse3_3">Mouse Button: Right</label>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p><input id="MouseSensitivity3X" name="MouseSensitivity3X" type="range" min="0.25" max="10.00" step="0.25" value="2.00"><label for="MouseSensitivity3X">Mouse Sensitivity X</label><button class="floatright" id="resetMouseSensitivity3X">Reset</button><span class="gc" id="MouseSensitivity3XText">2.00</span></p>
+<p>&nbsp;</p>
+<p><input id="MouseSensitivity3Y" name="MouseSensitivity3Y" type="range" min="0.25" max="10.00" step="0.25" value="2.00"><label for="MouseSensitivity3Y">Mouse Sensitivity Y</label><button class="floatright" id="resetMouseSensitivity3Y">Reset</button><span class="gc" id="MouseSensitivity3YText">2.00</span></p>
+<p>&nbsp;</p>
+<p><input id="AnalogDeadzone3X" name="AnalogDeadzone3X" type="range" min="0" max="32768" step="512" value="4096"><label for="AnalogDeadzone3X">Analog Deadzone X</label><button class="floatright" id="resetAnalogDeadzone3X">Reset</button><span class="gc" id="AnalogDeadzone3XText">4096</span></p>
+<p>&nbsp;</p>
+<p><input id="AnalogDeadzone3Y" name="AnalogDeadzone3Y" type="range" min="0" max="32768" step="512" value="4096"><label for="AnalogDeadzone3Y">Analog Deadzone Y</label><button class="floatright" id="resetAnalogDeadzone3Y">Reset</button><span class="gc" id="AnalogDeadzone3YText">4096</span></p>
+<p>&nbsp;</p>
+<p><input id="AnalogPeak3X" name="AnalogPeak3X" type="range" min="0" max="32768" step="512" value="32768"><label for="AnalogPeak3X">Analog Peak X</label><button class="floatright" id="resetAnalogPeak3X">Reset</button><span class="gc" id="AnalogPeak3XText">32768</span></p>
+<p>&nbsp;</p>
+<p><input id="AnalogPeak3Y" name="AnalogPeak3Y" type="range" min="0" max="32768" step="512" value="32768"><label for="AnalogPeak3Y">Analog Peak Y</label><button class="floatright" id="resetAnalogPeak3Y">Reset</button><span class="gc" id="AnalogPeak3YText">32768</span></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<div title="Fully Automatic: Try to configure everything automatically. Semi-automatic: Configure buttons automatically with given SDL Device Name. Manual: Do nothing automatically."><select class="width175m" name="mode3" id="mode3">
+<option value="Input-SDL-Control3[mode]=0">Manual</option>
+<option value="Input-SDL-Control3[mode]=1">Semi-automatic</option>
+<option value="Input-SDL-Control3[mode]=2" selected>Fully Automatic</option>
+</select><label for="mode3">Configuration Mode</label></div>
+<p>&nbsp;</p>
+<select class="width175m" name="plugin3" id="plugin3">
+<option value="Input-SDL-Control3[plugin]=1">None</option>
+<option value="Input-SDL-Control3[plugin]=2">Memory Pak</option>
+<option value="Input-SDL-Control3[plugin]=4">Transfer Pak</option>
+<option value="Input-SDL-Control3[plugin]=5" selected>Rumble Pak</option>
+</select><label for="plugin3">Controller Plugin</label>
+<p>&nbsp;</p>
+<p><input class="width250m left" id="name3" value="Keyboard" type="text"><label for="name3">SDL Device Name</label><button class="floatright" id="resetname3">Reset</button></p>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<ul class="ul-buttons">
+<li id="ul_c3_keyboard">Keyboard</li>
+<li title="Secondary bindings (second box) needs to be of a different button type to work. Works: Axis and Button, Hat and Button. Does not work: Button and Button." id="ul_c3_controller" class="active">Controller</li>
+</ul>
+<p>&nbsp;</p>
+<div id="c3_keyboard" class="hotkeys hide">
+<p><label for="StickU3">Stick Up</label><input data-key="" value="" type="text" id="StickU3" readonly><button id="clearStickU3">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="StickL3">Stick Left</label><input data-key="" value="" type="text" id="StickL3" readonly><button id="clearStickL3">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="StickR3">Stick Right</label><input data-key="" value="" type="text" id="StickR3" readonly><button id="clearStickR3">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="StickD3">Stick Down</label><input data-key="" value="" type="text" id="StickD3" readonly><button id="clearStickD3">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="CButtonU3">C-Up</label><input data-key="" value="" type="text" id="CButtonU3" readonly><button id="clearCButtonU3">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="CButtonL3">C-Left</label><input data-key="" value="" type="text" id="CButtonL3" readonly><button id="clearCButtonL3">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="CButtonR3">C-Right</label><input data-key="" value="" type="text" id="CButtonR3" readonly><button id="clearCButtonR3">Clear</button>
+<p>&nbsp;</p>
+<p><label for="CButtonD3">C-Down</label><input data-key="" value="" type="text" id="CButtonD3" readonly><button id="clearCButtonD3">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="DPadU3">D-Pad Up</label><input data-key="" value="" type="text" id="DPadU3" readonly><button id="clearDPadU3">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="DPadL3">D-Pad Left</label><input data-key="" value="" type="text" id="DPadL3" readonly><button id="clearDPadL3">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="DPadR3">D-Pad Right</label><input data-key="" value="" type="text" id="DPadR3" readonly><button id="clearDPadR3">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="DPadD3">D-Pad Down</label><input data-key="" value="" type="text" id="DPadD3" readonly><button id="clearDPadD3">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="Start3">Start</label><input data-key="" value="" type="text" id="Start3" readonly><button id="clearStart3">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="AButton3">A</label><input data-key="" value="" type="text" id="AButton3" readonly><button id="clearAButton3">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="BButton3">B</label><input data-key="" value="" type="text" id="BButton3" readonly><button id="clearBButton3">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="LTrig3">L</label><input data-key="" value="" type="text" id="LTrig3" readonly><button id="clearLTrig3">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="RTrig3">R</label><input data-key="" value="" type="text" id="RTrig3" readonly><button id="clearRTrig3">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="ZTrig3">Z</label><input data-key="" value="" type="text" id="ZTrig3" readonly><button id="clearZTrig3">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="MempakSwitch3">Memory Pak</label><input data-key="" value="" type="text" id="MempakSwitch3" readonly><button id="clearMempakSwitch3">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="RumblepakSwitch3">Rumble Pak</label><input data-key="" value="" type="text" id="RumblepakSwitch3" readonly><button id="clearRumblepakSwitch3">Clear</button></p>
+</div>
+<div id="c3_controller" class="hotkeys">
+<p><label for="StickU3c">Stick Up</label><input value="" type="text" id="StickU3c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="StickU3cb" readonly><button id="clearStickU3c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="StickL3c">Stick Left</label><input value="" type="text" id="StickL3c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="StickL3cb" readonly><button id="clearStickL3c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="StickR3c">Stick Right</label><input value="" type="text" id="StickR3c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="StickR3cb" readonly><button id="clearStickR3c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="StickD3c">Stick Down</label><input value="" type="text" id="StickD3c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="StickD3cb" readonly><button id="clearStickD3c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="CButtonU3c">C-Up</label><input value="" type="text" id="CButtonU3c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="CButtonU3cb" readonly><button id="clearCButtonU3c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="CButtonL3c">C-Left</label><input value="" type="text" id="CButtonL3c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="CButtonL3cb" readonly><button id="clearCButtonL3c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="CButtonR3c">C-Right</label><input value="" type="text" id="CButtonR3c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="CButtonR3cb" readonly><button id="clearCButtonR3c">Clear</button>
+<p>&nbsp;</p>
+<p><label for="CButtonD3c">C-Down</label><input value="" type="text" id="CButtonD3c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="CButtonD3cb" readonly><button id="clearCButtonD3c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="DPadU3c">D-Pad Up</label><input value="" type="text" id="DPadU3c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="DPadU3cb" readonly><button id="clearDPadU3c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="DPadL3c">D-Pad Left</label><input value="" type="text" id="DPadL3c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="DPadL3cb" readonly><button id="clearDPadL3c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="DPadR3c">D-Pad Right</label><input value="" type="text" id="DPadR3c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="DPadR3cb" readonly><button id="clearDPadR3c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="DPadD3c">D-Pad Down</label><input value="" type="text" id="DPadD3c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="DPadD3cb" readonly><button id="clearDPadD3c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="Start3c">Start</label><input value="" type="text" id="Start3c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="Start3cb" readonly><button id="clearStart3c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="AButton3c">A</label><input value="" type="text" id="AButton3c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="AButton3cb" readonly><button id="clearAButton3c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="BButton3c">B</label><input value="" type="text" id="BButton3c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="BButton3cb" readonly><button id="clearBButton3c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="LTrig3c">L</label><input value="" type="text" id="LTrig3c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="LTrig3cb" readonly><button id="clearLTrig3c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="RTrig3c">R</label><input value="" type="text" id="RTrig3c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="RTrig3cb" readonly><button id="clearRTrig3c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="ZTrig3c">Z</label><input value="" type="text" id="ZTrig3c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="ZTrig3cb" readonly><button id="clearZTrig3c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="MempakSwitch3c">Memory Pak</label><input value="" type="text" id="MempakSwitch3c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="MempakSwitch3cb" readonly><button id="clearMempakSwitch3c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="RumblepakSwitch3c">Rumble Pak</label><input value="" type="text" id="RumblepakSwitch3c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="RumblepakSwitch3cb" readonly><button id="clearRumblepakSwitch3c">Clear</button></p>
+</div>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<div id="controller4Anchor" class="anchor"></div>
+<p class="sub">Controller 4</p>
+<p>&nbsp;</p>
+<p><input id="plugged4" type="checkbox" data-store="plugged4" checked><label for="plugged4">Plugged</label></p>
+<p>&nbsp;</p>
+<p title="Analog Stick is mapped to mouse movement and mouse buttons are able to be mapped alongside keyboard controls."><input id="mouse4" type="checkbox" data-store="mouse4"><label for="mouse4">Enable Mouse</label></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<select class="width175m" name="mouse4_1" id="mouse4_1">
+<option value="" selected>None</option>
+<option value="a">A Button</option>
+<option value="b">B Button</option>
+<option value="l">L Button</option>
+<option value="r">R Button</option>
+<option value="z">Z-Trigger</option>
+</select><label for="mouse4_1">Mouse Button: Left</label>
+<p>&nbsp;</p>
+<select class="width175m" name="mouse4_2" id="mouse4_2">
+<option value="" selected>None</option>
+<option value="a">A Button</option>
+<option value="b">B Button</option>
+<option value="l">L Button</option>
+<option value="r">R Button</option>
+<option value="z">Z-Trigger</option>
+</select><label for="mouse4_2">Mouse Button: Middle</label>
+<p>&nbsp;</p>
+<select class="width175m" name="mouse4_3" id="mouse4_3">
+<option value="" selected>None</option>
+<option value="a">A Button</option>
+<option value="b">B Button</option>
+<option value="l">L Button</option>
+<option value="r">R Button</option>
+<option value="z">Z-Trigger</option>
+</select><label for="mouse4_3">Mouse Button: Right</label>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p><input id="MouseSensitivity4X" name="MouseSensitivity4X" type="range" min="0.25" max="10.00" step="0.25" value="2.00"><label for="MouseSensitivity4X">Mouse Sensitivity X</label><button class="floatright" id="resetMouseSensitivity4X">Reset</button><span class="gc" id="MouseSensitivity4XText">2.00</span></p>
+<p>&nbsp;</p>
+<p><input id="MouseSensitivity4Y" name="MouseSensitivity4Y" type="range" min="0.25" max="10.00" step="0.25" value="2.00"><label for="MouseSensitivity4Y">Mouse Sensitivity Y</label><button class="floatright" id="resetMouseSensitivity4Y">Reset</button><span class="gc" id="MouseSensitivity4YText">2.00</span></p>
+<p>&nbsp;</p>
+<p><input id="AnalogDeadzone4X" name="AnalogDeadzone4X" type="range" min="0" max="32768" step="512" value="4096"><label for="AnalogDeadzone4X">Analog Deadzone X</label><button class="floatright" id="resetAnalogDeadzone4X">Reset</button><span class="gc" id="AnalogDeadzone4XText">4096</span></p>
+<p>&nbsp;</p>
+<p><input id="AnalogDeadzone4Y" name="AnalogDeadzone4Y" type="range" min="0" max="32768" step="512" value="4096"><label for="AnalogDeadzone4Y">Analog Deadzone Y</label><button class="floatright" id="resetAnalogDeadzone4Y">Reset</button><span class="gc" id="AnalogDeadzone4YText">4096</span></p>
+<p>&nbsp;</p>
+<p><input id="AnalogPeak4X" name="AnalogPeak4X" type="range" min="0" max="32768" step="512" value="32768"><label for="AnalogPeak4X">Analog Peak X</label><button class="floatright" id="resetAnalogPeak4X">Reset</button><span class="gc" id="AnalogPeak4XText">32768</span></p>
+<p>&nbsp;</p>
+<p><input id="AnalogPeak4Y" name="AnalogPeak4Y" type="range" min="0" max="32768" step="512" value="32768"><label for="AnalogPeak4Y">Analog Peak Y</label><button class="floatright" id="resetAnalogPeak4Y">Reset</button><span class="gc" id="AnalogPeak4YText">32768</span></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<div title="Fully Automatic: Try to configure everything automatically. Semi-automatic: Configure buttons automatically with given SDL Device Name. Manual: Do nothing automatically."><select class="width175m" name="mode4" id="mode4">
+<option value="Input-SDL-Control4[mode]=0">Manual</option>
+<option value="Input-SDL-Control4[mode]=1">Semi-automatic</option>
+<option value="Input-SDL-Control4[mode]=2" selected>Fully Automatic</option>
+</select><label for="mode4">Configuration Mode</label></div>
+<p>&nbsp;</p>
+<select class="width175m" name="plugin4" id="plugin4">
+<option value="Input-SDL-Control4[plugin]=1">None</option>
+<option value="Input-SDL-Control4[plugin]=2">Memory Pak</option>
+<option value="Input-SDL-Control4[plugin]=4">Transfer Pak</option>
+<option value="Input-SDL-Control4[plugin]=5" selected>Rumble Pak</option>
+</select><label for="plugin4">Controller Plugin</label>
+<p>&nbsp;</p>
+<p><input class="width250m left" id="name4" value="Keyboard" type="text"><label for="name4">SDL Device Name</label><button class="floatright" id="resetname4">Reset</button></p>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<ul class="ul-buttons">
+<li id="ul_c4_keyboard">Keyboard</li>
+<li title="Secondary bindings (second box) needs to be of a different button type to work. Works: Axis and Button, Hat and Button. Does not work: Button and Button." id="ul_c4_controller" class="active">Controller</li>
+</ul>
+<p>&nbsp;</p>
+<div id="c4_keyboard" class="hotkeys hide">
+<p><label for="StickU4">Stick Up</label><input data-key="" value="" type="text" id="StickU4" readonly><button id="clearStickU4">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="StickL4">Stick Left</label><input data-key="" value="" type="text" id="StickL4" readonly><button id="clearStickL4">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="StickR4">Stick Right</label><input data-key="" value="" type="text" id="StickR4" readonly><button id="clearStickR4">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="StickD4">Stick Down</label><input data-key="" value="" type="text" id="StickD4" readonly><button id="clearStickD4">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="CButtonU4">C-Up</label><input data-key="" value="" type="text" id="CButtonU4" readonly><button id="clearCButtonU4">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="CButtonL4">C-Left</label><input data-key="" value="" type="text" id="CButtonL4" readonly><button id="clearCButtonL4">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="CButtonR4">C-Right</label><input data-key="" value="" type="text" id="CButtonR4" readonly><button id="clearCButtonR4">Clear</button>
+<p>&nbsp;</p>
+<p><label for="CButtonD4">C-Down</label><input data-key="" value="" type="text" id="CButtonD4" readonly><button id="clearCButtonD4">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="DPadU4">D-Pad Up</label><input data-key="" value="" type="text" id="DPadU4" readonly><button id="clearDPadU4">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="DPadL4">D-Pad Left</label><input data-key="" value="" type="text" id="DPadL4" readonly><button id="clearDPadL4">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="DPadR4">D-Pad Right</label><input data-key="" value="" type="text" id="DPadR4" readonly><button id="clearDPadR4">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="DPadD4">D-Pad Down</label><input data-key="" value="" type="text" id="DPadD4" readonly><button id="clearDPadD4">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="Start4">Start</label><input data-key="" value="" type="text" id="Start4" readonly><button id="clearStart4">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="AButton4">A</label><input data-key="" value="" type="text" id="AButton4" readonly><button id="clearAButton4">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="BButton4">B</label><input data-key="" value="" type="text" id="BButton4" readonly><button id="clearBButton4">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="LTrig4">L</label><input data-key="" value="" type="text" id="LTrig4" readonly><button id="clearLTrig4">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="RTrig4">R</label><input data-key="" value="" type="text" id="RTrig4" readonly><button id="clearRTrig4">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="ZTrig4">Z</label><input data-key="" value="" type="text" id="ZTrig4" readonly><button id="clearZTrig4">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="MempakSwitch4">Memory Pak</label><input data-key="" value="" type="text" id="MempakSwitch4" readonly><button id="clearMempakSwitch4">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="RumblepakSwitch4">Rumble Pak</label><input data-key="" value="" type="text" id="RumblepakSwitch4" readonly><button id="clearRumblepakSwitch4">Clear</button></p>
+</div>
+<div id="c4_controller" class="hotkeys">
+<p><label for="StickU4c">Stick Up</label><input value="" type="text" id="StickU4c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="StickU4cb" readonly><button id="clearStickU4c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="StickL4c">Stick Left</label><input value="" type="text" id="StickL4c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="StickL4cb" readonly><button id="clearStickL4c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="StickR4c">Stick Right</label><input value="" type="text" id="StickR4c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="StickR4cb" readonly><button id="clearStickR4c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="StickD4c">Stick Down</label><input value="" type="text" id="StickD4c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="StickD4cb" readonly><button id="clearStickD4c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="CButtonU4c">C-Up</label><input value="" type="text" id="CButtonU4c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="CButtonU4cb" readonly><button id="clearCButtonU4c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="CButtonL4c">C-Left</label><input value="" type="text" id="CButtonL4c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="CButtonL4cb" readonly><button id="clearCButtonL4c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="CButtonR4c">C-Right</label><input value="" type="text" id="CButtonR4c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="CButtonR4cb" readonly><button id="clearCButtonR4c">Clear</button>
+<p>&nbsp;</p>
+<p><label for="CButtonD4c">C-Down</label><input value="" type="text" id="CButtonD4c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="CButtonD4cb" readonly><button id="clearCButtonD4c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="DPadU4c">D-Pad Up</label><input value="" type="text" id="DPadU4c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="DPadU4cb" readonly><button id="clearDPadU4c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="DPadL4c">D-Pad Left</label><input value="" type="text" id="DPadL4c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="DPadL4cb" readonly><button id="clearDPadL4c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="DPadR4c">D-Pad Right</label><input value="" type="text" id="DPadR4c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="DPadR4cb" readonly><button id="clearDPadR4c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="DPadD4c">D-Pad Down</label><input value="" type="text" id="DPadD4c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="DPadD4cb" readonly><button id="clearDPadD4c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="Start4c">Start</label><input value="" type="text" id="Start4c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="Start4cb" readonly><button id="clearStart4c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="AButton4c">A</label><input value="" type="text" id="AButton4c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="AButton4cb" readonly><button id="clearAButton4c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="BButton4c">B</label><input value="" type="text" id="BButton4c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="BButton4cb" readonly><button id="clearBButton4c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="LTrig4c">L</label><input value="" type="text" id="LTrig4c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="LTrig4cb" readonly><button id="clearLTrig4c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="RTrig4c">R</label><input value="" type="text" id="RTrig4c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="RTrig4cb" readonly><button id="clearRTrig4c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="ZTrig4c">Z</label><input value="" type="text" id="ZTrig4c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="ZTrig4cb" readonly><button id="clearZTrig4c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="MempakSwitch4c">Memory Pak</label><input value="" type="text" id="MempakSwitch4c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="MempakSwitch4cb" readonly><button id="clearMempakSwitch4c">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="RumblepakSwitch4c">Rumble Pak</label><input value="" type="text" id="RumblepakSwitch4c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="RumblepakSwitch4cb" readonly><button id="clearRumblepakSwitch4c">Clear</button></p>
+</div>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<div id="gcaAnchor" class="anchor"></div>
+<p class="sub">GC Adapter</p>
+<p>&nbsp;</p>
+<p><input id="control_stick_deadzone" name="control_stick_deadzone" type="range" min="0" max="255" value="20"><label for="control_stick_deadzone">Control Stick Deadzone</label><button class="floatright" id="resetcontrol_stick_deadzone">Reset</button><span class="gc" id="control_stick_deadzoneText">20</span></p>
+<p>&nbsp;</p>
+<p title="This controls how far you have to move the stick in order to reach max input."><input id="control_stick_sensitivity" name="control_stick_sensitivity" type="range" min="0" max="255" value="180"><label for="control_stick_sensitivity">Control Stick Sensitivity</label><button class="floatright" id="resetcontrol_stick_sensitivity">Reset</button><span class="gc" id="control_stick_sensitivityText">180</span></p>
+<p>&nbsp;</p>
+<p><input id="c_stick_deadzone" name="c_stick_deadzone" type="range" min="0" max="255" value="40"><label for="c_stick_deadzone">C-Stick Deadzone</label><button class="floatright" id="resetc_stick_deadzone">Reset</button><span class="gc" id="c_stick_deadzoneText">40</span></p>
+<p>&nbsp;</p>
+<p title="Threshold for the trigger buttons (L and R). Set to max to only detect input when fully pressed."><input id="trigger_threshold" name="trigger_threshold" type="range" min="0" max="255" value="168"><label for="trigger_threshold">Trigger Threshold</label><button class="floatright" id="resettrigger_threshold">Reset</button><span class="gc" id="trigger_thresholdText">168</span></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<select class="width175m" name="a" id="a">
+<option value="'A'" selected>A</option>
+<option value="'B'">B</option>
+<option value="'Start'">Start</option>
+<option value="'L'">L</option>
+<option value="'Z'">Z</option>
+<option value="'R'">R</option>
+<option value="'DPadLeft'">D-Pad Left</option>
+<option value="'DPadRight'">D-Pad Right</option>
+<option value="'DPadDown'">D-Pad Down</option>
+<option value="'DPadUp'">D-Pad Up</option>
+<option value="'CLeft'">C-Button Left</option>
+<option value="'CRight'">C-Button Right</option>
+<option value="'CDown'">C-Button Down</option>
+<option value="'CUp'">C-Button Up</option>
+</select><label for="a">A Button</label>
+<p>&nbsp;</p>
+<select class="width175m" name="b" id="b">
+<option value="'A'">A</option>
+<option value="'B'" selected>B</option>
+<option value="'Start'">Start</option>
+<option value="'L'">L</option>
+<option value="'Z'">Z</option>
+<option value="'R'">R</option>
+<option value="'DPadLeft'">D-Pad Left</option>
+<option value="'DPadRight'">D-Pad Right</option>
+<option value="'DPadDown'">D-Pad Down</option>
+<option value="'DPadUp'">D-Pad Up</option>
+<option value="'CLeft'">C-Button Left</option>
+<option value="'CRight'">C-Button Right</option>
+<option value="'CDown'">C-Button Down</option>
+<option value="'CUp'">C-Button Up</option>
+</select><label for="b">B Button</label>
+<p>&nbsp;</p>
+<select class="width175m" name="x" id="x">
+<option value="'A'">A</option>
+<option value="'B'">B</option>
+<option value="'Start'">Start</option>
+<option value="'L'">L</option>
+<option value="'Z'">Z</option>
+<option value="'R'">R</option>
+<option value="'DPadLeft'">D-Pad Left</option>
+<option value="'DPadRight'">D-Pad Right</option>
+<option value="'DPadDown'">D-Pad Down</option>
+<option value="'DPadUp'">D-Pad Up</option>
+<option value="'CLeft'">C-Button Left</option>
+<option value="'CRight'" selected>C-Button Right</option>
+<option value="'CDown'">C-Button Down</option>
+<option value="'CUp'">C-Button Up</option>
+</select><label for="x">X Button</label>
+<p>&nbsp;</p>
+<select class="width175m" name="y" id="y">
+<option value="'A'">A</option>
+<option value="'B'">B</option>
+<option value="'Start'">Start</option>
+<option value="'L'">L</option>
+<option value="'Z'">Z</option>
+<option value="'R'">R</option>
+<option value="'DPadLeft'">D-Pad Left</option>
+<option value="'DPadRight'">D-Pad Right</option>
+<option value="'DPadDown'">D-Pad Down</option>
+<option value="'DPadUp'">D-Pad Up</option>
+<option value="'CLeft'" selected>C-Button Left</option>
+<option value="'CRight'">C-Button Right</option>
+<option value="'CDown'">C-Button Down</option>
+<option value="'CUp'">C-Button Up</option>
+</select><label for="y">Y Button</label>
+<p>&nbsp;</p>
+<select class="width175m" name="start" id="start">
+<option value="'A'">A</option>
+<option value="'B'">B</option>
+<option value="'Start'" selected>Start</option>
+<option value="'L'">L</option>
+<option value="'Z'">Z</option>
+<option value="'R'">R</option>
+<option value="'DPadLeft'">D-Pad Left</option>
+<option value="'DPadRight'">D-Pad Right</option>
+<option value="'DPadDown'">D-Pad Down</option>
+<option value="'DPadUp'">D-Pad Up</option>
+<option value="'CLeft'">C-Button Left</option>
+<option value="'CRight'">C-Button Right</option>
+<option value="'CDown'">C-Button Down</option>
+<option value="'CUp'">C-Button Up</option>
+</select><label for="start">Start Button</label>
+<p>&nbsp;</p>
+<select class="width175m" name="l" id="l">
+<option value="'A'">A</option>
+<option value="'B'">B</option>
+<option value="'Start'">Start</option>
+<option value="'L'">L</option>
+<option value="'Z'" selected>Z</option>
+<option value="'R'">R</option>
+<option value="'DPadLeft'">D-Pad Left</option>
+<option value="'DPadRight'">D-Pad Right</option>
+<option value="'DPadDown'">D-Pad Down</option>
+<option value="'DPadUp'">D-Pad Up</option>
+<option value="'CLeft'">C-Button Left</option>
+<option value="'CRight'">C-Button Right</option>
+<option value="'CDown'">C-Button Down</option>
+<option value="'CUp'">C-Button Up</option>
+</select><label for="l">L-Trigger</label>
+<p>&nbsp;</p>
+<select class="width175m" name="z" id="z">
+<option value="'A'">A</option>
+<option value="'B'">B</option>
+<option value="'Start'">Start</option>
+<option value="'L'" selected>L</option>
+<option value="'Z'">Z</option>
+<option value="'R'">R</option>
+<option value="'DPadLeft'">D-Pad Left</option>
+<option value="'DPadRight'">D-Pad Right</option>
+<option value="'DPadDown'">D-Pad Down</option>
+<option value="'DPadUp'">D-Pad Up</option>
+<option value="'CLeft'">C-Button Left</option>
+<option value="'CRight'">C-Button Right</option>
+<option value="'CDown'">C-Button Down</option>
+<option value="'CUp'">C-Button Up</option>
+</select><label for="z">Z Button</label>
+<p>&nbsp;</p>
+<select class="width175m" name="r" id="r">
+<option value="'A'">A</option>
+<option value="'B'">B</option>
+<option value="'Start'">Start</option>
+<option value="'L'">L</option>
+<option value="'Z'">Z</option>
+<option value="'R'" selected>R</option>
+<option value="'DPadLeft'">D-Pad Left</option>
+<option value="'DPadRight'">D-Pad Right</option>
+<option value="'DPadDown'">D-Pad Down</option>
+<option value="'DPadUp'">D-Pad Up</option>
+<option value="'CLeft'">C-Button Left</option>
+<option value="'CRight'">C-Button Right</option>
+<option value="'CDown'">C-Button Down</option>
+<option value="'CUp'">C-Button Up</option>
+</select><label for="r">R-Trigger</label>
+<p>&nbsp;</p>
+<select class="width175m" name="d_pad_left" id="d_pad_left">
+<option value="'A'">A</option>
+<option value="'B'">B</option>
+<option value="'Start'">Start</option>
+<option value="'L'">L</option>
+<option value="'Z'">Z</option>
+<option value="'R'">R</option>
+<option value="'DPadLeft'" selected>D-Pad Left</option>
+<option value="'DPadRight'">D-Pad Right</option>
+<option value="'DPadDown'">D-Pad Down</option>
+<option value="'DPadUp'">D-Pad Up</option>
+<option value="'CLeft'">C-Button Left</option>
+<option value="'CRight'">C-Button Right</option>
+<option value="'CDown'">C-Button Down</option>
+<option value="'CUp'">C-Button Up</option>
+</select><label for="d_pad_left">D-Pad Left</label>
+<p>&nbsp;</p>
+<select class="width175m" name="d_pad_right" id="d_pad_right">
+<option value="'A'">A</option>
+<option value="'B'">B</option>
+<option value="'Start'">Start</option>
+<option value="'L'">L</option>
+<option value="'Z'">Z</option>
+<option value="'R'">R</option>
+<option value="'DPadLeft'">D-Pad Left</option>
+<option value="'DPadRight'" selected>D-Pad Right</option>
+<option value="'DPadDown'">D-Pad Down</option>
+<option value="'DPadUp'">D-Pad Up</option>
+<option value="'CLeft'">C-Button Left</option>
+<option value="'CRight'">C-Button Right</option>
+<option value="'CDown'">C-Button Down</option>
+<option value="'CUp'">C-Button Up</option>
+</select><label for="d_pad_right">D-Pad Right</label>
+<p>&nbsp;</p>
+<select class="width175m" name="d_pad_down" id="d_pad_down">
+<option value="'A'">A</option>
+<option value="'B'">B</option>
+<option value="'Start'">Start</option>
+<option value="'L'">L</option>
+<option value="'Z'">Z</option>
+<option value="'R'">R</option>
+<option value="'DPadLeft'">D-Pad Left</option>
+<option value="'DPadRight'">D-Pad Right</option>
+<option value="'DPadDown'" selected>D-Pad Down</option>
+<option value="'DPadUp'">D-Pad Up</option>
+<option value="'CLeft'">C-Button Left</option>
+<option value="'CRight'">C-Button Right</option>
+<option value="'CDown'">C-Button Down</option>
+<option value="'CUp'">C-Button Up</option>
+</select><label for="d_pad_down">D-Pad Down</label>
+<p>&nbsp;</p>
+<select class="width175m" name="d_pad_up" id="d_pad_up">
+<option value="'A'">A</option>
+<option value="'B'">B</option>
+<option value="'Start'">Start</option>
+<option value="'L'">L</option>
+<option value="'Z'">Z</option>
+<option value="'R'">R</option>
+<option value="'DPadLeft'">D-Pad Left</option>
+<option value="'DPadRight'">D-Pad Right</option>
+<option value="'DPadDown'">D-Pad Down</option>
+<option value="'DPadUp'" selected>D-Pad Up</option>
+<option value="'CLeft'">C-Button Left</option>
+<option value="'CRight'">C-Button Right</option>
+<option value="'CDown'">C-Button Down</option>
+<option value="'CUp'">C-Button Up</option>
+</select><label for="d_pad_up">D-Pad Up</label>
+<p>&nbsp;</p>
+<select class="width175m" name="c_stick_left" id="c_stick_left">
+<option value="'A'">A</option>
+<option value="'B'">B</option>
+<option value="'Start'">Start</option>
+<option value="'L'">L</option>
+<option value="'Z'">Z</option>
+<option value="'R'">R</option>
+<option value="'DPadLeft'">D-Pad Left</option>
+<option value="'DPadRight'">D-Pad Right</option>
+<option value="'DPadDown'">D-Pad Down</option>
+<option value="'DPadUp'">D-Pad Up</option>
+<option value="'CLeft'" selected>C-Button Left</option>
+<option value="'CRight'">C-Button Right</option>
+<option value="'CDown'">C-Button Down</option>
+<option value="'CUp'">C-Button Up</option>
+</select><label for="c_stick_left">C-Stick Left</label>
+<p>&nbsp;</p>
+<select class="width175m" name="c_stick_right" id="c_stick_right">
+<option value="'A'">A</option>
+<option value="'B'">B</option>
+<option value="'Start'">Start</option>
+<option value="'L'">L</option>
+<option value="'Z'">Z</option>
+<option value="'R'">R</option>
+<option value="'DPadLeft'">D-Pad Left</option>
+<option value="'DPadRight'">D-Pad Right</option>
+<option value="'DPadDown'">D-Pad Down</option>
+<option value="'DPadUp'">D-Pad Up</option>
+<option value="'CLeft'">C-Button Left</option>
+<option value="'CRight'" selected>C-Button Right</option>
+<option value="'CDown'">C-Button Down</option>
+<option value="'CUp'">C-Button Up</option>
+</select><label for="c_stick_right">C-Stick Right</label>
+<p>&nbsp;</p>
+<select class="width175m" name="c_stick_down" id="c_stick_down">
+<option value="'A'">A</option>
+<option value="'B'">B</option>
+<option value="'Start'">Start</option>
+<option value="'L'">L</option>
+<option value="'Z'">Z</option>
+<option value="'R'">R</option>
+<option value="'DPadLeft'">D-Pad Left</option>
+<option value="'DPadRight'">D-Pad Right</option>
+<option value="'DPadDown'">D-Pad Down</option>
+<option value="'DPadUp'">D-Pad Up</option>
+<option value="'CLeft'">C-Button Left</option>
+<option value="'CRight'">C-Button Right</option>
+<option value="'CDown'" selected>C-Button Down</option>
+<option value="'CUp'">C-Button Up</option>
+</select><label for="c_stick_down">C-Stick Down</label>
+<p>&nbsp;</p>
+<select class="width175m" name="c_stick_up" id="c_stick_up">
+<option value="'A'">A</option>
+<option value="'B'">B</option>
+<option value="'Start'">Start</option>
+<option value="'L'">L</option>
+<option value="'Z'">Z</option>
+<option value="'R'">R</option>
+<option value="'DPadLeft'">D-Pad Left</option>
+<option value="'DPadRight'">D-Pad Right</option>
+<option value="'DPadDown'">D-Pad Down</option>
+<option value="'DPadUp'">D-Pad Up</option>
+<option value="'CLeft'">C-Button Left</option>
+<option value="'CRight'">C-Button Right</option>
+<option value="'CDown'">C-Button Down</option>
+<option value="'CUp'" selected>C-Button Up</option>
+</select><label for="c_stick_up">C-Stick Up</label>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<div id="hotkeysAnchor" class="anchor"></div>
+<p class="sub">Hotkeys</p>
+<p>&nbsp;</p>
+<p><b>Gamepads:</b> Buttons only. For a hotkey combo, press another button after focusing the box a second time. <b>B6/B10:</b> Press button 6 and 10 at the same time.</p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<ul class="ul-buttons width85p">
+<li id="ul_hk_keyboard" class="active">Keyboard</li>
+<li id="ul_hk_controller1">Controller 1</li>
+<li id="ul_hk_controller2">Controller 2</li>
+<li id="ul_hk_controller3">Controller 3</li>
+<li id="ul_hk_controller4">Controller 4</li>
+</ul>
+<p>&nbsp;</p>
+<div id="hk_keyboard" class="hotkeys">
+<p><label for="KbdMappingSlot0">Save Slot 0</label><input data-key="48" value="0" type="text" id="KbdMappingSlot0" readonly><button id="clearKbdMappingSlot0">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="KbdMappingSlot1">Save Slot 1</label><input data-key="49" value="1" type="text" id="KbdMappingSlot1" readonly><button id="clearKbdMappingSlot1">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="KbdMappingSlot2">Save Slot 2</label><input data-key="50" value="2" type="text" id="KbdMappingSlot2" readonly><button id="clearKbdMappingSlot2">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="KbdMappingSlot3">Save Slot 3</label><input data-key="51" value="3" type="text" id="KbdMappingSlot3" readonly><button id="clearKbdMappingSlot3">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="KbdMappingSlot4">Save Slot 4</label><input data-key="52" value="4" type="text" id="KbdMappingSlot4" readonly><button id="clearKbdMappingSlot4">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="KbdMappingSlot5">Save Slot 5</label><input data-key="53" value="5" type="text" id="KbdMappingSlot5" readonly><button id="clearKbdMappingSlot5">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="KbdMappingSlot6">Save Slot 6</label><input data-key="54" value="6" type="text" id="KbdMappingSlot6" readonly><button id="clearKbdMappingSlot6">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="KbdMappingSlot7">Save Slot 7</label><input data-key="55" value="7" type="text" id="KbdMappingSlot7" readonly><button id="clearKbdMappingSlot7">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="KbdMappingSlot8">Save Slot 8</label><input data-key="56" value="8" type="text" id="KbdMappingSlot8" readonly><button id="clearKbdMappingSlot8">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="KbdMappingSlot9">Save Slot 9</label><input data-key="57" value="9" type="text" id="KbdMappingSlot9" readonly><button id="clearKbdMappingSlot9">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="KbdMappingStop">Stop</label><input data-key="0" value="" type="text" id="KbdMappingStop" readonly><button id="clearKbdMappingStop">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="KbdMappingFullscreen">Fullscreen</label><input data-key="0" value="" type="text" id="KbdMappingFullscreen" readonly><button id="clearKbdMappingFullscreen">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="KbdMappingSaveState">Save State</label><input data-key="286" value="f5" type="text" id="KbdMappingSaveState" readonly><button id="clearKbdMappingSaveState">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="KbdMappingLoadState">Load State</label><input data-key="288" value="f7" type="text" id="KbdMappingLoadState" readonly><button id="clearKbdMappingLoadState">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="KbdMappingIncrementSlot">Increment Slot</label><input data-key="0" value="" type="text" id="KbdMappingIncrementSlot" readonly><button id="clearKbdMappingIncrementSlot">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="KbdMappingReset">Reset</label><input data-key="290" value="f9" type="text" id="KbdMappingReset" readonly><button id="clearKbdMappingReset">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="KbdMappingSpeedDown">Speed Down</label><input data-key="0" value="" type="text" id="KbdMappingSpeedDown" readonly><button id="clearKbdMappingSpeedDown">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="KbdMappingSpeedUp">Speed Up</label><input data-key="0" value="" type="text" id="KbdMappingSpeedUp" readonly><button id="clearKbdMappingSpeedUp">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="KbdMappingScreenshot">Screenshot</label><input data-key="284" value="f3" type="text" id="KbdMappingScreenshot" readonly><button id="clearKbdMappingScreenshot">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="KbdMappingPause">Pause</label><input data-key="283" value="f2" type="text" id="KbdMappingPause" readonly><button id="clearKbdMappingPause">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="KbdMappingMute">Mute</label><input data-key="0" value="" type="text" id="KbdMappingMute" readonly><button id="clearKbdMappingMute">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="KbdMappingIncreaseVolume">Increase Volume</label><input data-key="0" value="" type="text" id="KbdMappingIncreaseVolume" readonly><button id="clearKbdMappingIncreaseVolume">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="KbdMappingDecreaseVolume">Decrease Volume</label><input data-key="0" value="" type="text" id="KbdMappingDecreaseVolume" readonly><button id="clearKbdMappingDecreaseVolume">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="KbdMappingFastForward">Fast Forward</label><input data-key="0" value="" type="text" id="KbdMappingFastForward" readonly><button id="clearKbdMappingFastForward">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="KbdMappingFrameAdvance">Frame Advance</label><input data-key="282" value="f1" type="text" id="KbdMappingFrameAdvance" readonly><button id="clearKbdMappingFrameAdvance">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="KbdMappingGameshark">GameShark Button</label><input data-key="0" value="" type="text" id="KbdMappingGameshark" readonly><button id="clearKbdMappingGameshark">Clear</button></p>
+</div>
+<div id="hk_controller1" class="hotkeys hide">
+<p><label for="JoyMappingStop1">Stop</label><input value="" type="text" id="JoyMappingStop1" readonly><button id="clearJoyMappingStop1">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingFullscreen1">Fullscreen</label><input value="" type="text" id="JoyMappingFullscreen1" readonly><button id="clearJoyMappingFullscreen1">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingSaveState1">Save State</label><input value="" type="text" id="JoyMappingSaveState1" readonly><button id="clearJoyMappingSaveState1">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingLoadState1">Load State</label><input value="" type="text" id="JoyMappingLoadState1" readonly><button id="clearJoyMappingLoadState1">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingIncrementSlot1">Increment Slot</label><input value="" type="text" id="JoyMappingIncrementSlot1" readonly><button id="clearJoyMappingIncrementSlot1">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingReset1">Reset</label><input value="" type="text" id="JoyMappingReset1" readonly><button id="clearJoyMappingReset1">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingSpeedDown1">Speed Down</label><input value="" type="text" id="JoyMappingSpeedDown1" readonly><button id="clearJoyMappingSpeedDown1">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingSpeedUp1">Speed Up</label><input value="" type="text" id="JoyMappingSpeedUp1" readonly><button id="clearJoyMappingSpeedUp1">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingScreenshot1">Screenshot</label><input value="" type="text" id="JoyMappingScreenshot1" readonly><button id="clearJoyMappingScreenshot1">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingPause1">Pause</label><input value="" type="text" id="JoyMappingPause1" readonly><button id="clearJoyMappingPause1">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingMute1">Mute</label><input value="" type="text" id="JoyMappingMute1" readonly><button id="clearJoyMappingMute1">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingIncreaseVolume1">Increase Volume</label><input value="" type="text" id="JoyMappingIncreaseVolume1" readonly><button id="clearJoyMappingIncreaseVolume1">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingDecreaseVolume1">Decrease Volume</label><input value="" type="text" id="JoyMappingDecreaseVolume1" readonly><button id="clearJoyMappingDecreaseVolume1">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingFastForward1">Fast Forward</label><input value="" type="text" id="JoyMappingFastForward1" readonly><button id="clearJoyMappingFastForward1">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingFrameAdvance1">Frame Advance</label><input value="" type="text" id="JoyMappingFrameAdvance1" readonly><button id="clearJoyMappingFrameAdvance1">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingGameshark1">GameShark Button</label><input value="" type="text" id="JoyMappingGameshark1" readonly><button id="clearJoyMappingGameshark1">Clear</button></p>
+</div>
+<div id="hk_controller2" class="hotkeys hide">
+<p><label for="JoyMappingStop2">Stop</label><input value="" type="text" id="JoyMappingStop2" readonly><button id="clearJoyMappingStop2">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingFullscreen2">Fullscreen</label><input value="" type="text" id="JoyMappingFullscreen2" readonly><button id="clearJoyMappingFullscreen2">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingSaveState2">Save State</label><input value="" type="text" id="JoyMappingSaveState2" readonly><button id="clearJoyMappingSaveState2">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingLoadState2">Load State</label><input value="" type="text" id="JoyMappingLoadState2" readonly><button id="clearJoyMappingLoadState2">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingIncrementSlot2">Increment Slot</label><input value="" type="text" id="JoyMappingIncrementSlot2" readonly><button id="clearJoyMappingIncrementSlot2">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingReset2">Reset</label><input value="" type="text" id="JoyMappingReset2" readonly><button id="clearJoyMappingReset2">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingSpeedDown2">Speed Down</label><input value="" type="text" id="JoyMappingSpeedDown2" readonly><button id="clearJoyMappingSpeedDown2">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingSpeedUp2">Speed Up</label><input value="" type="text" id="JoyMappingSpeedUp2" readonly><button id="clearJoyMappingSpeedUp2">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingScreenshot2">Screenshot</label><input value="" type="text" id="JoyMappingScreenshot2" readonly><button id="clearJoyMappingScreenshot2">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingPause2">Pause</label><input value="" type="text" id="JoyMappingPause2" readonly><button id="clearJoyMappingPause2">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingMute2">Mute</label><input value="" type="text" id="JoyMappingMute2" readonly><button id="clearJoyMappingMute2">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingIncreaseVolume2">Increase Volume</label><input value="" type="text" id="JoyMappingIncreaseVolume2" readonly><button id="clearJoyMappingIncreaseVolume2">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingDecreaseVolume2">Decrease Volume</label><input value="" type="text" id="JoyMappingDecreaseVolume2" readonly><button id="clearJoyMappingDecreaseVolume2">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingFastForward2">Fast Forward</label><input value="" type="text" id="JoyMappingFastForward2" readonly><button id="clearJoyMappingFastForward2">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingFrameAdvance2">Frame Advance</label><input value="" type="text" id="JoyMappingFrameAdvance2" readonly><button id="clearJoyMappingFrameAdvance2">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingGameshark2">GameShark Button</label><input value="" type="text" id="JoyMappingGameshark2" readonly><button id="clearJoyMappingGameshark2">Clear</button></p>
+</div>
+<div id="hk_controller3" class="hotkeys hide">
+<p><label for="JoyMappingStop3">Stop</label><input value="" type="text" id="JoyMappingStop3" readonly><button id="clearJoyMappingStop3">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingFullscreen3">Fullscreen</label><input value="" type="text" id="JoyMappingFullscreen3" readonly><button id="clearJoyMappingFullscreen3">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingSaveState3">Save State</label><input value="" type="text" id="JoyMappingSaveState3" readonly><button id="clearJoyMappingSaveState3">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingLoadState3">Load State</label><input value="" type="text" id="JoyMappingLoadState3" readonly><button id="clearJoyMappingLoadState3">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingIncrementSlot3">Increment Slot</label><input value="" type="text" id="JoyMappingIncrementSlot3" readonly><button id="clearJoyMappingIncrementSlot3">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingReset3">Reset</label><input value="" type="text" id="JoyMappingReset3" readonly><button id="clearJoyMappingReset3">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingSpeedDown3">Speed Down</label><input value="" type="text" id="JoyMappingSpeedDown3" readonly><button id="clearJoyMappingSpeedDown3">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingSpeedUp3">Speed Up</label><input value="" type="text" id="JoyMappingSpeedUp3" readonly><button id="clearJoyMappingSpeedUp3">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingScreenshot3">Screenshot</label><input value="" type="text" id="JoyMappingScreenshot3" readonly><button id="clearJoyMappingScreenshot3">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingPause3">Pause</label><input value="" type="text" id="JoyMappingPause3" readonly><button id="clearJoyMappingPause3">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingMute3">Mute</label><input value="" type="text" id="JoyMappingMute3" readonly><button id="clearJoyMappingMute3">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingIncreaseVolume3">Increase Volume</label><input value="" type="text" id="JoyMappingIncreaseVolume3" readonly><button id="clearJoyMappingIncreaseVolume3">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingDecreaseVolume3">Decrease Volume</label><input value="" type="text" id="JoyMappingDecreaseVolume3" readonly><button id="clearJoyMappingDecreaseVolume3">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingFastForward3">Fast Forward</label><input value="" type="text" id="JoyMappingFastForward3" readonly><button id="clearJoyMappingFastForward3">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingFrameAdvance3">Frame Advance</label><input value="" type="text" id="JoyMappingFrameAdvance3" readonly><button id="clearJoyMappingFrameAdvance3">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingGameshark3">GameShark Button</label><input value="" type="text" id="JoyMappingGameshark3" readonly><button id="clearJoyMappingGameshark3">Clear</button></p>
+</div>
+<div id="hk_controller4" class="hotkeys hide">
+<p><label for="JoyMappingStop4">Stop</label><input value="" type="text" id="JoyMappingStop4" readonly><button id="clearJoyMappingStop4">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingFullscreen4">Fullscreen</label><input value="" type="text" id="JoyMappingFullscreen4" readonly><button id="clearJoyMappingFullscreen4">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingSaveState4">Save State</label><input value="" type="text" id="JoyMappingSaveState4" readonly><button id="clearJoyMappingSaveState4">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingLoadState4">Load State</label><input value="" type="text" id="JoyMappingLoadState4" readonly><button id="clearJoyMappingLoadState4">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingIncrementSlot4">Increment Slot</label><input value="" type="text" id="JoyMappingIncrementSlot4" readonly><button id="clearJoyMappingIncrementSlot4">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingReset4">Reset</label><input value="" type="text" id="JoyMappingReset4" readonly><button id="clearJoyMappingReset4">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingSpeedDown4">Speed Down</label><input value="" type="text" id="JoyMappingSpeedDown4" readonly><button id="clearJoyMappingSpeedDown4">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingSpeedUp4">Speed Up</label><input value="" type="text" id="JoyMappingSpeedUp4" readonly><button id="clearJoyMappingSpeedUp4">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingScreenshot4">Screenshot</label><input value="" type="text" id="JoyMappingScreenshot4" readonly><button id="clearJoyMappingScreenshot4">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingPause4">Pause</label><input value="" type="text" id="JoyMappingPause4" readonly><button id="clearJoyMappingPause4">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingMute4">Mute</label><input value="" type="text" id="JoyMappingMute4" readonly><button id="clearJoyMappingMute4">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingIncreaseVolume4">Increase Volume</label><input value="" type="text" id="JoyMappingIncreaseVolume4" readonly><button id="clearJoyMappingIncreaseVolume4">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingDecreaseVolume4">Decrease Volume</label><input value="" type="text" id="JoyMappingDecreaseVolume4" readonly><button id="clearJoyMappingDecreaseVolume4">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingFastForward4">Fast Forward</label><input value="" type="text" id="JoyMappingFastForward4" readonly><button id="clearJoyMappingFastForward4">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingFrameAdvance4">Frame Advance</label><input value="" type="text" id="JoyMappingFrameAdvance4" readonly><button id="clearJoyMappingFrameAdvance4">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="JoyMappingGameshark4">GameShark Button</label><input value="" type="text" id="JoyMappingGameshark4" readonly><button id="clearJoyMappingGameshark4">Clear</button></p>
+</div>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<div id="transferpakAnchor" class="anchor"></div>
+<p class="sub">Transferpak</p>
+<p>&nbsp;</p>
+<p title="Path to GB(C) ROM file. Click the box or drag and drop the .gb or .gbc file into the box below.">GB ROM for Transferpak 1<button class="floatright" id="cleargbROM1">Clear</button><br><br><div id="gbROM1" class="box"><span id="gbROM1Text"></span></div></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p title="Path to GB save file. Click the box or drag and drop the .sav file into the box below.">GB Save for Transferpak 1<button class="floatright" id="cleargbRAM1">Clear</button><br><br><div id="gbRAM1" class="box"><span id="gbRAM1Text"></span></div></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p title="Path to GB(C) ROM file. Click the box or drag and drop the .gb or .gbc file into the box below.">GB ROM for Transferpak 2<button class="floatright" id="cleargbROM2">Clear</button><br><br><div id="gbROM2" class="box"><span id="gbROM2Text"></span></div></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p title="Path to GB save file. Click the box or drag and drop the .sav file into the box below.">GB Save for Transferpak 2<button class="floatright" id="cleargbRAM2">Clear</button><br><br><div id="gbRAM2" class="box"><span id="gbRAM2Text"></span></div></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p title="Path to GB(C) ROM file. Click the box or drag and drop the .gb or .gbc file into the box below.">GB ROM for Transferpak 3<button class="floatright" id="cleargbROM3">Clear</button><br><br><div id="gbROM3" class="box"><span id="gbROM3Text"></span></div></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p title="Path to GB save file. Click the box or drag and drop the .sav file into the box below.">GB Save for Transferpak 3<button class="floatright" id="cleargbRAM3">Clear</button><br><br><div id="gbRAM3" class="box"><span id="gbRAM3Text"></span></div></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p title="Path to GB(C) ROM file. Click the box or drag and drop the .gb or .gbc file into the box below.">GB ROM for Transferpak 4<button class="floatright" id="cleargbROM4">Clear</button><br><br><div id="gbROM4" class="box"><span id="gbROM4Text"></span></div></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p title="Path to GB save file. Click the box or drag and drop the .sav file into the box below.">GB Save for Transferpak 4<button class="floatright" id="cleargbRAM4">Clear</button><br><br><div id="gbRAM4" class="box"><span id="gbRAM4Text"></span></div></p>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<div id="angrylionAnchor" class="anchor"></div>
+<p class="headline">Angrylion Plus</p>
+<p>&nbsp;</p>
+<p title="Use a busyloop while waiting for work."><input id="BusyLoop" type="checkbox" data-store="BusyLoop"><label for="BusyLoop">Busyloop</label></p>
+<p>&nbsp;</p>
+<p><input id="Parallel" type="checkbox" data-store="Parallel" checked><label for="Parallel">Multi-core Rendering</label></p>
+<p>&nbsp;</p>
+<p title="Hide overscan area in filtered mode."><input id="ViHideOverscan" type="checkbox" data-store="ViHideOverscan"><label for="ViHideOverscan">VI Hide Overscan</label></p>
+<p>&nbsp;</p>
+<p title="Display upscaled pixels as groups of 1x1, 2x2, 3x3, etc."><input id="ViIntegerScaling" type="checkbox" data-store="ViIntegerScaling"><label for="ViIntegerScaling">VI Integer Scaling</label></p>
+<p>&nbsp;</p>
+<p title="Use anamorphic 16:9 output mode." ><input id="ViWidescreen" type="checkbox" data-store="ViWidescreen"><label for="ViWidescreen">VI Widescreen</label></p>
+<p>&nbsp;</p>
+<p title="Number of logical processors to use. 0 uses all."><span class="numberDecrease" id="decreaseNumWorkers">-</span><input id="NumWorkers" min="0" value="0" type="number"><span class="numberIncrease" id="increaseNumWorkers">+</span><label for="NumWorkers">Rendering Workers</label></p>
+<p>&nbsp;</p>
+<select class="width200m" name="ViMode" id="ViMode">
+<option value="Video-Angrylion-Plus[ViMode]=0" selected>Filtered</option>
+<option value="Video-Angrylion-Plus[ViMode]=1">Unfiltered</option>
+<option value="Video-Angrylion-Plus[ViMode]=2">Depth</option>
+<option value="Video-Angrylion-Plus[ViMode]=3">Coverage</option>
+</select><label for="ViMode">VI Mode</label>
+<p>&nbsp;</p>
+<div title="Scaling interpolation type."><select class="width200m" name="ViInterpolation" id="ViInterpolation">
+<option value="Video-Angrylion-Plus[ViInterpolation]=0">Nearest-neighbor</option>
+<option value="Video-Angrylion-Plus[ViInterpolation]=1">Bilinear</option>
+<option value="Video-Angrylion-Plus[ViInterpolation]=2" selected>Hybrid</option>
+</select><label for="ViInterpolation">VI Interpolation</label></div>
+<p>&nbsp;</p>
+<select class="width200m" name="DpCompat" id="DpCompat">
+<option value="Video-Angrylion-Plus[DpCompat]=0" selected>Fast</option>
+<option value="Video-Angrylion-Plus[DpCompat]=1">Moderate</option>
+<option value="Video-Angrylion-Plus[DpCompat]=2">Slow</option>
+</select><label for="DpCompat">Compatibility Mode</label>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<div id="gliden64Anchor" class="anchor"></div>
+<p class="headline">GLideN64</p>
+<p>&nbsp;</p>
+<p class="sub">Emulation</p>
+<p>&nbsp;</p>
+<p title="Remove halos around filtered textures."><input id="enableHalosRemoval" type="checkbox" data-store="enableHalosRemoval"><label for="enableHalosRemoval">Halos Removal</label></p>
+<p>&nbsp;</p>
+<p title="Enable LOD emulation (mipmapping)."><input id="EnableLOD" type="checkbox" data-store="EnableLOD"><label for="EnableLOD">LOD Emulation</label></p>
+<p>&nbsp;</p>
+<p title="Enable hardware per-pixel lighting."><input id="EnableHWLighting" type="checkbox" data-store="EnableHWLighting" checked><label for="EnableHWLighting">Per-pixel Lighting</label></p>
+<p>&nbsp;</p>
+<p title="Enable pixel coverage calculation. Used for better blending emulation and wire-frame mode. Needs fast GPU."><input id="EnableCoverage" type="checkbox" data-store="EnableCoverage"><label for="EnableCoverage">Pixel Coverage Calculation</label></p>
+<p>&nbsp;</p>
+<p title="Enable software vertices clipping. Brings various benefits."><input id="EnableClipping" type="checkbox" data-store="EnableClipping" checked><label for="EnableClipping">Clipping</label></p>
+<p>&nbsp;</p>
+<p title="Use persistent storage for compiled shaders."><input id="EnableShadersStorage" type="checkbox" data-store="EnableShadersStorage" checked><label for="EnableShadersStorage">Shader Storage</label></p>
+<p>&nbsp;</p>
+<p title="Do not use shaders to emulate N64 blending modes. Works faster on slow GPU. Can cause glitches."><input id="EnableLegacyBlending" type="checkbox" data-store="EnableLegacyBlending"><label for="EnableLegacyBlending">Legacy Blending</label></p>
+<p>&nbsp;</p>
+<p title="Enable hybrid integer scaling filter, this can be slow with low-end GPUs."><input id="EnableHybridFilter" type="checkbox" data-store="EnableHybridFilter" checked><label for="EnableHybridFilter">Hybrid Filter</label></p>
+<p>&nbsp;</p>
+<p title="Enable writing of fragment depth. Some mobile GPUs do not support it, thus it made optional. Leave enabled."><input id="EnableFragmentDepthWrite" type="checkbox" data-store="EnableFragmentDepthWrite" checked><label for="EnableFragmentDepthWrite">Fragment Depth Write</label></p>
+<p>&nbsp;</p>
+<p title="Use GLideN64 per-game settings."><input id="EnableCustomSettings" type="checkbox" data-store="EnableCustomSettings" checked><label for="EnableCustomSettings">Per-game settings</label></p>
+<p>&nbsp;</p>
+<p title="Bind texture rectangle texture coordinates to the values they take in native resolutions. It prevents garbage due to fetching out of texture bounds, but can result in hard edges."><input id="EnableTexCoordBounds" type="checkbox" data-store="EnableTexCoordBounds"><label for="EnableTexCoordBounds">Texture Coordinate Bounds</label></p>
+<p>&nbsp;</p>
+<p title="Enable dithering pattern on output image."><input id="EnableDitheringPattern" type="checkbox" data-store="EnableDitheringPattern"><label for="EnableDitheringPattern">Dithering Pattern</label></p>
+<p>&nbsp;</p>
+<p title="Enable hi-res noise dithering."><input id="EnableHiresNoiseDithering" type="checkbox" data-store="EnableHiresNoiseDithering" checked><label for="EnableHiresNoiseDithering">Hi-res Noise Dithering</label></p>
+<p>&nbsp;</p>
+<p title="Dither with color quantization."><input id="DitheringQuantization" type="checkbox" data-store="DitheringQuantization" checked><label for="DitheringQuantization">Dithering Quantization</label></p>
+<p>&nbsp;</p>
+<div title="Dithering mode for image in RDRAM."><select class="width150m" name="RDRAMImageDitheringMode" id="RDRAMImageDitheringMode">
+<option value="Video-GLideN64[RDRAMImageDitheringMode]=0">Disable</option>
+<option value="Video-GLideN64[RDRAMImageDitheringMode]=1">Bayer</option>
+<option value="Video-GLideN64[RDRAMImageDitheringMode]=2">Magic Square</option>
+<option value="Video-GLideN64[RDRAMImageDitheringMode]=3" selected>Blue Noise</option>
+</select><label for="RDRAMImageDitheringMode">Dithering Mode</label></div>
+<p>&nbsp;</p>
+<div title="Render backgrounds mode (HLE only)."><select class="width150m" name="BackgroundsMode" id="BackgroundsMode">
+<option value="Video-GLideN64[BackgroundsMode]=0" selected>One Piece</option>
+<option value="Video-GLideN64[BackgroundsMode]=1">Stripped</option>
+</select><label for="BackgroundsMode">Backgrounds Mode</label></div>
+<p>&nbsp;</p>
+<div title="Make texrect coordinates continuous to avoid black lines between them."><select class="width150m" name="CorrectTexrectCoords" id="CorrectTexrectCoords">
+<option value="Video-GLideN64[CorrectTexrectCoords]=0">Off</option>
+<option value="Video-GLideN64[CorrectTexrectCoords]=1" selected>Auto</option>
+<option value="Video-GLideN64[CorrectTexrectCoords]=2">Force</option>
+</select><label for="CorrectTexrectCoords">Correct Texrect Coordinates</label></div>
+<p>&nbsp;</p>
+<div title="Render 2D texrects in native resolution to fix misalignment between parts of 2D image."><select class="width150m" name="EnableNativeResTexrects" id="EnableNativeResTexrects">
+<option value="Video-GLideN64[EnableNativeResTexrects]=0" selected>Off</option>
+<option value="Video-GLideN64[EnableNativeResTexrects]=1">Optimized</option>
+<option value="Video-GLideN64[EnableNativeResTexrects]=2">Unoptimized</option>
+</select><label for="EnableNativeResTexrects">Enable Native Resolution Texrects</label></div>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<p class="sub">Framebuffer</p>
+<p>&nbsp;</p>
+<p title="Disable buffers read/write with FBInfo. Use for games which do not work with FBInfo."><input id="DisableFBInfo" type="checkbox" data-store="DisableFBInfo" checked><label for="DisableFBInfo">Disable FBInfo</label></p>
+<p>&nbsp;</p>
+<p><input id="EnableFBEmulation" type="checkbox" data-store="EnableFBEmulation" checked><label for="EnableFBEmulation">Framebuffer Emulation</label></p>
+<p>&nbsp;</p>
+<p title="Enable color buffer copy from RDRAM."><input id="EnableCopyColorFromRDRAM" type="checkbox" data-store="EnableCopyColorFromRDRAM"><label for="EnableCopyColorFromRDRAM">Color Buffer Copy from RDRAM</label></p>
+<p>&nbsp;</p>
+<p title="Enable copy of depth information from FBO to main depth buffer. Required for some Reshade shaders."><input id="EnableCopyDepthToMainDepthBuffer" type="checkbox" data-store="EnableCopyDepthToMainDepthBuffer"><label for="EnableCopyDepthToMainDepthBuffer">Copy Depth to Main Buffer</label></p>
+<p>&nbsp;</p>
+<p><input id="EnableCopyAuxiliaryToRDRAM" type="checkbox" data-store="EnableCopyAuxiliaryToRDRAM"><label for="EnableCopyAuxiliaryToRDRAM">Copy Auxiliary Buffers to RDRAM</label></p>
+<p>&nbsp;</p>
+<p title="Force depth buffer clear. Hack. Needed for Eikou no Saint Andrews."><input id="ForceDepthBufferClear" type="checkbox" data-store="ForceDepthBufferClear"><label for="ForceDepthBufferClear">Force Depth Buffer Clear</label></p>
+<p>&nbsp;</p>
+<p title="Read color buffer by 4kb chunks."><input id="FBInfoReadColorChunk" type="checkbox" data-store="FBInfoReadColorChunk"><label for="FBInfoReadColorChunk">Read Color Buffer in Chunks</label></p>
+<p>&nbsp;</p>
+<p title="Read depth buffer by 4kb chunks."><input id="FBInfoReadDepthChunk" type="checkbox" data-store="FBInfoReadDepthChunk" checked><label for="FBInfoReadDepthChunk">Read Depth Buffer in Chunks</label></p>
+<p>&nbsp;</p>
+<div title="On buffer update offers the best performance but causes the most issues."><select class="width250m" name="bufferSwapMode" id="bufferSwapMode">
+<option value="Video-GLideN64[BufferSwapMode]=0" selected>On VI update call</option>
+<option value="Video-GLideN64[BufferSwapMode]=1">On VI origin change</option>
+<option value="Video-GLideN64[BufferSwapMode]=2">On buffer update</option>
+</select><label for="bufferSwapMode">Buffer Swap Mode</label></div>
+<p>&nbsp;</p>
+<div title="Enable color buffer copy to RDRAM."><select class="width250m" name="EnableCopyColorToRDRAM" id="EnableCopyColorToRDRAM">
+<option value="Video-GLideN64[EnableCopyColorToRDRAM]=0">Do not copy</option>
+<option value="Video-GLideN64[EnableCopyColorToRDRAM]=1">Copy in sync mode</option>
+<option value="Video-GLideN64[EnableCopyColorToRDRAM]=2" selected>Double Buffer</option>
+<option value="Video-GLideN64[EnableCopyColorToRDRAM]=3">Triple Buffer</option>
+</select><label for="EnableCopyColorToRDRAM">Copy Color Buffer to RDRAM</label></div>
+<p>&nbsp;</p>
+<div title="Enable depth buffer copy to RDRAM."><select class="width250m" name="EnableCopyDepthToRDRAM" id="EnableCopyDepthToRDRAM">
+<option value="Video-GLideN64[EnableCopyDepthToRDRAM]=0">Do not copy</option>
+<option value="Video-GLideN64[EnableCopyDepthToRDRAM]=1">Copy from video memory</option>
+<option value="Video-GLideN64[EnableCopyDepthToRDRAM]=2" selected>Use Software Render</option>
+</select><label for="EnableCopyDepthToRDRAM">Copy Depth Buffer to RDRAM</label></div>
+<p>&nbsp;</p>
+<div title="Enable N64 depth compare instead of OpenGL standard one."><select class="width250m" name="EnableN64DepthCompare" id="EnableN64DepthCompare">
+<option value="Video-GLideN64[EnableN64DepthCompare]=0" selected>Off</option>
+<option value="Video-GLideN64[EnableN64DepthCompare]=1">Fast</option>
+<option value="Video-GLideN64[EnableN64DepthCompare]=2">Compatible</option>
+</select><label for="EnableN64DepthCompare">N64 Depth Compare</label></div>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<p class="sub">Video Settings</p>
+<p>&nbsp;</p>
+<p title="Better performance at the expense of increased input lag."><input id="threadedVideo" type="checkbox" data-store="threadedVideo"><label for="threadedVideo">Threaded Video</label></p>
+<p>&nbsp;</p>
+<p title="Off: N64 3-point"><input id="bilinearMode" type="checkbox" data-store="bilinearMode"><label for="bilinearMode">Bilinear Filtering</label></p>
+<p>&nbsp;</p>
+<p><input id="fxaa" type="checkbox" data-store="fxaa"><label for="fxaa">FXAA</label></p>
+<p>&nbsp;</p>
+<select class="width125m" name="msaa" id="msaa">
+<option value="Video-GLideN64[MultiSampling]=0" selected>0x</option>
+<option value="Video-GLideN64[MultiSampling]=2">2x</option>
+<option value="Video-GLideN64[MultiSampling]=4">4x</option>
+<option value="Video-GLideN64[MultiSampling]=8">8x</option>
+<option value="Video-GLideN64[MultiSampling]=16">16x</option>
+</select><label for="msaa">MSAA</label>
+<p>&nbsp;</p>
+<div title="Choose adjust for using a generic Widescreen hack."><select class="width125m" name="aspectRatio" id="aspectRatio">
+<option value="Video-GLideN64[AspectRatio]=1" selected>4:3</option>
+<option value="Video-GLideN64[AspectRatio]=2">16:9</option>
+<option value="Video-GLideN64[AspectRatio]=3">Adjust</option>
+<option value="Video-GLideN64[AspectRatio]=0">Stretch</option>
+</select><label for="aspectRatio">Aspect Ratio</label></div>
+<p>&nbsp;</p>
+<div title="Frame buffer size (rendering resolution) is the factor of N64 native resolution. If this option is turned off, the output resolution is the same as the rendering resolution."><select class="width125m" name="useNativeResolutionFactor" id="useNativeResolutionFactor">
+<option value="Video-GLideN64[UseNativeResolutionFactor]=0" selected>Off</option>
+<option value="Video-GLideN64[UseNativeResolutionFactor]=1">1</option>
+<option value="Video-GLideN64[UseNativeResolutionFactor]=2">2</option>
+<option value="Video-GLideN64[UseNativeResolutionFactor]=3">3</option>
+<option value="Video-GLideN64[UseNativeResolutionFactor]=4">4</option>
+<option value="Video-GLideN64[UseNativeResolutionFactor]=5">5</option>
+<option value="Video-GLideN64[UseNativeResolutionFactor]=6">6</option>
+<option value="Video-GLideN64[UseNativeResolutionFactor]=7">7</option>
+<option value="Video-GLideN64[UseNativeResolutionFactor]=8">8</option>
+<option value="Video-GLideN64[UseNativeResolutionFactor]=9">9</option>
+<option value="Video-GLideN64[UseNativeResolutionFactor]=10">10</option>
+<option value="Video-GLideN64[UseNativeResolutionFactor]=11">11</option>
+<option value="Video-GLideN64[UseNativeResolutionFactor]=12">12</option>
+<option value="Video-GLideN64[UseNativeResolutionFactor]=13">13</option>
+<option value="Video-GLideN64[UseNativeResolutionFactor]=14">14</option>
+<option value="Video-GLideN64[UseNativeResolutionFactor]=15">15</option>
+<option value="Video-GLideN64[UseNativeResolutionFactor]=16">16</option>
+</select><label for="useNativeResolutionFactor">Native Resolution Factor</label></div>
+<p>&nbsp;</p>
+<select class="width125m" name="anisotropy" id="anisotropy">
+<option value="Video-GLideN64[anisotropy]=0" selected>Off</option>
+<option value="Video-GLideN64[anisotropy]=1">1x</option>
+<option value="Video-GLideN64[anisotropy]=2">2x</option>
+<option value="Video-GLideN64[anisotropy]=3">3x</option>
+<option value="Video-GLideN64[anisotropy]=4">4x</option>
+<option value="Video-GLideN64[anisotropy]=5">5x</option>
+<option value="Video-GLideN64[anisotropy]=6">6x</option>
+<option value="Video-GLideN64[anisotropy]=7">7x</option>
+<option value="Video-GLideN64[anisotropy]=8">8x</option>
+<option value="Video-GLideN64[anisotropy]=9">9x</option>
+<option value="Video-GLideN64[anisotropy]=10">10x</option>
+<option value="Video-GLideN64[anisotropy]=11">11x</option>
+<option value="Video-GLideN64[anisotropy]=12">12x</option>
+<option value="Video-GLideN64[anisotropy]=13">13x</option>
+<option value="Video-GLideN64[anisotropy]=14">14x</option>
+<option value="Video-GLideN64[anisotropy]=15">15x</option>
+<option value="Video-GLideN64[anisotropy]=16">16x</option>
+</select><label for="anisotropy">Anisotropic Filtering</label>
+<p>&nbsp;</p>
+<p title="Override gamma correction specified by the game."><input id="ForceGammaCorrection" type="checkbox" data-store="ForceGammaCorrection"><label for="ForceGammaCorrection">Force Gamma Correction</label></p>
+<p>&nbsp;</p>
+<p><span class="numberDecrease" id="decreaseGammaCorrectionLevel">-</span><input id="GammaCorrectionLevel" min="1.00" max="4.00" step="0.1" value="1.00" type="number"><span class="numberIncrease" id="increaseGammaCorrectionLevel">+</span><label for="GammaCorrectionLevel">Gamma Correction Level</label></p>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<p class="sub">Overscan</p>
+<p>&nbsp;</p>
+<p title="Crop image to remove black bars."><input id="EnableOverscan" type="checkbox" data-store="EnableOverscan"><label for="EnableOverscan">Enable Overscan</label></p>
+<p>&nbsp;</p>
+<p><span class="numberDecrease" id="decreaseOverscanNtscTop">-</span><input id="OverscanNtscTop" min="0" max="99" value="0" type="number"><span class="numberIncrease" id="increaseOverscanNtscTop">+</span><label for="OverscanNtscTop">NTSC Top</label></p>
+<p>&nbsp;</p>
+<p><span class="numberDecrease" id="decreaseOverscanNtscLeft">-</span><input id="OverscanNtscLeft" min="0" max="99" value="0" type="number"><span class="numberIncrease" id="increaseOverscanNtscLeft">+</span><label for="OverscanNtscLeft">NTSC Left</label></p>
+<p>&nbsp;</p>
+<p><span class="numberDecrease" id="decreaseOverscanNtscRight">-</span><input id="OverscanNtscRight" min="0" max="99" value="0" type="number"><span class="numberIncrease" id="increaseOverscanNtscRight">+</span><label for="OverscanNtscRight">NTSC Right</label></p>
+<p>&nbsp;</p>
+<p><span class="numberDecrease" id="decreaseOverscanNtscBottom">-</span><input id="OverscanNtscBottom" min="0" max="99" value="0" type="number"><span class="numberIncrease" id="increaseOverscanNtscBottom">+</span><label for="OverscanNtscBottom">NTSC Bottom</label></p>
+<p>&nbsp;</p>
+<p><span class="numberDecrease" id="decreaseOverscanPalTop">-</span><input id="OverscanPalTop" min="0" max="99" value="0" type="number"><span class="numberIncrease" id="increaseOverscanPalTop">+</span><label for="OverscanPalTop">PAL Top</label></p>
+<p>&nbsp;</p>
+<p><span class="numberDecrease" id="decreaseOverscanPalLeft">-</span><input id="OverscanPalLeft" min="0" max="99" value="0" type="number"><span class="numberIncrease" id="increaseOverscanPalLeft">+</span><label for="OverscanPalLeft">PAL Left</label></p>
+<p>&nbsp;</p>
+<p><span class="numberDecrease" id="decreaseOverscanPalRight">-</span><input id="OverscanPalRight" min="0" max="99" value="0" type="number"><span class="numberIncrease" id="increaseOverscanPalRight">+</span><label for="OverscanPalRight">PAL Right</label></p>
+<p>&nbsp;</p>
+<p><span class="numberDecrease" id="decreaseOverscanPalBottom">-</span><input id="OverscanPalBottom" min="0" max="99" value="0" type="number"><span class="numberIncrease" id="increaseOverscanPalBottom">+</span><label for="OverscanPalBottom">PAL Bottom</label></p>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<p class="sub">Texture Enhancement</p>
+<p>&nbsp;</p>
+<select class="width200m" name="txFilterMode" id="txFilterMode">
+<option value="Video-GLideN64[txFilterMode]=0" selected>None</option>
+<option value="Video-GLideN64[txFilterMode]=1">Smooth Filtering 1</option>
+<option value="Video-GLideN64[txFilterMode]=2">Smooth Filtering 2</option>
+<option value="Video-GLideN64[txFilterMode]=3">Smooth Filtering 3</option>
+<option value="Video-GLideN64[txFilterMode]=4">Smooth Filtering 4</option>
+<option value="Video-GLideN64[txFilterMode]=5">Sharp Filtering 1</option>
+<option value="Video-GLideN64[txFilterMode]=6">Sharp Filtering 2</option>
+</select><label for="txFilterMode">Texture Filter</label>
+<p>&nbsp;</p>
+<select class="width200m" name="txEnhancementMode" id="txEnhancementMode">
+<option value="Video-GLideN64[txEnhancementMode]=0" selected>None</option>
+<option value="Video-GLideN64[txEnhancementMode]=1">Store as is</option>
+<option value="Video-GLideN64[txEnhancementMode]=2">X2</option>
+<option value="Video-GLideN64[txEnhancementMode]=3">X2SAI</option>
+<option value="Video-GLideN64[txEnhancementMode]=4">HQ2X</option>
+<option value="Video-GLideN64[txEnhancementMode]=5">HQ2XS</option>
+<option value="Video-GLideN64[txEnhancementMode]=6">LQ2X</option>
+<option value="Video-GLideN64[txEnhancementMode]=7">LQ2XS</option>
+<option value="Video-GLideN64[txEnhancementMode]=8">HQ4X</option>
+<option value="Video-GLideN64[txEnhancementMode]=9">2xBRZ</option>
+<option value="Video-GLideN64[txEnhancementMode]=10">3xBRZ</option>
+<option value="Video-GLideN64[txEnhancementMode]=11">4xBRZ</option>
+<option value="Video-GLideN64[txEnhancementMode]=12">5xBRZ</option>
+<option value="Video-GLideN64[txEnhancementMode]=13">6xBRZ</option>
+</select><label for="txEnhancementMode">Texture Enhancement</label>
+<p>&nbsp;</p>
+<p><span class="numberDecrease" id="decreasetxCacheSize">-</span><input id="txCacheSize" min="0" max="1024" step="128" value="1024" type="number"><span class="numberIncrease" id="increasetxCacheSize">+</span><label title="Size of memory cache for enhanced textures in megabytes." for="txCacheSize">Memory Cache Size (in MB)</label></p>
+<p>&nbsp;</p>
+<p title="Deposterize texture before enhancement."><input id="txDeposterize" type="checkbox" data-store="txDeposterize"><label for="txDeposterize">Deposterize Texture</label></p>
+<p>&nbsp;</p>
+<p title="Don't filter background textures."><input id="txFilterIgnoreBG" type="checkbox" data-store="txFilterIgnoreBG"><label for="txFilterIgnoreBG">Disable background filtering</label></p>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<p class="sub">HD Textures</p>
+<p>&nbsp;</p>
+<p><input id="txHiresEnable" type="checkbox" data-store="txHiresEnable" checked><label for="txHiresEnable">Enable HD textures</label></p>
+<p>&nbsp;</p>
+<p title="Allow to fully use the alpha channel for high resolution textures."><input id="txHiresFullAlphaChannel" type="checkbox" data-store="txHiresFullAlphaChannel" checked><label for="txHiresFullAlphaChannel">Full Alpha Channel</label></p>
+<p>&nbsp;</p>
+<p title="Use alternative method for paletted textures CRC calculation. Activate for old Rice packs."><input id="txHresAltCRC" type="checkbox" data-store="txHresAltCRC"><label for="txHresAltCRC">Alternative CRC calculation</label></p>
+<p>&nbsp;</p>
+<p title="Compress texture cache."><input id="txCacheCompression" type="checkbox" data-store="txCacheCompression"><label for="txCacheCompression">Compress cache</label></p>
+<p>&nbsp;</p>
+<p title="Force the use of 16-bit texture formats for HD textures. Not recommended."><input id="txForce16bpp" type="checkbox" data-store="txForce16bpp"><label for="txForce16bpp">Force 16-bit for HD textures</label></p>
+<p>&nbsp;</p>
+<p title="Save texture cache to hard disk."><input id="txSaveCache" type="checkbox" data-store="txSaveCache" checked><label for="txSaveCache">Save cache to hard disk</label></p>
+<p>&nbsp;</p>
+<p title="Disables HTC/HTS cache. Not recommended for casual play."><input id="txNoTextureFileStorage" type="checkbox" data-store="txNoTextureFileStorage"><label for="txNoTextureFileStorage">Don't use cache</label></p>
+<p>&nbsp;</p>
+<div title="HTC: Prefetch all textures at boot into RAM. HTS: Read textures as they are needed from hard disk."><select name="cache" id="cache">
+<option value="Video-GLideN64[txHiresTextureFileStorage]=False">HTC</option>
+<option value="Video-GLideN64[txHiresTextureFileStorage]=True" selected>HTS</option>
+</select><label for="cache">Cache Type</label></div>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p title="Path to folder with hi-res texture packs (PNG format). Click the box below to change it.">Path to hires_texture folder<button class="floatright" id="resetTxPath">Reset</button><br><br><div class="box" id="txPath"><span id="txPathText"></span></div></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p title="Path to folder where plugin saves texture cache files (HTC/HTS). Click the box below to change it.">Path to cache folder<button class="floatright" id="resetTxCachePath">Reset</button><br><br><div class="box" id="txCachePath"><span id="txCachePathText"></span></div></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p title="Path to folder where plugin saves dumped textures. Click the box below to change it.">Path to cache folder<button class="floatright" id="resetTxDumpPath">Reset</button><br><br><div class="box" id="txDumpPath"><span id="txDumpPathText"></span></div></p>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<p class="sub">On-Screen Display</p>
+<p>&nbsp;</p>
+<p><span class="numberDecrease" id="decreasefontSize">-</span><input id="fontSize" min="6" max="99" value="18" type="number"><span class="numberIncrease" id="increasefontSize">+</span><label for="fontSize">Font Size (in px)</label></p>
+<p>&nbsp;</p>
+<p><input id="fontColor" value="#B5E61D" type="color" data-store="fontColor"><label for="fontColor">Font Color</label><button class="floatright" id="resetfontColor">Reset</button></p>
+<p>&nbsp;</p>
+<p><input id="ShowFPS" type="checkbox" data-store="ShowFPS"><label for="ShowFPS">Show FPS</label></p>
+<p>&nbsp;</p>
+<p><input id="ShowVIS" type="checkbox" data-store="ShowVIS"><label for="ShowVIS">Show VI/s</label></p>
+<p>&nbsp;</p>
+<p><input id="ShowPercent" type="checkbox" data-store="ShowPercent"><label for="ShowPercent">Show Percent</label></p>
+<p>&nbsp;</p>
+<p><input id="ShowInternalResolution" type="checkbox" data-store="ShowInternalResolution"><label for="ShowInternalResolution">Show Internal Resolution</label></p>
+<p>&nbsp;</p>
+<p><input id="ShowRenderingResolution" type="checkbox" data-store="ShowRenderingResolution"><label for="ShowRenderingResolution">Show Rendering Resolution</label></p>
+<p>&nbsp;</p>
+<p><input id="ShowStatistics" type="checkbox" data-store="ShowStatistics"><label for="ShowStatistics">Show Statistics</label></p>
+<p>&nbsp;</p>
+<select name="CountersPos" id="CountersPos">
+<option value="Video-GLideN64[CountersPos]=1">Top Left</option>
+<option value="Video-GLideN64[CountersPos]=2">Top Center</option>
+<option value="Video-GLideN64[CountersPos]=4">Top Center</option>
+<option value="Video-GLideN64[CountersPos]=8" selected>Bottom Left</option>
+<option value="Video-GLideN64[CountersPos]=16">Bottom Center</option>
+<option value="Video-GLideN64[CountersPos]=32">Bottom Right</option>
+</select><label for="CountersPos">Counters Position</label>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<p class="sub">GLideN64 Hotkeys</p>
+<p>&nbsp;</p>
+<p class="mb-10">Supported keys are 0-9 and A-Z.</p>
+<div class="hotkeys hotkeys2">
+<p><label for="hkTexDump">Toogle textures dump</label><input value="" type="text" id="hkTexDump" readonly><button id="clearhkTexDump">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="hkHdTexReload">Reload HD textures</label><input value="" type="text" id="hkHdTexReload" readonly><button id="clearhkHdTexReload">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="hkHdTexToggle">Toogle HD textures</label><input value="" type="text" id="hkHdTexToggle" readonly><button id="clearhkHdTexToggle">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="hkVsync">Toogle V-Sync</label><input value="" type="text" id="hkVsync" readonly><button id="clearhkVsync">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="hkFBEmulation">Toogle Frame Buffer Emulation</label><input value="" type="text" id="hkFBEmulation" readonly><button id="clearhkFBEmulation">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="hkN64DepthCompare">Toogle N64 Depth Compare</label><input value="" type="text" id="hkN64DepthCompare" readonly><button id="clearhkN64DepthCompare">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="hkOsdVis">Toogle OSD VI/s</label><input value="" type="text" id="hkOsdVis" readonly><button id="clearhkOsdVis">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="hkOsdFps">Toogle OSD FPS</label><input value="" type="text" id="hkOsdFps" readonly><button id="clearhkOsdFps">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="hkOsdPercent">Toogle OSD Percent</label><input value="" type="text" id="hkOsdPercent" readonly><button id="clearhkOsdPercent">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="hkOsdInternalResolution">Toogle OSD Internal Resolution</label><input value="" type="text" id="hkOsdInternalResolution" readonly><button id="clearhkOsdInternalResolution">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="hkOsdRenderingResolution">Toogle OSD Rendering Resolution</label><input value="" type="text" id="hkOsdRenderingResolution" readonly><button id="clearhkOsdRenderingResolution">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="hkTexCoordBounds">Toogle Textcoord Bounds</label><input value="" type="text" id="hkTexCoordBounds" readonly><button id="clearhkTexCoordBounds">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="hkNativeResTexrects">Toogle 2D texrects in native resolution</label><input value="" type="text" id="hkNativeResTexrects" readonly><button id="clearhkNativeResTexrects">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="hkForceGammaCorrection">Toogle force gamma correction</label><input value="" type="text" id="hkForceGammaCorrection" readonly><button id="clearhkForceGammaCorrection">Clear</button></p>
+</div>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<div id="parallelAnchor" class="anchor"></div>
+<p class="headline">Parallel</p>
+<p>&nbsp;</p>
+<p title="Enable superscaling of readbacks when upsampling."><input id="ParallelSuperscaledReads" type="checkbox" data-store="ParallelSuperscaledReads"><label for="ParallelSuperscaledReads">Superscaled Reads</label></p>
+<p>&nbsp;</p>
+<p title="Enable superscaling of dithering when upsampling."><input id="ParallelSuperscaledDither" type="checkbox" data-store="ParallelSuperscaledDither"><label for="ParallelSuperscaledDither">Superscaled Dither</label></p>
+<p>&nbsp;</p>
+<p><input id="ParallelIntegerScale" type="checkbox" data-store="ParallelIntegerScale"><label for="ParallelIntegerScale">Integer Scaling</label></p>
+<p>&nbsp;</p>
+<p title="Smooths polygon edges."><input id="ParallelVIAA" type="checkbox" data-store="ParallelVIAA" checked><label for="ParallelVIAA">Anti-aliasing</label></p>
+<p>&nbsp;</p>
+<p title="Cleans up stray black pixels."><input id="ParallelDivot" type="checkbox" data-store="ParallelDivot" checked><label for="ParallelDivot">Divot Filter</label></p>
+<p>&nbsp;</p>
+<p><input id="ParallelGammaDither" type="checkbox" data-store="ParallelGammaDither" checked><label for="ParallelGammaDither">Gamma Dither</label></p>
+<p>&nbsp;</p>
+<p><input id="ParallelVIBilerp" type="checkbox" data-store="ParallelVIBilerp" checked><label for="ParallelVIBilerp">Bilinear Scaling</label></p>
+<p>&nbsp;</p>
+<p><input id="ParallelVIDither" type="checkbox" data-store="ParallelVIDither" checked><label for="ParallelVIDither">VI Dither</label></p>
+<p>&nbsp;</p>
+<p title="Use native texture LOD computation when upscaling, effectively a LOD bias."><input id="ParallelNativeTextLOD" type="checkbox" data-store="ParallelNativeTextLOD"><label for="ParallelNativeTextLOD">Native Texture LOD</label></p>
+<p>&nbsp;</p>
+<p title="Native resolution TEX_RECT. TEX_RECT primitives should generally be TEX_RECT primitives should generally be rendered at native resolution to avoid seams."><input id="ParallelNativeTextRECT" type="checkbox" data-store="ParallelNativeTextRECT" checked><label for="ParallelNativeTextRECT">Native Texrect</label></p>
+<p>&nbsp;</p>
+<p><input id="ParallelWidescreenStretch" type="checkbox" data-store="ParallelWidescreenStretch"><label for="ParallelWidescreenStretch">Widescreen (Stretch)</label></p>
+<p>&nbsp;</p>
+<p title="Amount of overscan pixels to crop"><span class="numberDecrease" id="decreaseParallelCropOverscan">-</span><input id="ParallelCropOverscan" min="0" max="99" value="0" type="number"><span class="numberIncrease" id="increaseParallelCropOverscan">+</span><label for="ParallelCropOverscan">Crop Overscan</label></p>
+<p>&nbsp;</p>
+<select class="width125m" name="ParallelUpscaling" id="ParallelUpscaling">
+<option value="Video-Parallel[Upscaling]=1" selected>1x</option>
+<option value="Video-Parallel[Upscaling]=2">2x</option>
+<option value="Video-Parallel[Upscaling]=4">4x</option>
+<option value="Video-Parallel[Upscaling]=8">8x</option>
+</select><label for="ParallelUpscaling">Upscaling</label>
+<p>&nbsp;</p>
+<div title="Downscales output after VI, equivalent to SSAA."><select class="width125m" name="ParallelDownScale" id="ParallelDownScale">
+<option value="Video-Parallel[DownScale]=0" selected>Disabled</option>
+<option value="Video-Parallel[DownScale]=1">1/2</option>
+<option value="Video-Parallel[DownScale]=2">1/4</option>
+<option value="Video-Parallel[DownScale]=3">1/8</option>
+</select><label for="ParallelDownScale">Downsampling</label></div>
+<p>&nbsp;</p>
+<div title="Weave should only be used with 1x scaling factor."><select class="width125m" name="ParallelDeinterlace" id="ParallelDeinterlace">
+<option value="Video-Parallel[Deinterlace]=False" selected>Bob</option>
+<option value="Video-Parallel[Deinterlace]=True">Weave</option>
+</select><label for="ParallelDeinterlace">Deinterlacing Method</label></div>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<div id="riceAnchor" class="anchor"></div>
+<p class="headline">Rice</p>
+<p>&nbsp;</p>
+<p class="sub">Emulation</p>
+<p>&nbsp;</p>
+<p><input id="FrameBufferSetting" type="checkbox" data-store="FrameBufferSetting"><label for="FrameBufferSetting">Disable Framebuffer Emulation</label></p>
+<p>&nbsp;</p>
+<p><input id="NormalAlphaBlender" type="checkbox" data-store="NormalAlphaBlender"><label for="NormalAlphaBlender">Normal Alpha Blender</label></p>
+<p>&nbsp;</p>
+<p title="Use a faster algorithm to speed up texture loading and CRC computation."><input id="FastTextureLoading" type="checkbox" data-store="FastTextureLoading"><label for="FastTextureLoading">Fast Texture Loading</label></p>
+<p>&nbsp;</p>
+<p title="Use different texture coordinate clamping code."><input id="AccurateTextureMapping" type="checkbox" data-store="AccurateTextureMapping" checked><label for="AccurateTextureMapping">Accurate Texture Mapping</label></p>
+<p>&nbsp;</p>
+<p title="Force emulated frame buffers to be in N64 native resolution."><input id="InN64Resolution" type="checkbox" data-store="InN64Resolution"><label for="InN64Resolution">Native resolution framebuffers</label></p>
+<p>&nbsp;</p>
+<p title="Improve render-to-texture quality."><input id="DoubleSizeForSmallTxtrBuf" type="checkbox" data-store="DoubleSizeForSmallTxtrBuf"><label for="DoubleSizeForSmallTxtrBuf">Double Size Texture Buffer</label></p>
+<p>&nbsp;</p>
+<p><input id="DefaultCombinerDisable" type="checkbox" data-store="DefaultCombinerDisable"><label for="DefaultCombinerDisable">Normal Color Combiner</label></p>
+<p>&nbsp;</p>
+<p><input id="EnableHacks" type="checkbox" data-store="EnableHacks" checked><label for="EnableHacks">Game-specific settings</label></p>
+<p>&nbsp;</p>
+<p title="Graphics will be drawn in WinFrame mode instead of solid and texture mode."><input id="WinFrameMode" type="checkbox" data-store="WinFrameMode"><label for="WinFrameMode">WinFrame Mode</label></p>
+<p>&nbsp;</p>
+<p title="N64 Texture Memory Full Emulation (may fix some games, may break others)."><input id="FullTMEMEmulation" type="checkbox" data-store="FullTMEMEmulation"><label for="FullTMEMEmulation">Full Texture Memory Emulation</label></p>
+<p>&nbsp;</p>
+<p title="Enable vertex clipper for fog operations."><input id="OpenGLVertexClipper" type="checkbox" data-store="OpenGLVertexClipper"><label for="OpenGLVertexClipper">Vertex Clipper</label></p>
+<p>&nbsp;</p>
+<p><input id="EnableSSE" type="checkbox" data-store="EnableSSE" checked><label for="EnableSSE">SSE Optimizations</label></p>
+<p>&nbsp;</p>
+<p title="Skip every other frame."><input id="SkipFrame" type="checkbox" data-store="SkipFrame"><label for="SkipFrame">Frameskip</label></p>
+<p>&nbsp;</p>
+<p><input id="RiceShowFPS" type="checkbox" data-store="RiceShowFPS"><label for="RiceShowFPS">Show FPS</label></p>
+<p>&nbsp;</p>
+<p><input id="FogMethod" type="checkbox" data-store="FogMethod" checked><label for="FogMethod">Enable Fog Generation</label></p>
+<p>&nbsp;</p>
+<div title="Frequency to write back the frame buffer."><select class="width225m" name="FrameBufferWriteBackControl" id="FrameBufferWriteBackControl">
+<option value="Video-Rice[FrameBufferWriteBackControl]=0" selected>Every Frame</option>
+<option value="Video-Rice[FrameBufferWriteBackControl]=1">Every 2 Frames</option>
+<option value="Video-Rice[FrameBufferWriteBackControl]=2">Every 3 Frames</option>
+<option value="Video-Rice[FrameBufferWriteBackControl]=3">Every 4 Frames</option>
+<option value="Video-Rice[FrameBufferWriteBackControl]=4">Every 5 Frames</option>
+<option value="Video-Rice[FrameBufferWriteBackControl]=5">Every 6 Frames</option>
+<option value="Video-Rice[FrameBufferWriteBackControl]=6">Every 7 Frames</option>
+<option value="Video-Rice[FrameBufferWriteBackControl]=7">Every 8 Frames</option>
+</select><label for="FrameBufferWriteBackControl">Framebuffer Write Back</label></div>
+<p>&nbsp;</p>
+<select class="width225m" name="RenderToTexture" id="RenderToTexture">
+<option value="Video-Rice[RenderToTexture]=0" selected>None</option>
+<option value="Video-Rice[RenderToTexture]=1">Ignore</option>
+<option value="Video-Rice[RenderToTexture]=2">Normal</option>
+<option value="Video-Rice[RenderToTexture]=3">Write Back</option>
+<option value="Video-Rice[RenderToTexture]=4">Write Back and Reload</option>
+</select><label for="RenderToTexture">Render-to-texture Emulation</label>
+<p>&nbsp;</p>
+<div title="Control when the screen will be updated."><select class="width225m" name="ScreenUpdateSetting" id="ScreenUpdateSetting">
+<option value="Video-Rice[ScreenUpdateSetting]=0">Auto</option>
+<option value="Video-Rice[ScreenUpdateSetting]=1">VI Origin Update</option>
+<option value="Video-Rice[ScreenUpdateSetting]=2">VI Origin Change</option>
+<option value="Video-Rice[ScreenUpdateSetting]=3">CI Change</option>
+<option value="Video-Rice[ScreenUpdateSetting]=4" selected>First CI change</option>
+<option value="Video-Rice[ScreenUpdateSetting]=5">First Primitive Draw</option>
+<option value="Video-Rice[ScreenUpdateSetting]=6">Before Screen Clear</option>
+<option value="Video-Rice[ScreenUpdateSetting]=7">After Screen Drawn</option>
+</select><label for="ScreenUpdateSetting">Screen Update</label></div>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<p class="sub">Video Settings</p>
+<p>&nbsp;</p>
+<p><input id="OpenGLRenderSetting" type="checkbox" data-store="OpenGLRenderSetting"><label for="OpenGLRenderSetting">Use OGL_FRAGMENT_PROGRAM</label></p>
+<p>&nbsp;</p>
+<p title="Try to reduce Video RAM usage (should never be used)."><input id="SaveVRAM" type="checkbox" data-store="SaveVRAM"><label for="SaveVRAM">Reduce VRAM Usage</label></p>
+<p>&nbsp;</p>
+<p><input id="ForcePolygonOffset" type="checkbox" data-store="ForcePolygonOffset"><label for="ForcePolygonOffset">Use Polygon Offset</label></p>
+<p>&nbsp;</p>
+<p title="Specifies a scale factor that is used to create a variable depth offset for each polygon."><span class="numberDecrease" id="decreasePolygonOffsetFactor">-</span><input id="PolygonOffsetFactor" min="0.00" max="10.00" step="0.1" value="0.00" type="number"><span class="numberIncrease" id="increasePolygonOffsetFactor">+</span><label for="PolygonOffsetFactor">Polygon Offset Factor</label></p>
+<p>&nbsp;</p>
+<p title="Is multiplied by an implementation-specific value to create a constant depth offset."><span class="numberDecrease" id="decreasePolygonOffsetUnits">-</span><input id="PolygonOffsetUnits" min="0.00" max="10.00" step="0.1" value="0.00" type="number"><span class="numberIncrease" id="increasePolygonOffsetUnits">+</span><label for="PolygonOffsetUnits">Polygon Offset Units</label></p>
+<p>&nbsp;</p>
+<select class="width200m" name="AnisotropicFiltering" id="AnisotropicFiltering">
+<option value="Video-Rice[AnisotropicFiltering]=0" selected>Off</option>
+<option value="Video-Rice[AnisotropicFiltering]=1">1x</option>
+<option value="Video-Rice[AnisotropicFiltering]=2">2x</option>
+<option value="Video-Rice[AnisotropicFiltering]=3">3x</option>
+<option value="Video-Rice[AnisotropicFiltering]=4">4x</option>
+<option value="Video-Rice[AnisotropicFiltering]=5">5x</option>
+<option value="Video-Rice[AnisotropicFiltering]=6">6x</option>
+<option value="Video-Rice[AnisotropicFiltering]=7">7x</option>
+<option value="Video-Rice[AnisotropicFiltering]=8">8x</option>
+<option value="Video-Rice[AnisotropicFiltering]=9">9x</option>
+<option value="Video-Rice[AnisotropicFiltering]=10">10x</option>
+<option value="Video-Rice[AnisotropicFiltering]=11">11x</option>
+<option value="Video-Rice[AnisotropicFiltering]=12">12x</option>
+<option value="Video-Rice[AnisotropicFiltering]=13">13x</option>
+<option value="Video-Rice[AnisotropicFiltering]=14">14x</option>
+<option value="Video-Rice[AnisotropicFiltering]=15">15x</option>
+<option value="Video-Rice[AnisotropicFiltering]=16">16x</option>
+</select><label for="AnisotropicFiltering">Anisotropic Filtering</label>
+<p>&nbsp;</p>
+<select class="width200m" name="RiceMultiSampling" id="RiceMultiSampling">
+<option value="Video-Rice[MultiSampling]=0" selected>0x</option>
+<option value="Video-Rice[MultiSampling]=2">2x</option>
+<option value="Video-Rice[MultiSampling]=4">4x</option>
+<option value="Video-Rice[MultiSampling]=8">8x</option>
+<option value="Video-Rice[MultiSampling]=16">16x</option>
+</select><label for="RiceMultiSampling">MSAA</label>
+<p>&nbsp;</p>
+<select class="width200m" name="Mipmapping" id="Mipmapping">
+<option value="Video-Rice[Mipmapping]=0" selected>Disabled</option>
+<option value="Video-Rice[Mipmapping]=1">Nearest-neighbor</option>
+<option value="Video-Rice[Mipmapping]=2">Bilinear</option>
+<option value="Video-Rice[Mipmapping]=3">Trilinear</option>
+</select><label for="Mipmapping">Mipmapping</label>
+<p>&nbsp;</p>
+<select class="width200m" name="ForceTextureFilter" id="ForceTextureFilter">
+<option value="Video-Rice[ForceTextureFilter]=0" selected>Auto</option>
+<option value="Video-Rice[ForceTextureFilter]=1">No Filtering</option>
+<option value="Video-Rice[ForceTextureFilter]=2">Filtering</option>
+</select><label for="ForceTextureFilter">Texture Filtering</label>
+<p>&nbsp;</p>
+<div title="Color bit depth to use for textures."><select class="width200m" name="TextureQuality" id="TextureQuality">
+<option value="Video-Rice[TextureQuality]=0" selected>Auto</option>
+<option value="Video-Rice[TextureQuality]=1">32-bit</option>
+<option value="Video-Rice[TextureQuality]=2">16-bit</option>
+</select><label for="TextureQuality">Texture Quality</label></div>
+<p>&nbsp;</p>
+<select class="width200m" name="ColorQuality" id="ColorQuality">
+<option value="Video-Rice[ColorQuality]=0" selected>32-bit</option>
+<option value="Video-Rice[ColorQuality]=1">16-bit</option>
+</select><label for="ColorQuality">Color Bit Depth</label>
+<p>&nbsp;</p>
+<select class="width200m" name="OpenGLDepthBufferSetting" id="OpenGLDepthBufferSetting">
+<option value="Video-Rice[OpenGLDepthBufferSetting]=16" selected>16</option>
+<option value="Video-Rice[OpenGLDepthBufferSetting]=32">32</option>
+</select><label for="OpenGLDepthBufferSetting">Z-Buffer Depth</label>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<p class="sub">Texture Enhancement</p>
+<p>&nbsp;</p>
+<p title="Texture enhancement will be done only for TxtRect ucode."><input id="TexRectOnly" type="checkbox" data-store="TexRectOnly"><label for="TexRectOnly">Limit Enhancements to TxtRect Ucode</label></p>
+<p>&nbsp;</p>
+<p title="Texture Enhancement will be done only for textures 128px in size or smaller."><input id="SmallTextureOnly" type="checkbox" data-store="SmallTextureOnly"><label for="SmallTextureOnly">Limit Enhancements to Small Textures</label></p>
+<p>&nbsp;</p>
+<select class="width175m" name="TextureEnhancement" id="TextureEnhancement">
+<option value="Video-Rice[TextureEnhancement]=0" selected>None</option>
+<option value="Video-Rice[TextureEnhancement]=1">2X</option>
+<option value="Video-Rice[TextureEnhancement]=2">2XSAI</option>
+<option value="Video-Rice[TextureEnhancement]=3">HQ2X</option>
+<option value="Video-Rice[TextureEnhancement]=4">LQ2X</option>
+<option value="Video-Rice[TextureEnhancement]=5">HQ4X</option>
+<option value="Video-Rice[TextureEnhancement]=6">Sharpen</option>
+<option value="Video-Rice[TextureEnhancement]=7">Sharpen More</option>
+<option value="Video-Rice[TextureEnhancement]=8">External</option>
+<option value="Video-Rice[TextureEnhancement]=9">Mirrored</option>
+</select><label for="TextureEnhancement">Primary Texture Enhancement Filter</label>
+<p>&nbsp;</p>
+<select class="width175m" name="TextureEnhancementControl" id="TextureEnhancementControl">
+<option value="Video-Rice[TextureEnhancementControl]=0" selected>None</option>
+<option value="Video-Rice[TextureEnhancementControl]=1">Filter 1</option>
+<option value="Video-Rice[TextureEnhancementControl]=2">Filter 2</option>
+<option value="Video-Rice[TextureEnhancementControl]=3">Filter 3</option>
+<option value="Video-Rice[TextureEnhancementControl]=4">Filter 4</option>
+</select><label for="TextureEnhancementControl">Secondary Texture Enhancement Filter</label>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<p class="sub">HD Textures</p>
+<p>&nbsp;</p>
+<p title="Select hi-resolution textures based only on the CRC and ignore format and size information (Glide64 compatibility)."><input id="LoadHiResCRCOnly" type="checkbox" data-store="LoadHiResCRCOnly" checked><label for="LoadHiResCRCOnly">Hi-res CRC Only</label></p>
+<p>&nbsp;</p>
+<p><input id="LoadHiResTextures" type="checkbox" data-store="LoadHiResTextures"><label for="LoadHiResTextures">Enable HD textures</label></p>
+<p>&nbsp;</p>
+<p title="May cause crashes."><input id="DumpTexturesToFiles" type="checkbox" data-store="DumpTexturesToFiles"><label for="DumpTexturesToFiles">Enable texture dumping</label></p>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<div id="glide64mk2Anchor" class="anchor"></div>
+<p class="headline">Glide64 MK2</p>
+<p>&nbsp;</p>
+<p class="sub">Main Settings</p>
+<p>&nbsp;</p>
+<p><input id="wrpAnisotropic" type="checkbox" data-store="wrpAnisotropic"><label for="wrpAnisotropic">Anisotropic Filtering</label></p>
+<p>&nbsp;</p>
+<p><input id="clock" type="checkbox" data-store="clock"><label for="clock">Show Clock</label></p>
+<p>&nbsp;</p>
+<p><input id="clock_24_hr" type="checkbox" data-store="clock_24_hr" checked><label for="clock_24_hr">24-hour Clock</label></p>
+<p>&nbsp;</p>
+<p><input id="wrpFBO" type="checkbox" data-store="wrpFBO" checked><label for="wrpFBO">Enable FBO</label></p>
+<p>&nbsp;</p>
+<p><input id="force_polygon_offset" type="checkbox" data-store="force_polygon_offset"><label for="force_polygon_offset">Use Polygon Offset</label></p>
+<p>&nbsp;</p>
+<p title="Specifies a scale factor that is used to create a variable depth offset for each polygon."><span class="numberDecrease" id="decreasepolygon_offset_factor">-</span><input id="polygon_offset_factor" min="0.00" max="10.00" step="0.1" value="0.00" type="number"><span class="numberIncrease" id="increasepolygon_offset_factor">+</span><label for="polygon_offset_factor">Polygon Offset Factor</label></p>
+<p>&nbsp;</p>
+<p title="Is multiplied by an implementation-specific value to create a constant depth offset."><span class="numberDecrease" id="decreasepolygon_offset_units">-</span><input id="polygon_offset_units" min="0.00" max="10.00" step="0.1" value="0.00" type="number"><span class="numberIncrease" id="increasepolygon_offset_units">+</span><label for="polygon_offset_units">Polygon Offset Units</label></p>
+<p>&nbsp;</p>
+<select class="width200m" name="wrpAntiAliasing" id="wrpAntiAliasing">
+<option value="Video-Glide64mk2[wrpAntiAliasing]=0" selected>0x</option>
+<option value="Video-Glide64mk2[wrpAntiAliasing]=2">2x</option>
+<option value="Video-Glide64mk2[wrpAntiAliasing]=4">4x</option>
+<option value="Video-Glide64mk2[wrpAntiAliasing]=8">8x</option>
+<option value="Video-Glide64mk2[wrpAntiAliasing]=16">16x</option>
+</select><label for="wrpAntiAliasing">Anti-aliasing</label>
+<p>&nbsp;</p>
+<select class="width200m" name="aspect" id="aspect">
+<option value="Video-Glide64mk2[aspect]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[aspect]=0">4:3</option>
+<option value="Video-Glide64mk2[aspect]=1">16:9</option>
+<option value="Video-Glide64mk2[aspect]=2">Stretch</option>
+<option value="Video-Glide64mk2[aspect]=3">Original</option>
+</select><label for="aspect">Aspect ratio</label>
+<p>&nbsp;</p>
+<div title="Adjust screen aspect for widescreen."><select class="width200m" name="adjust_aspect" id="adjust_aspect">
+<option value="Video-Glide64mk2[adjust_aspect]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[adjust_aspect]=0">Disable</option>
+<option value="Video-Glide64mk2[adjust_aspect]=1">Enable</option>
+</select><label for="adjust_aspect">Adjust aspect ratio</label></div>
+<p>&nbsp;</p>
+<select class="width200m" name="filtering" id="filtering">
+<option value="Video-Glide64mk2[filtering]=-1" selected>Default</option>
+<option value="Video-Glide64mk2[filtering]=0">Automatic</option>
+<option value="Video-Glide64mk2[filtering]=1">Bilinear</option>
+<option value="Video-Glide64mk2[filtering]=2">N64 3-point</option>
+</select><label for="filtering">Filtering</label>
+<p>&nbsp;</p>
+<div title="Mipmapping. Causes huge performance issues with HD textures."><select class="width200m" name="lodmode" id="lodmode">
+<option value="Video-Glide64mk2[lodmode]=-1">Auto</option>
+<option value="Video-Glide64mk2[lodmode]=0" selected>Disable</option>
+<option value="Video-Glide64mk2[lodmode]=1">Fast</option>
+<option value="Video-Glide64mk2[lodmode]=2">Precise</option>
+</select><label for="lodmode">LOD calculation</label></div>
+<p>&nbsp;</p>
+<select class="width200m" name="show_fps" id="show_fps">
+<option value="Video-Glide64mk2[show_fps]=0" selected>Hidden</option>
+<option value="Video-Glide64mk2[show_fps]=1">FPS</option>
+<option value="Video-Glide64mk2[show_fps]=2">VI/s</option>
+<option value="Video-Glide64mk2[show_fps]=4">Speed in %</option>
+<option value="Video-Glide64mk2[show_fps]=8">FPS (transparent)</option>
+</select><label for="show_fps">Show FPS</label>
+<p>&nbsp;</p>
+<select class="width200m" name="ghq_cmpr" id="ghq_cmpr">
+<option value="Video-Glide64mk2[ghq_cmpr]=0" selected>S3TC</option>
+<option value="Video-Glide64mk2[ghq_cmpr]=1">FXT1</option>
+</select><label for="ghq_cmpr">Lossy Texture Compression</label>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<p class="sub">Texture Enhancement</p>
+<p>&nbsp;</p>
+<select class="width200m" name="ghq_fltr" id="ghq_fltr">
+<option value="Video-Glide64mk2[ghq_fltr]=0" selected>None</option>
+<option value="Video-Glide64mk2[ghq_fltr]=1">Smooth Filtering 1</option>
+<option value="Video-Glide64mk2[ghq_fltr]=2">Smooth Filtering 2</option>
+<option value="Video-Glide64mk2[ghq_fltr]=3">Smooth Filtering 3</option>
+<option value="Video-Glide64mk2[ghq_fltr]=4">Smooth Filtering 4</option>
+<option value="Video-Glide64mk2[ghq_fltr]=5">Sharp Filtering 1</option>
+<option value="Video-Glide64mk2[ghq_fltr]=6">Sharp Filtering 2</option>
+</select><label for="ghq_fltr">Texture Filter</label>
+<p>&nbsp;</p>
+<select class="width200m" name="ghq_enht" id="ghq_enht">
+<option value="Video-Glide64mk2[ghq_enht]=0" selected>None</option>
+<option value="Video-Glide64mk2[ghq_enht]=1">Store</option>
+<option value="Video-Glide64mk2[ghq_enht]=2">X2</option>
+<option value="Video-Glide64mk2[ghq_enht]=3">X2SAI</option>
+<option value="Video-Glide64mk2[ghq_enht]=4">HQ2X</option>
+<option value="Video-Glide64mk2[ghq_enht]=5">HQ2XS</option>
+<option value="Video-Glide64mk2[ghq_enht]=6">LQ2X</option>
+<option value="Video-Glide64mk2[ghq_enht]=7">LQ2XS</option>
+<option value="Video-Glide64mk2[ghq_enht]=8">HQ4X</option>
+</select><label for="ghq_enht">Texture Enhancement</label>
+<p>&nbsp;</p>
+<p><span class="numberDecrease" id="decreaseghq_cache_size">-</span><input id="ghq_cache_size" min="0" max="1024" step="128" value="1024" type="number"><span class="numberIncrease" id="increaseghq_cache_size">+</span><label for="ghq_cache_size">Texture cache size (in MB)</label></p>
+<p>&nbsp;</p>
+<p title="Compress enhanced textures with lossy texture compression (S3TC or FXT1)."><input id="ghq_enht_cmpr" type="checkbox" data-store="ghq_enht_cmpr"><label for="ghq_enht_cmpr">Lossy compression for enhanced textures</label></p>
+<p>&nbsp;</p>
+<p title="Saves memory but may cause issues."><input id="ghq_enht_tile" type="checkbox" data-store="ghq_enht_tile"><label for="ghq_enht_tile">Tile enhanced textures</label></p>
+<p>&nbsp;</p>
+<p title="Saves memory but lowers quality."><input id="ghq_enht_f16bpp" type="checkbox" data-store="ghq_enht_f16bpp"><label for="ghq_enht_f16bpp">16-bit enhanced textures</label></p>
+<p>&nbsp;</p>
+<p><input id="ghq_enht_gz" type="checkbox" data-store="ghq_enht_gz" checked><label for="ghq_enht_gz">Compress enhanced cache</label></p>
+<p>&nbsp;</p>
+<p><input id="ghq_enht_nobg" type="checkbox" data-store="ghq_enht_nobg"><label for="ghq_enht_nobg">Ignore backgrounds for enhancements</label></p>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<p class="sub">HD Textures</p>
+<p>&nbsp;</p>
+<p><input id="ghq_hirs" type="checkbox" data-store="ghq_hirs"><label for="ghq_hirs">Enable HD textures</label></p>
+<p>&nbsp;</p>
+<p title="Compress HD textures with lossy texture compression (S3TC or FXT1)."><input id="ghq_hirs_cmpr" type="checkbox" data-store="ghq_hirs_cmpr"><label for="ghq_hirs_cmpr">Lossy compression for HD textures</label></p>
+<p>&nbsp;</p>
+<p title="Saves memory but may cause issues."><input id="ghq_hirs_tile" type="checkbox" data-store="ghq_hirs_tile"><label for="ghq_hirs_tile">Tile HD textures</label></p>
+<p>&nbsp;</p>
+<p title="Saves memory but lowers quality."><input id="ghq_hirs_f16bpp" type="checkbox" data-store="ghq_hirs_f16bpp"><label for="ghq_hirs_f16bpp">16-bit HD textures</label></p>
+<p>&nbsp;</p>
+<p><input id="ghq_hirs_gz" type="checkbox" data-store="ghq_hirs_gz"><label for="ghq_hirs_gz">Compress HD cache</label></p>
+<p>&nbsp;</p>
+<p title="Emulates Rice bug."><input id="ghq_hirs_altcrc" type="checkbox" data-store="ghq_hirs_altcrc"><label for="ghq_hirs_altcrc">Alternative CRC calculation</label></p>
+<p>&nbsp;</p>
+<p><input id="ghq_cache_save" type="checkbox" data-store="ghq_cache_save" checked><label for="ghq_cache_save">Save cache to disk</label></p>
+<p>&nbsp;</p>
+<p><input id="ghq_hirs_let_texartists_fly" type="checkbox" data-store="ghq_hirs_let_texartists_fly" checked><label for="ghq_hirs_let_texartists_fly">Use full alpha channel</label></p>
+<p>&nbsp;</p>
+<p><input id="ghq_hirs_dump" type="checkbox" data-store="ghq_hirs_dump"><label for="ghq_hirs_dump">Enable texture dumping</label></p>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<p class="sub">Advanced Settings</p>
+<p>&nbsp;</p>
+<select class="width150m" name="alt_tex_size" id="alt_tex_size">
+<option value="Video-Glide64mk2[alt_tex_size]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[alt_tex_size]=0">Disable</option>
+<option value="Video-Glide64mk2[alt_tex_size]=1">Enable</option>
+</select><label for="alt_tex_size">Alternate texture size method</label>
+<p>&nbsp;</p>
+<select class="width150m" name="use_sts1_only" id="use_sts1_only">
+<option value="Video-Glide64mk2[use_sts1_only]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[use_sts1_only]=0">Disable</option>
+<option value="Video-Glide64mk2[use_sts1_only]=1">Enable</option>
+</select><label for="use_sts1_only">First SETTILESIZE only</label>
+<p>&nbsp;</p>
+<select class="width150m" name="force_calc_sphere" id="force_calc_sphere">
+<option value="Video-Glide64mk2[force_calc_sphere]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[force_calc_sphere]=0">Disable</option>
+<option value="Video-Glide64mk2[force_calc_sphere]=1">Enable</option>
+</select><label for="force_calc_sphere">Spheric mapping only</label>
+<p>&nbsp;</p>
+<select class="width150m" name="correct_viewport" id="correct_viewport">
+<option value="Video-Glide64mk2[correct_viewport]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[correct_viewport]=0">Disable</option>
+<option value="Video-Glide64mk2[correct_viewport]=1">Enable</option>
+</select><label for="correct_viewport">Positive viewport</label>
+<p>&nbsp;</p>
+<select class="width150m" name="increase_texrect_edge" id="increase_texrect_edge">
+<option value="Video-Glide64mk2[increase_texrect_edge]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[increase_texrect_edge]=0">Disable</option>
+<option value="Video-Glide64mk2[increase_texrect_edge]=1">Enable</option>
+</select><label for="increase_texrect_edge">Texrect size integral value</label>
+<p>&nbsp;</p>
+<select class="width150m" name="decrease_fillrect_edge" id="decrease_fillrect_edge">
+<option value="Video-Glide64mk2[decrease_fillrect_edge]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[decrease_fillrect_edge]=0">Disable</option>
+<option value="Video-Glide64mk2[decrease_fillrect_edge]=1">Enable</option>
+</select><label for="decrease_fillrect_edge">Reduce fillrect size by 1</label>
+<p>&nbsp;</p>
+<select class="width150m" name="texture_correction" id="texture_correction">
+<option value="Video-Glide64mk2[texture_correction]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[texture_correction]=0">Disable</option>
+<option value="Video-Glide64mk2[texture_correction]=1">Enable</option>
+</select><label for="texture_correction">Perspective texture correction emulation</label>
+<p>&nbsp;</p>
+<select class="width150m" name="pal230" id="pal230">
+<option value="Video-Glide64mk2[pal230]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[pal230]=0">Disable</option>
+<option value="Video-Glide64mk2[pal230]=1">Enable</option>
+</select><label for="pal230">Special scale for PAL games</label>
+<p>&nbsp;</p>
+<select class="width150m" name="force_microcheck" id="force_microcheck">
+<option value="Video-Glide64mk2[force_microcheck]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[force_microcheck]=0">Disable</option>
+<option value="Video-Glide64mk2[force_microcheck]=1">Enable</option>
+</select><label for="force_microcheck">Check microcode each frame</label>
+<p>&nbsp;</p>
+<div title="Force 0xb5 command to be quad, not line 3D."><select class="width150m" name="force_quad3d" id="force_quad3d">
+<option value="Video-Glide64mk2[force_quad3d]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[force_quad3d]=0">Disable</option>
+<option value="Video-Glide64mk2[force_quad3d]=1">Enable</option>
+</select><label for="force_quad3d">Force quad</label></div>
+<p>&nbsp;</p>
+<select class="width150m" name="clip_zmin" id="clip_zmin">
+<option value="Video-Glide64mk2[clip_zmin]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[clip_zmin]=0">Disable</option>
+<option value="Video-Glide64mk2[clip_zmin]=1">Enable</option>
+</select><label for="clip_zmin">Near Z clipping</label>
+<p>&nbsp;</p>
+<select class="width150m" name="clip_zmax" id="clip_zmax">
+<option value="Video-Glide64mk2[clip_zmax]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[clip_zmax]=0">Disable</option>
+<option value="Video-Glide64mk2[clip_zmax]=1">Enable</option>
+</select><label for="clip_zmax">Far plane clipping</label>
+<p>&nbsp;</p>
+<select class="width150m" name="fast_crc" id="fast_crc">
+<option value="Video-Glide64mk2[fast_crc]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[fast_crc]=0">Disable</option>
+<option value="Video-Glide64mk2[fast_crc]=1">Enable</option>
+</select><label for="fast_crc">Fast CRC algorithm</label>
+<p>&nbsp;</p>
+<div title="Force strict check in depth buffer test."><select class="width150m" name="zmode_compare_less" id="zmode_compare_less">
+<option value="Video-Glide64mk2[zmode_compare_less]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[zmode_compare_less]=0">Disable</option>
+<option value="Video-Glide64mk2[zmode_compare_less]=1">Enable</option>
+</select><label for="zmode_compare_less">Strict check depth buffer</label></div>
+<p>&nbsp;</p>
+<div title="Apply alpha dither regardless of alpha dither mode."><select class="width150m" name="old_style_adither" id="old_style_adither">
+<option value="Video-Glide64mk2[old_style_adither]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[old_style_adither]=0">Disable</option>
+<option value="Video-Glide64mk2[old_style_adither]=1">Enable</option>
+</select><label for="old_style_adither">Ignore alpha dither mode</label></div>
+<p>&nbsp;</p>
+<div title="Scale vertex z value before writing to depth buffer."><select class="width150m" name="n64_z_scale" id="n64_z_scale">
+<option value="Video-Glide64mk2[n64_z_scale]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[n64_z_scale]=0">Disable</option>
+<option value="Video-Glide64mk2[n64_z_scale]=1">Enable</option>
+</select><label for="n64_z_scale">N64 Z Scale</label></div>
+<p>&nbsp;</p>
+<div title="Fast texrect rendering with hwfbe."><select class="width150m" name="optimize_texrect" id="optimize_texrect">
+<option value="Video-Glide64mk2[optimize_texrect]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[optimize_texrect]=0">Disable</option>
+<option value="Video-Glide64mk2[optimize_texrect]=1">Enable</option>
+</select><label for="optimize_texrect">Optimize texrect</label></div>
+<p>&nbsp;</p>
+<select class="width150m" name="ignore_aux_copy" id="ignore_aux_copy">
+<option value="Video-Glide64mk2[ignore_aux_copy]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[ignore_aux_copy]=0">Disable</option>
+<option value="Video-Glide64mk2[ignore_aux_copy]=1">Enable</option>
+</select><label for="ignore_aux_copy">Ignore auxiliary frame buffers</label>
+<p>&nbsp;</p>
+<select class="width150m" name="hires_buf_clear" id="hires_buf_clear">
+<option value="Video-Glide64mk2[hires_buf_clear]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[hires_buf_clear]=0">Disable</option>
+<option value="Video-Glide64mk2[hires_buf_clear]=1">Enable</option>
+</select><label for="hires_buf_clear">Clear auxiliary frame buffers</label>
+<p>&nbsp;</p>
+<select class="width150m" name="fb_read_alpha" id="fb_read_alpha">
+<option value="Video-Glide64mk2[fb_read_alpha]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[fb_read_alpha]=0">Disable</option>
+<option value="Video-Glide64mk2[fb_read_alpha]=1">Enable</option>
+</select><label for="fb_read_alpha">Read alpha from framebuffer</label>
+<p>&nbsp;</p>
+<select class="width150m" name="useless_is_useless" id="useless_is_useless">
+<option value="Video-Glide64mk2[useless_is_useless]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[useless_is_useless]=0">Disable</option>
+<option value="Video-Glide64mk2[useless_is_useless]=1">Enable</option>
+</select><label for="useless_is_useless">Handle unchanged framebuffer</label>
+<p>&nbsp;</p>
+<select class="width150m" name="fb_crc_mode" id="fb_crc_mode">
+<option value="Video-Glide64mk2[fb_crc_mode]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[fb_crc_mode]=0">Disable CRC</option>
+<option value="Video-Glide64mk2[fb_crc_mode]=1">Fast CRC</option>
+<option value="Video-Glide64mk2[fb_crc_mode]=2">Safe CRC</option>
+</select><label for="fb_crc_mode">Frambuffer CRC mode</label>
+<p>&nbsp;</p>
+<select class="width150m" name="fog" id="fog">
+<option value="Video-Glide64mk2[fog]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[fog]=0">Disable</option>
+<option value="Video-Glide64mk2[fog]=1">Enable</option>
+</select><label for="fog">Fog</label>
+<p>&nbsp;</p>
+<select class="width150m" name="buff_clear" id="buff_clear">
+<option value="Video-Glide64mk2[buff_clear]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[buff_clear]=0">Disable</option>
+<option value="Video-Glide64mk2[buff_clear]=1">Enable</option>
+</select><label for="buff_clear">Clear buffer every frame</label>
+<p>&nbsp;</p>
+<select class="width150m" name="swapmode" id="swapmode">
+<option value="Video-Glide64mk2[swapmode]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[swapmode]=0">VI</option>
+<option value="Video-Glide64mk2[swapmode]=1">Conditional</option>
+<option value="Video-Glide64mk2[swapmode]=2">Hybrid</option>
+</select><label for="swapmode">Buffer swap mode</label>
+<p>&nbsp;</p>
+<select class="width150m" name="fb_smart" id="fb_smart">
+<option value="Video-Glide64mk2[fb_smart]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[fb_smart]=0">Disable</option>
+<option value="Video-Glide64mk2[fb_smart]=1">Enable</option>
+</select><label for="fb_smart">Smart framebuffer</label>
+<p>&nbsp;</p>
+<select class="width150m" name="fb_hires" id="fb_hires">
+<option value="Video-Glide64mk2[fb_hires]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[fb_hires]=0">Disable</option>
+<option value="Video-Glide64mk2[fb_hires]=1">Enable</option>
+</select><label for="fb_hires">Hardware framebuffer emulation</label>
+<p>&nbsp;</p>
+<div title="Slow. Only use when needed."><select class="width150m" name="fb_read_always" id="fb_read_always">
+<option value="Video-Glide64mk2[fb_read_always]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[fb_read_always]=0">Disable</option>
+<option value="Video-Glide64mk2[fb_read_always]=1">Enable</option>
+</select><label for="fb_read_always">Read framebuffer every frame</label></div>
+<p>&nbsp;</p>
+<div title="Render N64 frame buffer as texture."><select class="width150m" name="read_back_to_screen" id="read_back_to_screen">
+<option value="Video-Glide64mk2[read_back_to_screen]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[read_back_to_screen]=0">Disable</option>
+<option value="Video-Glide64mk2[read_back_to_screen]=1">Enable</option>
+</select><label for="read_back_to_screen">Read back to screen</label></div>
+<p>&nbsp;</p>
+<div title="Show images written directly by CPU."><select class="width150m" name="detect_cpu_write" id="detect_cpu_write">
+<option value="Video-Glide64mk2[detect_cpu_write]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[detect_cpu_write]=0">Disable</option>
+<option value="Video-Glide64mk2[detect_cpu_write]=1">Enable</option>
+</select><label for="detect_cpu_write">Detect CPU write</label></div>
+<p>&nbsp;</p>
+<select class="width150m" name="fb_get_info" id="fb_get_info">
+<option value="Video-Glide64mk2[fb_get_info]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[fb_get_info]=0">Disable</option>
+<option value="Video-Glide64mk2[fb_get_info]=1">Enable</option>
+</select><label for="fb_get_info">Get frame buffer info</label>
+<p>&nbsp;</p>
+<select class="width150m" name="fb_render" id="fb_render">
+<option value="Video-Glide64mk2[fb_render]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[fb_render]=0">Disable</option>
+<option value="Video-Glide64mk2[fb_render]=1">Enable</option>
+</select><label for="fb_render">Software depth render</label>
+<p>&nbsp;</p><p>&nbsp;</p>
+<footer id="footer">
+<button title="Settings" id="settings"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M19.43 12.98a7.8 7.8 0 0 0 0-1.96l2.11-1.65a.5.5 0 0 0 .12-.64l-2-3.46a.5.5 0 0 0-.61-.22l-2.49 1a7.3 7.3 0 0 0-1.69-.98l-.38-2.65A.49.49 0 0 0 14 2h-4a.49.49 0 0 0-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1a.57.57 0 0 0-.18-.03.5.5 0 0 0-.43.25l-2 3.46a.5.5 0 0 0 .12.64l2.11 1.65a7.93 7.93 0 0 0 0 1.96l-2.11 1.65a.5.5 0 0 0-.12.64l2 3.46a.5.5 0 0 0 .61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65a7.68 7.68 0 0 0 1.69-.98l2.49 1 .18.03a.5.5 0 0 0 .43-.25l2-3.46a.5.5 0 0 0-.12-.64l-2.11-1.65zm-1.98-1.71a5.34 5.34 0 0 1 0 1.46l-.14 1.13.89.7 1.08.84-.7 1.21-1.27-.51-1.04-.42-.9.68c-.43.32-.84.56-1.25.73l-1.06.43-.16 1.13-.2 1.35h-1.4l-.19-1.35-.16-1.13-1.06-.43a5.67 5.67 0 0 1-1.23-.71l-.91-.7-1.06.43-1.27.51-.7-1.21 1.08-.84.89-.7-.14-1.13c-.03-.31-.05-.54-.05-.74s.02-.43.05-.73l.14-1.13-.89-.7-1.08-.84.7-1.21 1.27.51 1.04.42.9-.68c.43-.32.84-.56 1.25-.73l1.06-.43.16-1.13.2-1.35h1.39l.19 1.35.16 1.13 1.06.43c.43.18.83.41 1.23.71l.91.7 1.06-.43 1.27-.51.7 1.21-1.07.85-.89.7.14 1.13zM12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg></button>
+<button title="Change brightness" id="moon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0V0z"/><g><path d="M10 4c4.41 0 8 3.59 8 8s-3.59 8-8 8c-.34 0-.68-.02-1.01-.07C10.9 17.77 12 14.95 12 12s-1.1-5.77-3.01-7.93C9.32 4.02 9.66 4 10 4m0-2c-1.82 0-3.53.5-5 1.35C7.99 5.08 10 8.3 10 12s-2.01 6.92-5 8.65C6.47 21.5 8.18 22 10 22c5.52 0 10-4.48 10-10S15.52 2 10 2z"/></g></svg></button>
+<button title="Change colors" id="palettes"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M12 22C6.49 22 2 17.51 2 12S6.49 2 12 2s10 4.04 10 9c0 3.31-2.69 6-6 6h-1.77c-.28 0-.5.22-.5.5 0 .12.05.23.13.33.41.47.64 1.06.64 1.67 0 1.38-1.12 2.5-2.5 2.5zm0-18c-4.41 0-8 3.59-8 8s3.59 8 8 8c.28 0 .5-.22.5-.5 0-.16-.08-.28-.14-.35-.41-.46-.63-1.05-.63-1.65 0-1.38 1.12-2.5 2.5-2.5H16c2.21 0 4-1.79 4-4 0-3.86-3.59-7-8-7z"/><circle cx="6.5" cy="11.5" r="1.5"/><circle cx="9.5" cy="7.5" r="1.5"/><circle cx="14.5" cy="7.5" r="1.5"/><circle cx="17.5" cy="11.5" r="1.5"/></svg></button>
+<input id="background_input" type="file" accept="image/*"><button title="Set background image" id="fancy"><svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h7V2H4c-1.1 0-2 .9-2 2v7h2V4zm6 9l-4 5h12l-3-4-2.03 2.71L10 13zm7-4.5c0-.83-.67-1.5-1.5-1.5S14 7.67 14 8.5s.67 1.5 1.5 1.5S17 9.33 17 8.5zM20 2h-7v2h7v7h2V4c0-1.1-.9-2-2-2zm0 18h-7v2h7c1.1 0 2-.9 2-2v-7h-2v7zM4 13H2v7c0 1.1.9 2 2 2h7v-2H4v-7z"/></svg></button>
+<button title="Set filter" id="filter"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M19 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 16l-7-8v8H5l7-8V5h7v14z"/></svg></button><button title="Remove and reset background" id="reset"><svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M21.9 21.9l-6.1-6.1-2.69-2.69L5 5 3.59 3.59 2.1 2.1.69 3.51 3 5.83V19c0 1.1.9 2 2 2h13.17l2.31 2.31 1.42-1.41zM5 19V7.83l6.84 6.84-.84 1.05L9 13l-3 4h8.17l2 2H5zM7.83 5l-2-2H19a2 2 0 012 2v13.17l-2-2V5H7.83z"/></svg></button>
+<button title="Change language" id="language"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95a15.65 15.65 0 00-1.38-3.56A8.03 8.03 0 0118.92 8zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2s.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56A7.987 7.987 0 015.08 16zm2.95-8H5.08a7.987 7.987 0 014.33-3.56A15.65 15.65 0 008.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2s.07-1.35.16-2h4.68c.09.65.16 1.32.16 2s-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 01-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2s-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/></svg><br><span lang="de">DE</span><span lang="en">EN</span></button>
+</footer>
+</main>
+</body>
+</html>
