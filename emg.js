@@ -4068,6 +4068,7 @@ RspFallback = 'Rsp-HLE[RspFallback]=mupen64plus-rsp-cxd4-sse2';
 if(gfx === 'mupen64plus-video-angrylion-plus' || gfx === 'mupen64plus-video-parallel'){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=False'; cxd4Audio = 'rsp-cxd4[DisplayListToAudioPlugin]=False'}
 if(gfx === 'mupen64plus-video-angrylion-plus' && rsp === 'mupen64plus-rsp-hle'){rsp = 'mupen64plus-rsp-cxd4-sse2'}
 else if(gfx === 'mupen64plus-video-parallel' && rsp === 'mupen64plus-rsp-hle'){rsp = 'mupen64plus-rsp-parallel'}
+else if(gfx === 'mupen64plus-video-rice' || gfx === 'mupen64plus-video-glide64mk2'){rsp = 'mupen64plus-rsp-hle'}
 SharedDataPath = 'Core[SharedDataPath]=';
 PluginDir = '.';
 
