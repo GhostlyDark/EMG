@@ -28,7 +28,18 @@ Follow the [Dolphin instructions](https://dolphin-emu.org/docs/guides/how-use-of
 ./emg
 ```
 
-### Dependencies (Ubuntu 21.04)
+### Dependencies (Ubuntu)
+
+**Minimum libc version:**
+
+The core and most plugins require at least `GLIBC v2.27`. Check version:
+```
+ldd --version ldd
+```
+
+- GLideN64: GLIBC v2.29
+- Parallel: GLIBC v2.30
+
 
 **mupen64plus-core**
 ```
@@ -45,3 +56,8 @@ Needs an up-to-date graphics driver with Vulkan support. Reboot the system after
 ```
 sudo add-apt-repository ppa:kisak/kisak-mesa && sudo apt update && sudo apt full-upgrade
 ```
+
+## Troubleshooting
+
+Open Developer Tools by pressing `CTRL + I` or by activating it via the menubar (unhide with `ALT`).
+If no Mupen64Plus log appears, the emulator core is missing dependencies. If there is a log, check it out to find out what's wrong. Logging happens once Mupen64Plus closes after pressing `Launch`.
