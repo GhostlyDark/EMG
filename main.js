@@ -10,14 +10,8 @@ preferences = {nodeIntegration:true,contextIsolation:false},
 mainWindow = {backgroundColor:'#121212', width:1280, height:800, minWidth:923, minHeight:640, title:name, show:false, autoHideMenuBar:true, webPreferences:preferences};
 remote.initialize()
 
-app.commandLine.appendSwitch('disable-http-cache')
-app.commandLine.appendSwitch('no-proxy-server')
-//app.enableSandbox()
-
-var menuQuit = 'Quit ' + app.name,menuWindow = 'Window',menuFunctions = 'Functions',menuReload = 'Reload window',menuCreate = 'Create window',menuClose = 'Close window',menuZoomIn = 'Increase zoom',menuZoomOut = 'Decrease zoom',menuZoomReset = 'Reset zoom',menuFullscreen = 'Fullscreen',menuClear = 'Reset settings',menuSaves = 'Show User Data',menuSite = 'Visit website',dialogDelete = ' Reset settings',dialogDeleteM = 'Reset all settings?',dialogClose = ' Close window',dialogCloseM = 'Close selected window?',dialogQuit = ' Quit app',dialogQuitM = 'Exit launcher? May close emulator instances.',dialogNo = 'Abort',dialogYes = 'Confirm';
-const deleteDialog = {defaultId:1, cancelId:1, icon:path.join(__dirname, 'img', 'delete.png'), buttons:[dialogYes,dialogNo], title:dialogDelete, message:dialogDeleteM},
-closeDialog = {defaultId:1, cancelId:1, icon:path.join(__dirname, 'img', 'close.png'), buttons:[dialogYes,dialogNo], title:dialogClose, message:dialogCloseM},
-quitDialog = {defaultId:1, cancelId:1, icon:path.join(__dirname, 'img', 'quit.png'), buttons:[dialogYes,dialogNo], title:dialogQuit, message:dialogQuitM}
+const menuQuit = 'Quit ' + app.name,menuWindow = 'Window',menuFunctions = 'Functions',menuReload = 'Reload window',menuZoomIn = 'Increase zoom',menuZoomOut = 'Decrease zoom',menuZoomReset = 'Reset zoom',menuClear = 'Reset settings',menuSaves = 'Show User Data',menuSite = 'Visit website',dialogDelete = ' Reset settings',dialogDeleteM = 'Reset all settings?',dialogNo = 'Abort',dialogYes = 'Confirm',
+deleteDialog = {defaultId:1, cancelId:1, icon:path.join(__dirname, 'img', 'delete.png'), buttons:[dialogYes,dialogNo], title:dialogDelete, message:dialogDeleteM}
 
 app.on('second-instance', (e) => {if(win.isMinimized()){win.restore()}else{win.focus()}})
 if(!app.requestSingleInstanceLock()){return app.quit()}
@@ -54,5 +48,4 @@ Menu.setApplicationMenu(Menu.buildFromTemplate([
 	  ]},
 ]))
 
-win.on('close', (e) => {choice = dialog.showMessageBoxSync(win,quitDialog);if(choice == 1){e.preventDefault()}})
 win.on('closed', () => {app.exit()})})
