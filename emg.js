@@ -4120,10 +4120,7 @@ const gcaSettings = 'control_stick_deadzone = ' +  control_stick_deadzone + '\n'
 fs.writeFileSync(path.join(__dirname, 'm64p', 'mupen64plus-input-gca.toml'),gcaSettings)
 
 var m64p = child_process.spawn,
-options = {cwd: path.join(__dirname, 'm64p'), detached: true}
-if(gfx === 'mupen64plus-video-rice'){
-m64p = child_process.execFile;
-options = {cwd: path.join(__dirname, 'm64p')}}
+options = {cwd: path.join(__dirname, 'm64p'), detached: true, stdio: ['ignore', 'pipe', 'ignore']}
 const parameters = controls1.concat(controls2,controls3,controls4,nospeedlimit,cheats,config),
 child = m64p(executablePath, parameters, options);
 console.log(child.spawnargs)
@@ -4138,7 +4135,7 @@ cheatList.innerHTML = '';
 const executablePath = path.join(__dirname, 'm64p', 'mupen64plus'),
 parameters = ['--cheats','list',filePath],
 m64p = child_process.spawnSync,
-options = {cwd: path.join(__dirname, 'm64p')},
+options = {cwd: path.join(__dirname, 'm64p'), stdio: ['ignore', 'pipe', 'ignore']},
 child = m64p(executablePath, parameters, options);
 var data = child.stdout,
 datastring = data.toString().replace(regstring,''),
@@ -4325,7 +4322,7 @@ else{fPath = e.dataTransfer.files[0].path;gbRAM4File(fPath)}}
 
 const jstestPath = path.join(__dirname, 'm64p', 'sdl2-jstest'),
 jstest = child_process.execFile,
-jstestOptions = {cwd: path.join(__dirname, 'm64p'), timeout: 10000};
+jstestOptions = {cwd: path.join(__dirname, 'm64p'), timeout: 10000, stdio: ['ignore', 'pipe', 'ignore']};
 var jstestChild;
 
 // joydata[0] = Device Name, joydata[1] = Device Number, joydata[2] = Pressed Key
