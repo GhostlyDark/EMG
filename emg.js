@@ -4321,7 +4321,7 @@ else{fPath = e.dataTransfer.files[0].path;gbRAM4File(fPath)}}
 
 
 const jstestPath = path.join(__dirname, 'm64p', 'sdl2-jstest'),
-jstest = child_process.execFile,
+jstest = child_process.spawn,
 jstestOptions = {cwd: path.join(__dirname, 'm64p'), timeout: 10000, stdio: ['ignore', 'pipe', 'ignore']};
 var jstestChild;
 
@@ -4334,7 +4334,7 @@ if(joyinput.id.includes('3')){jstestConfig = ['-e', '2']}
 if(joyinput.id.includes('4')){jstestConfig = ['-e', '3']}
 jstestChild = jstest(jstestPath, jstestConfig, jstestOptions);
 jstestChild.stdout.on('data', (data) => {
-joyfilter = data.replace(regremove,'');
+joyfilter = `${data}`.replace(regremove,'');
 joydata = joyfilter.split('\n');
 if(joyinput.id.includes('JoyMapping')){
 if(joydata[2].includes('button')){
