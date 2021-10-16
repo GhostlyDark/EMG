@@ -4120,11 +4120,13 @@ const gcaSettings = 'control_stick_deadzone = ' +  control_stick_deadzone + '\n'
 fs.writeFileSync(path.join(__dirname, 'm64p', 'mupen64plus-input-gca.toml'),gcaSettings)
 
 var m64p = child_process.spawn,
-options = {cwd: path.join(__dirname, 'm64p'), detached: true, stdio: ['ignore', 'pipe', 'ignore']}
+options = {cwd: path.join(__dirname, 'm64p'), detached: true, stdio: ['ignore', 'pipe', 'ignore']},
+stdout = '';
 const parameters = controls1.concat(controls2,controls3,controls4,nospeedlimit,cheats,config),
 child = m64p(executablePath, parameters, options);
 console.log(child.spawnargs)
-child.stdout.on('data', (data) => {console.log(`${data}`)})
+child.stdout.on('data', (data) => {stdout += `${data}`})
+child.on('exit', () => {console.log(stdout)})
 
 })
 
