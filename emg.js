@@ -700,6 +700,7 @@ regbox = /_.*/g,
 regtarget = /.*\_/g,
 regaxis = /\s.*/i,
 reghk = /button\(|\)/g,
+regkb = /key\(\)|key\(,\)/g,
 
 keyCodes = { //HTML DOM keycodes to text
   0: '',
@@ -4062,6 +4063,82 @@ analogpeak1 = 'Input-SDL-Control1[AnalogPeak]=' + AnalogPeak1X.value + ',' + Ana
 analogpeak2 = 'Input-SDL-Control2[AnalogPeak]=' + AnalogPeak2X.value + ',' + AnalogPeak2Y.value;
 analogpeak3 = 'Input-SDL-Control3[AnalogPeak]=' + AnalogPeak3X.value + ',' + AnalogPeak3Y.value;
 analogpeak4 = 'Input-SDL-Control4[AnalogPeak]=' + AnalogPeak4X.value + ',' + AnalogPeak4Y.value;
+
+if(AButton1.match(regkb))AButton1 = AButton1.replace(regkb,'')
+if(BButton1.match(regkb))BButton1 = BButton1.replace(regkb,'')
+if(LTrig1.match(regkb))LTrig1 = LTrig1.replace(regkb,'')
+if(RTrig1.match(regkb))RTrig1 = RTrig1.replace(regkb,'')
+if(ZTrig1.match(regkb))ZTrig1 = ZTrig1.replace(regkb,'')
+if(Start1.match(regkb))Start1 = Start1.replace(regkb,'')
+if(DPadU1.match(regkb))DPadU1 = DPadU1.replace(regkb,'')
+if(DPadL1.match(regkb))DPadL1 = DPadL1.replace(regkb,'')
+if(DPadR1.match(regkb))DPadR1 = DPadR1.replace(regkb,'')
+if(DPadD1.match(regkb))DPadD1 = DPadD1.replace(regkb,'')
+if(CButtonU1.match(regkb))CButtonU1 = CButtonU1.replace(regkb,'')
+if(CButtonL1.match(regkb))CButtonL1 = CButtonL1.replace(regkb,'')
+if(CButtonR1.match(regkb))CButtonR1 = CButtonR1.replace(regkb,'')
+if(CButtonD1.match(regkb))CButtonD1 = CButtonD1.replace(regkb,'')
+if(MempakSwitch1.match(regkb))MempakSwitch1 = MempakSwitch1.replace(regkb,'')
+if(RumblepakSwitch1.match(regkb))RumblepakSwitch1 = RumblepakSwitch1.replace(regkb,'')
+if(XAxis1.match(regkb))XAxis1 = XAxis1.replace(regkb,'')
+if(YAxis1.match(regkb))YAxis1 = YAxis1.replace(regkb,'')
+
+if(AButton2.match(regkb))AButton2 = AButton2.replace(regkb,'')
+if(BButton2.match(regkb))BButton2 = BButton2.replace(regkb,'')
+if(LTrig2.match(regkb))LTrig2 = LTrig2.replace(regkb,'')
+if(RTrig2.match(regkb))RTrig2 = RTrig2.replace(regkb,'')
+if(ZTrig2.match(regkb))ZTrig2 = ZTrig2.replace(regkb,'')
+if(Start2.match(regkb))Start2 = Start2.replace(regkb,'')
+if(DPadU2.match(regkb))DPadU2 = DPadU2.replace(regkb,'')
+if(DPadL2.match(regkb))DPadL2 = DPadL2.replace(regkb,'')
+if(DPadR2.match(regkb))DPadR2 = DPadR2.replace(regkb,'')
+if(DPadD2.match(regkb))DPadD2 = DPadD2.replace(regkb,'')
+if(CButtonU2.match(regkb))CButtonU2 = CButtonU2.replace(regkb,'')
+if(CButtonL2.match(regkb))CButtonL2 = CButtonL2.replace(regkb,'')
+if(CButtonR2.match(regkb))CButtonR2 = CButtonR2.replace(regkb,'')
+if(CButtonD2.match(regkb))CButtonD2 = CButtonD2.replace(regkb,'')
+if(MempakSwitch2.match(regkb))MempakSwitch2 = MempakSwitch2.replace(regkb,'')
+if(RumblepakSwitch2.match(regkb))RumblepakSwitch2 = RumblepakSwitch2.replace(regkb,'')
+if(XAxis2.match(regkb))XAxis2 = XAxis2.replace(regkb,'')
+if(YAxis2.match(regkb))YAxis2 = YAxis2.replace(regkb,'')
+
+if(AButton3.match(regkb))AButton3 = AButton3.replace(regkb,'')
+if(BButton3.match(regkb))BButton3 = BButton3.replace(regkb,'')
+if(LTrig3.match(regkb))LTrig3 = LTrig3.replace(regkb,'')
+if(RTrig3.match(regkb))RTrig3 = RTrig3.replace(regkb,'')
+if(ZTrig3.match(regkb))ZTrig3 = ZTrig3.replace(regkb,'')
+if(Start3.match(regkb))Start3 = Start3.replace(regkb,'')
+if(DPadU3.match(regkb))DPadU3 = DPadU3.replace(regkb,'')
+if(DPadL3.match(regkb))DPadL3 = DPadL3.replace(regkb,'')
+if(DPadR3.match(regkb))DPadR3 = DPadR3.replace(regkb,'')
+if(DPadD3.match(regkb))DPadD3 = DPadD3.replace(regkb,'')
+if(CButtonU3.match(regkb))CButtonU3 = CButtonU3.replace(regkb,'')
+if(CButtonL3.match(regkb))CButtonL3 = CButtonL3.replace(regkb,'')
+if(CButtonR3.match(regkb))CButtonR3 = CButtonR3.replace(regkb,'')
+if(CButtonD3.match(regkb))CButtonD3 = CButtonD3.replace(regkb,'')
+if(MempakSwitch3.match(regkb))MempakSwitch3 = MempakSwitch3.replace(regkb,'')
+if(RumblepakSwitch3.match(regkb))RumblepakSwitch3 = RumblepakSwitch3.replace(regkb,'')
+if(XAxis3.match(regkb))XAxis3 = XAxis3.replace(regkb,'')
+if(YAxis3.match(regkb))YAxis3 = YAxis3.replace(regkb,'')
+
+if(AButton4.match(regkb))AButton4 = AButton4.replace(regkb,'')
+if(BButton4.match(regkb))BButton4 = BButton4.replace(regkb,'')
+if(LTrig4.match(regkb))LTrig4 = LTrig4.replace(regkb,'')
+if(RTrig4.match(regkb))RTrig4 = RTrig4.replace(regkb,'')
+if(ZTrig4.match(regkb))ZTrig4 = ZTrig4.replace(regkb,'')
+if(Start4.match(regkb))Start4 = Start4.replace(regkb,'')
+if(DPadU4.match(regkb))DPadU4 = DPadU4.replace(regkb,'')
+if(DPadL4.match(regkb))DPadL4 = DPadL4.replace(regkb,'')
+if(DPadR4.match(regkb))DPadR4 = DPadR4.replace(regkb,'')
+if(DPadD4.match(regkb))DPadD4 = DPadD4.replace(regkb,'')
+if(CButtonU4.match(regkb))CButtonU4 = CButtonU4.replace(regkb,'')
+if(CButtonL4.match(regkb))CButtonL4 = CButtonL4.replace(regkb,'')
+if(CButtonR4.match(regkb))CButtonR4 = CButtonR4.replace(regkb,'')
+if(CButtonD4.match(regkb))CButtonD4 = CButtonD4.replace(regkb,'')
+if(MempakSwitch4.match(regkb))MempakSwitch4 = MempakSwitch4.replace(regkb,'')
+if(RumblepakSwitch4.match(regkb))RumblepakSwitch4 = RumblepakSwitch4.replace(regkb,'')
+if(XAxis4.match(regkb))XAxis4 = XAxis4.replace(regkb,'')
+if(YAxis4.match(regkb))YAxis4 = YAxis4.replace(regkb,'')
 
 m64pGFX = 'Rsp-HLE[DisplayListToGraphicsPlugin]=True';
 RspFallback = 'Rsp-HLE[RspFallback]=mupen64plus-rsp-cxd4-sse2';
