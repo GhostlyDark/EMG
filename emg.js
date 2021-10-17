@@ -1,11 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
-const electron = require('@electron/remote'),
+const electron = window.electron,
 app = electron.app,
 dialog = electron.dialog,
-child_process = require('child_process'),
-fs = require('fs'),
-path = require('path'),
+child_process = window.child_process,
+fs = window.fs,
+path = window.path,
 appData = app.getPath('appData'),
+dir = app.getAppPath(),
+stdio = ['ignore', 'pipe', 'ignore'],
 
 fileInput = document.getElementById('fileInput'),
 fileText = document.getElementById('fileText'),
@@ -4152,7 +4154,7 @@ PluginDir = '.';
 
 if(document.getElementById('nospeedlimit').checked === true){nospeedlimit = ['--nospeedlimit'];audio = 'dummy';vsync = 'Video-General[VerticalSync]=False';Glide64VSync = 'Video-Glide64mk2[vsync]=False'}else{nospeedlimit = []}
 
-const executablePath = path.join(__dirname, 'm64p', 'mupen64plus');
+const executablePath = path.join(dir, 'm64p', 'mupen64plus');
 var controls1 = ['--set', AButton1, '--set', BButton1, '--set', LTrig1, '--set', RTrig1, '--set', ZTrig1, '--set', Start1, '--set', DPadU1, '--set', DPadL1, '--set', DPadR1, '--set', DPadD1, '--set', CButtonU1, '--set', CButtonL1, '--set', CButtonR1, '--set', CButtonD1, '--set', MempakSwitch1, '--set', RumblepakSwitch1, '--set', XAxis1, '--set', YAxis1],
 controls2 = ['--set', AButton2, '--set', BButton2, '--set', LTrig2, '--set', RTrig2, '--set', ZTrig2, '--set', Start2, '--set', DPadU2, '--set', DPadL2, '--set', DPadR2, '--set', DPadD2, '--set', CButtonU2, '--set', CButtonL2, '--set', CButtonR2, '--set', CButtonD2, '--set', MempakSwitch2, '--set', RumblepakSwitch2, '--set', XAxis2, '--set', YAxis2],
 controls3 = ['--set', AButton3, '--set', BButton3, '--set', LTrig3, '--set', RTrig3, '--set', ZTrig3, '--set', Start3, '--set', DPadU3, '--set', DPadL3, '--set', DPadR3, '--set', DPadD3, '--set', CButtonU3, '--set', CButtonL3, '--set', CButtonR3, '--set', CButtonD3, '--set', MempakSwitch3, '--set', RumblepakSwitch3, '--set', XAxis3, '--set', YAxis3],
@@ -4194,10 +4196,10 @@ c_stick_up = c_stick_upDropdown.value;
 
 const gcaSettings = 'control_stick_deadzone = ' +  control_stick_deadzone + '\n' + 'control_stick_sensitivity = ' + control_stick_sensitivity + '\n' + 'c_stick_deadzone = ' + c_stick_deadzone + '\n' + 'trigger_threshold = ' + trigger_threshold + '\n' + '\n' + '[controller_mapping]' + '\n' + 'a = ' + a + '\n' + 'b = ' + b + '\n' + 'x = ' + x + '\n' + 'y = ' + y + '\n' + 'start = ' + start + '\n' + 'z = ' + z + '\n' + 'l = ' + l + '\n' + 'r = ' + r + '\n' + 'd_pad_left = ' + d_pad_left + '\n' + 'd_pad_right = ' + d_pad_right + '\n' + 'd_pad_down = ' + d_pad_down + '\n' + 'd_pad_up = ' + d_pad_up + '\n' + 'c_stick_left = ' + c_stick_left + '\n' + 'c_stick_right = ' + c_stick_right + '\n' + 'c_stick_down = ' + c_stick_down + '\n' + 'c_stick_up = ' + c_stick_up;
 
-fs.writeFileSync(path.join(__dirname, 'm64p', 'mupen64plus-input-gca.toml'),gcaSettings)
+fs.writeFileSync(path.join(dir, 'm64p', 'mupen64plus-input-gca.toml'),gcaSettings)
 
 var m64p = child_process.spawn,
-options = {cwd: path.join(__dirname, 'm64p'), detached: true, stdio: ['ignore', 'pipe', 'ignore']},
+options = {cwd: path.join(dir, 'm64p'), detached: true, stdio: stdio},
 stdout = '';
 const parameters = controls1.concat(controls2,controls3,controls4,nospeedlimit,cheats,config),
 child = m64p(executablePath, parameters, options);
@@ -4211,10 +4213,10 @@ child.on('exit', () => {console.log(stdout)})
 
 listCheats.addEventListener('click', function(){
 cheatList.innerHTML = '';
-const executablePath = path.join(__dirname, 'm64p', 'mupen64plus'),
+const executablePath = path.join(dir, 'm64p', 'mupen64plus'),
 parameters = ['--cheats','list',filePath],
 m64p = child_process.spawnSync,
-options = {cwd: path.join(__dirname, 'm64p'), stdio: ['ignore', 'pipe', 'ignore']},
+options = {cwd: path.join(dir, 'm64p'), stdio: stdio},
 child = m64p(executablePath, parameters, options);
 var data = child.stdout,
 datastring = data.toString().replace(regstring,''),
@@ -4399,9 +4401,9 @@ else{fPath = e.dataTransfer.files[0].path;gbRAM4File(fPath)}}
 
 
 
-const jstestPath = path.join(__dirname, 'm64p', 'sdl2-jstest'),
+const jstestPath = path.join(dir, 'm64p', 'sdl2-jstest'),
 jstest = child_process.spawn,
-jstestOptions = {cwd: path.join(__dirname, 'm64p'), timeout: 10000, stdio: ['ignore', 'pipe', 'ignore']};
+jstestOptions = {cwd: path.join(dir, 'm64p'), stdio: stdio, timeout: 10000};
 var jstestChild;
 
 // joydata[0] = Device Name, joydata[1] = Device Number, joydata[2] = Pressed Key
