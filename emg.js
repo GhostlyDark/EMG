@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
 const appData = window.appData,
+dialog = window.dialog,
 dir = window.dir,
-pathJoin = window.pathJoin
-pathExtname = window.pathExtname
-showOpenDialogSync = window.showOpenDialogSync,
+pathJoin = window.pathJoin,
+pathExtname = window.pathExtname,
 spawn = window.spawn,
 spawnSync = window.spawnSync,
 writeFileSync = window.writeFileSync,
@@ -3236,112 +3236,112 @@ document.getElementById('clearIPLROM').addEventListener('click', function(){IPLR
 if(localStorage.getItem('IPLROM') === null || localStorage.getItem('IPLROM') === undefined){IPLROM = '';IPLROMText.innerHTML = IPLROM}
 if(localStorage.getItem('IPLROM') != null){IPLROM = localStorage.getItem('IPLROM');IPLROMText.innerHTML = IPLROM}
 IPLROMInput.addEventListener('click', function(){
-IPLROMResult = showOpenDialogSync({properties:['openFile'],filters:[{name:'64DD IPL',extensions:['n64','v64','z64','bin','rom']}]});
+IPLROMResult = dialog.open({properties:['openFile'],filters:[{name:'64DD IPL',extensions:['n64','v64','z64','bin','rom']}]})
 if(IPLROMResult != undefined){IPLROM = IPLROMResult;IPLROMText.innerHTML = IPLROM;localStorage.setItem('IPLROM', IPLROM)}})
 
 document.getElementById('clearDisk').addEventListener('click', function(){Disk = '';DiskText.innerHTML = '';localStorage.removeItem('Disk')})
 if(localStorage.getItem('Disk') === null || localStorage.getItem('Disk') === undefined){Disk = '';DiskText.innerHTML = Disk}
 if(localStorage.getItem('Disk') != null){Disk = localStorage.getItem('Disk');DiskText.innerHTML = Disk}
 DiskInput.addEventListener('click', function(){
-DiskResult = showOpenDialogSync({properties:['openFile'],filters:[{name:'64DD Disk',extensions:['ndd']}]});
+DiskResult = dialog.open({properties:['openFile'],filters:[{name:'64DD Disk',extensions:['ndd']}]})
 if(DiskResult != undefined){Disk = DiskResult;DiskText.innerHTML = Disk;localStorage.setItem('Disk', Disk)}})
 
 document.getElementById('cleargbROM1').addEventListener('click', function(){gbROM1 = '';gbROM1Text.innerHTML = '';localStorage.removeItem('gbROM1')})
 if(localStorage.getItem('gbROM1') === null || localStorage.getItem('gbROM1') === undefined){gbROM1 = '';gbROM1Text.innerHTML = gbROM1}
 if(localStorage.getItem('gbROM1') != null){gbROM1 = localStorage.getItem('gbROM1');gbROM1Text.innerHTML = gbROM1}
 gbROM1Input.addEventListener('click', function(){
-gbROM1Result = showOpenDialogSync({properties:['openFile'],filters:[{name:'GB ROM',extensions:['gb','gbc']}]});
+gbROM1Result = dialog.open({properties:['openFile'],filters:[{name:'GB ROM',extensions:['gb','gbc']}]})
 if(gbROM1Result != undefined){gbROM1 = gbROM1Result;gbROM1Text.innerHTML = gbROM1;localStorage.setItem('gbROM1', gbROM1)}})
 
 document.getElementById('cleargbROM2').addEventListener('click', function(){gbROM2 = '';gbROM2Text.innerHTML = '';localStorage.removeItem('gbROM2')})
 if(localStorage.getItem('gbROM2') === null || localStorage.getItem('gbROM2') === undefined){gbROM2 = '';gbROM2Text.innerHTML = gbROM2}
 if(localStorage.getItem('gbROM2') != null){gbROM2 = localStorage.getItem('gbROM2');gbROM2Text.innerHTML = gbROM2}
 gbROM2Input.addEventListener('click', function(){
-gbROM2Result = showOpenDialogSync({properties:['openFile'],filters:[{name:'GB ROM',extensions:['gb','gbc']}]});
+gbROM2Result = dialog.open({properties:['openFile'],filters:[{name:'GB ROM',extensions:['gb','gbc']}]})
 if(gbROM2Result != undefined){gbROM2 = gbROM2Result;gbROM2Text.innerHTML = gbROM2;localStorage.setItem('gbROM2', gbROM2)}})
 
 document.getElementById('cleargbROM3').addEventListener('click', function(){gbROM3 = '';gbROM3Text.innerHTML = '';localStorage.removeItem('gbROM3')})
 if(localStorage.getItem('gbROM3') === null || localStorage.getItem('gbROM3') === undefined){gbROM3 = '';gbROM3Text.innerHTML = gbROM3}
 if(localStorage.getItem('gbROM3') != null){gbROM3 = localStorage.getItem('gbROM3');gbROM3Text.innerHTML = gbROM3}
 gbROM3Input.addEventListener('click', function(){
-gbROM3Result = showOpenDialogSync({properties:['openFile'],filters:[{name:'GB ROM',extensions:['gb','gbc']}]});
+gbROM3Result = dialog.open({properties:['openFile'],filters:[{name:'GB ROM',extensions:['gb','gbc']}]})
 if(gbROM3Result != undefined){gbROM3 = gbROM3Result;gbROM3Text.innerHTML = gbROM3;localStorage.setItem('gbROM3', gbROM3)}})
 
 document.getElementById('cleargbROM4').addEventListener('click', function(){gbROM4 = '';gbROM4Text.innerHTML = '';localStorage.removeItem('gbROM4')})
 if(localStorage.getItem('gbROM4') === null || localStorage.getItem('gbROM4') === undefined){gbROM4 = '';gbROM4Text.innerHTML = gbROM4}
 if(localStorage.getItem('gbROM4') != null){gbROM4 = localStorage.getItem('gbROM4');gbROM4Text.innerHTML = gbROM4}
 gbROM4Input.addEventListener('click', function(){
-gbROM4Result = showOpenDialogSync({properties:['openFile'],filters:[{name:'GB ROM',extensions:['gb','gbc']}]});
+gbROM4Result = dialog.open({properties:['openFile'],filters:[{name:'GB ROM',extensions:['gb','gbc']}]})
 if(gbROM4Result != undefined){gbROM4 = gbROM4Result;gbROM4Text.innerHTML = gbROM4;localStorage.setItem('gbROM4', gbROM4)}})
 
 document.getElementById('cleargbRAM1').addEventListener('click', function(){gbRAM1 = '';gbRAM1Text.innerHTML = '';localStorage.removeItem('gbRAM1')})
 if(localStorage.getItem('gbRAM1') === null || localStorage.getItem('gbRAM1') === undefined){gbRAM1 = '';gbRAM1Text.innerHTML = gbRAM1}
 if(localStorage.getItem('gbRAM1') != null){gbRAM1 = localStorage.getItem('gbRAM1');gbRAM1Text.innerHTML = gbRAM1}
 gbRAM1Input.addEventListener('click', function(){
-gbRAM1Result = showOpenDialogSync({properties:['openFile'],filters:[{name:'GB Save File',extensions:['sav']}]});
+gbRAM1Result = dialog.open({properties:['openFile'],filters:[{name:'GB Save File',extensions:['sav']}]})
 if(gbRAM1Result != undefined){gbRAM1 = gbRAM1Result;gbRAM1Text.innerHTML = gbRAM1;localStorage.setItem('gbRAM1', gbRAM1)}})
 
 document.getElementById('cleargbRAM2').addEventListener('click', function(){gbRAM2 = '';gbRAM2Text.innerHTML = '';localStorage.removeItem('gbRAM2')})
 if(localStorage.getItem('gbRAM2') === null || localStorage.getItem('gbRAM2') === undefined){gbRAM2 = '';gbRAM2Text.innerHTML = gbRAM2}
 if(localStorage.getItem('gbRAM2') != null){gbRAM2 = localStorage.getItem('gbRAM2');gbRAM2Text.innerHTML = gbRAM2}
 gbRAM2Input.addEventListener('click', function(){
-gbRAM2Result = showOpenDialogSync({properties:['openFile'],filters:[{name:'GB Save File',extensions:['sav']}]});
+gbRAM2Result = dialog.open({properties:['openFile'],filters:[{name:'GB Save File',extensions:['sav']}]})
 if(gbRAM2Result != undefined){gbRAM2 = gbRAM2Result;gbRAM2Text.innerHTML = gbRAM2;localStorage.setItem('gbRAM2', gbRAM2)}})
 
 document.getElementById('cleargbRAM3').addEventListener('click', function(){gbRAM3 = '';gbRAM3Text.innerHTML = '';localStorage.removeItem('gbRAM3')})
 if(localStorage.getItem('gbRAM3') === null || localStorage.getItem('gbRAM3') === undefined){gbRAM3 = '';gbRAM3Text.innerHTML = gbRAM3}
 if(localStorage.getItem('gbRAM3') != null){gbRAM3 = localStorage.getItem('gbRAM3');gbRAM3Text.innerHTML = gbRAM3}
 gbRAM3Input.addEventListener('click', function(){
-gbRAM3Result = showOpenDialogSync({properties:['openFile'],filters:[{name:'GB Save File',extensions:['sav']}]});
+gbRAM3Result = dialog.open({properties:['openFile'],filters:[{name:'GB Save File',extensions:['sav']}]})
 if(gbRAM3Result != undefined){gbRAM3 = gbRAM3Result;gbRAM3Text.innerHTML = gbRAM3;localStorage.setItem('gbRAM3', gbRAM3)}})
 
 document.getElementById('cleargbRAM4').addEventListener('click', function(){gbRAM4 = '';gbRAM4Text.innerHTML = '';localStorage.removeItem('gbRAM4')})
 if(localStorage.getItem('gbRAM4') === null || localStorage.getItem('gbRAM4') === undefined){gbRAM4 = '';gbRAM4Text.innerHTML = gbRAM4}
 if(localStorage.getItem('gbRAM4') != null){gbRAM4 = localStorage.getItem('gbRAM4');gbRAM4Text.innerHTML = gbRAM4}
 gbRAM4Input.addEventListener('click', function(){
-gbRAM4Result = showOpenDialogSync({properties:['openFile'],filters:[{name:'GB Save File',extensions:['sav']}]});
+gbRAM4Result = dialog.open({properties:['openFile'],filters:[{name:'GB Save File',extensions:['sav']}]})
 if(gbRAM4Result != undefined){gbRAM4 = gbRAM4Result;gbRAM4Text.innerHTML = gbRAM4;localStorage.setItem('gbRAM4', gbRAM4)}})
 
 document.getElementById('resetScreenshotPath').addEventListener('click', function(){ScreenshotPath = '';ScreenshotPathText.innerHTML = '';localStorage.removeItem('ScreenshotPath')})
 if(localStorage.getItem('ScreenshotPath') === null || localStorage.getItem('ScreenshotPath') === undefined){ScreenshotPath = '';ScreenshotPathText.innerHTML = ScreenshotPath}
 if(localStorage.getItem('ScreenshotPath') != null){ScreenshotPath = localStorage.getItem('ScreenshotPath');ScreenshotPathText.innerHTML = ScreenshotPath}
 ScreenshotPathInput.addEventListener('click', function(){
-ScreenshotPathResult = showOpenDialogSync({properties:['openDirectory']});
+ScreenshotPathResult = dialog.open({properties:['openDirectory']})
 if(ScreenshotPathResult != undefined){ScreenshotPath = ScreenshotPathResult;ScreenshotPathText.innerHTML = ScreenshotPath;localStorage.setItem('ScreenshotPath', ScreenshotPath)}})
 
 document.getElementById('resetSaveStatePath').addEventListener('click', function(){SaveStatePath = '';SaveStatePathText.innerHTML = '';localStorage.removeItem('SaveStatePath')})
 if(localStorage.getItem('SaveStatePath') === null || localStorage.getItem('SaveStatePath') === undefined){SaveStatePath = '';SaveStatePathText.innerHTML = SaveStatePath}
 if(localStorage.getItem('SaveStatePath') != null){SaveStatePath = localStorage.getItem('SaveStatePath');SaveStatePathText.innerHTML = SaveStatePath}
 SaveStatePathInput.addEventListener('click', function(){
-SaveStatePathResult = showOpenDialogSync({properties:['openDirectory']});
+SaveStatePathResult = dialog.open({properties:['openDirectory']})
 if(SaveStatePathResult != undefined){SaveStatePath = SaveStatePathResult;SaveStatePathText.innerHTML = SaveStatePath;localStorage.setItem('SaveStatePath', SaveStatePath)}})
 
 document.getElementById('resetSaveSRAMPath').addEventListener('click', function(){SaveSRAMPath = '';SaveSRAMPathText.innerHTML = '';localStorage.removeItem('SaveSRAMPath')})
 if(localStorage.getItem('SaveSRAMPath') === null || localStorage.getItem('SaveSRAMPath') === undefined){SaveSRAMPath = '';SaveSRAMPathText.innerHTML = SaveSRAMPath}
 if(localStorage.getItem('SaveSRAMPath') != null){SaveSRAMPath = localStorage.getItem('SaveSRAMPath');SaveSRAMPathText.innerHTML = SaveSRAMPath}
 SaveSRAMPathInput.addEventListener('click', function(){
-SaveSRAMPathResult = showOpenDialogSync({properties:['openDirectory']});
+SaveSRAMPathResult = dialog.open({properties:['openDirectory']})
 if(SaveSRAMPathResult != undefined){SaveSRAMPath = SaveSRAMPathResult;SaveSRAMPathText.innerHTML = SaveSRAMPath;localStorage.setItem('SaveSRAMPath', SaveSRAMPath)}})
 
 document.getElementById('resetTxPath').addEventListener('click', function(){txPath = pathJoin(appData, 'mupen64plus', 'hires_texture');txPathText.innerHTML = txPath;localStorage.removeItem('txPath')})
 if(localStorage.getItem('txPath') === null || localStorage.getItem('txPath') === undefined){txPath = pathJoin(appData, 'mupen64plus', 'hires_texture');txPathText.innerHTML = txPath}
 if(localStorage.getItem('txPath') != null){txPath = localStorage.getItem('txPath');txPathText.innerHTML = txPath}
 txPathInput.addEventListener('click', function(){
-txPathResult = showOpenDialogSync({properties:['openDirectory']});
+txPathResult = dialog.open({properties:['openDirectory']})
 if(txPathResult != undefined){txPath = txPathResult;txPathText.innerHTML = txPath;localStorage.setItem('txPath', txPath)}})
 
 document.getElementById('resetTxCachePath').addEventListener('click', function(){txCachePath = pathJoin(appData, 'mupen64plus', 'cache');txCachePathText.innerHTML = txCachePath;localStorage.removeItem('txCachePath')})
 if(localStorage.getItem('txCachePath') === null || localStorage.getItem('txCachePath') === undefined){txCachePath = pathJoin(appData, 'mupen64plus', 'cache');txCachePathText.innerHTML = txCachePath}
 if(localStorage.getItem('txCachePath') != null){txCachePath = localStorage.getItem('txCachePath');txCachePathText.innerHTML = txCachePath}
 txCachePathInput.addEventListener('click', function(){
-txCachePathResult = showOpenDialogSync({properties:['openDirectory']});
+txCachePathResult = dialog.open({properties:['openDirectory']})
 if(txCachePathResult != undefined){txCachePath = txCachePathResult;txCachePathText.innerHTML = txCachePath;localStorage.setItem('txCachePath', txCachePath)}})
 
 document.getElementById('resetTxDumpPath').addEventListener('click', function(){txDumpPath = pathJoin(appData, 'mupen64plus', 'texture_dump');txDumpPathText.innerHTML = txDumpPath;localStorage.removeItem('txDumpPath')})
 if(localStorage.getItem('txDumpPath') === null || localStorage.getItem('txDumpPath') === undefined){txDumpPath = pathJoin(appData, 'mupen64plus', 'texture_dump');txDumpPathText.innerHTML = txDumpPath}
 if(localStorage.getItem('txDumpPath') != null){txDumpPath = localStorage.getItem('txDumpPath');txDumpPathText.innerHTML = txDumpPath}
 txDumpPathInput.addEventListener('click', function(){
-txDumpPathResult = showOpenDialogSync({properties:['openDirectory']});
+txDumpPathResult = dialog.open({properties:['openDirectory']})
 if(txDumpPathResult != undefined){txDumpPath = txDumpPathResult;txDumpPathText.innerHTML = txDumpPath;localStorage.setItem('txDumpPath', txDumpPath)}})
 
 
@@ -3376,7 +3376,7 @@ var recentFiles = [];
 if(localStorage.getItem('recentFiles') != null){recentFiles = JSON.parse(localStorage.getItem('recentFiles'))}
 if(localStorage.getItem('filePath') != null){filePath = localStorage.getItem('filePath');fileText.innerHTML = filePath}
 fileInput.addEventListener('click', function(){
-fileResult = showOpenDialogSync({properties:['openFile'],filters:[{name:'N64 ROM',extensions:['n64','v64','z64']}]});
+fileResult = dialog.open({properties:['openFile'],filters:[{name:'N64 ROM',extensions:['n64','v64','z64']}]});
 if(fileResult != undefined){filePath = fileResult;fileText.innerHTML = filePath;localStorage.setItem('filePath', filePath);if(!recentFiles.includes(filePath.toString()))recentFiles.unshift(filePath.toString());recentFiles.splice(10);recentFilesUpdate();localStorage.setItem('recentFiles',JSON.stringify(recentFiles));if(cheatList.innerHTML!='')cheatList.innerHTML=''}})
 
 function recentFilesUpdate(){

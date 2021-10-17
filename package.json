@@ -11,9 +11,6 @@
     "type": "git",
     "url": "https://github.com/GhostlyDark/EMG.git"
   },
-  "dependencies": {
-    "@electron/remote": "^2.0.1"
-  },
   "devDependencies": {
     "electron": "^15.0.0"
   }
