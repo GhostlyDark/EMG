@@ -12,6 +12,18 @@
     "url": "https://github.com/GhostlyDark/EMG.git"
   },
   "devDependencies": {
-    "electron": "^15.0.0"
+    "electron": "^15.0.0",
+    "electron-builder": "^22.10.5"
+  },
+  "build": {
+    "asar": "false",
+    "electronVersion": "15.0.0",
+    "icon": "./img/emg.png",
+    "linux": {
+      "target": "AppImage"
+    },
+    "appImage": {
+      "category": "Game"
+    }
   }
 }
