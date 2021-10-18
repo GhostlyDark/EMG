@@ -1,13 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
-const appData = window.appData,
-dialog = window.dialog,
-dir = window.dir,
-pathJoin = window.pathJoin,
-pathExtname = window.pathExtname,
-spawn = window.spawn,
-spawnSync = window.spawnSync,
-writeFileSync = window.writeFileSync,
-stdio = ['ignore', 'pipe', 'ignore'],
+const dialog = window.dialog,
+emuLaunch = window.emuLaunch,
+jstestSpawn = window.jstestSpawn,
+showCheats = window.showCheats,
+writeGCA = window.writeGCA,
+hires_texture = window.hires_texture,
+cache = window.cache,
+texture_dump = window.texture_dump,
 
 fileInput = document.getElementById('fileInput'),
 fileText = document.getElementById('fileText'),
@@ -3323,22 +3322,22 @@ SaveSRAMPathInput.addEventListener('click', function(){
 SaveSRAMPathResult = dialog.open({properties:['openDirectory']})
 if(SaveSRAMPathResult != undefined){SaveSRAMPath = SaveSRAMPathResult;SaveSRAMPathText.innerHTML = SaveSRAMPath;localStorage.setItem('SaveSRAMPath', SaveSRAMPath)}})
 
-document.getElementById('resetTxPath').addEventListener('click', function(){txPath = pathJoin(appData, 'mupen64plus', 'hires_texture');txPathText.innerHTML = txPath;localStorage.removeItem('txPath')})
-if(localStorage.getItem('txPath') === null || localStorage.getItem('txPath') === undefined){txPath = pathJoin(appData, 'mupen64plus', 'hires_texture');txPathText.innerHTML = txPath}
+document.getElementById('resetTxPath').addEventListener('click', function(){txPath = hires_texture;txPathText.innerHTML = txPath;localStorage.removeItem('txPath')})
+if(localStorage.getItem('txPath') === null || localStorage.getItem('txPath') === undefined){txPath = hires_texture;txPathText.innerHTML = txPath}
 if(localStorage.getItem('txPath') != null){txPath = localStorage.getItem('txPath');txPathText.innerHTML = txPath}
 txPathInput.addEventListener('click', function(){
 txPathResult = dialog.open({properties:['openDirectory']})
 if(txPathResult != undefined){txPath = txPathResult;txPathText.innerHTML = txPath;localStorage.setItem('txPath', txPath)}})
 
-document.getElementById('resetTxCachePath').addEventListener('click', function(){txCachePath = pathJoin(appData, 'mupen64plus', 'cache');txCachePathText.innerHTML = txCachePath;localStorage.removeItem('txCachePath')})
-if(localStorage.getItem('txCachePath') === null || localStorage.getItem('txCachePath') === undefined){txCachePath = pathJoin(appData, 'mupen64plus', 'cache');txCachePathText.innerHTML = txCachePath}
+document.getElementById('resetTxCachePath').addEventListener('click', function(){txCachePath = cache;txCachePathText.innerHTML = txCachePath;localStorage.removeItem('txCachePath')})
+if(localStorage.getItem('txCachePath') === null || localStorage.getItem('txCachePath') === undefined){txCachePath = cache;txCachePathText.innerHTML = txCachePath}
 if(localStorage.getItem('txCachePath') != null){txCachePath = localStorage.getItem('txCachePath');txCachePathText.innerHTML = txCachePath}
 txCachePathInput.addEventListener('click', function(){
 txCachePathResult = dialog.open({properties:['openDirectory']})
 if(txCachePathResult != undefined){txCachePath = txCachePathResult;txCachePathText.innerHTML = txCachePath;localStorage.setItem('txCachePath', txCachePath)}})
 
-document.getElementById('resetTxDumpPath').addEventListener('click', function(){txDumpPath = pathJoin(appData, 'mupen64plus', 'texture_dump');txDumpPathText.innerHTML = txDumpPath;localStorage.removeItem('txDumpPath')})
-if(localStorage.getItem('txDumpPath') === null || localStorage.getItem('txDumpPath') === undefined){txDumpPath = pathJoin(appData, 'mupen64plus', 'texture_dump');txDumpPathText.innerHTML = txDumpPath}
+document.getElementById('resetTxDumpPath').addEventListener('click', function(){txDumpPath = texture_dump;txDumpPathText.innerHTML = txDumpPath;localStorage.removeItem('txDumpPath')})
+if(localStorage.getItem('txDumpPath') === null || localStorage.getItem('txDumpPath') === undefined){txDumpPath = texture_dump;txDumpPathText.innerHTML = txDumpPath}
 if(localStorage.getItem('txDumpPath') != null){txDumpPath = localStorage.getItem('txDumpPath');txDumpPathText.innerHTML = txDumpPath}
 txDumpPathInput.addEventListener('click', function(){
 txDumpPathResult = dialog.open({properties:['openDirectory']})
@@ -4154,7 +4153,6 @@ PluginDir = '.';
 
 if(document.getElementById('nospeedlimit').checked === true){nospeedlimit = ['--nospeedlimit'];audio = 'dummy';vsync = 'Video-General[VerticalSync]=False';Glide64VSync = 'Video-Glide64mk2[vsync]=False'}else{nospeedlimit = []}
 
-const executablePath = pathJoin(dir, 'm64p', 'mupen64plus');
 var controls1 = ['--set', AButton1, '--set', BButton1, '--set', LTrig1, '--set', RTrig1, '--set', ZTrig1, '--set', Start1, '--set', DPadU1, '--set', DPadL1, '--set', DPadR1, '--set', DPadD1, '--set', CButtonU1, '--set', CButtonL1, '--set', CButtonR1, '--set', CButtonD1, '--set', MempakSwitch1, '--set', RumblepakSwitch1, '--set', XAxis1, '--set', YAxis1],
 controls2 = ['--set', AButton2, '--set', BButton2, '--set', LTrig2, '--set', RTrig2, '--set', ZTrig2, '--set', Start2, '--set', DPadU2, '--set', DPadL2, '--set', DPadR2, '--set', DPadD2, '--set', CButtonU2, '--set', CButtonL2, '--set', CButtonR2, '--set', CButtonD2, '--set', MempakSwitch2, '--set', RumblepakSwitch2, '--set', XAxis2, '--set', YAxis2],
 controls3 = ['--set', AButton3, '--set', BButton3, '--set', LTrig3, '--set', RTrig3, '--set', ZTrig3, '--set', Start3, '--set', DPadU3, '--set', DPadL3, '--set', DPadR3, '--set', DPadD3, '--set', CButtonU3, '--set', CButtonL3, '--set', CButtonR3, '--set', CButtonD3, '--set', MempakSwitch3, '--set', RumblepakSwitch3, '--set', XAxis3, '--set', YAxis3],
@@ -4196,15 +4194,10 @@ c_stick_up = c_stick_upDropdown.value;
 
 const gcaSettings = 'control_stick_deadzone = ' +  control_stick_deadzone + '\n' + 'control_stick_sensitivity = ' + control_stick_sensitivity + '\n' + 'c_stick_deadzone = ' + c_stick_deadzone + '\n' + 'trigger_threshold = ' + trigger_threshold + '\n' + '\n' + '[controller_mapping]' + '\n' + 'a = ' + a + '\n' + 'b = ' + b + '\n' + 'x = ' + x + '\n' + 'y = ' + y + '\n' + 'start = ' + start + '\n' + 'z = ' + z + '\n' + 'l = ' + l + '\n' + 'r = ' + r + '\n' + 'd_pad_left = ' + d_pad_left + '\n' + 'd_pad_right = ' + d_pad_right + '\n' + 'd_pad_down = ' + d_pad_down + '\n' + 'd_pad_up = ' + d_pad_up + '\n' + 'c_stick_left = ' + c_stick_left + '\n' + 'c_stick_right = ' + c_stick_right + '\n' + 'c_stick_down = ' + c_stick_down + '\n' + 'c_stick_up = ' + c_stick_up;
 
-writeFileSync(pathJoin(dir, 'm64p', 'mupen64plus-input-gca.toml'),gcaSettings)
+writeGCA(gcaSettings)
 
-var options = {cwd: pathJoin(dir, 'm64p'), detached: true, stdio: stdio},
-stdout = '';
 const parameters = controls1.concat(controls2,controls3,controls4,nospeedlimit,cheats,config),
-child = spawn(executablePath, parameters, options);
-console.log(child.spawnargs)
-child.stdout.on('data', (data) => {stdout += `${data}`})
-child.on('exit', () => {console.log(stdout)})
+child = emuLaunch(parameters);
 
 })
 
@@ -4212,12 +4205,9 @@ child.on('exit', () => {console.log(stdout)})
 
 listCheats.addEventListener('click', function(){
 cheatList.innerHTML = '';
-const executablePath = pathJoin(dir, 'm64p', 'mupen64plus'),
-parameters = ['--cheats','list',filePath],
-options = {cwd: pathJoin(dir, 'm64p'), stdio: stdio},
-child = spawnSync(executablePath, parameters, options);
-var data = child.stdout,
-datastring = data.toString().replace(regstring,''),
+const parameters = ['--cheats','list',filePath],
+child = showCheats(parameters);
+var datastring = child.replace(regstring,''),
 datafilter = datastring.replace(regfilter,''),
 dataremove = datafilter.replace(regremove,'');
 datasplit = dataremove.split(regsplit);
@@ -4276,9 +4266,11 @@ else{removeShow();videoSettingsDropdown.classList.toggle('show');videoSettings.c
 window.onclick = function(e){if(!e.target.matches('.dropbutton')){removeShow()}}
 function prevent(e){e.preventDefault();e.stopPropagation()}
 
+function fileExtension(fpath,ext){ext = fpath.slice((fpath.lastIndexOf(".") - 1 >>> 0) + 2);return ext}
+
 function ROMInput(fPath){
 if(fPath != undefined){
-if(pathExtname(fPath) === '.n64' || pathExtname(fPath) === '.v64' || pathExtname(fPath) === '.z64'){
+if(fileExtension(fPath) === 'n64' || fileExtension(fPath) === 'v64' || fileExtension(fPath) === 'z64'){
 filePath = fPath;fileText.innerHTML = fPath;localStorage.setItem('filePath', fPath);if(!recentFiles.includes(filePath))recentFiles.unshift(filePath);recentFiles.splice(10);recentFilesUpdate();localStorage.setItem('recentFiles',JSON.stringify(recentFiles));if(cheatList.innerHTML!='')cheatList.innerHTML=''}}}
 
 fileInput.addEventListener('drop', handleDropROM, false)
@@ -4289,7 +4281,7 @@ else{fPath = e.dataTransfer.files[0].path;ROMInput(fPath)}}
 
 function IPLROMFile(fPath){
 if(fPath != undefined){
-if(pathExtname(fPath) === '.n64' || pathExtname(fPath) === '.v64' || pathExtname(fPath) === '.z64' || pathExtname(fPath) === '.bin' || pathExtname(fPath) === '.rom'){
+if(fileExtension(fPath) === 'n64' || fileExtension(fPath) === 'v64' || fileExtension(fPath) === 'z64' || fileExtension(fPath) === 'bin' || fileExtension(fPath) === 'rom'){
 filePath = fPath;IPLROMText.innerHTML = fPath;localStorage.setItem('IPLROM', fPath)}}}
 
 IPLROMInput.addEventListener('drop', handleDropIPLROM, false)
@@ -4300,7 +4292,7 @@ else{fPath = e.dataTransfer.files[0].path;IPLROMFile(fPath)}}
 
 function DiskFile(fPath){
 if(fPath != undefined){
-if(pathExtname(fPath) === '.ndd'){
+if(fileExtension(fPath) === 'ndd'){
 filePath = fPath;DiskText.innerHTML = fPath;localStorage.setItem('Disk', fPath)}}}
 
 DiskInput.addEventListener('drop', handleDropDisk, false)
@@ -4311,7 +4303,7 @@ else{fPath = e.dataTransfer.files[0].path;DiskFile(fPath)}}
 
 function gbROM1File(fPath){
 if(fPath != undefined){
-if(pathExtname(fPath) === '.gb' || pathExtname(fPath) === '.gbc'){
+if(fileExtension(fPath) === 'gb' || fileExtension(fPath) === 'gbc'){
 filePath = fPath;gbROM1Text.innerHTML = fPath;localStorage.setItem('gbROM1', fPath)}}}
 
 gbROM1Input.addEventListener('drop', handleDropgbROM1, false)
@@ -4322,7 +4314,7 @@ else{fPath = e.dataTransfer.files[0].path;gbROM1File(fPath)}}
 
 function gbROM2File(fPath){
 if(fPath != undefined){
-if(pathExtname(fPath) === '.gb' || pathExtname(fPath) === '.gbc'){
+if(fileExtension(fPath) === 'gb' || fileExtension(fPath) === 'gbc'){
 filePath = fPath;gbROM2Text.innerHTML = fPath;localStorage.setItem('gbROM2', fPath)}}}
 
 gbROM2Input.addEventListener('drop', handleDropgbROM2, false)
@@ -4333,7 +4325,7 @@ else{fPath = e.dataTransfer.files[0].path;gbROM2File(fPath)}}
 
 function gbROM3File(fPath){
 if(fPath != undefined){
-if(pathExtname(fPath) === '.gb' || pathExtname(fPath) === '.gbc'){
+if(fileExtension(fPath) === 'gb' || fileExtension(fPath) === 'gbc'){
 filePath = fPath;gbROM3Text.innerHTML = fPath;localStorage.setItem('gbROM3', fPath)}}}
 
 gbROM3Input.addEventListener('drop', handleDropgbROM3, false)
@@ -4344,7 +4336,7 @@ else{fPath = e.dataTransfer.files[0].path;gbROM3File(fPath)}}
 
 function gbROM4File(fPath){
 if(fPath != undefined){
-if(pathExtname(fPath) === '.gb' || pathExtname(fPath) === '.gbc'){
+if(fileExtension(fPath) === 'gb' || fileExtension(fPath) === 'gbc'){
 filePath = fPath;gbROM4Text.innerHTML = fPath;localStorage.setItem('gbROM4', fPath)}}}
 
 gbROM4Input.addEventListener('drop', handleDropgbROM4, false)
@@ -4355,7 +4347,7 @@ else{fPath = e.dataTransfer.files[0].path;gbROM4File(fPath)}}
 
 function gbRAM1File(fPath){
 if(fPath != undefined){
-if(pathExtname(fPath) === '.sav'){
+if(fileExtension(fPath) === 'sav'){
 filePath = fPath;gbRAM1Text.innerHTML = fPath;localStorage.setItem('gbRAM1', fPath)}}}
 
 gbRAM1Input.addEventListener('drop', handleDropgbRAM1, false)
@@ -4366,7 +4358,7 @@ else{fPath = e.dataTransfer.files[0].path;gbRAM1File(fPath)}}
 
 function gbRAM2File(fPath){
 if(fPath != undefined){
-if(pathExtname(fPath) === '.sav'){
+if(fileExtension(fPath) === 'sav'){
 filePath = fPath;gbRAM2Text.innerHTML = fPath;localStorage.setItem('gbRAM2', fPath)}}}
 
 gbRAM2Input.addEventListener('drop', handleDropgbRAM2, false)
@@ -4377,7 +4369,7 @@ else{fPath = e.dataTransfer.files[0].path;gbRAM2File(fPath)}}
 
 function gbRAM3File(fPath){
 if(fPath != undefined){
-if(pathExtname(fPath) === '.sav'){
+if(fileExtension(fPath) === 'sav'){
 filePath = fPath;gbRAM3Text.innerHTML = fPath;localStorage.setItem('gbRAM3', fPath)}}}
 
 gbRAM3Input.addEventListener('drop', handleDropgbRAM3, false)
@@ -4388,7 +4380,7 @@ else{fPath = e.dataTransfer.files[0].path;gbRAM3File(fPath)}}
 
 function gbRAM4File(fPath){
 if(fPath != undefined){
-if(pathExtname(fPath) === '.sav'){
+if(fileExtension(fPath) === 'sav'){
 filePath = fPath;gbRAM4Text.innerHTML = fPath;localStorage.setItem('gbRAM4', fPath)}}}
 
 gbRAM4Input.addEventListener('drop', handleDropgbRAM4, false)
@@ -4399,8 +4391,6 @@ else{fPath = e.dataTransfer.files[0].path;gbRAM4File(fPath)}}
 
 
 
-const jstestPath = pathJoin(dir, 'm64p', 'sdl2-jstest'),
-jstestOptions = {cwd: pathJoin(dir, 'm64p'), stdio: stdio, timeout: 10000};
 var jstestChild;
 
 // joydata[0] = Device Name, joydata[1] = Device Number, joydata[2] = Pressed Key
@@ -4410,7 +4400,7 @@ if(joyinput.id.includes('1')){jstestConfig = ['-e', '0']}
 if(joyinput.id.includes('2')){jstestConfig = ['-e', '1']}
 if(joyinput.id.includes('3')){jstestConfig = ['-e', '2']}
 if(joyinput.id.includes('4')){jstestConfig = ['-e', '3']}
-jstestChild = spawn(jstestPath, jstestConfig, jstestOptions);
+jstestChild = jstestSpawn(jstestConfig);
 jstestChild.stdout.on('data', (data) => {
 joyfilter = `${data}`.replace(regremove,'');
 joydata = joyfilter.split('\n');
