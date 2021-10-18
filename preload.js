@@ -1,4 +1,4 @@
-const {ipcRenderer} = require('electron'),
+const {contextBridge,ipcRenderer} = require('electron'),
 child_process = require('child_process'),
 fs = require('fs'),
 path = require('path'),
@@ -34,13 +34,51 @@ showCheats = (parameters) => {
 jstestSpawn = (jstestConfig) => {
 	let child = child_process.spawn(jstestPath, jstestConfig, jstestOptions);
 	return child
-}
+},
 
-window.hires_texture = hires_texture
-window.cache = cache
-window.texture_dump = texture_dump
-window.dialog = dialog
-window.emuLaunch = emuLaunch
-window.jstestSpawn = jstestSpawn
-window.showCheats = showCheats
-window.writeGCA = writeGCA
+regremove = /\r/gm,
+regaxis = /\s.*/i,
+reghk = /button\(|\)/g;
+
+var jstestChild; // joydata[0] = Device Name, joydata[1] = Device Number, joydata[2] = Pressed Key
+let jstest = (joyinput,joyvalue,joyfilter,joydata,joyhotkey,jstestConfig,name1Input,name2Input,name3Input,name4Input) => {
+if(jstestChild != undefined)jstestChild.kill('SIGTERM');
+if(joyinput.id.includes('1')){jstestConfig = ['-e', '0']}
+if(joyinput.id.includes('2')){jstestConfig = ['-e', '1']}
+if(joyinput.id.includes('3')){jstestConfig = ['-e', '2']}
+if(joyinput.id.includes('4')){jstestConfig = ['-e', '3']}
+jstestChild = jstestSpawn(jstestConfig);
+jstestChild.stdout.on('data', (data) => {
+joyfilter = `${data}`.replace(regremove,'');
+joydata = joyfilter.split('\n');
+if(joyinput.id.includes('JoyMapping')){
+if(joydata[2].includes('button')){
+joyhotkey = joydata[2].replace(reghk,'');
+if(!joyinput.value.includes('B') || joyinput.value.includes('/')){joyvalue = 'B' + joyhotkey}
+if('B' + joyhotkey != joyinput.value && joyinput.value.includes('B') && !joyinput.value.includes('/')){joyvalue = joyinput.value + '/B' + joyhotkey}}}
+else{
+if(joyinput.id.includes('1')){name1Input.value = joydata[0];localStorage.setItem('name1',joydata[0])}
+if(joyinput.id.includes('2')){name2Input.value = joydata[0];localStorage.setItem('name2',joydata[0])}
+if(joyinput.id.includes('3')){name3Input.value = joydata[0];localStorage.setItem('name3',joydata[0])}
+if(joyinput.id.includes('4')){name4Input.value = joydata[0];localStorage.setItem('name4',joydata[0])}
+if(joydata[2].includes('button')){joyvalue = joydata[2]};
+if(joydata[2].includes('axis')){
+if(joydata[2].includes('-')){joyvalue = joydata[2].replace(regaxis,'-)')}
+else{joyvalue = joydata[2].replace(regaxis,'+)')}}
+if(joydata[2].includes('hat')){
+if(joydata[2] === 'hat(0 1)'){joyvalue = 'hat(0 Up)'}
+if(joydata[2] === 'hat(0 2)'){joyvalue = 'hat(0 Right)'}
+if(joydata[2] === 'hat(0 4)'){joyvalue = 'hat(0 Down)'}
+if(joydata[2] === 'hat(0 8)'){joyvalue = 'hat(0 Left)'}}}
+if(joyvalue != undefined){joyinput.value = joyvalue;localStorage.setItem(joyinput.id,joyvalue)}})
+joyinput.onblur = function(){jstestChild.kill('SIGTERM')};
+jstestChild.on('close', () => {joyinput.blur()})}
+
+contextBridge.exposeInMainWorld('hires_texture',hires_texture)
+contextBridge.exposeInMainWorld('cache',cache)
+contextBridge.exposeInMainWorld('texture_dump',texture_dump)
+contextBridge.exposeInMainWorld('dialog',dialog)
+contextBridge.exposeInMainWorld('emuLaunch',emuLaunch)
+contextBridge.exposeInMainWorld('jstest',jstest)
+contextBridge.exposeInMainWorld('showCheats',showCheats)
+contextBridge.exposeInMainWorld('writeGCA',writeGCA)

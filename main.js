@@ -7,7 +7,7 @@ dir = __dirname,
 scale = {width:28},
 load = path.join(dir, 'index.htm'),
 name = ' ' + app.name + ' v' + app.getVersion(),
-preferences = {contextIsolation: false, preload: path.join(dir, 'preload.js')},
+preferences = {preload:path.join(dir,'preload.js')},
 mainWindow = {backgroundColor:'#121212', width:1280, height:800, minWidth:923, minHeight:640, title:name, show:false, autoHideMenuBar:true, webPreferences:preferences};
 
 const menuQuit = 'Quit ' + app.name,menuWindow = 'Window',menuFunctions = 'Functions',menuReload = 'Reload window',menuZoomIn = 'Increase zoom',menuZoomOut = 'Decrease zoom',menuZoomReset = 'Reset zoom',menuClear = 'Reset settings',menuSaves = 'Show User Data',menuSite = 'Visit website',dialogDelete = ' Reset settings',dialogDeleteM = 'Reset all settings?',dialogNo = 'Abort',dialogYes = 'Confirm',

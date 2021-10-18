@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
 const dialog = window.dialog,
 emuLaunch = window.emuLaunch,
-jstestSpawn = window.jstestSpawn,
+jstest = window.jstest,
 showCheats = window.showCheats,
 writeGCA = window.writeGCA,
 hires_texture = window.hires_texture,
@@ -699,8 +699,6 @@ regradio = /^\s\s\s/g,
 regid = /\:.*/g,
 regbox = /_.*/g,
 regtarget = /.*\_/g,
-regaxis = /\s.*/i,
-reghk = /button\(|\)/g,
 regkb = /key\(\)|key\(,\)/g,
 
 keyCodes = { //HTML DOM keycodes to text
@@ -4391,41 +4389,9 @@ else{fPath = e.dataTransfer.files[0].path;gbRAM4File(fPath)}}
 
 
 
-var jstestChild;
-
-// joydata[0] = Device Name, joydata[1] = Device Number, joydata[2] = Pressed Key
 function joystick(joyinput,joyvalue,joyfilter,joydata,joyhotkey,jstestConfig){
-if(jstestChild != undefined)jstestChild.kill('SIGTERM');
-if(joyinput.id.includes('1')){jstestConfig = ['-e', '0']}
-if(joyinput.id.includes('2')){jstestConfig = ['-e', '1']}
-if(joyinput.id.includes('3')){jstestConfig = ['-e', '2']}
-if(joyinput.id.includes('4')){jstestConfig = ['-e', '3']}
-jstestChild = jstestSpawn(jstestConfig);
-jstestChild.stdout.on('data', (data) => {
-joyfilter = `${data}`.replace(regremove,'');
-joydata = joyfilter.split('\n');
-if(joyinput.id.includes('JoyMapping')){
-if(joydata[2].includes('button')){
-joyhotkey = joydata[2].replace(reghk,'');
-if(!joyinput.value.includes('B') || joyinput.value.includes('/')){joyvalue = 'B' + joyhotkey}
-if('B' + joyhotkey != joyinput.value && joyinput.value.includes('B') && !joyinput.value.includes('/')){joyvalue = joyinput.value + '/B' + joyhotkey}}}
-else{
-if(joyinput.id.includes('1')){name1Input.value = joydata[0];localStorage.setItem('name1',joydata[0])}
-if(joyinput.id.includes('2')){name2Input.value = joydata[0];localStorage.setItem('name2',joydata[0])}
-if(joyinput.id.includes('3')){name3Input.value = joydata[0];localStorage.setItem('name3',joydata[0])}
-if(joyinput.id.includes('4')){name4Input.value = joydata[0];localStorage.setItem('name4',joydata[0])}
-if(joydata[2].includes('button')){joyvalue = joydata[2]};
-if(joydata[2].includes('axis')){
-if(joydata[2].includes('-')){joyvalue = joydata[2].replace(regaxis,'-)')}
-else{joyvalue = joydata[2].replace(regaxis,'+)')}}
-if(joydata[2].includes('hat')){
-if(joydata[2] === 'hat(0 1)'){joyvalue = 'hat(0 Up)'}
-if(joydata[2] === 'hat(0 2)'){joyvalue = 'hat(0 Right)'}
-if(joydata[2] === 'hat(0 4)'){joyvalue = 'hat(0 Down)'}
-if(joydata[2] === 'hat(0 8)'){joyvalue = 'hat(0 Left)'}}}
-if(joyvalue != undefined){joyinput.value = joyvalue;localStorage.setItem(joyinput.id,joyvalue)}})
-joyinput.onblur = function(){jstestChild.kill('SIGTERM')};
-jstestChild.on('close', (code) => {joyinput.blur()})}
+	jstest(joyinput,joyvalue,joyfilter,joydata,joyhotkey,jstestConfig,name1Input,name2Input,name3Input,name4Input)
+}
 
 StickU1cBox.addEventListener('focus', function(){joystick(StickU1cBox)})
 StickU1cbBox.addEventListener('focus', function(){joystick(StickU1cbBox)})
