@@ -1,9 +1,18 @@
 let win, choice, whitelist;
 const {app, BrowserWindow, dialog, ipcMain, Menu, nativeImage, session, shell} = require('electron'),
+child_process = require('child_process'),
+fs = require('fs'),
 url = require('url').URL,
 path = require('path'),
-appData = app.getPath('appData'),
 dir = __dirname,
+appData = app.getPath('appData'),
+cwd = path.join(dir, 'm64p'),
+executablePath = path.join(cwd, 'mupen64plus'),
+jstestPath = path.join(cwd, 'sdl2-jstest'),
+stdio = ['ignore', 'pipe', 'ignore'],
+cheatOptions = {cwd: cwd, stdio: stdio},
+emuOptions = {cwd: cwd, detached: true, stdio: stdio},
+jstestOptions = {cwd: cwd, stdio: stdio, timeout: 10000},
 scale = {width:28},
 load = path.join(dir, 'index.htm'),
 name = ' ' + app.name + ' v' + app.getVersion(),
@@ -13,8 +22,27 @@ mainWindow = {backgroundColor:'#121212', width:1280, height:800, minWidth:923, m
 const menuQuit = 'Quit ' + app.name,menuWindow = 'Window',menuFunctions = 'Functions',menuReload = 'Reload window',menuZoomIn = 'Increase zoom',menuZoomOut = 'Decrease zoom',menuZoomReset = 'Reset zoom',menuClear = 'Reset settings',menuSaves = 'Show User Data',menuSite = 'Visit website',dialogDelete = ' Reset settings',dialogDeleteM = 'Reset all settings?',dialogNo = 'Abort',dialogYes = 'Confirm',
 deleteDialog = {defaultId:1, cancelId:1, icon:path.join(dir, 'img', 'delete.png'), buttons:[dialogYes,dialogNo], title:dialogDelete, message:dialogDeleteM}
 
-ipcMain.on('appData', (e) => {e.returnValue = appData})
+ipcMain.on('emuLaunch', (e, parameters) => {
+	var stdout = '';
+	let child = child_process.spawn(executablePath, parameters, emuOptions);
+	e.reply('spawnargs', child.spawnargs)
+	child.stdout.on('data', (data) => {stdout += `${data}`})
+	child.on('exit', () => {e.reply('m64pLog', stdout)})
+})
+
+ipcMain.on('showCheats', (e, parameters) => {
+	let child = child_process.spawnSync(executablePath, parameters, cheatOptions);
+	e.returnValue = child.stdout.toString()
+})
+
+ipcMain.on('cwd', (e) => {e.returnValue = cwd})
+ipcMain.on('executablePath', (e) => {e.returnValue = executablePath})
+ipcMain.on('jstestPath', (e) => {e.returnValue = jstestPath})
+ipcMain.on('hires_texture', (e) => {e.returnValue = path.join(appData, 'mupen64plus', 'hires_texture')})
+ipcMain.on('cache', (e) => {e.returnValue = path.join(appData, 'mupen64plus', 'cache')})
+ipcMain.on('texture_dump', (e) => {e.returnValue = path.join(appData, 'mupen64plus', 'texture_dump')})
 ipcMain.on('dialog', (e, data) => {e.returnValue = dialog.showOpenDialogSync(data)})
+ipcMain.on('writeGCA', (e, gcaSettings) => {e.returnValue = fs.writeFileSync(path.join(dir, 'm64p', 'mupen64plus-input-gca.toml'),gcaSettings)})
 
 app.on('second-instance', (e) => {if(win.isMinimized()){win.restore()}else{win.focus()}})
 if(!app.requestSingleInstanceLock()){return app.quit()}

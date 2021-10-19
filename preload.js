@@ -1,40 +1,17 @@
 const {contextBridge,ipcRenderer} = require('electron'),
 child_process = require('child_process'),
-fs = require('fs'),
-path = require('path'),
-appData = ipcRenderer.sendSync('appData'),
-dialog = {open: data => ipcRenderer.sendSync('dialog', data)},
-writeGCA = (gcaSettings) => {fs.writeFileSync(path.join(__dirname, 'm64p', 'mupen64plus-input-gca.toml'),gcaSettings)},
-
-cwd = path.join(__dirname, 'm64p'),
+cwd = ipcRenderer.sendSync('cwd'),
+executablePath = ipcRenderer.sendSync('executablePath'),
+jstestPath = ipcRenderer.sendSync('jstestPath'),
+hires_texture = ipcRenderer.sendSync('hires_texture'),
+cache = ipcRenderer.sendSync('cache'),
+texture_dump = ipcRenderer.sendSync('texture_dump'),
 stdio = ['ignore', 'pipe', 'ignore'],
-cheatOptions = {cwd: cwd, stdio: stdio},
-emuOptions = {cwd: cwd, detached: true, stdio: stdio},
 jstestOptions = {cwd: cwd, stdio: stdio, timeout: 10000},
-
-executablePath = path.join(cwd, 'mupen64plus'),
-jstestPath = path.join(cwd, 'sdl2-jstest'),
-hires_texture = path.join(appData, 'mupen64plus', 'hires_texture'),
-cache = path.join(appData, 'mupen64plus', 'cache'),
-texture_dump = path.join(appData, 'mupen64plus', 'texture_dump'),
-
-emuLaunch = (parameters) => {
-  var stdout = '';
-  let child = child_process.spawn(executablePath, parameters, emuOptions);
-  console.log(child.spawnargs)
-  child.stdout.on('data', (data) => {stdout += `${data}`})
-  child.on('exit', () => {console.log(stdout)})
-},
-
-showCheats = (parameters) => {
-	let child = child_process.spawnSync(executablePath, parameters, cheatOptions);
-	return child.stdout.toString()
-},
-
-jstestSpawn = (jstestConfig) => {
-	let child = child_process.spawn(jstestPath, jstestConfig, jstestOptions);
-	return child
-},
+dialog = (data) => {return ipcRenderer.sendSync('dialog', data)},
+writeGCA = (gcaSettings) => {ipcRenderer.sendSync('writeGCA', gcaSettings)},
+emuLaunch = (parameters) => {ipcRenderer.send('emuLaunch', parameters)},
+showCheats = (parameters) => {return ipcRenderer.sendSync('showCheats', parameters)},
 
 regremove = /\r/gm,
 regaxis = /\s.*/i,
@@ -47,7 +24,7 @@ if(joyinput.id.includes('1')){jstestConfig = ['-e', '0']}
 if(joyinput.id.includes('2')){jstestConfig = ['-e', '1']}
 if(joyinput.id.includes('3')){jstestConfig = ['-e', '2']}
 if(joyinput.id.includes('4')){jstestConfig = ['-e', '3']}
-jstestChild = jstestSpawn(jstestConfig);
+jstestChild = child_process.spawn(jstestPath, jstestConfig, jstestOptions);
 jstestChild.stdout.on('data', (data) => {
 joyfilter = `${data}`.replace(regremove,'');
 joydata = joyfilter.split('\n');
@@ -73,6 +50,9 @@ if(joydata[2] === 'hat(0 8)'){joyvalue = 'hat(0 Left)'}}}
 if(joyvalue != undefined){joyinput.value = joyvalue;localStorage.setItem(joyinput.id,joyvalue)}})
 joyinput.onblur = function(){jstestChild.kill('SIGTERM')};
 jstestChild.on('close', () => {joyinput.blur()})}
+
+ipcRenderer.on('spawnargs', (e, spawnargs) => {console.log(spawnargs)})
+ipcRenderer.on('m64pLog', (e, stdout) => {console.log(stdout)})
 
 contextBridge.exposeInMainWorld('hires_texture',hires_texture)
 contextBridge.exposeInMainWorld('cache',cache)
