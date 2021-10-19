@@ -8,7 +8,8 @@ cache = ipcRenderer.sendSync('cache'),
 texture_dump = ipcRenderer.sendSync('texture_dump'),
 stdio = ['ignore', 'pipe', 'ignore'],
 jstestOptions = {cwd: cwd, stdio: stdio, timeout: 10000},
-dialog = (data) => {return ipcRenderer.sendSync('dialog', data)},
+dialogDirectory = () => {return ipcRenderer.sendSync('dialogDirectory')},
+dialogFile = (data) => {return ipcRenderer.sendSync('dialogFile', data)},
 writeGCA = (gcaSettings) => {ipcRenderer.sendSync('writeGCA', gcaSettings)},
 emuLaunch = (parameters) => {ipcRenderer.send('emuLaunch', parameters)},
 showCheats = (parameters) => {return ipcRenderer.sendSync('showCheats', parameters)},
@@ -57,7 +58,8 @@ ipcRenderer.on('m64pLog', (e, stdout) => {console.log(stdout)})
 contextBridge.exposeInMainWorld('hires_texture',hires_texture)
 contextBridge.exposeInMainWorld('cache',cache)
 contextBridge.exposeInMainWorld('texture_dump',texture_dump)
-contextBridge.exposeInMainWorld('dialog',dialog)
+contextBridge.exposeInMainWorld('dialogDirectory',dialogDirectory)
+contextBridge.exposeInMainWorld('dialogFile',dialogFile)
 contextBridge.exposeInMainWorld('emuLaunch',emuLaunch)
 contextBridge.exposeInMainWorld('jstest',jstest)
 contextBridge.exposeInMainWorld('showCheats',showCheats)
