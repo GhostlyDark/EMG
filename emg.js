@@ -4393,761 +4393,759 @@ else{fPath = e.dataTransfer.files[0].path;gbRAM4File(fPath)}}
 
 
 
-function joystick(joyinput,joyvalue,joyfilter,joydata,joyhotkey,jstestConfig){
-	jstest(joyinput,joyvalue,joyfilter,joydata,joyhotkey,jstestConfig,name1Input,name2Input,name3Input,name4Input)
-}
+function joystick(joyinput){jstest(joyinput,name1Input,name2Input,name3Input,name4Input)}
 
-StickU1cBox.addEventListener('focus', function(){joystick(StickU1cBox)})
-StickU1cbBox.addEventListener('focus', function(){joystick(StickU1cbBox)})
+StickU1cBox.addEventListener('click', function(){joystick(StickU1cBox)})
+StickU1cbBox.addEventListener('click', function(){joystick(StickU1cbBox)})
 if(localStorage.getItem('StickU1c') != null){StickU1cBox.value = localStorage.getItem('StickU1c')}
 if(localStorage.getItem('StickU1cb') != null){StickU1cbBox.value = localStorage.getItem('StickU1cb')}
 document.getElementById('clearStickU1c').addEventListener('click', function(){StickU1c.value = '';localStorage.removeItem('StickU1c');StickU1cb.value = '';localStorage.removeItem('StickU1cb')})
 
-StickL1cBox.addEventListener('focus', function(){joystick(StickL1cBox)})
-StickL1cbBox.addEventListener('focus', function(){joystick(StickL1cbBox)})
+StickL1cBox.addEventListener('click', function(){joystick(StickL1cBox)})
+StickL1cbBox.addEventListener('click', function(){joystick(StickL1cbBox)})
 if(localStorage.getItem('StickL1c') != null){StickL1cBox.value = localStorage.getItem('StickL1c')}
 if(localStorage.getItem('StickL1cb') != null){StickL1cbBox.value = localStorage.getItem('StickL1cb')}
 document.getElementById('clearStickL1c').addEventListener('click', function(){StickL1c.value = '';localStorage.removeItem('StickL1c');StickL1cb.value = '';localStorage.removeItem('StickL1cb')})
 
-StickR1cBox.addEventListener('focus', function(){joystick(StickR1cBox)})
-StickR1cbBox.addEventListener('focus', function(){joystick(StickR1cbBox)})
+StickR1cBox.addEventListener('click', function(){joystick(StickR1cBox)})
+StickR1cbBox.addEventListener('click', function(){joystick(StickR1cbBox)})
 if(localStorage.getItem('StickR1c') != null){StickR1cBox.value = localStorage.getItem('StickR1c')}
 if(localStorage.getItem('StickR1cb') != null){StickR1cbBox.value = localStorage.getItem('StickR1cb')}
 document.getElementById('clearStickR1c').addEventListener('click', function(){StickR1c.value = '';localStorage.removeItem('StickR1c');StickR1cb.value = '';localStorage.removeItem('StickR1cb')})
 
-StickD1cBox.addEventListener('focus', function(){joystick(StickD1cBox)})
-StickD1cbBox.addEventListener('focus', function(){joystick(StickD1cbBox)})
+StickD1cBox.addEventListener('click', function(){joystick(StickD1cBox)})
+StickD1cbBox.addEventListener('click', function(){joystick(StickD1cbBox)})
 if(localStorage.getItem('StickD1c') != null){StickD1cBox.value = localStorage.getItem('StickD1c')}
 if(localStorage.getItem('StickD1cb') != null){StickD1cbBox.value = localStorage.getItem('StickD1cb')}
 document.getElementById('clearStickD1c').addEventListener('click', function(){StickD1c.value = '';localStorage.removeItem('StickD1c');StickD1cb.value = '';localStorage.removeItem('StickD1cb')})
 
-CButtonU1cBox.addEventListener('focus', function(){joystick(CButtonU1cBox)})
-CButtonU1cbBox.addEventListener('focus', function(){joystick(CButtonU1cbBox)})
+CButtonU1cBox.addEventListener('click', function(){joystick(CButtonU1cBox)})
+CButtonU1cbBox.addEventListener('click', function(){joystick(CButtonU1cbBox)})
 if(localStorage.getItem('CButtonU1c') != null){CButtonU1cBox.value = localStorage.getItem('CButtonU1c')}
 if(localStorage.getItem('CButtonU1cb') != null){CButtonU1cbBox.value = localStorage.getItem('CButtonU1cb')}
 document.getElementById('clearCButtonU1c').addEventListener('click', function(){CButtonU1c.value = '';localStorage.removeItem('CButtonU1c');CButtonU1cb.value = '';localStorage.removeItem('CButtonU1cb')})
 
-CButtonL1cBox.addEventListener('focus', function(){joystick(CButtonL1cBox)})
-CButtonL1cbBox.addEventListener('focus', function(){joystick(CButtonL1cbBox)})
+CButtonL1cBox.addEventListener('click', function(){joystick(CButtonL1cBox)})
+CButtonL1cbBox.addEventListener('click', function(){joystick(CButtonL1cbBox)})
 if(localStorage.getItem('CButtonL1c') != null){CButtonL1cBox.value = localStorage.getItem('CButtonL1c')}
 if(localStorage.getItem('CButtonL1cb') != null){CButtonL1cbBox.value = localStorage.getItem('CButtonL1cb')}
 document.getElementById('clearCButtonL1c').addEventListener('click', function(){CButtonL1c.value = '';localStorage.removeItem('CButtonL1c');CButtonL1cb.value = '';localStorage.removeItem('CButtonL1cb')})
 
-CButtonR1cBox.addEventListener('focus', function(){joystick(CButtonR1cBox)})
-CButtonR1cbBox.addEventListener('focus', function(){joystick(CButtonR1cbBox)})
+CButtonR1cBox.addEventListener('click', function(){joystick(CButtonR1cBox)})
+CButtonR1cbBox.addEventListener('click', function(){joystick(CButtonR1cbBox)})
 if(localStorage.getItem('CButtonR1c') != null){CButtonR1cBox.value = localStorage.getItem('CButtonR1c')}
 if(localStorage.getItem('CButtonR1cb') != null){CButtonR1cbBox.value = localStorage.getItem('CButtonR1cb')}
 document.getElementById('clearCButtonR1c').addEventListener('click', function(){CButtonR1c.value = '';localStorage.removeItem('CButtonR1c');CButtonR1cb.value = '';localStorage.removeItem('CButtonR1cb')})
 
-CButtonD1cBox.addEventListener('focus', function(){joystick(CButtonD1cBox)})
-CButtonD1cbBox.addEventListener('focus', function(){joystick(CButtonD1cbBox)})
+CButtonD1cBox.addEventListener('click', function(){joystick(CButtonD1cBox)})
+CButtonD1cbBox.addEventListener('click', function(){joystick(CButtonD1cbBox)})
 if(localStorage.getItem('CButtonD1c') != null){CButtonD1cBox.value = localStorage.getItem('CButtonD1c')}
 if(localStorage.getItem('CButtonD1cb') != null){CButtonD1cbBox.value = localStorage.getItem('CButtonD1cb')}
 document.getElementById('clearCButtonD1c').addEventListener('click', function(){CButtonD1c.value = '';localStorage.removeItem('CButtonD1c');CButtonD1cb.value = '';localStorage.removeItem('CButtonD1cb')})
 
-DPadU1cBox.addEventListener('focus', function(){joystick(DPadU1cBox)})
-DPadU1cbBox.addEventListener('focus', function(){joystick(DPadU1cbBox)})
+DPadU1cBox.addEventListener('click', function(){joystick(DPadU1cBox)})
+DPadU1cbBox.addEventListener('click', function(){joystick(DPadU1cbBox)})
 if(localStorage.getItem('DPadU1c') != null){DPadU1cBox.value = localStorage.getItem('DPadU1c')}
 if(localStorage.getItem('DPadU1cb') != null){DPadU1cbBox.value = localStorage.getItem('DPadU1cb')}
 document.getElementById('clearDPadU1c').addEventListener('click', function(){DPadU1c.value = '';localStorage.removeItem('DPadU1c');DPadU1cb.value = '';localStorage.removeItem('DPadU1cb')})
 
-DPadL1cBox.addEventListener('focus', function(){joystick(DPadL1cBox)})
-DPadL1cbBox.addEventListener('focus', function(){joystick(DPadL1cbBox)})
+DPadL1cBox.addEventListener('click', function(){joystick(DPadL1cBox)})
+DPadL1cbBox.addEventListener('click', function(){joystick(DPadL1cbBox)})
 if(localStorage.getItem('DPadL1c') != null){DPadL1cBox.value = localStorage.getItem('DPadL1c')}
 if(localStorage.getItem('DPadL1cb') != null){DPadL1cbBox.value = localStorage.getItem('DPadL1cb')}
 document.getElementById('clearDPadL1c').addEventListener('click', function(){DPadL1c.value = '';localStorage.removeItem('DPadL1c');DPadL1cb.value = '';localStorage.removeItem('DPadL1cb')})
 
-DPadR1cBox.addEventListener('focus', function(){joystick(DPadR1cBox)})
-DPadR1cbBox.addEventListener('focus', function(){joystick(DPadR1cbBox)})
+DPadR1cBox.addEventListener('click', function(){joystick(DPadR1cBox)})
+DPadR1cbBox.addEventListener('click', function(){joystick(DPadR1cbBox)})
 if(localStorage.getItem('DPadR1c') != null){DPadR1cBox.value = localStorage.getItem('DPadR1c')}
 if(localStorage.getItem('DPadR1cb') != null){DPadR1cBox.value = localStorage.getItem('DPadR1cb')}
 document.getElementById('clearDPadR1c').addEventListener('click', function(){DPadR1c.value = '';localStorage.removeItem('DPadR1c');DPadR1cb.value = '';localStorage.removeItem('DPadR1cb')})
 
-DPadD1cBox.addEventListener('focus', function(){joystick(DPadD1cBox)})
-DPadD1cbBox.addEventListener('focus', function(){joystick(DPadD1cbBox)})
+DPadD1cBox.addEventListener('click', function(){joystick(DPadD1cBox)})
+DPadD1cbBox.addEventListener('click', function(){joystick(DPadD1cbBox)})
 if(localStorage.getItem('DPadD1c') != null){DPadD1cBox.value = localStorage.getItem('DPadD1c')}
 if(localStorage.getItem('DPadD1cb') != null){DPadD1cbBox.value = localStorage.getItem('DPadD1cb')}
 document.getElementById('clearDPadD1c').addEventListener('click', function(){DPadD1c.value = '';localStorage.removeItem('DPadD1c');DPadD1cb.value = '';localStorage.removeItem('DPadD1cb')})
 
-Start1cBox.addEventListener('focus', function(){joystick(Start1cBox)})
-Start1cbBox.addEventListener('focus', function(){joystick(Start1cbBox)})
+Start1cBox.addEventListener('click', function(){joystick(Start1cBox)})
+Start1cbBox.addEventListener('click', function(){joystick(Start1cbBox)})
 if(localStorage.getItem('Start1c') != null){Start1cBox.value = localStorage.getItem('Start1c')}
 if(localStorage.getItem('Start1cb') != null){Start1cbBox.value = localStorage.getItem('Start1cb')}
 document.getElementById('clearStart1c').addEventListener('click', function(){Start1c.value = '';localStorage.removeItem('Start1c');Start1cb.value = '';localStorage.removeItem('Start1cb')})
 
-AButton1cBox.addEventListener('focus', function(){joystick(AButton1cBox)})
-AButton1cbBox.addEventListener('focus', function(){joystick(AButton1cbBox)})
+AButton1cBox.addEventListener('click', function(){joystick(AButton1cBox)})
+AButton1cbBox.addEventListener('click', function(){joystick(AButton1cbBox)})
 if(localStorage.getItem('AButton1c') != null){AButton1cBox.value = localStorage.getItem('AButton1c')}
 if(localStorage.getItem('AButton1cb') != null){AButton1cbBox.value = localStorage.getItem('AButton1cb')}
 document.getElementById('clearAButton1c').addEventListener('click', function(){AButton1c.value = '';localStorage.removeItem('AButton1c');AButton1cb.value = '';localStorage.removeItem('AButton1cb')})
 
-BButton1cBox.addEventListener('focus', function(){joystick(BButton1cBox)})
-BButton1cbBox.addEventListener('focus', function(){joystick(BButton1cbBox)})
+BButton1cBox.addEventListener('click', function(){joystick(BButton1cBox)})
+BButton1cbBox.addEventListener('click', function(){joystick(BButton1cbBox)})
 if(localStorage.getItem('BButton1c') != null){BButton1cBox.value = localStorage.getItem('BButton1c')}
 if(localStorage.getItem('BButton1cb') != null){BButton1cbBox.value = localStorage.getItem('BButton1cb')}
 document.getElementById('clearBButton1c').addEventListener('click', function(){BButton1c.value = '';localStorage.removeItem('BButton1c');BButton1cb.value = '';localStorage.removeItem('BButton1cb')})
 
-LTrig1cBox.addEventListener('focus', function(){joystick(LTrig1cBox)})
-LTrig1cbBox.addEventListener('focus', function(){joystick(LTrig1cbBox)})
+LTrig1cBox.addEventListener('click', function(){joystick(LTrig1cBox)})
+LTrig1cbBox.addEventListener('click', function(){joystick(LTrig1cbBox)})
 if(localStorage.getItem('LTrig1c') != null){LTrig1cBox.value = localStorage.getItem('LTrig1c')}
 if(localStorage.getItem('LTrig1cb') != null){LTrig1cbBox.value = localStorage.getItem('LTrig1cb')}
 document.getElementById('clearLTrig1c').addEventListener('click', function(){LTrig1c.value = '';localStorage.removeItem('LTrig1c');LTrig1cb.value = '';localStorage.removeItem('LTrig1cb')})
 
 
-RTrig1cBox.addEventListener('focus', function(){joystick(RTrig1cBox)})
-RTrig1cbBox.addEventListener('focus', function(){joystick(RTrig1cbBox)})
+RTrig1cBox.addEventListener('click', function(){joystick(RTrig1cBox)})
+RTrig1cbBox.addEventListener('click', function(){joystick(RTrig1cbBox)})
 if(localStorage.getItem('RTrig1c') != null){RTrig1cBox.value = localStorage.getItem('RTrig1c')}
 if(localStorage.getItem('RTrig1cb') != null){RTrig1cbBox.value = localStorage.getItem('RTrig1cb')}
 document.getElementById('clearRTrig1c').addEventListener('click', function(){RTrig1c.value = '';localStorage.removeItem('RTrig1c');RTrig1cb.value = '';localStorage.removeItem('RTrig1cb')})
 
 
-ZTrig1cBox.addEventListener('focus', function(){joystick(ZTrig1cBox)})
-ZTrig1cbBox.addEventListener('focus', function(){joystick(ZTrig1cbBox)})
+ZTrig1cBox.addEventListener('click', function(){joystick(ZTrig1cBox)})
+ZTrig1cbBox.addEventListener('click', function(){joystick(ZTrig1cbBox)})
 if(localStorage.getItem('ZTrig1c') != null){ZTrig1cBox.value = localStorage.getItem('ZTrig1c')}
 if(localStorage.getItem('ZTrig1cb') != null){ZTrig1cbBox.value = localStorage.getItem('ZTrig1cb')}
 document.getElementById('clearZTrig1c').addEventListener('click', function(){ZTrig1c.value = '';localStorage.removeItem('ZTrig1c');ZTrig1cb.value = '';localStorage.removeItem('ZTrig1cb')})
 
-MempakSwitch1cBox.addEventListener('focus', function(){joystick(MempakSwitch1cBox)})
-MempakSwitch1cbBox.addEventListener('focus', function(){joystick(MempakSwitch1cbBox)})
+MempakSwitch1cBox.addEventListener('click', function(){joystick(MempakSwitch1cBox)})
+MempakSwitch1cbBox.addEventListener('click', function(){joystick(MempakSwitch1cbBox)})
 if(localStorage.getItem('MempakSwitch1c') != null){MempakSwitch1cBox.value = localStorage.getItem('MempakSwitch1c')}
 if(localStorage.getItem('MempakSwitch1cb') != null){MempakSwitch1cbBox.value = localStorage.getItem('MempakSwitch1cb')}
 document.getElementById('clearMempakSwitch1c').addEventListener('click', function(){MempakSwitch1c.value = '';localStorage.removeItem('MempakSwitch1c');MempakSwitch1cb.value = '';localStorage.removeItem('MempakSwitch1cb')})
 
-RumblepakSwitch1cBox.addEventListener('focus', function(){joystick(RumblepakSwitch1cBox)})
-RumblepakSwitch1cbBox.addEventListener('focus', function(){joystick(RumblepakSwitch1cbBox)})
+RumblepakSwitch1cBox.addEventListener('click', function(){joystick(RumblepakSwitch1cBox)})
+RumblepakSwitch1cbBox.addEventListener('click', function(){joystick(RumblepakSwitch1cbBox)})
 if(localStorage.getItem('RumblepakSwitch1c') != null){RumblepakSwitch1cBox.value = localStorage.getItem('RumblepakSwitch1c')}
 if(localStorage.getItem('RumblepakSwitch1cb') != null){RumblepakSwitch1cbBox.value = localStorage.getItem('RumblepakSwitch1cb')}
 document.getElementById('clearRumblepakSwitch1c').addEventListener('click', function(){RumblepakSwitch1c.value = '';localStorage.removeItem('RumblepakSwitch1c');RumblepakSwitch1cb.value = '';localStorage.removeItem('RumblepakSwitch1cb')})
 
 
 
-StickU2cBox.addEventListener('focus', function(){joystick(StickU2cBox)})
-StickU2cbBox.addEventListener('focus', function(){joystick(StickU2cbBox)})
+StickU2cBox.addEventListener('click', function(){joystick(StickU2cBox)})
+StickU2cbBox.addEventListener('click', function(){joystick(StickU2cbBox)})
 if(localStorage.getItem('StickU2c') != null){StickU2cBox.value = localStorage.getItem('StickU2c')}
 if(localStorage.getItem('StickU2cb') != null){StickU2cbBox.value = localStorage.getItem('StickU2cb')}
 document.getElementById('clearStickU2c').addEventListener('click', function(){StickU2c.value = '';localStorage.removeItem('StickU2c');StickU2cb.value = '';localStorage.removeItem('StickU2cb')})
 
 
-StickL2cBox.addEventListener('focus', function(){joystick(StickL2cBox)})
-StickL2cbBox.addEventListener('focus', function(){joystick(StickL2cbBox)})
+StickL2cBox.addEventListener('click', function(){joystick(StickL2cBox)})
+StickL2cbBox.addEventListener('click', function(){joystick(StickL2cbBox)})
 if(localStorage.getItem('StickL2c') != null){StickL2cBox.value = localStorage.getItem('StickL2c')}
 if(localStorage.getItem('StickL2cb') != null){StickL2cbBox.value = localStorage.getItem('StickL2cb')}
 document.getElementById('clearStickL2c').addEventListener('click', function(){StickL2c.value = '';localStorage.removeItem('StickL2c');StickL2cb.value = '';localStorage.removeItem('StickL2cb')})
 
 
-StickR2cBox.addEventListener('focus', function(){joystick(StickR2cBox)})
-StickR2cbBox.addEventListener('focus', function(){joystick(StickR2cbBox)})
+StickR2cBox.addEventListener('click', function(){joystick(StickR2cBox)})
+StickR2cbBox.addEventListener('click', function(){joystick(StickR2cbBox)})
 if(localStorage.getItem('StickR2c') != null){StickR2cBox.value = localStorage.getItem('StickR2c')}
 if(localStorage.getItem('StickR2cb') != null){StickR2cbBox.value = localStorage.getItem('StickR2cb')}
 document.getElementById('clearStickR2c').addEventListener('click', function(){StickR2c.value = '';localStorage.removeItem('StickR2c');StickR2cb.value = '';localStorage.removeItem('StickR2cb')})
 
-StickD2cBox.addEventListener('focus', function(){joystick(StickD2cBox)})
-StickD2cbBox.addEventListener('focus', function(){joystick(StickD2cbBox)})
+StickD2cBox.addEventListener('click', function(){joystick(StickD2cBox)})
+StickD2cbBox.addEventListener('click', function(){joystick(StickD2cbBox)})
 if(localStorage.getItem('StickD2c') != null){StickD2cBox.value = localStorage.getItem('StickD2c')}
 if(localStorage.getItem('StickD2cb') != null){StickD2cbBox.value = localStorage.getItem('StickD2cb')}
 document.getElementById('clearStickD2c').addEventListener('click', function(){StickD2c.value = '';localStorage.removeItem('StickD2c');StickD2cb.value = '';localStorage.removeItem('StickD2cb')})
 
-CButtonU2cBox.addEventListener('focus', function(){joystick(CButtonU2cBox)})
-CButtonU2cbBox.addEventListener('focus', function(){joystick(CButtonU2cbBox)})
+CButtonU2cBox.addEventListener('click', function(){joystick(CButtonU2cBox)})
+CButtonU2cbBox.addEventListener('click', function(){joystick(CButtonU2cbBox)})
 if(localStorage.getItem('CButtonU2c') != null){CButtonU2cBox.value = localStorage.getItem('CButtonU2c')}
 if(localStorage.getItem('CButtonU2cb') != null){CButtonU2cbBox.value = localStorage.getItem('CButtonU2cb')}
 document.getElementById('clearCButtonU2c').addEventListener('click', function(){CButtonU2c.value = '';localStorage.removeItem('CButtonU2c');CButtonU2cb.value = '';localStorage.removeItem('CButtonU2cb')})
 
-CButtonL2cBox.addEventListener('focus', function(){joystick(CButtonL2cBox)})
-CButtonL2cbBox.addEventListener('focus', function(){joystick(CButtonL2cbBox)})
+CButtonL2cBox.addEventListener('click', function(){joystick(CButtonL2cBox)})
+CButtonL2cbBox.addEventListener('click', function(){joystick(CButtonL2cbBox)})
 if(localStorage.getItem('CButtonL2c') != null){CButtonL2cBox.value = localStorage.getItem('CButtonL2c')}
 if(localStorage.getItem('CButtonL2cb') != null){CButtonL2cbBox.value = localStorage.getItem('CButtonL2cb')}
 document.getElementById('clearCButtonL2c').addEventListener('click', function(){CButtonL2c.value = '';localStorage.removeItem('CButtonL2c');CButtonL2cb.value = '';localStorage.removeItem('CButtonL2cb')})
 
-CButtonR2cBox.addEventListener('focus', function(){joystick(CButtonR2cBox)})
-CButtonR2cbBox.addEventListener('focus', function(){joystick(CButtonR2cbBox)})
+CButtonR2cBox.addEventListener('click', function(){joystick(CButtonR2cBox)})
+CButtonR2cbBox.addEventListener('click', function(){joystick(CButtonR2cbBox)})
 if(localStorage.getItem('CButtonR2c') != null){CButtonR2cBox.value = localStorage.getItem('CButtonR2c')}
 if(localStorage.getItem('CButtonR2cb') != null){CButtonR2cbBox.value = localStorage.getItem('CButtonR2cb')}
 document.getElementById('clearCButtonR2c').addEventListener('click', function(){CButtonR2c.value = '';localStorage.removeItem('CButtonR2c');CButtonR2cb.value = '';localStorage.removeItem('CButtonR2cb')})
 
-CButtonD2cBox.addEventListener('focus', function(){joystick(CButtonD2cBox)})
-CButtonD2cbBox.addEventListener('focus', function(){joystick(CButtonD2cbBox)})
+CButtonD2cBox.addEventListener('click', function(){joystick(CButtonD2cBox)})
+CButtonD2cbBox.addEventListener('click', function(){joystick(CButtonD2cbBox)})
 if(localStorage.getItem('CButtonD2c') != null){CButtonD2cBox.value = localStorage.getItem('CButtonD2c')}
 if(localStorage.getItem('CButtonD2cb') != null){CButtonD2cbBox.value = localStorage.getItem('CButtonD2cb')}
 document.getElementById('clearCButtonD2c').addEventListener('click', function(){CButtonD2c.value = '';localStorage.removeItem('CButtonD2c');CButtonD2cb.value = '';localStorage.removeItem('CButtonD2cb')})
 
-DPadU2cBox.addEventListener('focus', function(){joystick(DPadU2cBox)})
-DPadU2cbBox.addEventListener('focus', function(){joystick(DPadU2cbBox)})
+DPadU2cBox.addEventListener('click', function(){joystick(DPadU2cBox)})
+DPadU2cbBox.addEventListener('click', function(){joystick(DPadU2cbBox)})
 if(localStorage.getItem('DPadU2c') != null){DPadU2cBox.value = localStorage.getItem('DPadU2c')}
 if(localStorage.getItem('DPadU2cb') != null){DPadU2cbBox.value = localStorage.getItem('DPadU2cb')}
 document.getElementById('clearDPadU2c').addEventListener('click', function(){DPadU2c.value = '';localStorage.removeItem('DPadU2c');DPadU2cb.value = '';localStorage.removeItem('DPadU2cb')})
 
-DPadL2cBox.addEventListener('focus', function(){joystick(DPadL2cBox)})
-DPadL2cbBox.addEventListener('focus', function(){joystick(DPadL2cbBox)})
+DPadL2cBox.addEventListener('click', function(){joystick(DPadL2cBox)})
+DPadL2cbBox.addEventListener('click', function(){joystick(DPadL2cbBox)})
 if(localStorage.getItem('DPadL2c') != null){DPadL2cBox.value = localStorage.getItem('DPadL2c')}
 if(localStorage.getItem('DPadL2cb') != null){DPadL2cbBox.value = localStorage.getItem('DPadL2cb')}
 document.getElementById('clearDPadL2c').addEventListener('click', function(){DPadL2c.value = '';localStorage.removeItem('DPadL2c');DPadL2cb.value = '';localStorage.removeItem('DPadL2cb')})
 
-DPadR2cBox.addEventListener('focus', function(){joystick(DPadR2cBox)})
-DPadR2cbBox.addEventListener('focus', function(){joystick(DPadR2cbBox)})
+DPadR2cBox.addEventListener('click', function(){joystick(DPadR2cBox)})
+DPadR2cbBox.addEventListener('click', function(){joystick(DPadR2cbBox)})
 if(localStorage.getItem('DPadR2c') != null){DPadR2cBox.value = localStorage.getItem('DPadR2c')}
 if(localStorage.getItem('DPadR2cb') != null){DPadR2cBox.value = localStorage.getItem('DPadR2cb')}
 document.getElementById('clearDPadR2c').addEventListener('click', function(){DPadR2c.value = '';localStorage.removeItem('DPadR2c');DPadR2cb.value = '';localStorage.removeItem('DPadR2cb')})
 
-DPadD2cBox.addEventListener('focus', function(){joystick(DPadD2cBox)})
-DPadD2cbBox.addEventListener('focus', function(){joystick(DPadD2cbBox)})
+DPadD2cBox.addEventListener('click', function(){joystick(DPadD2cBox)})
+DPadD2cbBox.addEventListener('click', function(){joystick(DPadD2cbBox)})
 if(localStorage.getItem('DPadD2c') != null){DPadD2cBox.value = localStorage.getItem('DPadD2c')}
 if(localStorage.getItem('DPadD2cb') != null){DPadD2cbBox.value = localStorage.getItem('DPadD2cb')}
 document.getElementById('clearDPadD2c').addEventListener('click', function(){DPadD2c.value = '';localStorage.removeItem('DPadD2c');DPadD2cb.value = '';localStorage.removeItem('DPadD2cb')})
 
-Start2cBox.addEventListener('focus', function(){joystick(Start2cBox)})
-Start2cbBox.addEventListener('focus', function(){joystick(Start2cbBox)})
+Start2cBox.addEventListener('click', function(){joystick(Start2cBox)})
+Start2cbBox.addEventListener('click', function(){joystick(Start2cbBox)})
 if(localStorage.getItem('Start2c') != null){Start2cBox.value = localStorage.getItem('Start2c')}
 if(localStorage.getItem('Start2cb') != null){Start2cbBox.value = localStorage.getItem('Start2cb')}
 document.getElementById('clearStart2c').addEventListener('click', function(){Start2c.value = '';localStorage.removeItem('Start2c');Start2cb.value = '';localStorage.removeItem('Start2cb')})
 
-AButton2cBox.addEventListener('focus', function(){joystick(AButton2cBox)})
-AButton2cbBox.addEventListener('focus', function(){joystick(AButton2cbBox)})
+AButton2cBox.addEventListener('click', function(){joystick(AButton2cBox)})
+AButton2cbBox.addEventListener('click', function(){joystick(AButton2cbBox)})
 if(localStorage.getItem('AButton2c') != null){AButton2cBox.value = localStorage.getItem('AButton2c')}
 if(localStorage.getItem('AButton2cb') != null){AButton2cbBox.value = localStorage.getItem('AButton2cb')}
 document.getElementById('clearAButton2c').addEventListener('click', function(){AButton2c.value = '';localStorage.removeItem('AButton2c');AButton2cb.value = '';localStorage.removeItem('AButton2cb')})
 
-BButton2cBox.addEventListener('focus', function(){joystick(BButton2cBox)})
-BButton2cbBox.addEventListener('focus', function(){joystick(BButton2cbBox)})
+BButton2cBox.addEventListener('click', function(){joystick(BButton2cBox)})
+BButton2cbBox.addEventListener('click', function(){joystick(BButton2cbBox)})
 if(localStorage.getItem('BButton2c') != null){BButton2cBox.value = localStorage.getItem('BButton2c')}
 if(localStorage.getItem('BButton2cb') != null){BButton2cbBox.value = localStorage.getItem('BButton2cb')}
 document.getElementById('clearBButton2c').addEventListener('click', function(){BButton2c.value = '';localStorage.removeItem('BButton2c');BButton2cb.value = '';localStorage.removeItem('BButton2cb')})
 
-LTrig2cBox.addEventListener('focus', function(){joystick(LTrig2cBox)})
-LTrig2cbBox.addEventListener('focus', function(){joystick(LTrig2cbBox)})
+LTrig2cBox.addEventListener('click', function(){joystick(LTrig2cBox)})
+LTrig2cbBox.addEventListener('click', function(){joystick(LTrig2cbBox)})
 if(localStorage.getItem('LTrig2c') != null){LTrig2cBox.value = localStorage.getItem('LTrig2c')}
 if(localStorage.getItem('LTrig2cb') != null){LTrig2cbBox.value = localStorage.getItem('LTrig2cb')}
 document.getElementById('clearLTrig2c').addEventListener('click', function(){LTrig2c.value = '';localStorage.removeItem('LTrig2c');LTrig2cb.value = '';localStorage.removeItem('LTrig2cb')})
 
-RTrig2cBox.addEventListener('focus', function(){joystick(RTrig2cBox)})
-RTrig2cbBox.addEventListener('focus', function(){joystick(RTrig2cbBox)})
+RTrig2cBox.addEventListener('click', function(){joystick(RTrig2cBox)})
+RTrig2cbBox.addEventListener('click', function(){joystick(RTrig2cbBox)})
 if(localStorage.getItem('RTrig2c') != null){RTrig2cBox.value = localStorage.getItem('RTrig2c')}
 if(localStorage.getItem('RTrig2cb') != null){RTrig2cbBox.value = localStorage.getItem('RTrig2cb')}
 document.getElementById('clearRTrig2c').addEventListener('click', function(){RTrig2c.value = '';localStorage.removeItem('RTrig2c');RTrig2cb.value = '';localStorage.removeItem('RTrig2cb')})
 
-ZTrig2cBox.addEventListener('focus', function(){joystick(ZTrig2cBox)})
-ZTrig2cbBox.addEventListener('focus', function(){joystick(ZTrig2cbBox)})
+ZTrig2cBox.addEventListener('click', function(){joystick(ZTrig2cBox)})
+ZTrig2cbBox.addEventListener('click', function(){joystick(ZTrig2cbBox)})
 if(localStorage.getItem('ZTrig2c') != null){ZTrig2cBox.value = localStorage.getItem('ZTrig2c')}
 if(localStorage.getItem('ZTrig2cb') != null){ZTrig2cbBox.value = localStorage.getItem('ZTrig2cb')}
 document.getElementById('clearZTrig2c').addEventListener('click', function(){ZTrig2c.value = '';localStorage.removeItem('ZTrig2c');ZTrig2cb.value = '';localStorage.removeItem('ZTrig2cb')})
 
-MempakSwitch2cBox.addEventListener('focus', function(){joystick(MempakSwitch2cBox)})
-MempakSwitch2cbBox.addEventListener('focus', function(){joystick(MempakSwitch2cbBox)})
+MempakSwitch2cBox.addEventListener('click', function(){joystick(MempakSwitch2cBox)})
+MempakSwitch2cbBox.addEventListener('click', function(){joystick(MempakSwitch2cbBox)})
 if(localStorage.getItem('MempakSwitch2c') != null){MempakSwitch2cBox.value = localStorage.getItem('MempakSwitch2c')}
 if(localStorage.getItem('MempakSwitch2cb') != null){MempakSwitch2cbBox.value = localStorage.getItem('MempakSwitch2cb')}
 document.getElementById('clearMempakSwitch2c').addEventListener('click', function(){MempakSwitch2c.value = '';localStorage.removeItem('MempakSwitch2c');MempakSwitch2cb.value = '';localStorage.removeItem('MempakSwitch2cb')})
 
-RumblepakSwitch2cBox.addEventListener('focus', function(){joystick(RumblepakSwitch2cBox)})
-RumblepakSwitch2cbBox.addEventListener('focus', function(){joystick(RumblepakSwitch2cbBox)})
+RumblepakSwitch2cBox.addEventListener('click', function(){joystick(RumblepakSwitch2cBox)})
+RumblepakSwitch2cbBox.addEventListener('click', function(){joystick(RumblepakSwitch2cbBox)})
 if(localStorage.getItem('RumblepakSwitch2c') != null){RumblepakSwitch2cBox.value = localStorage.getItem('RumblepakSwitch2c')}
 if(localStorage.getItem('RumblepakSwitch2cb') != null){RumblepakSwitch2cbBox.value = localStorage.getItem('RumblepakSwitch2cb')}
 document.getElementById('clearRumblepakSwitch2c').addEventListener('click', function(){RumblepakSwitch2c.value = '';localStorage.removeItem('RumblepakSwitch2c');RumblepakSwitch2cb.value = '';localStorage.removeItem('RumblepakSwitch2cb')})
 
 
 
-StickU3cBox.addEventListener('focus', function(){joystick(StickU3cBox)})
-StickU3cbBox.addEventListener('focus', function(){joystick(StickU3cbBox)})
+StickU3cBox.addEventListener('click', function(){joystick(StickU3cBox)})
+StickU3cbBox.addEventListener('click', function(){joystick(StickU3cbBox)})
 if(localStorage.getItem('StickU3c') != null){StickU3cBox.value = localStorage.getItem('StickU3c')}
 if(localStorage.getItem('StickU3cb') != null){StickU3cbBox.value = localStorage.getItem('StickU3cb')}
 document.getElementById('clearStickU3c').addEventListener('click', function(){StickU3c.value = '';localStorage.removeItem('StickU3c');StickU3cb.value = '';localStorage.removeItem('StickU3cb')})
 
-StickL3cBox.addEventListener('focus', function(){joystick(StickL3cBox)})
-StickL3cbBox.addEventListener('focus', function(){joystick(StickL3cbBox)})
+StickL3cBox.addEventListener('click', function(){joystick(StickL3cBox)})
+StickL3cbBox.addEventListener('click', function(){joystick(StickL3cbBox)})
 if(localStorage.getItem('StickL3c') != null){StickL3cBox.value = localStorage.getItem('StickL3c')}
 if(localStorage.getItem('StickL3cb') != null){StickL3cbBox.value = localStorage.getItem('StickL3cb')}
 document.getElementById('clearStickL3c').addEventListener('click', function(){StickL3c.value = '';localStorage.removeItem('StickL3c');StickL3cb.value = '';localStorage.removeItem('StickL3cb')})
 
-StickR3cBox.addEventListener('focus', function(){joystick(StickR3cBox)})
-StickR3cbBox.addEventListener('focus', function(){joystick(StickR3cbBox)})
+StickR3cBox.addEventListener('click', function(){joystick(StickR3cBox)})
+StickR3cbBox.addEventListener('click', function(){joystick(StickR3cbBox)})
 if(localStorage.getItem('StickR3c') != null){StickR3cBox.value = localStorage.getItem('StickR3c')}
 if(localStorage.getItem('StickR3cb') != null){StickR3cbBox.value = localStorage.getItem('StickR3cb')}
 document.getElementById('clearStickR3c').addEventListener('click', function(){StickR3c.value = '';localStorage.removeItem('StickR3c');StickR3cb.value = '';localStorage.removeItem('StickR3cb')})
 
-StickD3cBox.addEventListener('focus', function(){joystick(StickD3cBox)})
-StickD3cbBox.addEventListener('focus', function(){joystick(StickD3cbBox)})
+StickD3cBox.addEventListener('click', function(){joystick(StickD3cBox)})
+StickD3cbBox.addEventListener('click', function(){joystick(StickD3cbBox)})
 if(localStorage.getItem('StickD3c') != null){StickD3cBox.value = localStorage.getItem('StickD3c')}
 if(localStorage.getItem('StickD3cb') != null){StickD3cbBox.value = localStorage.getItem('StickD3cb')}
 document.getElementById('clearStickD3c').addEventListener('click', function(){StickD3c.value = '';localStorage.removeItem('StickD3c');StickD3cb.value = '';localStorage.removeItem('StickD3cb')})
 
-CButtonU3cBox.addEventListener('focus', function(){joystick(CButtonU3cBox)})
-CButtonU3cbBox.addEventListener('focus', function(){joystick(CButtonU3cbBox)})
+CButtonU3cBox.addEventListener('click', function(){joystick(CButtonU3cBox)})
+CButtonU3cbBox.addEventListener('click', function(){joystick(CButtonU3cbBox)})
 if(localStorage.getItem('CButtonU3c') != null){CButtonU3cBox.value = localStorage.getItem('CButtonU3c')}
 if(localStorage.getItem('CButtonU3cb') != null){CButtonU3cbBox.value = localStorage.getItem('CButtonU3cb')}
 document.getElementById('clearCButtonU3c').addEventListener('click', function(){CButtonU3c.value = '';localStorage.removeItem('CButtonU3c');CButtonU3cb.value = '';localStorage.removeItem('CButtonU3cb')})
 
-CButtonL3cBox.addEventListener('focus', function(){joystick(CButtonL3cBox)})
-CButtonL3cbBox.addEventListener('focus', function(){joystick(CButtonL3cbBox)})
+CButtonL3cBox.addEventListener('click', function(){joystick(CButtonL3cBox)})
+CButtonL3cbBox.addEventListener('click', function(){joystick(CButtonL3cbBox)})
 if(localStorage.getItem('CButtonL3c') != null){CButtonL3cBox.value = localStorage.getItem('CButtonL3c')}
 if(localStorage.getItem('CButtonL3cb') != null){CButtonL3cbBox.value = localStorage.getItem('CButtonL3cb')}
 document.getElementById('clearCButtonL3c').addEventListener('click', function(){CButtonL3c.value = '';localStorage.removeItem('CButtonL3c');CButtonL3cb.value = '';localStorage.removeItem('CButtonL3cb')})
 
-CButtonR3cBox.addEventListener('focus', function(){joystick(CButtonR3cBox)})
-CButtonR3cbBox.addEventListener('focus', function(){joystick(CButtonR3cbBox)})
+CButtonR3cBox.addEventListener('click', function(){joystick(CButtonR3cBox)})
+CButtonR3cbBox.addEventListener('click', function(){joystick(CButtonR3cbBox)})
 if(localStorage.getItem('CButtonR3c') != null){CButtonR3cBox.value = localStorage.getItem('CButtonR3c')}
 if(localStorage.getItem('CButtonR3cb') != null){CButtonR3cbBox.value = localStorage.getItem('CButtonR3cb')}
 document.getElementById('clearCButtonR3c').addEventListener('click', function(){CButtonR3c.value = '';localStorage.removeItem('CButtonR3c');CButtonR3cb.value = '';localStorage.removeItem('CButtonR3cb')})
 
-CButtonD3cBox.addEventListener('focus', function(){joystick(CButtonD3cBox)})
-CButtonD3cbBox.addEventListener('focus', function(){joystick(CButtonD3cbBox)})
+CButtonD3cBox.addEventListener('click', function(){joystick(CButtonD3cBox)})
+CButtonD3cbBox.addEventListener('click', function(){joystick(CButtonD3cbBox)})
 if(localStorage.getItem('CButtonD3c') != null){CButtonD3cBox.value = localStorage.getItem('CButtonD3c')}
 if(localStorage.getItem('CButtonD3cb') != null){CButtonD3cbBox.value = localStorage.getItem('CButtonD3cb')}
 document.getElementById('clearCButtonD3c').addEventListener('click', function(){CButtonD3c.value = '';localStorage.removeItem('CButtonD3c');CButtonD3cb.value = '';localStorage.removeItem('CButtonD3cb')})
 
-DPadU3cBox.addEventListener('focus', function(){joystick(DPadU3cBox)})
-DPadU3cbBox.addEventListener('focus', function(){joystick(DPadU3cbBox)})
+DPadU3cBox.addEventListener('click', function(){joystick(DPadU3cBox)})
+DPadU3cbBox.addEventListener('click', function(){joystick(DPadU3cbBox)})
 if(localStorage.getItem('DPadU3c') != null){DPadU3cBox.value = localStorage.getItem('DPadU3c')}
 if(localStorage.getItem('DPadU3cb') != null){DPadU3cbBox.value = localStorage.getItem('DPadU3cb')}
 document.getElementById('clearDPadU3c').addEventListener('click', function(){DPadU3c.value = '';localStorage.removeItem('DPadU3c');DPadU3cb.value = '';localStorage.removeItem('DPadU3cb')})
 
-DPadL3cBox.addEventListener('focus', function(){joystick(DPadL3cBox)})
-DPadL3cbBox.addEventListener('focus', function(){joystick(DPadL3cbBox)})
+DPadL3cBox.addEventListener('click', function(){joystick(DPadL3cBox)})
+DPadL3cbBox.addEventListener('click', function(){joystick(DPadL3cbBox)})
 if(localStorage.getItem('DPadL3c') != null){DPadL3cBox.value = localStorage.getItem('DPadL3c')}
 if(localStorage.getItem('DPadL3cb') != null){DPadL3cbBox.value = localStorage.getItem('DPadL3cb')}
 document.getElementById('clearDPadL3c').addEventListener('click', function(){DPadL3c.value = '';localStorage.removeItem('DPadL3c');DPadL3cb.value = '';localStorage.removeItem('DPadL3cb')})
 
-DPadR3cBox.addEventListener('focus', function(){joystick(DPadR3cBox)})
-DPadR3cbBox.addEventListener('focus', function(){joystick(DPadR3cbBox)})
+DPadR3cBox.addEventListener('click', function(){joystick(DPadR3cBox)})
+DPadR3cbBox.addEventListener('click', function(){joystick(DPadR3cbBox)})
 if(localStorage.getItem('DPadR3c') != null){DPadR3cBox.value = localStorage.getItem('DPadR3c')}
 if(localStorage.getItem('DPadR3cb') != null){DPadR3cBox.value = localStorage.getItem('DPadR3cb')}
 document.getElementById('clearDPadR3c').addEventListener('click', function(){DPadR3c.value = '';localStorage.removeItem('DPadR3c');DPadR3cb.value = '';localStorage.removeItem('DPadR3cb')})
 
-DPadD3cBox.addEventListener('focus', function(){joystick(DPadD3cBox)})
-DPadD3cbBox.addEventListener('focus', function(){joystick(DPadD3cbBox)})
+DPadD3cBox.addEventListener('click', function(){joystick(DPadD3cBox)})
+DPadD3cbBox.addEventListener('click', function(){joystick(DPadD3cbBox)})
 if(localStorage.getItem('DPadD3c') != null){DPadD3cBox.value = localStorage.getItem('DPadD3c')}
 if(localStorage.getItem('DPadD3cb') != null){DPadD3cbBox.value = localStorage.getItem('DPadD3cb')}
 document.getElementById('clearDPadD3c').addEventListener('click', function(){DPadD3c.value = '';localStorage.removeItem('DPadD3c');DPadD3cb.value = '';localStorage.removeItem('DPadD3cb')})
 
-Start3cBox.addEventListener('focus', function(){joystick(Start3cBox)})
-Start3cbBox.addEventListener('focus', function(){joystick(Start3cbBox)})
+Start3cBox.addEventListener('click', function(){joystick(Start3cBox)})
+Start3cbBox.addEventListener('click', function(){joystick(Start3cbBox)})
 if(localStorage.getItem('Start3c') != null){Start3cBox.value = localStorage.getItem('Start3c')}
 if(localStorage.getItem('Start3cb') != null){Start3cbBox.value = localStorage.getItem('Start3cb')}
 document.getElementById('clearStart3c').addEventListener('click', function(){Start3c.value = '';localStorage.removeItem('Start3c');Start3cb.value = '';localStorage.removeItem('Start3cb')})
 
-AButton3cBox.addEventListener('focus', function(){joystick(AButton3cBox)})
-AButton3cbBox.addEventListener('focus', function(){joystick(AButton3cbBox)})
+AButton3cBox.addEventListener('click', function(){joystick(AButton3cBox)})
+AButton3cbBox.addEventListener('click', function(){joystick(AButton3cbBox)})
 if(localStorage.getItem('AButton3c') != null){AButton3cBox.value = localStorage.getItem('AButton3c')}
 if(localStorage.getItem('AButton3cb') != null){AButton3cbBox.value = localStorage.getItem('AButton3cb')}
 document.getElementById('clearAButton3c').addEventListener('click', function(){AButton3c.value = '';localStorage.removeItem('AButton3c');AButton3cb.value = '';localStorage.removeItem('AButton3cb')})
 
-BButton3cBox.addEventListener('focus', function(){joystick(BButton3cBox)})
-BButton3cbBox.addEventListener('focus', function(){joystick(BButton3cbBox)})
+BButton3cBox.addEventListener('click', function(){joystick(BButton3cBox)})
+BButton3cbBox.addEventListener('click', function(){joystick(BButton3cbBox)})
 if(localStorage.getItem('BButton3c') != null){BButton3cBox.value = localStorage.getItem('BButton3c')}
 if(localStorage.getItem('BButton3cb') != null){BButton3cbBox.value = localStorage.getItem('BButton3cb')}
 document.getElementById('clearBButton3c').addEventListener('click', function(){BButton3c.value = '';localStorage.removeItem('BButton3c');BButton3cb.value = '';localStorage.removeItem('BButton3cb')})
 
-LTrig3cBox.addEventListener('focus', function(){joystick(LTrig3cBox)})
-LTrig3cbBox.addEventListener('focus', function(){joystick(LTrig3cbBox)})
+LTrig3cBox.addEventListener('click', function(){joystick(LTrig3cBox)})
+LTrig3cbBox.addEventListener('click', function(){joystick(LTrig3cbBox)})
 if(localStorage.getItem('LTrig3c') != null){LTrig3cBox.value = localStorage.getItem('LTrig3c')}
 if(localStorage.getItem('LTrig3cb') != null){LTrig3cbBox.value = localStorage.getItem('LTrig3cb')}
 document.getElementById('clearLTrig3c').addEventListener('click', function(){LTrig3c.value = '';localStorage.removeItem('LTrig3c');LTrig3cb.value = '';localStorage.removeItem('LTrig3cb')})
 
-RTrig3cBox.addEventListener('focus', function(){joystick(RTrig3cBox)})
-RTrig3cbBox.addEventListener('focus', function(){joystick(RTrig3cbBox)})
+RTrig3cBox.addEventListener('click', function(){joystick(RTrig3cBox)})
+RTrig3cbBox.addEventListener('click', function(){joystick(RTrig3cbBox)})
 if(localStorage.getItem('RTrig3c') != null){RTrig3cBox.value = localStorage.getItem('RTrig3c')}
 if(localStorage.getItem('RTrig3cb') != null){RTrig3cbBox.value = localStorage.getItem('RTrig3cb')}
 document.getElementById('clearRTrig3c').addEventListener('click', function(){RTrig3c.value = '';localStorage.removeItem('RTrig3c');RTrig3cb.value = '';localStorage.removeItem('RTrig3cb')})
 
-ZTrig3cBox.addEventListener('focus', function(){joystick(ZTrig3cBox)})
-ZTrig3cbBox.addEventListener('focus', function(){joystick(ZTrig3cbBox)})
+ZTrig3cBox.addEventListener('click', function(){joystick(ZTrig3cBox)})
+ZTrig3cbBox.addEventListener('click', function(){joystick(ZTrig3cbBox)})
 if(localStorage.getItem('ZTrig3c') != null){ZTrig3cBox.value = localStorage.getItem('ZTrig3c')}
 if(localStorage.getItem('ZTrig3cb') != null){ZTrig3cbBox.value = localStorage.getItem('ZTrig3cb')}
 document.getElementById('clearZTrig3c').addEventListener('click', function(){ZTrig3c.value = '';localStorage.removeItem('ZTrig3c');ZTrig3cb.value = '';localStorage.removeItem('ZTrig3cb')})
 
-MempakSwitch3cBox.addEventListener('focus', function(){joystick(MempakSwitch3cBox)})
-MempakSwitch3cbBox.addEventListener('focus', function(){joystick(MempakSwitch3cbBox)})
+MempakSwitch3cBox.addEventListener('click', function(){joystick(MempakSwitch3cBox)})
+MempakSwitch3cbBox.addEventListener('click', function(){joystick(MempakSwitch3cbBox)})
 if(localStorage.getItem('MempakSwitch3c') != null){MempakSwitch3cBox.value = localStorage.getItem('MempakSwitch3c')}
 if(localStorage.getItem('MempakSwitch3cb') != null){MempakSwitch3cbBox.value = localStorage.getItem('MempakSwitch3cb')}
 document.getElementById('clearMempakSwitch3c').addEventListener('click', function(){MempakSwitch3c.value = '';localStorage.removeItem('MempakSwitch3c');MempakSwitch3cb.value = '';localStorage.removeItem('MempakSwitch3cb')})
 
-RumblepakSwitch3cBox.addEventListener('focus', function(){joystick(RumblepakSwitch3cBox)})
-RumblepakSwitch3cbBox.addEventListener('focus', function(){joystick(RumblepakSwitch3cbBox)})
+RumblepakSwitch3cBox.addEventListener('click', function(){joystick(RumblepakSwitch3cBox)})
+RumblepakSwitch3cbBox.addEventListener('click', function(){joystick(RumblepakSwitch3cbBox)})
 if(localStorage.getItem('RumblepakSwitch3c') != null){RumblepakSwitch3cBox.value = localStorage.getItem('RumblepakSwitch3c')}
 if(localStorage.getItem('RumblepakSwitch3cb') != null){RumblepakSwitch3cbBox.value = localStorage.getItem('RumblepakSwitch3cb')}
 document.getElementById('clearRumblepakSwitch3c').addEventListener('click', function(){RumblepakSwitch3c.value = '';localStorage.removeItem('RumblepakSwitch3c');RumblepakSwitch3cb.value = '';localStorage.removeItem('RumblepakSwitch3cb')})
 
 
 
-StickU4cBox.addEventListener('focus', function(){joystick(StickU4cBox)})
-StickU4cbBox.addEventListener('focus', function(){joystick(StickU4cbBox)})
+StickU4cBox.addEventListener('click', function(){joystick(StickU4cBox)})
+StickU4cbBox.addEventListener('click', function(){joystick(StickU4cbBox)})
 if(localStorage.getItem('StickU4c') != null){StickU4cBox.value = localStorage.getItem('StickU4c')}
 if(localStorage.getItem('StickU4cb') != null){StickU4cbBox.value = localStorage.getItem('StickU4cb')}
 document.getElementById('clearStickU4c').addEventListener('click', function(){StickU4c.value = '';localStorage.removeItem('StickU4c');StickU4cb.value = '';localStorage.removeItem('StickU4cb')})
 
-StickL4cBox.addEventListener('focus', function(){joystick(StickL4cBox)})
-StickL4cbBox.addEventListener('focus', function(){joystick(StickL4cbBox)})
+StickL4cBox.addEventListener('click', function(){joystick(StickL4cBox)})
+StickL4cbBox.addEventListener('click', function(){joystick(StickL4cbBox)})
 if(localStorage.getItem('StickL4c') != null){StickL4cBox.value = localStorage.getItem('StickL4c')}
 if(localStorage.getItem('StickL4cb') != null){StickL4cbBox.value = localStorage.getItem('StickL4cb')}
 document.getElementById('clearStickL4c').addEventListener('click', function(){StickL4c.value = '';localStorage.removeItem('StickL4c');StickL4cb.value = '';localStorage.removeItem('StickL4cb')})
 
-StickR4cBox.addEventListener('focus', function(){joystick(StickR4cBox)})
-StickR4cbBox.addEventListener('focus', function(){joystick(StickR4cbBox)})
+StickR4cBox.addEventListener('click', function(){joystick(StickR4cBox)})
+StickR4cbBox.addEventListener('click', function(){joystick(StickR4cbBox)})
 if(localStorage.getItem('StickR4c') != null){StickR4cBox.value = localStorage.getItem('StickR4c')}
 if(localStorage.getItem('StickR4cb') != null){StickR4cbBox.value = localStorage.getItem('StickR4cb')}
 document.getElementById('clearStickR4c').addEventListener('click', function(){StickR4c.value = '';localStorage.removeItem('StickR4c');StickR4cb.value = '';localStorage.removeItem('StickR4cb')})
 
-StickD4cBox.addEventListener('focus', function(){joystick(StickD4cBox)})
-StickD4cbBox.addEventListener('focus', function(){joystick(StickD4cbBox)})
+StickD4cBox.addEventListener('click', function(){joystick(StickD4cBox)})
+StickD4cbBox.addEventListener('click', function(){joystick(StickD4cbBox)})
 if(localStorage.getItem('StickD4c') != null){StickD4cBox.value = localStorage.getItem('StickD4c')}
 if(localStorage.getItem('StickD4cb') != null){StickD4cbBox.value = localStorage.getItem('StickD4cb')}
 document.getElementById('clearStickD4c').addEventListener('click', function(){StickD4c.value = '';localStorage.removeItem('StickD4c');StickD4cb.value = '';localStorage.removeItem('StickD4cb')})
 
-CButtonU4cBox.addEventListener('focus', function(){joystick(CButtonU4cBox)})
-CButtonU4cbBox.addEventListener('focus', function(){joystick(CButtonU4cbBox)})
+CButtonU4cBox.addEventListener('click', function(){joystick(CButtonU4cBox)})
+CButtonU4cbBox.addEventListener('click', function(){joystick(CButtonU4cbBox)})
 if(localStorage.getItem('CButtonU4c') != null){CButtonU4cBox.value = localStorage.getItem('CButtonU4c')}
 if(localStorage.getItem('CButtonU4cb') != null){CButtonU4cbBox.value = localStorage.getItem('CButtonU4cb')}
 document.getElementById('clearCButtonU4c').addEventListener('click', function(){CButtonU4c.value = '';localStorage.removeItem('CButtonU4c');CButtonU4cb.value = '';localStorage.removeItem('CButtonU4cb')})
 
-CButtonL4cBox.addEventListener('focus', function(){joystick(CButtonL4cBox)})
-CButtonL4cbBox.addEventListener('focus', function(){joystick(CButtonL4cbBox)})
+CButtonL4cBox.addEventListener('click', function(){joystick(CButtonL4cBox)})
+CButtonL4cbBox.addEventListener('click', function(){joystick(CButtonL4cbBox)})
 if(localStorage.getItem('CButtonL4c') != null){CButtonL4cBox.value = localStorage.getItem('CButtonL4c')}
 if(localStorage.getItem('CButtonL4cb') != null){CButtonL4cbBox.value = localStorage.getItem('CButtonL4cb')}
 document.getElementById('clearCButtonL4c').addEventListener('click', function(){CButtonL4c.value = '';localStorage.removeItem('CButtonL4c');CButtonL4cb.value = '';localStorage.removeItem('CButtonL4cb')})
 
-CButtonR4cBox.addEventListener('focus', function(){joystick(CButtonR4cBox)})
-CButtonR4cbBox.addEventListener('focus', function(){joystick(CButtonR4cbBox)})
+CButtonR4cBox.addEventListener('click', function(){joystick(CButtonR4cBox)})
+CButtonR4cbBox.addEventListener('click', function(){joystick(CButtonR4cbBox)})
 if(localStorage.getItem('CButtonR4c') != null){CButtonR4cBox.value = localStorage.getItem('CButtonR4c')}
 if(localStorage.getItem('CButtonR4cb') != null){CButtonR4cbBox.value = localStorage.getItem('CButtonR4cb')}
 document.getElementById('clearCButtonR4c').addEventListener('click', function(){CButtonR4c.value = '';localStorage.removeItem('CButtonR4c');CButtonR4cb.value = '';localStorage.removeItem('CButtonR4cb')})
 
-CButtonD4cBox.addEventListener('focus', function(){joystick(CButtonD4cBox)})
-CButtonD4cbBox.addEventListener('focus', function(){joystick(CButtonD4cbBox)})
+CButtonD4cBox.addEventListener('click', function(){joystick(CButtonD4cBox)})
+CButtonD4cbBox.addEventListener('click', function(){joystick(CButtonD4cbBox)})
 if(localStorage.getItem('CButtonD4c') != null){CButtonD4cBox.value = localStorage.getItem('CButtonD4c')}
 if(localStorage.getItem('CButtonD4cb') != null){CButtonD4cbBox.value = localStorage.getItem('CButtonD4cb')}
 document.getElementById('clearCButtonD4c').addEventListener('click', function(){CButtonD4c.value = '';localStorage.removeItem('CButtonD4c');CButtonD4cb.value = '';localStorage.removeItem('CButtonD4cb')})
 
-DPadU4cBox.addEventListener('focus', function(){joystick(DPadU4cBox)})
-DPadU4cbBox.addEventListener('focus', function(){joystick(DPadU4cbBox)})
+DPadU4cBox.addEventListener('click', function(){joystick(DPadU4cBox)})
+DPadU4cbBox.addEventListener('click', function(){joystick(DPadU4cbBox)})
 if(localStorage.getItem('DPadU4c') != null){DPadU4cBox.value = localStorage.getItem('DPadU4c')}
 if(localStorage.getItem('DPadU4cb') != null){DPadU4cbBox.value = localStorage.getItem('DPadU4cb')}
 document.getElementById('clearDPadU4c').addEventListener('click', function(){DPadU4c.value = '';localStorage.removeItem('DPadU4c');DPadU4cb.value = '';localStorage.removeItem('DPadU4cb')})
 
-DPadL4cBox.addEventListener('focus', function(){joystick(DPadL4cBox)})
-DPadL4cbBox.addEventListener('focus', function(){joystick(DPadL4cbBox)})
+DPadL4cBox.addEventListener('click', function(){joystick(DPadL4cBox)})
+DPadL4cbBox.addEventListener('click', function(){joystick(DPadL4cbBox)})
 if(localStorage.getItem('DPadL4c') != null){DPadL4cBox.value = localStorage.getItem('DPadL4c')}
 if(localStorage.getItem('DPadL4cb') != null){DPadL4cbBox.value = localStorage.getItem('DPadL4cb')}
 document.getElementById('clearDPadL4c').addEventListener('click', function(){DPadL4c.value = '';localStorage.removeItem('DPadL4c');DPadL4cb.value = '';localStorage.removeItem('DPadL4cb')})
 
-DPadR4cBox.addEventListener('focus', function(){joystick(DPadR4cBox)})
-DPadR4cbBox.addEventListener('focus', function(){joystick(DPadR4cbBox)})
+DPadR4cBox.addEventListener('click', function(){joystick(DPadR4cBox)})
+DPadR4cbBox.addEventListener('click', function(){joystick(DPadR4cbBox)})
 if(localStorage.getItem('DPadR4c') != null){DPadR4cBox.value = localStorage.getItem('DPadR4c')}
 if(localStorage.getItem('DPadR4cb') != null){DPadR4cBox.value = localStorage.getItem('DPadR4cb')}
 document.getElementById('clearDPadR4c').addEventListener('click', function(){DPadR4c.value = '';localStorage.removeItem('DPadR4c');DPadR4cb.value = '';localStorage.removeItem('DPadR4cb')})
 
-DPadD4cBox.addEventListener('focus', function(){joystick(DPadD4cBox)})
-DPadD4cbBox.addEventListener('focus', function(){joystick(DPadD4cbBox)})
+DPadD4cBox.addEventListener('click', function(){joystick(DPadD4cBox)})
+DPadD4cbBox.addEventListener('click', function(){joystick(DPadD4cbBox)})
 if(localStorage.getItem('DPadD4c') != null){DPadD4cBox.value = localStorage.getItem('DPadD4c')}
 if(localStorage.getItem('DPadD4cb') != null){DPadD4cbBox.value = localStorage.getItem('DPadD4cb')}
 document.getElementById('clearDPadD4c').addEventListener('click', function(){DPadD4c.value = '';localStorage.removeItem('DPadD4c');DPadD4cb.value = '';localStorage.removeItem('DPadD4cb')})
 
-Start4cBox.addEventListener('focus', function(){joystick(Start4cBox)})
-Start4cbBox.addEventListener('focus', function(){joystick(Start4cbBox)})
+Start4cBox.addEventListener('click', function(){joystick(Start4cBox)})
+Start4cbBox.addEventListener('click', function(){joystick(Start4cbBox)})
 if(localStorage.getItem('Start4c') != null){Start4cBox.value = localStorage.getItem('Start4c')}
 if(localStorage.getItem('Start4cb') != null){Start4cbBox.value = localStorage.getItem('Start4cb')}
 document.getElementById('clearStart4c').addEventListener('click', function(){Start4c.value = '';localStorage.removeItem('Start4c');Start4cb.value = '';localStorage.removeItem('Start4cb')})
 
-AButton4cBox.addEventListener('focus', function(){joystick(AButton4cBox)})
-AButton4cbBox.addEventListener('focus', function(){joystick(AButton4cbBox)})
+AButton4cBox.addEventListener('click', function(){joystick(AButton4cBox)})
+AButton4cbBox.addEventListener('click', function(){joystick(AButton4cbBox)})
 if(localStorage.getItem('AButton4c') != null){AButton4cBox.value = localStorage.getItem('AButton4c')}
 if(localStorage.getItem('AButton4cb') != null){AButton4cbBox.value = localStorage.getItem('AButton4cb')}
 document.getElementById('clearAButton4c').addEventListener('click', function(){AButton4c.value = '';localStorage.removeItem('AButton4c');AButton4cb.value = '';localStorage.removeItem('AButton4cb')})
 
-BButton4cBox.addEventListener('focus', function(){joystick(BButton4cBox)})
-BButton4cbBox.addEventListener('focus', function(){joystick(BButton4cbBox)})
+BButton4cBox.addEventListener('click', function(){joystick(BButton4cBox)})
+BButton4cbBox.addEventListener('click', function(){joystick(BButton4cbBox)})
 if(localStorage.getItem('BButton4c') != null){BButton4cBox.value = localStorage.getItem('BButton4c')}
 if(localStorage.getItem('BButton4cb') != null){BButton4cbBox.value = localStorage.getItem('BButton4cb')}
 document.getElementById('clearBButton4c').addEventListener('click', function(){BButton4c.value = '';localStorage.removeItem('BButton4c');BButton4cb.value = '';localStorage.removeItem('BButton4cb')})
 
-LTrig4cBox.addEventListener('focus', function(){joystick(LTrig4cBox)})
-LTrig4cbBox.addEventListener('focus', function(){joystick(LTrig4cbBox)})
+LTrig4cBox.addEventListener('click', function(){joystick(LTrig4cBox)})
+LTrig4cbBox.addEventListener('click', function(){joystick(LTrig4cbBox)})
 if(localStorage.getItem('LTrig4c') != null){LTrig4cBox.value = localStorage.getItem('LTrig4c')}
 if(localStorage.getItem('LTrig4cb') != null){LTrig4cbBox.value = localStorage.getItem('LTrig4cb')}
 document.getElementById('clearLTrig4c').addEventListener('click', function(){LTrig4c.value = '';localStorage.removeItem('LTrig4c');LTrig4cb.value = '';localStorage.removeItem('LTrig4cb')})
 
-RTrig4cBox.addEventListener('focus', function(){joystick(RTrig4cBox)})
-RTrig4cbBox.addEventListener('focus', function(){joystick(RTrig4cbBox)})
+RTrig4cBox.addEventListener('click', function(){joystick(RTrig4cBox)})
+RTrig4cbBox.addEventListener('click', function(){joystick(RTrig4cbBox)})
 if(localStorage.getItem('RTrig4c') != null){RTrig4cBox.value = localStorage.getItem('RTrig4c')}
 if(localStorage.getItem('RTrig4cb') != null){RTrig4cbBox.value = localStorage.getItem('RTrig4cb')}
 document.getElementById('clearRTrig4c').addEventListener('click', function(){RTrig4c.value = '';localStorage.removeItem('RTrig4c');RTrig4cb.value = '';localStorage.removeItem('RTrig4cb')})
 
-ZTrig4cBox.addEventListener('focus', function(){joystick(ZTrig4cBox)})
-ZTrig4cbBox.addEventListener('focus', function(){joystick(ZTrig4cbBox)})
+ZTrig4cBox.addEventListener('click', function(){joystick(ZTrig4cBox)})
+ZTrig4cbBox.addEventListener('click', function(){joystick(ZTrig4cbBox)})
 if(localStorage.getItem('ZTrig4c') != null){ZTrig4cBox.value = localStorage.getItem('ZTrig4c')}
 if(localStorage.getItem('ZTrig4cb') != null){ZTrig4cbBox.value = localStorage.getItem('ZTrig4cb')}
 document.getElementById('clearZTrig4c').addEventListener('click', function(){ZTrig4c.value = '';localStorage.removeItem('ZTrig4c');ZTrig4cb.value = '';localStorage.removeItem('ZTrig4cb')})
 
-MempakSwitch4cBox.addEventListener('focus', function(){joystick(MempakSwitch4cBox)})
-MempakSwitch4cbBox.addEventListener('focus', function(){joystick(MempakSwitch4cbBox)})
+MempakSwitch4cBox.addEventListener('click', function(){joystick(MempakSwitch4cBox)})
+MempakSwitch4cbBox.addEventListener('click', function(){joystick(MempakSwitch4cbBox)})
 if(localStorage.getItem('MempakSwitch4c') != null){MempakSwitch4cBox.value = localStorage.getItem('MempakSwitch4c')}
 if(localStorage.getItem('MempakSwitch4cb') != null){MempakSwitch4cbBox.value = localStorage.getItem('MempakSwitch4cb')}
 document.getElementById('clearMempakSwitch4c').addEventListener('click', function(){MempakSwitch4c.value = '';localStorage.removeItem('MempakSwitch4c');MempakSwitch4cb.value = '';localStorage.removeItem('MempakSwitch4cb')})
 
-RumblepakSwitch4cBox.addEventListener('focus', function(){joystick(RumblepakSwitch4cBox)})
-RumblepakSwitch4cbBox.addEventListener('focus', function(){joystick(RumblepakSwitch4cbBox)})
+RumblepakSwitch4cBox.addEventListener('click', function(){joystick(RumblepakSwitch4cBox)})
+RumblepakSwitch4cbBox.addEventListener('click', function(){joystick(RumblepakSwitch4cbBox)})
 if(localStorage.getItem('RumblepakSwitch4c') != null){RumblepakSwitch4cBox.value = localStorage.getItem('RumblepakSwitch4c')}
 if(localStorage.getItem('RumblepakSwitch4cb') != null){RumblepakSwitch4cbBox.value = localStorage.getItem('RumblepakSwitch4cb')}
 document.getElementById('clearRumblepakSwitch4c').addEventListener('click', function(){RumblepakSwitch4c.value = '';localStorage.removeItem('RumblepakSwitch4c');RumblepakSwitch4cb.value = '';localStorage.removeItem('RumblepakSwitch4cb')})
 
 
 
-JoyMappingStop1Box.addEventListener('focus', function(){joystick(JoyMappingStop1Box)})
+JoyMappingStop1Box.addEventListener('click', function(){joystick(JoyMappingStop1Box)})
 if(localStorage.getItem('JoyMappingStop1') != null){JoyMappingStop1Box.value = localStorage.getItem('JoyMappingStop1')}
 document.getElementById('clearJoyMappingStop1').addEventListener('click', function(){JoyMappingStop1.value = '';localStorage.removeItem('JoyMappingStop1')})
 
-JoyMappingFullscreen1Box.addEventListener('focus', function(){joystick(JoyMappingFullscreen1Box)})
+JoyMappingFullscreen1Box.addEventListener('click', function(){joystick(JoyMappingFullscreen1Box)})
 if(localStorage.getItem('JoyMappingFullscreen1') != null){JoyMappingFullscreen1Box.value = localStorage.getItem('JoyMappingFullscreen1')}
 document.getElementById('clearJoyMappingFullscreen1').addEventListener('click', function(){JoyMappingFullscreen1.value = '';localStorage.removeItem('JoyMappingFullscreen1')})
 
-JoyMappingSaveState1Box.addEventListener('focus', function(){joystick(JoyMappingSaveState1Box)})
+JoyMappingSaveState1Box.addEventListener('click', function(){joystick(JoyMappingSaveState1Box)})
 if(localStorage.getItem('JoyMappingSaveState1') != null){JoyMappingSaveState1Box.value = localStorage.getItem('JoyMappingSaveState1')}
 document.getElementById('clearJoyMappingSaveState1').addEventListener('click', function(){JoyMappingSaveState1.value = '';localStorage.removeItem('JoyMappingSaveState1')})
 
-JoyMappingLoadState1Box.addEventListener('focus', function(){joystick(JoyMappingLoadState1Box)})
+JoyMappingLoadState1Box.addEventListener('click', function(){joystick(JoyMappingLoadState1Box)})
 if(localStorage.getItem('JoyMappingLoadState1') != null){JoyMappingLoadState1Box.value = localStorage.getItem('JoyMappingLoadState1')}
 document.getElementById('clearJoyMappingLoadState1').addEventListener('click', function(){JoyMappingLoadState1.value = '';localStorage.removeItem('JoyMappingLoadState1')})
 
-JoyMappingIncrementSlot1Box.addEventListener('focus', function(){joystick(JoyMappingIncrementSlot1Box)})
+JoyMappingIncrementSlot1Box.addEventListener('click', function(){joystick(JoyMappingIncrementSlot1Box)})
 if(localStorage.getItem('JoyMappingIncrementSlot1') != null){JoyMappingIncrementSlot1Box.value = localStorage.getItem('JoyMappingIncrementSlot1')}
 document.getElementById('clearJoyMappingIncrementSlot1').addEventListener('click', function(){JoyMappingIncrementSlot1.value = '';localStorage.removeItem('JoyMappingIncrementSlot1')})
 
-JoyMappingReset1Box.addEventListener('focus', function(){joystick(JoyMappingReset1Box)})
+JoyMappingReset1Box.addEventListener('click', function(){joystick(JoyMappingReset1Box)})
 if(localStorage.getItem('JoyMappingReset1') != null){JoyMappingReset1Box.value = localStorage.getItem('JoyMappingReset1')}
 document.getElementById('clearJoyMappingReset1').addEventListener('click', function(){JoyMappingReset1.value = '';localStorage.removeItem('JoyMappingReset1')})
 
-JoyMappingSpeedDown1Box.addEventListener('focus', function(){joystick(JoyMappingSpeedDown1Box)})
+JoyMappingSpeedDown1Box.addEventListener('click', function(){joystick(JoyMappingSpeedDown1Box)})
 if(localStorage.getItem('JoyMappingSpeedDown1') != null){JoyMappingSpeedDown1Box.value = localStorage.getItem('JoyMappingSpeedDown1')}
 document.getElementById('clearJoyMappingSpeedDown1').addEventListener('click', function(){JoyMappingSpeedDown1.value = '';localStorage.removeItem('JoyMappingSpeedDown1')})
 
-JoyMappingSpeedUp1Box.addEventListener('focus', function(){joystick(JoyMappingSpeedUp1Box)})
+JoyMappingSpeedUp1Box.addEventListener('click', function(){joystick(JoyMappingSpeedUp1Box)})
 if(localStorage.getItem('JoyMappingSpeedUp1') != null){JoyMappingSpeedUp1Box.value = localStorage.getItem('JoyMappingSpeedUp1')}
 document.getElementById('clearJoyMappingSpeedUp1').addEventListener('click', function(){JoyMappingSpeedUp1.value = '';localStorage.removeItem('JoyMappingSpeedUp1')})
 
-JoyMappingScreenshot1Box.addEventListener('focus', function(){joystick(JoyMappingScreenshot1Box)})
+JoyMappingScreenshot1Box.addEventListener('click', function(){joystick(JoyMappingScreenshot1Box)})
 if(localStorage.getItem('JoyMappingScreenshot1') != null){JoyMappingScreenshot1Box.value = localStorage.getItem('JoyMappingScreenshot1')}
 document.getElementById('clearJoyMappingScreenshot1').addEventListener('click', function(){JoyMappingScreenshot1.value = '';localStorage.removeItem('JoyMappingScreenshot1')})
 
-JoyMappingPause1Box.addEventListener('focus', function(){joystick(JoyMappingPause1Box)})
+JoyMappingPause1Box.addEventListener('click', function(){joystick(JoyMappingPause1Box)})
 if(localStorage.getItem('JoyMappingPause1') != null){JoyMappingPause1Box.value = localStorage.getItem('JoyMappingPause1')}
 document.getElementById('clearJoyMappingPause1').addEventListener('click', function(){JoyMappingPause1.value = '';localStorage.removeItem('JoyMappingPause1')})
 
-JoyMappingMute1Box.addEventListener('focus', function(){joystick(JoyMappingMute1Box)})
+JoyMappingMute1Box.addEventListener('click', function(){joystick(JoyMappingMute1Box)})
 if(localStorage.getItem('JoyMappingMute1') != null){JoyMappingMute1Box.value = localStorage.getItem('JoyMappingMute1')}
 document.getElementById('clearJoyMappingMute1').addEventListener('click', function(){JoyMappingMute1.value = '';localStorage.removeItem('JoyMappingMute1')})
 
-JoyMappingIncreaseVolume1Box.addEventListener('focus', function(){joystick(JoyMappingIncreaseVolume1Box)})
+JoyMappingIncreaseVolume1Box.addEventListener('click', function(){joystick(JoyMappingIncreaseVolume1Box)})
 if(localStorage.getItem('JoyMappingIncreaseVolume1') != null){JoyMappingIncreaseVolume1Box.value = localStorage.getItem('JoyMappingIncreaseVolume1')}
 document.getElementById('clearJoyMappingIncreaseVolume1').addEventListener('click', function(){JoyMappingIncreaseVolume1.value = '';localStorage.removeItem('JoyMappingIncreaseVolume1')})
 
-JoyMappingDecreaseVolume1Box.addEventListener('focus', function(){joystick(JoyMappingDecreaseVolume1Box)})
+JoyMappingDecreaseVolume1Box.addEventListener('click', function(){joystick(JoyMappingDecreaseVolume1Box)})
 if(localStorage.getItem('JoyMappingDecreaseVolume1') != null){JoyMappingDecreaseVolume1Box.value = localStorage.getItem('JoyMappingDecreaseVolume1')}
 document.getElementById('clearJoyMappingDecreaseVolume1').addEventListener('click', function(){JoyMappingDecreaseVolume1.value = '';localStorage.removeItem('JoyMappingDecreaseVolume1')})
 
-JoyMappingFastForward1Box.addEventListener('focus', function(){joystick(JoyMappingFastForward1Box)})
+JoyMappingFastForward1Box.addEventListener('click', function(){joystick(JoyMappingFastForward1Box)})
 if(localStorage.getItem('JoyMappingFastForward1') != null){JoyMappingFastForward1Box.value = localStorage.getItem('JoyMappingFastForward1')}
 document.getElementById('clearJoyMappingFastForward1').addEventListener('click', function(){JoyMappingFastForward1.value = '';localStorage.removeItem('JoyMappingFastForward1')})
 
-JoyMappingFrameAdvance1Box.addEventListener('focus', function(){joystick(JoyMappingFrameAdvance1Box)})
+JoyMappingFrameAdvance1Box.addEventListener('click', function(){joystick(JoyMappingFrameAdvance1Box)})
 if(localStorage.getItem('JoyMappingFrameAdvance1') != null){JoyMappingFrameAdvance1Box.value = localStorage.getItem('JoyMappingFrameAdvance1')}
 document.getElementById('clearJoyMappingFrameAdvance1').addEventListener('click', function(){JoyMappingFrameAdvance1.value = '';localStorage.removeItem('JoyMappingFrameAdvance1')})
 
-JoyMappingGameshark1Box.addEventListener('focus', function(){joystick(JoyMappingGameshark1Box)})
+JoyMappingGameshark1Box.addEventListener('click', function(){joystick(JoyMappingGameshark1Box)})
 if(localStorage.getItem('JoyMappingGameshark1') != null){JoyMappingGameshark1Box.value = localStorage.getItem('JoyMappingGameshark1')}
 document.getElementById('clearJoyMappingGameshark1').addEventListener('click', function(){JoyMappingGameshark1.value = '';localStorage.removeItem('JoyMappingGameshark1')})
 
 
 
-JoyMappingStop2Box.addEventListener('focus', function(){joystick(JoyMappingStop2Box)})
+JoyMappingStop2Box.addEventListener('click', function(){joystick(JoyMappingStop2Box)})
 if(localStorage.getItem('JoyMappingStop2') != null){JoyMappingStop2Box.value = localStorage.getItem('JoyMappingStop2')}
 document.getElementById('clearJoyMappingStop2').addEventListener('click', function(){JoyMappingStop2.value = '';localStorage.removeItem('JoyMappingStop2')})
 
-JoyMappingFullscreen2Box.addEventListener('focus', function(){joystick(JoyMappingFullscreen2Box)})
+JoyMappingFullscreen2Box.addEventListener('click', function(){joystick(JoyMappingFullscreen2Box)})
 if(localStorage.getItem('JoyMappingFullscreen2') != null){JoyMappingFullscreen2Box.value = localStorage.getItem('JoyMappingFullscreen2')}
 document.getElementById('clearJoyMappingFullscreen2').addEventListener('click', function(){JoyMappingFullscreen2.value = '';localStorage.removeItem('JoyMappingFullscreen2')})
 
-JoyMappingSaveState2Box.addEventListener('focus', function(){joystick(JoyMappingSaveState2Box)})
+JoyMappingSaveState2Box.addEventListener('click', function(){joystick(JoyMappingSaveState2Box)})
 if(localStorage.getItem('JoyMappingSaveState2') != null){JoyMappingSaveState2Box.value = localStorage.getItem('JoyMappingSaveState2')}
 document.getElementById('clearJoyMappingSaveState2').addEventListener('click', function(){JoyMappingSaveState2.value = '';localStorage.removeItem('JoyMappingSaveState2')})
 
-JoyMappingLoadState2Box.addEventListener('focus', function(){joystick(JoyMappingLoadState2Box)})
+JoyMappingLoadState2Box.addEventListener('click', function(){joystick(JoyMappingLoadState2Box)})
 if(localStorage.getItem('JoyMappingLoadState2') != null){JoyMappingLoadState2Box.value = localStorage.getItem('JoyMappingLoadState2')}
 document.getElementById('clearJoyMappingLoadState2').addEventListener('click', function(){JoyMappingLoadState2.value = '';localStorage.removeItem('JoyMappingLoadState2')})
 
-JoyMappingIncrementSlot2Box.addEventListener('focus', function(){joystick(JoyMappingIncrementSlot2Box)})
+JoyMappingIncrementSlot2Box.addEventListener('click', function(){joystick(JoyMappingIncrementSlot2Box)})
 if(localStorage.getItem('JoyMappingIncrementSlot2') != null){JoyMappingIncrementSlot2Box.value = localStorage.getItem('JoyMappingIncrementSlot2')}
 document.getElementById('clearJoyMappingIncrementSlot2').addEventListener('click', function(){JoyMappingIncrementSlot2.value = '';localStorage.removeItem('JoyMappingIncrementSlot2')})
 
-JoyMappingReset2Box.addEventListener('focus', function(){joystick(JoyMappingReset2Box)})
+JoyMappingReset2Box.addEventListener('click', function(){joystick(JoyMappingReset2Box)})
 if(localStorage.getItem('JoyMappingReset2') != null){JoyMappingReset2Box.value = localStorage.getItem('JoyMappingReset2')}
 document.getElementById('clearJoyMappingReset2').addEventListener('click', function(){JoyMappingReset2.value = '';localStorage.removeItem('JoyMappingReset2')})
 
-JoyMappingSpeedDown2Box.addEventListener('focus', function(){joystick(JoyMappingSpeedDown2Box)})
+JoyMappingSpeedDown2Box.addEventListener('click', function(){joystick(JoyMappingSpeedDown2Box)})
 if(localStorage.getItem('JoyMappingSpeedDown2') != null){JoyMappingSpeedDown2Box.value = localStorage.getItem('JoyMappingSpeedDown2')}
 document.getElementById('clearJoyMappingSpeedDown2').addEventListener('click', function(){JoyMappingSpeedDown2.value = '';localStorage.removeItem('JoyMappingSpeedDown2')})
 
-JoyMappingSpeedUp2Box.addEventListener('focus', function(){joystick(JoyMappingSpeedUp2Box)})
+JoyMappingSpeedUp2Box.addEventListener('click', function(){joystick(JoyMappingSpeedUp2Box)})
 if(localStorage.getItem('JoyMappingSpeedUp2') != null){JoyMappingSpeedUp2Box.value = localStorage.getItem('JoyMappingSpeedUp2')}
 document.getElementById('clearJoyMappingSpeedUp2').addEventListener('click', function(){JoyMappingSpeedUp2.value = '';localStorage.removeItem('JoyMappingSpeedUp2')})
 
-JoyMappingScreenshot2Box.addEventListener('focus', function(){joystick(JoyMappingScreenshot2Box)})
+JoyMappingScreenshot2Box.addEventListener('click', function(){joystick(JoyMappingScreenshot2Box)})
 if(localStorage.getItem('JoyMappingScreenshot2') != null){JoyMappingScreenshot2Box.value = localStorage.getItem('JoyMappingScreenshot2')}
 document.getElementById('clearJoyMappingScreenshot2').addEventListener('click', function(){JoyMappingScreenshot2.value = '';localStorage.removeItem('JoyMappingScreenshot2')})
 
-JoyMappingPause2Box.addEventListener('focus', function(){joystick(JoyMappingPause2Box)})
+JoyMappingPause2Box.addEventListener('click', function(){joystick(JoyMappingPause2Box)})
 if(localStorage.getItem('JoyMappingPause2') != null){JoyMappingPause2Box.value = localStorage.getItem('JoyMappingPause2')}
 document.getElementById('clearJoyMappingPause2').addEventListener('click', function(){JoyMappingPause2.value = '';localStorage.removeItem('JoyMappingPause2')})
 
-JoyMappingMute2Box.addEventListener('focus', function(){joystick(JoyMappingMute2Box)})
+JoyMappingMute2Box.addEventListener('click', function(){joystick(JoyMappingMute2Box)})
 if(localStorage.getItem('JoyMappingMute2') != null){JoyMappingMute2Box.value = localStorage.getItem('JoyMappingMute2')}
 document.getElementById('clearJoyMappingMute2').addEventListener('click', function(){JoyMappingMute2.value = '';localStorage.removeItem('JoyMappingMute2')})
 
-JoyMappingIncreaseVolume2Box.addEventListener('focus', function(){joystick(JoyMappingIncreaseVolume2Box)})
+JoyMappingIncreaseVolume2Box.addEventListener('click', function(){joystick(JoyMappingIncreaseVolume2Box)})
 if(localStorage.getItem('JoyMappingIncreaseVolume2') != null){JoyMappingIncreaseVolume2Box.value = localStorage.getItem('JoyMappingIncreaseVolume2')}
 document.getElementById('clearJoyMappingIncreaseVolume2').addEventListener('click', function(){JoyMappingIncreaseVolume2.value = '';localStorage.removeItem('JoyMappingIncreaseVolume2')})
 
-JoyMappingDecreaseVolume2Box.addEventListener('focus', function(){joystick(JoyMappingDecreaseVolume2Box)})
+JoyMappingDecreaseVolume2Box.addEventListener('click', function(){joystick(JoyMappingDecreaseVolume2Box)})
 if(localStorage.getItem('JoyMappingDecreaseVolume2') != null){JoyMappingDecreaseVolume2Box.value = localStorage.getItem('JoyMappingDecreaseVolume2')}
 document.getElementById('clearJoyMappingDecreaseVolume2').addEventListener('click', function(){JoyMappingDecreaseVolume2.value = '';localStorage.removeItem('JoyMappingDecreaseVolume2')})
 
-JoyMappingFastForward2Box.addEventListener('focus', function(){joystick(JoyMappingFastForward2Box)})
+JoyMappingFastForward2Box.addEventListener('click', function(){joystick(JoyMappingFastForward2Box)})
 if(localStorage.getItem('JoyMappingFastForward2') != null){JoyMappingFastForward2Box.value = localStorage.getItem('JoyMappingFastForward2')}
 document.getElementById('clearJoyMappingFastForward2').addEventListener('click', function(){JoyMappingFastForward2.value = '';localStorage.removeItem('JoyMappingFastForward2')})
 
-JoyMappingFrameAdvance2Box.addEventListener('focus', function(){joystick(JoyMappingFrameAdvance2Box)})
+JoyMappingFrameAdvance2Box.addEventListener('click', function(){joystick(JoyMappingFrameAdvance2Box)})
 if(localStorage.getItem('JoyMappingFrameAdvance2') != null){JoyMappingFrameAdvance2Box.value = localStorage.getItem('JoyMappingFrameAdvance2')}
 document.getElementById('clearJoyMappingFrameAdvance2').addEventListener('click', function(){JoyMappingFrameAdvance2.value = '';localStorage.removeItem('JoyMappingFrameAdvance2')})
 
-JoyMappingGameshark2Box.addEventListener('focus', function(){joystick(JoyMappingGameshark2Box)})
+JoyMappingGameshark2Box.addEventListener('click', function(){joystick(JoyMappingGameshark2Box)})
 if(localStorage.getItem('JoyMappingGameshark2') != null){JoyMappingGameshark2Box.value = localStorage.getItem('JoyMappingGameshark2')}
 document.getElementById('clearJoyMappingGameshark2').addEventListener('click', function(){JoyMappingGameshark2.value = '';localStorage.removeItem('JoyMappingGameshark2')})
 
 
 
-JoyMappingStop3Box.addEventListener('focus', function(){joystick(JoyMappingStop3Box)})
+JoyMappingStop3Box.addEventListener('click', function(){joystick(JoyMappingStop3Box)})
 if(localStorage.getItem('JoyMappingStop3') != null){JoyMappingStop3Box.value = localStorage.getItem('JoyMappingStop3')}
 document.getElementById('clearJoyMappingStop3').addEventListener('click', function(){JoyMappingStop3.value = '';localStorage.removeItem('JoyMappingStop3')})
 
-JoyMappingFullscreen3Box.addEventListener('focus', function(){joystick(JoyMappingFullscreen3Box)})
+JoyMappingFullscreen3Box.addEventListener('click', function(){joystick(JoyMappingFullscreen3Box)})
 if(localStorage.getItem('JoyMappingFullscreen3') != null){JoyMappingFullscreen3Box.value = localStorage.getItem('JoyMappingFullscreen3')}
 document.getElementById('clearJoyMappingFullscreen3').addEventListener('click', function(){JoyMappingFullscreen3.value = '';localStorage.removeItem('JoyMappingFullscreen3')})
 
-JoyMappingSaveState3Box.addEventListener('focus', function(){joystick(JoyMappingSaveState3Box)})
+JoyMappingSaveState3Box.addEventListener('click', function(){joystick(JoyMappingSaveState3Box)})
 if(localStorage.getItem('JoyMappingSaveState3') != null){JoyMappingSaveState3Box.value = localStorage.getItem('JoyMappingSaveState3')}
 document.getElementById('clearJoyMappingSaveState3').addEventListener('click', function(){JoyMappingSaveState3.value = '';localStorage.removeItem('JoyMappingSaveState3')})
 
-JoyMappingLoadState3Box.addEventListener('focus', function(){joystick(JoyMappingLoadState3Box)})
+JoyMappingLoadState3Box.addEventListener('click', function(){joystick(JoyMappingLoadState3Box)})
 if(localStorage.getItem('JoyMappingLoadState3') != null){JoyMappingLoadState3Box.value = localStorage.getItem('JoyMappingLoadState3')}
 document.getElementById('clearJoyMappingLoadState3').addEventListener('click', function(){JoyMappingLoadState3.value = '';localStorage.removeItem('JoyMappingLoadState3')})
 
-JoyMappingIncrementSlot3Box.addEventListener('focus', function(){joystick(JoyMappingIncrementSlot3Box)})
+JoyMappingIncrementSlot3Box.addEventListener('click', function(){joystick(JoyMappingIncrementSlot3Box)})
 if(localStorage.getItem('JoyMappingIncrementSlot3') != null){JoyMappingIncrementSlot3Box.value = localStorage.getItem('JoyMappingIncrementSlot3')}
 document.getElementById('clearJoyMappingIncrementSlot3').addEventListener('click', function(){JoyMappingIncrementSlot3.value = '';localStorage.removeItem('JoyMappingIncrementSlot3')})
 
-JoyMappingReset3Box.addEventListener('focus', function(){joystick(JoyMappingReset3Box)})
+JoyMappingReset3Box.addEventListener('click', function(){joystick(JoyMappingReset3Box)})
 if(localStorage.getItem('JoyMappingReset3') != null){JoyMappingReset3Box.value = localStorage.getItem('JoyMappingReset3')}
 document.getElementById('clearJoyMappingReset3').addEventListener('click', function(){JoyMappingReset3.value = '';localStorage.removeItem('JoyMappingReset3')})
 
-JoyMappingSpeedDown3Box.addEventListener('focus', function(){joystick(JoyMappingSpeedDown3Box)})
+JoyMappingSpeedDown3Box.addEventListener('click', function(){joystick(JoyMappingSpeedDown3Box)})
 if(localStorage.getItem('JoyMappingSpeedDown3') != null){JoyMappingSpeedDown3Box.value = localStorage.getItem('JoyMappingSpeedDown3')}
 document.getElementById('clearJoyMappingSpeedDown3').addEventListener('click', function(){JoyMappingSpeedDown3.value = '';localStorage.removeItem('JoyMappingSpeedDown3')})
 
-JoyMappingSpeedUp3Box.addEventListener('focus', function(){joystick(JoyMappingSpeedUp3Box)})
+JoyMappingSpeedUp3Box.addEventListener('click', function(){joystick(JoyMappingSpeedUp3Box)})
 if(localStorage.getItem('JoyMappingSpeedUp3') != null){JoyMappingSpeedUp3Box.value = localStorage.getItem('JoyMappingSpeedUp3')}
 document.getElementById('clearJoyMappingSpeedUp3').addEventListener('click', function(){JoyMappingSpeedUp3.value = '';localStorage.removeItem('JoyMappingSpeedUp3')})
 
-JoyMappingScreenshot3Box.addEventListener('focus', function(){joystick(JoyMappingScreenshot3Box)})
+JoyMappingScreenshot3Box.addEventListener('click', function(){joystick(JoyMappingScreenshot3Box)})
 if(localStorage.getItem('JoyMappingScreenshot3') != null){JoyMappingScreenshot3Box.value = localStorage.getItem('JoyMappingScreenshot3')}
 document.getElementById('clearJoyMappingScreenshot3').addEventListener('click', function(){JoyMappingScreenshot3.value = '';localStorage.removeItem('JoyMappingScreenshot3')})
 
-JoyMappingPause3Box.addEventListener('focus', function(){joystick(JoyMappingPause3Box)})
+JoyMappingPause3Box.addEventListener('click', function(){joystick(JoyMappingPause3Box)})
 if(localStorage.getItem('JoyMappingPause3') != null){JoyMappingPause3Box.value = localStorage.getItem('JoyMappingPause3')}
 document.getElementById('clearJoyMappingPause3').addEventListener('click', function(){JoyMappingPause3.value = '';localStorage.removeItem('JoyMappingPause3')})
 
-JoyMappingMute3Box.addEventListener('focus', function(){joystick(JoyMappingMute3Box)})
+JoyMappingMute3Box.addEventListener('click', function(){joystick(JoyMappingMute3Box)})
 if(localStorage.getItem('JoyMappingMute3') != null){JoyMappingMute3Box.value = localStorage.getItem('JoyMappingMute3')}
 document.getElementById('clearJoyMappingMute3').addEventListener('click', function(){JoyMappingMute3.value = '';localStorage.removeItem('JoyMappingMute3')})
 
-JoyMappingIncreaseVolume3Box.addEventListener('focus', function(){joystick(JoyMappingIncreaseVolume3Box)})
+JoyMappingIncreaseVolume3Box.addEventListener('click', function(){joystick(JoyMappingIncreaseVolume3Box)})
 if(localStorage.getItem('JoyMappingIncreaseVolume3') != null){JoyMappingIncreaseVolume3Box.value = localStorage.getItem('JoyMappingIncreaseVolume3')}
 document.getElementById('clearJoyMappingIncreaseVolume3').addEventListener('click', function(){JoyMappingIncreaseVolume3.value = '';localStorage.removeItem('JoyMappingIncreaseVolume3')})
 
-JoyMappingDecreaseVolume3Box.addEventListener('focus', function(){joystick(JoyMappingDecreaseVolume3Box)})
+JoyMappingDecreaseVolume3Box.addEventListener('click', function(){joystick(JoyMappingDecreaseVolume3Box)})
 if(localStorage.getItem('JoyMappingDecreaseVolume3') != null){JoyMappingDecreaseVolume3Box.value = localStorage.getItem('JoyMappingDecreaseVolume3')}
 document.getElementById('clearJoyMappingDecreaseVolume3').addEventListener('click', function(){JoyMappingDecreaseVolume3.value = '';localStorage.removeItem('JoyMappingDecreaseVolume3')})
 
-JoyMappingFastForward3Box.addEventListener('focus', function(){joystick(JoyMappingFastForward3Box)})
+JoyMappingFastForward3Box.addEventListener('click', function(){joystick(JoyMappingFastForward3Box)})
 if(localStorage.getItem('JoyMappingFastForward3') != null){JoyMappingFastForward3Box.value = localStorage.getItem('JoyMappingFastForward3')}
 document.getElementById('clearJoyMappingFastForward3').addEventListener('click', function(){JoyMappingFastForward3.value = '';localStorage.removeItem('JoyMappingFastForward3')})
 
-JoyMappingFrameAdvance3Box.addEventListener('focus', function(){joystick(JoyMappingFrameAdvance3Box)})
+JoyMappingFrameAdvance3Box.addEventListener('click', function(){joystick(JoyMappingFrameAdvance3Box)})
 if(localStorage.getItem('JoyMappingFrameAdvance3') != null){JoyMappingFrameAdvance3Box.value = localStorage.getItem('JoyMappingFrameAdvance3')}
 document.getElementById('clearJoyMappingFrameAdvance3').addEventListener('click', function(){JoyMappingFrameAdvance3.value = '';localStorage.removeItem('JoyMappingFrameAdvance3')})
 
-JoyMappingGameshark3Box.addEventListener('focus', function(){joystick(JoyMappingGameshark3Box)})
+JoyMappingGameshark3Box.addEventListener('click', function(){joystick(JoyMappingGameshark3Box)})
 if(localStorage.getItem('JoyMappingGameshark3') != null){JoyMappingGameshark3Box.value = localStorage.getItem('JoyMappingGameshark3')}
 document.getElementById('clearJoyMappingGameshark3').addEventListener('click', function(){JoyMappingGameshark3.value = '';localStorage.removeItem('JoyMappingGameshark3')})
 
 
 
-JoyMappingStop4Box.addEventListener('focus', function(){joystick(JoyMappingStop4Box)})
+JoyMappingStop4Box.addEventListener('click', function(){joystick(JoyMappingStop4Box)})
 if(localStorage.getItem('JoyMappingStop4') != null){JoyMappingStop4Box.value = localStorage.getItem('JoyMappingStop4')}
 document.getElementById('clearJoyMappingStop4').addEventListener('click', function(){JoyMappingStop4.value = '';localStorage.removeItem('JoyMappingStop4')})
 
-JoyMappingFullscreen4Box.addEventListener('focus', function(){joystick(JoyMappingFullscreen4Box)})
+JoyMappingFullscreen4Box.addEventListener('click', function(){joystick(JoyMappingFullscreen4Box)})
 if(localStorage.getItem('JoyMappingFullscreen4') != null){JoyMappingFullscreen4Box.value = localStorage.getItem('JoyMappingFullscreen4')}
 document.getElementById('clearJoyMappingFullscreen4').addEventListener('click', function(){JoyMappingFullscreen4.value = '';localStorage.removeItem('JoyMappingFullscreen4')})
 
-JoyMappingSaveState4Box.addEventListener('focus', function(){joystick(JoyMappingSaveState4Box)})
+JoyMappingSaveState4Box.addEventListener('click', function(){joystick(JoyMappingSaveState4Box)})
 if(localStorage.getItem('JoyMappingSaveState4') != null){JoyMappingSaveState4Box.value = localStorage.getItem('JoyMappingSaveState4')}
 document.getElementById('clearJoyMappingSaveState4').addEventListener('click', function(){JoyMappingSaveState4.value = '';localStorage.removeItem('JoyMappingSaveState4')})
 
-JoyMappingLoadState4Box.addEventListener('focus', function(){joystick(JoyMappingLoadState4Box)})
+JoyMappingLoadState4Box.addEventListener('click', function(){joystick(JoyMappingLoadState4Box)})
 if(localStorage.getItem('JoyMappingLoadState4') != null){JoyMappingLoadState4Box.value = localStorage.getItem('JoyMappingLoadState4')}
 document.getElementById('clearJoyMappingLoadState4').addEventListener('click', function(){JoyMappingLoadState4.value = '';localStorage.removeItem('JoyMappingLoadState4')})
 
-JoyMappingIncrementSlot4Box.addEventListener('focus', function(){joystick(JoyMappingIncrementSlot4Box)})
+JoyMappingIncrementSlot4Box.addEventListener('click', function(){joystick(JoyMappingIncrementSlot4Box)})
 if(localStorage.getItem('JoyMappingIncrementSlot4') != null){JoyMappingIncrementSlot4Box.value = localStorage.getItem('JoyMappingIncrementSlot4')}
 document.getElementById('clearJoyMappingIncrementSlot4').addEventListener('click', function(){JoyMappingIncrementSlot4.value = '';localStorage.removeItem('JoyMappingIncrementSlot4')})
 
-JoyMappingReset4Box.addEventListener('focus', function(){joystick(JoyMappingReset4Box)})
+JoyMappingReset4Box.addEventListener('click', function(){joystick(JoyMappingReset4Box)})
 if(localStorage.getItem('JoyMappingReset4') != null){JoyMappingReset4Box.value = localStorage.getItem('JoyMappingReset4')}
 document.getElementById('clearJoyMappingReset4').addEventListener('click', function(){JoyMappingReset4.value = '';localStorage.removeItem('JoyMappingReset4')})
 
-JoyMappingSpeedDown4Box.addEventListener('focus', function(){joystick(JoyMappingSpeedDown4Box)})
+JoyMappingSpeedDown4Box.addEventListener('click', function(){joystick(JoyMappingSpeedDown4Box)})
 if(localStorage.getItem('JoyMappingSpeedDown4') != null){JoyMappingSpeedDown4Box.value = localStorage.getItem('JoyMappingSpeedDown4')}
 document.getElementById('clearJoyMappingSpeedDown4').addEventListener('click', function(){JoyMappingSpeedDown4.value = '';localStorage.removeItem('JoyMappingSpeedDown4')})
 
-JoyMappingSpeedUp4Box.addEventListener('focus', function(){joystick(JoyMappingSpeedUp4Box)})
+JoyMappingSpeedUp4Box.addEventListener('click', function(){joystick(JoyMappingSpeedUp4Box)})
 if(localStorage.getItem('JoyMappingSpeedUp4') != null){JoyMappingSpeedUp4Box.value = localStorage.getItem('JoyMappingSpeedUp4')}
 document.getElementById('clearJoyMappingSpeedUp4').addEventListener('click', function(){JoyMappingSpeedUp4.value = '';localStorage.removeItem('JoyMappingSpeedUp4')})
 
-JoyMappingScreenshot4Box.addEventListener('focus', function(){joystick(JoyMappingScreenshot4Box)})
+JoyMappingScreenshot4Box.addEventListener('click', function(){joystick(JoyMappingScreenshot4Box)})
 if(localStorage.getItem('JoyMappingScreenshot4') != null){JoyMappingScreenshot4Box.value = localStorage.getItem('JoyMappingScreenshot4')}
 document.getElementById('clearJoyMappingScreenshot4').addEventListener('click', function(){JoyMappingScreenshot4.value = '';localStorage.removeItem('JoyMappingScreenshot4')})
 
-JoyMappingPause4Box.addEventListener('focus', function(){joystick(JoyMappingPause4Box)})
+JoyMappingPause4Box.addEventListener('click', function(){joystick(JoyMappingPause4Box)})
 if(localStorage.getItem('JoyMappingPause4') != null){JoyMappingPause4Box.value = localStorage.getItem('JoyMappingPause4')}
 document.getElementById('clearJoyMappingPause4').addEventListener('click', function(){JoyMappingPause4.value = '';localStorage.removeItem('JoyMappingPause4')})
 
-JoyMappingMute4Box.addEventListener('focus', function(){joystick(JoyMappingMute4Box)})
+JoyMappingMute4Box.addEventListener('click', function(){joystick(JoyMappingMute4Box)})
 if(localStorage.getItem('JoyMappingMute4') != null){JoyMappingMute4Box.value = localStorage.getItem('JoyMappingMute4')}
 document.getElementById('clearJoyMappingMute4').addEventListener('click', function(){JoyMappingMute4.value = '';localStorage.removeItem('JoyMappingMute4')})
 
-JoyMappingIncreaseVolume4Box.addEventListener('focus', function(){joystick(JoyMappingIncreaseVolume4Box)})
+JoyMappingIncreaseVolume4Box.addEventListener('click', function(){joystick(JoyMappingIncreaseVolume4Box)})
 if(localStorage.getItem('JoyMappingIncreaseVolume4') != null){JoyMappingIncreaseVolume4Box.value = localStorage.getItem('JoyMappingIncreaseVolume4')}
 document.getElementById('clearJoyMappingIncreaseVolume4').addEventListener('click', function(){JoyMappingIncreaseVolume4.value = '';localStorage.removeItem('JoyMappingIncreaseVolume4')})
 
-JoyMappingDecreaseVolume4Box.addEventListener('focus', function(){joystick(JoyMappingDecreaseVolume4Box)})
+JoyMappingDecreaseVolume4Box.addEventListener('click', function(){joystick(JoyMappingDecreaseVolume4Box)})
 if(localStorage.getItem('JoyMappingDecreaseVolume4') != null){JoyMappingDecreaseVolume4Box.value = localStorage.getItem('JoyMappingDecreaseVolume4')}
 document.getElementById('clearJoyMappingDecreaseVolume4').addEventListener('click', function(){JoyMappingDecreaseVolume4.value = '';localStorage.removeItem('JoyMappingDecreaseVolume4')})
 
-JoyMappingFastForward4Box.addEventListener('focus', function(){joystick(JoyMappingFastForward4Box)})
+JoyMappingFastForward4Box.addEventListener('click', function(){joystick(JoyMappingFastForward4Box)})
 if(localStorage.getItem('JoyMappingFastForward4') != null){JoyMappingFastForward4Box.value = localStorage.getItem('JoyMappingFastForward4')}
 document.getElementById('clearJoyMappingFastForward4').addEventListener('click', function(){JoyMappingFastForward4.value = '';localStorage.removeItem('JoyMappingFastForward4')})
 
-JoyMappingFrameAdvance4Box.addEventListener('focus', function(){joystick(JoyMappingFrameAdvance4Box)})
+JoyMappingFrameAdvance4Box.addEventListener('click', function(){joystick(JoyMappingFrameAdvance4Box)})
 if(localStorage.getItem('JoyMappingFrameAdvance4') != null){JoyMappingFrameAdvance4Box.value = localStorage.getItem('JoyMappingFrameAdvance4')}
 document.getElementById('clearJoyMappingFrameAdvance4').addEventListener('click', function(){JoyMappingFrameAdvance4.value = '';localStorage.removeItem('JoyMappingFrameAdvance4')})
 
-JoyMappingGameshark4Box.addEventListener('focus', function(){joystick(JoyMappingGameshark4Box)})
+JoyMappingGameshark4Box.addEventListener('click', function(){joystick(JoyMappingGameshark4Box)})
 if(localStorage.getItem('JoyMappingGameshark4') != null){JoyMappingGameshark4Box.value = localStorage.getItem('JoyMappingGameshark4')}
 document.getElementById('clearJoyMappingGameshark4').addEventListener('click', function(){JoyMappingGameshark4.value = '';localStorage.removeItem('JoyMappingGameshark4')})
 

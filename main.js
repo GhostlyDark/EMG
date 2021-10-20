@@ -19,6 +19,7 @@ load = path(dir, 'index.htm'),
 name = ' ' + app.name + ' v' + app.getVersion(),
 preferences = {preload:path(dir,'preload.js')},
 mainWindow = {backgroundColor:'#121212', width:1280, height:800, minWidth:923, minHeight:640, title:name, show:false, autoHideMenuBar:true, webPreferences:preferences};
+app.enableSandbox()
 
 const menuQuit = 'Quit ' + app.name,menuWindow = 'Window',menuFunctions = 'Functions',menuReload = 'Reload window',menuZoomIn = 'Increase zoom',menuZoomOut = 'Decrease zoom',menuZoomReset = 'Reset zoom',menuClear = 'Reset settings',menuSaves = 'Show User Data',menuSite = 'Visit website',dialogDelete = ' Reset settings',dialogDeleteM = 'Reset all settings?',dialogNo = 'Abort',dialogYes = 'Confirm',
 deleteDialog = {defaultId:1, cancelId:1, icon:path(dir, 'img', 'delete.png'), buttons:[dialogYes,dialogNo], title:dialogDelete, message:dialogDeleteM}
@@ -27,7 +28,7 @@ ipcMain.on('emuLaunch', (e, parameters) => {
 	var stdout = '';
 	let child = childSpawn(executablePath, parameters, emuOptions);
 	e.reply('spawnargs', child.spawnargs)
-	child.stdout.on('data', (data) => {stdout += `${data}`})
+	child.stdout.on('data', (data) => {stdout += data.toString()})
 	child.on('exit', () => {e.reply('m64pLog', stdout)})
 })
 
@@ -36,12 +37,20 @@ ipcMain.on('showCheats', (e, parameters) => {
 	e.returnValue = child.stdout.toString()
 })
 
-ipcMain.once('cwd', (e) => {e.returnValue = cwd})
-ipcMain.once('executablePath', (e) => {e.returnValue = executablePath})
-ipcMain.once('jstestPath', (e) => {e.returnValue = jstestPath})
-ipcMain.once('hires_texture', (e) => {e.returnValue = path(appData, 'mupen64plus', 'hires_texture')})
-ipcMain.once('cache', (e) => {e.returnValue = path(appData, 'mupen64plus', 'cache')})
-ipcMain.once('texture_dump', (e) => {e.returnValue = path(appData, 'mupen64plus', 'texture_dump')})
+var jstestChild;
+ipcMain.on('jstestChild', (e, jstestConfig) => {
+	jstestChild = childSpawn(jstestPath, jstestConfig, jstestOptions);
+	jstestChild.stdout.on('data', (data) => {e.reply('jsLog', data.toString())})
+	jstestChild.on('close', () => {e.reply('jsClosed')})
+})
+ipcMain.on('jstestKill', () => {if(jstestChild != undefined)jstestChild.kill('SIGTERM')})
+
+ipcMain.on('cwd', (e) => {e.returnValue = cwd})
+ipcMain.on('executablePath', (e) => {e.returnValue = executablePath})
+ipcMain.on('jstestPath', (e) => {e.returnValue = jstestPath})
+ipcMain.on('hires_texture', (e) => {e.returnValue = path(appData, 'mupen64plus', 'hires_texture')})
+ipcMain.on('cache', (e) => {e.returnValue = path(appData, 'mupen64plus', 'cache')})
+ipcMain.on('texture_dump', (e) => {e.returnValue = path(appData, 'mupen64plus', 'texture_dump')})
 ipcMain.on('dialogDirectory', (e) => {e.returnValue = dialog.showOpenDialogSync({properties:['openDirectory']})})
 ipcMain.on('dialogFile', (e, data) => {e.returnValue = dialog.showOpenDialogSync({properties:['openFile'],filters:[data]})})
 ipcMain.on('writeGCA', (e, gcaSettings) => {e.returnValue = fs(path(cwd, 'mupen64plus-input-gca.toml'),gcaSettings)})
@@ -65,19 +74,19 @@ session.defaultSession.webRequest.onHeadersReceived((details, callback) => {call
 Menu.setApplicationMenu(Menu.buildFromTemplate([
 	{label: 'App', submenu: [{icon: nativeImage.createFromPath(path(dir, 'img', 'quit.png')).resize(scale), label: menuQuit, accelerator: 'CmdOrCtrl+Q', click () {win.close()}}]},
 	{label: menuWindow, submenu: [
-      {icon: nativeImage.createFromPath(path(dir, 'img', 'refresh.png')).resize(scale), label: menuReload, accelerator: 'CmdOrCtrl+R', role: 'reload'},
-      {icon: nativeImage.createFromPath(path(dir, 'img', 'inspector.png')).resize(scale), label: 'Developer Tools', accelerator: 'CmdOrCtrl+I', role: 'toggleDevTools'},
-      {type: 'separator'},
-      {icon: nativeImage.createFromPath(path(dir, 'img', 'zoom-in.png')).resize(scale), label: menuZoomIn, accelerator: 'CmdOrCtrl+numadd', role: 'zoomin'},
-      {icon: nativeImage.createFromPath(path(dir, 'img', 'zoom-out.png')).resize(scale), label: menuZoomOut, accelerator: 'CmdOrCtrl+numsub', role: 'zoomout'},
-      {icon: nativeImage.createFromPath(path(dir, 'img', 'zoom-reset.png')).resize(scale), label: menuZoomReset, accelerator: 'CmdOrCtrl+num0', role: 'resetzoom'},
-      ]},
+		{icon: nativeImage.createFromPath(path(dir, 'img', 'refresh.png')).resize(scale), label: menuReload, accelerator: 'CmdOrCtrl+R', role: 'reload'},
+		{icon: nativeImage.createFromPath(path(dir, 'img', 'inspector.png')).resize(scale), label: 'Developer Tools', accelerator: 'CmdOrCtrl+I', role: 'toggleDevTools'},
+		{type: 'separator'},
+		{icon: nativeImage.createFromPath(path(dir, 'img', 'zoom-in.png')).resize(scale), label: menuZoomIn, accelerator: 'CmdOrCtrl+numadd', role: 'zoomin'},
+		{icon: nativeImage.createFromPath(path(dir, 'img', 'zoom-out.png')).resize(scale), label: menuZoomOut, accelerator: 'CmdOrCtrl+numsub', role: 'zoomout'},
+		{icon: nativeImage.createFromPath(path(dir, 'img', 'zoom-reset.png')).resize(scale), label: menuZoomReset, accelerator: 'CmdOrCtrl+num0', role: 'resetzoom'},
+		]},
 	{label: menuFunctions, submenu: [
-      {icon: nativeImage.createFromPath(path(dir, 'img', 'delete.png')).resize(scale), label: menuClear, click () {choice = dialog.showMessageBoxSync(win,deleteDialog);if(choice !== 1){session.defaultSession.clearStorageData();session.defaultSession.clearCache()}}},
-      {icon: nativeImage.createFromPath(path(dir, 'img', 'save.png')).resize(scale), label: menuSaves, click () {shell.openPath(path(appData, 'mupen64plus'))}},
-      {type: 'separator'},
-      {icon: nativeImage.createFromPath(path(dir, 'img', 'icon-ghostly-nx.png')).resize(scale), label: menuSite, click () {shell.openExternal('https://evilgames.eu/')}}
-      ]},
+		{icon: nativeImage.createFromPath(path(dir, 'img', 'delete.png')).resize(scale), label: menuClear, click () {choice = dialog.showMessageBoxSync(win,deleteDialog);if(choice !== 1){session.defaultSession.clearStorageData();session.defaultSession.clearCache()}}},
+		{icon: nativeImage.createFromPath(path(dir, 'img', 'save.png')).resize(scale), label: menuSaves, click () {shell.openPath(path(appData, 'mupen64plus'))}},
+		{type: 'separator'},
+		{icon: nativeImage.createFromPath(path(dir, 'img', 'icon-ghostly-nx.png')).resize(scale), label: menuSite, click () {shell.openExternal('https://evilgames.eu/')}}
+		]},
 ]))
 
 win.on('closed', () => {app.exit()})})

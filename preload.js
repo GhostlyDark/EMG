@@ -1,34 +1,30 @@
 const {contextBridge,ipcRenderer} = require('electron'),
-child_process = require('child_process'),
 cwd = ipcRenderer.sendSync('cwd'),
 executablePath = ipcRenderer.sendSync('executablePath'),
-jstestPath = ipcRenderer.sendSync('jstestPath'),
 hires_texture = ipcRenderer.sendSync('hires_texture'),
 cache = ipcRenderer.sendSync('cache'),
 texture_dump = ipcRenderer.sendSync('texture_dump'),
 stdio = ['ignore', 'pipe', 'ignore'],
-jstestOptions = {cwd: cwd, stdio: stdio, timeout: 10000},
 dialogDirectory = () => {return ipcRenderer.sendSync('dialogDirectory')},
 dialogFile = (data) => {return ipcRenderer.sendSync('dialogFile', data)},
 writeGCA = (gcaSettings) => {ipcRenderer.sendSync('writeGCA', gcaSettings)},
 emuLaunch = (parameters) => {ipcRenderer.send('emuLaunch', parameters)},
 showCheats = (parameters) => {return ipcRenderer.sendSync('showCheats', parameters)},
 
-regremove = /\r/gm,
-regaxis = /\s.*/i,
-reghk = /button\(|\)/g;
-
-var jstestChild; // joydata[0] = Device Name, joydata[1] = Device Number, joydata[2] = Pressed Key
-let jstest = (joyinput,joyvalue,joyfilter,joydata,joyhotkey,jstestConfig,name1Input,name2Input,name3Input,name4Input) => {
-if(jstestChild != undefined)jstestChild.kill('SIGTERM');
+jstest = (joyinput,name1Input,name2Input,name3Input,name4Input) => {
+const regremove = /\r/gm, regaxis = /\s.*/i, reghk = /button\(|\)/g;
+var joyvalue,joyfilter,joydata,joyhotkey,jstestConfig;
 if(joyinput.id.includes('1')){jstestConfig = ['-e', '0']}
 if(joyinput.id.includes('2')){jstestConfig = ['-e', '1']}
 if(joyinput.id.includes('3')){jstestConfig = ['-e', '2']}
 if(joyinput.id.includes('4')){jstestConfig = ['-e', '3']}
-jstestChild = child_process.spawn(jstestPath, jstestConfig, jstestOptions);
-jstestChild.stdout.on('data', (data) => {
-joyfilter = `${data}`.replace(regremove,'');
-joydata = joyfilter.split('\n');
+ipcRenderer.removeAllListeners('jsLog')
+ipcRenderer.removeAllListeners('jsClosed')
+ipcRenderer.send('jstestKill')
+ipcRenderer.send('jstestChild', jstestConfig)
+ipcRenderer.once('jsLog', (e, data) => {
+joyfilter = data.replace(regremove,'');
+joydata = joyfilter.split('\n'); // joydata[0] = Device Name, joydata[1] = Device Number, joydata[2] = Pressed Key
 if(joyinput.id.includes('JoyMapping')){
 if(joydata[2].includes('button')){
 joyhotkey = joydata[2].replace(reghk,'');
@@ -49,8 +45,8 @@ if(joydata[2] === 'hat(0 2)'){joyvalue = 'hat(0 Right)'}
 if(joydata[2] === 'hat(0 4)'){joyvalue = 'hat(0 Down)'}
 if(joydata[2] === 'hat(0 8)'){joyvalue = 'hat(0 Left)'}}}
 if(joyvalue != undefined){joyinput.value = joyvalue;localStorage.setItem(joyinput.id,joyvalue)}})
-joyinput.onblur = function(){jstestChild.kill('SIGTERM')};
-jstestChild.on('close', () => {joyinput.blur()})}
+joyinput.addEventListener('blur', function(){ipcRenderer.send('jstestKill')})
+ipcRenderer.once('jsClosed', () => {joyinput.blur()})}
 
 ipcRenderer.on('spawnargs', (e, spawnargs) => {console.log(spawnargs)})
 ipcRenderer.on('m64pLog', (e, stdout) => {console.log(stdout)})
