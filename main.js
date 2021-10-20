@@ -72,7 +72,7 @@ session.defaultSession.webRequest.onBeforeRequest(function(details, callback) {w
 session.defaultSession.webRequest.onHeadersReceived((details, callback) => {callback({responseHeaders: Object.assign({"Content-Security-Policy": ["frame-ancestors 'none'"]}, details.responseHeaders)})})
 
 Menu.setApplicationMenu(Menu.buildFromTemplate([
-	{label: 'App', submenu: [{icon: nativeImage.createFromPath(path(dir, 'img', 'quit.png')).resize(scale), label: menuQuit, accelerator: 'CmdOrCtrl+Q', click () {win.close()}}]},
+	{label: 'App', submenu: [{icon: nativeImage.createFromPath(path(dir, 'img', 'quit.png')).resize(scale), label: menuQuit, click () {win.close()}}]},
 	{label: menuWindow, submenu: [
 		{icon: nativeImage.createFromPath(path(dir, 'img', 'refresh.png')).resize(scale), label: menuReload, accelerator: 'CmdOrCtrl+R', role: 'reload'},
 		{icon: nativeImage.createFromPath(path(dir, 'img', 'inspector.png')).resize(scale), label: 'Developer Tools', accelerator: 'CmdOrCtrl+I', role: 'toggleDevTools'},
