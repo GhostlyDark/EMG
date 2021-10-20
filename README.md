@@ -53,10 +53,7 @@ sudo apt-get install -y libboost-filesystem-dev
 
 **Parallel**
 
-Needs an up-to-date graphics driver with Vulkan support. Reboot the system after updating.
-```
-sudo add-apt-repository ppa:kisak/kisak-mesa && sudo apt update && sudo apt full-upgrade
-```
+Needs an up-to-date graphics driver with Vulkan support.
 
 **Raphnetraw**
 
