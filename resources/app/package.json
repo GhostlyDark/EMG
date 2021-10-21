@@ -2,7 +2,7 @@
   "name": "emg",
   "productName": "EMG",
   "description": "Electron Mupen GUI",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "main": "main.js",
   "author": "GhostlyDark",
   "homepage": "https://evilgames.eu",
@@ -10,20 +10,5 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/GhostlyDark/EMG.git"
-  },
-  "devDependencies": {
-    "electron": "^15.2.0",
-    "electron-builder": "^22.10.5"
-  },
-  "build": {
-    "asar": "false",
-    "electronVersion": "15.2.0",
-    "icon": "./img/emg.png",
-    "linux": {
-      "target": "AppImage"
-    },
-    "appImage": {
-      "category": "Game"
-    }
   }
 }
