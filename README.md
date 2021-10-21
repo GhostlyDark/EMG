@@ -23,6 +23,14 @@ Follow the [Dolphin instructions](https://dolphin-emu.org/docs/guides/how-use-of
 
 ## Linux
 
+**Install script:**
+
+Download `install.sh` into an empty folder and run it. It uses `apt` to install required dependencies. Files are downloaded and built as necessary.
+```
+chmod u+x ./install.sh
+./install.sh
+```
+
 **Launch:**
 ```
 ./emg
@@ -32,14 +40,10 @@ Follow the [Dolphin instructions](https://dolphin-emu.org/docs/guides/how-use-of
 
 **Minimum libc version:**
 
-The core and most plugins require at least `GLIBC v2.27`. Check version:
+`GLIBC v2.30` or higher is required by some plugins. Check version:
 ```
 ldd --version ldd
 ```
-
-- GLideN64: GLIBC v2.29
-- Parallel: GLIBC v2.30
-
 
 **mupen64plus-core**
 ```
@@ -65,4 +69,4 @@ sudo apt-get install -y libhidapi-hidraw0
 ## Troubleshooting
 
 Open Developer Tools by pressing `CTRL + I` or by activating it via the menubar (unhide with `ALT`).
-If no Mupen64Plus log appears, the emulator core is missing dependencies. If there is a log, check it out to find out what's wrong. Logging happens once Mupen64Plus closes after pressing `Launch`.
+If no Mupen64Plus log appears, the emulator core is missing dependencies. Logging happens once Mupen64Plus closes after pressing `Launch`.
