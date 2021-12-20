@@ -25,7 +25,7 @@ Follow the [Dolphin instructions](https://dolphin-emu.org/docs/guides/how-use-of
 
 **Install script:**
 
-Download `install.sh` into an empty folder and run it. It uses `apt` to install required dependencies. Files are downloaded and built as necessary.
+Download [install.sh](https://raw.githubusercontent.com/GhostlyDark/EMG/master/install.sh) into an empty folder and run it. It uses `apt` as package manager to install required dependencies. Files are downloaded and built as necessary.
 ```
 chmod u+x ./install.sh
 ./install.sh
