@@ -53,7 +53,7 @@ ipcMain.on('cache', (e) => {e.returnValue = path(appData, 'mupen64plus', 'cache'
 ipcMain.on('texture_dump', (e) => {e.returnValue = path(appData, 'mupen64plus', 'texture_dump')})
 ipcMain.on('dialogDirectory', (e) => {e.returnValue = dialog.showOpenDialogSync({properties:['openDirectory']})})
 ipcMain.on('dialogFile', (e, data) => {e.returnValue = dialog.showOpenDialogSync({properties:['openFile'],filters:[data]})})
-ipcMain.on('writeGCA', (e, gcaSettings) => {e.returnValue = fs(path(cwd, 'mupen64plus-input-gca.toml'),gcaSettings)})
+ipcMain.on('writeGCA', (e, gcaSettings) => {e.returnValue = fs(path(appData, 'mupen64plus', 'mupen64plus-input-gca.toml'),gcaSettings)})
 
 app.on('second-instance', (e) => {if(win.isMinimized()){win.restore()}else{win.focus()}})
 if(!app.requestSingleInstanceLock()){return app.quit()}
