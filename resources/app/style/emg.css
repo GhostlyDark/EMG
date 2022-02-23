@@ -1,11 +1,9 @@
 *{user-select:none}
 input[type=text]{text-transform:capitalize}
-
 button,select,input,.box,.pointer,.hotkeys label,[type='color'] + label{cursor:pointer}
 
 [type='color']{border:0;outline:0;background:none;position:relative;top:2px}
 [type='color'] + label{padding-left:5px}
-
 [type='range']{outline:0}
 [type='range'] + label{padding-left:10px;position:relative;top:-2px}
 .gc{padding-right:10px;float:right;position:relative;top:3px}
@@ -37,14 +35,13 @@ select:active{background-color:#ccc}
 .custom select:active,.custom button:active,.custom [type='number']:active,.custom [type='text']:active,.custom [type='text']:focus{background-color:rgba(200,200,200,1)}
 .dark.custom select:active,.dark.custom button:active,.dark.custom [type='number']:active,.dark.custom [type='text']:active,.dark.custom [type='text']:focus{background-color:rgba(40,40,40,1)}
 
-option{background:#efefef}
-.dark option{background:#222}
-
 .dropdown{position:absolute;top:60px;z-index:1;opacity:.001;transition:visibility 0s .2s,opacity .2s cubic-bezier(.4,0,.22,1);transition-delay:0s;pointer-events:none}
 .dropdown a{padding:12px 16px;text-decoration:none;display:block;text-align:left;background-color:rgba(0,0,0,.5)}
 .dropdown a:hover{background-color:rgba(0,0,0,.7)}
 .show{opacity:1;visibility:visible;pointer-events:auto}
 
+option{background:#efefef}
+.dark option{background:#222}
 .box{padding:20px;border:2px dotted #111}
 .dark .box{border:2px dotted #eee}
 
@@ -82,11 +79,8 @@ header li:last-child{float:right;background-color:rgba(0,0,0,.25);padding-right:
 .palette-ice .dropdown{background:rgba(30,135,200,.98)}.dark.palette-ice .dropdown{background:rgba(10,115,180,.98)}
 .palette-ocean .dropdown{background:rgba(65,105,225,.98)}.dark.palette-ocean .dropdown{background:rgba(45,85,205,.98)}
 
-#recent{width:625px;padding-left:12px;height:29px}
-
 .ul-buttons{list-style-type:none;margin:10px auto 0 auto;padding:0;overflow:hidden}
 .ul-buttons li{cursor:pointer;float:left;margin:0;display:block;padding:9px 15px;border:0;transition:background-color .2s cubic-bezier(.4,0,.22,1)}
-
 .ul-buttons li:hover,.ul-buttons li.active{background-color:rgb(225,225,225)}
 .dark .ul-buttons li:hover,.dark .ul-buttons li.active{background-color:rgb(30,30,30)}
 .custom .ul-buttons li:hover,.custom .ul-buttons li.active{background-color:rgba(200,200,200,.7)}
@@ -94,9 +88,9 @@ header li:last-child{float:right;background-color:rgba(0,0,0,.25);padding-right:
 
 .hide{display:none}
 .width85p{width:85%}
-#name1,#name2,#name3,#name4{padding-left:7px;padding-right:7px}
-
 .radio{margin-left:40px}
+#recent{width:625px;padding-left:12px;height:29px}
+#name1,#name2,#name3,#name4{padding-left:7px;padding-right:7px}
 #cheatList{height:400px;overflow-y:scroll;border:2px solid #444;padding:15px 15px 0 15px;background-color:rgba(150,150,150,.1)}
 .dark #cheatList{border-color:#ccc;background-color:rgba(0,0,0,.2)}
 .dark.custom #cheatList{background-color:rgba(50,50,50,.1)}
