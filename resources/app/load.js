@@ -109,48 +109,6 @@ body.addEventListener('dragover', prevent, false)
 function prevent(e){e.preventDefault();e.stopPropagation()}
 function handleDrop(e) {prevent(e);file = e.dataTransfer.files[0];bgChange(file)}
 
-if(gsearch != null && gform != null){
-gform.addEventListener('submit', function(e,string){
-e.preventDefault();string = gsearch.value.replace(/#/g, '%23');
-window.open('https://www.google.com/search?q=' + string + '+site:evilgames.eu')})}
-
-function jsLang(){
-if(body.classList.contains('de')){
-if(gsearch != null)gsearch.placeholder = 'Suchen...';
-if(search != null)search.placeholder = 'Finden...';
-if(reschange != null)reschange.title = 'Auflösung für Vollbild (Hotkey: F9)';
-if(random != null)random.title = 'Zufälliges Spiel laden';
-settings.title = 'Seitenoptionen';moon.title = 'Helligkeit ändern';palettes.title = 'Farben wechseln';fancy.title = 'Bildhintergrund einstellen';filter.title = 'Filter setzen';language.title = 'Sprache ändern';reset.title = 'Hintergrund entfernen und zurücksetzen'}
-else{if(search != null)search.placeholder = 'Find...';
-if(gsearch != null)gsearch.placeholder = 'Search...';
-if(reschange != null)reschange.title = "Fullscreen resolution (Hotkey: F9)";
-if(random != null)random.title = 'Load random game';
-settings.title = 'Settings';moon.title = 'Change brightness';palettes.title = 'Change colors';fancy.title = 'Set background image';filter.title = 'Set filter';language.title = 'Change language';reset.title = 'Remove and reset background'}}
-
-if(localStorage.getItem('language') === null){
-var browserLang = window.navigator.language.slice(0,2);
-if(browserLang === 'de'){localStorage.language = browserLang}
-else{localStorage.language = 'en'}
-jsLang()}
-if(localStorage.language != null){if(localStorage.language === 'de'){body.classList.replace('en',localStorage.language);jsLang()}}
-language.addEventListener('click', function(){switch(localStorage.language){
-default: localStorage.language = 'en';body.classList.toggle('de');body.classList.toggle('en'); break;
-case 'en': localStorage.language = 'de';body.classList.toggle('de');body.classList.toggle('en')}
-jsLang()})
-
-if (search != null){
-var fltr, table, tr, td, i, txt;
-document.addEventListener('keydown', function(e){if(e.ctrlKey && e.which == 70) {e.preventDefault();search.focus()}})
-search.addEventListener('input', function(){
-fltr = search.value.toUpperCase();
-table = document.getElementById('search-table');
-tr = table.getElementsByTagName('tr');
-for (i = 0; i < tr.length; i++){
-td = tr[i].getElementsByTagName('td')[1];
-if (td) {txt = td.textContent;
-if (txt.toUpperCase().indexOf(fltr) > -1) {tr[i].style.display = ''}
-else {tr[i].style.display = 'none'}}}})}
-
 for (var i = 0; i < boxes.length; i++){var box = boxes[i];if (box.hasAttribute('data-store')){setupBox(box)}}
 function setupBox(box){
 var storageId = box.getAttribute('data-store'),oldVal = localStorage[storageId];
