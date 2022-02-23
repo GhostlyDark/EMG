@@ -82,7 +82,6 @@ header li:last-child{float:right;background-color:rgba(0,0,0,.25);padding-right:
 .palette-ice .dropdown{background:rgba(30,135,200,.98)}.dark.palette-ice .dropdown{background:rgba(10,115,180,.98)}
 .palette-ocean .dropdown{background:rgba(65,105,225,.98)}.dark.palette-ocean .dropdown{background:rgba(45,85,205,.98)}
 
-#language{display:none!important}
 #recent{width:625px;padding-left:12px;height:29px}
 
 .ul-buttons{list-style-type:none;margin:10px auto 0 auto;padding:0;overflow:hidden}
