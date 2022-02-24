@@ -18,8 +18,8 @@
   <div id="mainSettingsDropdown" class="dropdown">
     <a href="#coreAnchor">Core</a>
     <a href="#pluginsAnchor">Plugins</a>
-    <a href="#advancedAnchor">Advanced</a>
 	<a href="#audioAnchor">Audio</a>
+    <a href="#advancedAnchor">Advanced</a>
   </div>
 </li>
 <li>
@@ -151,42 +151,6 @@
 <p>&nbsp;</p>
 <p title="Support CPU-RSP semaphore lock."><input id="SupportCPUSemaphoreLock" type="checkbox" data-store="SupportCPUSemaphoreLock"><label for="SupportCPUSemaphoreLock">CPU Semaphore Lock</label></p>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
-<div id="advancedAnchor" class="anchor"></div>
-<p class="sub">Advanced</p>
-<p>&nbsp;</p>
-<p title="Disables speed limit, V-Sync and mutes audio. Useful for performance testing."><input id="nospeedlimit" type="checkbox" data-store="nospeedlimit"><label for="nospeedlimit">Disable Speed Limit</label></p>
-<p>&nbsp;</p>
-<p title="Enable Mupen64Plus On-Screen Display. Only works with legacy video plugins."><input id="osd" type="checkbox" data-store="osd" checked><label for="osd">On-Screen Display</label></p>
-<p>&nbsp;</p>
-<p title="Randomize PI/SI Interrupt Timing."><input id="RandomizeInterrupt" type="checkbox" data-store="RandomizeInterrupt" checked><label for="RandomizeInterrupt">Randomize Interrupt</label></p>
-<p>&nbsp;</p>
-<p title="Disable compiled jump commands in dynamic recompiler (not recommended)."><input id="NoCompiledJump" type="checkbox" data-store="NoCompiledJump"><label for="NoCompiledJump">Disable Compiled Jump</label></p>
-<p>&nbsp;</p>
-<p title="Print more information on logging."><input id="verbose" type="checkbox" data-store="verbose"><label for="verbose">Verbose Logging</label></p>
-<p>&nbsp;</p>
-<p title="Increment the save state slot after each save operation."><input id="AutoStateSlotIncrement" type="checkbox" data-store="AutoStateSlotIncrement"><label for="AutoStateSlotIncrement">Auto increment state slot</label></p>
-<p>&nbsp;</p>
-<p title="Save state slot (0-9) to use when starting emulation."><span class="numberDecrease" id="decreaseCurrentStateSlot">-</span><input id="CurrentStateSlot" min="0" max="9" value="0" type="number"><span class="numberIncrease" id="increaseCurrentStateSlot">+</span><label for="CurrentStateSlot">Default state slot</label></p>
-<p>&nbsp;</p>
-<p title="Force number of cycles per emulated instruction (speed hack, not recommended). Leave at 0 to disable."><span class="numberDecrease" id="decreaseCountPerOp">-</span><input id="CountPerOp" min="0" max="6" value="0" type="number"><span class="numberIncrease" id="increaseCountPerOp">+</span><label for="CountPerOp">Counter Factor</label></p>
-<p>&nbsp;</p>
-<p title="Reduce number of cycles per update by power of two (overclock)."><span class="numberDecrease" id="decreaseCountPerOpDenomPot">-</span><input id="CountPerOpDenomPot" min="0" max="11" value="0" type="number"><span class="numberIncrease" id="increaseCountPerOpDenomPot">+</span><label for="CountPerOpDenomPot">Overclock</label></p>
-<p>&nbsp;</p><p>&nbsp;</p>
-<select name="SaveDiskFormat" id="SaveDiskFormat">
-<option value="Core[SaveDiskFormat]=0">Full Disk Copy</option>
-<option value="Core[SaveDiskFormat]=1" selected>RAM Area Only</option>
-</select><label for="SaveDiskFormat">64DD Save Format</label>
-<p>&nbsp;</p><p>&nbsp;</p>
-<p title="Path 64DD BIOS file. Click the box or drag and drop the file into the box below.">Path to 64DD IPL ROM&nbsp;&nbsp;<button class="floatright" id="clearIPLROM">Clear</button><br><br><div id="IPLROM" class="box"><span id="IPLROMText"></span></div></p>
-<p>&nbsp;</p><p>&nbsp;</p>
-<p title="Path to 64DD ROM file. Click the box or drag and drop the .ndd file into the box below.">Path to 64DD Disk&nbsp;&nbsp;<button class="floatright" id="clearDisk">Clear</button><br><br><div id="Disk" class="box"><span id="DiskText"></span></div></p>
-<p>&nbsp;</p><p>&nbsp;</p>
-<p title="Path to directory where screenshots are saved. Keep blank for default. Click the box below to change it.">Path to Screenshots&nbsp;&nbsp;<button class="floatright" id="resetScreenshotPath">Reset</button><br><br><div id="ScreenshotPath" class="box"><span id="ScreenshotPathText"></span></div></p>
-<p>&nbsp;</p><p>&nbsp;</p>
-<p title="Path to directory where emulator save states (snapshots) are saved. Keep blank for default. Click the box below to change it.">Path to Save States&nbsp;&nbsp;<button class="floatright" id="resetSaveStatePath">Reset</button><br><br><div id="SaveStatePath" class="box"><span id="SaveStatePathText"></span></div></p>
-<p>&nbsp;</p><p>&nbsp;</p>
-<p title="Path to directory where SRAM/EEPROM data (in-game saves) are stored. Keep blank for default. Click the box below to change it.">Path to Save Files</a>&nbsp;&nbsp;<button class="floatright" id="resetSaveSRAMPath">Reset</button><br><br><div id="SaveSRAMPath" class="box"><span id="SaveSRAMPathText"></span></div></p>
-<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
 <div id="audioAnchor" class="anchor"></div>
 <p class="sub">Audio</p>
 <p>&nbsp;</p>
@@ -229,6 +193,42 @@
 <option value="Audio-SDL[RESAMPLE]=speex-fixed-0">SPEEX Fixed 0</option>
 <option value="Audio-SDL[RESAMPLE]=trivial">Trivial</option>
 </select><label for="RESAMPLE">Resampling Algorithm</label></div>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<div id="advancedAnchor" class="anchor"></div>
+<p class="sub">Advanced</p>
+<p>&nbsp;</p>
+<p title="Disables speed limit, V-Sync and mutes audio. Useful for performance testing."><input id="nospeedlimit" type="checkbox" data-store="nospeedlimit"><label for="nospeedlimit">Disable Speed Limit</label></p>
+<p>&nbsp;</p>
+<p title="Enable Mupen64Plus On-Screen Display. Only works with legacy video plugins."><input id="osd" type="checkbox" data-store="osd" checked><label for="osd">On-Screen Display</label></p>
+<p>&nbsp;</p>
+<p title="Randomize PI/SI Interrupt Timing."><input id="RandomizeInterrupt" type="checkbox" data-store="RandomizeInterrupt" checked><label for="RandomizeInterrupt">Randomize Interrupt</label></p>
+<p>&nbsp;</p>
+<p title="Disable compiled jump commands in dynamic recompiler (not recommended)."><input id="NoCompiledJump" type="checkbox" data-store="NoCompiledJump"><label for="NoCompiledJump">Disable Compiled Jump</label></p>
+<p>&nbsp;</p>
+<p title="Print more information on logging."><input id="verbose" type="checkbox" data-store="verbose"><label for="verbose">Verbose Logging</label></p>
+<p>&nbsp;</p>
+<p title="Increment the save state slot after each save operation."><input id="AutoStateSlotIncrement" type="checkbox" data-store="AutoStateSlotIncrement"><label for="AutoStateSlotIncrement">Auto increment state slot</label></p>
+<p>&nbsp;</p>
+<p title="Save state slot (0-9) to use when starting emulation."><span class="numberDecrease" id="decreaseCurrentStateSlot">-</span><input id="CurrentStateSlot" min="0" max="9" value="0" type="number"><span class="numberIncrease" id="increaseCurrentStateSlot">+</span><label for="CurrentStateSlot">Default state slot</label></p>
+<p>&nbsp;</p>
+<p title="Force number of cycles per emulated instruction (speed hack, not recommended). Leave at 0 to disable."><span class="numberDecrease" id="decreaseCountPerOp">-</span><input id="CountPerOp" min="0" max="6" value="0" type="number"><span class="numberIncrease" id="increaseCountPerOp">+</span><label for="CountPerOp">Counter Factor</label></p>
+<p>&nbsp;</p>
+<p title="Reduce number of cycles per update by power of two (overclock)."><span class="numberDecrease" id="decreaseCountPerOpDenomPot">-</span><input id="CountPerOpDenomPot" min="0" max="11" value="0" type="number"><span class="numberIncrease" id="increaseCountPerOpDenomPot">+</span><label for="CountPerOpDenomPot">Overclock</label></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<select name="SaveDiskFormat" id="SaveDiskFormat">
+<option value="Core[SaveDiskFormat]=0">Full Disk Copy</option>
+<option value="Core[SaveDiskFormat]=1" selected>RAM Area Only</option>
+</select><label for="SaveDiskFormat">64DD Save Format</label>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p title="Path 64DD BIOS file. Click the box or drag and drop the file into the box below.">Path to 64DD IPL ROM&nbsp;&nbsp;<button class="floatright" id="clearIPLROM">Clear</button><br><br><div id="IPLROM" class="box"><span id="IPLROMText"></span></div></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p title="Path to 64DD ROM file. Click the box or drag and drop the .ndd file into the box below.">Path to 64DD Disk&nbsp;&nbsp;<button class="floatright" id="clearDisk">Clear</button><br><br><div id="Disk" class="box"><span id="DiskText"></span></div></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p title="Path to directory where screenshots are saved. Keep blank for default. Click the box below to change it.">Path to Screenshots&nbsp;&nbsp;<button class="floatright" id="resetScreenshotPath">Reset</button><br><br><div id="ScreenshotPath" class="box"><span id="ScreenshotPathText"></span></div></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p title="Path to directory where emulator save states (snapshots) are saved. Keep blank for default. Click the box below to change it.">Path to Save States&nbsp;&nbsp;<button class="floatright" id="resetSaveStatePath">Reset</button><br><br><div id="SaveStatePath" class="box"><span id="SaveStatePathText"></span></div></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p title="Path to directory where SRAM/EEPROM data (in-game saves) are stored. Keep blank for default. Click the box below to change it.">Path to Save Files</a>&nbsp;&nbsp;<button class="floatright" id="resetSaveSRAMPath">Reset</button><br><br><div id="SaveSRAMPath" class="box"><span id="SaveSRAMPathText"></span></div></p>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
 <div id="controller1Anchor" class="anchor"></div>
 <p class="headline">Input</p>
