@@ -325,23 +325,23 @@ function txNoTextureFileStorageDisable(){if(id('txNoTextureFileStorage').checked
 if(localStorage.getItem('txNoTextureFileStorage') != 'null'){if(localStorage.getItem('txNoTextureFileStorage') === 'true'){id('cache').disabled = true}}
 id('txNoTextureFileStorage').addEventListener('change', function(){txNoTextureFileStorageDisable()})
 
-function mode1Disable(){if(id('mode1').value === 'Input-SDL-Control1[mode]=2'){plugged1.disabled = true;name1.disabled = true}else{plugged1.disabled = false;name1.disabled = false}}
-if(localStorage.getItem('mode1') != 'null'){if(localStorage.getItem('mode1') === 'Input-SDL-Control1[mode]=2'){plugged1.disabled = true;name1.disabled = true}}
+function mode1Disable(){if(id('mode1').value === 'Input-SDL-Control1[mode]=2'){id('plugged1').disabled = true;id('name1').disabled = true}else{id('plugged1').disabled = false;id('name1').disabled = false}}
+if(localStorage.getItem('mode1') != 'null'){if(localStorage.getItem('mode1') === 'Input-SDL-Control1[mode]=2'){id('plugged1').disabled = true;id('name1').disabled = true}}
 id('mode1').addEventListener('change', function(){mode1Disable()})
 mode1Disable();
 
-function mode2Disable(){if(id('mode2').value === 'Input-SDL-Control2[mode]=2'){plugged2.disabled = true;name2.disabled = true}else{plugged2.disabled = false;name2.disabled = false}}
-if(localStorage.getItem('mode2') != 'null'){if(localStorage.getItem('mode2') === 'Input-SDL-Control2[mode]=2'){plugged2.disabled = true;name2.disabled = true}}
+function mode2Disable(){if(id('mode2').value === 'Input-SDL-Control2[mode]=2'){id('plugged2').disabled = true;id('name2').disabled = true}else{id('plugged2').disabled = false;id('name2').disabled = false}}
+if(localStorage.getItem('mode2') != 'null'){if(localStorage.getItem('mode2') === 'Input-SDL-Control2[mode]=2'){id('plugged2').disabled = true;id('name2').disabled = true}}
 id('mode2').addEventListener('change', function(){mode2Disable()})
 mode2Disable();
 
-function mode3Disable(){if(id('mode3').value === 'Input-SDL-Control3[mode]=2'){plugged3.disabled = true;name3.disabled = true}else{plugged3.disabled = false;name3.disabled = false}}
-if(localStorage.getItem('mode3') != 'null'){if(localStorage.getItem('mode3') === 'Input-SDL-Control3[mode]=2'){plugged3.disabled = true;name3.disabled = true}}
+function mode3Disable(){if(id('mode3').value === 'Input-SDL-Control3[mode]=2'){id('plugged3').disabled = true;id('name3').disabled = true}else{id('plugged3').disabled = false;id('name3').disabled = false}}
+if(localStorage.getItem('mode3') != 'null'){if(localStorage.getItem('mode3') === 'Input-SDL-Control3[mode]=2'){id('plugged3').disabled = true;id('name3').disabled = true}}
 id('mode3').addEventListener('change', function(){mode3Disable()})
 mode3Disable();
 
-function mode4Disable(){if(id('mode4').value === 'Input-SDL-Control4[mode]=2'){plugged4.disabled = true;name4.disabled = true}else{plugged4.disabled = false;name4.disabled = false}}
-if(localStorage.getItem('mode4') != 'null'){if(localStorage.getItem('mode4') === 'Input-SDL-Control4[mode]=2'){plugged4.disabled = true;name4.disabled = true}}
+function mode4Disable(){if(id('mode4').value === 'Input-SDL-Control4[mode]=2'){id('plugged4').disabled = true;id('name4').disabled = true}else{id('plugged4').disabled = false;id('name4').disabled = false}}
+if(localStorage.getItem('mode4') != 'null'){if(localStorage.getItem('mode4') === 'Input-SDL-Control4[mode]=2'){id('plugged4').disabled = true;id('name4').disabled = true}}
 id('mode4').addEventListener('change', function(){mode4Disable()})
 mode4Disable();
 
@@ -445,10 +445,10 @@ for (var i = 0; i < textInputs.length; i++){var textInput = textInputs[i];preven
 function preventScroll(textInput){
 textInput.addEventListener('focus',(e) => {window.addEventListener('keydown',noScroll,false)})
 textInput.addEventListener('blur',(e) => {window.removeEventListener('keydown',noScroll,false)})}
-name1.addEventListener('focus',(e) => {window.removeEventListener('keydown',noScroll,false)})
-name2.addEventListener('focus',(e) => {window.removeEventListener('keydown',noScroll,false)})
-name3.addEventListener('focus',(e) => {window.removeEventListener('keydown',noScroll,false)})
-name4.addEventListener('focus',(e) => {window.removeEventListener('keydown',noScroll,false)})
+id('name1').addEventListener('focus',(e) => {window.removeEventListener('keydown',noScroll,false)})
+id('name2').addEventListener('focus',(e) => {window.removeEventListener('keydown',noScroll,false)})
+id('name3').addEventListener('focus',(e) => {window.removeEventListener('keydown',noScroll,false)})
+id('name4').addEventListener('focus',(e) => {window.removeEventListener('keydown',noScroll,false)})
 
 function removeShow(){
 if(id('mainSettings').classList.contains('active'))id('mainSettings').classList.remove('active');
@@ -469,8 +469,10 @@ if(id('videoSettingsDropdown').classList.contains('show')){removeShow()}
 else{removeShow();id('videoSettingsDropdown').classList.toggle('show');id('videoSettings').classList.toggle('active')}})
 
 window.onclick = function(e){if(!e.target.matches('.dropbutton')){removeShow()}}
-function prevent(e){e.preventDefault();e.stopPropagation()}
 
+
+
+function prevent(e){e.preventDefault();e.stopPropagation()}
 function fileExtension(fpath,ext){ext = fpath.slice((fpath.lastIndexOf(".") - 1 >>> 0) + 2);return ext}
 
 function ROMInput(fPath){
