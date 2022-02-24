@@ -20,7 +20,6 @@
     <a href="#pluginsAnchor">Plugins</a>
     <a href="#advancedAnchor">Advanced</a>
 	<a href="#audioAnchor">Audio</a>
-	<a href="#64ddAnchor">64DD</a>
   </div>
 </li>
 <li>
@@ -173,6 +172,15 @@
 <p>&nbsp;</p>
 <p title="Reduce number of cycles per update by power of two (overclock)."><span class="numberDecrease" id="decreaseCountPerOpDenomPot">-</span><input id="CountPerOpDenomPot" min="0" max="11" value="0" type="number"><span class="numberIncrease" id="increaseCountPerOpDenomPot">+</span><label for="CountPerOpDenomPot">Overclock</label></p>
 <p>&nbsp;</p><p>&nbsp;</p>
+<select name="SaveDiskFormat" id="SaveDiskFormat">
+<option value="Core[SaveDiskFormat]=0">Full Disk Copy</option>
+<option value="Core[SaveDiskFormat]=1" selected>RAM Area Only</option>
+</select><label for="SaveDiskFormat">64DD Save Format</label>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p title="Path 64DD BIOS file. Click the box or drag and drop the file into the box below.">Path to 64DD IPL ROM&nbsp;&nbsp;<button class="floatright" id="clearIPLROM">Clear</button><br><br><div id="IPLROM" class="box"><span id="IPLROMText"></span></div></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p title="Path to 64DD ROM file. Click the box or drag and drop the .ndd file into the box below.">Path to 64DD Disk&nbsp;&nbsp;<button class="floatright" id="clearDisk">Clear</button><br><br><div id="Disk" class="box"><span id="DiskText"></span></div></p>
+<p>&nbsp;</p><p>&nbsp;</p>
 <p title="Path to directory where screenshots are saved. Keep blank for default. Click the box below to change it.">Path to Screenshots&nbsp;&nbsp;<button class="floatright" id="resetScreenshotPath">Reset</button><br><br><div id="ScreenshotPath" class="box"><span id="ScreenshotPathText"></span></div></p>
 <p>&nbsp;</p><p>&nbsp;</p>
 <p title="Path to directory where emulator save states (snapshots) are saved. Keep blank for default. Click the box below to change it.">Path to Save States&nbsp;&nbsp;<button class="floatright" id="resetSaveStatePath">Reset</button><br><br><div id="SaveStatePath" class="box"><span id="SaveStatePathText"></span></div></p>
@@ -221,18 +229,6 @@
 <option value="Audio-SDL[RESAMPLE]=speex-fixed-0">SPEEX Fixed 0</option>
 <option value="Audio-SDL[RESAMPLE]=trivial">Trivial</option>
 </select><label for="RESAMPLE">Resampling Algorithm</label></div>
-<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
-<div id="64ddAnchor" class="anchor"></div>
-<p class="sub">64DD</p>
-<p>&nbsp;</p>
-<select name="SaveDiskFormat" id="SaveDiskFormat">
-<option value="Core[SaveDiskFormat]=0">Full Disk Copy</option>
-<option value="Core[SaveDiskFormat]=1" selected>RAM Area Only</option>
-</select><label for="SaveDiskFormat">64DD Save Format</label>
-<p>&nbsp;</p><p>&nbsp;</p>
-<p title="Path 64DD BIOS file. Click the box or drag and drop the file into the box below.">Path to 64DD IPL ROM&nbsp;&nbsp;<button class="floatright" id="clearIPLROM">Clear</button><br><br><div id="IPLROM" class="box"><span id="IPLROMText"></span></div></p>
-<p>&nbsp;</p><p>&nbsp;</p>
-<p title="Path to 64DD ROM file. Click the box or drag and drop the .ndd file into the box below.">Path to 64DD Disk&nbsp;&nbsp;<button class="floatright" id="clearDisk">Clear</button><br><br><div id="Disk" class="box"><span id="DiskText"></span></div></p>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
 <div id="controller1Anchor" class="anchor"></div>
 <p class="headline">Input</p>
