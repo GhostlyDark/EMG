@@ -10,8 +10,6 @@ writeGCA = window.writeGCA,
 hires_texture = window.hires_texture,
 cache = window.cache,
 texture_dump = window.texture_dump,
-
-id = function(id){return document.getElementById(id)},
 textInputs = document.querySelectorAll("input[type='text']"),
 
 regjoy = /axis|button|hat|\(|\)/g,
