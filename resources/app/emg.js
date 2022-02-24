@@ -693,136 +693,137 @@ id('ul_c4_controller').addEventListener('click', function(){currentController(id
 
 id('launch').addEventListener('click', function(){
 var PluginDir,osd,fullscreen,nospeedlimit,verbose,resolution,gfx,audio,input,rsp,emumode,exp,threadedVideo,plugin1,plugin2,plugin3,plugin4,plugged1,plugged2,plugged3,plugged4,mode1,mode2,mode3,mode4,name1,name2,name3,name4,device1,device2,device3,device4,mouse1,mouse2,mouse3,mouse4,msensitivity1,msensitivity2,msensitivity3,msensitivity4,analogdeadzone1,analogdeadzone2,analogdeadzone3,analogdeadzone4,analogpeak1,analogpeak2,analogpeak3,analogpeak4,msaa,fxaa,aspectRatio,vsync,bufferSwapMode,useNativeResolutionFactor,cxd4GFX,cxd4Audio,m64pGFX,m64pAudio,RspFallback,bilinearMode,enableHalosRemoval,anisotropy,cache,txHiresEnable,txNoTextureFileStorage,EnableInaccurateTextureCoordinates,EnableDitheringPattern,EnableHiresNoiseDithering,DitheringQuantization,RDRAMImageDitheringMode,EnableLOD,EnableHWLighting,EnableCoverage,EnableClipping,EnableShadersStorage,EnableLegacyBlending,EnableHybridFilter,EnableFragmentDepthWrite,EnableCustomSettings,CorrectTexrectCoords,EnableNativeResTexrects,BackgroundsMode,EnableTexCoordBounds,EnableFBEmulation,EnableCopyAuxiliaryToRDRAM,EnableN64DepthCompare,ForceDepthBufferClear,DisableFBInfo,FBInfoReadColorChunk,FBInfoReadDepthChunk,EnableCopyColorToRDRAM,EnableCopyDepthToRDRAM,EnableCopyColorFromRDRAM,EnableCopyDepthToMainDepthBuffer,OverscanNtscTop,OverscanNtscLeft,OverscanNtscRight,OverscanNtscBottom,OverscanPalTop,OverscanPalLeft,OverscanPalRight,OverscanPalBottom,txFilterMode,txEnhancementMode,txDeposterize,txFilterIgnoreBG,txCacheSize,txHiresVramLimit,txHiresFullAlphaChannel,txHresAltCRC,txCacheCompression,txForce16bpp,txSaveCache,txPathSetting,txCachePathSetting,txDumpPathSetting,KbdMappingSlot0,KbdMappingSlot1,KbdMappingSlot2,KbdMappingSlot3,KbdMappingSlot4,KbdMappingSlot5,KbdMappingSlot6,KbdMappingSlot7,KbdMappingSlot8,KbdMappingSlot9,KbdMappingStop,KbdMappingFullscreen,KbdMappingSaveState,KbdMappingLoadState,KbdMappingIncrementSlot,KbdMappingReset,KbdMappingSpeedDown,KbdMappingSpeedUp,KbdMappingScreenshot,KbdMappingPause,KbdMappingMute,KbdMappingIncreaseVolume,KbdMappingDecreaseVolume,KbdMappingFastForward,KbdMappingFrameAdvance,KbdMappingGameshark,JoyMappingStop,JoyMappingFullscreen,JoyMappingSaveState,JoyMappingLoadState,JoyMappingIncrementSlot,JoyMappingReset,JoyMappingSpeedDown,JoyMappingSpeedUp,JoyMappingScreenshot,JoyMappingPause,JoyMappingMute,JoyMappingIncreaseVolume,JoyMappingDecreaseVolume,JoyMappingFastForward,JoyMappingFrameAdvance,JoyMappingGameshark,Parallel,NumWorkers,BusyLoop,ViMode,ViInterpolation,ViWidescreen,ViHideOverscan,ViIntegerScaling,DpCompat,ParallelFullscreen,ParallelUpscaling,ParallelScreenWidth,ParallelScreenHeight,ParallelSuperscaledReads,ParallelSuperscaledDither,ParallelDeinterlace,ParallelIntegerScale,ParallelCropOverscan,ParallelVIAA,ParallelDivot,ParallelGammaDither,ParallelVIBilerp,ParallelVIDither,ParallelDownScale,ParallelNativeTextLOD,ParallelNativeTextRECT,ForceGammaCorrection,GammaCorrectionLevel,fontSize,fontColor,ShowFPS,ShowVIS,ShowPercent,ShowInternalResolution,ShowRenderingResolution,ShowStatistics,CountersPos,IPLROMSetting,DiskSetting,NoCompiledJump,CountPerOp,CountPerOpDenomPot,AutoStateSlotIncrement,CurrentStateSlot,SharedDataPath,ScreenshotPathSetting,SaveStatePathSetting,SaveSRAMPathSetting,RandomizeInterrupt,SaveDiskFormat,WaitForCPUHost,SupportCPUSemaphoreLock,gbROM1Setting,gbROM2Setting,gbROM3Setting,gbROM4Setting,gbRAM1Setting,gbRAM2Setting,gbRAM3Setting,gbRAM4Setting,DEFAULT_FREQUENCY,SWAP_CHANNELS,PRIMARY_BUFFER_TARGET,SECONDARY_BUFFER_SIZE,RESAMPLE,VOLUME_ADJUST,VOLUME_DEFAULT,AUDIO_SYNC,hkTexDump,hkHdTexReload,hkHdTexToggle,hkInaccurateTexCords,hkVsync,hkFBEmulation,hkN64DepthCompare,hkOsdVis,hkOsdFps,hkOsdPercent,hkOsdInternalResolution,hkOsdRenderingResolution,hkTexCoordBounds,hkNativeResTexrects,hkForceGammaCorrection,FrameBufferSetting,FrameBufferWriteBackControl,RenderToTexture,ScreenUpdateSetting,NormalAlphaBlender,FastTextureLoading,AccurateTextureMapping,InN64Resolution,SaveVRAM,DoubleSizeForSmallTxtrBuf,DefaultCombinerDisable,EnableHacks,WinFrameMode,FullTMEMEmulation,OpenGLVertexClipper,EnableSSE,SkipFrame,TexRectOnly,SmallTextureOnly,LoadHiResCRCOnly,LoadHiResTextures,DumpTexturesToFiles,RiceShowFPS,Mipmapping,FogMethod,ForceTextureFilter,TextureEnhancement,TextureEnhancementControl,TextureQuality,OpenGLDepthBufferSetting,RiceMultiSampling,ColorQuality,OpenGLRenderSetting,AnisotropicFiltering,ForcePolygonOffset,PolygonOffsetFactor,PolygonOffsetUnits,Glide64VSync,wrpAntiAliasing,force_polygon_offset,polygon_offset_factor,polygon_offset_units,show_fps,clock,clock_24_hr,wrpFBO,wrpAnisotropic,ghq_fltr,ghq_cmpr,ghq_enht,ghq_hirs,ghq_enht_cmpr,ghq_enht_tile,ghq_enht_f16bpp,ghq_enht_gz,ghq_enht_nobg,ghq_hirs_cmpr,ghq_hirs_tile,ghq_hirs_f16bpp,ghq_hirs_gz,ghq_hirs_altcrc,ghq_cache_save,ghq_cache_size,ghq_hirs_let_texartists_fly,ghq_hirs_dump,alt_tex_size,use_sts1_only,force_calc_sphere,correct_viewport,increase_texrect_edge,decrease_fillrect_edge,texture_correction,pal230,force_microcheck,force_quad3d,clip_zmin,clip_zmax,fast_crc,adjust_aspect,zmode_compare_less,old_style_adither,n64_z_scale,optimize_texrect,ignore_aux_copy,hires_buf_clear,fb_read_alpha,useless_is_useless,fb_crc_mode,filtering,fog,buff_clear,swapmode,aspect,lodmode,fb_smart,fb_hires,fb_read_always,read_back_to_screen,detect_cpu_write,fb_get_info,fb_render,AButton1,AButton2,AButton3,AButton4,BButton1,BButton2,BButton3,BButton4,LTrig1,LTrig2,LTrig3,LTrig4,RTrig1,RTrig2,RTrig3,RTrig4,ZTrig1,ZTrig2,ZTrig3,ZTrig4,Start1,Start2,Start3,Start4,DPadU1,DPadU2,DPadU3,DPadU4,DPadL1,DPadL2,DPadL3,DPadL4,DPadR1,DPadR2,DPadR3,DPadR4,DPadD1,DPadD2,DPadD3,DPadD4,CButtonU1,CButtonU2,CButtonU3,CButtonU4,CButtonL1,CButtonL2,CButtonL3,CButtonL4,CButtonR1,CButtonR2,CButtonR3,CButtonR4,CButtonD1,CButtonD2,CButtonD3,CButtonD4,MempakSwitch1,MempakSwitch2,MempakSwitch3,MempakSwitch4,RumblepakSwitch1,RumblepakSwitch2,RumblepakSwitch3,RumblepakSwitch4,XAxis1,XAxis2,XAxis3,XAxis4,YAxis1,YAxis2,YAxis3,YAxis4;
-if(id('exp').checked){exp = 'Core[DisableExtraMem]=True'}else{exp = 'Core[DisableExtraMem]=False'}
-if(id('osd').checked){osd = '--osd'}else{osd = '--noosd'}
-if(id('fullScreen').checked){fullscreen = '--fullscreen';ParallelFullscreen = 'Video-Parallel[Fullscreen]=True'}else{fullscreen = '--windowed';ParallelFullscreen = 'Video-Parallel[Fullscreen]=False'}
-if(id('vsync').checked){vsync = 'Video-General[VerticalSync]=True';Glide64VSync = 'Video-Glide64mk2[vsync]=True'}else{vsync = 'Video-General[VerticalSync]=False';Glide64VSync = 'Video-Glide64mk2[vsync]=False'}
-if(id('rspGFX').checked){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=True'}
-else{cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=False'}
-if(id('rspAudio').checked){cxd4Audio = 'rsp-cxd4[AudioListToAudioPlugin]=True'; m64pAudio = 'Rsp-HLE[AudioListToAudioPlugin]=True'}
-else{cxd4Audio = 'rsp-cxd4[AudioListToAudioPlugin]=False'; m64pAudio = 'Rsp-HLE[AudioListToAudioPlugin]=False'}
-if(id('WaitForCPUHost').checked){WaitForCPUHost = 'rsp-cxd4[WaitForCPUHost]=True'}else{WaitForCPUHost = 'rsp-cxd4[WaitForCPUHost]=False'}
-if(id('SupportCPUSemaphoreLock').checked){SupportCPUSemaphoreLock = 'rsp-cxd4[SupportCPUSemaphoreLock]=True'}else{SupportCPUSemaphoreLock = 'rsp-cxd4[SupportCPUSemaphoreLock]=False'}
-if(id('threadedVideo').checked){threadedVideo = 'Video-GLideN64[ThreadedVideo]=True'}else{threadedVideo = 'Video-GLideN64[ThreadedVideo]=False'}
-if(id('bilinearMode').checked){bilinearMode = 'Video-GLideN64[bilinearMode]=True'}else{bilinearMode = 'Video-GLideN64[bilinearMode]=False'}
-if(id('fxaa').checked){fxaa = 'Video-GLideN64[FXAA]=True'}else{fxaa = 'Video-GLideN64[FXAA]=False'}
-if(id('enableHalosRemoval').checked){enableHalosRemoval = 'Video-GLideN64[enableHalosRemoval]=True'}else{enableHalosRemoval = 'Video-GLideN64[enableHalosRemoval]=False'}
-if(id('txHiresEnable').checked){txHiresEnable = 'Video-GLideN64[txHiresEnable]=True'}else{txHiresEnable = 'Video-GLideN64[txHiresEnable]=False'}
-if(id('txNoTextureFileStorage').checked){txNoTextureFileStorage = 'Video-GLideN64[txNoTextureFileStorage]=True'}else{txNoTextureFileStorage = 'Video-GLideN64[txNoTextureFileStorage]=False'}
-if(id('EnableInaccurateTextureCoordinates').checked){EnableInaccurateTextureCoordinates = 'Video-GLideN64[EnableInaccurateTextureCoordinates]=True'}else{EnableInaccurateTextureCoordinates = 'Video-GLideN64[EnableInaccurateTextureCoordinates]=False'}
-if(id('EnableDitheringPattern').checked){EnableDitheringPattern = 'Video-GLideN64[EnableDitheringPattern]=True'}else{EnableDitheringPattern = 'Video-GLideN64[EnableDitheringPattern]=False'}
-if(id('EnableHiresNoiseDithering').checked){EnableHiresNoiseDithering = 'Video-GLideN64[EnableHiresNoiseDithering]=True'}else{EnableHiresNoiseDithering = 'Video-GLideN64[EnableHiresNoiseDithering]=False'}
-if(id('DitheringQuantization').checked){DitheringQuantization = 'Video-GLideN64[DitheringQuantization]=True'}else{DitheringQuantization = 'Video-GLideN64[DitheringQuantization]=False'}
-if(id('EnableHWLighting').checked){EnableHWLighting = 'Video-GLideN64[EnableHWLighting]=True'}else{EnableHWLighting = 'Video-GLideN64[EnableHWLighting]=False'}
-if(id('EnableCoverage').checked){EnableCoverage = 'Video-GLideN64[EnableCoverage]=True'}else{EnableCoverage = 'Video-GLideN64[EnableCoverage]=False'}
-if(id('EnableClipping').checked){EnableClipping = 'Video-GLideN64[EnableClipping]=True'}else{EnableClipping = 'Video-GLideN64[EnableClipping]=False'}
-if(id('EnableShadersStorage').checked){EnableShadersStorage = 'Video-GLideN64[EnableShadersStorage]=True'}else{EnableShadersStorage = 'Video-GLideN64[EnableShadersStorage]=False'}
-if(id('EnableLegacyBlending').checked){EnableLegacyBlending = 'Video-GLideN64[EnableLegacyBlending]=True'}else{EnableLegacyBlending = 'Video-GLideN64[EnableLegacyBlending]=False'}
-if(id('EnableHybridFilter').checked){EnableHybridFilter = 'Video-GLideN64[EnableHybridFilter]=True'}else{EnableHybridFilter = 'Video-GLideN64[EnableHybridFilter]=False'}
-if(id('EnableFragmentDepthWrite').checked){EnableFragmentDepthWrite = 'Video-GLideN64[EnableFragmentDepthWrite]=True'}else{EnableFragmentDepthWrite = 'Video-GLideN64[EnableFragmentDepthWrite]=False'}
-if(id('EnableCustomSettings').checked){EnableCustomSettings = 'Video-GLideN64[EnableCustomSettings]=True'}else{EnableCustomSettings = 'Video-GLideN64[EnableCustomSettings]=False'}
-if(id('EnableTexCoordBounds').checked){EnableTexCoordBounds = 'Video-GLideN64[EnableTexCoordBounds]=1'}else{EnableTexCoordBounds = 'Video-GLideN64[EnableTexCoordBounds]=0'}
-if(id('EnableLOD').checked){EnableLOD = 'Video-GLideN64[EnableLOD]=True'}else{EnableLOD = 'Video-GLideN64[EnableLOD]=False'}
-if(id('EnableFBEmulation').checked){EnableFBEmulation = 'Video-GLideN64[EnableFBEmulation]=True'}else{EnableFBEmulation = 'Video-GLideN64[EnableFBEmulation]=False'}
-if(id('EnableCopyAuxiliaryToRDRAM').checked){EnableCopyAuxiliaryToRDRAM = 'Video-GLideN64[EnableCopyAuxiliaryToRDRAM]=True'}else{EnableCopyAuxiliaryToRDRAM = 'Video-GLideN64[EnableCopyAuxiliaryToRDRAM]=False'}
-if(id('ForceDepthBufferClear').checked){ForceDepthBufferClear = 'Video-GLideN64[ForceDepthBufferClear]=True'}else{ForceDepthBufferClear = 'Video-GLideN64[ForceDepthBufferClear]=False'}
-if(id('DisableFBInfo').checked){DisableFBInfo = 'Video-GLideN64[DisableFBInfo]=True'}else{DisableFBInfo = 'Video-GLideN64[DisableFBInfo]=False'}
-if(id('FBInfoReadColorChunk').checked){FBInfoReadColorChunk = 'Video-GLideN64[FBInfoReadColorChunk]=True'}else{FBInfoReadColorChunk = 'Video-GLideN64[FBInfoReadColorChunk]=False'}
-if(id('FBInfoReadDepthChunk').checked){FBInfoReadDepthChunk = 'Video-GLideN64[FBInfoReadDepthChunk]=True'}else{FBInfoReadDepthChunk = 'Video-GLideN64[FBInfoReadDepthChunk]=False'}
-if(id('EnableCopyColorFromRDRAM').checked){EnableCopyColorFromRDRAM = 'Video-GLideN64[EnableCopyColorFromRDRAM]=True'}else{EnableCopyColorFromRDRAM = 'Video-GLideN64[EnableCopyColorFromRDRAM]=False'}
-if(id('EnableCopyDepthToMainDepthBuffer').checked){EnableCopyDepthToMainDepthBuffer = 'Video-GLideN64[EnableCopyDepthToMainDepthBuffer]=True'}else{EnableCopyDepthToMainDepthBuffer = 'Video-GLideN64[EnableCopyDepthToMainDepthBuffer]=False'}
-if(id('EnableOverscan').checked){EnableOverscan = 'Video-GLideN64[EnableOverscan]=True'}else{EnableOverscan = 'Video-GLideN64[EnableOverscan]=False'}
-if(id('txDeposterize').checked){txDeposterize = 'Video-GLideN64[txDeposterize]=True'}else{txDeposterize = 'Video-GLideN64[txDeposterize]=False'}
-if(id('txFilterIgnoreBG').checked){txFilterIgnoreBG = 'Video-GLideN64[txFilterIgnoreBG]=True'}else{txFilterIgnoreBG = 'Video-GLideN64[txFilterIgnoreBG]=False'}
-if(id('txHiresFullAlphaChannel').checked){txHiresFullAlphaChannel = 'Video-GLideN64[txHiresFullAlphaChannel]=True'}else{txHiresFullAlphaChannel = 'Video-GLideN64[txHiresFullAlphaChannel]=False'}
-if(id('txHresAltCRC').checked){txHresAltCRC = 'Video-GLideN64[txHresAltCRC]=True'}else{txHresAltCRC = 'Video-GLideN64[txHresAltCRC]=False'}
-if(id('txCacheCompression').checked){txCacheCompression = 'Video-GLideN64[txCacheCompression]=True'}else{txCacheCompression = 'Video-GLideN64[txCacheCompression]=False'}
-if(id('txForce16bpp').checked){txForce16bpp = 'Video-GLideN64[txForce16bpp]=True'}else{txForce16bpp = 'Video-GLideN64[txForce16bpp]=False'}
-if(id('txSaveCache').checked){txSaveCache = 'Video-GLideN64[txSaveCache]=True'}else{txSaveCache = 'Video-GLideN64[txSaveCache]=False'}
-if(id('ForceGammaCorrection').checked){ForceGammaCorrection = 'Video-GLideN64[ForceGammaCorrection]=True'}else{ForceGammaCorrection = 'Video-GLideN64[ForceGammaCorrection]=False'}
-if(id('ShowFPS').checked){ShowFPS = 'Video-GLideN64[ShowFPS]=True'}else{ShowFPS = 'Video-GLideN64[ShowFPS]=False'}
-if(id('ShowVIS').checked){ShowVIS = 'Video-GLideN64[ShowVIS]=True'}else{ShowVIS = 'Video-GLideN64[ShowVIS]=False'}
-if(id('ShowPercent').checked){ShowPercent = 'Video-GLideN64[ShowPercent]=True'}else{ShowPercent = 'Video-GLideN64[ShowPercent]=False'}
-if(id('ShowInternalResolution').checked){ShowInternalResolution = 'Video-GLideN64[ShowInternalResolution]=True'}else{ShowInternalResolution = 'Video-GLideN64[ShowInternalResolution]=False'}
-if(id('ShowRenderingResolution').checked){ShowRenderingResolution = 'Video-GLideN64[ShowRenderingResolution]=True'}else{ShowRenderingResolution = 'Video-GLideN64[ShowRenderingResolution]=False'}
-if(id('ShowStatistics').checked){ShowStatistics = 'Video-GLideN64[ShowStatistics]=True'}else{ShowStatistics = 'Video-GLideN64[ShowStatistics]=False'}
+exp = 'Core[DisableExtraMem]=' + id('exp').checked
+osd = id('osd').checked ? '--osd' : '--noosd'
+fullscreen = id('fullscreen').checked ? '--fullscreen' : '--windowed'
+ParallelFullscreen = 'Video-Parallel[Fullscreen]=' + id('fullscreen').checked
+vsync = 'Video-General[VerticalSync]=' + id('vsync').checked
+Glide64VSync = 'Video-Glide64mk2[vsync]=' + id('vsync').checked
+cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=' + id('rspGFX').checked
+cxd4Audio = 'rsp-cxd4[AudioListToAudioPlugin]=' + id('rspAudio').checked
+m64pAudio = 'Rsp-HLE[AudioListToAudioPlugin]=' + id('rspAudio').checked
+WaitForCPUHost = 'rsp-cxd4[WaitForCPUHost]=' + id('WaitForCPUHost').checked
+SupportCPUSemaphoreLock = 'rsp-cxd4[SupportCPUSemaphoreLock]=' + id('SupportCPUSemaphoreLock').checked
+threadedVideo = 'Video-GLideN64[threadedVideo]=' + id('threadedVideo').checked
+bilinearMode = 'Video-GLideN64[bilinearMode]=' + id('bilinearMode').checked
+fxaa = 'Video-GLideN64[fxaa]=' + id('fxaa').checked
+enableHalosRemoval = 'Video-GLideN64[enableHalosRemoval]=' + id('enableHalosRemoval').checked
+txHiresEnable = 'Video-GLideN64[txHiresEnable]=' + id('txHiresEnable').checked
+txNoTextureFileStorage = 'Video-GLideN64[txNoTextureFileStorage]=' + id('txNoTextureFileStorage').checked
+EnableInaccurateTextureCoordinates = 'Video-GLideN64[EnableInaccurateTextureCoordinates]=' + id('EnableInaccurateTextureCoordinates').checked
+EnableDitheringPattern = 'Video-GLideN64[EnableDitheringPattern]=' + id('EnableDitheringPattern').checked
+EnableHiresNoiseDithering = 'Video-GLideN64[EnableHiresNoiseDithering]=' + id('EnableHiresNoiseDithering').checked
+DitheringQuantization = 'Video-GLideN64[DitheringQuantization]=' + id('DitheringQuantization').checked
+EnableHWLighting = 'Video-GLideN64[EnableHWLighting]=' + id('EnableHWLighting').checked
+EnableCoverage = 'Video-GLideN64[EnableCoverage]=' + id('EnableCoverage').checked
+EnableClipping = 'Video-GLideN64[EnableClipping]=' + id('EnableClipping').checked
+EnableShadersStorage = 'Video-GLideN64[EnableShadersStorage]=' + id('EnableShadersStorage').checked
+EnableLegacyBlending = 'Video-GLideN64[EnableLegacyBlending]=' + id('EnableLegacyBlending').checked
+EnableHybridFilter = 'Video-GLideN64[EnableHybridFilter]=' + id('EnableHybridFilter').checked
+EnableFragmentDepthWrite = 'Video-GLideN64[EnableFragmentDepthWrite]=' + id('EnableFragmentDepthWrite').checked
+EnableCustomSettings = 'Video-GLideN64[EnableCustomSettings]=' + id('EnableCustomSettings').checked
+EnableTexCoordBounds = 'Video-GLideN64[EnableTexCoordBounds]=' + (id('EnableTexCoordBounds').checked ? '1' : '0')
+EnableLOD = 'Video-GLideN64[EnableLOD]=' + id('EnableLOD').checked
+EnableFBEmulation = 'Video-GLideN64[EnableFBEmulation]=' + id('EnableFBEmulation').checked
+EnableCopyAuxiliaryToRDRAM = 'Video-GLideN64[EnableCopyAuxiliaryToRDRAM]=' + id('EnableCopyAuxiliaryToRDRAM').checked
+ForceDepthBufferClear = 'Video-GLideN64[ForceDepthBufferClear]=' + id('ForceDepthBufferClear').checked
+DisableFBInfo = 'Video-GLideN64[DisableFBInfo]=' + id('DisableFBInfo').checked
+FBInfoReadColorChunk = 'Video-GLideN64[FBInfoReadColorChunk]=' + id('FBInfoReadColorChunk').checked
+FBInfoReadDepthChunk = 'Video-GLideN64[FBInfoReadDepthChunk]=' + id('FBInfoReadDepthChunk').checked
+EnableCopyColorFromRDRAM = 'Video-GLideN64[EnableCopyColorFromRDRAM]=' + id('EnableCopyColorFromRDRAM').checked
+EnableCopyDepthToMainDepthBuffer = 'Video-GLideN64[EnableCopyDepthToMainDepthBuffer]=' + id('EnableCopyDepthToMainDepthBuffer').checked
+EnableOverscan = 'Video-GLideN64[EnableOverscan]=' + id('EnableOverscan').checked
+txDeposterize = 'Video-GLideN64[txDeposterize]=' + id('txDeposterize').checked
+txFilterIgnoreBG = 'Video-GLideN64[txFilterIgnoreBG]=' + id('txFilterIgnoreBG').checked
+txHiresFullAlphaChannel = 'Video-GLideN64[txHiresFullAlphaChannel]=' + id('txHiresFullAlphaChannel').checked
+txHresAltCRC = 'Video-GLideN64[txHresAltCRC]=' + id('txHresAltCRC').checked
+txCacheCompression = 'Video-GLideN64[txCacheCompression]=' + id('txCacheCompression').checked
+txForce16bpp = 'Video-GLideN64[txForce16bpp]=' + id('txForce16bpp').checked
+txSaveCache = 'Video-GLideN64[txSaveCache]=' + id('txSaveCache').checked
+ForceGammaCorrection = 'Video-GLideN64[ForceGammaCorrection]=' + id('ForceGammaCorrection').checked
+ShowFPS = 'Video-GLideN64[ShowFPS]=' + id('ShowFPS').checked
+ShowVIS = 'Video-GLideN64[ShowVIS]=' + id('ShowVIS').checked
+ShowPercent = 'Video-GLideN64[ShowPercent]=' + id('ShowPercent').checked
+ShowInternalResolution = 'Video-GLideN64[ShowInternalResolution]=' + id('ShowInternalResolution').checked
+ShowRenderingResolution = 'Video-GLideN64[ShowRenderingResolution]=' + id('ShowRenderingResolution').checked
+ShowStatistics = 'Video-GLideN64[ShowStatistics]=' + id('ShowStatistics').checked
 
-if(id('NoCompiledJump').checked){NoCompiledJump = 'Core[NoCompiledJump]=True'}else{NoCompiledJump = 'Core[NoCompiledJump]=False'}
-if(id('AutoStateSlotIncrement').checked){AutoStateSlotIncrement = 'Core[AutoStateSlotIncrement]=True'}else{AutoStateSlotIncrement = 'Core[AutoStateSlotIncrement]=False'}
-if(id('RandomizeInterrupt').checked){RandomizeInterrupt = 'Core[RandomizeInterrupt]=True'}else{RandomizeInterrupt = 'Core[RandomizeInterrupt]=False'}
-if(id('SWAP_CHANNELS').checked){SWAP_CHANNELS = 'Audio-SDL[SWAP_CHANNELS]=True'}else{SWAP_CHANNELS = 'Audio-SDL[SWAP_CHANNELS]=False'}
-if(id('AUDIO_SYNC').checked){AUDIO_SYNC = 'Audio-SDL[AUDIO_SYNC]=True'}else{AUDIO_SYNC = 'Audio-SDL[AUDIO_SYNC]=False'}
+NoCompiledJump = 'Core[NoCompiledJump]=' + id('NoCompiledJump').checked
+AutoStateSlotIncrement = 'Core[AutoStateSlotIncrement]=' + id('AutoStateSlotIncrement').checked
+RandomizeInterrupt = 'Core[RandomizeInterrupt]=' + id('RandomizeInterrupt').checked
+SWAP_CHANNELS = 'Audio-SDL[SWAP_CHANNELS]=' + id('SWAP_CHANNELS').checked
+AUDIO_SYNC = 'Audio-SDL[AUDIO_SYNC]=' + id('AUDIO_SYNC').checked
 
-if(id('Parallel').checked){Parallel = 'Video-Angrylion-Plus[Parallel]=True'}else{Parallel = 'Video-Angrylion-Plus[Parallel]=False'}
-if(id('BusyLoop').checked){BusyLoop = 'Video-Angrylion-Plus[BusyLoop]=True'}else{BusyLoop = 'Video-Angrylion-Plus[BusyLoop]=False'}
-if(id('ViWidescreen').checked){ViWidescreen = 'Video-Angrylion-Plus[ViWidescreen]=True'}else{ViWidescreen = 'Video-Angrylion-Plus[ViWidescreen]=False'}
-if(id('ViHideOverscan').checked){ViHideOverscan = 'Video-Angrylion-Plus[ViHideOverscan]=True'}else{ViHideOverscan = 'Video-Angrylion-Plus[ViHideOverscan]=False'}
-if(id('ViIntegerScaling').checked){ViIntegerScaling = 'Video-Angrylion-Plus[ViIntegerScaling]=True'}else{ViIntegerScaling = 'Video-Angrylion-Plus[ViIntegerScaling]=False'}
+Parallel = 'Video-Angrylion-Plus[Parallel]=' + id('Parallel').checked
+BusyLoop = 'Video-Angrylion-Plus[BusyLoop]=' + id('BusyLoop').checked
+ViWidescreen = 'Video-Angrylion-Plus[ViWidescreen]=' + id('ViWidescreen').checked
+ViHideOverscan = 'Video-Angrylion-Plus[ViHideOverscan]=' + id('ViHideOverscan').checked
+ViIntegerScaling = 'Video-Angrylion-Plus[ViIntegerScaling]=' + id('ViIntegerScaling').checked
 
-if(id('ParallelSuperscaledReads').checked){ParallelSuperscaledReads = 'Video-Parallel[SuperscaledReads]=True'}else{ParallelSuperscaledReads = 'Video-Parallel[SuperscaledReads]=False'}
-if(id('ParallelSuperscaledDither').checked){ParallelSuperscaledDither = 'Video-Parallel[SuperscaledDither]=True'}else{ParallelSuperscaledDither = 'Video-Parallel[SuperscaledDither]=False'}
-if(id('ParallelIntegerScale').checked){ParallelIntegerScale = 'Video-Parallel[IntegerScale]=True'}else{ParallelIntegerScale = 'Video-Parallel[IntegerScale]=False'}
-if(id('ParallelVIAA').checked){ParallelVIAA = 'Video-Parallel[VIAA]=True'}else{ParallelVIAA = 'Video-Parallel[VIAA]=False'}
-if(id('ParallelDivot').checked){ParallelDivot = 'Video-Parallel[Divot]=True'}else{ParallelDivot = 'Video-Parallel[Divot]=False'}
-if(id('ParallelGammaDither').checked){ParallelGammaDither = 'Video-Parallel[GammaDither]=True'}else{ParallelGammaDither = 'Video-Parallel[GammaDither]=False'}
-if(id('ParallelVIBilerp').checked){ParallelVIBilerp = 'Video-Parallel[VIBilerp]=True'}else{ParallelVIBilerp = 'Video-Parallel[VIBilerp]=False'}
-if(id('ParallelVIDither').checked){ParallelVIDither = 'Video-Parallel[VIDither]=True'}else{ParallelVIDither = 'Video-Parallel[VIDither]=False'}
-if(id('ParallelNativeTextLOD').checked){ParallelNativeTextLOD = 'Video-Parallel[NativeTextLOD]=True'}else{ParallelNativeTextLOD = 'Video-Parallel[NativeTextLOD]=False'}
-if(id('ParallelNativeTextRECT').checked){ParallelNativeTextRECT = 'Video-Parallel[NativeTextRECT]=True'}else{ParallelNativeTextRECT = 'Video-Parallel[NativeTextRECT]=False'}
-if(id('ParallelWidescreenStretch').checked){ParallelWidescreenStretch = 'Video-Parallel[WidescreenStretch]=True'}else{ParallelWidescreenStretch = 'Video-Parallel[WidescreenStretch]=False'}
+ParallelSuperscaledReads = 'Video-Parallel[SuperscaledReads]=' + id('ParallelSuperscaledReads').checked
+ParallelSuperscaledDither = 'Video-Parallel[SuperscaledDither]=' + id('ParallelSuperscaledDither').checked
+ParallelIntegerScale = 'Video-Parallel[IntegerScale]=' + id('ParallelIntegerScale').checked
+ParallelVIAA = 'Video-Parallel[VIAA]=' + id('ParallelVIAA').checked
+ParallelDivot = 'Video-Parallel[Divot]=' + id('ParallelDivot').checked
+ParallelGammaDither = 'Video-Parallel[GammaDither]=' + id('ParallelGammaDither').checked
+ParallelVIBilerp = 'Video-Parallel[VIBilerp]=' + id('ParallelVIBilerp').checked
+ParallelVIDither = 'Video-Parallel[VIDither]=' + id('ParallelVIDither').checked
+ParallelNativeTextLOD = 'Video-Parallel[NativeTextLOD]=' + id('ParallelNativeTextLOD').checked
+ParallelNativeTextRECT = 'Video-Parallel[NativeTextRECT]=' + id('ParallelNativeTextRECT').checked
+ParallelWidescreenStretch = 'Video-Parallel[WidescreenStretch]=' + id('ParallelWidescreenStretch').checked
 
-if(id('FrameBufferSetting').checked){FrameBufferSetting = 'Video-Rice[FrameBufferSetting]=1'}else{FrameBufferSetting = 'Video-Rice[FrameBufferSetting]=0'}
-if(id('NormalAlphaBlender').checked){NormalAlphaBlender = 'Video-Rice[NormalAlphaBlender]=True'}else{NormalAlphaBlender = 'Video-Rice[NormalAlphaBlender]=False'}
-if(id('FastTextureLoading').checked){FastTextureLoading = 'Video-Rice[FastTextureLoading]=True'}else{FastTextureLoading = 'Video-Rice[FastTextureLoading]=False'}
-if(id('AccurateTextureMapping').checked){AccurateTextureMapping = 'Video-Rice[AccurateTextureMapping]=True'}else{AccurateTextureMapping = 'Video-Rice[AccurateTextureMapping]=False'}
-if(id('InN64Resolution').checked){InN64Resolution = 'Video-Rice[InN64Resolution]=True'}else{InN64Resolution = 'Video-Rice[InN64Resolution]=False'}
-if(id('SaveVRAM').checked){SaveVRAM = 'Video-Rice[SaveVRAM]=True'}else{SaveVRAM = 'Video-Rice[SaveVRAM]=False'}
-if(id('DoubleSizeForSmallTxtrBuf').checked){DoubleSizeForSmallTxtrBuf = 'Video-Rice[DoubleSizeForSmallTxtrBuf]=True'}else{DoubleSizeForSmallTxtrBuf = 'Video-Rice[DoubleSizeForSmallTxtrBuf]=False'}
-if(id('DefaultCombinerDisable').checked){DefaultCombinerDisable = 'Video-Rice[DefaultCombinerDisable]=True'}else{DefaultCombinerDisable = 'Video-Rice[DefaultCombinerDisable]=False'}
-if(id('EnableHacks').checked){EnableHacks = 'Video-Rice[EnableHacks]=True'}else{EnableHacks = 'Video-Rice[EnableHacks]=False'}
-if(id('WinFrameMode').checked){WinFrameMode = 'Video-Rice[WinFrameMode]=True'}else{WinFrameMode = 'Video-Rice[WinFrameMode]=False'}
-if(id('FullTMEMEmulation').checked){FullTMEMEmulation = 'Video-Rice[FullTMEMEmulation]=True'}else{FullTMEMEmulation = 'Video-Rice[FullTMEMEmulation]=False'}
-if(id('OpenGLVertexClipper').checked){OpenGLVertexClipper = 'Video-Rice[OpenGLVertexClipper]=True'}else{OpenGLVertexClipper = 'Video-Rice[OpenGLVertexClipper]=False'}
-if(id('EnableSSE').checked){EnableSSE = 'Video-Rice[EnableSSE]=True'}else{EnableSSE = 'Video-Rice[EnableSSE]=False'}
-if(id('SkipFrame').checked){SkipFrame = 'Video-Rice[SkipFrame]=True'}else{SkipFrame = 'Video-Rice[SkipFrame]=False'}
-if(id('TexRectOnly').checked){TexRectOnly = 'Video-Rice[TexRectOnly]=True'}else{TexRectOnly = 'Video-Rice[TexRectOnly]=False'}
-if(id('SmallTextureOnly').checked){SmallTextureOnly = 'Video-Rice[SmallTextureOnly]=True'}else{SmallTextureOnly = 'Video-Rice[SmallTextureOnly]=False'}
-if(id('LoadHiResCRCOnly').checked){LoadHiResCRCOnly = 'Video-Rice[LoadHiResCRCOnly]=True'}else{LoadHiResCRCOnly = 'Video-Rice[LoadHiResCRCOnly]=False'}
-if(id('LoadHiResTextures').checked){LoadHiResTextures = 'Video-Rice[LoadHiResTextures]=True'}else{LoadHiResTextures = 'Video-Rice[LoadHiResTextures]=False'}
-if(id('DumpTexturesToFiles').checked){DumpTexturesToFiles = 'Video-Rice[DumpTexturesToFiles]=True'}else{DumpTexturesToFiles = 'Video-Rice[DumpTexturesToFiles]=False'}
-if(id('RiceShowFPS').checked){RiceShowFPS = 'Video-Rice[ShowFPS]=True'}else{RiceShowFPS = 'Video-Rice[ShowFPS]=False'}
-if(id('FogMethod').checked){FogMethod = 'Video-Rice[FogMethod]=1'}else{FogMethod = 'Video-Rice[FogMethod]=0'}
-if(id('OpenGLRenderSetting').checked){OpenGLRenderSetting = 'Video-Rice[OpenGLRenderSetting]=1'}else{OpenGLRenderSetting = 'Video-Rice[OpenGLRenderSetting]=0'}
-if(id('ForcePolygonOffset').checked){ForcePolygonOffset = 'Video-Rice[ForcePolygonOffset]=True'}else{ForcePolygonOffset = 'Video-Rice[ForcePolygonOffset]=False'}
+FrameBufferSetting = 'Video-Rice[FrameBufferSetting]=' + (id('FrameBufferSetting').checked ? '1' : '0')
+NormalAlphaBlender = 'Video-Rice[NormalAlphaBlender]=' + id('NormalAlphaBlender').checked
+FastTextureLoading = 'Video-Rice[FastTextureLoading]=' + id('FastTextureLoading').checked
+AccurateTextureMapping = 'Video-Rice[AccurateTextureMapping]=' + id('AccurateTextureMapping').checked
+InN64Resolution = 'Video-Rice[InN64Resolution]=' + id('InN64Resolution').checked
+SaveVRAM = 'Video-Rice[SaveVRAM]=' + id('SaveVRAM').checked
+DoubleSizeForSmallTxtrBuf = 'Video-Rice[DoubleSizeForSmallTxtrBuf]=' + id('DoubleSizeForSmallTxtrBuf').checked
+DefaultCombinerDisable = 'Video-Rice[DefaultCombinerDisable]=' + id('DefaultCombinerDisable').checked
+EnableHacks = 'Video-Rice[EnableHacks]=' + id('EnableHacks').checked
+WinFrameMode = 'Video-Rice[WinFrameMode]=' + id('WinFrameMode').checked
+FullTMEMEmulation = 'Video-Rice[FullTMEMEmulation]=' + id('FullTMEMEmulation').checked
+OpenGLVertexClipper = 'Video-Rice[OpenGLVertexClipper]=' + id('OpenGLVertexClipper').checked
+EnableSSE = 'Video-Rice[EnableSSE]=' + id('EnableSSE').checked
+SkipFrame = 'Video-Rice[SkipFrame]=' + id('SkipFrame').checked
+TexRectOnly = 'Video-Rice[TexRectOnly]=' + id('TexRectOnly').checked
+SmallTextureOnly = 'Video-Rice[SmallTextureOnly]=' + id('SmallTextureOnly').checked
+LoadHiResCRCOnly = 'Video-Rice[LoadHiResCRCOnly]=' + id('LoadHiResCRCOnly').checked
+LoadHiResTextures = 'Video-Rice[LoadHiResTextures]=' + id('LoadHiResTextures').checked
+DumpTexturesToFiles = 'Video-Rice[DumpTexturesToFiles]=' + id('DumpTexturesToFiles').checked
+RiceShowFPS = 'Video-Rice[RiceShowFPS]=' + id('RiceShowFPS').checked
+FogMethod = 'Video-Rice[FogMethod]=' + (id('FogMethod').checked ? '1' : '0')
+OpenGLRenderSetting = 'Video-Rice[OpenGLRenderSetting]=' + (id('OpenGLRenderSetting').checked ? '1' : '0')
+ForcePolygonOffset = 'Video-Rice[ForcePolygonOffset]=' + id('ForcePolygonOffset').checked
 
-if(id('force_polygon_offset').checked){force_polygon_offset = 'Video-Glide64mk2[force_polygon_offset]=True'}else{force_polygon_offset = 'Video-Glide64mk2[force_polygon_offset]=False'}
-if(id('clock').checked){clock = 'Video-Glide64mk2[clock]=True'}else{clock = 'Video-Glide64mk2[clock]=False'}
-if(id('clock_24_hr').checked){clock_24_hr = 'Video-Glide64mk2[clock_24_hr]=True'}else{clock_24_hr = 'Video-Glide64mk2[clock_24_hr]=False'}
-if(id('wrpFBO').checked){wrpFBO = 'Video-Glide64mk2[wrpFBO]=True'}else{wrpFBO = 'Video-Glide64mk2[wrpFBO]=False'}
-if(id('wrpAnisotropic').checked){wrpAnisotropic = 'Video-Glide64mk2[wrpAnisotropic]=True'}else{wrpAnisotropic = 'Video-Glide64mk2[wrpAnisotropic]=False'}
-if(id('ghq_hirs').checked){ghq_hirs = 'Video-Glide64mk2[ghq_hirs]=1'}else{ghq_hirs = 'Video-Glide64mk2[ghq_hirs]=0'}
-if(id('ghq_enht_cmpr').checked){ghq_enht_cmpr = 'Video-Glide64mk2[ghq_enht_cmpr]=True'}else{ghq_enht_cmpr = 'Video-Glide64mk2[ghq_enht_cmpr]=False'}
-if(id('ghq_enht_tile').checked){ghq_enht_tile = 'Video-Glide64mk2[ghq_enht_tile]=1'}else{ghq_enht_tile = 'Video-Glide64mk2[ghq_enht_tile]=0'}
-if(id('ghq_enht_f16bpp').checked){ghq_enht_f16bpp = 'Video-Glide64mk2[ghq_enht_f16bpp]=True'}else{ghq_enht_f16bpp = 'Video-Glide64mk2[ghq_enht_f16bpp]=False'}
-if(id('ghq_enht_gz').checked){ghq_enht_gz = 'Video-Glide64mk2[ghq_enht_gz]=True'}else{ghq_enht_gz = 'Video-Glide64mk2[ghq_enht_gz]=False'}
-if(id('ghq_enht_nobg').checked){ghq_enht_nobg = 'Video-Glide64mk2[ghq_enht_nobg]=True'}else{ghq_enht_nobg = 'Video-Glide64mk2[ghq_enht_nobg]=False'}
-if(id('ghq_hirs_cmpr').checked){ghq_hirs_cmpr = 'Video-Glide64mk2[ghq_hirs_cmpr]=True'}else{ghq_hirs_cmpr = 'Video-Glide64mk2[ghq_hirs_cmpr]=False'}
-if(id('ghq_hirs_tile').checked){ghq_hirs_tile = 'Video-Glide64mk2[ghq_hirs_tile]=True'}else{ghq_hirs_tile = 'Video-Glide64mk2[ghq_hirs_tile]=False'}
-if(id('ghq_hirs_f16bpp').checked){ghq_hirs_f16bpp = 'Video-Glide64mk2[ghq_hirs_f16bpp]=True'}else{ghq_hirs_f16bpp = 'Video-Glide64mk2[ghq_hirs_f16bpp]=False'}
-if(id('ghq_hirs_gz').checked){ghq_hirs_gz = 'Video-Glide64mk2[ghq_hirs_gz]=True'}else{ghq_hirs_gz = 'Video-Glide64mk2[ghq_hirs_gz]=False'}
-if(id('ghq_hirs_altcrc').checked){ghq_hirs_altcrc = 'Video-Glide64mk2[ghq_hirs_altcrc]=True'}else{ghq_hirs_altcrc = 'Video-Glide64mk2[ghq_hirs_altcrc]=False'}
-if(id('ghq_cache_save').checked){ghq_cache_save = 'Video-Glide64mk2[ghq_cache_save]=True'}else{ghq_cache_save = 'Video-Glide64mk2[ghq_cache_save]=False'}
-if(id('ghq_hirs_let_texartists_fly').checked){ghq_hirs_let_texartists_fly = 'Video-Glide64mk2[ghq_hirs_let_texartists_fly]=True'}else{ghq_hirs_let_texartists_fly = 'Video-Glide64mk2[ghq_hirs_let_texartists_fly]=False'}
-if(id('ghq_hirs_dump').checked){ghq_hirs_dump = 'Video-Glide64mk2[ghq_hirs_dump]=True'}else{ghq_hirs_dump = 'Video-Glide64mk2[ghq_hirs_dump]=False'}
+force_polygon_offset = 'Video-Glide64mk2[force_polygon_offset]=' + id('force_polygon_offset').checked
+clock = 'Video-Glide64mk2[clock]=' + id('clock').checked
+clock_24_hr = 'Video-Glide64mk2[clock_24_hr]=' + id('clock_24_hr').checked
+wrpFBO = 'Video-Glide64mk2[wrpFBO]=' + id('wrpFBO').checked
+wrpAnisotropic = 'Video-Glide64mk2[wrpAnisotropic]=' + id('wrpAnisotropic').checked
+ghq_hirs = 'Video-Glide64mk2[ghq_hirs]=' + (id('ghq_hirs').checked ? '1' : '0')
+ghq_enht_cmpr = 'Video-Glide64mk2[ghq_enht_cmpr]=' + id('ghq_enht_cmpr').checked
+ghq_enht_tile = 'Video-Glide64mk2[ghq_enht_tile]=' + (id('ghq_enht_tile').checked ? '1' : '0')
+ghq_enht_f16bpp = 'Video-Glide64mk2[ghq_enht_f16bpp]=' + id('ghq_enht_f16bpp').checked
+ghq_enht_gz = 'Video-Glide64mk2[ghq_enht_gz]=' + id('ghq_enht_gz').checked
+ghq_enht_nobg = 'Video-Glide64mk2[ghq_enht_nobg]=' + id('ghq_enht_nobg').checked
+ghq_hirs_cmpr = 'Video-Glide64mk2[ghq_hirs_cmpr]=' + id('ghq_hirs_cmpr').checked
+ghq_hirs_tile = 'Video-Glide64mk2[ghq_hirs_tile]=' + id('ghq_hirs_tile').checked
+ghq_hirs_f16bpp = 'Video-Glide64mk2[ghq_hirs_f16bpp]=' + id('ghq_hirs_f16bpp').checked
+ghq_hirs_gz = 'Video-Glide64mk2[ghq_hirs_gz]=' + id('ghq_hirs_gz').checked
+ghq_hirs_altcrc = 'Video-Glide64mk2[ghq_hirs_altcrc]=' + id('ghq_hirs_altcrc').checked
+ghq_cache_save = 'Video-Glide64mk2[ghq_cache_save]=' + id('ghq_cache_save').checked
+ghq_hirs_let_texartists_fly = 'Video-Glide64mk2[ghq_hirs_let_texartists_fly]=' + id('ghq_hirs_let_texartists_fly').checked
+ghq_hirs_dump = 'Video-Glide64mk2[ghq_hirs_dump]=' + id('ghq_hirs_dump').checked
 
-if(id('plugged1').checked){plugged1 = 'Input-SDL-Control1[plugged]=True'}else{plugged1 = 'Input-SDL-Control1[plugged]=False'}
-if(id('plugged2').checked){plugged2 = 'Input-SDL-Control2[plugged]=True'}else{plugged2 = 'Input-SDL-Control2[plugged]=False'}
-if(id('plugged3').checked){plugged3 = 'Input-SDL-Control3[plugged]=True'}else{plugged3 = 'Input-SDL-Control3[plugged]=False'}
-if(id('plugged4').checked){plugged4 = 'Input-SDL-Control4[plugged]=True'}else{plugged4 = 'Input-SDL-Control4[plugged]=False'}
-if(id('mouse1').checked){mouse1 = 'Input-SDL-Control1[mouse]=True'}else{mouse1 = 'Input-SDL-Control1[mouse]=False'}
-if(id('mouse2').checked){mouse2 = 'Input-SDL-Control2[mouse]=True'}else{mouse2 = 'Input-SDL-Control2[mouse]=False'}
-if(id('mouse3').checked){mouse3 = 'Input-SDL-Control3[mouse]=True'}else{mouse3 = 'Input-SDL-Control3[mouse]=False'}
-if(id('mouse4').checked){mouse4 = 'Input-SDL-Control4[mouse]=True'}else{mouse4 = 'Input-SDL-Control4[mouse]=False'}
+plugged1 = 'Input-SDL-Control1[plugged]=' + id('plugged1').checked
+plugged2 = 'Input-SDL-Control2[plugged]=' + id('plugged2').checked
+plugged3 = 'Input-SDL-Control3[plugged]=' + id('plugged3').checked
+plugged4 = 'Input-SDL-Control4[plugged]=' + id('plugged4').checked
+mouse1 = 'Input-SDL-Control1[mouse]=' + id('mouse1').checked
+mouse2 = 'Input-SDL-Control2[mouse]=' + id('mouse2').checked
+mouse3 = 'Input-SDL-Control3[mouse]=' + id('mouse3').checked
+mouse4 = 'Input-SDL-Control4[mouse]=' + id('mouse4').checked
 
 resolution = id('resolution').options[id('resolution').selectedIndex].value;
 ParallelScreenWidth = 'Video-Parallel[ScreenWidth]=' + id('resolution').options[id('resolution').selectedIndex].dataset.width;
@@ -1433,8 +1434,8 @@ else if((gfx === 'mupen64plus-video-rice' || gfx === 'mupen64plus-video-glide64m
 SharedDataPath = 'Core[SharedDataPath]=';
 PluginDir = '.';
 
-if(id('nospeedlimit').checked){nospeedlimit = ['--nospeedlimit'];audio = 'dummy';vsync = 'Video-General[VerticalSync]=False';Glide64VSync = 'Video-Glide64mk2[vsync]=False'}else{nospeedlimit = []}
-if(id('verbose').checked){verbose = '--verbose'}else{verbose = []}
+if(id('nospeedlimit').checked){nospeedlimit = '--nospeedlimit';audio = 'dummy';vsync = 'Video-General[VerticalSync]=False';Glide64VSync = 'Video-Glide64mk2[vsync]=False'}else{nospeedlimit = []}
+verbose = id('verbose').checked ? '--verbose' : []
 
 var controls1 = ['--set',AButton1,'--set',BButton1,'--set',LTrig1,'--set',RTrig1,'--set',ZTrig1,'--set',Start1,'--set',DPadU1,'--set',DPadL1,'--set',DPadR1,'--set',DPadD1,'--set',CButtonU1,'--set',CButtonL1,'--set',CButtonR1,'--set',CButtonD1,'--set',MempakSwitch1,'--set',RumblepakSwitch1,'--set',XAxis1,'--set',YAxis1],
 controls2 = ['--set',AButton2,'--set',BButton2,'--set',LTrig2,'--set',RTrig2,'--set',ZTrig2,'--set',Start2,'--set',DPadU2,'--set',DPadL2,'--set',DPadR2,'--set',DPadD2,'--set',CButtonU2,'--set',CButtonL2,'--set',CButtonR2,'--set',CButtonD2,'--set',MempakSwitch2,'--set',RumblepakSwitch2,'--set',XAxis2,'--set',YAxis2],
