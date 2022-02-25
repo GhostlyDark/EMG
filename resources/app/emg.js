@@ -815,15 +815,6 @@ ghq_cache_save = 'Video-Glide64mk2[ghq_cache_save]=' + id('ghq_cache_save').chec
 ghq_hirs_let_texartists_fly = 'Video-Glide64mk2[ghq_hirs_let_texartists_fly]=' + id('ghq_hirs_let_texartists_fly').checked,
 ghq_hirs_dump = 'Video-Glide64mk2[ghq_hirs_dump]=' + id('ghq_hirs_dump').checked,
 
-plugged1 = 'Input-SDL-Control1[plugged]=' + id('plugged1').checked,
-plugged2 = 'Input-SDL-Control2[plugged]=' + id('plugged2').checked,
-plugged3 = 'Input-SDL-Control3[plugged]=' + id('plugged3').checked,
-plugged4 = 'Input-SDL-Control4[plugged]=' + id('plugged4').checked,
-mouse1 = 'Input-SDL-Control1[mouse]=' + id('mouse1').checked,
-mouse2 = 'Input-SDL-Control2[mouse]=' + id('mouse2').checked,
-mouse3 = 'Input-SDL-Control3[mouse]=' + id('mouse3').checked,
-mouse4 = 'Input-SDL-Control4[mouse]=' + id('mouse4').checked,
-
 resolution = id('resolution').options[id('resolution').selectedIndex].value,
 ParallelScreenWidth = 'Video-Parallel[ScreenWidth]=' + id('resolution').options[id('resolution').selectedIndex].dataset.width,
 ParallelScreenHeight = 'Video-Parallel[ScreenHeight]=' + id('resolution').options[id('resolution').selectedIndex].dataset.height,
@@ -1028,6 +1019,15 @@ hkTexCoordBounds = 'Video-GLideN64[hkTexCoordBounds]=' + id('hkTexCoordBounds').
 hkNativeResTexrects = 'Video-GLideN64[hkNativeResTexrects]=' + id('hkNativeResTexrects').value,
 hkForceGammaCorrection = 'Video-GLideN64[hkForceGammaCorrection]=' + id('hkForceGammaCorrection').value,
 
+device1, device2, device3, device4,
+plugged1 = 'Input-SDL-Control1[plugged]=' + id('plugged1').checked,
+plugged2 = 'Input-SDL-Control2[plugged]=' + id('plugged2').checked,
+plugged3 = 'Input-SDL-Control3[plugged]=' + id('plugged3').checked,
+plugged4 = 'Input-SDL-Control4[plugged]=' + id('plugged4').checked,
+mouse1 = 'Input-SDL-Control1[mouse]=' + id('mouse1').checked,
+mouse2 = 'Input-SDL-Control2[mouse]=' + id('mouse2').checked,
+mouse3 = 'Input-SDL-Control3[mouse]=' + id('mouse3').checked,
+mouse4 = 'Input-SDL-Control4[mouse]=' + id('mouse4').checked,
 msensitivity1 = 'Input-SDL-Control1[MouseSensitivity]=' + MouseSensitivity1X.value + ',' + MouseSensitivity1Y.value,
 msensitivity2 = 'Input-SDL-Control2[MouseSensitivity]=' + MouseSensitivity2X.value + ',' + MouseSensitivity2Y.value,
 msensitivity3 = 'Input-SDL-Control3[MouseSensitivity]=' + MouseSensitivity3X.value + ',' + MouseSensitivity3Y.value,
@@ -1074,6 +1074,9 @@ AButton1,AButton2,AButton3,AButton4,BButton1,BButton2,BButton3,BButton4,LTrig1,L
 
 
 if(id('name1').value === 'Keyboard'){
+var mouse1_1 = 	id('mouse1_1').options[id('mouse1_1').selectedIndex].value,
+mouse1_2 = 	id('mouse1_2').options[id('mouse1_2').selectedIndex].value,
+mouse1_3 = 	id('mouse1_3').options[id('mouse1_3').selectedIndex].value;
 device1 = 'Input-SDL-Control1[device]=-1';
 AButton1 = 'Input-SDL-Control1[A Button]=' + 'key(' + id('AButton1').dataset.key + ')';
 BButton1 = 'Input-SDL-Control1[B Button]=' + 'key(' + id('BButton1').dataset.key + ')';
@@ -1093,24 +1096,24 @@ MempakSwitch1 = 'Input-SDL-Control1[Mempak Switch]=' + 'key(' + id('MempakSwitch
 RumblepakSwitch1 = 'Input-SDL-Control1[Rumblepak Switch]=' + 'key(' + id('RumblepakSwitch1').dataset.key + ')';
 XAxis1 = 'Input-SDL-Control1[X Axis]=' + 'key(' + id('StickL1').dataset.key + ',' + id('StickR1').dataset.key + ')';
 YAxis1 = 'Input-SDL-Control1[Y Axis]=' + 'key(' + id('StickU1').dataset.key + ',' + id('StickD1').dataset.key + ')';
-if(id('mouse1').checked && id('mouse1_1').options[id('mouse1_1').selectedIndex].value != ''){
-if(id('mouse1_1').options[id('mouse1_1').selectedIndex].value === 'a'){AButton1 = 'Input-SDL-Control1[A Button]=mouse(1)'}
-if(id('mouse1_1').options[id('mouse1_1').selectedIndex].value === 'b'){BButton1 = 'Input-SDL-Control1[B Button]=mouse(1)'}
-if(id('mouse1_1').options[id('mouse1_1').selectedIndex].value === 'l'){LTrig1 = 'Input-SDL-Control1[L Trig]=mouse(1)'}
-if(id('mouse1_1').options[id('mouse1_1').selectedIndex].value === 'r'){RTrig1 = 'Input-SDL-Control1[R Trig]=mouse(1)'}
-if(id('mouse1_1').options[id('mouse1_1').selectedIndex].value === 'z'){ZTrig1 = 'Input-SDL-Control1[Z Trig]=mouse(1)'}}
-if(id('mouse1').checked && id('mouse1_2').options[id('mouse1_2').selectedIndex].value != ''){
-if(id('mouse1_2').options[id('mouse1_2').selectedIndex].value === 'a'){AButton1 = 'Input-SDL-Control1[A Button]=mouse(2)'}
-if(id('mouse1_2').options[id('mouse1_2').selectedIndex].value === 'b'){BButton1 = 'Input-SDL-Control1[B Button]=mouse(2)'}
-if(id('mouse1_2').options[id('mouse1_2').selectedIndex].value === 'l'){LTrig1 = 'Input-SDL-Control1[L Trig]=mouse(2)'}
-if(id('mouse1_2').options[id('mouse1_2').selectedIndex].value === 'r'){RTrig1 = 'Input-SDL-Control1[R Trig]=mouse(2)'}
-if(id('mouse1_2').options[id('mouse1_2').selectedIndex].value === 'z'){ZTrig1 = 'Input-SDL-Control1[Z Trig]=mouse(2)'}}
-if(id('mouse1').checked && id('mouse1_3').options[id('mouse1_3').selectedIndex].value != ''){
-if(id('mouse1_3').options[id('mouse1_3').selectedIndex].value === 'a'){AButton1 = 'Input-SDL-Control1[A Button]=mouse(3)'}
-if(id('mouse1_3').options[id('mouse1_3').selectedIndex].value === 'b'){BButton1 = 'Input-SDL-Control1[B Button]=mouse(3)'}
-if(id('mouse1_3').options[id('mouse1_3').selectedIndex].value === 'l'){LTrig1 = 'Input-SDL-Control1[L Trig]=mouse(3)'}
-if(id('mouse1_3').options[id('mouse1_3').selectedIndex].value === 'r'){RTrig1 = 'Input-SDL-Control1[R Trig]=mouse(3)'}
-if(id('mouse1_3').options[id('mouse1_3').selectedIndex].value === 'z'){ZTrig1 = 'Input-SDL-Control1[Z Trig]=mouse(3)'}}
+if(id('mouse1').checked && mouse1_1 != ''){
+if(mouse1_1 === 'a'){AButton1 = 'Input-SDL-Control1[A Button]=mouse(1)'}
+if(mouse1_1 === 'b'){BButton1 = 'Input-SDL-Control1[B Button]=mouse(1)'}
+if(mouse1_1 === 'l'){LTrig1 = 'Input-SDL-Control1[L Trig]=mouse(1)'}
+if(mouse1_1 === 'r'){RTrig1 = 'Input-SDL-Control1[R Trig]=mouse(1)'}
+if(mouse1_1 === 'z'){ZTrig1 = 'Input-SDL-Control1[Z Trig]=mouse(1)'}}
+if(id('mouse1').checked && mouse1_2 != ''){
+if(mouse1_2 === 'a'){AButton1 = 'Input-SDL-Control1[A Button]=mouse(2)'}
+if(mouse1_2 === 'b'){BButton1 = 'Input-SDL-Control1[B Button]=mouse(2)'}
+if(mouse1_2 === 'l'){LTrig1 = 'Input-SDL-Control1[L Trig]=mouse(2)'}
+if(mouse1_2 === 'r'){RTrig1 = 'Input-SDL-Control1[R Trig]=mouse(2)'}
+if(mouse1_2 === 'z'){ZTrig1 = 'Input-SDL-Control1[Z Trig]=mouse(2)'}}
+if(id('mouse1').checked && mouse1_3 != ''){
+if(mouse1_3 === 'a'){AButton1 = 'Input-SDL-Control1[A Button]=mouse(3)'}
+if(mouse1_3 === 'b'){BButton1 = 'Input-SDL-Control1[B Button]=mouse(3)'}
+if(mouse1_3 === 'l'){LTrig1 = 'Input-SDL-Control1[L Trig]=mouse(3)'}
+if(mouse1_3 === 'r'){RTrig1 = 'Input-SDL-Control1[R Trig]=mouse(3)'}
+if(mouse1_3 === 'z'){ZTrig1 = 'Input-SDL-Control1[Z Trig]=mouse(3)'}}
 }else{
 device1 = 'Input-SDL-Control1[device]=0';
 var buttonType = '', buttonTypeB = '';
@@ -1148,6 +1151,9 @@ XAxis1 = 'Input-SDL-Control1[X Axis]=' + buttonType + '(' + StickL1value + ',' +
 YAxis1 = 'Input-SDL-Control1[Y Axis]=' + buttonType + '(' + StickU1value + ',' + StickD1value + ')' + ' ' + buttonTypeB + '(' + StickU1bvalue + ',' + StickD1bvalue + ')'}
 
 if(id('name2').value === 'Keyboard'){
+var mouse2_1 = 	id('mouse2_1').options[id('mouse2_1').selectedIndex].value,
+mouse2_2 = 	id('mouse2_2').options[id('mouse2_2').selectedIndex].value,
+mouse2_3 = 	id('mouse2_3').options[id('mouse2_3').selectedIndex].value;
 device2 = 'Input-SDL-Control2[device]=-1';
 AButton2 = 'Input-SDL-Control2[A Button]=' + 'key(' + id('AButton2').dataset.key + ')';
 BButton2 = 'Input-SDL-Control2[B Button]=' + 'key(' + id('BButton2').dataset.key + ')';
@@ -1167,24 +1173,24 @@ MempakSwitch2 = 'Input-SDL-Control2[Mempak Switch]=' + 'key(' + id('MempakSwitch
 RumblepakSwitch2 = 'Input-SDL-Control2[Rumblepak Switch]=' + 'key(' + id('RumblepakSwitch2').dataset.key + ')';
 XAxis2 = 'Input-SDL-Control2[X Axis]=' + 'key(' + id('StickL2').dataset.key + ',' + id('StickR2').dataset.key + ')';
 YAxis2 = 'Input-SDL-Control2[Y Axis]=' + 'key(' + id('StickU2').dataset.key + ',' + id('StickD2').dataset.key + ')'
-if(id('mouse2').checked && id('mouse2_1').options[id('mouse2_1').selectedIndex].value != ''){
-if(id('mouse2_1').options[id('mouse2_1').selectedIndex].value === 'a'){AButton2 = 'Input-SDL-Control2[A Button]=mouse(1)'}
-if(id('mouse2_1').options[id('mouse2_1').selectedIndex].value === 'b'){BButton2 = 'Input-SDL-Control2[B Button]=mouse(1)'}
-if(id('mouse2_1').options[id('mouse2_1').selectedIndex].value === 'l'){LTrig2 = 'Input-SDL-Control2[L Trig]=mouse(1)'}
-if(id('mouse2_1').options[id('mouse2_1').selectedIndex].value === 'r'){RTrig2 = 'Input-SDL-Control2[R Trig]=mouse(1)'}
-if(id('mouse2_1').options[id('mouse2_1').selectedIndex].value === 'z'){ZTrig2 = 'Input-SDL-Control2[Z Trig]=mouse(1)'}}
-if(id('mouse2').checked && id('mouse2_2').options[id('mouse2_2').selectedIndex].value != ''){
-if(id('mouse2_2').options[id('mouse2_2').selectedIndex].value === 'a'){AButton2 = 'Input-SDL-Control2[A Button]=mouse(2)'}
-if(id('mouse2_2').options[id('mouse2_2').selectedIndex].value === 'b'){BButton2 = 'Input-SDL-Control2[B Button]=mouse(2)'}
-if(id('mouse2_2').options[id('mouse2_2').selectedIndex].value === 'l'){LTrig2 = 'Input-SDL-Control2[L Trig]=mouse(2)'}
-if(id('mouse2_2').options[id('mouse2_2').selectedIndex].value === 'r'){RTrig2 = 'Input-SDL-Control2[R Trig]=mouse(2)'}
-if(id('mouse2_2').options[id('mouse2_2').selectedIndex].value === 'z'){ZTrig2 = 'Input-SDL-Control2[Z Trig]=mouse(2)'}}
-if(id('mouse2').checked && id('mouse2_3').options[id('mouse2_3').selectedIndex].value != ''){
-if(id('mouse2_3').options[id('mouse2_3').selectedIndex].value === 'a'){AButton2 = 'Input-SDL-Control2[A Button]=mouse(3)'}
-if(id('mouse2_3').options[id('mouse2_3').selectedIndex].value === 'b'){BButton2 = 'Input-SDL-Control2[B Button]=mouse(3)'}
-if(id('mouse2_3').options[id('mouse2_3').selectedIndex].value === 'l'){LTrig2 = 'Input-SDL-Control2[L Trig]=mouse(3)'}
-if(id('mouse2_3').options[id('mouse2_3').selectedIndex].value === 'r'){RTrig2 = 'Input-SDL-Control2[R Trig]=mouse(3)'}
-if(id('mouse2_3').options[id('mouse2_3').selectedIndex].value === 'z'){ZTrig2 = 'Input-SDL-Control2[Z Trig]=mouse(3)'}}
+if(id('mouse2').checked && mouse2_1 != ''){
+if(mouse2_1 === 'a'){AButton2 = 'Input-SDL-Control2[A Button]=mouse(1)'}
+if(mouse2_1 === 'b'){BButton2 = 'Input-SDL-Control2[B Button]=mouse(1)'}
+if(mouse2_1 === 'l'){LTrig2 = 'Input-SDL-Control2[L Trig]=mouse(1)'}
+if(mouse2_1 === 'r'){RTrig2 = 'Input-SDL-Control2[R Trig]=mouse(1)'}
+if(mouse2_1 === 'z'){ZTrig2 = 'Input-SDL-Control2[Z Trig]=mouse(1)'}}
+if(id('mouse2').checked && mouse2_2 != ''){
+if(mouse2_2 === 'a'){AButton2 = 'Input-SDL-Control2[A Button]=mouse(2)'}
+if(mouse2_2 === 'b'){BButton2 = 'Input-SDL-Control2[B Button]=mouse(2)'}
+if(mouse2_2 === 'l'){LTrig2 = 'Input-SDL-Control2[L Trig]=mouse(2)'}
+if(mouse2_2 === 'r'){RTrig2 = 'Input-SDL-Control2[R Trig]=mouse(2)'}
+if(mouse2_2 === 'z'){ZTrig2 = 'Input-SDL-Control2[Z Trig]=mouse(2)'}}
+if(id('mouse2').checked && mouse2_3 != ''){
+if(mouse2_3 === 'a'){AButton2 = 'Input-SDL-Control2[A Button]=mouse(3)'}
+if(mouse2_3 === 'b'){BButton2 = 'Input-SDL-Control2[B Button]=mouse(3)'}
+if(mouse2_3 === 'l'){LTrig2 = 'Input-SDL-Control2[L Trig]=mouse(3)'}
+if(mouse2_3 === 'r'){RTrig2 = 'Input-SDL-Control2[R Trig]=mouse(3)'}
+if(mouse2_3 === 'z'){ZTrig2 = 'Input-SDL-Control2[Z Trig]=mouse(3)'}}
 }else{
 device2 = 'Input-SDL-Control2[device]=1';
 var buttonType = '', buttonTypeB = '';
@@ -1222,6 +1228,9 @@ XAxis2 = 'Input-SDL-Control2[X Axis]=' + buttonType + '(' + StickL2value + ',' +
 YAxis2 = 'Input-SDL-Control2[Y Axis]=' + buttonType + '(' + StickU2value + ',' + StickD2value + ')' + ' ' + buttonTypeB + '(' + StickU2bvalue + ',' + StickD2bvalue + ')'}
 
 if(id('name3').value === 'Keyboard'){
+var mouse3_1 = 	id('mouse3_1').options[id('mouse3_1').selectedIndex].value,
+mouse3_2 = 	id('mouse3_2').options[id('mouse3_2').selectedIndex].value,
+mouse3_3 = 	id('mouse3_3').options[id('mouse3_3').selectedIndex].value;
 device3 = 'Input-SDL-Control3[device]=-1';
 AButton3 = 'Input-SDL-Control3[A Button]=' + 'key(' + id('AButton3').dataset.key + ')';
 BButton3 = 'Input-SDL-Control3[B Button]=' + 'key(' + id('BButton3').dataset.key + ')';
@@ -1241,24 +1250,24 @@ MempakSwitch3 = 'Input-SDL-Control3[Mempak Switch]=' + 'key(' + id('MempakSwitch
 RumblepakSwitch3 = 'Input-SDL-Control3[Rumblepak Switch]=' + 'key(' + id('RumblepakSwitch3').dataset.key + ')';
 XAxis3 = 'Input-SDL-Control3[X Axis]=' + 'key(' + id('StickL3').dataset.key + ',' + id('StickR3').dataset.key + ')';
 YAxis3 = 'Input-SDL-Control3[Y Axis]=' + 'key(' + id('StickU3').dataset.key + ',' + id('StickD3').dataset.key + ')'
-if(id('mouse3').checked && id('mouse3_1').options[id('mouse3_1').selectedIndex].value != ''){
-if(id('mouse3_1').options[id('mouse3_1').selectedIndex].value === 'a'){AButton3 = 'Input-SDL-Control3[A Button]=mouse(1)'}
-if(id('mouse3_1').options[id('mouse3_1').selectedIndex].value === 'b'){BButton3 = 'Input-SDL-Control3[B Button]=mouse(1)'}
-if(id('mouse3_1').options[id('mouse3_1').selectedIndex].value === 'l'){LTrig3 = 'Input-SDL-Control3[L Trig]=mouse(1)'}
-if(id('mouse3_1').options[id('mouse3_1').selectedIndex].value === 'r'){RTrig3 = 'Input-SDL-Control3[R Trig]=mouse(1)'}
-if(id('mouse3_1').options[id('mouse3_1').selectedIndex].value === 'z'){ZTrig3 = 'Input-SDL-Control3[Z Trig]=mouse(1)'}}
-if(id('mouse3').checked && id('mouse3_2').options[id('mouse3_2').selectedIndex].value != ''){
-if(id('mouse3_2').options[id('mouse3_2').selectedIndex].value === 'a'){AButton3 = 'Input-SDL-Control3[A Button]=mouse(2)'}
-if(id('mouse3_2').options[id('mouse3_2').selectedIndex].value === 'b'){BButton3 = 'Input-SDL-Control3[B Button]=mouse(2)'}
-if(id('mouse3_2').options[id('mouse3_2').selectedIndex].value === 'l'){LTrig3 = 'Input-SDL-Control3[L Trig]=mouse(2)'}
-if(id('mouse3_2').options[id('mouse3_2').selectedIndex].value === 'r'){RTrig3 = 'Input-SDL-Control3[R Trig]=mouse(2)'}
-if(id('mouse3_2').options[id('mouse3_2').selectedIndex].value === 'z'){ZTrig3 = 'Input-SDL-Control3[Z Trig]=mouse(2)'}}
-if(id('mouse3').checked && id('mouse3_3').options[id('mouse3_3').selectedIndex].value != ''){
-if(id('mouse3_3').options[id('mouse3_3').selectedIndex].value === 'a'){AButton3 = 'Input-SDL-Control3[A Button]=mouse(3)'}
-if(id('mouse3_3').options[id('mouse3_3').selectedIndex].value === 'b'){BButton3 = 'Input-SDL-Control3[B Button]=mouse(3)'}
-if(id('mouse3_3').options[id('mouse3_3').selectedIndex].value === 'l'){LTrig3 = 'Input-SDL-Control3[L Trig]=mouse(3)'}
-if(id('mouse3_3').options[id('mouse3_3').selectedIndex].value === 'r'){RTrig3 = 'Input-SDL-Control3[R Trig]=mouse(3)'}
-if(id('mouse3_3').options[id('mouse3_3').selectedIndex].value === 'z'){ZTrig3 = 'Input-SDL-Control3[Z Trig]=mouse(3)'}}
+if(id('mouse3').checked && mouse3_1 != ''){
+if(mouse3_1 === 'a'){AButton3 = 'Input-SDL-Control3[A Button]=mouse(1)'}
+if(mouse3_1 === 'b'){BButton3 = 'Input-SDL-Control3[B Button]=mouse(1)'}
+if(mouse3_1 === 'l'){LTrig3 = 'Input-SDL-Control3[L Trig]=mouse(1)'}
+if(mouse3_1 === 'r'){RTrig3 = 'Input-SDL-Control3[R Trig]=mouse(1)'}
+if(mouse3_1 === 'z'){ZTrig3 = 'Input-SDL-Control3[Z Trig]=mouse(1)'}}
+if(id('mouse3').checked && mouse3_2 != ''){
+if(mouse3_2 === 'a'){AButton3 = 'Input-SDL-Control3[A Button]=mouse(2)'}
+if(mouse3_2 === 'b'){BButton3 = 'Input-SDL-Control3[B Button]=mouse(2)'}
+if(mouse3_2 === 'l'){LTrig3 = 'Input-SDL-Control3[L Trig]=mouse(2)'}
+if(mouse3_2 === 'r'){RTrig3 = 'Input-SDL-Control3[R Trig]=mouse(2)'}
+if(mouse3_2 === 'z'){ZTrig3 = 'Input-SDL-Control3[Z Trig]=mouse(2)'}}
+if(id('mouse3').checked && mouse3_3 != ''){
+if(mouse3_3 === 'a'){AButton3 = 'Input-SDL-Control3[A Button]=mouse(3)'}
+if(mouse3_3 === 'b'){BButton3 = 'Input-SDL-Control3[B Button]=mouse(3)'}
+if(mouse3_3 === 'l'){LTrig3 = 'Input-SDL-Control3[L Trig]=mouse(3)'}
+if(mouse3_3 === 'r'){RTrig3 = 'Input-SDL-Control3[R Trig]=mouse(3)'}
+if(mouse3_3 === 'z'){ZTrig3 = 'Input-SDL-Control3[Z Trig]=mouse(3)'}}
 }else{
 device3 = 'Input-SDL-Control3[device]=2';
 var buttonType = '', buttonTypeB = '';
@@ -1296,6 +1305,9 @@ XAxis3 = 'Input-SDL-Control3[X Axis]=' + buttonType + '(' + StickL3value + ',' +
 YAxis3 = 'Input-SDL-Control3[Y Axis]=' + buttonType + '(' + StickU3value + ',' + StickD3value + ')' + ' ' + buttonTypeB + '(' + StickU3bvalue + ',' + StickD3bvalue + ')'}
 
 if(id('name4').value === 'Keyboard'){
+var mouse4_1 = 	id('mouse4_1').options[id('mouse4_1').selectedIndex].value,
+mouse4_2 = 	id('mouse4_2').options[id('mouse4_2').selectedIndex].value,
+mouse4_3 = 	id('mouse4_3').options[id('mouse4_3').selectedIndex].value;
 device4 = 'Input-SDL-Control4[device]=-1';
 AButton4 = 'Input-SDL-Control4[A Button]=' + 'key(' + id('AButton4').dataset.key + ')';
 BButton4 = 'Input-SDL-Control4[B Button]=' + 'key(' + id('BButton4').dataset.key + ')';
@@ -1315,24 +1327,24 @@ MempakSwitch4 = 'Input-SDL-Control4[Mempak Switch]=' + 'key(' + id('MempakSwitch
 RumblepakSwitch4 = 'Input-SDL-Control4[Rumblepak Switch]=' + 'key(' + id('RumblepakSwitch4').dataset.key + ')';
 XAxis4 = 'Input-SDL-Control4[X Axis]=' + 'key(' + id('StickL4').dataset.key + ',' + id('StickR4').dataset.key + ')';
 YAxis4 = 'Input-SDL-Control4[Y Axis]=' + 'key(' + id('StickU4').dataset.key + ',' + id('StickD4').dataset.key + ')'
-if(id('mouse4').checked && id('mouse4_1').options[id('mouse4_1').selectedIndex].value != ''){
-if(id('mouse4_1').options[id('mouse4_1').selectedIndex].value === 'a'){AButton4 = 'Input-SDL-Control4[A Button]=mouse(1)'}
-if(id('mouse4_1').options[id('mouse4_1').selectedIndex].value === 'b'){BButton4 = 'Input-SDL-Control4[B Button]=mouse(1)'}
-if(id('mouse4_1').options[id('mouse4_1').selectedIndex].value === 'l'){LTrig4 = 'Input-SDL-Control4[L Trig]=mouse(1)'}
-if(id('mouse4_1').options[id('mouse4_1').selectedIndex].value === 'r'){RTrig4 = 'Input-SDL-Control4[R Trig]=mouse(1)'}
-if(id('mouse4_1').options[id('mouse4_1').selectedIndex].value === 'z'){ZTrig4 = 'Input-SDL-Control4[Z Trig]=mouse(1)'}}
-if(id('mouse4').checked && id('mouse4_2').options[id('mouse4_2').selectedIndex].value != ''){
-if(id('mouse4_2').options[id('mouse4_2').selectedIndex].value === 'a'){AButton4 = 'Input-SDL-Control4[A Button]=mouse(2)'}
-if(id('mouse4_2').options[id('mouse4_2').selectedIndex].value === 'b'){BButton4 = 'Input-SDL-Control4[B Button]=mouse(2)'}
-if(id('mouse4_2').options[id('mouse4_2').selectedIndex].value === 'l'){LTrig4 = 'Input-SDL-Control4[L Trig]=mouse(2)'}
-if(id('mouse4_2').options[id('mouse4_2').selectedIndex].value === 'r'){RTrig4 = 'Input-SDL-Control4[R Trig]=mouse(2)'}
-if(id('mouse4_2').options[id('mouse4_2').selectedIndex].value === 'z'){ZTrig4 = 'Input-SDL-Control4[Z Trig]=mouse(2)'}}
-if(id('mouse4').checked && id('mouse4_3').options[id('mouse4_3').selectedIndex].value != ''){
-if(id('mouse4_3').options[id('mouse4_3').selectedIndex].value === 'a'){AButton4 = 'Input-SDL-Control4[A Button]=mouse(3)'}
-if(id('mouse4_3').options[id('mouse4_3').selectedIndex].value === 'b'){BButton4 = 'Input-SDL-Control4[B Button]=mouse(3)'}
-if(id('mouse4_3').options[id('mouse4_3').selectedIndex].value === 'l'){LTrig4 = 'Input-SDL-Control4[L Trig]=mouse(3)'}
-if(id('mouse4_3').options[id('mouse4_3').selectedIndex].value === 'r'){RTrig4 = 'Input-SDL-Control4[R Trig]=mouse(3)'}
-if(id('mouse4_3').options[id('mouse4_3').selectedIndex].value === 'z'){ZTrig4 = 'Input-SDL-Control4[Z Trig]=mouse(3)'}}
+if(id('mouse4').checked && mouse4_1 != ''){
+if(mouse4_1 === 'a'){AButton4 = 'Input-SDL-Control4[A Button]=mouse(1)'}
+if(mouse4_1 === 'b'){BButton4 = 'Input-SDL-Control4[B Button]=mouse(1)'}
+if(mouse4_1 === 'l'){LTrig4 = 'Input-SDL-Control4[L Trig]=mouse(1)'}
+if(mouse4_1 === 'r'){RTrig4 = 'Input-SDL-Control4[R Trig]=mouse(1)'}
+if(mouse4_1 === 'z'){ZTrig4 = 'Input-SDL-Control4[Z Trig]=mouse(1)'}}
+if(id('mouse4').checked && mouse4_2 != ''){
+if(mouse4_2 === 'a'){AButton4 = 'Input-SDL-Control4[A Button]=mouse(2)'}
+if(mouse4_2 === 'b'){BButton4 = 'Input-SDL-Control4[B Button]=mouse(2)'}
+if(mouse4_2 === 'l'){LTrig4 = 'Input-SDL-Control4[L Trig]=mouse(2)'}
+if(mouse4_2 === 'r'){RTrig4 = 'Input-SDL-Control4[R Trig]=mouse(2)'}
+if(mouse4_2 === 'z'){ZTrig4 = 'Input-SDL-Control4[Z Trig]=mouse(2)'}}
+if(id('mouse4').checked && mouse4_3 != ''){
+if(mouse4_3 === 'a'){AButton4 = 'Input-SDL-Control4[A Button]=mouse(3)'}
+if(mouse4_3 === 'b'){BButton4 = 'Input-SDL-Control4[B Button]=mouse(3)'}
+if(mouse4_3 === 'l'){LTrig4 = 'Input-SDL-Control4[L Trig]=mouse(3)'}
+if(mouse4_3 === 'r'){RTrig4 = 'Input-SDL-Control4[R Trig]=mouse(3)'}
+if(mouse4_3 === 'z'){ZTrig4 = 'Input-SDL-Control4[Z Trig]=mouse(3)'}}
 }else{
 device4 = 'Input-SDL-Control4[device]=3';
 var buttonType = '', buttonTypeB = '';
