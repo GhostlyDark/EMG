@@ -1113,39 +1113,37 @@ if(id('mouse1_3').options[id('mouse1_3').selectedIndex].value === 'r'){RTrig1 = 
 if(id('mouse1_3').options[id('mouse1_3').selectedIndex].value === 'z'){ZTrig1 = 'Input-SDL-Control1[Z Trig]=mouse(3)'}}
 }else{
 device1 = 'Input-SDL-Control1[device]=0';
-var StickU1value,StickL1value,StickR1value,StickD1value,StickU1bvalue,StickL1bvalue,StickR1bvalue,StickD1bvalue,
-buttonType = '',
-buttonTypeB = '';
+var buttonType = '', buttonTypeB = '';
 if(id('StickU1c').value.includes('axis') || id('StickL1c').value.includes('axis') || id('StickR1c').value.includes('axis') || id('StickD1c').value.includes('axis')){buttonType = 'axis'}
 if(id('StickU1cb').value.includes('axis') || id('StickL1cb').value.includes('axis') || id('StickR1cb').value.includes('axis') || id('StickD1cb').value.includes('axis')){buttonTypeB = 'axis'}
 if(id('StickU1c').value.includes('button') || id('StickL1c').value.includes('button') || id('StickR1c').value.includes('button') || id('StickD1c').value.includes('button')){buttonType = 'button'}
 if(id('StickU1cb').value.includes('button') || id('StickL1cb').value.includes('button') || id('StickR1cb').value.includes('button') || id('StickD1cb').value.includes('button')){buttonTypeB = 'button'}
 if(id('StickU1c').value.includes('hat') || id('StickL1c').value.includes('hat') || id('StickR1c').value.includes('hat') || id('StickD1c').value.includes('hat')){buttonType = 'hat'}
 if(id('StickU1cb').value.includes('hat') || id('StickL1cb').value.includes('hat') || id('StickR1cb').value.includes('hat') || id('StickD1cb').value.includes('hat')){buttonTypeB = 'hat'}
-StickU1value = id('StickU1c').value.replace(regjoy,'');
-StickL1value = id('StickL1c').value.replace(regjoy,'');
-StickR1value = id('StickR1c').value.replace(regjoy,'');
-StickD1value = id('StickD1c').value.replace(regjoy,'');
-StickU1bvalue = id('StickU1cb').value.replace(regjoy,'');
-StickL1bvalue = id('StickL1cb').value.replace(regjoy,'');
-StickR1bvalue = id('StickR1cb').value.replace(regjoy,'');
+var StickU1value = id('StickU1c').value.replace(regjoy,''),
+StickL1value = id('StickL1c').value.replace(regjoy,''),
+StickR1value = id('StickR1c').value.replace(regjoy,''),
+StickD1value = id('StickD1c').value.replace(regjoy,''),
+StickU1bvalue = id('StickU1cb').value.replace(regjoy,''),
+StickL1bvalue = id('StickL1cb').value.replace(regjoy,''),
+StickR1bvalue = id('StickR1cb').value.replace(regjoy,''),
 StickD1bvalue = id('StickD1cb').value.replace(regjoy,'');
-AButton1 = 'Input-SDL-Control1[A Button]=' + AButton1c.value + ' ' + AButton1cb.value;
-BButton1 = 'Input-SDL-Control1[B Button]=' + BButton1c.value + ' ' + BButton1cb.value;
-LTrig1 = 'Input-SDL-Control1[L Trig]=' + LTrig1c.value + ' ' + LTrig1cb.value;
-RTrig1 = 'Input-SDL-Control1[R Trig]=' + RTrig1c.value + ' ' + RTrig1cb.value;
-ZTrig1 = 'Input-SDL-Control1[Z Trig]=' + ZTrig1c.value + ' ' + ZTrig1cb.value;
-Start1 = 'Input-SDL-Control1[Start]=' + Start1c.value + ' ' + Start1cb.value;
-DPadU1 = 'Input-SDL-Control1[DPad U]=' + DPadU1c.value + ' ' +  DPadU1cb.value;
-DPadL1 = 'Input-SDL-Control1[DPad L]=' + DPadL1c.value + ' ' +  DPadL1cb.value;
-DPadR1 = 'Input-SDL-Control1[DPad R]=' + DPadR1c.value + ' ' +  DPadR1cb.value;
-DPadD1 = 'Input-SDL-Control1[DPad D]=' + DPadD1c.value + ' ' +  DPadD1cb.value;
-CButtonU1 = 'Input-SDL-Control1[C Button U]=' + CButtonU1c.value + ' ' +  CButtonU1cb.value;
-CButtonL1 = 'Input-SDL-Control1[C Button L]=' + CButtonL1c.value + ' ' +  CButtonL1cb.value;
-CButtonR1 = 'Input-SDL-Control1[C Button R]=' + CButtonR1c.value + ' ' +  CButtonR1cb.value;
-CButtonD1 = 'Input-SDL-Control1[C Button D]=' + CButtonD1c.value + ' ' +  CButtonD1cb.value;
-MempakSwitch1 = 'Input-SDL-Control1[Mempak Switch]=' + MempakSwitch1c.value + ' ' +  MempakSwitch1cb.value;
-RumblepakSwitch1 = 'Input-SDL-Control1[Rumblepak Switch]=' + RumblepakSwitch1c.value + ' ' +  RumblepakSwitch1cb.value;
+AButton1 = 'Input-SDL-Control1[A Button]=' + id('AButton1c').value + ' ' + id('AButton1cb').value;
+BButton1 = 'Input-SDL-Control1[B Button]=' + id('BButton1c').value + ' ' + id('BButton1cb').value;
+LTrig1 = 'Input-SDL-Control1[L Trig]=' + id('LTrig1c').value + ' ' + id('LTrig1cb').value;
+RTrig1 = 'Input-SDL-Control1[R Trig]=' + id('RTrig1c').value + ' ' + id('RTrig1cb').value;
+ZTrig1 = 'Input-SDL-Control1[Z Trig]=' + id('ZTrig1c').value + ' ' + id('ZTrig1cb').value;
+Start1 = 'Input-SDL-Control1[Start]=' + id('Start1c').value + ' ' + id('Start1cb').value;
+DPadU1 = 'Input-SDL-Control1[DPad U]=' + id('DPadU1c').value + ' ' + id('DPadU1cb').value;
+DPadL1 = 'Input-SDL-Control1[DPad L]=' + id('DPadL1c').value + ' ' + id('DPadL1cb').value;
+DPadR1 = 'Input-SDL-Control1[DPad R]=' + id('DPadR1c').value + ' ' + id('DPadR1cb').value;
+DPadD1 = 'Input-SDL-Control1[DPad D]=' + id('DPadD1c').value + ' ' + id('DPadD1cb').value;
+CButtonU1 = 'Input-SDL-Control1[C Button U]=' + id('CButtonU1c').value + ' ' + id('CButtonU1cb').value;
+CButtonL1 = 'Input-SDL-Control1[C Button L]=' + id('CButtonL1c').value + ' ' + id('CButtonL1cb').value;
+CButtonR1 = 'Input-SDL-Control1[C Button R]=' + id('CButtonR1c').value + ' ' + id('CButtonR1cb').value;
+CButtonD1 = 'Input-SDL-Control1[C Button D]=' + id('CButtonD1c').value + ' ' + id('CButtonD1cb').value;
+MempakSwitch1 = 'Input-SDL-Control1[Mempak Switch]=' + id('MempakSwitch1c').value + ' ' + id('MempakSwitch1cb').value;
+RumblepakSwitch1 = 'Input-SDL-Control1[Rumblepak Switch]=' + id('RumblepakSwitch1c').value + ' ' + id('RumblepakSwitch1cb').value;
 XAxis1 = 'Input-SDL-Control1[X Axis]=' + buttonType + '(' + StickL1value + ',' + StickR1value + ')' + ' ' + buttonTypeB + '(' + StickL1bvalue + ',' + StickR1bvalue + ')';
 YAxis1 = 'Input-SDL-Control1[Y Axis]=' + buttonType + '(' + StickU1value + ',' + StickD1value + ')' + ' ' + buttonTypeB + '(' + StickU1bvalue + ',' + StickD1bvalue + ')'}
 
@@ -1189,39 +1187,37 @@ if(id('mouse2_3').options[id('mouse2_3').selectedIndex].value === 'r'){RTrig2 = 
 if(id('mouse2_3').options[id('mouse2_3').selectedIndex].value === 'z'){ZTrig2 = 'Input-SDL-Control2[Z Trig]=mouse(3)'}}
 }else{
 device2 = 'Input-SDL-Control2[device]=1';
-var StickU2value,StickL2value,StickR2value,StickD2value,StickU2bvalue,StickL2bvalue,StickR2bvalue,StickD2bvalue,
-buttonType = '',
-buttonTypeB = '';
+var buttonType = '', buttonTypeB = '';
 if(id('StickU2c').value.includes('axis') || id('StickL2c').value.includes('axis') || id('StickR2c').value.includes('axis') || id('StickD2c').value.includes('axis')){buttonType = 'axis'}
 if(id('StickU2cb').value.includes('axis') || id('StickL2cb').value.includes('axis') || id('StickR2cb').value.includes('axis') || id('StickD2cb').value.includes('axis')){buttonTypeB = 'axis'}
 if(id('StickU2c').value.includes('button') || id('StickL2c').value.includes('button') || id('StickR2c').value.includes('button') || id('StickD2c').value.includes('button')){buttonType = 'button'}
 if(id('StickU2cb').value.includes('button') || id('StickL2cb').value.includes('button') || id('StickR2cb').value.includes('button') || id('StickD2cb').value.includes('button')){buttonTypeB = 'button'}
 if(id('StickU2c').value.includes('hat') || id('StickL2c').value.includes('hat') || id('StickR2c').value.includes('hat') || id('StickD2c').value.includes('hat')){buttonType = 'hat'}
 if(id('StickU2cb').value.includes('hat') || id('StickL2cb').value.includes('hat') || id('StickR2cb').value.includes('hat') || id('StickD2cb').value.includes('hat')){buttonTypeB = 'hat'}
-StickU2value = id('StickU2c').value.replace(regjoy,'');
-StickL2value = id('StickL2c').value.replace(regjoy,'');
-StickR2value = id('StickR2c').value.replace(regjoy,'');
-StickD2value = id('StickD2c').value.replace(regjoy,'');
-StickU2bvalue = id('StickU2cb').value.replace(regjoy,'');
-StickL2bvalue = id('StickL2cb').value.replace(regjoy,'');
-StickR2bvalue = id('StickR2cb').value.replace(regjoy,'');
+var StickU2value = id('StickU2c').value.replace(regjoy,''),
+StickL2value = id('StickL2c').value.replace(regjoy,''),
+StickR2value = id('StickR2c').value.replace(regjoy,''),
+StickD2value = id('StickD2c').value.replace(regjoy,''),
+StickU2bvalue = id('StickU2cb').value.replace(regjoy,''),
+StickL2bvalue = id('StickL2cb').value.replace(regjoy,''),
+StickR2bvalue = id('StickR2cb').value.replace(regjoy,''),
 StickD2bvalue = id('StickD2cb').value.replace(regjoy,'');
-AButton2 = 'Input-SDL-Control2[A Button]=' + AButton2c.value + ' ' + AButton2cb.value;
-BButton2 = 'Input-SDL-Control2[B Button]=' + BButton2c.value + ' ' + BButton2cb.value;
-LTrig2 = 'Input-SDL-Control2[L Trig]=' + LTrig2c.value + ' ' + LTrig2cb.value;
-RTrig2 = 'Input-SDL-Control2[R Trig]=' + RTrig2c.value + ' ' + RTrig2cb.value;
-ZTrig2 = 'Input-SDL-Control2[Z Trig]=' + ZTrig2c.value + ' ' + ZTrig2cb.value;
-Start2 = 'Input-SDL-Control2[Start]=' + Start2c.value + ' ' + Start2cb.value;
-DPadU2 = 'Input-SDL-Control2[DPad U]=' + DPadU2c.value + ' ' +  DPadU2cb.value;
-DPadL2 = 'Input-SDL-Control2[DPad L]=' + DPadL2c.value + ' ' +  DPadL2cb.value;
-DPadR2 = 'Input-SDL-Control2[DPad R]=' + DPadR2c.value + ' ' +  DPadR2cb.value;
-DPadD2 = 'Input-SDL-Control2[DPad D]=' + DPadD2c.value + ' ' +  DPadD2cb.value;
-CButtonU2 = 'Input-SDL-Control2[C Button U]=' + CButtonU2c.value + ' ' +  CButtonU2cb.value;
-CButtonL2 = 'Input-SDL-Control2[C Button L]=' + CButtonL2c.value + ' ' +  CButtonL2cb.value;
-CButtonR2 = 'Input-SDL-Control2[C Button R]=' + CButtonR2c.value + ' ' +  CButtonR2cb.value;
-CButtonD2 = 'Input-SDL-Control2[C Button D]=' + CButtonD2c.value + ' ' +  CButtonD2cb.value;
-MempakSwitch2 = 'Input-SDL-Control2[Mempak Switch]=' + MempakSwitch2c.value + ' ' +  MempakSwitch2cb.value;
-RumblepakSwitch2 = 'Input-SDL-Control2[Rumblepak Switch]=' + RumblepakSwitch2c.value + ' ' +  RumblepakSwitch2cb.value;
+AButton2 = 'Input-SDL-Control2[A Button]=' + id('AButton2c').value + ' ' + id('AButton2cb').value;
+BButton2 = 'Input-SDL-Control2[B Button]=' + id('BButton2c').value + ' ' + id('BButton2cb').value;
+LTrig2 = 'Input-SDL-Control2[L Trig]=' + id('LTrig2c').value + ' ' + id('LTrig2cb').value;
+RTrig2 = 'Input-SDL-Control2[R Trig]=' + id('RTrig2c').value + ' ' + id('RTrig2cb').value;
+ZTrig2 = 'Input-SDL-Control2[Z Trig]=' + id('ZTrig2c').value + ' ' + id('ZTrig2cb').value;
+Start2 = 'Input-SDL-Control2[Start]=' + id('Start2c').value + ' ' + id('Start2cb').value;
+DPadU2 = 'Input-SDL-Control2[DPad U]=' + id('DPadU2c').value + ' ' + id('DPadU2cb').value;
+DPadL2 = 'Input-SDL-Control2[DPad L]=' + id('DPadL2c').value + ' ' + id('DPadL2cb').value;
+DPadR2 = 'Input-SDL-Control2[DPad R]=' + id('DPadR2c').value + ' ' + id('DPadR2cb').value;
+DPadD2 = 'Input-SDL-Control2[DPad D]=' + id('DPadD2c').value + ' ' + id('DPadD2cb').value;
+CButtonU2 = 'Input-SDL-Control2[C Button U]=' + id('CButtonU2c').value + ' ' + id('CButtonU2cb').value;
+CButtonL2 = 'Input-SDL-Control2[C Button L]=' + id('CButtonL2c').value + ' ' + id('CButtonL2cb').value;
+CButtonR2 = 'Input-SDL-Control2[C Button R]=' + id('CButtonR2c').value + ' ' + id('CButtonR2cb').value;
+CButtonD2 = 'Input-SDL-Control2[C Button D]=' + id('CButtonD2c').value + ' ' + id('CButtonD2cb').value;
+MempakSwitch2 = 'Input-SDL-Control2[Mempak Switch]=' + id('MempakSwitch2c').value + ' ' + id('MempakSwitch2cb').value;
+RumblepakSwitch2 = 'Input-SDL-Control2[Rumblepak Switch]=' + id('RumblepakSwitch2c').value + ' ' + id('RumblepakSwitch2cb').value;
 XAxis2 = 'Input-SDL-Control2[X Axis]=' + buttonType + '(' + StickL2value + ',' + StickR2value + ')' + ' ' + buttonTypeB + '(' + StickL2bvalue + ',' + StickR2bvalue + ')';
 YAxis2 = 'Input-SDL-Control2[Y Axis]=' + buttonType + '(' + StickU2value + ',' + StickD2value + ')' + ' ' + buttonTypeB + '(' + StickU2bvalue + ',' + StickD2bvalue + ')'}
 
@@ -1265,39 +1261,37 @@ if(id('mouse3_3').options[id('mouse3_3').selectedIndex].value === 'r'){RTrig3 = 
 if(id('mouse3_3').options[id('mouse3_3').selectedIndex].value === 'z'){ZTrig3 = 'Input-SDL-Control3[Z Trig]=mouse(3)'}}
 }else{
 device3 = 'Input-SDL-Control3[device]=2';
-var StickU3value,StickL3value,StickR3value,StickD3value,StickU3bvalue,StickL3bvalue,StickR3bvalue,StickD3bvalue,
-buttonType = '',
-buttonTypeB = '';
+var buttonType = '', buttonTypeB = '';
 if(id('StickU3c').value.includes('axis') || id('StickL3c').value.includes('axis') || id('StickR3c').value.includes('axis') || id('StickD3c').value.includes('axis')){buttonType = 'axis'}
 if(id('StickU3cb').value.includes('axis') || id('StickL3cb').value.includes('axis') || id('StickR3cb').value.includes('axis') || id('StickD3cb').value.includes('axis')){buttonTypeB = 'axis'}
 if(id('StickU3c').value.includes('button') || id('StickL3c').value.includes('button') || id('StickR3c').value.includes('button') || id('StickD3c').value.includes('button')){buttonType = 'button'}
 if(id('StickU3cb').value.includes('button') || id('StickL3cb').value.includes('button') || id('StickR3cb').value.includes('button') || id('StickD3cb').value.includes('button')){buttonTypeB = 'button'}
 if(id('StickU3c').value.includes('hat') || id('StickL3c').value.includes('hat') || id('StickR3c').value.includes('hat') || id('StickD3c').value.includes('hat')){buttonType = 'hat'}
 if(id('StickU3cb').value.includes('hat') || id('StickL3cb').value.includes('hat') || id('StickR3cb').value.includes('hat') || id('StickD3cb').value.includes('hat')){buttonTypeB = 'hat'}
-StickU3value = id('StickU3c').value.replace(regjoy,'');
-StickL3value = id('StickL3c').value.replace(regjoy,'');
-StickR3value = id('StickR3c').value.replace(regjoy,'');
-StickD3value = id('StickD3c').value.replace(regjoy,'');
-StickU3bvalue = id('StickU3cb').value.replace(regjoy,'');
-StickL3bvalue = id('StickL3cb').value.replace(regjoy,'');
-StickR3bvalue = id('StickR3cb').value.replace(regjoy,'');
+var StickU3value = id('StickU3c').value.replace(regjoy,''),
+StickL3value = id('StickL3c').value.replace(regjoy,''),
+StickR3value = id('StickR3c').value.replace(regjoy,''),
+StickD3value = id('StickD3c').value.replace(regjoy,''),
+StickU3bvalue = id('StickU3cb').value.replace(regjoy,''),
+StickL3bvalue = id('StickL3cb').value.replace(regjoy,''),
+StickR3bvalue = id('StickR3cb').value.replace(regjoy,''),
 StickD3bvalue = id('StickD3cb').value.replace(regjoy,'');
-AButton3 = 'Input-SDL-Control3[A Button]=' + AButton3c.value + ' ' + AButton3cb.value;
-BButton3 = 'Input-SDL-Control3[B Button]=' + BButton3c.value + ' ' + BButton3cb.value;
-LTrig3 = 'Input-SDL-Control3[L Trig]=' + LTrig3c.value + ' ' + LTrig3cb.value;
-RTrig3 = 'Input-SDL-Control3[R Trig]=' + RTrig3c.value + ' ' + RTrig3cb.value;
-ZTrig3 = 'Input-SDL-Control3[Z Trig]=' + ZTrig3c.value + ' ' + ZTrig3cb.value;
-Start3 = 'Input-SDL-Control3[Start]=' + Start3c.value + ' ' + Start3cb.value;
-DPadU3 = 'Input-SDL-Control3[DPad U]=' + DPadU3c.value + ' ' +  DPadU3cb.value;
-DPadL3 = 'Input-SDL-Control3[DPad L]=' + DPadL3c.value + ' ' +  DPadL3cb.value;
-DPadR3 = 'Input-SDL-Control3[DPad R]=' + DPadR3c.value + ' ' +  DPadR3cb.value;
-DPadD3 = 'Input-SDL-Control3[DPad D]=' + DPadD3c.value + ' ' +  DPadD3cb.value;
-CButtonU3 = 'Input-SDL-Control3[C Button U]=' + CButtonU3c.value + ' ' +  CButtonU3cb.value;
-CButtonL3 = 'Input-SDL-Control3[C Button L]=' + CButtonL3c.value + ' ' +  CButtonL3cb.value;
-CButtonR3 = 'Input-SDL-Control3[C Button R]=' + CButtonR3c.value + ' ' +  CButtonR3cb.value;
-CButtonD3 = 'Input-SDL-Control3[C Button D]=' + CButtonD3c.value + ' ' +  CButtonD3cb.value;
-MempakSwitch3 = 'Input-SDL-Control3[Mempak Switch]=' + MempakSwitch3c.value + ' ' +  MempakSwitch3cb.value;
-RumblepakSwitch3 = 'Input-SDL-Control3[Rumblepak Switch]=' + RumblepakSwitch3c.value + ' ' +  RumblepakSwitch3cb.value;
+AButton3 = 'Input-SDL-Control3[A Button]=' + id('AButton3c').value + ' ' + id('AButton3cb').value;
+BButton3 = 'Input-SDL-Control3[B Button]=' + id('BButton3c').value + ' ' + id('BButton3cb').value;
+LTrig3 = 'Input-SDL-Control3[L Trig]=' + id('LTrig3c').value + ' ' + id('LTrig3cb').value;
+RTrig3 = 'Input-SDL-Control3[R Trig]=' + id('RTrig3c').value + ' ' + id('RTrig3cb').value;
+ZTrig3 = 'Input-SDL-Control3[Z Trig]=' + id('ZTrig3c').value + ' ' + id('ZTrig3cb').value;
+Start3 = 'Input-SDL-Control3[Start]=' + id('Start3c').value + ' ' + id('Start3cb').value;
+DPadU3 = 'Input-SDL-Control3[DPad U]=' + id('DPadU3c').value + ' ' + id('DPadU3cb').value;
+DPadL3 = 'Input-SDL-Control3[DPad L]=' + id('DPadL3c').value + ' ' + id('DPadL3cb').value;
+DPadR3 = 'Input-SDL-Control3[DPad R]=' + id('DPadR3c').value + ' ' + id('DPadR3cb').value;
+DPadD3 = 'Input-SDL-Control3[DPad D]=' + id('DPadD3c').value + ' ' + id('DPadD3cb').value;
+CButtonU3 = 'Input-SDL-Control3[C Button U]=' + id('CButtonU3c').value + ' ' + id('CButtonU3cb').value;
+CButtonL3 = 'Input-SDL-Control3[C Button L]=' + id('CButtonL3c').value + ' ' + id('CButtonL3cb').value;
+CButtonR3 = 'Input-SDL-Control3[C Button R]=' + id('CButtonR3c').value + ' ' + id('CButtonR3cb').value;
+CButtonD3 = 'Input-SDL-Control3[C Button D]=' + id('CButtonD3c').value + ' ' + id('CButtonD3cb').value;
+MempakSwitch3 = 'Input-SDL-Control3[Mempak Switch]=' + id('MempakSwitch3c').value + ' ' + id('MempakSwitch3cb').value;
+RumblepakSwitch3 = 'Input-SDL-Control3[Rumblepak Switch]=' + id('RumblepakSwitch3c').value + ' ' + id('RumblepakSwitch3cb').value;
 XAxis3 = 'Input-SDL-Control3[X Axis]=' + buttonType + '(' + StickL3value + ',' + StickR3value + ')' + ' ' + buttonTypeB + '(' + StickL3bvalue + ',' + StickR3bvalue + ')';
 YAxis3 = 'Input-SDL-Control3[Y Axis]=' + buttonType + '(' + StickU3value + ',' + StickD3value + ')' + ' ' + buttonTypeB + '(' + StickU3bvalue + ',' + StickD3bvalue + ')'}
 
@@ -1341,39 +1335,37 @@ if(id('mouse4_3').options[id('mouse4_3').selectedIndex].value === 'r'){RTrig4 = 
 if(id('mouse4_3').options[id('mouse4_3').selectedIndex].value === 'z'){ZTrig4 = 'Input-SDL-Control4[Z Trig]=mouse(3)'}}
 }else{
 device4 = 'Input-SDL-Control4[device]=3';
-var StickU4value,StickL4value,StickR4value,StickD4value,StickU4bvalue,StickL4bvalue,StickR4bvalue,StickD4bvalue,
-buttonType = '',
-buttonTypeB = '';
+var buttonType = '', buttonTypeB = '';
 if(id('StickU4c').value.includes('axis') || id('StickL4c').value.includes('axis') || id('StickR4c').value.includes('axis') || id('StickD4c').value.includes('axis')){buttonType = 'axis'}
 if(id('StickU4cb').value.includes('axis') || id('StickL4cb').value.includes('axis') || id('StickR4cb').value.includes('axis') || id('StickD4cb').value.includes('axis')){buttonTypeB = 'axis'}
 if(id('StickU4c').value.includes('button') || id('StickL4c').value.includes('button') || id('StickR4c').value.includes('button') || id('StickD4c').value.includes('button')){buttonType = 'button'}
 if(id('StickU4cb').value.includes('button') || id('StickL4cb').value.includes('button') || id('StickR4cb').value.includes('button') || id('StickD4cb').value.includes('button')){buttonTypeB = 'button'}
 if(id('StickU4c').value.includes('hat') || id('StickL4c').value.includes('hat') || id('StickR4c').value.includes('hat') || id('StickD4c').value.includes('hat')){buttonType = 'hat'}
 if(id('StickU4cb').value.includes('hat') || id('StickL4cb').value.includes('hat') || id('StickR4cb').value.includes('hat') || id('StickD4cb').value.includes('hat')){buttonTypeB = 'hat'}
-StickU4value = id('StickU4c').value.replace(regjoy,'');
-StickL4value = id('StickL4c').value.replace(regjoy,'');
-StickR4value = id('StickR4c').value.replace(regjoy,'');
-StickD4value = id('StickD4c').value.replace(regjoy,'');
-StickU4bvalue = id('StickU4cb').value.replace(regjoy,'');
-StickL4bvalue = id('StickL4cb').value.replace(regjoy,'');
-StickR4bvalue = id('StickR4cb').value.replace(regjoy,'');
+var StickU4value = id('StickU4c').value.replace(regjoy,''),
+StickL4value = id('StickL4c').value.replace(regjoy,''),
+StickR4value = id('StickR4c').value.replace(regjoy,''),
+StickD4value = id('StickD4c').value.replace(regjoy,''),
+StickU4bvalue = id('StickU4cb').value.replace(regjoy,''),
+StickL4bvalue = id('StickL4cb').value.replace(regjoy,''),
+StickR4bvalue = id('StickR4cb').value.replace(regjoy,''),
 StickD4bvalue = id('StickD4cb').value.replace(regjoy,'');
-AButton4 = 'Input-SDL-Control4[A Button]=' + AButton4c.value + ' ' + AButton4cb.value;
-BButton4 = 'Input-SDL-Control4[B Button]=' + BButton4c.value + ' ' + BButton4cb.value;
-LTrig4 = 'Input-SDL-Control4[L Trig]=' + LTrig4c.value + ' ' + LTrig4cb.value;
-RTrig4 = 'Input-SDL-Control4[R Trig]=' + RTrig4c.value + ' ' + RTrig4cb.value;
-ZTrig4 = 'Input-SDL-Control4[Z Trig]=' + ZTrig4c.value + ' ' + ZTrig4cb.value;
-Start4 = 'Input-SDL-Control4[Start]=' + Start4c.value + ' ' + Start4cb.value;
-DPadU4 = 'Input-SDL-Control4[DPad U]=' + DPadU4c.value + ' ' +  DPadU4cb.value;
-DPadL4 = 'Input-SDL-Control4[DPad L]=' + DPadL4c.value + ' ' +  DPadL4cb.value;
-DPadR4 = 'Input-SDL-Control4[DPad R]=' + DPadR4c.value + ' ' +  DPadR4cb.value;
-DPadD4 = 'Input-SDL-Control4[DPad D]=' + DPadD4c.value + ' ' +  DPadD4cb.value;
-CButtonU4 = 'Input-SDL-Control4[C Button U]=' + CButtonU4c.value + ' ' +  CButtonU4cb.value;
-CButtonL4 = 'Input-SDL-Control4[C Button L]=' + CButtonL4c.value + ' ' +  CButtonL4cb.value;
-CButtonR4 = 'Input-SDL-Control4[C Button R]=' + CButtonR4c.value + ' ' +  CButtonR4cb.value;
-CButtonD4 = 'Input-SDL-Control4[C Button D]=' + CButtonD4c.value + ' ' +  CButtonD4cb.value;
-MempakSwitch4 = 'Input-SDL-Control4[Mempak Switch]=' + MempakSwitch4c.value + ' ' +  MempakSwitch4cb.value;
-RumblepakSwitch4 = 'Input-SDL-Control4[Rumblepak Switch]=' + RumblepakSwitch4c.value + ' ' +  RumblepakSwitch4cb.value;
+AButton4 = 'Input-SDL-Control4[A Button]=' + id('AButton4c').value + ' ' + id('AButton4cb').value;
+BButton4 = 'Input-SDL-Control4[B Button]=' + id('BButton4c').value + ' ' + id('BButton4cb').value;
+LTrig4 = 'Input-SDL-Control4[L Trig]=' + id('LTrig4c').value + ' ' + id('LTrig4cb').value;
+RTrig4 = 'Input-SDL-Control4[R Trig]=' + id('RTrig4c').value + ' ' + id('RTrig4cb').value;
+ZTrig4 = 'Input-SDL-Control4[Z Trig]=' + id('ZTrig4c').value + ' ' + id('ZTrig4cb').value;
+Start4 = 'Input-SDL-Control4[Start]=' + id('Start4c').value + ' ' + id('Start4cb').value;
+DPadU4 = 'Input-SDL-Control4[DPad U]=' + id('DPadU4c').value + ' ' + id('DPadU4cb').value;
+DPadL4 = 'Input-SDL-Control4[DPad L]=' + id('DPadL4c').value + ' ' + id('DPadL4cb').value;
+DPadR4 = 'Input-SDL-Control4[DPad R]=' + id('DPadR4c').value + ' ' + id('DPadR4cb').value;
+DPadD4 = 'Input-SDL-Control4[DPad D]=' + id('DPadD4c').value + ' ' + id('DPadD4cb').value;
+CButtonU4 = 'Input-SDL-Control4[C Button U]=' + id('CButtonU4c').value + ' ' + id('CButtonU4cb').value;
+CButtonL4 = 'Input-SDL-Control4[C Button L]=' + id('CButtonL4c').value + ' ' + id('CButtonL4cb').value;
+CButtonR4 = 'Input-SDL-Control4[C Button R]=' + id('CButtonR4c').value + ' ' + id('CButtonR4cb').value;
+CButtonD4 = 'Input-SDL-Control4[C Button D]=' + id('CButtonD4c').value + ' ' + id('CButtonD4cb').value;
+MempakSwitch4 = 'Input-SDL-Control4[Mempak Switch]=' + id('MempakSwitch4c').value + ' ' + id('MempakSwitch4cb').value;
+RumblepakSwitch4 = 'Input-SDL-Control4[Rumblepak Switch]=' + id('RumblepakSwitch4c').value + ' ' + id('RumblepakSwitch4cb').value;
 XAxis4 = 'Input-SDL-Control4[X Axis]=' + buttonType + '(' + StickL4value + ',' + StickR4value + ')' + ' ' + buttonTypeB + '(' + StickL4bvalue + ',' + StickR4bvalue + ')';
 YAxis4 = 'Input-SDL-Control4[Y Axis]=' + buttonType + '(' + StickU4value + ',' + StickD4value + ')' + ' ' + buttonTypeB + '(' + StickU4bvalue + ',' + StickD4bvalue + ')'}
 
