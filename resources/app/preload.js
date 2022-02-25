@@ -12,8 +12,8 @@ emuLaunch = (parameters) => {ipcRenderer.send('emuLaunch', parameters)},
 showCheats = (parameters) => {return ipcRenderer.sendSync('showCheats', parameters)},
 
 jstest = (joyinput,name1Input,name2Input,name3Input,name4Input) => {
-const regremove = /\r/gm, regaxis = /\s.*/i, reghk = /button\(|\)/g;
-var joyvalue,joyfilter,joydata,joyhotkey,jstestConfig;
+const regremove = /\r/gm, regaxis = /\s.*/i, reghk = /button\(|\)/g, reghka = /xis\(|\)/g;
+var joyvalue,joyfilter,joydata,jstestConfig;
 if(joyinput.id.includes('1')){jstestConfig = ['-e', '0']}
 if(joyinput.id.includes('2')){jstestConfig = ['-e', '1']}
 if(joyinput.id.includes('3')){jstestConfig = ['-e', '2']}
@@ -26,10 +26,17 @@ ipcRenderer.once('jsLog', (e, data) => {
 joyfilter = data.replace(regremove,'');
 joydata = joyfilter.split('\n'); // joydata[0] = Device Name, joydata[1] = Device Number, joydata[2] = Pressed Key
 if(joyinput.id.includes('JoyMapping')){
-if(joydata[2].includes('button')){
-joyhotkey = joydata[2].replace(reghk,'');
-if(!joyinput.value.includes('B') || joyinput.value.includes('/')){joyvalue = 'B' + joyhotkey}
-if('B' + joyhotkey != joyinput.value && joyinput.value.includes('B') && !joyinput.value.includes('/')){joyvalue = joyinput.value + '/B' + joyhotkey}}}
+if(joydata[2].includes('button')){joyvalue = 'B' + joydata[2].replace(reghk,'')}
+if(joydata[2].includes('hat')){
+if(joydata[2] === 'hat(0 1)'){joyvalue = 'H0V1'}
+if(joydata[2] === 'hat(0 2)'){joyvalue = 'H0V2'}
+if(joydata[2] === 'hat(0 4)'){joyvalue = 'H0V4'}
+if(joydata[2] === 'hat(0 8)'){joyvalue = 'H0V8'}}
+if(joydata[2].includes('axis')){
+if(joydata[2].includes('-')){joyvalue = joydata[2].replace(regaxis,'-)')}
+else{joyvalue = joydata[2].replace(regaxis,'+)')}
+joyvalue = joyvalue.replace(reghka,'').replace('a','A')}
+if(joyvalue != joyinput.value && joyinput.value != '' && !joyinput.value.includes('/')){joyvalue = joyinput.value + '/' + joyvalue}}
 else{
 if(joyinput.id.includes('1')){name1Input.value = joydata[0];localStorage.setItem('name1',joydata[0])}
 if(joyinput.id.includes('2')){name2Input.value = joydata[0];localStorage.setItem('name2',joydata[0])}
