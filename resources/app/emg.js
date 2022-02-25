@@ -1028,6 +1028,25 @@ hkTexCoordBounds = 'Video-GLideN64[hkTexCoordBounds]=' + id('hkTexCoordBounds').
 hkNativeResTexrects = 'Video-GLideN64[hkNativeResTexrects]=' + id('hkNativeResTexrects').value,
 hkForceGammaCorrection = 'Video-GLideN64[hkForceGammaCorrection]=' + id('hkForceGammaCorrection').value,
 
+msensitivity1 = 'Input-SDL-Control1[MouseSensitivity]=' + MouseSensitivity1X.value + ',' + MouseSensitivity1Y.value,
+msensitivity2 = 'Input-SDL-Control2[MouseSensitivity]=' + MouseSensitivity2X.value + ',' + MouseSensitivity2Y.value,
+msensitivity3 = 'Input-SDL-Control3[MouseSensitivity]=' + MouseSensitivity3X.value + ',' + MouseSensitivity3Y.value,
+msensitivity4 = 'Input-SDL-Control4[MouseSensitivity]=' + MouseSensitivity4X.value + ',' + MouseSensitivity4Y.value,
+analogdeadzone1 = 'Input-SDL-Control1[AnalogDeadzone]=' + AnalogDeadzone1X.value + ',' + AnalogDeadzone1Y.value,
+analogdeadzone2 = 'Input-SDL-Control2[AnalogDeadzone]=' + AnalogDeadzone2X.value + ',' + AnalogDeadzone2Y.value,
+analogdeadzone3 = 'Input-SDL-Control3[AnalogDeadzone]=' + AnalogDeadzone3X.value + ',' + AnalogDeadzone3Y.value,
+analogdeadzone4 = 'Input-SDL-Control4[AnalogDeadzone]=' + AnalogDeadzone4X.value + ',' + AnalogDeadzone4Y.value,
+analogpeak1 = 'Input-SDL-Control1[AnalogPeak]=' + AnalogPeak1X.value + ',' + AnalogPeak1Y.value,
+analogpeak2 = 'Input-SDL-Control2[AnalogPeak]=' + AnalogPeak2X.value + ',' + AnalogPeak2Y.value,
+analogpeak3 = 'Input-SDL-Control3[AnalogPeak]=' + AnalogPeak3X.value + ',' + AnalogPeak3Y.value,
+analogpeak4 = 'Input-SDL-Control4[AnalogPeak]=' + AnalogPeak4X.value + ',' + AnalogPeak4Y.value,
+
+m64pGFX = 'Rsp-HLE[DisplayListToGraphicsPlugin]=True',
+RspFallback = 'Rsp-HLE[RspFallback]=mupen64plus-rsp-cxd4-sse2',
+SharedDataPath = 'Core[SharedDataPath]=',
+PluginDir = '.',
+nospeedlimit, verbose,
+
 AButton1,AButton2,AButton3,AButton4,BButton1,BButton2,BButton3,BButton4,LTrig1,LTrig2,LTrig3,LTrig4,RTrig1,RTrig2,RTrig3,RTrig4,ZTrig1,ZTrig2,ZTrig3,ZTrig4,Start1,Start2,Start3,Start4,DPadU1,DPadU2,DPadU3,DPadU4,DPadL1,DPadL2,DPadL3,DPadL4,DPadR1,DPadR2,DPadR3,DPadR4,DPadD1,DPadD2,DPadD3,DPadD4,CButtonU1,CButtonU2,CButtonU3,CButtonU4,CButtonL1,CButtonL2,CButtonL3,CButtonL4,CButtonR1,CButtonR2,CButtonR3,CButtonR4,CButtonD1,CButtonD2,CButtonD3,CButtonD4,MempakSwitch1,MempakSwitch2,MempakSwitch3,MempakSwitch4,RumblepakSwitch1,RumblepakSwitch2,RumblepakSwitch3,RumblepakSwitch4,XAxis1,XAxis2,XAxis3,XAxis4,YAxis1,YAxis2,YAxis3,YAxis4;
 
 
@@ -1336,101 +1355,87 @@ RumblepakSwitch4 = 'Input-SDL-Control4[Rumblepak Switch]=' + RumblepakSwitch4c.v
 XAxis4 = 'Input-SDL-Control4[X Axis]=' + buttonType + '(' + StickL4value + ',' + StickR4value + ')' + ' ' + buttonTypeB + '(' + StickL4bvalue + ',' + StickR4bvalue + ')';
 YAxis4 = 'Input-SDL-Control4[Y Axis]=' + buttonType + '(' + StickU4value + ',' + StickD4value + ')' + ' ' + buttonTypeB + '(' + StickU4bvalue + ',' + StickD4bvalue + ')'}
 
-msensitivity1 = 'Input-SDL-Control1[MouseSensitivity]=' + MouseSensitivity1X.value + ',' + MouseSensitivity1Y.value;
-msensitivity2 = 'Input-SDL-Control2[MouseSensitivity]=' + MouseSensitivity2X.value + ',' + MouseSensitivity2Y.value;
-msensitivity3 = 'Input-SDL-Control3[MouseSensitivity]=' + MouseSensitivity3X.value + ',' + MouseSensitivity3Y.value;
-msensitivity4 = 'Input-SDL-Control4[MouseSensitivity]=' + MouseSensitivity4X.value + ',' + MouseSensitivity4Y.value;
-analogdeadzone1 = 'Input-SDL-Control1[AnalogDeadzone]=' + AnalogDeadzone1X.value + ',' + AnalogDeadzone1Y.value;
-analogdeadzone2 = 'Input-SDL-Control2[AnalogDeadzone]=' + AnalogDeadzone2X.value + ',' + AnalogDeadzone2Y.value;
-analogdeadzone3 = 'Input-SDL-Control3[AnalogDeadzone]=' + AnalogDeadzone3X.value + ',' + AnalogDeadzone3Y.value;
-analogdeadzone4 = 'Input-SDL-Control4[AnalogDeadzone]=' + AnalogDeadzone4X.value + ',' + AnalogDeadzone4Y.value;
-analogpeak1 = 'Input-SDL-Control1[AnalogPeak]=' + AnalogPeak1X.value + ',' + AnalogPeak1Y.value;
-analogpeak2 = 'Input-SDL-Control2[AnalogPeak]=' + AnalogPeak2X.value + ',' + AnalogPeak2Y.value;
-analogpeak3 = 'Input-SDL-Control3[AnalogPeak]=' + AnalogPeak3X.value + ',' + AnalogPeak3Y.value;
-analogpeak4 = 'Input-SDL-Control4[AnalogPeak]=' + AnalogPeak4X.value + ',' + AnalogPeak4Y.value;
 
-if(AButton1.match(regkb))AButton1 = AButton1.replace(regkb,'')
-if(BButton1.match(regkb))BButton1 = BButton1.replace(regkb,'')
-if(LTrig1.match(regkb))LTrig1 = LTrig1.replace(regkb,'')
-if(RTrig1.match(regkb))RTrig1 = RTrig1.replace(regkb,'')
-if(ZTrig1.match(regkb))ZTrig1 = ZTrig1.replace(regkb,'')
-if(Start1.match(regkb))Start1 = Start1.replace(regkb,'')
-if(DPadU1.match(regkb))DPadU1 = DPadU1.replace(regkb,'')
-if(DPadL1.match(regkb))DPadL1 = DPadL1.replace(regkb,'')
-if(DPadR1.match(regkb))DPadR1 = DPadR1.replace(regkb,'')
-if(DPadD1.match(regkb))DPadD1 = DPadD1.replace(regkb,'')
-if(CButtonU1.match(regkb))CButtonU1 = CButtonU1.replace(regkb,'')
-if(CButtonL1.match(regkb))CButtonL1 = CButtonL1.replace(regkb,'')
-if(CButtonR1.match(regkb))CButtonR1 = CButtonR1.replace(regkb,'')
-if(CButtonD1.match(regkb))CButtonD1 = CButtonD1.replace(regkb,'')
-if(MempakSwitch1.match(regkb))MempakSwitch1 = MempakSwitch1.replace(regkb,'')
-if(RumblepakSwitch1.match(regkb))RumblepakSwitch1 = RumblepakSwitch1.replace(regkb,'')
-if(XAxis1.match(regkb))XAxis1 = XAxis1.replace(regkb,'')
-if(YAxis1.match(regkb))YAxis1 = YAxis1.replace(regkb,'')
 
-if(AButton2.match(regkb))AButton2 = AButton2.replace(regkb,'')
-if(BButton2.match(regkb))BButton2 = BButton2.replace(regkb,'')
-if(LTrig2.match(regkb))LTrig2 = LTrig2.replace(regkb,'')
-if(RTrig2.match(regkb))RTrig2 = RTrig2.replace(regkb,'')
-if(ZTrig2.match(regkb))ZTrig2 = ZTrig2.replace(regkb,'')
-if(Start2.match(regkb))Start2 = Start2.replace(regkb,'')
-if(DPadU2.match(regkb))DPadU2 = DPadU2.replace(regkb,'')
-if(DPadL2.match(regkb))DPadL2 = DPadL2.replace(regkb,'')
-if(DPadR2.match(regkb))DPadR2 = DPadR2.replace(regkb,'')
-if(DPadD2.match(regkb))DPadD2 = DPadD2.replace(regkb,'')
-if(CButtonU2.match(regkb))CButtonU2 = CButtonU2.replace(regkb,'')
-if(CButtonL2.match(regkb))CButtonL2 = CButtonL2.replace(regkb,'')
-if(CButtonR2.match(regkb))CButtonR2 = CButtonR2.replace(regkb,'')
-if(CButtonD2.match(regkb))CButtonD2 = CButtonD2.replace(regkb,'')
-if(MempakSwitch2.match(regkb))MempakSwitch2 = MempakSwitch2.replace(regkb,'')
-if(RumblepakSwitch2.match(regkb))RumblepakSwitch2 = RumblepakSwitch2.replace(regkb,'')
-if(XAxis2.match(regkb))XAxis2 = XAxis2.replace(regkb,'')
-if(YAxis2.match(regkb))YAxis2 = YAxis2.replace(regkb,'')
+function kb(kb){if(kb.match(regkb))kb = kb.replace(regkb,'');return kb}
 
-if(AButton3.match(regkb))AButton3 = AButton3.replace(regkb,'')
-if(BButton3.match(regkb))BButton3 = BButton3.replace(regkb,'')
-if(LTrig3.match(regkb))LTrig3 = LTrig3.replace(regkb,'')
-if(RTrig3.match(regkb))RTrig3 = RTrig3.replace(regkb,'')
-if(ZTrig3.match(regkb))ZTrig3 = ZTrig3.replace(regkb,'')
-if(Start3.match(regkb))Start3 = Start3.replace(regkb,'')
-if(DPadU3.match(regkb))DPadU3 = DPadU3.replace(regkb,'')
-if(DPadL3.match(regkb))DPadL3 = DPadL3.replace(regkb,'')
-if(DPadR3.match(regkb))DPadR3 = DPadR3.replace(regkb,'')
-if(DPadD3.match(regkb))DPadD3 = DPadD3.replace(regkb,'')
-if(CButtonU3.match(regkb))CButtonU3 = CButtonU3.replace(regkb,'')
-if(CButtonL3.match(regkb))CButtonL3 = CButtonL3.replace(regkb,'')
-if(CButtonR3.match(regkb))CButtonR3 = CButtonR3.replace(regkb,'')
-if(CButtonD3.match(regkb))CButtonD3 = CButtonD3.replace(regkb,'')
-if(MempakSwitch3.match(regkb))MempakSwitch3 = MempakSwitch3.replace(regkb,'')
-if(RumblepakSwitch3.match(regkb))RumblepakSwitch3 = RumblepakSwitch3.replace(regkb,'')
-if(XAxis3.match(regkb))XAxis3 = XAxis3.replace(regkb,'')
-if(YAxis3.match(regkb))YAxis3 = YAxis3.replace(regkb,'')
+AButton1 = kb(AButton1);
+BButton1 = kb(BButton1);
+LTrig1 = kb(LTrig1);
+RTrig1 = kb(RTrig1);
+ZTrig1 = kb(ZTrig1);
+Start1 = kb(Start1);
+DPadU1 = kb(DPadU1);
+DPadL1 = kb(DPadL1);
+DPadR1 = kb(DPadR1);
+DPadD1 = kb(DPadD1);
+CButtonU1 = kb(CButtonU1);
+CButtonL1 = kb(CButtonL1);
+CButtonR1 = kb(CButtonR1);
+CButtonD1 = kb(CButtonD1);
+MempakSwitch1 = kb(MempakSwitch1);
+RumblepakSwitch1 = kb(RumblepakSwitch1);
+XAxis1 = kb(XAxis1);
+YAxis1 = kb(YAxis1);
 
-if(AButton4.match(regkb))AButton4 = AButton4.replace(regkb,'')
-if(BButton4.match(regkb))BButton4 = BButton4.replace(regkb,'')
-if(LTrig4.match(regkb))LTrig4 = LTrig4.replace(regkb,'')
-if(RTrig4.match(regkb))RTrig4 = RTrig4.replace(regkb,'')
-if(ZTrig4.match(regkb))ZTrig4 = ZTrig4.replace(regkb,'')
-if(Start4.match(regkb))Start4 = Start4.replace(regkb,'')
-if(DPadU4.match(regkb))DPadU4 = DPadU4.replace(regkb,'')
-if(DPadL4.match(regkb))DPadL4 = DPadL4.replace(regkb,'')
-if(DPadR4.match(regkb))DPadR4 = DPadR4.replace(regkb,'')
-if(DPadD4.match(regkb))DPadD4 = DPadD4.replace(regkb,'')
-if(CButtonU4.match(regkb))CButtonU4 = CButtonU4.replace(regkb,'')
-if(CButtonL4.match(regkb))CButtonL4 = CButtonL4.replace(regkb,'')
-if(CButtonR4.match(regkb))CButtonR4 = CButtonR4.replace(regkb,'')
-if(CButtonD4.match(regkb))CButtonD4 = CButtonD4.replace(regkb,'')
-if(MempakSwitch4.match(regkb))MempakSwitch4 = MempakSwitch4.replace(regkb,'')
-if(RumblepakSwitch4.match(regkb))RumblepakSwitch4 = RumblepakSwitch4.replace(regkb,'')
-if(XAxis4.match(regkb))XAxis4 = XAxis4.replace(regkb,'')
-if(YAxis4.match(regkb))YAxis4 = YAxis4.replace(regkb,'')
+AButton2 = kb(AButton2);
+BButton2 = kb(BButton2);
+LTrig2 = kb(LTrig2);
+RTrig2 = kb(RTrig2);
+ZTrig2 = kb(ZTrig2);
+Start2 = kb(Start2);
+DPadU2 = kb(DPadU2);
+DPadL2 = kb(DPadL2);
+DPadR2 = kb(DPadR2);
+DPadD2 = kb(DPadD2);
+CButtonU2 = kb(CButtonU2);
+CButtonL2 = kb(CButtonL2);
+CButtonR2 = kb(CButtonR2);
+CButtonD2 = kb(CButtonD2);
+MempakSwitch2 = kb(MempakSwitch2);
+RumblepakSwitch2 = kb(RumblepakSwitch2);
+XAxis2 = kb(XAxis2);
+YAxis2 = kb(YAxis2);
 
-var m64pGFX = 'Rsp-HLE[DisplayListToGraphicsPlugin]=True',
-RspFallback = 'Rsp-HLE[RspFallback]=mupen64plus-rsp-cxd4-sse2',
-SharedDataPath = 'Core[SharedDataPath]=',
-PluginDir = '.',
-nospeedlimit,
-verbose;
+AButton3 = kb(AButton3);
+BButton3 = kb(BButton3);
+LTrig3 = kb(LTrig3);
+RTrig3 = kb(RTrig3);
+ZTrig3 = kb(ZTrig3);
+Start3 = kb(Start3);
+DPadU3 = kb(DPadU3);
+DPadL3 = kb(DPadL3);
+DPadR3 = kb(DPadR3);
+DPadD3 = kb(DPadD3);
+CButtonU3 = kb(CButtonU3);
+CButtonL3 = kb(CButtonL3);
+CButtonR3 = kb(CButtonR3);
+CButtonD3 = kb(CButtonD3);
+MempakSwitch3 = kb(MempakSwitch3);
+RumblepakSwitch3 = kb(RumblepakSwitch3);
+XAxis3 = kb(XAxis3);
+YAxis3 = kb(YAxis3);
+
+AButton4 = kb(AButton4);
+BButton4 = kb(BButton4);
+LTrig4 = kb(LTrig4);
+RTrig4 = kb(RTrig4);
+ZTrig4 = kb(ZTrig4);
+Start4 = kb(Start4);
+DPadU4 = kb(DPadU4);
+DPadL4 = kb(DPadL4);
+DPadR4 = kb(DPadR4);
+DPadD4 = kb(DPadD4);
+CButtonU4 = kb(CButtonU4);
+CButtonL4 = kb(CButtonL4);
+CButtonR4 = kb(CButtonR4);
+CButtonD4 = kb(CButtonD4);
+MempakSwitch4 = kb(MempakSwitch4);
+RumblepakSwitch4 = kb(RumblepakSwitch4);
+XAxis4 = kb(XAxis4);
+YAxis4 = kb(YAxis4);
+
+
 
 if(gfx === 'mupen64plus-video-angrylion-plus' || gfx === 'mupen64plus-video-parallel'){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=False'; cxd4Audio = 'rsp-cxd4[DisplayListToAudioPlugin]=False'}
 else if(gfx === 'mupen64plus-video-rice' || gfx === 'mupen64plus-video-glide64mk2'){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=True'}
