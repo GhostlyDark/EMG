@@ -692,343 +692,343 @@ id('ul_c4_controller').addEventListener('click', function(){currentController(id
 
 
 id('launch').addEventListener('click', function(){
-var PluginDir,osd,fullscreen,nospeedlimit,verbose,resolution,gfx,audio,input,rsp,emumode,exp,threadedVideo,plugin1,plugin2,plugin3,plugin4,plugged1,plugged2,plugged3,plugged4,mode1,mode2,mode3,mode4,name1,name2,name3,name4,device1,device2,device3,device4,mouse1,mouse2,mouse3,mouse4,msensitivity1,msensitivity2,msensitivity3,msensitivity4,analogdeadzone1,analogdeadzone2,analogdeadzone3,analogdeadzone4,analogpeak1,analogpeak2,analogpeak3,analogpeak4,msaa,fxaa,aspectRatio,vsync,bufferSwapMode,useNativeResolutionFactor,cxd4GFX,cxd4Audio,m64pGFX,m64pAudio,RspFallback,bilinearMode,enableHalosRemoval,anisotropy,cache,txHiresEnable,txNoTextureFileStorage,EnableInaccurateTextureCoordinates,EnableDitheringPattern,EnableHiresNoiseDithering,DitheringQuantization,RDRAMImageDitheringMode,EnableLOD,EnableHWLighting,EnableCoverage,EnableClipping,EnableShadersStorage,EnableLegacyBlending,EnableHybridFilter,EnableFragmentDepthWrite,EnableCustomSettings,CorrectTexrectCoords,EnableNativeResTexrects,BackgroundsMode,EnableTexCoordBounds,EnableFBEmulation,EnableCopyAuxiliaryToRDRAM,EnableN64DepthCompare,ForceDepthBufferClear,DisableFBInfo,FBInfoReadColorChunk,FBInfoReadDepthChunk,EnableCopyColorToRDRAM,EnableCopyDepthToRDRAM,EnableCopyColorFromRDRAM,EnableCopyDepthToMainDepthBuffer,OverscanNtscTop,OverscanNtscLeft,OverscanNtscRight,OverscanNtscBottom,OverscanPalTop,OverscanPalLeft,OverscanPalRight,OverscanPalBottom,txFilterMode,txEnhancementMode,txDeposterize,txFilterIgnoreBG,txCacheSize,txHiresVramLimit,txHiresFullAlphaChannel,txHresAltCRC,txCacheCompression,txForce16bpp,txSaveCache,txPathSetting,txCachePathSetting,txDumpPathSetting,KbdMappingSlot0,KbdMappingSlot1,KbdMappingSlot2,KbdMappingSlot3,KbdMappingSlot4,KbdMappingSlot5,KbdMappingSlot6,KbdMappingSlot7,KbdMappingSlot8,KbdMappingSlot9,KbdMappingStop,KbdMappingFullscreen,KbdMappingSaveState,KbdMappingLoadState,KbdMappingIncrementSlot,KbdMappingReset,KbdMappingSpeedDown,KbdMappingSpeedUp,KbdMappingScreenshot,KbdMappingPause,KbdMappingMute,KbdMappingIncreaseVolume,KbdMappingDecreaseVolume,KbdMappingFastForward,KbdMappingFrameAdvance,KbdMappingGameshark,JoyMappingStop,JoyMappingFullscreen,JoyMappingSaveState,JoyMappingLoadState,JoyMappingIncrementSlot,JoyMappingReset,JoyMappingSpeedDown,JoyMappingSpeedUp,JoyMappingScreenshot,JoyMappingPause,JoyMappingMute,JoyMappingIncreaseVolume,JoyMappingDecreaseVolume,JoyMappingFastForward,JoyMappingFrameAdvance,JoyMappingGameshark,Parallel,NumWorkers,BusyLoop,ViMode,ViInterpolation,ViWidescreen,ViHideOverscan,ViIntegerScaling,DpCompat,ParallelFullscreen,ParallelUpscaling,ParallelScreenWidth,ParallelScreenHeight,ParallelSuperscaledReads,ParallelSuperscaledDither,ParallelDeinterlace,ParallelIntegerScale,ParallelCropOverscan,ParallelVIAA,ParallelDivot,ParallelGammaDither,ParallelVIBilerp,ParallelVIDither,ParallelDownScale,ParallelNativeTextLOD,ParallelNativeTextRECT,ForceGammaCorrection,GammaCorrectionLevel,fontSize,fontColor,ShowFPS,ShowVIS,ShowPercent,ShowInternalResolution,ShowRenderingResolution,ShowStatistics,CountersPos,IPLROMSetting,DiskSetting,NoCompiledJump,CountPerOp,CountPerOpDenomPot,AutoStateSlotIncrement,CurrentStateSlot,SharedDataPath,ScreenshotPathSetting,SaveStatePathSetting,SaveSRAMPathSetting,RandomizeInterrupt,SaveDiskFormat,WaitForCPUHost,SupportCPUSemaphoreLock,gbROM1Setting,gbROM2Setting,gbROM3Setting,gbROM4Setting,gbRAM1Setting,gbRAM2Setting,gbRAM3Setting,gbRAM4Setting,DEFAULT_FREQUENCY,SWAP_CHANNELS,PRIMARY_BUFFER_TARGET,SECONDARY_BUFFER_SIZE,RESAMPLE,VOLUME_ADJUST,VOLUME_DEFAULT,AUDIO_SYNC,hkTexDump,hkHdTexReload,hkHdTexToggle,hkInaccurateTexCords,hkVsync,hkFBEmulation,hkN64DepthCompare,hkOsdVis,hkOsdFps,hkOsdPercent,hkOsdInternalResolution,hkOsdRenderingResolution,hkTexCoordBounds,hkNativeResTexrects,hkForceGammaCorrection,FrameBufferSetting,FrameBufferWriteBackControl,RenderToTexture,ScreenUpdateSetting,NormalAlphaBlender,FastTextureLoading,AccurateTextureMapping,InN64Resolution,SaveVRAM,DoubleSizeForSmallTxtrBuf,DefaultCombinerDisable,EnableHacks,WinFrameMode,FullTMEMEmulation,OpenGLVertexClipper,EnableSSE,SkipFrame,TexRectOnly,SmallTextureOnly,LoadHiResCRCOnly,LoadHiResTextures,DumpTexturesToFiles,RiceShowFPS,Mipmapping,FogMethod,ForceTextureFilter,TextureEnhancement,TextureEnhancementControl,TextureQuality,OpenGLDepthBufferSetting,RiceMultiSampling,ColorQuality,OpenGLRenderSetting,AnisotropicFiltering,ForcePolygonOffset,PolygonOffsetFactor,PolygonOffsetUnits,Glide64VSync,wrpAntiAliasing,force_polygon_offset,polygon_offset_factor,polygon_offset_units,show_fps,clock,clock_24_hr,wrpFBO,wrpAnisotropic,ghq_fltr,ghq_cmpr,ghq_enht,ghq_hirs,ghq_enht_cmpr,ghq_enht_tile,ghq_enht_f16bpp,ghq_enht_gz,ghq_enht_nobg,ghq_hirs_cmpr,ghq_hirs_tile,ghq_hirs_f16bpp,ghq_hirs_gz,ghq_hirs_altcrc,ghq_cache_save,ghq_cache_size,ghq_hirs_let_texartists_fly,ghq_hirs_dump,alt_tex_size,use_sts1_only,force_calc_sphere,correct_viewport,increase_texrect_edge,decrease_fillrect_edge,texture_correction,pal230,force_microcheck,force_quad3d,clip_zmin,clip_zmax,fast_crc,adjust_aspect,zmode_compare_less,old_style_adither,n64_z_scale,optimize_texrect,ignore_aux_copy,hires_buf_clear,fb_read_alpha,useless_is_useless,fb_crc_mode,filtering,fog,buff_clear,swapmode,aspect,lodmode,fb_smart,fb_hires,fb_read_always,read_back_to_screen,detect_cpu_write,fb_get_info,fb_render,AButton1,AButton2,AButton3,AButton4,BButton1,BButton2,BButton3,BButton4,LTrig1,LTrig2,LTrig3,LTrig4,RTrig1,RTrig2,RTrig3,RTrig4,ZTrig1,ZTrig2,ZTrig3,ZTrig4,Start1,Start2,Start3,Start4,DPadU1,DPadU2,DPadU3,DPadU4,DPadL1,DPadL2,DPadL3,DPadL4,DPadR1,DPadR2,DPadR3,DPadR4,DPadD1,DPadD2,DPadD3,DPadD4,CButtonU1,CButtonU2,CButtonU3,CButtonU4,CButtonL1,CButtonL2,CButtonL3,CButtonL4,CButtonR1,CButtonR2,CButtonR3,CButtonR4,CButtonD1,CButtonD2,CButtonD3,CButtonD4,MempakSwitch1,MempakSwitch2,MempakSwitch3,MempakSwitch4,RumblepakSwitch1,RumblepakSwitch2,RumblepakSwitch3,RumblepakSwitch4,XAxis1,XAxis2,XAxis3,XAxis4,YAxis1,YAxis2,YAxis3,YAxis4;
+var exp = 'Core[DisableExtraMem]=' + id('exp').checked,
+osd = id('osd').checked ? '--osd' : '--noosd',
+fullscreen = id('fullscreen').checked ? '--fullscreen' : '--windowed',
+ParallelFullscreen = 'Video-Parallel[Fullscreen]=' + id('fullscreen').checked,
+vsync = 'Video-General[VerticalSync]=' + id('vsync').checked,
+Glide64VSync = 'Video-Glide64mk2[vsync]=' + id('vsync').checked,
+cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=' + id('rspGFX').checked,
+cxd4Audio = 'rsp-cxd4[AudioListToAudioPlugin]=' + id('rspAudio').checked,
+m64pAudio = 'Rsp-HLE[AudioListToAudioPlugin]=' + id('rspAudio').checked,
+WaitForCPUHost = 'rsp-cxd4[WaitForCPUHost]=' + id('WaitForCPUHost').checked,
+SupportCPUSemaphoreLock = 'rsp-cxd4[SupportCPUSemaphoreLock]=' + id('SupportCPUSemaphoreLock').checked,
+threadedVideo = 'Video-GLideN64[threadedVideo]=' + id('threadedVideo').checked,
+bilinearMode = 'Video-GLideN64[bilinearMode]=' + id('bilinearMode').checked,
+fxaa = 'Video-GLideN64[fxaa]=' + id('fxaa').checked,
+enableHalosRemoval = 'Video-GLideN64[enableHalosRemoval]=' + id('enableHalosRemoval').checked,
+txHiresEnable = 'Video-GLideN64[txHiresEnable]=' + id('txHiresEnable').checked,
+txNoTextureFileStorage = 'Video-GLideN64[txNoTextureFileStorage]=' + id('txNoTextureFileStorage').checked,
+EnableInaccurateTextureCoordinates = 'Video-GLideN64[EnableInaccurateTextureCoordinates]=' + id('EnableInaccurateTextureCoordinates').checked,
+EnableDitheringPattern = 'Video-GLideN64[EnableDitheringPattern]=' + id('EnableDitheringPattern').checked,
+EnableHiresNoiseDithering = 'Video-GLideN64[EnableHiresNoiseDithering]=' + id('EnableHiresNoiseDithering').checked,
+DitheringQuantization = 'Video-GLideN64[DitheringQuantization]=' + id('DitheringQuantization').checked,
+EnableHWLighting = 'Video-GLideN64[EnableHWLighting]=' + id('EnableHWLighting').checked,
+EnableCoverage = 'Video-GLideN64[EnableCoverage]=' + id('EnableCoverage').checked,
+EnableClipping = 'Video-GLideN64[EnableClipping]=' + id('EnableClipping').checked,
+EnableShadersStorage = 'Video-GLideN64[EnableShadersStorage]=' + id('EnableShadersStorage').checked,
+EnableLegacyBlending = 'Video-GLideN64[EnableLegacyBlending]=' + id('EnableLegacyBlending').checked,
+EnableHybridFilter = 'Video-GLideN64[EnableHybridFilter]=' + id('EnableHybridFilter').checked,
+EnableFragmentDepthWrite = 'Video-GLideN64[EnableFragmentDepthWrite]=' + id('EnableFragmentDepthWrite').checked,
+EnableCustomSettings = 'Video-GLideN64[EnableCustomSettings]=' + id('EnableCustomSettings').checked,
+EnableTexCoordBounds = 'Video-GLideN64[EnableTexCoordBounds]=' + (id('EnableTexCoordBounds').checked ? '1' : '0'),
+EnableLOD = 'Video-GLideN64[EnableLOD]=' + id('EnableLOD').checked,
+EnableFBEmulation = 'Video-GLideN64[EnableFBEmulation]=' + id('EnableFBEmulation').checked,
+EnableCopyAuxiliaryToRDRAM = 'Video-GLideN64[EnableCopyAuxiliaryToRDRAM]=' + id('EnableCopyAuxiliaryToRDRAM').checked,
+ForceDepthBufferClear = 'Video-GLideN64[ForceDepthBufferClear]=' + id('ForceDepthBufferClear').checked,
+DisableFBInfo = 'Video-GLideN64[DisableFBInfo]=' + id('DisableFBInfo').checked,
+FBInfoReadColorChunk = 'Video-GLideN64[FBInfoReadColorChunk]=' + id('FBInfoReadColorChunk').checked,
+FBInfoReadDepthChunk = 'Video-GLideN64[FBInfoReadDepthChunk]=' + id('FBInfoReadDepthChunk').checked,
+EnableCopyColorFromRDRAM = 'Video-GLideN64[EnableCopyColorFromRDRAM]=' + id('EnableCopyColorFromRDRAM').checked,
+EnableCopyDepthToMainDepthBuffer = 'Video-GLideN64[EnableCopyDepthToMainDepthBuffer]=' + id('EnableCopyDepthToMainDepthBuffer').checked,
+EnableOverscan = 'Video-GLideN64[EnableOverscan]=' + id('EnableOverscan').checked,
+txDeposterize = 'Video-GLideN64[txDeposterize]=' + id('txDeposterize').checked,
+txFilterIgnoreBG = 'Video-GLideN64[txFilterIgnoreBG]=' + id('txFilterIgnoreBG').checked,
+txHiresFullAlphaChannel = 'Video-GLideN64[txHiresFullAlphaChannel]=' + id('txHiresFullAlphaChannel').checked,
+txHresAltCRC = 'Video-GLideN64[txHresAltCRC]=' + id('txHresAltCRC').checked,
+txCacheCompression = 'Video-GLideN64[txCacheCompression]=' + id('txCacheCompression').checked,
+txForce16bpp = 'Video-GLideN64[txForce16bpp]=' + id('txForce16bpp').checked,
+txSaveCache = 'Video-GLideN64[txSaveCache]=' + id('txSaveCache').checked,
+ForceGammaCorrection = 'Video-GLideN64[ForceGammaCorrection]=' + id('ForceGammaCorrection').checked,
+ShowFPS = 'Video-GLideN64[ShowFPS]=' + id('ShowFPS').checked,
+ShowVIS = 'Video-GLideN64[ShowVIS]=' + id('ShowVIS').checked,
+ShowPercent = 'Video-GLideN64[ShowPercent]=' + id('ShowPercent').checked,
+ShowInternalResolution = 'Video-GLideN64[ShowInternalResolution]=' + id('ShowInternalResolution').checked,
+ShowRenderingResolution = 'Video-GLideN64[ShowRenderingResolution]=' + id('ShowRenderingResolution').checked,
+ShowStatistics = 'Video-GLideN64[ShowStatistics]=' + id('ShowStatistics').checked,
 
-exp = 'Core[DisableExtraMem]=' + id('exp').checked
-osd = id('osd').checked ? '--osd' : '--noosd'
-fullscreen = id('fullscreen').checked ? '--fullscreen' : '--windowed'
-ParallelFullscreen = 'Video-Parallel[Fullscreen]=' + id('fullscreen').checked
-vsync = 'Video-General[VerticalSync]=' + id('vsync').checked
-Glide64VSync = 'Video-Glide64mk2[vsync]=' + id('vsync').checked
-cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=' + id('rspGFX').checked
-cxd4Audio = 'rsp-cxd4[AudioListToAudioPlugin]=' + id('rspAudio').checked
-m64pAudio = 'Rsp-HLE[AudioListToAudioPlugin]=' + id('rspAudio').checked
-WaitForCPUHost = 'rsp-cxd4[WaitForCPUHost]=' + id('WaitForCPUHost').checked
-SupportCPUSemaphoreLock = 'rsp-cxd4[SupportCPUSemaphoreLock]=' + id('SupportCPUSemaphoreLock').checked
-threadedVideo = 'Video-GLideN64[threadedVideo]=' + id('threadedVideo').checked
-bilinearMode = 'Video-GLideN64[bilinearMode]=' + id('bilinearMode').checked
-fxaa = 'Video-GLideN64[fxaa]=' + id('fxaa').checked
-enableHalosRemoval = 'Video-GLideN64[enableHalosRemoval]=' + id('enableHalosRemoval').checked
-txHiresEnable = 'Video-GLideN64[txHiresEnable]=' + id('txHiresEnable').checked
-txNoTextureFileStorage = 'Video-GLideN64[txNoTextureFileStorage]=' + id('txNoTextureFileStorage').checked
-EnableInaccurateTextureCoordinates = 'Video-GLideN64[EnableInaccurateTextureCoordinates]=' + id('EnableInaccurateTextureCoordinates').checked
-EnableDitheringPattern = 'Video-GLideN64[EnableDitheringPattern]=' + id('EnableDitheringPattern').checked
-EnableHiresNoiseDithering = 'Video-GLideN64[EnableHiresNoiseDithering]=' + id('EnableHiresNoiseDithering').checked
-DitheringQuantization = 'Video-GLideN64[DitheringQuantization]=' + id('DitheringQuantization').checked
-EnableHWLighting = 'Video-GLideN64[EnableHWLighting]=' + id('EnableHWLighting').checked
-EnableCoverage = 'Video-GLideN64[EnableCoverage]=' + id('EnableCoverage').checked
-EnableClipping = 'Video-GLideN64[EnableClipping]=' + id('EnableClipping').checked
-EnableShadersStorage = 'Video-GLideN64[EnableShadersStorage]=' + id('EnableShadersStorage').checked
-EnableLegacyBlending = 'Video-GLideN64[EnableLegacyBlending]=' + id('EnableLegacyBlending').checked
-EnableHybridFilter = 'Video-GLideN64[EnableHybridFilter]=' + id('EnableHybridFilter').checked
-EnableFragmentDepthWrite = 'Video-GLideN64[EnableFragmentDepthWrite]=' + id('EnableFragmentDepthWrite').checked
-EnableCustomSettings = 'Video-GLideN64[EnableCustomSettings]=' + id('EnableCustomSettings').checked
-EnableTexCoordBounds = 'Video-GLideN64[EnableTexCoordBounds]=' + (id('EnableTexCoordBounds').checked ? '1' : '0')
-EnableLOD = 'Video-GLideN64[EnableLOD]=' + id('EnableLOD').checked
-EnableFBEmulation = 'Video-GLideN64[EnableFBEmulation]=' + id('EnableFBEmulation').checked
-EnableCopyAuxiliaryToRDRAM = 'Video-GLideN64[EnableCopyAuxiliaryToRDRAM]=' + id('EnableCopyAuxiliaryToRDRAM').checked
-ForceDepthBufferClear = 'Video-GLideN64[ForceDepthBufferClear]=' + id('ForceDepthBufferClear').checked
-DisableFBInfo = 'Video-GLideN64[DisableFBInfo]=' + id('DisableFBInfo').checked
-FBInfoReadColorChunk = 'Video-GLideN64[FBInfoReadColorChunk]=' + id('FBInfoReadColorChunk').checked
-FBInfoReadDepthChunk = 'Video-GLideN64[FBInfoReadDepthChunk]=' + id('FBInfoReadDepthChunk').checked
-EnableCopyColorFromRDRAM = 'Video-GLideN64[EnableCopyColorFromRDRAM]=' + id('EnableCopyColorFromRDRAM').checked
-EnableCopyDepthToMainDepthBuffer = 'Video-GLideN64[EnableCopyDepthToMainDepthBuffer]=' + id('EnableCopyDepthToMainDepthBuffer').checked
-EnableOverscan = 'Video-GLideN64[EnableOverscan]=' + id('EnableOverscan').checked
-txDeposterize = 'Video-GLideN64[txDeposterize]=' + id('txDeposterize').checked
-txFilterIgnoreBG = 'Video-GLideN64[txFilterIgnoreBG]=' + id('txFilterIgnoreBG').checked
-txHiresFullAlphaChannel = 'Video-GLideN64[txHiresFullAlphaChannel]=' + id('txHiresFullAlphaChannel').checked
-txHresAltCRC = 'Video-GLideN64[txHresAltCRC]=' + id('txHresAltCRC').checked
-txCacheCompression = 'Video-GLideN64[txCacheCompression]=' + id('txCacheCompression').checked
-txForce16bpp = 'Video-GLideN64[txForce16bpp]=' + id('txForce16bpp').checked
-txSaveCache = 'Video-GLideN64[txSaveCache]=' + id('txSaveCache').checked
-ForceGammaCorrection = 'Video-GLideN64[ForceGammaCorrection]=' + id('ForceGammaCorrection').checked
-ShowFPS = 'Video-GLideN64[ShowFPS]=' + id('ShowFPS').checked
-ShowVIS = 'Video-GLideN64[ShowVIS]=' + id('ShowVIS').checked
-ShowPercent = 'Video-GLideN64[ShowPercent]=' + id('ShowPercent').checked
-ShowInternalResolution = 'Video-GLideN64[ShowInternalResolution]=' + id('ShowInternalResolution').checked
-ShowRenderingResolution = 'Video-GLideN64[ShowRenderingResolution]=' + id('ShowRenderingResolution').checked
-ShowStatistics = 'Video-GLideN64[ShowStatistics]=' + id('ShowStatistics').checked
+NoCompiledJump = 'Core[NoCompiledJump]=' + id('NoCompiledJump').checked,
+AutoStateSlotIncrement = 'Core[AutoStateSlotIncrement]=' + id('AutoStateSlotIncrement').checked,
+RandomizeInterrupt = 'Core[RandomizeInterrupt]=' + id('RandomizeInterrupt').checked,
+SWAP_CHANNELS = 'Audio-SDL[SWAP_CHANNELS]=' + id('SWAP_CHANNELS').checked,
+AUDIO_SYNC = 'Audio-SDL[AUDIO_SYNC]=' + id('AUDIO_SYNC').checked,
 
-NoCompiledJump = 'Core[NoCompiledJump]=' + id('NoCompiledJump').checked
-AutoStateSlotIncrement = 'Core[AutoStateSlotIncrement]=' + id('AutoStateSlotIncrement').checked
-RandomizeInterrupt = 'Core[RandomizeInterrupt]=' + id('RandomizeInterrupt').checked
-SWAP_CHANNELS = 'Audio-SDL[SWAP_CHANNELS]=' + id('SWAP_CHANNELS').checked
-AUDIO_SYNC = 'Audio-SDL[AUDIO_SYNC]=' + id('AUDIO_SYNC').checked
+Parallel = 'Video-Angrylion-Plus[Parallel]=' + id('Parallel').checked,
+BusyLoop = 'Video-Angrylion-Plus[BusyLoop]=' + id('BusyLoop').checked,
+ViWidescreen = 'Video-Angrylion-Plus[ViWidescreen]=' + id('ViWidescreen').checked,
+ViHideOverscan = 'Video-Angrylion-Plus[ViHideOverscan]=' + id('ViHideOverscan').checked,
+ViIntegerScaling = 'Video-Angrylion-Plus[ViIntegerScaling]=' + id('ViIntegerScaling').checked,
 
-Parallel = 'Video-Angrylion-Plus[Parallel]=' + id('Parallel').checked
-BusyLoop = 'Video-Angrylion-Plus[BusyLoop]=' + id('BusyLoop').checked
-ViWidescreen = 'Video-Angrylion-Plus[ViWidescreen]=' + id('ViWidescreen').checked
-ViHideOverscan = 'Video-Angrylion-Plus[ViHideOverscan]=' + id('ViHideOverscan').checked
-ViIntegerScaling = 'Video-Angrylion-Plus[ViIntegerScaling]=' + id('ViIntegerScaling').checked
+ParallelSuperscaledReads = 'Video-Parallel[SuperscaledReads]=' + id('ParallelSuperscaledReads').checked,
+ParallelSuperscaledDither = 'Video-Parallel[SuperscaledDither]=' + id('ParallelSuperscaledDither').checked,
+ParallelIntegerScale = 'Video-Parallel[IntegerScale]=' + id('ParallelIntegerScale').checked,
+ParallelVIAA = 'Video-Parallel[VIAA]=' + id('ParallelVIAA').checked,
+ParallelDivot = 'Video-Parallel[Divot]=' + id('ParallelDivot').checked,
+ParallelGammaDither = 'Video-Parallel[GammaDither]=' + id('ParallelGammaDither').checked,
+ParallelVIBilerp = 'Video-Parallel[VIBilerp]=' + id('ParallelVIBilerp').checked,
+ParallelVIDither = 'Video-Parallel[VIDither]=' + id('ParallelVIDither').checked,
+ParallelNativeTextLOD = 'Video-Parallel[NativeTextLOD]=' + id('ParallelNativeTextLOD').checked,
+ParallelNativeTextRECT = 'Video-Parallel[NativeTextRECT]=' + id('ParallelNativeTextRECT').checked,
+ParallelWidescreenStretch = 'Video-Parallel[WidescreenStretch]=' + id('ParallelWidescreenStretch').checked,
 
-ParallelSuperscaledReads = 'Video-Parallel[SuperscaledReads]=' + id('ParallelSuperscaledReads').checked
-ParallelSuperscaledDither = 'Video-Parallel[SuperscaledDither]=' + id('ParallelSuperscaledDither').checked
-ParallelIntegerScale = 'Video-Parallel[IntegerScale]=' + id('ParallelIntegerScale').checked
-ParallelVIAA = 'Video-Parallel[VIAA]=' + id('ParallelVIAA').checked
-ParallelDivot = 'Video-Parallel[Divot]=' + id('ParallelDivot').checked
-ParallelGammaDither = 'Video-Parallel[GammaDither]=' + id('ParallelGammaDither').checked
-ParallelVIBilerp = 'Video-Parallel[VIBilerp]=' + id('ParallelVIBilerp').checked
-ParallelVIDither = 'Video-Parallel[VIDither]=' + id('ParallelVIDither').checked
-ParallelNativeTextLOD = 'Video-Parallel[NativeTextLOD]=' + id('ParallelNativeTextLOD').checked
-ParallelNativeTextRECT = 'Video-Parallel[NativeTextRECT]=' + id('ParallelNativeTextRECT').checked
-ParallelWidescreenStretch = 'Video-Parallel[WidescreenStretch]=' + id('ParallelWidescreenStretch').checked
+FrameBufferSetting = 'Video-Rice[FrameBufferSetting]=' + (id('FrameBufferSetting').checked ? '1' : '0'),
+NormalAlphaBlender = 'Video-Rice[NormalAlphaBlender]=' + id('NormalAlphaBlender').checked,
+FastTextureLoading = 'Video-Rice[FastTextureLoading]=' + id('FastTextureLoading').checked,
+AccurateTextureMapping = 'Video-Rice[AccurateTextureMapping]=' + id('AccurateTextureMapping').checked,
+InN64Resolution = 'Video-Rice[InN64Resolution]=' + id('InN64Resolution').checked,
+SaveVRAM = 'Video-Rice[SaveVRAM]=' + id('SaveVRAM').checked,
+DoubleSizeForSmallTxtrBuf = 'Video-Rice[DoubleSizeForSmallTxtrBuf]=' + id('DoubleSizeForSmallTxtrBuf').checked,
+DefaultCombinerDisable = 'Video-Rice[DefaultCombinerDisable]=' + id('DefaultCombinerDisable').checked,
+EnableHacks = 'Video-Rice[EnableHacks]=' + id('EnableHacks').checked,
+WinFrameMode = 'Video-Rice[WinFrameMode]=' + id('WinFrameMode').checked,
+FullTMEMEmulation = 'Video-Rice[FullTMEMEmulation]=' + id('FullTMEMEmulation').checked,
+OpenGLVertexClipper = 'Video-Rice[OpenGLVertexClipper]=' + id('OpenGLVertexClipper').checked,
+EnableSSE = 'Video-Rice[EnableSSE]=' + id('EnableSSE').checked,
+SkipFrame = 'Video-Rice[SkipFrame]=' + id('SkipFrame').checked,
+TexRectOnly = 'Video-Rice[TexRectOnly]=' + id('TexRectOnly').checked,
+SmallTextureOnly = 'Video-Rice[SmallTextureOnly]=' + id('SmallTextureOnly').checked,
+LoadHiResCRCOnly = 'Video-Rice[LoadHiResCRCOnly]=' + id('LoadHiResCRCOnly').checked,
+LoadHiResTextures = 'Video-Rice[LoadHiResTextures]=' + id('LoadHiResTextures').checked,
+DumpTexturesToFiles = 'Video-Rice[DumpTexturesToFiles]=' + id('DumpTexturesToFiles').checked,
+RiceShowFPS = 'Video-Rice[RiceShowFPS]=' + id('RiceShowFPS').checked,
+FogMethod = 'Video-Rice[FogMethod]=' + (id('FogMethod').checked ? '1' : '0'),
+OpenGLRenderSetting = 'Video-Rice[OpenGLRenderSetting]=' + (id('OpenGLRenderSetting').checked ? '1' : '0'),
+ForcePolygonOffset = 'Video-Rice[ForcePolygonOffset]=' + id('ForcePolygonOffset').checked,
 
-FrameBufferSetting = 'Video-Rice[FrameBufferSetting]=' + (id('FrameBufferSetting').checked ? '1' : '0')
-NormalAlphaBlender = 'Video-Rice[NormalAlphaBlender]=' + id('NormalAlphaBlender').checked
-FastTextureLoading = 'Video-Rice[FastTextureLoading]=' + id('FastTextureLoading').checked
-AccurateTextureMapping = 'Video-Rice[AccurateTextureMapping]=' + id('AccurateTextureMapping').checked
-InN64Resolution = 'Video-Rice[InN64Resolution]=' + id('InN64Resolution').checked
-SaveVRAM = 'Video-Rice[SaveVRAM]=' + id('SaveVRAM').checked
-DoubleSizeForSmallTxtrBuf = 'Video-Rice[DoubleSizeForSmallTxtrBuf]=' + id('DoubleSizeForSmallTxtrBuf').checked
-DefaultCombinerDisable = 'Video-Rice[DefaultCombinerDisable]=' + id('DefaultCombinerDisable').checked
-EnableHacks = 'Video-Rice[EnableHacks]=' + id('EnableHacks').checked
-WinFrameMode = 'Video-Rice[WinFrameMode]=' + id('WinFrameMode').checked
-FullTMEMEmulation = 'Video-Rice[FullTMEMEmulation]=' + id('FullTMEMEmulation').checked
-OpenGLVertexClipper = 'Video-Rice[OpenGLVertexClipper]=' + id('OpenGLVertexClipper').checked
-EnableSSE = 'Video-Rice[EnableSSE]=' + id('EnableSSE').checked
-SkipFrame = 'Video-Rice[SkipFrame]=' + id('SkipFrame').checked
-TexRectOnly = 'Video-Rice[TexRectOnly]=' + id('TexRectOnly').checked
-SmallTextureOnly = 'Video-Rice[SmallTextureOnly]=' + id('SmallTextureOnly').checked
-LoadHiResCRCOnly = 'Video-Rice[LoadHiResCRCOnly]=' + id('LoadHiResCRCOnly').checked
-LoadHiResTextures = 'Video-Rice[LoadHiResTextures]=' + id('LoadHiResTextures').checked
-DumpTexturesToFiles = 'Video-Rice[DumpTexturesToFiles]=' + id('DumpTexturesToFiles').checked
-RiceShowFPS = 'Video-Rice[RiceShowFPS]=' + id('RiceShowFPS').checked
-FogMethod = 'Video-Rice[FogMethod]=' + (id('FogMethod').checked ? '1' : '0')
-OpenGLRenderSetting = 'Video-Rice[OpenGLRenderSetting]=' + (id('OpenGLRenderSetting').checked ? '1' : '0')
-ForcePolygonOffset = 'Video-Rice[ForcePolygonOffset]=' + id('ForcePolygonOffset').checked
+force_polygon_offset = 'Video-Glide64mk2[force_polygon_offset]=' + id('force_polygon_offset').checked,
+clock = 'Video-Glide64mk2[clock]=' + id('clock').checked,
+clock_24_hr = 'Video-Glide64mk2[clock_24_hr]=' + id('clock_24_hr').checked,
+wrpFBO = 'Video-Glide64mk2[wrpFBO]=' + id('wrpFBO').checked,
+wrpAnisotropic = 'Video-Glide64mk2[wrpAnisotropic]=' + id('wrpAnisotropic').checked,
+ghq_hirs = 'Video-Glide64mk2[ghq_hirs]=' + (id('ghq_hirs').checked ? '1' : '0'),
+ghq_enht_cmpr = 'Video-Glide64mk2[ghq_enht_cmpr]=' + id('ghq_enht_cmpr').checked,
+ghq_enht_tile = 'Video-Glide64mk2[ghq_enht_tile]=' + (id('ghq_enht_tile').checked ? '1' : '0'),
+ghq_enht_f16bpp = 'Video-Glide64mk2[ghq_enht_f16bpp]=' + id('ghq_enht_f16bpp').checked,
+ghq_enht_gz = 'Video-Glide64mk2[ghq_enht_gz]=' + id('ghq_enht_gz').checked,
+ghq_enht_nobg = 'Video-Glide64mk2[ghq_enht_nobg]=' + id('ghq_enht_nobg').checked,
+ghq_hirs_cmpr = 'Video-Glide64mk2[ghq_hirs_cmpr]=' + id('ghq_hirs_cmpr').checked,
+ghq_hirs_tile = 'Video-Glide64mk2[ghq_hirs_tile]=' + id('ghq_hirs_tile').checked,
+ghq_hirs_f16bpp = 'Video-Glide64mk2[ghq_hirs_f16bpp]=' + id('ghq_hirs_f16bpp').checked,
+ghq_hirs_gz = 'Video-Glide64mk2[ghq_hirs_gz]=' + id('ghq_hirs_gz').checked,
+ghq_hirs_altcrc = 'Video-Glide64mk2[ghq_hirs_altcrc]=' + id('ghq_hirs_altcrc').checked,
+ghq_cache_save = 'Video-Glide64mk2[ghq_cache_save]=' + id('ghq_cache_save').checked,
+ghq_hirs_let_texartists_fly = 'Video-Glide64mk2[ghq_hirs_let_texartists_fly]=' + id('ghq_hirs_let_texartists_fly').checked,
+ghq_hirs_dump = 'Video-Glide64mk2[ghq_hirs_dump]=' + id('ghq_hirs_dump').checked,
 
-force_polygon_offset = 'Video-Glide64mk2[force_polygon_offset]=' + id('force_polygon_offset').checked
-clock = 'Video-Glide64mk2[clock]=' + id('clock').checked
-clock_24_hr = 'Video-Glide64mk2[clock_24_hr]=' + id('clock_24_hr').checked
-wrpFBO = 'Video-Glide64mk2[wrpFBO]=' + id('wrpFBO').checked
-wrpAnisotropic = 'Video-Glide64mk2[wrpAnisotropic]=' + id('wrpAnisotropic').checked
-ghq_hirs = 'Video-Glide64mk2[ghq_hirs]=' + (id('ghq_hirs').checked ? '1' : '0')
-ghq_enht_cmpr = 'Video-Glide64mk2[ghq_enht_cmpr]=' + id('ghq_enht_cmpr').checked
-ghq_enht_tile = 'Video-Glide64mk2[ghq_enht_tile]=' + (id('ghq_enht_tile').checked ? '1' : '0')
-ghq_enht_f16bpp = 'Video-Glide64mk2[ghq_enht_f16bpp]=' + id('ghq_enht_f16bpp').checked
-ghq_enht_gz = 'Video-Glide64mk2[ghq_enht_gz]=' + id('ghq_enht_gz').checked
-ghq_enht_nobg = 'Video-Glide64mk2[ghq_enht_nobg]=' + id('ghq_enht_nobg').checked
-ghq_hirs_cmpr = 'Video-Glide64mk2[ghq_hirs_cmpr]=' + id('ghq_hirs_cmpr').checked
-ghq_hirs_tile = 'Video-Glide64mk2[ghq_hirs_tile]=' + id('ghq_hirs_tile').checked
-ghq_hirs_f16bpp = 'Video-Glide64mk2[ghq_hirs_f16bpp]=' + id('ghq_hirs_f16bpp').checked
-ghq_hirs_gz = 'Video-Glide64mk2[ghq_hirs_gz]=' + id('ghq_hirs_gz').checked
-ghq_hirs_altcrc = 'Video-Glide64mk2[ghq_hirs_altcrc]=' + id('ghq_hirs_altcrc').checked
-ghq_cache_save = 'Video-Glide64mk2[ghq_cache_save]=' + id('ghq_cache_save').checked
-ghq_hirs_let_texartists_fly = 'Video-Glide64mk2[ghq_hirs_let_texartists_fly]=' + id('ghq_hirs_let_texartists_fly').checked
-ghq_hirs_dump = 'Video-Glide64mk2[ghq_hirs_dump]=' + id('ghq_hirs_dump').checked
+plugged1 = 'Input-SDL-Control1[plugged]=' + id('plugged1').checked,
+plugged2 = 'Input-SDL-Control2[plugged]=' + id('plugged2').checked,
+plugged3 = 'Input-SDL-Control3[plugged]=' + id('plugged3').checked,
+plugged4 = 'Input-SDL-Control4[plugged]=' + id('plugged4').checked,
+mouse1 = 'Input-SDL-Control1[mouse]=' + id('mouse1').checked,
+mouse2 = 'Input-SDL-Control2[mouse]=' + id('mouse2').checked,
+mouse3 = 'Input-SDL-Control3[mouse]=' + id('mouse3').checked,
+mouse4 = 'Input-SDL-Control4[mouse]=' + id('mouse4').checked,
 
-plugged1 = 'Input-SDL-Control1[plugged]=' + id('plugged1').checked
-plugged2 = 'Input-SDL-Control2[plugged]=' + id('plugged2').checked
-plugged3 = 'Input-SDL-Control3[plugged]=' + id('plugged3').checked
-plugged4 = 'Input-SDL-Control4[plugged]=' + id('plugged4').checked
-mouse1 = 'Input-SDL-Control1[mouse]=' + id('mouse1').checked
-mouse2 = 'Input-SDL-Control2[mouse]=' + id('mouse2').checked
-mouse3 = 'Input-SDL-Control3[mouse]=' + id('mouse3').checked
-mouse4 = 'Input-SDL-Control4[mouse]=' + id('mouse4').checked
+resolution = id('resolution').options[id('resolution').selectedIndex].value,
+ParallelScreenWidth = 'Video-Parallel[ScreenWidth]=' + id('resolution').options[id('resolution').selectedIndex].dataset.width,
+ParallelScreenHeight = 'Video-Parallel[ScreenHeight]=' + id('resolution').options[id('resolution').selectedIndex].dataset.height,
+gfx = id('gfx').options[id('gfx').selectedIndex].value,
+audio = id('audio').options[id('audio').selectedIndex].value,
+input = id('input').options[id('input').selectedIndex].value,
+rsp = id('rsp').options[id('rsp').selectedIndex].value,
+emumode = id('emumode').options[id('emumode').selectedIndex].value,
+plugin1 = id('plugin1').options[id('plugin1').selectedIndex].value,
+plugin2 = id('plugin2').options[id('plugin2').selectedIndex].value,
+plugin3 = id('plugin3').options[id('plugin3').selectedIndex].value,
+plugin4 = id('plugin4').options[id('plugin4').selectedIndex].value,
+mode1 = id('mode1').options[id('mode1').selectedIndex].value,
+mode2 = id('mode2').options[id('mode2').selectedIndex].value,
+mode3 = id('mode3').options[id('mode3').selectedIndex].value,
+mode4 = id('mode4').options[id('mode4').selectedIndex].value,
+msaa = id('msaa').options[id('msaa').selectedIndex].value,
+aspectRatio = id('aspectRatio').options[id('aspectRatio').selectedIndex].value,
+bufferSwapMode = id('bufferSwapMode').options[id('bufferSwapMode').selectedIndex].value,
+useNativeResolutionFactor = id('useNativeResolutionFactor').options[id('useNativeResolutionFactor').selectedIndex].value,
+anisotropy = id('anisotropy').options[id('anisotropy').selectedIndex].value,
+cache = id('cache').options[id('cache').selectedIndex].value,
+RDRAMImageDitheringMode = id('RDRAMImageDitheringMode').options[id('RDRAMImageDitheringMode').selectedIndex].value,
+CorrectTexrectCoords = id('CorrectTexrectCoords').options[id('CorrectTexrectCoords').selectedIndex].value,
+EnableNativeResTexrects = id('EnableNativeResTexrects').options[id('EnableNativeResTexrects').selectedIndex].value,
+BackgroundsMode = id('BackgroundsMode').options[id('BackgroundsMode').selectedIndex].value,
+EnableN64DepthCompare = id('EnableN64DepthCompare').options[id('EnableN64DepthCompare').selectedIndex].value,
+EnableCopyColorToRDRAM = id('EnableCopyColorToRDRAM').options[id('EnableCopyColorToRDRAM').selectedIndex].value,
+EnableCopyDepthToRDRAM = id('EnableCopyDepthToRDRAM').options[id('EnableCopyDepthToRDRAM').selectedIndex].value,
+txFilterMode = id('txFilterMode').options[id('txFilterMode').selectedIndex].value,
+txEnhancementMode = id('txEnhancementMode').options[id('txEnhancementMode').selectedIndex].value,
+ViMode = id('ViMode').options[id('ViMode').selectedIndex].value,
+ViInterpolation = id('ViInterpolation').options[id('ViInterpolation').selectedIndex].value,
+DpCompat = id('DpCompat').options[id('DpCompat').selectedIndex].value,
+ParallelUpscaling = id('ParallelUpscaling').options[id('ParallelUpscaling').selectedIndex].value,
+ParallelDeinterlace = id('ParallelDeinterlace').options[id('ParallelDeinterlace').selectedIndex].value,
+ParallelDownScale = id('ParallelDownScale').options[id('ParallelDownScale').selectedIndex].value,
+CountersPos = id('CountersPos').options[id('CountersPos').selectedIndex].value,
+SaveDiskFormat = id('SaveDiskFormat').options[id('SaveDiskFormat').selectedIndex].value,
+DEFAULT_FREQUENCY = id('DEFAULT_FREQUENCY').options[id('DEFAULT_FREQUENCY').selectedIndex].value,
+PRIMARY_BUFFER_TARGET = id('SECONDARY_BUFFER_SIZE').options[id('SECONDARY_BUFFER_SIZE').selectedIndex].dataset.buffer,
+SECONDARY_BUFFER_SIZE = id('SECONDARY_BUFFER_SIZE').options[id('SECONDARY_BUFFER_SIZE').selectedIndex].value,
+RESAMPLE = id('RESAMPLE').options[id('RESAMPLE').selectedIndex].value,
+FrameBufferWriteBackControl = id('FrameBufferWriteBackControl').options[id('FrameBufferWriteBackControl').selectedIndex].value,
+RenderToTexture = id('RenderToTexture').options[id('RenderToTexture').selectedIndex].value,
+ScreenUpdateSetting = id('ScreenUpdateSetting').options[id('ScreenUpdateSetting').selectedIndex].value,
+Mipmapping = id('Mipmapping').options[id('Mipmapping').selectedIndex].value,
+ForceTextureFilter = id('ForceTextureFilter').options[id('ForceTextureFilter').selectedIndex].value,
+TextureEnhancement = id('TextureEnhancement').options[id('TextureEnhancement').selectedIndex].value,
+TextureEnhancementControl = id('TextureEnhancementControl').options[id('TextureEnhancementControl').selectedIndex].value,
+TextureQuality = id('TextureQuality').options[id('TextureQuality').selectedIndex].value,
+OpenGLDepthBufferSetting = id('OpenGLDepthBufferSetting').options[id('OpenGLDepthBufferSetting').selectedIndex].value,
+RiceMultiSampling = id('RiceMultiSampling').options[id('RiceMultiSampling').selectedIndex].value,
+ColorQuality = id('ColorQuality').options[id('ColorQuality').selectedIndex].value,
+AnisotropicFiltering = id('AnisotropicFiltering').options[id('AnisotropicFiltering').selectedIndex].value,
+wrpAntiAliasing = id('wrpAntiAliasing').options[id('wrpAntiAliasing').selectedIndex].value,
+show_fps = id('show_fps').options[id('show_fps').selectedIndex].value,
+ghq_fltr = id('ghq_fltr').options[id('ghq_fltr').selectedIndex].value,
+ghq_cmpr = id('ghq_cmpr').options[id('ghq_cmpr').selectedIndex].value,
+ghq_enht = id('ghq_enht').options[id('ghq_enht').selectedIndex].value,
+alt_tex_size = id('alt_tex_size').options[id('alt_tex_size').selectedIndex].value,
+use_sts1_only = id('use_sts1_only').options[id('use_sts1_only').selectedIndex].value,
+force_calc_sphere = id('force_calc_sphere').options[id('force_calc_sphere').selectedIndex].value,
+correct_viewport = id('correct_viewport').options[id('correct_viewport').selectedIndex].value,
+increase_texrect_edge = id('increase_texrect_edge').options[id('increase_texrect_edge').selectedIndex].value,
+decrease_fillrect_edge = id('decrease_fillrect_edge').options[id('decrease_fillrect_edge').selectedIndex].value,
+texture_correction = id('texture_correction').options[id('texture_correction').selectedIndex].value,
+pal230 = id('pal230').options[id('pal230').selectedIndex].value,
+force_microcheck = id('force_microcheck').options[id('force_microcheck').selectedIndex].value,
+force_quad3d = id('force_quad3d').options[id('force_quad3d').selectedIndex].value,
+clip_zmin = id('clip_zmin').options[id('clip_zmin').selectedIndex].value,
+clip_zmax = id('clip_zmax').options[id('clip_zmax').selectedIndex].value,
+fast_crc = id('fast_crc').options[id('fast_crc').selectedIndex].value,
+adjust_aspect = id('adjust_aspect').options[id('adjust_aspect').selectedIndex].value,
+zmode_compare_less = id('zmode_compare_less').options[id('zmode_compare_less').selectedIndex].value,
+old_style_adither = id('old_style_adither').options[id('old_style_adither').selectedIndex].value,
+n64_z_scale = id('n64_z_scale').options[id('n64_z_scale').selectedIndex].value,
+optimize_texrect = id('optimize_texrect').options[id('optimize_texrect').selectedIndex].value,
+ignore_aux_copy = id('ignore_aux_copy').options[id('ignore_aux_copy').selectedIndex].value,
+hires_buf_clear = id('hires_buf_clear').options[id('hires_buf_clear').selectedIndex].value,
+fb_read_alpha = id('fb_read_alpha').options[id('fb_read_alpha').selectedIndex].value,
+useless_is_useless = id('useless_is_useless').options[id('useless_is_useless').selectedIndex].value,
+fb_crc_mode = id('fb_crc_mode').options[id('fb_crc_mode').selectedIndex].value,
+filtering = id('filtering').options[id('filtering').selectedIndex].value,
+fog = id('fog').options[id('fog').selectedIndex].value,
+buff_clear = id('buff_clear').options[id('buff_clear').selectedIndex].value,
+swapmode = id('swapmode').options[id('swapmode').selectedIndex].value,
+aspect = id('aspect').options[id('aspect').selectedIndex].value,
+lodmode = id('lodmode').options[id('lodmode').selectedIndex].value,
+fb_smart = id('fb_smart').options[id('fb_smart').selectedIndex].value,
+fb_hires = id('fb_hires').options[id('fb_hires').selectedIndex].value,
+fb_read_always = id('fb_read_always').options[id('fb_read_always').selectedIndex].value,
+read_back_to_screen = id('read_back_to_screen').options[id('read_back_to_screen').selectedIndex].value,
+detect_cpu_write = id('detect_cpu_write').options[id('detect_cpu_write').selectedIndex].value,
+fb_get_info = id('fb_get_info').options[id('fb_get_info').selectedIndex].value,
+fb_render = id('fb_render').options[id('fb_render').selectedIndex].value,
 
-resolution = id('resolution').options[id('resolution').selectedIndex].value;
-ParallelScreenWidth = 'Video-Parallel[ScreenWidth]=' + id('resolution').options[id('resolution').selectedIndex].dataset.width;
-ParallelScreenHeight = 'Video-Parallel[ScreenHeight]=' + id('resolution').options[id('resolution').selectedIndex].dataset.height;
-gfx = id('gfx').options[id('gfx').selectedIndex].value;
-audio = id('audio').options[id('audio').selectedIndex].value;
-input = id('input').options[id('input').selectedIndex].value;
-rsp = id('rsp').options[id('rsp').selectedIndex].value;
-emumode = id('emumode').options[id('emumode').selectedIndex].value;
-plugin1 = id('plugin1').options[id('plugin1').selectedIndex].value;
-plugin2 = id('plugin2').options[id('plugin2').selectedIndex].value;
-plugin3 = id('plugin3').options[id('plugin3').selectedIndex].value;
-plugin4 = id('plugin4').options[id('plugin4').selectedIndex].value;
-mode1 = id('mode1').options[id('mode1').selectedIndex].value;
-mode2 = id('mode2').options[id('mode2').selectedIndex].value;
-mode3 = id('mode3').options[id('mode3').selectedIndex].value;
-mode4 = id('mode4').options[id('mode4').selectedIndex].value;
-msaa = id('msaa').options[id('msaa').selectedIndex].value;
-aspectRatio = id('aspectRatio').options[id('aspectRatio').selectedIndex].value;
-bufferSwapMode = id('bufferSwapMode').options[id('bufferSwapMode').selectedIndex].value;
-useNativeResolutionFactor = id('useNativeResolutionFactor').options[id('useNativeResolutionFactor').selectedIndex].value;
-anisotropy = id('anisotropy').options[id('anisotropy').selectedIndex].value;
-cache = id('cache').options[id('cache').selectedIndex].value;
-RDRAMImageDitheringMode = id('RDRAMImageDitheringMode').options[id('RDRAMImageDitheringMode').selectedIndex].value;
-CorrectTexrectCoords = id('CorrectTexrectCoords').options[id('CorrectTexrectCoords').selectedIndex].value;
-EnableNativeResTexrects = id('EnableNativeResTexrects').options[id('EnableNativeResTexrects').selectedIndex].value;
-BackgroundsMode = id('BackgroundsMode').options[id('BackgroundsMode').selectedIndex].value;
-EnableN64DepthCompare = id('EnableN64DepthCompare').options[id('EnableN64DepthCompare').selectedIndex].value;
-EnableCopyColorToRDRAM = id('EnableCopyColorToRDRAM').options[id('EnableCopyColorToRDRAM').selectedIndex].value;
-EnableCopyDepthToRDRAM = id('EnableCopyDepthToRDRAM').options[id('EnableCopyDepthToRDRAM').selectedIndex].value;
-txFilterMode = id('txFilterMode').options[id('txFilterMode').selectedIndex].value;
-txEnhancementMode = id('txEnhancementMode').options[id('txEnhancementMode').selectedIndex].value;
-ViMode = id('ViMode').options[id('ViMode').selectedIndex].value;
-ViInterpolation = id('ViInterpolation').options[id('ViInterpolation').selectedIndex].value;
-DpCompat = id('DpCompat').options[id('DpCompat').selectedIndex].value;
-ParallelUpscaling = id('ParallelUpscaling').options[id('ParallelUpscaling').selectedIndex].value;
-ParallelDeinterlace = id('ParallelDeinterlace').options[id('ParallelDeinterlace').selectedIndex].value;
-ParallelDownScale = id('ParallelDownScale').options[id('ParallelDownScale').selectedIndex].value;
-CountersPos = id('CountersPos').options[id('CountersPos').selectedIndex].value;
-SaveDiskFormat = id('SaveDiskFormat').options[id('SaveDiskFormat').selectedIndex].value;
-DEFAULT_FREQUENCY = id('DEFAULT_FREQUENCY').options[id('DEFAULT_FREQUENCY').selectedIndex].value;
-PRIMARY_BUFFER_TARGET = id('SECONDARY_BUFFER_SIZE').options[id('SECONDARY_BUFFER_SIZE').selectedIndex].dataset.buffer;
-SECONDARY_BUFFER_SIZE = id('SECONDARY_BUFFER_SIZE').options[id('SECONDARY_BUFFER_SIZE').selectedIndex].value;
-RESAMPLE = id('RESAMPLE').options[id('RESAMPLE').selectedIndex].value;
-FrameBufferWriteBackControl = id('FrameBufferWriteBackControl').options[id('FrameBufferWriteBackControl').selectedIndex].value;
-RenderToTexture = id('RenderToTexture').options[id('RenderToTexture').selectedIndex].value;
-ScreenUpdateSetting = id('ScreenUpdateSetting').options[id('ScreenUpdateSetting').selectedIndex].value;
-Mipmapping = id('Mipmapping').options[id('Mipmapping').selectedIndex].value;
-ForceTextureFilter = id('ForceTextureFilter').options[id('ForceTextureFilter').selectedIndex].value;
-TextureEnhancement = id('TextureEnhancement').options[id('TextureEnhancement').selectedIndex].value;
-TextureEnhancementControl = id('TextureEnhancementControl').options[id('TextureEnhancementControl').selectedIndex].value;
-TextureQuality = id('TextureQuality').options[id('TextureQuality').selectedIndex].value;
-OpenGLDepthBufferSetting = id('OpenGLDepthBufferSetting').options[id('OpenGLDepthBufferSetting').selectedIndex].value;
-RiceMultiSampling = id('RiceMultiSampling').options[id('RiceMultiSampling').selectedIndex].value;
-ColorQuality = id('ColorQuality').options[id('ColorQuality').selectedIndex].value;
-AnisotropicFiltering = id('AnisotropicFiltering').options[id('AnisotropicFiltering').selectedIndex].value;
-wrpAntiAliasing = id('wrpAntiAliasing').options[id('wrpAntiAliasing').selectedIndex].value;
-show_fps = id('show_fps').options[id('show_fps').selectedIndex].value;
-ghq_fltr = id('ghq_fltr').options[id('ghq_fltr').selectedIndex].value;
-ghq_cmpr = id('ghq_cmpr').options[id('ghq_cmpr').selectedIndex].value;
-ghq_enht = id('ghq_enht').options[id('ghq_enht').selectedIndex].value;
-alt_tex_size = id('alt_tex_size').options[id('alt_tex_size').selectedIndex].value;
-use_sts1_only = id('use_sts1_only').options[id('use_sts1_only').selectedIndex].value;
-force_calc_sphere = id('force_calc_sphere').options[id('force_calc_sphere').selectedIndex].value;
-correct_viewport = id('correct_viewport').options[id('correct_viewport').selectedIndex].value;
-increase_texrect_edge = id('increase_texrect_edge').options[id('increase_texrect_edge').selectedIndex].value;
-decrease_fillrect_edge = id('decrease_fillrect_edge').options[id('decrease_fillrect_edge').selectedIndex].value;
-texture_correction = id('texture_correction').options[id('texture_correction').selectedIndex].value;
-pal230 = id('pal230').options[id('pal230').selectedIndex].value;
-force_microcheck = id('force_microcheck').options[id('force_microcheck').selectedIndex].value;
-force_quad3d = id('force_quad3d').options[id('force_quad3d').selectedIndex].value;
-clip_zmin = id('clip_zmin').options[id('clip_zmin').selectedIndex].value;
-clip_zmax = id('clip_zmax').options[id('clip_zmax').selectedIndex].value;
-fast_crc = id('fast_crc').options[id('fast_crc').selectedIndex].value;
-adjust_aspect = id('adjust_aspect').options[id('adjust_aspect').selectedIndex].value;
-zmode_compare_less = id('zmode_compare_less').options[id('zmode_compare_less').selectedIndex].value;
-old_style_adither = id('old_style_adither').options[id('old_style_adither').selectedIndex].value;
-n64_z_scale = id('n64_z_scale').options[id('n64_z_scale').selectedIndex].value;
-optimize_texrect = id('optimize_texrect').options[id('optimize_texrect').selectedIndex].value;
-ignore_aux_copy = id('ignore_aux_copy').options[id('ignore_aux_copy').selectedIndex].value;
-hires_buf_clear = id('hires_buf_clear').options[id('hires_buf_clear').selectedIndex].value;
-fb_read_alpha = id('fb_read_alpha').options[id('fb_read_alpha').selectedIndex].value;
-useless_is_useless = id('useless_is_useless').options[id('useless_is_useless').selectedIndex].value;
-fb_crc_mode = id('fb_crc_mode').options[id('fb_crc_mode').selectedIndex].value;
-filtering = id('filtering').options[id('filtering').selectedIndex].value;
-fog = id('fog').options[id('fog').selectedIndex].value;
-buff_clear = id('buff_clear').options[id('buff_clear').selectedIndex].value;
-swapmode = id('swapmode').options[id('swapmode').selectedIndex].value;
-aspect = id('aspect').options[id('aspect').selectedIndex].value;
-lodmode = id('lodmode').options[id('lodmode').selectedIndex].value;
-fb_smart = id('fb_smart').options[id('fb_smart').selectedIndex].value;
-fb_hires = id('fb_hires').options[id('fb_hires').selectedIndex].value;
-fb_read_always = id('fb_read_always').options[id('fb_read_always').selectedIndex].value;
-read_back_to_screen = id('read_back_to_screen').options[id('read_back_to_screen').selectedIndex].value;
-detect_cpu_write = id('detect_cpu_write').options[id('detect_cpu_write').selectedIndex].value;
-fb_get_info = id('fb_get_info').options[id('fb_get_info').selectedIndex].value;
-fb_render = id('fb_render').options[id('fb_render').selectedIndex].value;
+OverscanNtscTop = 'Video-GLideN64[OverscanNtscTop]=' + id('OverscanNtscTop').value,
+OverscanNtscLeft = 'Video-GLideN64[OverscanNtscLeft]=' + id('OverscanNtscLeft').value,
+OverscanNtscRight = 'Video-GLideN64[OverscanNtscRight]=' + id('OverscanNtscRight').value,
+OverscanNtscBottom = 'Video-GLideN64[OverscanNtscBottom]=' + id('OverscanNtscBottom').value,
+OverscanPalTop = 'Video-GLideN64[OverscanPalTop]=' + id('OverscanPalTop').value,
+OverscanPalLeft = 'Video-GLideN64[OverscanPalLeft]=' + id('OverscanPalLeft').value,
+OverscanPalRight = 'Video-GLideN64[OverscanPalRight]=' + id('OverscanPalRight').value,
+OverscanPalBottom = 'Video-GLideN64[OverscanPalBottom]=' + id('OverscanPalBottom').value,
+ParallelCropOverscan = 'Video-Parallel[CropOverscan]=' + id('ParallelCropOverscan').value,
+txCacheSize = 'Video-GLideN64[txCacheSize]=' + id('txCacheSize').value,
+txHiresVramLimit = 'Video-GLideN64[txHiresVramLimit]=' + id('txHiresVramLimit').value,
+GammaCorrectionLevel = 'Video-GLideN64[GammaCorrectionLevel]=' + id('GammaCorrectionLevel').value,
+fontSize = 'Video-GLideN64[fontSize]=' + id('fontSize').value,
+fontColor = 'Video-GLideN64[fontColor]=' + id('fontColor').value.substring(1),
+NumWorkers = 'Video-Angrylion-Plus[NumWorkers]=' + id('NumWorkers').value,
+CountPerOp = 'Core[CountPerOp]=' + id('CountPerOp').value,
+CountPerOpDenomPot = 'Core[CountPerOpDenomPot]=' + id('CountPerOpDenomPot').value,
+CurrentStateSlot = 'Core[CurrentStateSlot]=' + id('CurrentStateSlot').value,
+name1 = 'Input-SDL-Control1[name]=' + id('name1').value,
+name2 = 'Input-SDL-Control2[name]=' + id('name2').value,
+name3 = 'Input-SDL-Control3[name]=' + id('name3').value,
+name4 = 'Input-SDL-Control4[name]=' + id('name4').value,
+VOLUME_ADJUST = 'Audio-SDL[VOLUME_ADJUST]=' + id('VOLUME_ADJUST').value,
+VOLUME_DEFAULT = 'Audio-SDL[VOLUME_DEFAULT]=' + id('VOLUME_DEFAULT').value,
+PolygonOffsetFactor = 'Video-Rice[PolygonOffsetFactor]=' + id('PolygonOffsetFactor').value,
+PolygonOffsetUnits = 'Video-Rice[PolygonOffsetUnits]=' + id('PolygonOffsetUnits').value,
+polygon_offset_factor = 'Video-Glide64mk2[polygon_offset_factor]=' + id('polygon_offset_factor').value,
+polygon_offset_units = 'Video-Glide64mk2[polygon_offset_units]=' + id('polygon_offset_units').value,
+ghq_cache_size = 'Video-Glide64mk2[ghq_cache_size]=' + id('ghq_cache_size').value,
 
-OverscanNtscTop = 'Video-GLideN64[OverscanNtscTop]=' + id('OverscanNtscTop').value;
-OverscanNtscLeft = 'Video-GLideN64[OverscanNtscLeft]=' + id('OverscanNtscLeft').value;
-OverscanNtscRight = 'Video-GLideN64[OverscanNtscRight]=' + id('OverscanNtscRight').value;
-OverscanNtscBottom = 'Video-GLideN64[OverscanNtscBottom]=' + id('OverscanNtscBottom').value;
-OverscanPalTop = 'Video-GLideN64[OverscanPalTop]=' + id('OverscanPalTop').value;
-OverscanPalLeft = 'Video-GLideN64[OverscanPalLeft]=' + id('OverscanPalLeft').value;
-OverscanPalRight = 'Video-GLideN64[OverscanPalRight]=' + id('OverscanPalRight').value;
-OverscanPalBottom = 'Video-GLideN64[OverscanPalBottom]=' + id('OverscanPalBottom').value;
-ParallelCropOverscan = 'Video-Parallel[CropOverscan]=' + id('ParallelCropOverscan').value;
-txCacheSize = 'Video-GLideN64[txCacheSize]=' + id('txCacheSize').value;
-txHiresVramLimit = 'Video-GLideN64[txHiresVramLimit]=' + id('txHiresVramLimit').value;
-GammaCorrectionLevel = 'Video-GLideN64[GammaCorrectionLevel]=' + id('GammaCorrectionLevel').value;
-fontSize = 'Video-GLideN64[fontSize]=' + id('fontSize').value;
-fontColor = 'Video-GLideN64[fontColor]=' + id('fontColor').value.substring(1);
-NumWorkers = 'Video-Angrylion-Plus[NumWorkers]=' + id('NumWorkers').value;
-CountPerOp = 'Core[CountPerOp]=' + id('CountPerOp').value;
-CountPerOpDenomPot = 'Core[CountPerOpDenomPot]=' + id('CountPerOpDenomPot').value;
-CurrentStateSlot = 'Core[CurrentStateSlot]=' + id('CurrentStateSlot').value;
-name1 = 'Input-SDL-Control1[name]=' + id('name1').value;
-name2 = 'Input-SDL-Control2[name]=' + id('name2').value;
-name3 = 'Input-SDL-Control3[name]=' + id('name3').value;
-name4 = 'Input-SDL-Control4[name]=' + id('name4').value;
-VOLUME_ADJUST = 'Audio-SDL[VOLUME_ADJUST]=' + id('VOLUME_ADJUST').value;
-VOLUME_DEFAULT = 'Audio-SDL[VOLUME_DEFAULT]=' + id('VOLUME_DEFAULT').value;
-PolygonOffsetFactor = 'Video-Rice[PolygonOffsetFactor]=' + id('PolygonOffsetFactor').value;
-PolygonOffsetUnits = 'Video-Rice[PolygonOffsetUnits]=' + id('PolygonOffsetUnits').value;
-polygon_offset_factor = 'Video-Glide64mk2[polygon_offset_factor]=' + id('polygon_offset_factor').value;
-polygon_offset_units = 'Video-Glide64mk2[polygon_offset_units]=' + id('polygon_offset_units').value;
-ghq_cache_size = 'Video-Glide64mk2[ghq_cache_size]=' + id('ghq_cache_size').value;
+IPLROMSetting = '64DD[IPL-ROM]=' + IPLROM,
+DiskSetting = '64DD[Disk]=' + Disk,
+txPathSetting = 'Video-GLideN64[txPath]=' + txPath,
+txCachePathSetting = 'Video-GLideN64[txCachePath]=' + txCachePath,
+txDumpPathSetting = 'Video-GLideN64[txDumpPath]=' + txDumpPath,
+ScreenshotPathSetting = 'Core[ScreenshotPath]=' + ScreenshotPath,
+SaveStatePathSetting = 'Core[SaveStatePath]=' + SaveStatePath,
+SaveSRAMPathSetting = 'Core[SaveSRAMPath]=' + SaveSRAMPath,
+gbROM1Setting = 'Transferpak[GB-rom-1]=' + gbROM1,
+gbROM2Setting = 'Transferpak[GB-rom-2]=' + gbROM2,
+gbROM3Setting = 'Transferpak[GB-rom-3]=' + gbROM3,
+gbROM4Setting = 'Transferpak[GB-rom-4]=' + gbROM4,
+gbRAM1Setting = 'Transferpak[GB-ram-1]=' + gbRAM1,
+gbRAM2Setting = 'Transferpak[GB-ram-2]=' + gbRAM2,
+gbRAM3Setting = 'Transferpak[GB-ram-3]=' + gbRAM3,
+gbRAM4Setting = 'Transferpak[GB-ram-4]=' + gbRAM4,
 
-IPLROMSetting = '64DD[IPL-ROM]=' + IPLROM;
-DiskSetting = '64DD[Disk]=' + Disk;
-txPathSetting = 'Video-GLideN64[txPath]=' + txPath;
-txCachePathSetting = 'Video-GLideN64[txCachePath]=' + txCachePath;
-txDumpPathSetting = 'Video-GLideN64[txDumpPath]=' + txDumpPath;
-ScreenshotPathSetting = 'Core[ScreenshotPath]=' + ScreenshotPath;
-SaveStatePathSetting = 'Core[SaveStatePath]=' + SaveStatePath;
-SaveSRAMPathSetting = 'Core[SaveSRAMPath]=' + SaveSRAMPath;
-gbROM1Setting = 'Transferpak[GB-rom-1]=' + gbROM1;
-gbROM2Setting = 'Transferpak[GB-rom-2]=' + gbROM2;
-gbROM3Setting = 'Transferpak[GB-rom-3]=' + gbROM3;
-gbROM4Setting = 'Transferpak[GB-rom-4]=' + gbROM4;
-gbRAM1Setting = 'Transferpak[GB-ram-1]=' + gbRAM1;
-gbRAM2Setting = 'Transferpak[GB-ram-2]=' + gbRAM2;
-gbRAM3Setting = 'Transferpak[GB-ram-3]=' + gbRAM3;
-gbRAM4Setting = 'Transferpak[GB-ram-4]=' + gbRAM4;
+KbdMappingStop = 'CoreEvents[Kbd Mapping Stop]=' + id('KbdMappingStop').dataset.key,
+KbdMappingSlot0 = 'CoreEvents[Kbd Mapping Slot 0]=' + id('KbdMappingSlot0').dataset.key,
+KbdMappingSlot1 = 'CoreEvents[Kbd Mapping Slot 1]=' + id('KbdMappingSlot1').dataset.key,
+KbdMappingSlot2 = 'CoreEvents[Kbd Mapping Slot 2]=' + id('KbdMappingSlot2').dataset.key,
+KbdMappingSlot3 = 'CoreEvents[Kbd Mapping Slot 3]=' + id('KbdMappingSlot3').dataset.key,
+KbdMappingSlot4 = 'CoreEvents[Kbd Mapping Slot 4]=' + id('KbdMappingSlot4').dataset.key,
+KbdMappingSlot5 = 'CoreEvents[Kbd Mapping Slot 5]=' + id('KbdMappingSlot5').dataset.key,
+KbdMappingSlot6 = 'CoreEvents[Kbd Mapping Slot 6]=' + id('KbdMappingSlot6').dataset.key,
+KbdMappingSlot7 = 'CoreEvents[Kbd Mapping Slot 7]=' + id('KbdMappingSlot7').dataset.key,
+KbdMappingSlot8 = 'CoreEvents[Kbd Mapping Slot 8]=' + id('KbdMappingSlot8').dataset.key,
+KbdMappingSlot9 = 'CoreEvents[Kbd Mapping Slot 9]=' + id('KbdMappingSlot9').dataset.key,
+KbdMappingFullscreen = 'CoreEvents[Kbd Mapping Fullscreen]=' + id('KbdMappingFullscreen').dataset.key,
+KbdMappingSaveState = 'CoreEvents[Kbd Mapping Save State]=' + id('KbdMappingSaveState').dataset.key,
+KbdMappingLoadState = 'CoreEvents[Kbd Mapping Load State]=' + id('KbdMappingLoadState').dataset.key,
+KbdMappingIncrementSlot = 'CoreEvents[Kbd Mapping Increment Slot]=' + id('KbdMappingIncrementSlot').dataset.key,
+KbdMappingReset = 'CoreEvents[Kbd Mapping Reset]=' + id('KbdMappingReset').dataset.key,
+KbdMappingSpeedDown = 'CoreEvents[Kbd Mapping Speed Down]=' + id('KbdMappingSpeedDown').dataset.key,
+KbdMappingSpeedUp = 'CoreEvents[Kbd Mapping Speed Up]=' + id('KbdMappingSpeedUp').dataset.key,
+KbdMappingScreenshot = 'CoreEvents[Kbd Mapping Screenshot]=' + id('KbdMappingScreenshot').dataset.key,
+KbdMappingPause = 'CoreEvents[Kbd Mapping Pause]=' + id('KbdMappingPause').dataset.key,
+KbdMappingMute = 'CoreEvents[Kbd Mapping Mute]=' + id('KbdMappingMute').dataset.key,
+KbdMappingIncreaseVolume = 'CoreEvents[Kbd Mapping Increase Volume]=' + id('KbdMappingIncreaseVolume').dataset.key,
+KbdMappingDecreaseVolume = 'CoreEvents[Kbd Mapping Decrease Volume]=' + id('KbdMappingDecreaseVolume').dataset.key,
+KbdMappingFastForward = 'CoreEvents[Kbd Mapping Fast Forward]=' + id('KbdMappingFastForward').dataset.key,
+KbdMappingFrameAdvance = 'CoreEvents[Kbd Mapping Frame Advance]=' + id('KbdMappingFrameAdvance').dataset.key,
+KbdMappingGameshark = 'CoreEvents[Kbd Mapping Gameshark]=' + id('KbdMappingGameshark').dataset.key,
 
-KbdMappingStop = 'CoreEvents[Kbd Mapping Stop]=' + id('KbdMappingStop').dataset.key;
-KbdMappingSlot0 = 'CoreEvents[Kbd Mapping Slot 0]=' + id('KbdMappingSlot0').dataset.key;
-KbdMappingSlot1 = 'CoreEvents[Kbd Mapping Slot 1]=' + id('KbdMappingSlot1').dataset.key;
-KbdMappingSlot2 = 'CoreEvents[Kbd Mapping Slot 2]=' + id('KbdMappingSlot2').dataset.key;
-KbdMappingSlot3 = 'CoreEvents[Kbd Mapping Slot 3]=' + id('KbdMappingSlot3').dataset.key;
-KbdMappingSlot4 = 'CoreEvents[Kbd Mapping Slot 4]=' + id('KbdMappingSlot4').dataset.key;
-KbdMappingSlot5 = 'CoreEvents[Kbd Mapping Slot 5]=' + id('KbdMappingSlot5').dataset.key;
-KbdMappingSlot6 = 'CoreEvents[Kbd Mapping Slot 6]=' + id('KbdMappingSlot6').dataset.key;
-KbdMappingSlot7 = 'CoreEvents[Kbd Mapping Slot 7]=' + id('KbdMappingSlot7').dataset.key;
-KbdMappingSlot8 = 'CoreEvents[Kbd Mapping Slot 8]=' + id('KbdMappingSlot8').dataset.key;
-KbdMappingSlot9 = 'CoreEvents[Kbd Mapping Slot 9]=' + id('KbdMappingSlot9').dataset.key;
-KbdMappingFullscreen = 'CoreEvents[Kbd Mapping Fullscreen]=' + id('KbdMappingFullscreen').dataset.key;
-KbdMappingSaveState = 'CoreEvents[Kbd Mapping Save State]=' + id('KbdMappingSaveState').dataset.key;
-KbdMappingLoadState = 'CoreEvents[Kbd Mapping Load State]=' + id('KbdMappingLoadState').dataset.key;
-KbdMappingIncrementSlot = 'CoreEvents[Kbd Mapping Increment Slot]=' + id('KbdMappingIncrementSlot').dataset.key;
-KbdMappingReset = 'CoreEvents[Kbd Mapping Reset]=' + id('KbdMappingReset').dataset.key;
-KbdMappingSpeedDown = 'CoreEvents[Kbd Mapping Speed Down]=' + id('KbdMappingSpeedDown').dataset.key;
-KbdMappingSpeedUp = 'CoreEvents[Kbd Mapping Speed Up]=' + id('KbdMappingSpeedUp').dataset.key;
-KbdMappingScreenshot = 'CoreEvents[Kbd Mapping Screenshot]=' + id('KbdMappingScreenshot').dataset.key;
-KbdMappingPause = 'CoreEvents[Kbd Mapping Pause]=' + id('KbdMappingPause').dataset.key;
-KbdMappingMute = 'CoreEvents[Kbd Mapping Mute]=' + id('KbdMappingMute').dataset.key;
-KbdMappingIncreaseVolume = 'CoreEvents[Kbd Mapping Increase Volume]=' + id('KbdMappingIncreaseVolume').dataset.key;
-KbdMappingDecreaseVolume = 'CoreEvents[Kbd Mapping Decrease Volume]=' + id('KbdMappingDecreaseVolume').dataset.key;
-KbdMappingFastForward = 'CoreEvents[Kbd Mapping Fast Forward]=' + id('KbdMappingFastForward').dataset.key;
-KbdMappingFrameAdvance = 'CoreEvents[Kbd Mapping Frame Advance]=' + id('KbdMappingFrameAdvance').dataset.key;
-KbdMappingGameshark = 'CoreEvents[Kbd Mapping Gameshark]=' + id('KbdMappingGameshark').dataset.key;
+JoyMappingStop = 'CoreEvents[Joy Mapping Stop]=' + 'J0' + id('JoyMappingStop1').value + ',' + 'J1' + id('JoyMappingStop2').value + ',' + 'J2' + id('JoyMappingStop3').value + ',' + 'J3' + id('JoyMappingStop4').value,
+JoyMappingFullscreen = 'CoreEvents[Joy Mapping Fullscreen]=' + 'J0' + id('JoyMappingFullscreen1').value + ',' + 'J1' + id('JoyMappingFullscreen2').value + ',' + 'J2' + id('JoyMappingFullscreen3').value + ',' + 'J3' + id('JoyMappingFullscreen4').value,
+JoyMappingSaveState = 'CoreEvents[Joy Mapping Save State]=' + 'J0' + id('JoyMappingSaveState1').value + ',' + 'J1' + id('JoyMappingSaveState2').value + ',' + 'J2' + id('JoyMappingSaveState3').value + ',' + 'J3' + id('JoyMappingSaveState4').value,
+JoyMappingLoadState = 'CoreEvents[Joy Mapping Load State]=' + 'J0' + id('JoyMappingLoadState1').value + ',' + 'J1' + id('JoyMappingLoadState2').value + ',' + 'J2' + id('JoyMappingLoadState3').value + ',' + 'J3' + id('JoyMappingLoadState4').value,
+JoyMappingIncrementSlot = 'CoreEvents[Joy Mapping Increment Slot]=' + 'J0' + id('JoyMappingIncrementSlot1').value + ',' + 'J1' + id('JoyMappingIncrementSlot2').value + ',' + 'J2' + id('JoyMappingIncrementSlot3').value + ',' + 'J3' + id('JoyMappingIncrementSlot4').value,
+JoyMappingReset = 'CoreEvents[Joy Mapping Reset]=' + 'J0' + id('JoyMappingReset1').value + ',' + 'J1' + id('JoyMappingReset2').value + ',' + 'J2' + id('JoyMappingReset3').value + ',' + 'J3' + id('JoyMappingReset4').value,
+JoyMappingSpeedDown = 'CoreEvents[Joy Mapping Speed Down]=' + 'J0' + id('JoyMappingSpeedDown1').value + ',' + 'J1' + id('JoyMappingSpeedDown2').value + ',' + 'J2' + id('JoyMappingSpeedDown3').value + ',' + 'J3' + id('JoyMappingSpeedDown4').value,
+JoyMappingSpeedUp = 'CoreEvents[Joy Mapping Speed Up]=' + 'J0' + id('JoyMappingSpeedUp1').value + ',' + 'J1' + id('JoyMappingSpeedUp2').value + ',' + 'J2' + id('JoyMappingSpeedUp3').value + ',' + 'J3' + id('JoyMappingSpeedUp4').value,
+JoyMappingScreenshot = 'CoreEvents[Joy Mapping Screenshot]=' + 'J0' + id('JoyMappingScreenshot1').value + ',' + 'J1' + id('JoyMappingScreenshot2').value + ',' + 'J2' + id('JoyMappingScreenshot3').value + ',' + 'J3' + id('JoyMappingScreenshot4').value,
+JoyMappingPause = 'CoreEvents[Joy Mapping Pause]=' + 'J0' + id('JoyMappingPause1').value + ',' + 'J1' + id('JoyMappingPause2').value + ',' + 'J2' + id('JoyMappingPause3').value + ',' + 'J3' + id('JoyMappingPause4').value,
+JoyMappingMute = 'CoreEvents[Joy Mapping Mute]=' + 'J0' + id('JoyMappingMute1').value + ',' + 'J1' + id('JoyMappingMute2').value + ',' + 'J2' + id('JoyMappingMute3').value + ',' + 'J3' + id('JoyMappingMute4').value,
+JoyMappingIncreaseVolume = 'CoreEvents[Joy Mapping Increase Volume]=' + 'J0' + id('JoyMappingIncreaseVolume1').value + ',' + 'J1' + id('JoyMappingIncreaseVolume2').value + ',' + 'J2' + id('JoyMappingIncreaseVolume3').value + ',' + 'J3' + id('JoyMappingIncreaseVolume4').value,
+JoyMappingDecreaseVolume = 'CoreEvents[Joy Mapping Decrease Volume]=' + 'J0' + id('JoyMappingDecreaseVolume1').value + ',' + 'J1' + id('JoyMappingDecreaseVolume2').value + ',' + 'J2' + id('JoyMappingDecreaseVolume3').value + ',' + 'J3' + id('JoyMappingDecreaseVolume4').value,
+JoyMappingFastForward = 'CoreEvents[Joy Mapping Fast Forward]=' + 'J0' + id('JoyMappingFastForward1').value + ',' + 'J1' + id('JoyMappingFastForward2').value + ',' + 'J2' + id('JoyMappingFastForward3').value + ',' + 'J3' + id('JoyMappingFastForward4').value,
+JoyMappingFrameAdvance = 'CoreEvents[Joy Mapping Frame Advance]=' + 'J0' + id('JoyMappingFrameAdvance1').value + ',' + 'J1' + id('JoyMappingFrameAdvance2').value + ',' + 'J2' + id('JoyMappingFrameAdvance3').value + ',' + 'J3' + id('JoyMappingFrameAdvance4').value,
+JoyMappingGameshark = 'CoreEvents[Joy Mapping Gameshark]=' + 'J0' + id('JoyMappingGameshark1').value + ',' + 'J1' + id('JoyMappingGameshark2').value + ',' + 'J2' + id('JoyMappingGameshark3').value + ',' + 'J3' + id('JoyMappingGameshark4').value,
 
-JoyMappingStop = 'CoreEvents[Joy Mapping Stop]=' + 'J0' + id('JoyMappingStop1').value + ',' + 'J1' + id('JoyMappingStop2').value + ',' + 'J2' + id('JoyMappingStop3').value + ',' + 'J3' + id('JoyMappingStop4').value;
-JoyMappingFullscreen = 'CoreEvents[Joy Mapping Fullscreen]=' + 'J0' + id('JoyMappingFullscreen1').value + ',' + 'J1' + id('JoyMappingFullscreen2').value + ',' + 'J2' + id('JoyMappingFullscreen3').value + ',' + 'J3' + id('JoyMappingFullscreen4').value;
-JoyMappingSaveState = 'CoreEvents[Joy Mapping Save State]=' + 'J0' + id('JoyMappingSaveState1').value + ',' + 'J1' + id('JoyMappingSaveState2').value + ',' + 'J2' + id('JoyMappingSaveState3').value + ',' + 'J3' + id('JoyMappingSaveState4').value;
-JoyMappingLoadState = 'CoreEvents[Joy Mapping Load State]=' + 'J0' + id('JoyMappingLoadState1').value + ',' + 'J1' + id('JoyMappingLoadState2').value + ',' + 'J2' + id('JoyMappingLoadState3').value + ',' + 'J3' + id('JoyMappingLoadState4').value;
-JoyMappingIncrementSlot = 'CoreEvents[Joy Mapping Increment Slot]=' + 'J0' + id('JoyMappingIncrementSlot1').value + ',' + 'J1' + id('JoyMappingIncrementSlot2').value + ',' + 'J2' + id('JoyMappingIncrementSlot3').value + ',' + 'J3' + id('JoyMappingIncrementSlot4').value;
-JoyMappingReset = 'CoreEvents[Joy Mapping Reset]=' + 'J0' + id('JoyMappingReset1').value + ',' + 'J1' + id('JoyMappingReset2').value + ',' + 'J2' + id('JoyMappingReset3').value + ',' + 'J3' + id('JoyMappingReset4').value;
-JoyMappingSpeedDown = 'CoreEvents[Joy Mapping Speed Down]=' + 'J0' + id('JoyMappingSpeedDown1').value + ',' + 'J1' + id('JoyMappingSpeedDown2').value + ',' + 'J2' + id('JoyMappingSpeedDown3').value + ',' + 'J3' + id('JoyMappingSpeedDown4').value;
-JoyMappingSpeedUp = 'CoreEvents[Joy Mapping Speed Up]=' + 'J0' + id('JoyMappingSpeedUp1').value + ',' + 'J1' + id('JoyMappingSpeedUp2').value + ',' + 'J2' + id('JoyMappingSpeedUp3').value + ',' + 'J3' + id('JoyMappingSpeedUp4').value;
-JoyMappingScreenshot = 'CoreEvents[Joy Mapping Screenshot]=' + 'J0' + id('JoyMappingScreenshot1').value + ',' + 'J1' + id('JoyMappingScreenshot2').value + ',' + 'J2' + id('JoyMappingScreenshot3').value + ',' + 'J3' + id('JoyMappingScreenshot4').value;
-JoyMappingPause = 'CoreEvents[Joy Mapping Pause]=' + 'J0' + id('JoyMappingPause1').value + ',' + 'J1' + id('JoyMappingPause2').value + ',' + 'J2' + id('JoyMappingPause3').value + ',' + 'J3' + id('JoyMappingPause4').value;
-JoyMappingMute = 'CoreEvents[Joy Mapping Mute]=' + 'J0' + id('JoyMappingMute1').value + ',' + 'J1' + id('JoyMappingMute2').value + ',' + 'J2' + id('JoyMappingMute3').value + ',' + 'J3' + id('JoyMappingMute4').value;
-JoyMappingIncreaseVolume = 'CoreEvents[Joy Mapping Increase Volume]=' + 'J0' + id('JoyMappingIncreaseVolume1').value + ',' + 'J1' + id('JoyMappingIncreaseVolume2').value + ',' + 'J2' + id('JoyMappingIncreaseVolume3').value + ',' + 'J3' + id('JoyMappingIncreaseVolume4').value;
-JoyMappingDecreaseVolume = 'CoreEvents[Joy Mapping Decrease Volume]=' + 'J0' + id('JoyMappingDecreaseVolume1').value + ',' + 'J1' + id('JoyMappingDecreaseVolume2').value + ',' + 'J2' + id('JoyMappingDecreaseVolume3').value + ',' + 'J3' + id('JoyMappingDecreaseVolume4').value;
-JoyMappingFastForward = 'CoreEvents[Joy Mapping Fast Forward]=' + 'J0' + id('JoyMappingFastForward1').value + ',' + 'J1' + id('JoyMappingFastForward2').value + ',' + 'J2' + id('JoyMappingFastForward3').value + ',' + 'J3' + id('JoyMappingFastForward4').value;
-JoyMappingFrameAdvance = 'CoreEvents[Joy Mapping Frame Advance]=' + 'J0' + id('JoyMappingFrameAdvance1').value + ',' + 'J1' + id('JoyMappingFrameAdvance2').value + ',' + 'J2' + id('JoyMappingFrameAdvance3').value + ',' + 'J3' + id('JoyMappingFrameAdvance4').value;
-JoyMappingGameshark = 'CoreEvents[Joy Mapping Gameshark]=' + 'J0' + id('JoyMappingGameshark1').value + ',' + 'J1' + id('JoyMappingGameshark2').value + ',' + 'J2' + id('JoyMappingGameshark3').value + ',' + 'J3' + id('JoyMappingGameshark4').value;
+hkTexDump = 'Video-GLideN64[hkTexDump]=' + id('hkTexDump').value,
+hkHdTexReload = 'Video-GLideN64[hkHdTexReload]=' + id('hkHdTexReload').value,
+hkHdTexToggle = 'Video-GLideN64[hkHdTexToggle]=' + id('hkHdTexToggle').value,
+hkInaccurateTexCords = 'Video-GLideN64[hkInaccurateTexCords]=' + id('hkInaccurateTexCords').value,
+hkVsync = 'Video-GLideN64[hkVsync]=' + id('hkVsync').value,
+hkFBEmulation = 'Video-GLideN64[hkFBEmulation]=' + id('hkFBEmulation').value,
+hkN64DepthCompare = 'Video-GLideN64[hkN64DepthCompare]=' + id('hkN64DepthCompare').value,
+hkOsdVis = 'Video-GLideN64[hkOsdVis]=' + id('hkOsdVis').value,
+hkOsdFps = 'Video-GLideN64[hkOsdFps]=' + id('hkOsdFps').value,
+hkOsdPercent = 'Video-GLideN64[hkOsdPercent]=' + id('hkOsdPercent').value,
+hkOsdInternalResolution = 'Video-GLideN64[hkOsdInternalResolution]=' + id('hkOsdInternalResolution').value,
+hkOsdRenderingResolution = 'Video-GLideN64[hkOsdRenderingResolution]=' + id('hkOsdRenderingResolution').value,
+hkTexCoordBounds = 'Video-GLideN64[hkTexCoordBounds]=' + id('hkTexCoordBounds').value,
+hkNativeResTexrects = 'Video-GLideN64[hkNativeResTexrects]=' + id('hkNativeResTexrects').value,
+hkForceGammaCorrection = 'Video-GLideN64[hkForceGammaCorrection]=' + id('hkForceGammaCorrection').value,
 
-hkTexDump = 'Video-GLideN64[hkTexDump]=' + id('hkTexDump').value;
-hkHdTexReload = 'Video-GLideN64[hkHdTexReload]=' + id('hkHdTexReload').value;
-hkHdTexToggle = 'Video-GLideN64[hkHdTexToggle]=' + id('hkHdTexToggle').value;
-hkInaccurateTexCords = 'Video-GLideN64[hkInaccurateTexCords]=' + id('hkInaccurateTexCords').value;
-hkVsync = 'Video-GLideN64[hkVsync]=' + id('hkVsync').value;
-hkFBEmulation = 'Video-GLideN64[hkFBEmulation]=' + id('hkFBEmulation').value;
-hkN64DepthCompare = 'Video-GLideN64[hkN64DepthCompare]=' + id('hkN64DepthCompare').value;
-hkOsdVis = 'Video-GLideN64[hkOsdVis]=' + id('hkOsdVis').value;
-hkOsdFps = 'Video-GLideN64[hkOsdFps]=' + id('hkOsdFps').value;
-hkOsdPercent = 'Video-GLideN64[hkOsdPercent]=' + id('hkOsdPercent').value;
-hkOsdInternalResolution = 'Video-GLideN64[hkOsdInternalResolution]=' + id('hkOsdInternalResolution').value;
-hkOsdRenderingResolution = 'Video-GLideN64[hkOsdRenderingResolution]=' + id('hkOsdRenderingResolution').value;
-hkTexCoordBounds = 'Video-GLideN64[hkTexCoordBounds]=' + id('hkTexCoordBounds').value;
-hkNativeResTexrects = 'Video-GLideN64[hkNativeResTexrects]=' + id('hkNativeResTexrects').value;
-hkForceGammaCorrection = 'Video-GLideN64[hkForceGammaCorrection]=' + id('hkForceGammaCorrection').value;
+AButton1,AButton2,AButton3,AButton4,BButton1,BButton2,BButton3,BButton4,LTrig1,LTrig2,LTrig3,LTrig4,RTrig1,RTrig2,RTrig3,RTrig4,ZTrig1,ZTrig2,ZTrig3,ZTrig4,Start1,Start2,Start3,Start4,DPadU1,DPadU2,DPadU3,DPadU4,DPadL1,DPadL2,DPadL3,DPadL4,DPadR1,DPadR2,DPadR3,DPadR4,DPadD1,DPadD2,DPadD3,DPadD4,CButtonU1,CButtonU2,CButtonU3,CButtonU4,CButtonL1,CButtonL2,CButtonL3,CButtonL4,CButtonR1,CButtonR2,CButtonR3,CButtonR4,CButtonD1,CButtonD2,CButtonD3,CButtonD4,MempakSwitch1,MempakSwitch2,MempakSwitch3,MempakSwitch4,RumblepakSwitch1,RumblepakSwitch2,RumblepakSwitch3,RumblepakSwitch4,XAxis1,XAxis2,XAxis3,XAxis4,YAxis1,YAxis2,YAxis3,YAxis4;
 
 
 
@@ -1425,26 +1425,29 @@ if(RumblepakSwitch4.match(regkb))RumblepakSwitch4 = RumblepakSwitch4.replace(reg
 if(XAxis4.match(regkb))XAxis4 = XAxis4.replace(regkb,'')
 if(YAxis4.match(regkb))YAxis4 = YAxis4.replace(regkb,'')
 
-m64pGFX = 'Rsp-HLE[DisplayListToGraphicsPlugin]=True';
-RspFallback = 'Rsp-HLE[RspFallback]=mupen64plus-rsp-cxd4-sse2';
+var m64pGFX = 'Rsp-HLE[DisplayListToGraphicsPlugin]=True',
+RspFallback = 'Rsp-HLE[RspFallback]=mupen64plus-rsp-cxd4-sse2',
+SharedDataPath = 'Core[SharedDataPath]=',
+PluginDir = '.',
+nospeedlimit,
+verbose;
+
 if(gfx === 'mupen64plus-video-angrylion-plus' || gfx === 'mupen64plus-video-parallel'){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=False'; cxd4Audio = 'rsp-cxd4[DisplayListToAudioPlugin]=False'}
 else if(gfx === 'mupen64plus-video-rice' || gfx === 'mupen64plus-video-glide64mk2'){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=True'}
 if(gfx === 'mupen64plus-video-angrylion-plus' && rsp === 'mupen64plus-rsp-hle'){rsp = 'mupen64plus-rsp-cxd4-sse2'}
 else if(gfx === 'mupen64plus-video-parallel' && rsp === 'mupen64plus-rsp-hle'){rsp = 'mupen64plus-rsp-parallel'}
 else if((gfx === 'mupen64plus-video-rice' || gfx === 'mupen64plus-video-glide64mk2') && rsp === 'mupen64plus-rsp-parallel'){rsp = 'mupen64plus-rsp-hle'}
-SharedDataPath = 'Core[SharedDataPath]=';
-PluginDir = '.';
 
 if(id('nospeedlimit').checked){nospeedlimit = '--nospeedlimit';audio = 'dummy';vsync = 'Video-General[VerticalSync]=False';Glide64VSync = 'Video-Glide64mk2[vsync]=False'}else{nospeedlimit = []}
 verbose = id('verbose').checked ? '--verbose' : []
 
-var core = ['--corelib','mupen64plus','--plugindir',PluginDir,osd,fullscreen,'--resolution',resolution,'--gfx',gfx,'--audio',audio,'--input',input,'--rsp',rsp,'--emumode',emumode,'--set',exp,'--set',vsync,'--set',cxd4GFX,'--set',m64pGFX,'--set',KbdMappingSlot0,'--set',KbdMappingSlot1,'--set',KbdMappingSlot2,'--set',KbdMappingSlot3,'--set',KbdMappingSlot4,'--set',KbdMappingSlot5,'--set',KbdMappingSlot6,'--set',KbdMappingSlot7,'--set',KbdMappingSlot8,'--set',KbdMappingSlot9,'--set',KbdMappingStop,'--set',KbdMappingFullscreen,'--set',KbdMappingSaveState,'--set',KbdMappingLoadState,'--set',KbdMappingIncrementSlot,'--set',KbdMappingReset,'--set',KbdMappingSpeedDown,'--set',KbdMappingSpeedUp,'--set',KbdMappingScreenshot,'--set',KbdMappingPause,'--set',KbdMappingMute,'--set',KbdMappingIncreaseVolume,'--set',KbdMappingDecreaseVolume,'--set',KbdMappingFastForward,'--set',KbdMappingFrameAdvance,'--set',KbdMappingGameshark,'--set',JoyMappingStop,'--set',JoyMappingFullscreen,'--set',JoyMappingSaveState,'--set',JoyMappingLoadState,'--set',JoyMappingIncrementSlot,'--set',JoyMappingReset,'--set',JoyMappingSpeedDown,'--set',JoyMappingSpeedUp,'--set',JoyMappingScreenshot,'--set',JoyMappingPause,'--set',JoyMappingMute,'--set',JoyMappingIncreaseVolume,'--set',JoyMappingDecreaseVolume,'--set',JoyMappingFastForward,'--set',JoyMappingFrameAdvance,'--set',JoyMappingGameshark,'--set',IPLROMSetting,'--set',DiskSetting,'--set',NoCompiledJump,'--set',CountPerOp,'--set',CountPerOpDenomPot,'--set',AutoStateSlotIncrement,'--set',CurrentStateSlot,'--set',SharedDataPath,'--set',ScreenshotPathSetting,'--set',SaveStatePathSetting,'--set',SaveSRAMPathSetting,'--set',RandomizeInterrupt,'--set',SaveDiskFormat,'--set',WaitForCPUHost,'--set',SupportCPUSemaphoreLock,'--set',gbROM1Setting,'--set',gbROM2Setting,'--set',gbROM3Setting,'--set',gbROM4Setting,'--set',gbRAM1Setting,'--set',gbRAM2Setting,'--set',gbRAM3Setting,'--set',gbRAM4Setting,'--set',DEFAULT_FREQUENCY,'--set',SWAP_CHANNELS,'--set',PRIMARY_BUFFER_TARGET,'--set',SECONDARY_BUFFER_SIZE,'--set',RESAMPLE,'--set',VOLUME_ADJUST,'--set',VOLUME_DEFAULT,'--set',AUDIO_SYNC],
+var core = ['--corelib','mupen64plus','--plugindir',PluginDir,osd,fullscreen,'--resolution',resolution,'--gfx',gfx,'--audio',audio,'--input',input,'--rsp',rsp,'--set',RspFallback,'--emumode',emumode,'--set',exp,'--set',vsync,'--set',cxd4GFX,'--set',m64pGFX,'--set',KbdMappingSlot0,'--set',KbdMappingSlot1,'--set',KbdMappingSlot2,'--set',KbdMappingSlot3,'--set',KbdMappingSlot4,'--set',KbdMappingSlot5,'--set',KbdMappingSlot6,'--set',KbdMappingSlot7,'--set',KbdMappingSlot8,'--set',KbdMappingSlot9,'--set',KbdMappingStop,'--set',KbdMappingFullscreen,'--set',KbdMappingSaveState,'--set',KbdMappingLoadState,'--set',KbdMappingIncrementSlot,'--set',KbdMappingReset,'--set',KbdMappingSpeedDown,'--set',KbdMappingSpeedUp,'--set',KbdMappingScreenshot,'--set',KbdMappingPause,'--set',KbdMappingMute,'--set',KbdMappingIncreaseVolume,'--set',KbdMappingDecreaseVolume,'--set',KbdMappingFastForward,'--set',KbdMappingFrameAdvance,'--set',KbdMappingGameshark,'--set',JoyMappingStop,'--set',JoyMappingFullscreen,'--set',JoyMappingSaveState,'--set',JoyMappingLoadState,'--set',JoyMappingIncrementSlot,'--set',JoyMappingReset,'--set',JoyMappingSpeedDown,'--set',JoyMappingSpeedUp,'--set',JoyMappingScreenshot,'--set',JoyMappingPause,'--set',JoyMappingMute,'--set',JoyMappingIncreaseVolume,'--set',JoyMappingDecreaseVolume,'--set',JoyMappingFastForward,'--set',JoyMappingFrameAdvance,'--set',JoyMappingGameshark,'--set',IPLROMSetting,'--set',DiskSetting,'--set',NoCompiledJump,'--set',CountPerOp,'--set',CountPerOpDenomPot,'--set',AutoStateSlotIncrement,'--set',CurrentStateSlot,'--set',SharedDataPath,'--set',ScreenshotPathSetting,'--set',SaveStatePathSetting,'--set',SaveSRAMPathSetting,'--set',RandomizeInterrupt,'--set',SaveDiskFormat,'--set',WaitForCPUHost,'--set',SupportCPUSemaphoreLock,'--set',gbROM1Setting,'--set',gbROM2Setting,'--set',gbROM3Setting,'--set',gbROM4Setting,'--set',gbRAM1Setting,'--set',gbRAM2Setting,'--set',gbRAM3Setting,'--set',gbRAM4Setting,'--set',DEFAULT_FREQUENCY,'--set',SWAP_CHANNELS,'--set',PRIMARY_BUFFER_TARGET,'--set',SECONDARY_BUFFER_SIZE,'--set',RESAMPLE,'--set',VOLUME_ADJUST,'--set',VOLUME_DEFAULT,'--set',AUDIO_SYNC],
 
 controls = ['--set',AButton1,'--set',BButton1,'--set',LTrig1,'--set',RTrig1,'--set',ZTrig1,'--set',Start1,'--set',DPadU1,'--set',DPadL1,'--set',DPadR1,'--set',DPadD1,'--set',CButtonU1,'--set',CButtonL1,'--set',CButtonR1,'--set',CButtonD1,'--set',MempakSwitch1,'--set',RumblepakSwitch1,'--set',XAxis1,'--set',YAxis1,'--set',AButton2,'--set',BButton2,'--set',LTrig2,'--set',RTrig2,'--set',ZTrig2,'--set',Start2,'--set',DPadU2,'--set',DPadL2,'--set',DPadR2,'--set',DPadD2,'--set',CButtonU2,'--set',CButtonL2,'--set',CButtonR2,'--set',CButtonD2,'--set',MempakSwitch2,'--set',RumblepakSwitch2,'--set',XAxis2,'--set',YAxis2,'--set',AButton3,'--set',BButton3,'--set',LTrig3,'--set',RTrig3,'--set',ZTrig3,'--set',Start3,'--set',DPadU3,'--set',DPadL3,'--set',DPadR3,'--set',DPadD3,'--set',CButtonU3,'--set',CButtonL3,'--set',CButtonR3,'--set',CButtonD3,'--set',MempakSwitch3,'--set',RumblepakSwitch3,'--set',XAxis3,'--set',YAxis3,'--set',AButton4,'--set',BButton4,'--set',LTrig4,'--set',RTrig4,'--set',ZTrig4,'--set',Start4,'--set',DPadU4,'--set',DPadL4,'--set',DPadR4,'--set',DPadD4,'--set',CButtonU4,'--set',CButtonL4,'--set',CButtonR4,'--set',CButtonD4,'--set',MempakSwitch4,'--set',RumblepakSwitch4,'--set',XAxis4,'--set',YAxis4,'--set',plugin1,'--set',plugin2,'--set',plugin3,'--set',plugin4,'--set',plugged1,'--set',plugged2,'--set',plugged3,'--set',plugged4,'--set',mode1,'--set',mode2,'--set',mode3,'--set',mode4,'--set',name1,'--set',name2,'--set',name3,'--set',name4,'--set',mouse1,'--set',mouse2,'--set',mouse3,'--set',mouse4,'--set',msensitivity1,'--set',msensitivity2,'--set',msensitivity3,'--set',msensitivity4,'--set',analogdeadzone1,'--set',analogdeadzone2,'--set',analogdeadzone3,'--set',analogdeadzone4,'--set',analogpeak1,'--set',analogpeak2,'--set',analogpeak3,'--set',analogpeak4,'--set',device1,'--set',device2,'--set',device3,'--set',device4],
 
 Angrylion = ['--set',Parallel,'--set',NumWorkers,'--set',BusyLoop,'--set',ViMode,'--set',ViInterpolation,'--set',ViWidescreen,'--set',ViHideOverscan,'--set',ViIntegerScaling,'--set',DpCompat],
 
-GLideN64 = ['--set',threadedVideo,'--set',msaa,'--set',fxaa,'--set',aspectRatio,'--set',bufferSwapMode,'--set',useNativeResolutionFactor,'--set',RspFallback,'--set',bilinearMode,'--set',enableHalosRemoval,'--set',anisotropy,'--set',cache,'--set',txHiresEnable,'--set',txNoTextureFileStorage,'--set',EnableInaccurateTextureCoordinates,'--set',EnableDitheringPattern,'--set',EnableHiresNoiseDithering,'--set',DitheringQuantization,'--set',RDRAMImageDitheringMode,'--set',EnableLOD,'--set',EnableHWLighting,'--set',EnableCoverage,'--set',EnableClipping,'--set',EnableShadersStorage,'--set',EnableLegacyBlending,'--set',EnableHybridFilter,'--set',EnableCustomSettings,'--set',CorrectTexrectCoords,'--set',EnableNativeResTexrects,'--set',BackgroundsMode,'--set',EnableTexCoordBounds,'--set',EnableFBEmulation,'--set',EnableCopyAuxiliaryToRDRAM,'--set',EnableN64DepthCompare,'--set',ForceDepthBufferClear,'--set',DisableFBInfo,'--set',FBInfoReadColorChunk,'--set',FBInfoReadDepthChunk,'--set',EnableCopyColorToRDRAM,'--set',EnableCopyDepthToRDRAM,'--set',EnableCopyColorFromRDRAM,'--set',EnableCopyDepthToMainDepthBuffer,'--set',EnableOverscan,'--set',OverscanNtscTop,'--set',OverscanNtscLeft,'--set',OverscanNtscRight,'--set',OverscanNtscBottom,'--set',OverscanPalTop,'--set',OverscanPalLeft,'--set',OverscanPalRight,'--set',OverscanPalBottom,'--set',txFilterMode,'--set',txEnhancementMode,'--set',txDeposterize,'--set',txFilterIgnoreBG,'--set',txCacheSize,'--set',txHiresVramLimit,'--set',txHiresFullAlphaChannel,'--set',txHresAltCRC,'--set',txCacheCompression, '--set',txForce16bpp, '--set',txSaveCache,'--set',txPathSetting,'--set',txCachePathSetting,'--set',txDumpPathSetting,'--set',hkTexDump,'--set',hkHdTexReload,'--set',hkHdTexToggle,'--set',hkInaccurateTexCords,'--set',hkVsync,'--set',hkFBEmulation,'--set',hkN64DepthCompare,'--set',hkOsdVis,'--set',hkOsdFps,'--set',hkOsdPercent,'--set',hkOsdInternalResolution,'--set',hkOsdRenderingResolution,'--set',hkTexCoordBounds,'--set',hkNativeResTexrects,'--set',hkForceGammaCorrection,'--set',ForceGammaCorrection,'--set',GammaCorrectionLevel,'--set',fontSize,'--set',fontColor,'--set',ShowFPS,'--set',ShowVIS,'--set',ShowPercent,'--set',ShowInternalResolution,'--set',ShowRenderingResolution,'--set',ShowStatistics,'--set',CountersPos],
+GLideN64 = ['--set',threadedVideo,'--set',msaa,'--set',fxaa,'--set',aspectRatio,'--set',bufferSwapMode,'--set',useNativeResolutionFactor,'--set',bilinearMode,'--set',enableHalosRemoval,'--set',anisotropy,'--set',cache,'--set',txHiresEnable,'--set',txNoTextureFileStorage,'--set',EnableInaccurateTextureCoordinates,'--set',EnableDitheringPattern,'--set',EnableHiresNoiseDithering,'--set',DitheringQuantization,'--set',RDRAMImageDitheringMode,'--set',EnableLOD,'--set',EnableHWLighting,'--set',EnableCoverage,'--set',EnableClipping,'--set',EnableShadersStorage,'--set',EnableLegacyBlending,'--set',EnableHybridFilter,'--set',EnableCustomSettings,'--set',CorrectTexrectCoords,'--set',EnableNativeResTexrects,'--set',BackgroundsMode,'--set',EnableTexCoordBounds,'--set',EnableFBEmulation,'--set',EnableCopyAuxiliaryToRDRAM,'--set',EnableN64DepthCompare,'--set',ForceDepthBufferClear,'--set',DisableFBInfo,'--set',FBInfoReadColorChunk,'--set',FBInfoReadDepthChunk,'--set',EnableCopyColorToRDRAM,'--set',EnableCopyDepthToRDRAM,'--set',EnableCopyColorFromRDRAM,'--set',EnableCopyDepthToMainDepthBuffer,'--set',EnableOverscan,'--set',OverscanNtscTop,'--set',OverscanNtscLeft,'--set',OverscanNtscRight,'--set',OverscanNtscBottom,'--set',OverscanPalTop,'--set',OverscanPalLeft,'--set',OverscanPalRight,'--set',OverscanPalBottom,'--set',txFilterMode,'--set',txEnhancementMode,'--set',txDeposterize,'--set',txFilterIgnoreBG,'--set',txCacheSize,'--set',txHiresVramLimit,'--set',txHiresFullAlphaChannel,'--set',txHresAltCRC,'--set',txCacheCompression, '--set',txForce16bpp, '--set',txSaveCache,'--set',txPathSetting,'--set',txCachePathSetting,'--set',txDumpPathSetting,'--set',hkTexDump,'--set',hkHdTexReload,'--set',hkHdTexToggle,'--set',hkInaccurateTexCords,'--set',hkVsync,'--set',hkFBEmulation,'--set',hkN64DepthCompare,'--set',hkOsdVis,'--set',hkOsdFps,'--set',hkOsdPercent,'--set',hkOsdInternalResolution,'--set',hkOsdRenderingResolution,'--set',hkTexCoordBounds,'--set',hkNativeResTexrects,'--set',hkForceGammaCorrection,'--set',ForceGammaCorrection,'--set',GammaCorrectionLevel,'--set',fontSize,'--set',fontColor,'--set',ShowFPS,'--set',ShowVIS,'--set',ShowPercent,'--set',ShowInternalResolution,'--set',ShowRenderingResolution,'--set',ShowStatistics,'--set',CountersPos],
 
 Parallel = ['--set',ParallelFullscreen,'--set',ParallelUpscaling,'--set',ParallelScreenWidth,'--set',ParallelScreenHeight,'--set',ParallelSuperscaledReads,'--set',ParallelSuperscaledDither,'--set',ParallelDeinterlace,'--set',ParallelIntegerScale,'--set',ParallelCropOverscan,'--set',ParallelVIAA,'--set',ParallelDivot,'--set',ParallelGammaDither,'--set',ParallelVIBilerp,'--set',ParallelVIDither,'--set',ParallelDownScale,'--set',ParallelNativeTextLOD,'--set',ParallelNativeTextRECT,'--set',ParallelWidescreenStretch],
 
