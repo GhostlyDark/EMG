@@ -1041,6 +1041,28 @@ analogpeak2 = 'Input-SDL-Control2[AnalogPeak]=' + AnalogPeak2X.value + ',' + Ana
 analogpeak3 = 'Input-SDL-Control3[AnalogPeak]=' + AnalogPeak3X.value + ',' + AnalogPeak3Y.value,
 analogpeak4 = 'Input-SDL-Control4[AnalogPeak]=' + AnalogPeak4X.value + ',' + AnalogPeak4Y.value,
 
+control_stick_deadzone = id('control_stick_deadzone').value,
+control_stick_sensitivity = id('control_stick_sensitivity').value,
+c_stick_deadzone = id('c_stick_deadzone').value,
+trigger_threshold = id('trigger_threshold').value,
+a = id('a').value,
+b = id('b').value,
+x = id('x').value,
+y = id('y').value,
+start = id('start').value,
+z = id('z').value,
+l = id('l').value,
+r = id('r').value,
+d_pad_left = id('d_pad_left').value,
+d_pad_right = id('d_pad_right').value,
+d_pad_down = id('d_pad_down').value,
+d_pad_up = id('d_pad_up').value,
+c_stick_left = id('c_stick_left').value,
+c_stick_right = id('c_stick_right').value,
+c_stick_down = id('c_stick_down').value,
+c_stick_up = id('c_stick_up').value,
+gcaSettings = 'control_stick_deadzone = ' +  control_stick_deadzone + '\n' + 'control_stick_sensitivity = ' + control_stick_sensitivity + '\n' + 'c_stick_deadzone = ' + c_stick_deadzone + '\n' + 'trigger_threshold = ' + trigger_threshold + '\n' + '\n' + '[controller_mapping]' + '\n' + 'a = ' + a + '\n' + 'b = ' + b + '\n' + 'x = ' + x + '\n' + 'y = ' + y + '\n' + 'start = ' + start + '\n' + 'z = ' + z + '\n' + 'l = ' + l + '\n' + 'r = ' + r + '\n' + 'd_pad_left = ' + d_pad_left + '\n' + 'd_pad_right = ' + d_pad_right + '\n' + 'd_pad_down = ' + d_pad_down + '\n' + 'd_pad_up = ' + d_pad_up + '\n' + 'c_stick_left = ' + c_stick_left + '\n' + 'c_stick_right = ' + c_stick_right + '\n' + 'c_stick_down = ' + c_stick_down + '\n' + 'c_stick_up = ' + c_stick_up,
+
 m64pGFX = 'Rsp-HLE[DisplayListToGraphicsPlugin]=True',
 RspFallback = 'Rsp-HLE[RspFallback]=mupen64plus-rsp-cxd4-sse2',
 SharedDataPath = 'Core[SharedDataPath]=',
@@ -1475,29 +1497,6 @@ if(gfx.includes('mupen64plus-video-glide64mk2'))graphics = Glide64MK2
 if(gfx.includes('mupen64plus-video-GLideN64'))graphics = GLideN64
 if(gfx.includes('mupen64plus-video-parallel'))graphics = Parallel
 if(gfx.includes('mupen64plus-video-rice'))graphics = Rice
-
-var control_stick_deadzone = id('control_stick_deadzone').value,
-control_stick_sensitivity = id('control_stick_sensitivity').value,
-c_stick_deadzone = id('c_stick_deadzone').value,
-trigger_threshold = id('trigger_threshold').value,
-a = id('a').value,
-b = id('b').value,
-x = id('x').value,
-y = id('y').value,
-start = id('start').value,
-z = id('z').value,
-l = id('l').value,
-r = id('r').value,
-d_pad_left = id('d_pad_left').value,
-d_pad_right = id('d_pad_right').value,
-d_pad_down = id('d_pad_down').value,
-d_pad_up = id('d_pad_up').value,
-c_stick_left = id('c_stick_left').value,
-c_stick_right = id('c_stick_right').value,
-c_stick_down = id('c_stick_down').value,
-c_stick_up = id('c_stick_up').value;
-
-const gcaSettings = 'control_stick_deadzone = ' +  control_stick_deadzone + '\n' + 'control_stick_sensitivity = ' + control_stick_sensitivity + '\n' + 'c_stick_deadzone = ' + c_stick_deadzone + '\n' + 'trigger_threshold = ' + trigger_threshold + '\n' + '\n' + '[controller_mapping]' + '\n' + 'a = ' + a + '\n' + 'b = ' + b + '\n' + 'x = ' + x + '\n' + 'y = ' + y + '\n' + 'start = ' + start + '\n' + 'z = ' + z + '\n' + 'l = ' + l + '\n' + 'r = ' + r + '\n' + 'd_pad_left = ' + d_pad_left + '\n' + 'd_pad_right = ' + d_pad_right + '\n' + 'd_pad_down = ' + d_pad_down + '\n' + 'd_pad_up = ' + d_pad_up + '\n' + 'c_stick_left = ' + c_stick_left + '\n' + 'c_stick_right = ' + c_stick_right + '\n' + 'c_stick_down = ' + c_stick_down + '\n' + 'c_stick_up = ' + c_stick_up;
 
 if(input.includes('mupen64plus-input-gca')){
 try {writeGCA(gcaSettings)}
