@@ -27,11 +27,7 @@ joyfilter = data.replace(regremove,'');
 joydata = joyfilter.split('\n'); // joydata[0] = Device Name, joydata[1] = Device Number, joydata[2] = Pressed Key
 if(joyinput.id.includes('JoyMapping')){
 if(joydata[2].includes('button')){joyvalue = 'B' + joydata[2].replace(reghk,'')}
-if(joydata[2].includes('hat')){
-if(joydata[2] === 'hat(0 1)'){joyvalue = 'H0V1'}
-if(joydata[2] === 'hat(0 2)'){joyvalue = 'H0V2'}
-if(joydata[2] === 'hat(0 4)'){joyvalue = 'H0V4'}
-if(joydata[2] === 'hat(0 8)'){joyvalue = 'H0V8'}}
+if(joydata[2].includes('hat')){joyvalue = joydata[2].replace('hat(','H').replace(' ','V').replace(')','')}
 if(joydata[2].includes('axis')){
 if(joydata[2].includes('-')){joyvalue = joydata[2].replace(regaxis,'-)')}
 else{joyvalue = joydata[2].replace(regaxis,'+)')}
