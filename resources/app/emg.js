@@ -204,114 +204,112 @@ id('resetname4').addEventListener('click', function(){id('name4').value = 'Keybo
 
 
 id('clearIPLROM').addEventListener('click', function(){IPLROM = '';id('IPLROMText').innerHTML = '';localStorage.removeItem('IPLROM')})
-if(localStorage.getItem('IPLROM') === null || localStorage.getItem('IPLROM') === undefined){IPLROM = '';id('IPLROMText').innerHTML = IPLROM}
+if(localStorage.getItem('IPLROM') === null){IPLROM = '';id('IPLROMText').innerHTML = IPLROM}
 if(localStorage.getItem('IPLROM') != null){IPLROM = localStorage.getItem('IPLROM');id('IPLROMText').innerHTML = IPLROM}
 id('IPLROM').addEventListener('click', function(){
 IPLROMResult = dialogFile({name:'64DD IPL',extensions:['n64','v64','z64','bin','rom']})
 if(IPLROMResult != undefined){IPLROM = IPLROMResult;id('IPLROMText').innerHTML = IPLROM;localStorage.setItem('IPLROM', IPLROM)}})
 
 id('clearDisk').addEventListener('click', function(){Disk = '';id('DiskText').innerHTML = '';localStorage.removeItem('Disk')})
-if(localStorage.getItem('Disk') === null || localStorage.getItem('Disk') === undefined){Disk = '';id('DiskText').innerHTML = Disk}
+if(localStorage.getItem('Disk') === null){Disk = '';id('DiskText').innerHTML = Disk}
 if(localStorage.getItem('Disk') != null){Disk = localStorage.getItem('Disk');id('DiskText').innerHTML = Disk}
 id('Disk').addEventListener('click', function(){
 DiskResult = dialogFile({name:'64DD Disk',extensions:['ndd']})
 if(DiskResult != undefined){Disk = DiskResult;id('DiskText').innerHTML = Disk;localStorage.setItem('Disk', Disk)}})
 
 id('cleargbROM1').addEventListener('click', function(){gbROM1 = '';id('gbROM1Text').innerHTML = '';localStorage.removeItem('gbROM1')})
-if(localStorage.getItem('gbROM1') === null || localStorage.getItem('gbROM1') === undefined){gbROM1 = '';id('gbROM1Text').innerHTML = gbROM1}
+if(localStorage.getItem('gbROM1') === null){gbROM1 = '';id('gbROM1Text').innerHTML = gbROM1}
 if(localStorage.getItem('gbROM1') != null){gbROM1 = localStorage.getItem('gbROM1');id('gbROM1Text').innerHTML = gbROM1}
 id('gbROM1').addEventListener('click', function(){
 gbROM1Result = dialogFile({name:'GB ROM',extensions:['gb','gbc']})
 if(gbROM1Result != undefined){gbROM1 = gbROM1Result;id('gbROM1Text').innerHTML = gbROM1;localStorage.setItem('gbROM1', gbROM1)}})
 
 id('cleargbROM2').addEventListener('click', function(){gbROM2 = '';id('gbROM2Text').innerHTML = '';localStorage.removeItem('gbROM2')})
-if(localStorage.getItem('gbROM2') === null || localStorage.getItem('gbROM2') === undefined){gbROM2 = '';id('gbROM2Text').innerHTML = gbROM2}
+if(localStorage.getItem('gbROM2') === null){gbROM2 = '';id('gbROM2Text').innerHTML = gbROM2}
 if(localStorage.getItem('gbROM2') != null){gbROM2 = localStorage.getItem('gbROM2');id('gbROM2Text').innerHTML = gbROM2}
 id('gbROM2').addEventListener('click', function(){
 gbROM2Result = dialogFile({name:'GB ROM',extensions:['gb','gbc']})
 if(gbROM2Result != undefined){gbROM2 = gbROM2Result;id('gbROM2Text').innerHTML = gbROM2;localStorage.setItem('gbROM2', gbROM2)}})
 
 id('cleargbROM3').addEventListener('click', function(){gbROM3 = '';id('gbROM3Text').innerHTML = '';localStorage.removeItem('gbROM3')})
-if(localStorage.getItem('gbROM3') === null || localStorage.getItem('gbROM3') === undefined){gbROM3 = '';id('gbROM3Text').innerHTML = gbROM3}
+if(localStorage.getItem('gbROM3') === null){gbROM3 = '';id('gbROM3Text').innerHTML = gbROM3}
 if(localStorage.getItem('gbROM3') != null){gbROM3 = localStorage.getItem('gbROM3');id('gbROM3Text').innerHTML = gbROM3}
 id('gbROM3').addEventListener('click', function(){
 gbROM3Result = dialogFile({name:'GB ROM',extensions:['gb','gbc']})
 if(gbROM3Result != undefined){gbROM3 = gbROM3Result;id('gbROM3Text').innerHTML = gbROM3;localStorage.setItem('gbROM3', gbROM3)}})
 
 id('cleargbROM4').addEventListener('click', function(){gbROM4 = '';id('gbROM4Text').innerHTML = '';localStorage.removeItem('gbROM4')})
-if(localStorage.getItem('gbROM4') === null || localStorage.getItem('gbROM4') === undefined){gbROM4 = '';id('gbROM4Text').innerHTML = gbROM4}
+if(localStorage.getItem('gbROM4') === null){gbROM4 = '';id('gbROM4Text').innerHTML = gbROM4}
 if(localStorage.getItem('gbROM4') != null){gbROM4 = localStorage.getItem('gbROM4');id('gbROM4Text').innerHTML = gbROM4}
 id('gbROM4').addEventListener('click', function(){
 gbROM4Result = dialogFile({name:'GB ROM',extensions:['gb','gbc']})
 if(gbROM4Result != undefined){gbROM4 = gbROM4Result;id('gbROM4Text').innerHTML = gbROM4;localStorage.setItem('gbROM4', gbROM4)}})
 
 id('cleargbRAM1').addEventListener('click', function(){gbRAM1 = '';id('gbRAM1Text').innerHTML = '';localStorage.removeItem('gbRAM1')})
-if(localStorage.getItem('gbRAM1') === null || localStorage.getItem('gbRAM1') === undefined){gbRAM1 = '';id('gbRAM1Text').innerHTML = gbRAM1}
+if(localStorage.getItem('gbRAM1') === null){gbRAM1 = '';id('gbRAM1Text').innerHTML = gbRAM1}
 if(localStorage.getItem('gbRAM1') != null){gbRAM1 = localStorage.getItem('gbRAM1');id('gbRAM1Text').innerHTML = gbRAM1}
 id('gbRAM1').addEventListener('click', function(){
 gbRAM1Result = dialogFile({name:'GB Save File',extensions:['sav']})
 if(gbRAM1Result != undefined){gbRAM1 = gbRAM1Result;id('gbRAM1Text').innerHTML = gbRAM1;localStorage.setItem('gbRAM1', gbRAM1)}})
 
 id('cleargbRAM2').addEventListener('click', function(){gbRAM2 = '';id('gbRAM2Text').innerHTML = '';localStorage.removeItem('gbRAM2')})
-if(localStorage.getItem('gbRAM2') === null || localStorage.getItem('gbRAM2') === undefined){gbRAM2 = '';id('gbRAM2Text').innerHTML = gbRAM2}
+if(localStorage.getItem('gbRAM2') === null){gbRAM2 = '';id('gbRAM2Text').innerHTML = gbRAM2}
 if(localStorage.getItem('gbRAM2') != null){gbRAM2 = localStorage.getItem('gbRAM2');id('gbRAM2Text').innerHTML = gbRAM2}
 id('gbRAM2').addEventListener('click', function(){
 gbRAM2Result = dialogFile({name:'GB Save File',extensions:['sav']})
 if(gbRAM2Result != undefined){gbRAM2 = gbRAM2Result;id('gbRAM2Text').innerHTML = gbRAM2;localStorage.setItem('gbRAM2', gbRAM2)}})
 
 id('cleargbRAM3').addEventListener('click', function(){gbRAM3 = '';id('gbRAM3Text').innerHTML = '';localStorage.removeItem('gbRAM3')})
-if(localStorage.getItem('gbRAM3') === null || localStorage.getItem('gbRAM3') === undefined){gbRAM3 = '';id('gbRAM3Text').innerHTML = gbRAM3}
+if(localStorage.getItem('gbRAM3') === null){gbRAM3 = '';id('gbRAM3Text').innerHTML = gbRAM3}
 if(localStorage.getItem('gbRAM3') != null){gbRAM3 = localStorage.getItem('gbRAM3');id('gbRAM3Text').innerHTML = gbRAM3}
 id('gbRAM3').addEventListener('click', function(){
 gbRAM3Result = dialogFile({name:'GB Save File',extensions:['sav']})
 if(gbRAM3Result != undefined){gbRAM3 = gbRAM3Result;id('gbRAM3Text').innerHTML = gbRAM3;localStorage.setItem('gbRAM3', gbRAM3)}})
 
 id('cleargbRAM4').addEventListener('click', function(){gbRAM4 = '';id('gbRAM4Text').innerHTML = '';localStorage.removeItem('gbRAM4')})
-if(localStorage.getItem('gbRAM4') === null || localStorage.getItem('gbRAM4') === undefined){gbRAM4 = '';id('gbRAM4Text').innerHTML = gbRAM4}
+if(localStorage.getItem('gbRAM4') === null){gbRAM4 = '';id('gbRAM4Text').innerHTML = gbRAM4}
 if(localStorage.getItem('gbRAM4') != null){gbRAM4 = localStorage.getItem('gbRAM4');id('gbRAM4Text').innerHTML = gbRAM4}
 id('gbRAM4').addEventListener('click', function(){
 gbRAM4Result = dialogFile({name:'GB Save File',extensions:['sav']})
 if(gbRAM4Result != undefined){gbRAM4 = gbRAM4Result;id('gbRAM4Text').innerHTML = gbRAM4;localStorage.setItem('gbRAM4', gbRAM4)}})
 
-
-
 id('resetScreenshotPath').addEventListener('click', function(){ScreenshotPath = '';id('ScreenshotPathText').innerHTML = '';localStorage.removeItem('ScreenshotPath')})
-if(localStorage.getItem('ScreenshotPath') === null || localStorage.getItem('ScreenshotPath') === undefined){ScreenshotPath = '';id('ScreenshotPathText').innerHTML = ScreenshotPath}
+if(localStorage.getItem('ScreenshotPath') === null){ScreenshotPath = '';id('ScreenshotPathText').innerHTML = ScreenshotPath}
 if(localStorage.getItem('ScreenshotPath') != null){ScreenshotPath = localStorage.getItem('ScreenshotPath');id('ScreenshotPathText').innerHTML = ScreenshotPath}
 id('ScreenshotPath').addEventListener('click', function(){
 ScreenshotPathResult = dialogDirectory()
 if(ScreenshotPathResult != undefined){ScreenshotPath = ScreenshotPathResult;id('ScreenshotPathText').innerHTML = ScreenshotPath;localStorage.setItem('ScreenshotPath', ScreenshotPath)}})
 
 id('resetSaveStatePath').addEventListener('click', function(){SaveStatePath = '';id('SaveStatePathText').innerHTML = '';localStorage.removeItem('SaveStatePath')})
-if(localStorage.getItem('SaveStatePath') === null || localStorage.getItem('SaveStatePath') === undefined){SaveStatePath = '';id('SaveStatePathText').innerHTML = SaveStatePath}
+if(localStorage.getItem('SaveStatePath') === null){SaveStatePath = '';id('SaveStatePathText').innerHTML = SaveStatePath}
 if(localStorage.getItem('SaveStatePath') != null){SaveStatePath = localStorage.getItem('SaveStatePath');id('SaveStatePathText').innerHTML = SaveStatePath}
 id('SaveStatePath').addEventListener('click', function(){
 SaveStatePathResult = dialogDirectory()
 if(SaveStatePathResult != undefined){SaveStatePath = SaveStatePathResult;id('SaveStatePathText').innerHTML = SaveStatePath;localStorage.setItem('SaveStatePath', SaveStatePath)}})
 
 id('resetSaveSRAMPath').addEventListener('click', function(){SaveSRAMPath = '';id('SaveSRAMPathText').innerHTML = '';localStorage.removeItem('SaveSRAMPath')})
-if(localStorage.getItem('SaveSRAMPath') === null || localStorage.getItem('SaveSRAMPath') === undefined){SaveSRAMPath = '';id('SaveSRAMPathText').innerHTML = SaveSRAMPath}
+if(localStorage.getItem('SaveSRAMPath') === null){SaveSRAMPath = '';id('SaveSRAMPathText').innerHTML = SaveSRAMPath}
 if(localStorage.getItem('SaveSRAMPath') != null){SaveSRAMPath = localStorage.getItem('SaveSRAMPath');id('SaveSRAMPathText').innerHTML = SaveSRAMPath}
 id('SaveSRAMPath').addEventListener('click', function(){
 SaveSRAMPathResult = dialogDirectory()
 if(SaveSRAMPathResult != undefined){SaveSRAMPath = SaveSRAMPathResult;id('SaveSRAMPathText').innerHTML = SaveSRAMPath;localStorage.setItem('SaveSRAMPath', SaveSRAMPath)}})
 
 id('resetTxPath').addEventListener('click', function(){txPath = hires_texture;id('txPathText').innerHTML = txPath;localStorage.removeItem('txPath')})
-if(localStorage.getItem('txPath') === null || localStorage.getItem('txPath') === undefined){txPath = hires_texture;id('txPathText').innerHTML = txPath}
+if(localStorage.getItem('txPath') === null){txPath = hires_texture;id('txPathText').innerHTML = txPath}
 if(localStorage.getItem('txPath') != null){txPath = localStorage.getItem('txPath');id('txPathText').innerHTML = txPath}
 id('txPath').addEventListener('click', function(){
 txPathResult = dialogDirectory()
 if(txPathResult != undefined){txPath = txPathResult;id('txPathText').innerHTML = txPath;localStorage.setItem('txPath', txPath)}})
 
 id('resetTxCachePath').addEventListener('click', function(){txCachePath = cache;id('txCachePathText').innerHTML = txCachePath;localStorage.removeItem('txCachePath')})
-if(localStorage.getItem('txCachePath') === null || localStorage.getItem('txCachePath') === undefined){txCachePath = cache;id('txCachePathText').innerHTML = txCachePath}
+if(localStorage.getItem('txCachePath') === null){txCachePath = cache;id('txCachePathText').innerHTML = txCachePath}
 if(localStorage.getItem('txCachePath') != null){txCachePath = localStorage.getItem('txCachePath');id('txCachePathText').innerHTML = txCachePath}
 id('txCachePath').addEventListener('click', function(){
 txCachePathResult = dialogDirectory()
 if(txCachePathResult != undefined){txCachePath = txCachePathResult;id('txCachePathText').innerHTML = txCachePath;localStorage.setItem('txCachePath', txCachePath)}})
 
 id('resetTxDumpPath').addEventListener('click', function(){txDumpPath = texture_dump;id('txDumpPathText').innerHTML = txDumpPath;localStorage.removeItem('txDumpPath')})
-if(localStorage.getItem('txDumpPath') === null || localStorage.getItem('txDumpPath') === undefined){txDumpPath = texture_dump;id('txDumpPathText').innerHTML = txDumpPath}
+if(localStorage.getItem('txDumpPath') === null){txDumpPath = texture_dump;id('txDumpPathText').innerHTML = txDumpPath}
 if(localStorage.getItem('txDumpPath') != null){txDumpPath = localStorage.getItem('txDumpPath');id('txDumpPathText').innerHTML = txDumpPath}
 id('txDumpPath').addEventListener('click', function(){
 txDumpPathResult = dialogDirectory()
