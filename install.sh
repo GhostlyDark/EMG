@@ -1,5 +1,4 @@
-sudo apt install -y build-essential libz-dev libpng-dev libsdl2-dev libfreetype-dev nasm libboost-dev libboost-filesystem-dev
-sudo apt-get install -y libsamplerate-dev libspeexdsp-dev liblircclient-dev git cmake libsdl1.2-dev libsdl2-dev libncurses5-dev gcc make libhidapi-hidraw0 libhidapi-dev wget unzip
+sudo apt install -y build-essential libz-dev libpng-dev libfreetype-dev libsamplerate-dev libspeexdsp-dev liblircclient-dev libboost-dev libboost-filesystem-dev libhidapi-hidraw0 libhidapi-dev libsdl1.2-dev libsdl2-dev libncurses5-dev cmake gcc git make nasm unzip wget
 
 git clone https://github.com/GhostlyDark/EMG.git EMG
 git clone https://github.com/GhostlyDark/sdl-jstest.git sdl-jstest
@@ -8,13 +7,15 @@ git clone https://github.com/mupen64plus/mupen64plus-core.git mupen64plus-core
 
 cd EMG
 cd assets/scripts
-chmod u+x ./m64p_get.sh && chmod u+x ./m64p_build.sh
+chmod u+x ./m64p_get.sh
+chmod u+x ./m64p_build.sh
 ./m64p_get.sh
 ./m64p_build.sh NEW_DYNAREC=1 COREDIR=./
 cd ../../../
 
 cd sdl-jstest
-git submodule init && git submodule update
+git submodule init
+git submodule update
 mkdir build
 cd build
 cmake ..
