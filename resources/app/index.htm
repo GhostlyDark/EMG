@@ -142,10 +142,16 @@
 <option value="mupen64plus-rsp-cxd4-sse2" selected>Static Interpreter</option>
 <option value="mupen64plus-rsp-parallel">Parallel RSP</option>
 </select><label for="rsp">RSP Plugin</label></div>
-<p>&nbsp;</p><p>&nbsp;</p>
-<p title="Use High Level Emulation for Graphics."><input id="rspGFX" type="checkbox" data-store="rspGFX" checked><label for="rspGFX">GFX HLE</label></p>
 <p>&nbsp;</p>
-<p title="Use High Level Emulation for Audio. Not recommended."><input id="rspAudio" type="checkbox" data-store="rspAudio"><label for="rspAudio">Audio HLE</label></p>
+<div title="RSP plugin used when encountering an unknown ucode. HLE RSP only."><select class="width250m" name="RspFallback" id="RspFallback">
+<option value="Rsp-HLE[RspFallback]=">Disable</option>
+<option value="Rsp-HLE[RspFallback]=mupen64plus-rsp-cxd4-sse2" selected>Static Interpreter</option>
+<option value="Rsp-HLE[RspFallback]=mupen64plus-rsp-parallel">Parallel RSP</option>
+</select><label for="RspFallback">RSP Fallback</label></div>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p title="Use High Level Emulation for graphics."><input id="rspGFX" type="checkbox" data-store="rspGFX" checked><label for="rspGFX">GFX HLE</label></p>
+<p>&nbsp;</p>
+<p title="Use High Level Emulation for audio. Not recommended."><input id="rspAudio" type="checkbox" data-store="rspAudio"><label for="rspAudio">Audio HLE</label></p>
 <p>&nbsp;</p>
 <p title="Force CPU-RSP signals synchronization."><input id="WaitForCPUHost" type="checkbox" data-store="WaitForCPUHost"><label for="WaitForCPUHost">Wait for CPU Host</label></p>
 <p>&nbsp;</p>

@@ -49,7 +49,7 @@ numbers = ['OverscanNtscTop','OverscanNtscLeft','OverscanNtscRight','OverscanNts
 
 dropdowns = [
 'emumode','resolution','SaveDiskFormat', /* mupen64plus */
-'gfx','audio','input', /* mupen64plus plugins */
+'gfx','audio','input','rsp','RspFallback', /* mupen64plus plugins */
 'plugin1','plugin2','plugin3','plugin4','mode1','mode2','mode3','mode4','mouse1_1','mouse1_2','mouse1_3','mouse2_1','mouse2_2','mouse2_3','mouse3_1','mouse3_2','mouse3_3','mouse4_1','mouse4_2','mouse4_3', // mupen64plus-input
 'DEFAULT_FREQUENCY','SECONDARY_BUFFER_SIZE','RESAMPLE', /* mupen64plus-audio */
 'a','b','x','y','start','z','l','r','d_pad_left','d_pad_right','d_pad_down','d_pad_up','c_stick_left','c_stick_right','c_stick_down','c_stick_up', /* mupen64plus-input-gca */
@@ -115,15 +115,13 @@ if(localStorage.getItem(dropdown) != null){drop.value = localStorage.getItem(dro
 drop.addEventListener('change', function(){localStorage.setItem(dropdown, drop.options[drop.selectedIndex].value)})})
 
 if(localStorage.getItem('rsp') != null){
-id('rsp').value = localStorage.getItem('rsp')
-if(localStorage.getItem('rsp') === 'mupen64plus-rsp-hle'){id('rspGFX').disabled = true;id('rspAudio').disabled = false;id('WaitForCPUHost').disabled = true;id('SupportCPUSemaphoreLock').disabled = true}
-else if(localStorage.getItem('rsp') === 'mupen64plus-rsp-cxd4-sse2'){id('rspGFX').disabled = false;id('rspAudio').disabled = false;id('WaitForCPUHost').disabled = false;id('SupportCPUSemaphoreLock').disabled = false}
-else if(localStorage.getItem('rsp') === 'mupen64plus-rsp-parallel'){id('rspGFX').disabled = true;id('rspAudio').disabled = true;id('WaitForCPUHost').disabled = true;id('SupportCPUSemaphoreLock').disabled = true}}
-function rspDropdownDisable(){if(id('rsp').value === 'mupen64plus-rsp-hle'){
-id('rspGFX').disabled = true;id('rspAudio').disabled = false;id('WaitForCPUHost').disabled = true;id('SupportCPUSemaphoreLock').disabled = true}
-else if(id('rsp').value === 'mupen64plus-rsp-cxd4-sse2'){id('rspGFX').disabled = false;id('rspAudio').disabled = false;id('WaitForCPUHost').disabled = false;id('SupportCPUSemaphoreLock').disabled = false}
-else if(id('rsp').value === 'mupen64plus-rsp-parallel'){id('rspGFX').disabled = true;id('rspAudio').disabled = true;id('WaitForCPUHost').disabled = true;id('SupportCPUSemaphoreLock').disabled = true}
-localStorage.setItem('rsp', id('rsp').options[id('rsp').selectedIndex].value)}
+if(localStorage.getItem('rsp') === 'mupen64plus-rsp-hle'){id('RspFallback').disabled = false;id('rspGFX').disabled = true;id('rspAudio').disabled = false;id('WaitForCPUHost').disabled = true;id('SupportCPUSemaphoreLock').disabled = true}
+else if(localStorage.getItem('rsp') === 'mupen64plus-rsp-cxd4-sse2'){id('RspFallback').disabled = true;id('rspGFX').disabled = false;id('rspAudio').disabled = false;id('WaitForCPUHost').disabled = false;id('SupportCPUSemaphoreLock').disabled = false}
+else if(localStorage.getItem('rsp') === 'mupen64plus-rsp-parallel'){id('RspFallback').disabled = true;id('rspGFX').disabled = true;id('rspAudio').disabled = true;id('WaitForCPUHost').disabled = true;id('SupportCPUSemaphoreLock').disabled = true}}
+function rspDropdownDisable(){
+if(id('rsp').value === 'mupen64plus-rsp-hle'){id('RspFallback').disabled = false;id('rspGFX').disabled = true;id('rspAudio').disabled = false;id('WaitForCPUHost').disabled = true;id('SupportCPUSemaphoreLock').disabled = true}
+else if(id('rsp').value === 'mupen64plus-rsp-cxd4-sse2'){id('RspFallback').disabled = true;id('rspGFX').disabled = false;id('rspAudio').disabled = false;id('WaitForCPUHost').disabled = false;id('SupportCPUSemaphoreLock').disabled = false}
+else if(id('rsp').value === 'mupen64plus-rsp-parallel'){id('RspFallback').disabled = true;id('rspGFX').disabled = true;id('rspAudio').disabled = true;id('WaitForCPUHost').disabled = true;id('SupportCPUSemaphoreLock').disabled = true}}
 id('rsp').addEventListener('change', function(){rspDropdownDisable()})
 rspDropdownDisable();
 
@@ -826,6 +824,7 @@ gfx = id('gfx').options[id('gfx').selectedIndex].value,
 audio = id('audio').options[id('audio').selectedIndex].value,
 input = id('input').options[id('input').selectedIndex].value,
 rsp = id('rsp').options[id('rsp').selectedIndex].value,
+RspFallback = id('RspFallback').options[id('RspFallback').selectedIndex].value,
 emumode = id('emumode').options[id('emumode').selectedIndex].value,
 plugin1 = id('plugin1').options[id('plugin1').selectedIndex].value,
 plugin2 = id('plugin2').options[id('plugin2').selectedIndex].value,
@@ -1070,7 +1069,6 @@ c_stick_up = id('c_stick_up').value,
 gcaSettings = 'control_stick_deadzone = ' +  control_stick_deadzone + '\n' + 'control_stick_sensitivity = ' + control_stick_sensitivity + '\n' + 'c_stick_deadzone = ' + c_stick_deadzone + '\n' + 'trigger_threshold = ' + trigger_threshold + '\n' + '\n' + '[controller_mapping]' + '\n' + 'a = ' + a + '\n' + 'b = ' + b + '\n' + 'x = ' + x + '\n' + 'y = ' + y + '\n' + 'start = ' + start + '\n' + 'z = ' + z + '\n' + 'l = ' + l + '\n' + 'r = ' + r + '\n' + 'd_pad_left = ' + d_pad_left + '\n' + 'd_pad_right = ' + d_pad_right + '\n' + 'd_pad_down = ' + d_pad_down + '\n' + 'd_pad_up = ' + d_pad_up + '\n' + 'c_stick_left = ' + c_stick_left + '\n' + 'c_stick_right = ' + c_stick_right + '\n' + 'c_stick_down = ' + c_stick_down + '\n' + 'c_stick_up = ' + c_stick_up,
 
 m64pGFX = 'Rsp-HLE[DisplayListToGraphicsPlugin]=True',
-RspFallback = 'Rsp-HLE[RspFallback]=mupen64plus-rsp-cxd4-sse2',
 SharedDataPath = 'Core[SharedDataPath]=',
 PIFROM, nospeedlimit, verbose,
 
