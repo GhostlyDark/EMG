@@ -8,7 +8,7 @@ git clone https://github.com/mupen64plus/mupen64plus-core.git mupen64plus-core
 
 cd EMG
 cd assets/scripts
-chmod u+x ./m64p_get.sh && chmod u+x ./m64p_update.sh && chmod u+x ./m64p_build.sh
+chmod u+x ./m64p_get.sh && chmod u+x ./m64p_build.sh
 ./m64p_get.sh
 ./m64p_build.sh NEW_DYNAREC=1 COREDIR=./
 cd ../../../
