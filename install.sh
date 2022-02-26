@@ -10,7 +10,7 @@ cd EMG
 cd assets/scripts
 chmod u+x ./m64p_get.sh && chmod u+x ./m64p_update.sh && chmod u+x ./m64p_build.sh
 ./m64p_get.sh
-./m64p_build.sh NEW_DYNAREC=1
+./m64p_build.sh NEW_DYNAREC=1 COREDIR=./
 cd ../../../
 
 cd sdl-jstest
