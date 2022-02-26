@@ -158,9 +158,9 @@
 <p>&nbsp;</p>
 <p><input id="AUDIO_SYNC" type="checkbox" data-store="AUDIO_SYNC" checked><label for="AUDIO_SYNC">Synchronize Video/Audio</label></p>
 <p>&nbsp;</p>
-<p title="Percentage change each time the volume is increased or decreased."><span class="numberDecrease" id="decreaseVOLUME_ADJUST">-</span><input id="VOLUME_ADJUST" min="1" max="100" value="5" type="number"><span class="numberIncrease" id="increaseVOLUME_ADJUST">+</span><label for="VOLUME_ADJUST">Volume Step (in %)</label></p>
+<p title="Percentage change each time the volume is increased or decreased."><span class="numberDecrease" id="decreaseVOLUME_ADJUST">-</span><input id="VOLUME_ADJUST" min="1" max="100" step="1" value="5" type="number"><span class="numberIncrease" id="increaseVOLUME_ADJUST">+</span><label for="VOLUME_ADJUST">Volume Step (in %)</label></p>
 <p>&nbsp;</p>
-<p title="Default volume when a game is started."><span class="numberDecrease" id="decreaseVOLUME_DEFAULT">-</span><input id="VOLUME_DEFAULT" min="0" max="100" value="80" type="number"><span class="numberIncrease" id="increaseVOLUME_DEFAULT">+</span><label for="VOLUME_DEFAULT">Default Volume (in %)</label></p>
+<p title="Default volume when a game is started."><span class="numberDecrease" id="decreaseVOLUME_DEFAULT">-</span><input id="VOLUME_DEFAULT" min="0" max="100" step="1" value="80" type="number"><span class="numberIncrease" id="increaseVOLUME_DEFAULT">+</span><label for="VOLUME_DEFAULT">Default Volume (in %)</label></p>
 <p>&nbsp;</p>
 <div title="Decreasing this value will reduce audio latency but requires a faster PC to avoid choppiness. Increasing this will increase audio latency but reduce the chance of drop-outs."><select class="width200m" name="SECONDARY_BUFFER_SIZE" id="SECONDARY_BUFFER_SIZE">
 <option data-buffer="Audio-SDL[PRIMARY_BUFFER_TARGET]=2048" value="Audio-SDL[SECONDARY_BUFFER_SIZE]=1024" selected>1024</option>
@@ -209,11 +209,13 @@
 <p>&nbsp;</p>
 <p title="Increment the save state slot after each save operation."><input id="AutoStateSlotIncrement" type="checkbox" data-store="AutoStateSlotIncrement"><label for="AutoStateSlotIncrement">Auto increment state slot</label></p>
 <p>&nbsp;</p>
-<p title="Save state slot (0-9) to use when starting emulation."><span class="numberDecrease" id="decreaseCurrentStateSlot">-</span><input id="CurrentStateSlot" min="0" max="9" value="0" type="number"><span class="numberIncrease" id="increaseCurrentStateSlot">+</span><label for="CurrentStateSlot">Default state slot</label></p>
+<p title="Save state slot (0-9) to use when starting emulation."><span class="numberDecrease" id="decreaseCurrentStateSlot">-</span><input id="CurrentStateSlot" min="0" max="9" step="1" value="0" type="number"><span class="numberIncrease" id="increaseCurrentStateSlot">+</span><label for="CurrentStateSlot">Default state slot</label></p>
 <p>&nbsp;</p>
-<p title="Force number of cycles per emulated instruction (speed hack, not recommended). Leave at 0 to disable."><span class="numberDecrease" id="decreaseCountPerOp">-</span><input id="CountPerOp" min="0" max="6" value="0" type="number"><span class="numberIncrease" id="increaseCountPerOp">+</span><label for="CountPerOp">Counter Factor</label></p>
+<p title="Force number of cycles per emulated instruction (speed hack, not recommended). Leave at 0 to disable."><span class="numberDecrease" id="decreaseCountPerOp">-</span><input id="CountPerOp" min="0" max="6" step="1" value="0" type="number"><span class="numberIncrease" id="increaseCountPerOp">+</span><label for="CountPerOp">Counter Factor</label></p>
 <p>&nbsp;</p>
-<p title="Reduce number of cycles per update by power of two (overclock)."><span class="numberDecrease" id="decreaseCountPerOpDenomPot">-</span><input id="CountPerOpDenomPot" min="0" max="11" value="0" type="number"><span class="numberIncrease" id="increaseCountPerOpDenomPot">+</span><label for="CountPerOpDenomPot">Overclock</label></p>
+<p title="Reduce number of cycles per update by power of two (overclock)."><span class="numberDecrease" id="decreaseCountPerOpDenomPot">-</span><input id="CountPerOpDenomPot" min="0" max="11" step="1" value="0" type="number"><span class="numberIncrease" id="increaseCountPerOpDenomPot">+</span><label for="CountPerOpDenomPot">Overclock</label></p>
+<p>&nbsp;</p>
+<p title="Duration of SI DMA. Use -1 for default (per-game settings)."><span class="numberDecrease" id="decreaseSiDmaDuration">-</span><input id="SiDmaDuration" min="-1" max="1000" step="10" step="1" value="-1" type="number"><span class="numberIncrease" id="increaseSiDmaDuration">+</span><label for="SiDmaDuration">SI DMA Duration</label></p>
 <p>&nbsp;</p><p>&nbsp;</p>
 <select name="SaveDiskFormat" id="SaveDiskFormat">
 <option value="Core[SaveDiskFormat]=0">Full Disk Copy</option>
@@ -1344,7 +1346,7 @@
 <p>&nbsp;</p>
 <p title="Use anamorphic 16:9 output mode." ><input id="ViWidescreen" type="checkbox" data-store="ViWidescreen"><label for="ViWidescreen">VI Widescreen</label></p>
 <p>&nbsp;</p>
-<p title="Number of logical processors to use. 0 uses all."><span class="numberDecrease" id="decreaseNumWorkers">-</span><input id="NumWorkers" min="0" value="0" type="number"><span class="numberIncrease" id="increaseNumWorkers">+</span><label for="NumWorkers">Rendering Workers</label></p>
+<p title="Number of logical processors to use. 0 uses all."><span class="numberDecrease" id="decreaseNumWorkers">-</span><input id="NumWorkers" min="0" step="1" value="0" type="number"><span class="numberIncrease" id="increaseNumWorkers">+</span><label for="NumWorkers">Rendering Workers</label></p>
 <p>&nbsp;</p>
 <select class="width200m" name="ViMode" id="ViMode">
 <option value="Video-Angrylion-Plus[ViMode]=0" selected>Filtered</option>
@@ -1538,21 +1540,21 @@
 <p>&nbsp;</p>
 <p title="Crop image to remove black bars."><input id="EnableOverscan" type="checkbox" data-store="EnableOverscan"><label for="EnableOverscan">Enable Overscan</label></p>
 <p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreaseOverscanNtscTop">-</span><input id="OverscanNtscTop" min="0" max="99" value="0" type="number"><span class="numberIncrease" id="increaseOverscanNtscTop">+</span><label for="OverscanNtscTop">NTSC Top</label></p>
+<p><span class="numberDecrease" id="decreaseOverscanNtscTop">-</span><input id="OverscanNtscTop" min="0" max="99" step="1" value="0" type="number"><span class="numberIncrease" id="increaseOverscanNtscTop">+</span><label for="OverscanNtscTop">NTSC Top</label></p>
 <p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreaseOverscanNtscLeft">-</span><input id="OverscanNtscLeft" min="0" max="99" value="0" type="number"><span class="numberIncrease" id="increaseOverscanNtscLeft">+</span><label for="OverscanNtscLeft">NTSC Left</label></p>
+<p><span class="numberDecrease" id="decreaseOverscanNtscLeft">-</span><input id="OverscanNtscLeft" min="0" max="99" step="1" value="0" type="number"><span class="numberIncrease" id="increaseOverscanNtscLeft">+</span><label for="OverscanNtscLeft">NTSC Left</label></p>
 <p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreaseOverscanNtscRight">-</span><input id="OverscanNtscRight" min="0" max="99" value="0" type="number"><span class="numberIncrease" id="increaseOverscanNtscRight">+</span><label for="OverscanNtscRight">NTSC Right</label></p>
+<p><span class="numberDecrease" id="decreaseOverscanNtscRight">-</span><input id="OverscanNtscRight" min="0" max="99" step="1" value="0" type="number"><span class="numberIncrease" id="increaseOverscanNtscRight">+</span><label for="OverscanNtscRight">NTSC Right</label></p>
 <p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreaseOverscanNtscBottom">-</span><input id="OverscanNtscBottom" min="0" max="99" value="0" type="number"><span class="numberIncrease" id="increaseOverscanNtscBottom">+</span><label for="OverscanNtscBottom">NTSC Bottom</label></p>
+<p><span class="numberDecrease" id="decreaseOverscanNtscBottom">-</span><input id="OverscanNtscBottom" min="0" max="99" step="1" value="0" type="number"><span class="numberIncrease" id="increaseOverscanNtscBottom">+</span><label for="OverscanNtscBottom">NTSC Bottom</label></p>
 <p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreaseOverscanPalTop">-</span><input id="OverscanPalTop" min="0" max="99" value="0" type="number"><span class="numberIncrease" id="increaseOverscanPalTop">+</span><label for="OverscanPalTop">PAL Top</label></p>
+<p><span class="numberDecrease" id="decreaseOverscanPalTop">-</span><input id="OverscanPalTop" min="0" max="99" value="0" step="1" type="number"><span class="numberIncrease" id="increaseOverscanPalTop">+</span><label for="OverscanPalTop">PAL Top</label></p>
 <p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreaseOverscanPalLeft">-</span><input id="OverscanPalLeft" min="0" max="99" value="0" type="number"><span class="numberIncrease" id="increaseOverscanPalLeft">+</span><label for="OverscanPalLeft">PAL Left</label></p>
+<p><span class="numberDecrease" id="decreaseOverscanPalLeft">-</span><input id="OverscanPalLeft" min="0" max="99" value="0" step="1" type="number"><span class="numberIncrease" id="increaseOverscanPalLeft">+</span><label for="OverscanPalLeft">PAL Left</label></p>
 <p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreaseOverscanPalRight">-</span><input id="OverscanPalRight" min="0" max="99" value="0" type="number"><span class="numberIncrease" id="increaseOverscanPalRight">+</span><label for="OverscanPalRight">PAL Right</label></p>
+<p><span class="numberDecrease" id="decreaseOverscanPalRight">-</span><input id="OverscanPalRight" min="0" max="99" value="0" step="1" type="number"><span class="numberIncrease" id="increaseOverscanPalRight">+</span><label for="OverscanPalRight">PAL Right</label></p>
 <p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreaseOverscanPalBottom">-</span><input id="OverscanPalBottom" min="0" max="99" value="0" type="number"><span class="numberIncrease" id="increaseOverscanPalBottom">+</span><label for="OverscanPalBottom">PAL Bottom</label></p>
+<p><span class="numberDecrease" id="decreaseOverscanPalBottom">-</span><input id="OverscanPalBottom" min="0" max="99" value="0" step="1" type="number"><span class="numberIncrease" id="increaseOverscanPalBottom">+</span><label for="OverscanPalBottom">PAL Bottom</label></p>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
 <p class="sub">Texture Enhancement</p>
 <p>&nbsp;</p>
@@ -1620,7 +1622,7 @@
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
 <p class="sub">On-Screen Display</p>
 <p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreasefontSize">-</span><input id="fontSize" min="6" max="99" value="18" type="number"><span class="numberIncrease" id="increasefontSize">+</span><label for="fontSize">Font Size (in px)</label></p>
+<p><span class="numberDecrease" id="decreasefontSize">-</span><input id="fontSize" min="6" max="99" step="1" value="18" type="number"><span class="numberIncrease" id="increasefontSize">+</span><label for="fontSize">Font Size (in px)</label></p>
 <p>&nbsp;</p>
 <p><input id="fontColor" value="#B5E61D" type="color" data-store="fontColor"><label for="fontColor">Font Color</label><button class="floatright" id="resetfontColor">Reset</button></p>
 <p>&nbsp;</p>
@@ -1705,7 +1707,7 @@
 <p>&nbsp;</p>
 <p><input id="ParallelWidescreenStretch" type="checkbox" data-store="ParallelWidescreenStretch"><label for="ParallelWidescreenStretch">Widescreen (Stretch)</label></p>
 <p>&nbsp;</p>
-<p title="Amount of overscan pixels to crop"><span class="numberDecrease" id="decreaseParallelCropOverscan">-</span><input id="ParallelCropOverscan" min="0" max="99" value="0" type="number"><span class="numberIncrease" id="increaseParallelCropOverscan">+</span><label for="ParallelCropOverscan">Crop Overscan</label></p>
+<p title="Amount of overscan pixels to crop"><span class="numberDecrease" id="decreaseParallelCropOverscan">-</span><input id="ParallelCropOverscan" min="0" max="99" step="1" value="0" type="number"><span class="numberIncrease" id="increaseParallelCropOverscan">+</span><label for="ParallelCropOverscan">Crop Overscan</label></p>
 <p>&nbsp;</p>
 <select class="width125m" name="ParallelUpscaling" id="ParallelUpscaling">
 <option value="Video-Parallel[Upscaling]=1" selected>1x</option>

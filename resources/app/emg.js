@@ -45,7 +45,7 @@ m64p_joykeys = [
 
 ranges = ['MouseSensitivity1X','MouseSensitivity1Y','MouseSensitivity2X','MouseSensitivity2Y','MouseSensitivity3X','MouseSensitivity3Y','MouseSensitivity4X','MouseSensitivity4Y','AnalogDeadzone1X','AnalogDeadzone1Y','AnalogDeadzone2X','AnalogDeadzone2Y','AnalogDeadzone3X','AnalogDeadzone3Y','AnalogDeadzone4X','AnalogDeadzone4Y','AnalogPeak1X','AnalogPeak1Y','AnalogPeak2X','AnalogPeak2Y','AnalogPeak3X','AnalogPeak3Y','AnalogPeak4X','AnalogPeak4Y'],
 
-numbers = ['OverscanNtscTop','OverscanNtscLeft','OverscanNtscRight','OverscanNtscBottom','OverscanPalTop','OverscanPalLeft','OverscanPalRight','OverscanPalBottom','NumWorkers','ParallelCropOverscan','txCacheSize','txHiresVramLimit','GammaCorrectionLevel','fontSize','CountPerOp','CountPerOpDenomPot','CurrentStateSlot','VOLUME_ADJUST','VOLUME_DEFAULT','PolygonOffsetFactor','PolygonOffsetUnits','polygon_offset_factor','polygon_offset_units','ghq_cache_size'],
+numbers = ['OverscanNtscTop','OverscanNtscLeft','OverscanNtscRight','OverscanNtscBottom','OverscanPalTop','OverscanPalLeft','OverscanPalRight','OverscanPalBottom','NumWorkers','ParallelCropOverscan','txCacheSize','txHiresVramLimit','GammaCorrectionLevel','fontSize','CountPerOp','CountPerOpDenomPot','SiDmaDuration','CurrentStateSlot','VOLUME_ADJUST','VOLUME_DEFAULT','PolygonOffsetFactor','PolygonOffsetUnits','polygon_offset_factor','polygon_offset_units','ghq_cache_size'],
 
 dropdowns = [
 'emumode','resolution','SaveDiskFormat', /* mupen64plus */
@@ -141,24 +141,24 @@ range_input.addEventListener('change', function(){localStorage.setItem(range, ra
 
 id('NumWorkers').max = window.navigator.hardwareConcurrency;
 numbers.forEach(number => {
-var step = 1, digits = 0,
-number_input = id(number),
+var number_input = id(number),
 number_decrease = id('decrease'+number),
-number_increase = id('increase'+number);
-if(number_input.step==='128'){step=128}
-else if(number_input.step==='512'){step=512}
-else if(number_input.step==='0.1'){step=0.1;digits=2}
+number_increase = id('increase'+number),
+digits = 0;
+if(number_input.step.includes('.'))digits=2;
 
 if(localStorage.getItem(number) != null){number_input.value = localStorage.getItem(number)}
 number_input.addEventListener('change', function(){localStorage.setItem(number, number_input.value)})
 number_input.addEventListener('keydown', function(e){e.preventDefault()})
 
 number_decrease.addEventListener('click', function(){if(number_input.value != number_input.min){
-number_input.value = (parseFloat(number_input.value) - step).toFixed(digits)
+if(number_input.id === 'SiDmaDuration' && number_input.value === '0'){number_input.value = '-1'}
+else{number_input.value = (parseFloat(number_input.value) - number_input.step*1).toFixed(digits)}
 localStorage.setItem(number, number_input.value)}})
 
 number_increase.addEventListener('click', function(){if(number_input.value != number_input.max){
-number_input.value = (parseFloat(number_input.value) + step).toFixed(digits)
+if(number_input.id === 'SiDmaDuration' && number_input.value === '-1'){number_input.value = '0'}
+else{number_input.value = (parseFloat(number_input.value) + number_input.step*1).toFixed(digits)}
 localStorage.setItem(number, number_input.value)}})})
 
 
@@ -933,6 +933,7 @@ fontColor = 'Video-GLideN64[fontColor]=' + id('fontColor').value.substring(1),
 NumWorkers = 'Video-Angrylion-Plus[NumWorkers]=' + id('NumWorkers').value,
 CountPerOp = 'Core[CountPerOp]=' + id('CountPerOp').value,
 CountPerOpDenomPot = 'Core[CountPerOpDenomPot]=' + id('CountPerOpDenomPot').value,
+SiDmaDuration = 'Core[SiDmaDuration]=' + id('SiDmaDuration').value,
 CurrentStateSlot = 'Core[CurrentStateSlot]=' + id('CurrentStateSlot').value,
 name1 = 'Input-SDL-Control1[name]=' + id('name1').value,
 name2 = 'Input-SDL-Control2[name]=' + id('name2').value,
@@ -1477,7 +1478,7 @@ if(id('nospeedlimit').checked){nospeedlimit = '--nospeedlimit';audio = 'dummy';v
 PIFROM = PIFSetting != '' ? ['--pif',PIFSetting] : []
 verbose = id('verbose').checked ? '--verbose' : []
 
-var core = ['--corelib','mupen64plus','--plugindir','.',osd,fullscreen,'--resolution',resolution,'--gfx',gfx,'--audio',audio,'--input',input,'--rsp',rsp,'--set',RspFallback,'--emumode',emumode,'--set',exp,'--set',vsync,'--set',cxd4GFX,'--set',m64pGFX,'--set',IPLROMSetting,'--set',DiskSetting,'--set',NoCompiledJump,'--set',CountPerOp,'--set',CountPerOpDenomPot,'--set',AutoStateSlotIncrement,'--set',CurrentStateSlot,'--set',SharedDataPath,'--set',ScreenshotPathSetting,'--set',SaveStatePathSetting,'--set',SaveSRAMPathSetting,'--set',RandomizeInterrupt,'--set',SaveDiskFormat,'--set',WaitForCPUHost,'--set',SupportCPUSemaphoreLock,'--set',gbROM1Setting,'--set',gbROM2Setting,'--set',gbROM3Setting,'--set',gbROM4Setting,'--set',gbRAM1Setting,'--set',gbRAM2Setting,'--set',gbRAM3Setting,'--set',gbRAM4Setting,'--set',DEFAULT_FREQUENCY,'--set',SWAP_CHANNELS,'--set',PRIMARY_BUFFER_TARGET,'--set',SECONDARY_BUFFER_SIZE,'--set',RESAMPLE,'--set',VOLUME_ADJUST,'--set',VOLUME_DEFAULT,'--set',AUDIO_SYNC,'--set',KbdMappingSlot0,'--set',KbdMappingSlot1,'--set',KbdMappingSlot2,'--set',KbdMappingSlot3,'--set',KbdMappingSlot4,'--set',KbdMappingSlot5,'--set',KbdMappingSlot6,'--set',KbdMappingSlot7,'--set',KbdMappingSlot8,'--set',KbdMappingSlot9,'--set',KbdMappingStop,'--set',KbdMappingFullscreen,'--set',KbdMappingSaveState,'--set',KbdMappingLoadState,'--set',KbdMappingIncrementSlot,'--set',KbdMappingReset,'--set',KbdMappingSpeedDown,'--set',KbdMappingSpeedUp,'--set',KbdMappingScreenshot,'--set',KbdMappingPause,'--set',KbdMappingMute,'--set',KbdMappingIncreaseVolume,'--set',KbdMappingDecreaseVolume,'--set',KbdMappingFastForward,'--set',KbdMappingFrameAdvance,'--set',KbdMappingGameshark,'--set',JoyMappingStop,'--set',JoyMappingFullscreen,'--set',JoyMappingSaveState,'--set',JoyMappingLoadState,'--set',JoyMappingIncrementSlot,'--set',JoyMappingReset,'--set',JoyMappingSpeedDown,'--set',JoyMappingSpeedUp,'--set',JoyMappingScreenshot,'--set',JoyMappingPause,'--set',JoyMappingMute,'--set',JoyMappingIncreaseVolume,'--set',JoyMappingDecreaseVolume,'--set',JoyMappingFastForward,'--set',JoyMappingFrameAdvance,'--set',JoyMappingGameshark],
+var core = ['--corelib','mupen64plus','--plugindir','.',osd,fullscreen,'--resolution',resolution,'--gfx',gfx,'--audio',audio,'--input',input,'--rsp',rsp,'--set',RspFallback,'--emumode',emumode,'--set',exp,'--set',vsync,'--set',cxd4GFX,'--set',m64pGFX,'--set',IPLROMSetting,'--set',DiskSetting,'--set',NoCompiledJump,'--set',CountPerOp,'--set',CountPerOpDenomPot,'--set',SiDmaDuration,'--set',AutoStateSlotIncrement,'--set',CurrentStateSlot,'--set',SharedDataPath,'--set',ScreenshotPathSetting,'--set',SaveStatePathSetting,'--set',SaveSRAMPathSetting,'--set',RandomizeInterrupt,'--set',SaveDiskFormat,'--set',WaitForCPUHost,'--set',SupportCPUSemaphoreLock,'--set',gbROM1Setting,'--set',gbROM2Setting,'--set',gbROM3Setting,'--set',gbROM4Setting,'--set',gbRAM1Setting,'--set',gbRAM2Setting,'--set',gbRAM3Setting,'--set',gbRAM4Setting,'--set',DEFAULT_FREQUENCY,'--set',SWAP_CHANNELS,'--set',PRIMARY_BUFFER_TARGET,'--set',SECONDARY_BUFFER_SIZE,'--set',RESAMPLE,'--set',VOLUME_ADJUST,'--set',VOLUME_DEFAULT,'--set',AUDIO_SYNC,'--set',KbdMappingSlot0,'--set',KbdMappingSlot1,'--set',KbdMappingSlot2,'--set',KbdMappingSlot3,'--set',KbdMappingSlot4,'--set',KbdMappingSlot5,'--set',KbdMappingSlot6,'--set',KbdMappingSlot7,'--set',KbdMappingSlot8,'--set',KbdMappingSlot9,'--set',KbdMappingStop,'--set',KbdMappingFullscreen,'--set',KbdMappingSaveState,'--set',KbdMappingLoadState,'--set',KbdMappingIncrementSlot,'--set',KbdMappingReset,'--set',KbdMappingSpeedDown,'--set',KbdMappingSpeedUp,'--set',KbdMappingScreenshot,'--set',KbdMappingPause,'--set',KbdMappingMute,'--set',KbdMappingIncreaseVolume,'--set',KbdMappingDecreaseVolume,'--set',KbdMappingFastForward,'--set',KbdMappingFrameAdvance,'--set',KbdMappingGameshark,'--set',JoyMappingStop,'--set',JoyMappingFullscreen,'--set',JoyMappingSaveState,'--set',JoyMappingLoadState,'--set',JoyMappingIncrementSlot,'--set',JoyMappingReset,'--set',JoyMappingSpeedDown,'--set',JoyMappingSpeedUp,'--set',JoyMappingScreenshot,'--set',JoyMappingPause,'--set',JoyMappingMute,'--set',JoyMappingIncreaseVolume,'--set',JoyMappingDecreaseVolume,'--set',JoyMappingFastForward,'--set',JoyMappingFrameAdvance,'--set',JoyMappingGameshark],
 
 controls = ['--set',AButton1,'--set',BButton1,'--set',LTrig1,'--set',RTrig1,'--set',ZTrig1,'--set',Start1,'--set',DPadU1,'--set',DPadL1,'--set',DPadR1,'--set',DPadD1,'--set',CButtonU1,'--set',CButtonL1,'--set',CButtonR1,'--set',CButtonD1,'--set',MempakSwitch1,'--set',RumblepakSwitch1,'--set',XAxis1,'--set',YAxis1,'--set',AButton2,'--set',BButton2,'--set',LTrig2,'--set',RTrig2,'--set',ZTrig2,'--set',Start2,'--set',DPadU2,'--set',DPadL2,'--set',DPadR2,'--set',DPadD2,'--set',CButtonU2,'--set',CButtonL2,'--set',CButtonR2,'--set',CButtonD2,'--set',MempakSwitch2,'--set',RumblepakSwitch2,'--set',XAxis2,'--set',YAxis2,'--set',AButton3,'--set',BButton3,'--set',LTrig3,'--set',RTrig3,'--set',ZTrig3,'--set',Start3,'--set',DPadU3,'--set',DPadL3,'--set',DPadR3,'--set',DPadD3,'--set',CButtonU3,'--set',CButtonL3,'--set',CButtonR3,'--set',CButtonD3,'--set',MempakSwitch3,'--set',RumblepakSwitch3,'--set',XAxis3,'--set',YAxis3,'--set',AButton4,'--set',BButton4,'--set',LTrig4,'--set',RTrig4,'--set',ZTrig4,'--set',Start4,'--set',DPadU4,'--set',DPadL4,'--set',DPadR4,'--set',DPadD4,'--set',CButtonU4,'--set',CButtonL4,'--set',CButtonR4,'--set',CButtonD4,'--set',MempakSwitch4,'--set',RumblepakSwitch4,'--set',XAxis4,'--set',YAxis4,'--set',plugin1,'--set',plugin2,'--set',plugin3,'--set',plugin4,'--set',plugged1,'--set',plugged2,'--set',plugged3,'--set',plugged4,'--set',mode1,'--set',mode2,'--set',mode3,'--set',mode4,'--set',name1,'--set',name2,'--set',name3,'--set',name4,'--set',mouse1,'--set',mouse2,'--set',mouse3,'--set',mouse4,'--set',msensitivity1,'--set',msensitivity2,'--set',msensitivity3,'--set',msensitivity4,'--set',analogdeadzone1,'--set',analogdeadzone2,'--set',analogdeadzone3,'--set',analogdeadzone4,'--set',analogpeak1,'--set',analogpeak2,'--set',analogpeak3,'--set',analogpeak4,'--set',device1,'--set',device2,'--set',device3,'--set',device4],
 
