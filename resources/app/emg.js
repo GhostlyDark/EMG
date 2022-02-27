@@ -1,15 +1,17 @@
 document.addEventListener('DOMContentLoaded', function() {
-var filePath,fileResult,cheatRadio,txPath,txCachePath,txDumpPath,PIF,PIFResult,IPLROM,IPLROMResult,Disk,DiskResult,txPathResult,txCachePathResult,txDumpPathResult,ScreenshotPath,ScreenshotPathResult,SaveStatePath,SaveStatePathResult,SaveSRAMPath,SaveSRAMPathResult,gbROM1,gbROM1Result,gbROM2,gbROM2Result,gbROM3,gbROM3Result,gbROM4,gbROM4Result,gbRAM1,gbRAM1Result,gbRAM2,gbRAM2Result,gbRAM3,gbRAM3Result,gbRAM4,gbRAM4Result,recentFiles = [];
+var filePath,fileResult,archivePath,archiveResult,cheatRadio,txPath,txPathResult,txCachePath,txCachePathResult,txDumpPath,txDumpPathResult,workingDirectory,workingDirectoryResult,PIF,PIFResult,IPLROM,IPLROMResult,Disk,DiskResult,ScreenshotPath,ScreenshotPathResult,SaveStatePath,SaveStatePathResult,SaveSRAMPath,SaveSRAMPathResult,gbROM1,gbROM1Result,gbROM2,gbROM2Result,gbROM3,gbROM3Result,gbROM4,gbROM4Result,gbRAM1,gbRAM1Result,gbRAM2,gbRAM2Result,gbRAM3,gbRAM3Result,gbRAM4,gbRAM4Result,recentFiles = [];
 
 const dialogDirectory = window.dialogDirectory,
 dialogFile = window.dialogFile,
 emuLaunch = window.emuLaunch,
+extractArchive = window.extractArchive,
 jstest = window.jstest,
 showCheats = window.showCheats,
 writeGCA = window.writeGCA,
 hires_texture = window.hires_texture,
 cache = window.cache,
 texture_dump = window.texture_dump,
+working_directory = window.working_directory,
 textInputs = document.querySelectorAll("input[type='text']"),
 
 regjoy = /axis|button|hat|\(|\)/g,
@@ -231,9 +233,28 @@ else{id('mouse4_1').disabled = false;id('mouse4_2').disabled = false;id('mouse4_
 
 if(localStorage.getItem('recentFiles') != null){recentFiles = JSON.parse(localStorage.getItem('recentFiles'))}
 if(localStorage.getItem('filePath') != null){filePath = localStorage.getItem('filePath');id('fileText').innerHTML = filePath}
+if(localStorage.getItem('archivePath') != null){archivePath = localStorage.getItem('archivePath');id('archiveText').innerHTML = archivePath}
+
+id('extractROM').addEventListener('click', function(){
+if(archivePath != undefined){
+let list = listArchive(archivePath);
+var datastring = list.replace(/.*  /g,''),
+datasplit = datastring.split(regsplit);
+if(list === ''){return}else{let unzip = extractArchive(archivePath,workingDirectory)}
+datasplit.forEach(e => ROMFiles(e));
+function ROMFiles(e){if(e != ''){
+var pathToROM = workingDirectory + e;
+if(!recentFiles.includes(pathToROM))recentFiles.unshift(pathToROM);recentFiles.splice(10);recentFilesUpdate();localStorage.setItem('recentFiles',JSON.stringify(recentFiles));if(id('cheatList').innerHTML!='')id('cheatList').innerHTML=''}}
+id('recent').selectedIndex = '1';
+filePath = id('option0').value;id('fileText').innerHTML = filePath;localStorage.setItem('filePath', filePath)}})
+
 id('fileInput').addEventListener('click', function(){
 fileResult = dialogFile({name:'N64 ROM',extensions:['n64','v64','z64']});
 if(fileResult != undefined){filePath = fileResult;id('fileText').innerHTML = filePath;localStorage.setItem('filePath', filePath);if(!recentFiles.includes(filePath.toString()))recentFiles.unshift(filePath.toString());recentFiles.splice(10);recentFilesUpdate();localStorage.setItem('recentFiles',JSON.stringify(recentFiles));if(id('cheatList').innerHTML!='')id('cheatList').innerHTML=''}})
+	
+id('archiveInput').addEventListener('click', function(){
+archiveResult = dialogFile({name:'ROM Archive',extensions:['7z','zip']});
+if(archiveResult != undefined){archivePath = archiveResult;id('archiveText').innerHTML = archivePath;localStorage.setItem('archivePath',archivePath)}})
 
 function recentFilesUpdate(){
 id('optionDefault').selected = true;
@@ -342,6 +363,16 @@ id('fileInput').addEventListener('dragover', prevent, false)
 function handleDropROM(e) {prevent(e);
 if(e.dataTransfer.files[0] === undefined)return
 else{fPath = e.dataTransfer.files[0].path;ROMInput(fPath)}}
+
+function ArchiveInput(fPath){
+if(fPath != undefined){
+if(fileExtension(fPath) === '7z' || fileExtension(fPath) === 'zip'){
+archivePath = fPath;id('archiveText').innerHTML = fPath;localStorage.setItem('archivePath', fPath)}}}
+id('archiveInput').addEventListener('drop', handleDropArchive, false)
+id('archiveInput').addEventListener('dragover', prevent, false)
+function handleDropArchive(e) {prevent(e);
+if(e.dataTransfer.files[0] === undefined)return
+else{fPath = e.dataTransfer.files[0].path;ArchiveInput(fPath)}}
 
 function PIFFile(fPath){
 if(fPath != undefined){
@@ -552,6 +583,13 @@ if(localStorage.getItem('SaveSRAMPath') != null){SaveSRAMPath = localStorage.get
 id('SaveSRAMPath').addEventListener('click', function(){
 SaveSRAMPathResult = dialogDirectory()
 if(SaveSRAMPathResult != undefined){SaveSRAMPath = SaveSRAMPathResult;id('SaveSRAMPathText').innerHTML = SaveSRAMPath;localStorage.setItem('SaveSRAMPath', SaveSRAMPath)}})
+
+id('resetworkingDirectory').addEventListener('click', function(){workingDirectory = working_directory;id('workingDirectoryText').innerHTML = workingDirectory;localStorage.removeItem('workingDirectory')})
+if(localStorage.getItem('workingDirectory') === null){workingDirectory = working_directory;id('workingDirectoryText').innerHTML = workingDirectory}
+if(localStorage.getItem('workingDirectory') != null){workingDirectory = localStorage.getItem('workingDirectory');id('workingDirectoryText').innerHTML = workingDirectory}
+id('workingDirectory').addEventListener('click', function(){
+workingDirectoryResult = dialogDirectory()
+if(workingDirectoryResult != undefined){workingDirectory = workingDirectoryResult;id('workingDirectoryText').innerHTML = workingDirectory;localStorage.setItem('workingDirectory', workingDirectory)}})
 
 id('resetTxPath').addEventListener('click', function(){txPath = hires_texture;id('txPathText').innerHTML = txPath;localStorage.removeItem('txPath')})
 if(localStorage.getItem('txPath') === null){txPath = hires_texture;id('txPathText').innerHTML = txPath}

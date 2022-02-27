@@ -53,6 +53,10 @@
 <p>&nbsp;</p>
 <p class="sub">Core</p>
 <p>&nbsp;</p>
+<p title="Click the box below or drag and drop a .7z or .zip archive into the box." class="mt--5">Archive <button title="Extract one or multiple ROMs from an archive. Up to 10 ROMs will be added to Recent Files." class="floatright" id="extractROM">Extract</button></p>
+<p>&nbsp;</p>
+<div id="archiveInput" class="box mt--5"><span id="archiveText"></span></div>
+<p>&nbsp;</p><p>&nbsp;</p>
 <p title="Click the box below or drag and drop an .n64, .v64 or .z64 ROM into the box." class="mt--5">Input ROM</p>
 <p>&nbsp;</p>
 <div id="fileInput" class="box mt--5"><span id="fileText"></span></div>
@@ -239,6 +243,8 @@
 <p title="Path to directory where emulator save states (snapshots) are saved. Keep blank for default. Click the box below to change it.">Path to Save States&nbsp;&nbsp;<button class="floatright" id="resetSaveStatePath">Reset</button><br><br><div id="SaveStatePath" class="box"><span id="SaveStatePathText"></span></div></p>
 <p>&nbsp;</p><p>&nbsp;</p>
 <p title="Path to directory where SRAM/EEPROM data (in-game saves) are stored. Keep blank for default. Click the box below to change it.">Path to Save Files</a>&nbsp;&nbsp;<button class="floatright" id="resetSaveSRAMPath">Reset</button><br><br><div id="SaveSRAMPath" class="box"><span id="SaveSRAMPathText"></span></div></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p title="Directory where EMG stores temporary files such as extracted ROMs.">Working Directory</a>&nbsp;&nbsp;<button class="floatright" id="resetworkingDirectory">Reset</button><br><br><div id="workingDirectory" class="box"><span id="workingDirectoryText"></span></div></p>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
 <div id="controller1Anchor" class="anchor"></div>
 <p class="headline">Input</p>

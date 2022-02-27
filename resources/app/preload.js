@@ -4,11 +4,14 @@ executablePath = ipcRenderer.sendSync('executablePath'),
 hires_texture = ipcRenderer.sendSync('hires_texture'),
 cache = ipcRenderer.sendSync('cache'),
 texture_dump = ipcRenderer.sendSync('texture_dump'),
+working_directory = ipcRenderer.sendSync('working_directory'),
 stdio = ['ignore', 'pipe', 'ignore'],
 dialogDirectory = () => {return ipcRenderer.sendSync('dialogDirectory')},
 dialogFile = (data) => {return ipcRenderer.sendSync('dialogFile', data)},
 writeGCA = (gcaSettings) => {ipcRenderer.sendSync('writeGCA', gcaSettings)},
 emuLaunch = (parameters) => {ipcRenderer.send('emuLaunch', parameters)},
+listArchive = (archivePath) => {return ipcRenderer.sendSync('listArchive', archivePath)},
+extractArchive = (archivePath, workingDirectory) => {return ipcRenderer.sendSync('extractArchive', archivePath, workingDirectory)},
 showCheats = (parameters) => {return ipcRenderer.sendSync('showCheats', parameters)},
 
 jstest = (joyinput,name1Input,name2Input,name3Input,name4Input) => {
@@ -57,9 +60,12 @@ ipcRenderer.on('m64pLog', (e, stdout) => {console.log(stdout)})
 contextBridge.exposeInMainWorld('hires_texture',hires_texture)
 contextBridge.exposeInMainWorld('cache',cache)
 contextBridge.exposeInMainWorld('texture_dump',texture_dump)
+contextBridge.exposeInMainWorld('working_directory',working_directory)
 contextBridge.exposeInMainWorld('dialogDirectory',dialogDirectory)
 contextBridge.exposeInMainWorld('dialogFile',dialogFile)
 contextBridge.exposeInMainWorld('emuLaunch',emuLaunch)
+contextBridge.exposeInMainWorld('listArchive',listArchive)
+contextBridge.exposeInMainWorld('extractArchive',extractArchive)
 contextBridge.exposeInMainWorld('jstest',jstest)
 contextBridge.exposeInMainWorld('showCheats',showCheats)
 contextBridge.exposeInMainWorld('writeGCA',writeGCA)
