@@ -253,7 +253,7 @@ fileResult = dialogFile({name:'N64 ROM',extensions:['n64','v64','z64']});
 if(fileResult != undefined){filePath = fileResult;id('fileText').innerHTML = filePath;localStorage.setItem('filePath', filePath);if(!recentFiles.includes(filePath.toString()))recentFiles.unshift(filePath.toString());recentFiles.splice(10);recentFilesUpdate();localStorage.setItem('recentFiles',JSON.stringify(recentFiles));if(id('cheatList').innerHTML!='')id('cheatList').innerHTML=''}})
 	
 id('archiveInput').addEventListener('click', function(){
-archiveResult = dialogFile({name:'ROM Archive',extensions:['7z','zip']});
+archiveResult = dialogFile({name:'ROM Archive',extensions:['7z','rar','zip']});
 if(archiveResult != undefined){archivePath = archiveResult;id('archiveText').innerHTML = archivePath;localStorage.setItem('archivePath',archivePath)}})
 
 function recentFilesUpdate(){
@@ -366,7 +366,7 @@ else{fPath = e.dataTransfer.files[0].path;ROMInput(fPath)}}
 
 function ArchiveInput(fPath){
 if(fPath != undefined){
-if(fileExtension(fPath) === '7z' || fileExtension(fPath) === 'zip'){
+if(fileExtension(fPath) === '7z' || fileExtension(fPath) === 'rar' || fileExtension(fPath) === 'zip'){
 archivePath = fPath;id('archiveText').innerHTML = fPath;localStorage.setItem('archivePath', fPath)}}}
 id('archiveInput').addEventListener('drop', handleDropArchive, false)
 id('archiveInput').addEventListener('dragover', prevent, false)

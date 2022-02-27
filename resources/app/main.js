@@ -25,8 +25,8 @@ const menuQuit = 'Quit ' + app.name,menuWindow = 'Window',menuFunctions = 'Funct
 deleteDialog = {defaultId:1, cancelId:1, icon:path(dir, 'img', 'delete.png'), buttons:[dialogYes,dialogNo], title:dialogDelete, message:dialogDeleteM}
 
 var jstestChild,
-zipPath = path(cwd, '7za');
-if(process.platform === 'linux')zipPath = '7za';
+zipPath = path(cwd, '7z');
+if(process.platform === 'linux')zipPath = '7z';
 
 ipcMain.on('listArchive', (e, archivePath) => {
 	const parameters = ['l',archivePath,'*.n64','*.v64','*.z64','-r','-ba'];
