@@ -1,4 +1,4 @@
-sudo apt install -y build-essential libz-dev libpng-dev libfreetype-dev libsamplerate-dev libspeexdsp-dev liblircclient-dev libboost-dev libboost-filesystem-dev libhidapi-hidraw0 libhidapi-dev libsdl1.2-dev libsdl2-dev libncurses5-dev cmake gcc git make nasm unzip wget
+sudo apt install -y build-essential libz-dev libpng-dev libfreetype-dev libsamplerate-dev libspeexdsp-dev liblircclient-dev libboost-dev libboost-filesystem-dev libhidapi-hidraw0 libhidapi-dev libsdl2-dev libncurses5-dev cmake gcc git make nasm unzip wget
 
 git clone https://github.com/GhostlyDark/EMG.git EMG
 git clone https://github.com/GhostlyDark/sdl-jstest.git sdl-jstest
@@ -14,8 +14,6 @@ chmod u+x ./m64p_build.sh
 cd ../../../
 
 cd sdl-jstest
-git submodule init
-git submodule update
 mkdir build
 cd build
 cmake ..
