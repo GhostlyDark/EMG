@@ -12,6 +12,7 @@ writeGCA = (gcaSettings) => {ipcRenderer.sendSync('writeGCA', gcaSettings)},
 emuLaunch = (parameters) => {ipcRenderer.send('emuLaunch', parameters)},
 listArchive = (archivePath) => {return ipcRenderer.sendSync('listArchive', archivePath)},
 extractArchive = (archivePath, workingDirectory) => {return ipcRenderer.sendSync('extractArchive', archivePath, workingDirectory)},
+returnPath = (workingDirectory, rom) => {return ipcRenderer.sendSync('returnPath', workingDirectory, rom)},
 showCheats = (parameters) => {return ipcRenderer.sendSync('showCheats', parameters)},
 
 jstest = (joyinput,name1Input,name2Input,name3Input,name4Input) => {
@@ -66,6 +67,7 @@ contextBridge.exposeInMainWorld('dialogFile',dialogFile)
 contextBridge.exposeInMainWorld('emuLaunch',emuLaunch)
 contextBridge.exposeInMainWorld('listArchive',listArchive)
 contextBridge.exposeInMainWorld('extractArchive',extractArchive)
+contextBridge.exposeInMainWorld('returnPath',returnPath)
 contextBridge.exposeInMainWorld('jstest',jstest)
 contextBridge.exposeInMainWorld('showCheats',showCheats)
 contextBridge.exposeInMainWorld('writeGCA',writeGCA)

@@ -40,6 +40,8 @@ ipcMain.on('extractArchive', (e, archivePath, workingDirectory) => {
 	e.returnValue = ''
 })
 
+ipcMain.on('returnPath', (e, workingDirectory, rom) => {e.returnValue = path(workingDirectory, rom)})
+
 ipcMain.on('emuLaunch', (e, parameters) => {
 	var stdout = '';
 	let child = childSpawn(executablePath, parameters, emuOptions);
@@ -66,7 +68,7 @@ ipcMain.on('jstestPath', (e) => {e.returnValue = jstestPath})
 ipcMain.on('hires_texture', (e) => {e.returnValue = path(appData, 'mupen64plus', 'hires_texture')})
 ipcMain.on('cache', (e) => {if(process.platform === 'linux'){e.returnValue = path(appData, '../', '.cache', 'mupen64plus', 'cache')}else{e.returnValue = path(appData, 'mupen64plus', 'cache')}})
 ipcMain.on('texture_dump', (e) => {if(process.platform === 'linux'){e.returnValue = path(appData, '../', '.cache', 'mupen64plus', 'texture_dump')}else{e.returnValue = path(appData, 'mupen64plus', 'texture_dump')}})
-ipcMain.on('working_directory', (e) => {let wd;if(process.platform === 'linux'){wd = path(appData, 'EMG', 'ROMs', '/')}else{wd = path(appData, 'EMG', 'ROMs', '\\')};e.returnValue = wd})
+ipcMain.on('working_directory', (e) => {e.returnValue = path(appData, 'EMG', 'ROMs')})
 ipcMain.on('dialogDirectory', (e) => {e.returnValue = dialog.showOpenDialogSync({properties:['openDirectory']})})
 ipcMain.on('dialogFile', (e, data) => {e.returnValue = dialog.showOpenDialogSync({properties:['openFile'],filters:[data]})})
 ipcMain.on('writeGCA', (e, gcaSettings) => {e.returnValue = fs(path(appData, 'mupen64plus', 'mupen64plus-input-gca.toml'),gcaSettings)})
