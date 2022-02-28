@@ -133,10 +133,14 @@ range_input.addEventListener('input', function(){localStorage.setItem(range, ran
 id('NumWorkers').max = window.navigator.hardwareConcurrency;
 numbers.forEach(number => {
 var number_input = id(number),
+number_reset = id('reset'+number),
+number_value = number_reset.dataset.value,
 number_decrease = id('decrease'+number),
 number_increase = id('increase'+number),
 digits = 0;
 if(number_input.step.includes('.'))digits=2;
+
+number_reset.addEventListener('click', function(){number_input.value = number_value;localStorage.removeItem(number)})
 
 if(localStorage.getItem(number) != null){number_input.value = localStorage.getItem(number)}
 number_input.addEventListener('change', function(){localStorage.setItem(number, number_input.value)})
@@ -640,7 +644,7 @@ id('txDumpPath').addEventListener('click', function(){
 txDumpPathResult = dialogDirectory()
 if(txDumpPathResult != undefined){txDumpPath = txDumpPathResult.toString();id('txDumpPathText').innerHTML = txDumpPath;localStorage.setItem('txDumpPath', txDumpPath)}})
 
-id('resetfontColor').addEventListener('click', function(){fontColor = '#B5E61D';id('fontColor').value = '#B5E61D';localStorage.removeItem('fontColor')})
+id('resetfontColor').addEventListener('click', function(){fontColor = id('resetfontColor').dataset.value;id('fontColor').value = id('resetfontColor').dataset.value;localStorage.removeItem('fontColor')})
 if(localStorage.getItem('fontColor') != null){id('fontColor').value = localStorage.getItem('fontColor')}
 id('fontColor').addEventListener('change', function(){localStorage.setItem('fontColor', id('fontColor').value)})
 
