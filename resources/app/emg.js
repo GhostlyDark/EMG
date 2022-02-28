@@ -38,7 +38,7 @@ m64p_joykeys = [
 'JoyMappingStop3','JoyMappingFullscreen3','JoyMappingSaveState3','JoyMappingLoadState3','JoyMappingIncrementSlot3','JoyMappingReset3','JoyMappingSpeedDown3','JoyMappingSpeedUp3','JoyMappingScreenshot3','JoyMappingPause3','JoyMappingMute3','JoyMappingIncreaseVolume3','JoyMappingDecreaseVolume3','JoyMappingFastForward3','JoyMappingFrameAdvance3','JoyMappingGameshark3',
 'JoyMappingStop4','JoyMappingFullscreen4','JoyMappingSaveState4','JoyMappingLoadState4','JoyMappingIncrementSlot4','JoyMappingReset4','JoyMappingSpeedDown4','JoyMappingSpeedUp4','JoyMappingScreenshot4','JoyMappingPause4','JoyMappingMute4','JoyMappingIncreaseVolume4','JoyMappingDecreaseVolume4','JoyMappingFastForward4','JoyMappingFrameAdvance4','JoyMappingGameshark4'],
 
-ranges = ['MouseSensitivity1X','MouseSensitivity1Y','MouseSensitivity2X','MouseSensitivity2Y','MouseSensitivity3X','MouseSensitivity3Y','MouseSensitivity4X','MouseSensitivity4Y','AnalogDeadzone1X','AnalogDeadzone1Y','AnalogDeadzone2X','AnalogDeadzone2Y','AnalogDeadzone3X','AnalogDeadzone3Y','AnalogDeadzone4X','AnalogDeadzone4Y','AnalogPeak1X','AnalogPeak1Y','AnalogPeak2X','AnalogPeak2Y','AnalogPeak3X','AnalogPeak3Y','AnalogPeak4X','AnalogPeak4Y'],
+ranges = ['MouseSensitivity1X','MouseSensitivity1Y','MouseSensitivity2X','MouseSensitivity2Y','MouseSensitivity3X','MouseSensitivity3Y','MouseSensitivity4X','MouseSensitivity4Y','AnalogDeadzone1X','AnalogDeadzone1Y','AnalogDeadzone2X','AnalogDeadzone2Y','AnalogDeadzone3X','AnalogDeadzone3Y','AnalogDeadzone4X','AnalogDeadzone4Y','AnalogPeak1X','AnalogPeak1Y','AnalogPeak2X','AnalogPeak2Y','AnalogPeak3X','AnalogPeak3Y','AnalogPeak4X','AnalogPeak4Y','control_stick_deadzone','control_stick_sensitivity','c_stick_deadzone','trigger_threshold'],
 
 numbers = ['OverscanNtscTop','OverscanNtscLeft','OverscanNtscRight','OverscanNtscBottom','OverscanPalTop','OverscanPalLeft','OverscanPalRight','OverscanPalBottom','NumWorkers','ParallelCropOverscan','txCacheSize','txHiresVramLimit','GammaCorrectionLevel','fontSize','CountPerOp','CountPerOpDenomPot','SiDmaDuration','CurrentStateSlot','VOLUME_ADJUST','VOLUME_DEFAULT','PolygonOffsetFactor','PolygonOffsetUnits','polygon_offset_factor','polygon_offset_units','ghq_cache_size'],
 
@@ -124,9 +124,7 @@ ranges.forEach(range => {
 var range_input = id(range),
 range_reset = id('reset'+range),
 range_text = id(range+'Text'),
-range_value = '2';
-if(range.includes('AnalogDeadzone')){range_value = '4096'}
-else if(range.includes('AnalogPeak')){range_value = '32768'}
+range_value = range_reset.dataset.value;
 
 range_reset.addEventListener('click', function(){range_input.value = range_value;localStorage.removeItem(range);range_text.innerHTML = range_input.value})
 if(localStorage.getItem(range) != null){range_input.value = localStorage.getItem(range);range_text.innerHTML = range_input.value}
@@ -642,6 +640,10 @@ id('txDumpPath').addEventListener('click', function(){
 txDumpPathResult = dialogDirectory()
 if(txDumpPathResult != undefined){txDumpPath = txDumpPathResult.toString();id('txDumpPathText').innerHTML = txDumpPath;localStorage.setItem('txDumpPath', txDumpPath)}})
 
+id('resetfontColor').addEventListener('click', function(){fontColor = '#B5E61D';id('fontColor').value = '#B5E61D';localStorage.removeItem('fontColor')})
+if(localStorage.getItem('fontColor') != null){id('fontColor').value = localStorage.getItem('fontColor')}
+id('fontColor').addEventListener('change', function(){localStorage.setItem('fontColor', id('fontColor').value)})
+
 
 
 function joystick(joyinput){jstest(joyinput,id('name1'),id('name2'),id('name3'),id('name4'))}
@@ -663,28 +665,6 @@ var box = id(joykey);
 box.addEventListener('click', function(){joystick(box)})
 if(localStorage.getItem(joykey) != null){box.value = localStorage.getItem(joykey)}
 id('clear'+joykey).addEventListener('click', function(){box.value = '';localStorage.removeItem(joykey)})})
-
-
-
-id('resetcontrol_stick_deadzone').addEventListener('click', function(){id('control_stick_deadzone').value = '20';localStorage.removeItem('control_stick_deadzone');id('control_stick_deadzoneText').innerHTML = id('control_stick_deadzone').value})
-if(localStorage.getItem('control_stick_deadzone') != null){id('control_stick_deadzone').value = localStorage.getItem('control_stick_deadzone');id('control_stick_deadzoneText').innerHTML = id('control_stick_deadzone').value}
-id('control_stick_deadzone').addEventListener('change', function(){localStorage.setItem('control_stick_deadzone', id('control_stick_deadzone').value);id('control_stick_deadzoneText').innerHTML = id('control_stick_deadzone').value})
-
-id('resetcontrol_stick_sensitivity').addEventListener('click', function(){id('control_stick_sensitivity').value = '180';localStorage.removeItem('control_stick_sensitivity');id('control_stick_sensitivityText').innerHTML = id('control_stick_sensitivity').value})
-if(localStorage.getItem('control_stick_sensitivity') != null){id('control_stick_sensitivity').value = localStorage.getItem('control_stick_sensitivity');id('control_stick_sensitivityText').innerHTML = id('control_stick_sensitivity').value}
-id('control_stick_sensitivity').addEventListener('change', function(){localStorage.setItem('control_stick_sensitivity', id('control_stick_sensitivity').value);id('control_stick_sensitivityText').innerHTML = id('control_stick_sensitivity').value})
-
-id('resetc_stick_deadzone').addEventListener('click', function(){id('c_stick_deadzone').value = '40';localStorage.removeItem('c_stick_deadzone');id('c_stick_deadzoneText').innerHTML = id('c_stick_deadzone').value})
-if(localStorage.getItem('c_stick_deadzone') != null){id('c_stick_deadzone').value = localStorage.getItem('c_stick_deadzone');id('c_stick_deadzoneText').innerHTML = id('c_stick_deadzone').value}
-id('c_stick_deadzone').addEventListener('change', function(){localStorage.setItem('c_stick_deadzone', id('c_stick_deadzone').value);id('c_stick_deadzoneText').innerHTML = id('c_stick_deadzone').value})
-
-id('resettrigger_threshold').addEventListener('click', function(){id('trigger_threshold').value = '168';localStorage.removeItem('trigger_threshold');id('trigger_thresholdText').innerHTML = id('trigger_threshold').value})
-if(localStorage.getItem('trigger_threshold') != null){id('trigger_threshold').value = localStorage.getItem('trigger_threshold');id('trigger_thresholdText').innerHTML = id('trigger_threshold').value}
-id('trigger_threshold').addEventListener('change', function(){localStorage.setItem('trigger_threshold', id('trigger_threshold').value);id('trigger_thresholdText').innerHTML = id('trigger_threshold').value})
-
-id('resetfontColor').addEventListener('click', function(){fontColor = '#B5E61D';id('fontColor').value = '#B5E61D';localStorage.removeItem('fontColor')})
-if(localStorage.getItem('fontColor') != null){id('fontColor').value = localStorage.getItem('fontColor')}
-id('fontColor').addEventListener('change', function(){localStorage.setItem('fontColor', id('fontColor').value)})
 
 
 
