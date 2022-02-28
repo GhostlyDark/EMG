@@ -130,7 +130,7 @@ else if(range.includes('AnalogPeak')){range_value = '32768'}
 
 range_reset.addEventListener('click', function(){range_input.value = range_value;localStorage.removeItem(range);range_text.innerHTML = range_input.value})
 if(localStorage.getItem(range) != null){range_input.value = localStorage.getItem(range);range_text.innerHTML = range_input.value}
-range_input.addEventListener('change', function(){localStorage.setItem(range, range_input.value);range_text.innerHTML = range_input.value})})
+range_input.addEventListener('input', function(){localStorage.setItem(range, range_input.value);range_text.innerHTML = range_input.value})})
 
 id('NumWorkers').max = window.navigator.hardwareConcurrency;
 numbers.forEach(number => {
