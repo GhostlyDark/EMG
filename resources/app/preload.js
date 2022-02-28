@@ -16,7 +16,6 @@ returnPath = (workingDirectory, rom) => {return ipcRenderer.sendSync('returnPath
 showCheats = (parameters) => {return ipcRenderer.sendSync('showCheats', parameters)},
 
 jstest = (joyinput,name1Input,name2Input,name3Input,name4Input) => {
-const regaxis = /\s.*/i;
 var joyvalue,joyfilter,joydata,jstestConfig;
 if(joyinput.id.includes('1')){jstestConfig = ['-e', '0']}
 if(joyinput.id.includes('2')){jstestConfig = ['-e', '1']}
@@ -29,13 +28,11 @@ ipcRenderer.send('jstestChild', jstestConfig)
 ipcRenderer.once('jsLog', (e, data) => {
 joyfilter = data.replace(/\r/gm,'');
 joydata = joyfilter.split('\n'); // joydata[0] = Device Name, joydata[1] = Device Number, joydata[2] = Pressed Key
+if(joydata[2].includes('-')){joyvalue = joydata[2].replace(/\s.*/i,'-)')}else{joyvalue = joydata[2].replace(/\s.*/i,'+)')}
 if(joyinput.id.includes('JoyMapping')){
 if(joydata[2].includes('button')){joyvalue = 'B' + joydata[2].replace(/button\(|\)/g,'')}
 if(joydata[2].includes('hat')){joyvalue = joydata[2].replace('hat(','H').replace(' ','V').replace(')','')}
-if(joydata[2].includes('axis')){
-if(joydata[2].includes('-')){joyvalue = joydata[2].replace(regaxis,'-)')}
-else{joyvalue = joydata[2].replace(regaxis,'+)')}
-joyvalue = joyvalue.replace(/xis\(|\)/g,'').replace('a','A')}
+if(joydata[2].includes('axis')){joyvalue = joyvalue.replace(/xis\(|\)/g,'').replace('a','A')}
 if(joyvalue != joyinput.value && joyinput.value != '' && !joyinput.value.includes('/')){joyvalue = joyinput.value + '/' + joyvalue}}
 else{
 if(joyinput.id.includes('1')){name1Input.value = joydata[0];localStorage.setItem('name1',joydata[0])}
@@ -43,9 +40,6 @@ if(joyinput.id.includes('2')){name2Input.value = joydata[0];localStorage.setItem
 if(joyinput.id.includes('3')){name3Input.value = joydata[0];localStorage.setItem('name3',joydata[0])}
 if(joyinput.id.includes('4')){name4Input.value = joydata[0];localStorage.setItem('name4',joydata[0])}
 if(joydata[2].includes('button')){joyvalue = joydata[2]};
-if(joydata[2].includes('axis')){
-if(joydata[2].includes('-')){joyvalue = joydata[2].replace(regaxis,'-)')}
-else{joyvalue = joydata[2].replace(regaxis,'+)')}}
 if(joydata[2].includes('hat')){
 if(joydata[2] === 'hat(0 1)'){joyvalue = 'hat(0 Up)'}
 if(joydata[2] === 'hat(0 2)'){joyvalue = 'hat(0 Right)'}
