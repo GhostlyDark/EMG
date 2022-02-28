@@ -44,6 +44,39 @@
 <a href="#glide64mk2Anchor">Glide64 MK2</a>
 </div>
 </li>
+<li id="angrylion" class="hide"><a href="#angrylionAnchor">Angrylion Plus</a></li>
+<li id="gliden64" class="hide">
+<a id="gliden64Settings" class="dropbutton" href="#settings">GLideN64</a>
+<div id="gliden64SettingsDropdown" class="dropdown">
+<a href="#gliden64Anchor">Emulation</a>
+<a href="#gliden64FramebufferAnchor">Framebuffer</a>
+<a href="#gliden64VideoAnchor">Video Settings</a>
+<a href="#gliden64OverscanAnchor">Overscan</a>
+<a href="#gliden64EnhancementAnchor">Texture Enhancement</a>
+<a href="#gliden64HDAnchor">HD Textures</a>
+<a href="#gliden64OSDAnchor">On-Screen Display</a>
+<a href="#gliden64HotkeysAnchor">GLideN64 Hotkeys</a>
+</div>
+</li>
+<li id="parallel" class="hide"><a href="#parallelAnchor">Parallel</a></li>
+<li id="rice" class="hide">
+<a id="riceSettings" class="dropbutton" href="#settings">Rice</a>
+<div id="riceSettingsDropdown" class="dropdown">
+<a href="#riceAnchor">Emulation</a>
+<a href="#riceVideoAnchor">Video Settings</a>
+<a href="#riceEnhancementAnchor">Texture Enhancement</a>
+<a href="#riceHDAnchor">HD Textures</a>
+</div>
+</li>
+<li id="glide64mk2" class="hide">
+<a id="glide64mk2Settings" class="dropbutton" href="#settings">Glide64 MK2</a>
+<div id="glide64mk2SettingsDropdown" class="dropdown">
+<a href="#glide64mk2Anchor">Main Settings</a>
+<a href="#glide64mk2EnhancementAnchor">Texture Enhancement</a>
+<a href="#glide64mk2HDAnchor">HD Textures</a>
+<a href="#glide64mk2AdvancedAnchor">Advanced Settings</a>
+</div>
+</li>
 <li><a id="launch" href="#boot">Launch</a></li>
 </ul>
 </header>
@@ -127,8 +160,8 @@
 <option value="mupen64plus-video-parallel">Parallel</option>
 <option disabled></option>
 <option disabled>Legacy</option>
-<option value="mupen64plus-video-glide64mk2">Glide64 MK2</option>
 <option value="mupen64plus-video-rice">Rice</option>
+<option value="mupen64plus-video-glide64mk2">Glide64 MK2</option>
 </select><label for="gfx">Graphics Plugin</label></div>
 <p>&nbsp;</p>
 <select class="width250m" name="audio" id="audio">
@@ -1440,6 +1473,7 @@
 <option value="Video-GLideN64[EnableNativeResTexrects]=2">Unoptimized</option>
 </select><label for="EnableNativeResTexrects">Enable Native Resolution Texrects</label></div>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<div id="gliden64FramebufferAnchor" class="anchor"></div>
 <p class="sub">Framebuffer</p>
 <p>&nbsp;</p>
 <p title="Disable buffers read/write with FBInfo. Use for games which do not work with FBInfo."><input id="DisableFBInfo" type="checkbox" data-store="DisableFBInfo" checked><label for="DisableFBInfo">Disable FBInfo</label></p>
@@ -1483,6 +1517,7 @@
 <option value="Video-GLideN64[EnableN64DepthCompare]=2">Compatible</option>
 </select><label for="EnableN64DepthCompare">N64 Depth Compare</label></div>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<div id="gliden64VideoAnchor" class="anchor"></div>
 <p class="sub">Video Settings</p>
 <p>&nbsp;</p>
 <p title="Off: N64 3-point"><input id="bilinearMode" type="checkbox" data-store="bilinearMode"><label for="bilinearMode">Bilinear Filtering</label></p>
@@ -1548,6 +1583,7 @@
 <p>&nbsp;</p>
 <p><span class="numberDecrease" id="decreaseGammaCorrectionLevel">-</span><input id="GammaCorrectionLevel" min="1.00" max="4.00" step="0.1" value="1.00" type="number"><span class="numberIncrease" id="increaseGammaCorrectionLevel">+</span><label for="GammaCorrectionLevel">Gamma Correction Level</label><button class="floatright" data-value="1.00" id="resetGammaCorrectionLevel">Reset</button></p>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<div id="gliden64OverscanAnchor" class="anchor"></div>
 <p class="sub">Overscan</p>
 <p>&nbsp;</p>
 <p title="Crop image to remove black bars."><input id="EnableOverscan" type="checkbox" data-store="EnableOverscan"><label for="EnableOverscan">Enable Overscan</label></p>
@@ -1568,6 +1604,7 @@
 <p>&nbsp;</p>
 <p><span class="numberDecrease" id="decreaseOverscanPalBottom">-</span><input id="OverscanPalBottom" min="0" max="99" value="0" step="1" type="number"><span class="numberIncrease" id="increaseOverscanPalBottom">+</span><label for="OverscanPalBottom">PAL Bottom</label><button class="floatright" data-value="0" id="resetOverscanPalBottom">Reset</button></p>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<div id="gliden64EnhancementAnchor" class="anchor"></div>
 <p class="sub">Texture Enhancement</p>
 <p>&nbsp;</p>
 <select class="width200m" name="txFilterMode" id="txFilterMode">
@@ -1603,6 +1640,7 @@
 <p>&nbsp;</p>
 <p title="Don't filter background textures."><input id="txFilterIgnoreBG" type="checkbox" data-store="txFilterIgnoreBG"><label for="txFilterIgnoreBG">Disable background filtering</label></p>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<div id="gliden64HDAnchor" class="anchor"></div>
 <p class="sub">HD Textures</p>
 <p>&nbsp;</p>
 <p><input id="txHiresEnable" type="checkbox" data-store="txHiresEnable" checked><label for="txHiresEnable">Enable HD textures</label></p>
@@ -1632,6 +1670,7 @@
 <p>&nbsp;</p><p>&nbsp;</p>
 <p title="Path to folder where plugin saves dumped textures. Click the box below to change it.">Path to texture_dump folder<button class="floatright" id="resetTxDumpPath">Reset</button><br><br><div class="box" id="txDumpPath"><span id="txDumpPathText"></span></div></p>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<div id="gliden64OSDAnchor" class="anchor"></div>
 <p class="sub">On-Screen Display</p>
 <p>&nbsp;</p>
 <p><span class="numberDecrease" id="decreasefontSize">-</span><input id="fontSize" min="6" max="99" step="1" value="18" type="number"><span class="numberIncrease" id="increasefontSize">+</span><label for="fontSize">Font Size (in px)</label><button class="floatright" data-value="18" id="resetfontSize">Reset</button></p>
@@ -1659,6 +1698,7 @@
 <option value="Video-GLideN64[CountersPos]=32">Bottom Right</option>
 </select><label for="CountersPos">Counters Position</label>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<div id="gliden64HotkeysAnchor" class="anchor"></div>
 <p class="sub">GLideN64 Hotkeys</p>
 <p>&nbsp;</p>
 <p class="mb-10">Supported keys are 0-9 and A-Z.</p>
@@ -1805,6 +1845,7 @@
 <option value="Video-Rice[ScreenUpdateSetting]=7">After Screen Drawn</option>
 </select><label for="ScreenUpdateSetting">Screen Update</label></div>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<div id="riceVideoAnchor" class="anchor"></div>
 <p class="sub">Video Settings</p>
 <p>&nbsp;</p>
 <p><input id="OpenGLRenderSetting" type="checkbox" data-store="OpenGLRenderSetting"><label for="OpenGLRenderSetting">Use OGL_FRAGMENT_PROGRAM</label></p>
@@ -1874,6 +1915,7 @@
 <option value="Video-Rice[OpenGLDepthBufferSetting]=32">32</option>
 </select><label for="OpenGLDepthBufferSetting">Z-Buffer Depth</label>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<div id="riceEnhancementAnchor" class="anchor"></div>
 <p class="sub">Texture Enhancement</p>
 <p>&nbsp;</p>
 <p title="Texture enhancement will be done only for TxtRect ucode."><input id="TexRectOnly" type="checkbox" data-store="TexRectOnly"><label for="TexRectOnly">Limit Enhancements to TxtRect Ucode</label></p>
@@ -1901,6 +1943,7 @@
 <option value="Video-Rice[TextureEnhancementControl]=4">Filter 4</option>
 </select><label for="TextureEnhancementControl">Secondary Texture Enhancement Filter</label>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<div id="riceHDAnchor" class="anchor"></div>
 <p class="sub">HD Textures</p>
 <p>&nbsp;</p>
 <p title="Select hi-resolution textures based only on the CRC and ignore format and size information (Glide64 compatibility)."><input id="LoadHiResCRCOnly" type="checkbox" data-store="LoadHiResCRCOnly" checked><label for="LoadHiResCRCOnly">Hi-res CRC Only</label></p>
@@ -1977,6 +2020,7 @@
 <option value="Video-Glide64mk2[ghq_cmpr]=1">FXT1</option>
 </select><label for="ghq_cmpr">Lossy Texture Compression</label>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<div id="glide64mk2EnhancementAnchor" class="anchor"></div>
 <p class="sub">Texture Enhancement</p>
 <p>&nbsp;</p>
 <select class="width200m" name="ghq_fltr" id="ghq_fltr">
@@ -2013,6 +2057,7 @@
 <p>&nbsp;</p>
 <p><input id="ghq_enht_nobg" type="checkbox" data-store="ghq_enht_nobg"><label for="ghq_enht_nobg">Ignore backgrounds for enhancements</label></p>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<div id="glide64mk2HDAnchor" class="anchor"></div>
 <p class="sub">HD Textures</p>
 <p>&nbsp;</p>
 <p><input id="ghq_hirs" type="checkbox" data-store="ghq_hirs"><label for="ghq_hirs">Enable HD textures</label></p>
@@ -2033,6 +2078,7 @@
 <p>&nbsp;</p>
 <p><input id="ghq_hirs_dump" type="checkbox" data-store="ghq_hirs_dump"><label for="ghq_hirs_dump">Enable texture dumping</label></p>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<div id="glide64mk2AdvancedAnchor" class="anchor"></div>
 <p class="sub">Advanced Settings</p>
 <p>&nbsp;</p>
 <select class="width150m" name="alt_tex_size" id="alt_tex_size">

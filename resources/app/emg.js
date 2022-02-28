@@ -361,13 +361,33 @@ id('name2').addEventListener('focus',(e) => {window.removeEventListener('keydown
 id('name3').addEventListener('focus',(e) => {window.removeEventListener('keydown',noScroll,false)})
 id('name4').addEventListener('focus',(e) => {window.removeEventListener('keydown',noScroll,false)})
 
+function currentGFX(){
+if(!id('angrylion').classList.contains('hide'))id('angrylion').classList.add('hide')
+if(!id('gliden64').classList.contains('hide'))id('gliden64').classList.add('hide')
+if(!id('parallel').classList.contains('hide'))id('parallel').classList.add('hide')
+if(!id('rice').classList.contains('hide'))id('rice').classList.add('hide')
+if(!id('glide64mk2').classList.contains('hide'))id('glide64mk2').classList.add('hide')
+if(id('gfx').value === 'mupen64plus-video-angrylion-plus')id('angrylion').classList.remove('hide')
+if(id('gfx').value === 'mupen64plus-video-GLideN64')id('gliden64').classList.remove('hide')
+if(id('gfx').value === 'mupen64plus-video-parallel')id('parallel').classList.remove('hide')
+if(id('gfx').value === 'mupen64plus-video-rice')id('rice').classList.remove('hide')
+if(id('gfx').value === 'mupen64plus-video-glide64mk2')id('glide64mk2').classList.remove('hide')}
+id('gfx').addEventListener('change', currentGFX)
+currentGFX()
+
 function removeShow(){
 if(id('mainSettings').classList.contains('active'))id('mainSettings').classList.remove('active');
 if(id('inputSettings').classList.contains('active'))id('inputSettings').classList.remove('active');
 if(id('videoSettings').classList.contains('active'))id('videoSettings').classList.remove('active');
+if(id('gliden64Settings').classList.contains('active'))id('gliden64Settings').classList.remove('active');
+if(id('riceSettings').classList.contains('active'))id('riceSettings').classList.remove('active');
+if(id('glide64mk2Settings').classList.contains('active'))id('glide64mk2Settings').classList.remove('active');
 if(id('mainSettingsDropdown').classList.contains('show'))id('mainSettingsDropdown').classList.remove('show');
 if(id('inputSettingsDropdown').classList.contains('show'))id('inputSettingsDropdown').classList.remove('show');
-if(id('videoSettingsDropdown').classList.contains('show'))id('videoSettingsDropdown').classList.remove('show')}
+if(id('videoSettingsDropdown').classList.contains('show'))id('videoSettingsDropdown').classList.remove('show');
+if(id('gliden64SettingsDropdown').classList.contains('show'))id('gliden64SettingsDropdown').classList.remove('show')
+if(id('riceSettingsDropdown').classList.contains('show'))id('riceSettingsDropdown').classList.remove('show')
+if(id('glide64mk2SettingsDropdown').classList.contains('show'))id('glide64mk2SettingsDropdown').classList.remove('show')}
 
 id('mainSettings').addEventListener('click', function(){
 if(id('mainSettingsDropdown').classList.contains('show')){removeShow()}
@@ -378,6 +398,15 @@ else{removeShow();id('inputSettingsDropdown').classList.toggle('show');id('input
 id('videoSettings').addEventListener('click', function(){
 if(id('videoSettingsDropdown').classList.contains('show')){removeShow()}
 else{removeShow();id('videoSettingsDropdown').classList.toggle('show');id('videoSettings').classList.toggle('active')}})
+id('gliden64Settings').addEventListener('click', function(){
+if(id('gliden64SettingsDropdown').classList.contains('show')){removeShow()}
+else{removeShow();id('gliden64SettingsDropdown').classList.toggle('show');id('gliden64Settings').classList.toggle('active')}})
+id('riceSettings').addEventListener('click', function(){
+if(id('riceSettingsDropdown').classList.contains('show')){removeShow()}
+else{removeShow();id('riceSettingsDropdown').classList.toggle('show');id('riceSettings').classList.toggle('active')}})
+id('glide64mk2Settings').addEventListener('click', function(){
+if(id('glide64mk2SettingsDropdown').classList.contains('show')){removeShow()}
+else{removeShow();id('glide64mk2SettingsDropdown').classList.toggle('show');id('glide64mk2Settings').classList.toggle('active')}})
 
 window.onclick = function(e){if(!e.target.matches('.dropbutton')){removeShow()}}
 
