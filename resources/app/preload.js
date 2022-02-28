@@ -16,7 +16,7 @@ returnPath = (workingDirectory, rom) => {return ipcRenderer.sendSync('returnPath
 showCheats = (parameters) => {return ipcRenderer.sendSync('showCheats', parameters)},
 
 jstest = (joyinput,name1Input,name2Input,name3Input,name4Input) => {
-const regremove = /\r/gm, regaxis = /\s.*/i, reghk = /button\(|\)/g, reghka = /xis\(|\)/g;
+const regaxis = /\s.*/i;
 var joyvalue,joyfilter,joydata,jstestConfig;
 if(joyinput.id.includes('1')){jstestConfig = ['-e', '0']}
 if(joyinput.id.includes('2')){jstestConfig = ['-e', '1']}
@@ -27,15 +27,15 @@ ipcRenderer.removeAllListeners('jsClosed')
 ipcRenderer.send('jstestKill')
 ipcRenderer.send('jstestChild', jstestConfig)
 ipcRenderer.once('jsLog', (e, data) => {
-joyfilter = data.replace(regremove,'');
+joyfilter = data.replace(/\r/gm,'');
 joydata = joyfilter.split('\n'); // joydata[0] = Device Name, joydata[1] = Device Number, joydata[2] = Pressed Key
 if(joyinput.id.includes('JoyMapping')){
-if(joydata[2].includes('button')){joyvalue = 'B' + joydata[2].replace(reghk,'')}
+if(joydata[2].includes('button')){joyvalue = 'B' + joydata[2].replace(/button\(|\)/g,'')}
 if(joydata[2].includes('hat')){joyvalue = joydata[2].replace('hat(','H').replace(' ','V').replace(')','')}
 if(joydata[2].includes('axis')){
 if(joydata[2].includes('-')){joyvalue = joydata[2].replace(regaxis,'-)')}
 else{joyvalue = joydata[2].replace(regaxis,'+)')}
-joyvalue = joyvalue.replace(reghka,'').replace('a','A')}
+joyvalue = joyvalue.replace(/xis\(|\)/g,'').replace('a','A')}
 if(joyvalue != joyinput.value && joyinput.value != '' && !joyinput.value.includes('/')){joyvalue = joyinput.value + '/' + joyvalue}}
 else{
 if(joyinput.id.includes('1')){name1Input.value = joydata[0];localStorage.setItem('name1',joydata[0])}

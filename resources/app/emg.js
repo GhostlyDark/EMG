@@ -16,16 +16,7 @@ texture_dump = window.texture_dump,
 working_directory = window.working_directory,
 textInputs = document.querySelectorAll("input[type='text']"),
 
-regjoy = /axis|button|hat|\(|\)/g,
-regstring = /^((?!UI-Console\:\s\s\s\s*\d).)*$/gm,
-regfilter = /UI-Console\:\s\s\s\s/gm,
-regremove = /\r/gm,
-regsplit = /\s*\n/,
-regradio = /^\s\s\s/g,
-regid = /\:.*/g,
-regbox = /_.*/g,
-regtarget = /.*\_/g,
-regkb = /key\(\)|key\(,\)/g,
+regjoy = /axis|button|hat|\(|\)/g, regsplit = /\s*\n/, regradio = /^\s\s\s/g, regbox = /_.*/g, regkb = /key\(\)|key\(,\)/g,
 
 keys = {32:1,33:1,34:1,35:1,36:1,37:1,38:1,39:1,40:1}, /* spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36, left: 37, up: 38, right: 39, down: 40 */
 
@@ -295,14 +286,14 @@ id('listCheats').addEventListener('click', function(){
 id('cheatList').innerHTML = '';
 const parameters = ['--cheats','list',filePath],
 child = showCheats(parameters);
-var datastring = child.replace(regstring,''),
-datafilter = datastring.replace(regfilter,''),
-dataremove = datafilter.replace(regremove,'');
+var datastring = child.replace(/^((?!UI-Console\:\s\s\s\s*\d).)*$/gm,''),
+datafilter = datastring.replace(/UI-Console\:\s\s\s\s/gm,''),
+dataremove = datafilter.replace(/\r/gm,'');
 datasplit = dataremove.split(regsplit);
 datasplit.forEach(e => cheat(e));
 function cheat(e){if(e != ''){
 var cheatCheckbox,cheat;
-cheatCheckbox = e.replace(regid,'');
+cheatCheckbox = e.replace(/\:.*/g,'');
 if(!e.match(regradio)){cheatRadio = cheatCheckbox}
 if(e.match(regradio)){cheatCheckbox = cheatCheckbox.replace(regradio,cheatRadio + '_')}
 if(cheatCheckbox.includes('_')){id(cheatCheckbox.replace(regbox,'')).disabled = true}
