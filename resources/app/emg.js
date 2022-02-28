@@ -144,12 +144,16 @@ if(localStorage.getItem(number) != null){number_input.value = localStorage.getIt
 number_input.addEventListener('change', function(){localStorage.setItem(number, number_input.value)})
 number_input.addEventListener('keydown', function(e){e.preventDefault()})
 
-number_decrease.addEventListener('click', function(){if(number_input.value != number_input.min){
+number_decrease.addEventListener('click', function(){
+if(number_input.disabled)return
+if(number_input.value != number_input.min){
 if(number_input.id === 'SiDmaDuration' && number_input.value === '0'){number_input.value = '-1'}
 else{number_input.value = (parseFloat(number_input.value) - number_input.step*1).toFixed(digits)}
 localStorage.setItem(number, number_input.value)}})
 
-number_increase.addEventListener('click', function(){if(number_input.value != number_input.max){
+number_increase.addEventListener('click', function(){
+if(number_input.disabled)return
+if(number_input.value != number_input.max){
 if(number_input.id === 'SiDmaDuration' && number_input.value === '-1'){number_input.value = '0'}
 else{number_input.value = (parseFloat(number_input.value) + number_input.step*1).toFixed(digits)}
 localStorage.setItem(number, number_input.value)}})})
@@ -174,53 +178,86 @@ id('resetname4').addEventListener('click', function(){id('name4').value = 'Keybo
 
 
 
+function EnableFBEmulationDisable(){if(id('EnableFBEmulation').checked){id('EnableCopyColorFromRDRAM').disabled = false;id('EnableCopyDepthToMainDepthBuffer').disabled = false;id('EnableCopyAuxiliaryToRDRAM').disabled = false;id('ForceDepthBufferClear').disabled = false;id('FBInfoReadColorChunk').disabled = false;id('FBInfoReadDepthChunk').disabled = false}else{id('EnableCopyColorFromRDRAM').disabled = true;id('EnableCopyDepthToMainDepthBuffer').disabled = true;id('EnableCopyAuxiliaryToRDRAM').disabled = true;id('ForceDepthBufferClear').disabled = true;id('FBInfoReadColorChunk').disabled = true;id('FBInfoReadDepthChunk').disabled = true}}
+id('EnableFBEmulation').addEventListener('change', function(){EnableFBEmulationDisable()})
+EnableFBEmulationDisable()
+
+function msaaDisable(){if(id('fxaa').checked || id('EnableN64DepthCompare').selectedIndex != '0'){id('msaa').disabled = true}else{id('msaa').disabled = false}}
+id('fxaa').addEventListener('change', function(){msaaDisable()})
+id('EnableN64DepthCompare').addEventListener('change', function(){msaaDisable()})
+msaaDisable()
+
+function ForceGammaCorrectionDisable(){if(id('ForceGammaCorrection').checked){id('GammaCorrectionLevel').disabled = false}else{id('GammaCorrectionLevel').disabled = true}}
+id('ForceGammaCorrection').addEventListener('change', function(){ForceGammaCorrectionDisable()})
+ForceGammaCorrectionDisable()
+
+function EnableOverscanDisable(){if(id('EnableOverscan').checked){id('OverscanNtscTop').disabled = false;id('OverscanNtscLeft').disabled = false;id('OverscanNtscRight').disabled = false;id('OverscanNtscBottom').disabled = false;id('OverscanPalTop').disabled = false;id('OverscanPalLeft').disabled = false;id('OverscanPalRight').disabled = false;id('OverscanPalBottom').disabled = false}else{id('OverscanNtscTop').disabled = true;id('OverscanNtscLeft').disabled = true;id('OverscanNtscRight').disabled = true;id('OverscanNtscBottom').disabled = true;id('OverscanPalTop').disabled = true;id('OverscanPalLeft').disabled = true;id('OverscanPalRight').disabled = true;id('OverscanPalBottom').disabled = true}}
+id('EnableOverscan').addEventListener('change', function(){EnableOverscanDisable()})
+EnableOverscanDisable()
+
 function txNoTextureFileStorageDisable(){if(id('txNoTextureFileStorage').checked){id('cache').disabled = true}else{id('cache').disabled = false}}
-if(localStorage.getItem('txNoTextureFileStorage') != 'null'){if(localStorage.getItem('txNoTextureFileStorage') === 'true'){id('cache').disabled = true}}
 id('txNoTextureFileStorage').addEventListener('change', function(){txNoTextureFileStorageDisable()})
+txNoTextureFileStorageDisable()
+
+function txHiresEnableDisable(){if(id('txHiresEnable').checked){id('txHiresFullAlphaChannel').disabled = false;id('txHresAltCRC').disabled = false;id('txCacheCompression').disabled = false;id('txForce16bpp').disabled = false;id('txSaveCache').disabled = false;id('txNoTextureFileStorage').disabled = false}else{id('txHiresFullAlphaChannel').disabled = true;id('txHresAltCRC').disabled = true;id('txCacheCompression').disabled = true;id('txForce16bpp').disabled = true;id('txSaveCache').disabled = true;id('txNoTextureFileStorage').disabled = true}}
+id('txHiresEnable').addEventListener('change', function(){txHiresEnableDisable()})
+txHiresEnableDisable()
+
+function ForcePolygonOffsetDisable(){if(id('ForcePolygonOffset').checked){id('PolygonOffsetFactor').disabled = false;id('PolygonOffsetUnits').disabled = false}else{id('PolygonOffsetFactor').disabled = true;id('PolygonOffsetUnits').disabled = true}}
+id('ForcePolygonOffset').addEventListener('change', function(){ForcePolygonOffsetDisable()})
+ForcePolygonOffsetDisable()
+
+function force_polygon_offsetDisable(){if(id('force_polygon_offset').checked){id('polygon_offset_factor').disabled = false;id('polygon_offset_units').disabled = false}else{id('polygon_offset_factor').disabled = true;id('polygon_offset_units').disabled = true}}
+id('force_polygon_offset').addEventListener('change', function(){force_polygon_offsetDisable()})
+force_polygon_offsetDisable()
+
+function clockDisable(){if(id('clock').checked){id('clock_24_hr').disabled = false}else{id('clock_24_hr').disabled = true}}
+id('clock').addEventListener('change', function(){clockDisable()})
+clockDisable()
+
+function ghq_hirsDisable(){if(id('ghq_hirs').checked){id('ghq_hirs_cmpr').disabled = false;id('ghq_hirs_tile').disabled = false;id('ghq_hirs_f16bpp').disabled = false;id('ghq_hirs_gz').disabled = false;id('ghq_hirs_altcrc').disabled = false;id('ghq_cache_save').disabled = false;id('ghq_hirs_let_texartists_fly').disabled = false}else{id('ghq_hirs_cmpr').disabled = true;id('ghq_hirs_tile').disabled = true;id('ghq_hirs_f16bpp').disabled = true;id('ghq_hirs_gz').disabled = true;id('ghq_hirs_altcrc').disabled = true;id('ghq_cache_save').disabled = true;id('ghq_hirs_let_texartists_fly').disabled = true}}
+id('ghq_hirs').addEventListener('change', function(){ghq_hirsDisable()})
+ghq_hirsDisable()
 
 function mode1Disable(){if(id('mode1').value === 'Input-SDL-Control1[mode]=2'){id('plugged1').disabled = true;id('name1').disabled = true}else{id('plugged1').disabled = false;id('name1').disabled = false}}
-if(localStorage.getItem('mode1') != 'null'){if(localStorage.getItem('mode1') === 'Input-SDL-Control1[mode]=2'){id('plugged1').disabled = true;id('name1').disabled = true}}
 id('mode1').addEventListener('change', function(){mode1Disable()})
 mode1Disable();
 
 function mode2Disable(){if(id('mode2').value === 'Input-SDL-Control2[mode]=2'){id('plugged2').disabled = true;id('name2').disabled = true}else{id('plugged2').disabled = false;id('name2').disabled = false}}
-if(localStorage.getItem('mode2') != 'null'){if(localStorage.getItem('mode2') === 'Input-SDL-Control2[mode]=2'){id('plugged2').disabled = true;id('name2').disabled = true}}
 id('mode2').addEventListener('change', function(){mode2Disable()})
 mode2Disable();
 
 function mode3Disable(){if(id('mode3').value === 'Input-SDL-Control3[mode]=2'){id('plugged3').disabled = true;id('name3').disabled = true}else{id('plugged3').disabled = false;id('name3').disabled = false}}
-if(localStorage.getItem('mode3') != 'null'){if(localStorage.getItem('mode3') === 'Input-SDL-Control3[mode]=2'){id('plugged3').disabled = true;id('name3').disabled = true}}
 id('mode3').addEventListener('change', function(){mode3Disable()})
 mode3Disable();
 
 function mode4Disable(){if(id('mode4').value === 'Input-SDL-Control4[mode]=2'){id('plugged4').disabled = true;id('name4').disabled = true}else{id('plugged4').disabled = false;id('name4').disabled = false}}
-if(localStorage.getItem('mode4') != 'null'){if(localStorage.getItem('mode4') === 'Input-SDL-Control4[mode]=2'){id('plugged4').disabled = true;id('name4').disabled = true}}
 id('mode4').addEventListener('change', function(){mode4Disable()})
 mode4Disable();
 
-id('mouse1').addEventListener('change', function(){mouse1Disable()})
-mouse1Disable()
 function mouse1Disable(){
 if(!id('mouse1').checked){id('mouse1_1').disabled = true;id('mouse1_2').disabled = true;id('mouse1_3').disabled = true;id('MouseSensitivity1X').disabled = true;id('MouseSensitivity1Y').disabled = true}
 else{id('mouse1_1').disabled = false;id('mouse1_2').disabled = false;id('mouse1_3').disabled = false;id('MouseSensitivity1X').disabled = false;id('MouseSensitivity1Y').disabled = false}}
+id('mouse1').addEventListener('change', function(){mouse1Disable()})
+mouse1Disable()
 
-id('mouse2').addEventListener('change', function(){mouse2Disable()})
-mouse2Disable()
 function mouse2Disable(){
 if(!id('mouse2').checked){id('mouse2_1').disabled = true;id('mouse2_2').disabled = true;id('mouse2_3').disabled = true;id('MouseSensitivity2X').disabled = true;id('MouseSensitivity2Y').disabled = true}
 else{id('mouse2_1').disabled = false;id('mouse2_2').disabled = false;id('mouse2_3').disabled = false;id('MouseSensitivity2X').disabled = false;id('MouseSensitivity2Y').disabled = false}}
+id('mouse2').addEventListener('change', function(){mouse2Disable()})
+mouse2Disable()
 
-id('mouse3').addEventListener('change', function(){mouse3Disable()})
-mouse3Disable()
 function mouse3Disable(){
 if(!id('mouse3').checked){id('mouse3_1').disabled = true;id('mouse3_2').disabled = true;id('mouse3_3').disabled = true;id('MouseSensitivity3X').disabled = true;id('MouseSensitivity3Y').disabled = true}
 else{id('mouse3_1').disabled = false;id('mouse3_2').disabled = false;id('mouse3_3').disabled = false;id('MouseSensitivity3X').disabled = false;id('MouseSensitivity3Y').disabled = false}}
+id('mouse3').addEventListener('change', function(){mouse3Disable()})
+mouse3Disable()
 
-id('mouse4').addEventListener('change', function(){mouse4Disable()})
-mouse4Disable()
 function mouse4Disable(){
 if(!id('mouse4').checked){id('mouse4_1').disabled = true;id('mouse4_2').disabled = true;id('mouse4_3').disabled = true;id('MouseSensitivity4X').disabled = true;id('MouseSensitivity4Y').disabled = true}
 else{id('mouse4_1').disabled = false;id('mouse4_2').disabled = false;id('mouse4_3').disabled = false;id('MouseSensitivity4X').disabled = false;id('MouseSensitivity4Y').disabled = false}}
+id('mouse4').addEventListener('change', function(){mouse4Disable()})
+mouse4Disable()
 
 
 

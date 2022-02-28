@@ -1386,7 +1386,7 @@
 <p>&nbsp;</p>
 <p title="Remove halos around filtered textures."><input id="enableHalosRemoval" type="checkbox" data-store="enableHalosRemoval"><label for="enableHalosRemoval">Halos Removal</label></p>
 <p>&nbsp;</p>
-<p title="Enable LOD emulation (mipmapping)."><input id="EnableLOD" type="checkbox" data-store="EnableLOD"><label for="EnableLOD">LOD Emulation</label></p>
+<p><input id="EnableLOD" type="checkbox" data-store="EnableLOD"><label for="EnableLOD">LOD Emulation (Mipmapping)</label></p>
 <p>&nbsp;</p>
 <p title="Enable hardware per-pixel lighting."><input id="EnableHWLighting" type="checkbox" data-store="EnableHWLighting" checked><label for="EnableHWLighting">Per-pixel Lighting</label></p>
 <p>&nbsp;</p>
@@ -1442,7 +1442,7 @@
 <p>&nbsp;</p>
 <p title="Disable buffers read/write with FBInfo. Use for games which do not work with FBInfo."><input id="DisableFBInfo" type="checkbox" data-store="DisableFBInfo" checked><label for="DisableFBInfo">Disable FBInfo</label></p>
 <p>&nbsp;</p>
-<p><input id="EnableFBEmulation" type="checkbox" data-store="EnableFBEmulation" checked><label for="EnableFBEmulation">Framebuffer Emulation</label></p>
+<p title="Disabling framebuffer emulation breaks game effects and disables overscan, aspect ratio, N64 resolution factor, N64-style depth compare and more."><input id="EnableFBEmulation" type="checkbox" data-store="EnableFBEmulation" checked><label for="EnableFBEmulation">Framebuffer Emulation</label></p>
 <p>&nbsp;</p>
 <p title="Enable color buffer copy from RDRAM."><input id="EnableCopyColorFromRDRAM" type="checkbox" data-store="EnableCopyColorFromRDRAM"><label for="EnableCopyColorFromRDRAM">Color Buffer Copy from RDRAM</label></p>
 <p>&nbsp;</p>
@@ -1487,13 +1487,13 @@
 <p>&nbsp;</p>
 <p><input id="fxaa" type="checkbox" data-store="fxaa"><label for="fxaa">FXAA</label></p>
 <p>&nbsp;</p>
-<select class="width125m" name="msaa" id="msaa">
+<div title="Multisample anti-aliasing is incompatible with N64 Depth Compare."><select class="width125m" name="msaa" id="msaa">
 <option value="Video-GLideN64[MultiSampling]=0" selected>0x</option>
 <option value="Video-GLideN64[MultiSampling]=2">2x</option>
 <option value="Video-GLideN64[MultiSampling]=4">4x</option>
 <option value="Video-GLideN64[MultiSampling]=8">8x</option>
 <option value="Video-GLideN64[MultiSampling]=16">16x</option>
-</select><label for="msaa">MSAA</label>
+</select><label for="msaa">MSAA</label></div>
 <p>&nbsp;</p>
 <div title="Choose adjust for using a generic Widescreen hack."><select class="width125m" name="aspectRatio" id="aspectRatio">
 <option value="Video-GLideN64[AspectRatio]=1" selected>4:3</option>
