@@ -40,11 +40,7 @@ if(joyinput.id.includes('2')){name2Input.value = joydata[0];localStorage.setItem
 if(joyinput.id.includes('3')){name3Input.value = joydata[0];localStorage.setItem('name3',joydata[0])}
 if(joyinput.id.includes('4')){name4Input.value = joydata[0];localStorage.setItem('name4',joydata[0])}
 if(joydata[2].includes('button')){joyvalue = joydata[2]};
-if(joydata[2].includes('hat')){
-if(joydata[2] === 'hat(0 1)'){joyvalue = 'hat(0 Up)'}
-if(joydata[2] === 'hat(0 2)'){joyvalue = 'hat(0 Right)'}
-if(joydata[2] === 'hat(0 4)'){joyvalue = 'hat(0 Down)'}
-if(joydata[2] === 'hat(0 8)'){joyvalue = 'hat(0 Left)'}}}
+if(joydata[2].includes('hat')){joyvalue = joydata[2].replace('1)','Up)').replace('2)','Right)').replace('4)','Down)').replace('8)','Left)')}}
 if(joyvalue != undefined){joyinput.value = joyvalue;localStorage.setItem(joyinput.id,joyvalue)}})
 joyinput.addEventListener('blur', function(){ipcRenderer.send('jstestKill')})
 ipcRenderer.once('jsClosed', () => {joyinput.blur()})}
