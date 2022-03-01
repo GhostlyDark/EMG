@@ -107,6 +107,7 @@ localStorage.setItem(m64p_hotkey, e.keyCode)}})})
 dropdowns.forEach(dropdown => {
 var drop = id(dropdown);
 if(localStorage.getItem(dropdown) != null){drop.value = localStorage.getItem(dropdown)}
+if(drop.selectedIndex === -1){drop.selectedIndex = 0;localStorage.removeItem(dropdown)}
 drop.addEventListener('change', function(){localStorage.setItem(dropdown, drop.options[drop.selectedIndex].value)})})
 
 if(localStorage.getItem('rsp') != null){
