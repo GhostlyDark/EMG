@@ -1,21 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
 var filePath,fileResult,archivePath,archiveResult,cheatRadio,txPath,txPathResult,txCachePath,txCachePathResult,txDumpPath,txDumpPathResult,workingDirectory,workingDirectoryResult,PIF,PIFResult,IPLROM,IPLROMResult,Disk,DiskResult,ScreenshotPath,ScreenshotPathResult,SaveStatePath,SaveStatePathResult,SaveSRAMPath,SaveSRAMPathResult,gbROM1,gbROM1Result,gbROM2,gbROM2Result,gbROM3,gbROM3Result,gbROM4,gbROM4Result,gbRAM1,gbRAM1Result,gbRAM2,gbRAM2Result,gbRAM3,gbRAM3Result,gbRAM4,gbRAM4Result,recentFiles = [];
 
-const dialogDirectory = window.dialogDirectory,
-dialogFile = window.dialogFile,
-emuLaunch = window.emuLaunch,
-listArchive = window.listArchive,
-extractArchive = window.extractArchive,
-returnPath = window.returnPath,
-jstest = window.jstest,
-jsrefresh = window.jsrefresh,
-showCheats = window.showCheats,
-writeGCA = window.writeGCA,
-hires_texture = window.hires_texture,
-cache = window.cache,
-texture_dump = window.texture_dump,
-working_directory = window.working_directory,
-textInputs = document.querySelectorAll("input[type='text']"),
+const textInputs = document.querySelectorAll("input[type='text']"),
 
 regjoy = /axis|button|hat|\(|\)/g, regsplit = /\s*\n/, regradio = /^\s\s\s/g, regbox = /_.*/g, regkb = /key\(\)/g, regkbaxis = /key\(,\)/g, regc = /\:/g, regid = /^\d: |^\d\d: /,
 
@@ -147,7 +133,7 @@ range_reset.addEventListener('click', function(){range_input.value = range_value
 if(localStorage.getItem(range) != null){range_input.value = localStorage.getItem(range);range_text.innerHTML = range_input.value}
 range_input.addEventListener('input', function(){localStorage.setItem(range, range_input.value);range_text.innerHTML = range_input.value})})
 
-id('NumWorkers').max = window.navigator.hardwareConcurrency;
+id('NumWorkers').max = navigator.hardwareConcurrency;
 numbers.forEach(number => {
 var number_input = id(number),
 number_reset = id('reset'+number),
@@ -439,8 +425,8 @@ id('ul_hk_controller4').addEventListener('click', function(){currentHK(id('ul_hk
 function noScroll(e){if(keys[e.keyCode]){e.preventDefault();return false}}
 for (var i = 0; i < textInputs.length; i++){var textInput = textInputs[i];preventScroll(textInput)}
 function preventScroll(textInput){
-textInput.addEventListener('focus',(e) => {window.addEventListener('keydown',noScroll,false)})
-textInput.addEventListener('blur',(e) => {window.removeEventListener('keydown',noScroll,false)})}
+textInput.addEventListener('focus',(e) => {html.addEventListener('keydown',noScroll,false)})
+textInput.addEventListener('blur',(e) => {html.removeEventListener('keydown',noScroll,false)})}
 
 function currentGFX(){
 if(!id('angrylion').classList.contains('hide'))id('angrylion').classList.add('hide')
@@ -489,7 +475,7 @@ id('glide64mk2Settings').addEventListener('click', function(){
 if(id('glide64mk2SettingsDropdown').classList.contains('show')){removeShow()}
 else{removeShow();id('glide64mk2SettingsDropdown').classList.toggle('show');id('glide64mk2Settings').classList.toggle('active')}})
 
-window.onclick = function(e){if(!e.target.matches('.dropbutton')){removeShow()}}
+html.addEventListener('click', function(e){if(!e.target.matches('.dropbutton')){removeShow()}})
 
 
 
@@ -763,8 +749,8 @@ id('fontColor').addEventListener('change', function(){localStorage.setItem('font
 function joystick(joyinput){jstest(joyinput,id('c1'),id('c2'),id('c3'),id('c4'))}
 
 n64_buttons.forEach(n64_button => { // Joystick input
-var n64_button = n64_button+'c',
-box = id(n64_button),
+n64_button += 'c';
+var box = id(n64_button),
 n64_button_b = n64_button+'b',
 boxB = id(n64_button_b);
 
@@ -784,11 +770,16 @@ id('clear'+joykey).addEventListener('click', function(){box.value = '';localStor
 
 id('launch').addEventListener('click', function(){
 var exp = 'Core[DisableExtraMem]=' + id('exp').checked,
+SharedDataPath = 'Core[SharedDataPath]=',
+nospeedlimit = id('nospeedlimit').checked ? '--nospeedlimit' : [],
 osd = id('osd').checked ? '--osd' : '--noosd',
+verbose = id('verbose').checked ? '--verbose' : [],
+PIFROM = PIF != '' ? ['--pif',PIF] : [],
 fullscreen = id('fullscreen').checked ? '--fullscreen' : '--windowed',
 ParallelFullscreen = 'Video-Parallel[Fullscreen]=' + id('fullscreen').checked,
 vsync = 'Video-General[VerticalSync]=' + id('vsync').checked,
 Glide64VSync = 'Video-Glide64mk2[vsync]=' + id('vsync').checked,
+m64pGFX = 'Rsp-HLE[DisplayListToGraphicsPlugin]=True',
 cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=' + id('rspGFX').checked,
 cxd4Audio = 'rsp-cxd4[AudioListToAudioPlugin]=' + id('rspAudio').checked,
 m64pAudio = 'Rsp-HLE[AudioListToAudioPlugin]=' + id('rspAudio').checked,
@@ -1242,11 +1233,14 @@ c_stick_left = id('c_stick_left').value,
 c_stick_right = id('c_stick_right').value,
 c_stick_down = id('c_stick_down').value,
 c_stick_up = id('c_stick_up').value,
-gcaSettings = 'control_stick_deadzone = ' +  control_stick_deadzone + '\n' + 'control_stick_sensitivity = ' + control_stick_sensitivity + '\n' + 'c_stick_deadzone = ' + c_stick_deadzone + '\n' + 'trigger_threshold = ' + trigger_threshold + '\n' + '\n' + '[controller_mapping]' + '\n' + 'a = ' + a + '\n' + 'b = ' + b + '\n' + 'x = ' + x + '\n' + 'y = ' + y + '\n' + 'start = ' + start + '\n' + 'z = ' + z + '\n' + 'l = ' + l + '\n' + 'r = ' + r + '\n' + 'd_pad_left = ' + d_pad_left + '\n' + 'd_pad_right = ' + d_pad_right + '\n' + 'd_pad_down = ' + d_pad_down + '\n' + 'd_pad_up = ' + d_pad_up + '\n' + 'c_stick_left = ' + c_stick_left + '\n' + 'c_stick_right = ' + c_stick_right + '\n' + 'c_stick_down = ' + c_stick_down + '\n' + 'c_stick_up = ' + c_stick_up,
+gcaSettings = 'control_stick_deadzone = ' +  control_stick_deadzone + '\n' + 'control_stick_sensitivity = ' + control_stick_sensitivity + '\n' + 'c_stick_deadzone = ' + c_stick_deadzone + '\n' + 'trigger_threshold = ' + trigger_threshold + '\n' + '\n' + '[controller_mapping]' + '\n' + 'a = ' + a + '\n' + 'b = ' + b + '\n' + 'x = ' + x + '\n' + 'y = ' + y + '\n' + 'start = ' + start + '\n' + 'z = ' + z + '\n' + 'l = ' + l + '\n' + 'r = ' + r + '\n' + 'd_pad_left = ' + d_pad_left + '\n' + 'd_pad_right = ' + d_pad_right + '\n' + 'd_pad_down = ' + d_pad_down + '\n' + 'd_pad_up = ' + d_pad_up + '\n' + 'c_stick_left = ' + c_stick_left + '\n' + 'c_stick_right = ' + c_stick_right + '\n' + 'c_stick_down = ' + c_stick_down + '\n' + 'c_stick_up = ' + c_stick_up;
 
-m64pGFX = 'Rsp-HLE[DisplayListToGraphicsPlugin]=True',
-SharedDataPath = 'Core[SharedDataPath]=',
-PIFROM, nospeedlimit, verbose;
+if(id('nospeedlimit').checked){audio = 'dummy';vsync = 'Video-General[VerticalSync]=False';Glide64VSync = 'Video-Glide64mk2[vsync]=False'}
+if(gfx === 'mupen64plus-video-angrylion-plus' || gfx === 'mupen64plus-video-parallel'){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=False'; cxd4Audio = 'rsp-cxd4[DisplayListToAudioPlugin]=False'}
+else if(gfx === 'mupen64plus-video-rice' || gfx === 'mupen64plus-video-glide64mk2'){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=True'}
+if(gfx === 'mupen64plus-video-angrylion-plus' && rsp === 'mupen64plus-rsp-hle'){rsp = 'mupen64plus-rsp-cxd4-sse2'}
+else if(gfx === 'mupen64plus-video-parallel' && rsp === 'mupen64plus-rsp-hle'){rsp = 'mupen64plus-rsp-parallel'}
+else if((gfx === 'mupen64plus-video-rice' || gfx === 'mupen64plus-video-glide64mk2') && rsp === 'mupen64plus-rsp-parallel'){rsp = 'mupen64plus-rsp-hle'}
 
 
 
@@ -1425,8 +1419,8 @@ CButtonR2 += 'key(' + id('CButtonR2').dataset.key + ')';
 CButtonD2 += 'key(' + id('CButtonD2').dataset.key + ')';
 MempakSwitch2 += 'key(' + id('MempakSwitch2').dataset.key + ')';
 RumblepakSwitch2 += 'key(' + id('RumblepakSwitch2').dataset.key + ')';
-XAxis2 += 'Input-SDL-Control2[X Axis]=' + 'key(' + id('StickL2').dataset.key + ',' + id('StickR2').dataset.key + ')';
-YAxis2 += 'Input-SDL-Control2[Y Axis]=' + 'key(' + id('StickU2').dataset.key + ',' + id('StickD2').dataset.key + ')';
+XAxis2 += 'key(' + id('StickL2').dataset.key + ',' + id('StickR2').dataset.key + ')';
+YAxis2 += 'key(' + id('StickU2').dataset.key + ',' + id('StickD2').dataset.key + ')';
 if(id('mouse2').checked && mouse2_1 != ''){
 if(mouse2_1 === 'a'){AButton2 += ' mouse(1)'}
 if(mouse2_1 === 'b'){BButton2 += ' mouse(1)'}
@@ -1824,8 +1818,8 @@ CButtonR4 += id('CButtonR4c').value + ' ' + id('CButtonR4cb').value;
 CButtonD4 += id('CButtonD4c').value + ' ' + id('CButtonD4cb').value;
 MempakSwitch4 += id('MempakSwitch4c').value + ' ' + id('MempakSwitch4cb').value;
 RumblepakSwitch4 += id('RumblepakSwitch4c').value + ' ' + id('RumblepakSwitch4cb').value;
-XAxis4 += 'Input-SDL-Control4[X Axis]=' + buttonType + '(' + StickL4value + ',' + StickR4value + ')' + ' ' + buttonTypeB + '(' + StickL4bvalue + ',' + StickR4bvalue + ')';
-YAxis4 += 'Input-SDL-Control4[Y Axis]=' + buttonType + '(' + StickU4value + ',' + StickD4value + ')' + ' ' + buttonTypeB + '(' + StickU4bvalue + ',' + StickD4bvalue + ')';
+XAxis4 += buttonType + '(' + StickL4value + ',' + StickR4value + ')' + ' ' + buttonTypeB + '(' + StickL4bvalue + ',' + StickR4bvalue + ')';
+YAxis4 += buttonType + '(' + StickU4value + ',' + StickD4value + ')' + ' ' + buttonTypeB + '(' + StickU4bvalue + ',' + StickD4bvalue + ')';
 if(id('mouse4').checked && mouse4_1 != ''){
 if(mouse4_1 === 'a'){AButton4 = 'Input-SDL-Control4[A Button]=' + id('AButton4c').value + ' mouse(1)'}
 if(mouse4_1 === 'b'){BButton4 = 'Input-SDL-Control4[B Button]=' + id('BButton4c').value + ' mouse(1)'}
@@ -1962,16 +1956,6 @@ XAxis4 = kb(XAxis4);
 YAxis4 = kb(YAxis4);
 
 
-
-if(gfx === 'mupen64plus-video-angrylion-plus' || gfx === 'mupen64plus-video-parallel'){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=False'; cxd4Audio = 'rsp-cxd4[DisplayListToAudioPlugin]=False'}
-else if(gfx === 'mupen64plus-video-rice' || gfx === 'mupen64plus-video-glide64mk2'){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=True'}
-if(gfx === 'mupen64plus-video-angrylion-plus' && rsp === 'mupen64plus-rsp-hle'){rsp = 'mupen64plus-rsp-cxd4-sse2'}
-else if(gfx === 'mupen64plus-video-parallel' && rsp === 'mupen64plus-rsp-hle'){rsp = 'mupen64plus-rsp-parallel'}
-else if((gfx === 'mupen64plus-video-rice' || gfx === 'mupen64plus-video-glide64mk2') && rsp === 'mupen64plus-rsp-parallel'){rsp = 'mupen64plus-rsp-hle'}
-
-if(id('nospeedlimit').checked){nospeedlimit = '--nospeedlimit';audio = 'dummy';vsync = 'Video-General[VerticalSync]=False';Glide64VSync = 'Video-Glide64mk2[vsync]=False'}else{nospeedlimit = []}
-PIFROM = PIF != '' ? ['--pif',PIF] : []
-verbose = id('verbose').checked ? '--verbose' : []
 
 var core = ['--corelib','mupen64plus','--plugindir','.',osd,fullscreen,'--resolution',resolution,'--gfx',gfx,'--audio',audio,'--input',input,'--rsp',rsp,'--set',RspFallback,'--emumode',emumode,'--set',exp,'--set',vsync,'--set',cxd4GFX,'--set',m64pGFX,'--set',IPLROMSetting,'--set',DiskSetting,'--set',NoCompiledJump,'--set',CountPerOp,'--set',CountPerOpDenomPot,'--set',SiDmaDuration,'--set',AutoStateSlotIncrement,'--set',CurrentStateSlot,'--set',SharedDataPath,'--set',ScreenshotPathSetting,'--set',SaveStatePathSetting,'--set',SaveSRAMPathSetting,'--set',RandomizeInterrupt,'--set',SaveDiskFormat,'--set',WaitForCPUHost,'--set',SupportCPUSemaphoreLock,'--set',gbROM1Setting,'--set',gbROM2Setting,'--set',gbROM3Setting,'--set',gbROM4Setting,'--set',gbRAM1Setting,'--set',gbRAM2Setting,'--set',gbRAM3Setting,'--set',gbRAM4Setting,'--set',DEFAULT_FREQUENCY,'--set',SWAP_CHANNELS,'--set',PRIMARY_BUFFER_TARGET,'--set',SECONDARY_BUFFER_SIZE,'--set',RESAMPLE,'--set',VOLUME_ADJUST,'--set',VOLUME_DEFAULT,'--set',AUDIO_SYNC,'--set',KbdMappingSlot0,'--set',KbdMappingSlot1,'--set',KbdMappingSlot2,'--set',KbdMappingSlot3,'--set',KbdMappingSlot4,'--set',KbdMappingSlot5,'--set',KbdMappingSlot6,'--set',KbdMappingSlot7,'--set',KbdMappingSlot8,'--set',KbdMappingSlot9,'--set',KbdMappingStop,'--set',KbdMappingFullscreen,'--set',KbdMappingSaveState,'--set',KbdMappingLoadState,'--set',KbdMappingIncrementSlot,'--set',KbdMappingReset,'--set',KbdMappingSpeedDown,'--set',KbdMappingSpeedUp,'--set',KbdMappingScreenshot,'--set',KbdMappingPause,'--set',KbdMappingMute,'--set',KbdMappingIncreaseVolume,'--set',KbdMappingDecreaseVolume,'--set',KbdMappingFastForward,'--set',KbdMappingFrameAdvance,'--set',KbdMappingGameshark,'--set',JoyMappingStop,'--set',JoyMappingFullscreen,'--set',JoyMappingSaveState,'--set',JoyMappingLoadState,'--set',JoyMappingIncrementSlot,'--set',JoyMappingReset,'--set',JoyMappingSpeedDown,'--set',JoyMappingSpeedUp,'--set',JoyMappingScreenshot,'--set',JoyMappingPause,'--set',JoyMappingMute,'--set',JoyMappingIncreaseVolume,'--set',JoyMappingDecreaseVolume,'--set',JoyMappingFastForward,'--set',JoyMappingFrameAdvance,'--set',JoyMappingGameshark],
 
