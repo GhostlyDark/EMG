@@ -286,53 +286,9 @@
 <p>&nbsp;</p>
 <p class="sub">Controller 1</p>
 <p>&nbsp;</p>
-<p><input id="plugged1" type="checkbox" data-store="plugged1" checked><label for="plugged1">Plugged</label></p>
-<p>&nbsp;</p>
-<p title="Analog Stick is mapped to mouse movement and mouse buttons are able to be mapped alongside keyboard controls."><input id="mouse1" type="checkbox" data-store="mouse1"><label for="mouse1">Enable Mouse</label></p>
-<p>&nbsp;</p><p>&nbsp;</p>
-<select class="width175m" name="mouse1_1" id="mouse1_1">
-<option value="" selected>None</option>
-<option value="a">A Button</option>
-<option value="b">B Button</option>
-<option value="l">L Button</option>
-<option value="r">R Button</option>
-<option value="z">Z-Trigger</option>
-</select><label for="mouse1_1">Mouse Button: Left</label>
-<p>&nbsp;</p>
-<select class="width175m" name="mouse1_2" id="mouse1_2">
-<option value="" selected>None</option>
-<option value="a">A Button</option>
-<option value="b">B Button</option>
-<option value="l">L Button</option>
-<option value="r">R Button</option>
-<option value="z">Z-Trigger</option>
-</select><label for="mouse1_2">Mouse Button: Middle</label>
-<p>&nbsp;</p>
-<select class="width175m" name="mouse1_3" id="mouse1_3">
-<option value="" selected>None</option>
-<option value="a">A Button</option>
-<option value="b">B Button</option>
-<option value="l">L Button</option>
-<option value="r">R Button</option>
-<option value="z">Z-Trigger</option>
-</select><label for="mouse1_3">Mouse Button: Right</label>
-<p>&nbsp;</p><p>&nbsp;</p>
-<p><input id="MouseSensitivity1X" name="MouseSensitivity1X" type="range" min="0.25" max="10.00" step="0.25" value="2.00"><label for="MouseSensitivity1X">Mouse Sensitivity X</label><button class="floatright" data-value="2.00" id="resetMouseSensitivity1X">Reset</button><span class="gc" id="MouseSensitivity1XText">2.00</span></p>
-<p>&nbsp;</p>
-<p><input id="MouseSensitivity1Y" name="MouseSensitivity1Y" type="range" min="0.25" max="10.00" step="0.25" value="2.00"><label for="MouseSensitivity1Y">Mouse Sensitivity Y</label><button class="floatright" data-value="2.00" id="resetMouseSensitivity1Y">Reset</button><span class="gc" id="MouseSensitivity1YText">2.00</span></p>
-<p>&nbsp;</p>
-<p><input id="AnalogDeadzone1X" name="AnalogDeadzone1X" type="range" min="0" max="32768" step="512" value="4096"><label for="AnalogDeadzone1X">Analog Deadzone X</label><button class="floatright" data-value="4096" id="resetAnalogDeadzone1X">Reset</button><span class="gc" id="AnalogDeadzone1XText">4096</span></p>
-<p>&nbsp;</p>
-<p><input id="AnalogDeadzone1Y" name="AnalogDeadzone1Y" type="range" min="0" max="32768" step="512" value="4096"><label for="AnalogDeadzone1Y">Analog Deadzone Y</label><button class="floatright" data-value="4096" id="resetAnalogDeadzone1Y">Reset</button><span class="gc" id="AnalogDeadzone1YText">4096</span></p>
-<p>&nbsp;</p>
-<p><input id="AnalogPeak1X" name="AnalogPeak1X" type="range" min="0" max="32768" step="512" value="32768"><label for="AnalogPeak1X">Analog Peak X</label><button class="floatright" data-value="32768" id="resetAnalogPeak1X">Reset</button><span class="gc" id="AnalogPeak1XText">32768</span></p>
-<p>&nbsp;</p>
-<p><input id="AnalogPeak1Y" name="AnalogPeak1Y" type="range" min="0" max="32768" step="512" value="32768"><label for="AnalogPeak1Y">Analog Peak Y</label><button class="floatright" data-value="32768" id="resetAnalogPeak1Y">Reset</button><span class="gc" id="AnalogPeak1YText">32768</span></p>
-<p>&nbsp;</p><p>&nbsp;</p>
-<div title="Fully Automatic: Try to configure everything automatically. Semi-automatic: Configure buttons automatically with given SDL Device Name. Manual: Do nothing automatically."><select class="width175m" name="mode1" id="mode1">
+<div title="Configure everything, including the selected device minus the controller plugin either automatically or manually."><select class="width175m" name="mode1" id="mode1">
 <option value="Input-SDL-Control1[mode]=0">Manual</option>
-<option value="Input-SDL-Control1[mode]=1">Semi-automatic</option>
-<option value="Input-SDL-Control1[mode]=2" selected>Fully Automatic</option>
+<option value="Input-SDL-Control1[mode]=2" selected>Automatic</option>
 </select><label for="mode1">Configuration Mode</label></div>
 <p>&nbsp;</p>
 <select class="width175m" name="plugin1" id="plugin1">
@@ -342,14 +298,96 @@
 <option value="Input-SDL-Control1[plugin]=5" selected>Rumble Pak</option>
 </select><label for="plugin1">Controller Plugin</label>
 <p>&nbsp;</p>
-<p><input class="width250m left" id="name1" value="Keyboard" type="text"><label for="name1">SDL Device Name</label><button class="floatright" id="resetname1">Reset</button></p>
-<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
-<ul class="ul-buttons">
-<li id="ul_c1_keyboard">Keyboard</li>
-<li title="Secondary bindings (second box) needs to be of a different button type to work. Works: Axis and Button, Hat and Button. Does not work: Button and Button." id="ul_c1_controller" class="active">Controller</li>
-</ul>
+<div title="Select SDL device to be used for this controller port. Will be ignored if configuration mode is set to Automatic, except for hotkey settings."><select class="width85p" name="c1" id="c1">
+<option value="Keyboard" selected>Keyboard</option>
+</select><button class="floatright" id="refreshc1">Refresh</button></div>
 <p>&nbsp;</p>
-<div id="c1_keyboard" class="hotkeys hide">
+<div class="hide" id="manual1">
+<p>&nbsp;</p>
+<p title="Specifies whether this controller is connected to the simulated N64."><input id="plugged1" type="checkbox" data-store="plugged1" checked><label for="plugged1">Plugged</label></p>
+<p>&nbsp;</p>
+<p title="Analog Stick is controlled by mouse movement and secondary bindings can be assigned to mouse buttons. To toggle the mouse grab while playing a game, press the Left Control and Left Alt keys together."><input id="mouse1" type="checkbox" data-store="mouse1"><label for="mouse1">Enable Mouse</label></p>
+<p>&nbsp;</p>
+<div id="mouse1options" class="hide">
+<select class="width175m" name="mouse1_1" id="mouse1_1">
+<option value="" selected>None</option>
+<option value="a">A Button</option>
+<option value="b">B Button</option>
+<option value="l">L Button</option>
+<option value="r">R Button</option>
+<option value="z">Z-Trigger</option>
+<option value="cr">C-Right</option>
+<option value="cl">C-Left</option>
+<option value="cd">C-Down</option>
+<option value="cu">C-Up</option>
+<option value="dpadr">D-Pad Right</option>
+<option value="dpadl">D-Pad Left</option>
+<option value="dpadd">D-Pad Down</option>
+<option value="dpadu">D-Pad Up</option>
+<option value="start">Start Button</option>
+<option value="ms">Mempak Switch</option>
+<option value="rs">Rumblepak Switch</option>
+</select><label for="mouse1_1">Mouse Button: Left</label>
+<p>&nbsp;</p>
+<select class="width175m" name="mouse1_2" id="mouse1_2">
+<option value="" selected>None</option>
+<option value="a">A Button</option>
+<option value="b">B Button</option>
+<option value="l">L Button</option>
+<option value="r">R Button</option>
+<option value="z">Z-Trigger</option>
+<option value="cr">C-Right</option>
+<option value="cl">C-Left</option>
+<option value="cd">C-Down</option>
+<option value="cu">C-Up</option>
+<option value="dpadr">D-Pad Right</option>
+<option value="dpadl">D-Pad Left</option>
+<option value="dpadd">D-Pad Down</option>
+<option value="dpadu">D-Pad Up</option>
+<option value="start">Start Button</option>
+<option value="ms">Mempak Switch</option>
+<option value="rs">Rumblepak Switch</option>
+</select><label for="mouse1_2">Mouse Button: Middle</label>
+<p>&nbsp;</p>
+<select class="width175m" name="mouse1_3" id="mouse1_3">
+<option value="" selected>None</option>
+<option value="a">A Button</option>
+<option value="b">B Button</option>
+<option value="l">L Button</option>
+<option value="r">R Button</option>
+<option value="z">Z-Trigger</option>
+<option value="cr">C-Right</option>
+<option value="cl">C-Left</option>
+<option value="cd">C-Down</option>
+<option value="cu">C-Up</option>
+<option value="dpadr">D-Pad Right</option>
+<option value="dpadl">D-Pad Left</option>
+<option value="dpadd">D-Pad Down</option>
+<option value="dpadu">D-Pad Up</option>
+<option value="start">Start Button</option>
+<option value="ms">Mempak Switch</option>
+<option value="rs">Rumblepak Switch</option>
+</select><label for="mouse1_3">Mouse Button: Right</label>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p><input id="MouseSensitivity1X" name="MouseSensitivity1X" type="range" min="0.25" max="10.00" step="0.25" value="2.00"><label for="MouseSensitivity1X">Mouse Sensitivity X</label><button class="floatright" data-value="2.00" id="resetMouseSensitivity1X">Reset</button><span class="gc" id="MouseSensitivity1XText">2.00</span></p>
+<p>&nbsp;</p>
+<p><input id="MouseSensitivity1Y" name="MouseSensitivity1Y" type="range" min="0.25" max="10.00" step="0.25" value="2.00"><label for="MouseSensitivity1Y">Mouse Sensitivity Y</label><button class="floatright" data-value="2.00" id="resetMouseSensitivity1Y">Reset</button><span class="gc" id="MouseSensitivity1YText">2.00</span></p>
+<p>&nbsp;</p>
+</div>
+<div id="analog1" class="hide">
+<p>&nbsp;</p>
+<p><input id="AnalogDeadzone1X" name="AnalogDeadzone1X" type="range" min="0" max="32768" step="512" value="4096"><label for="AnalogDeadzone1X">Analog Deadzone X</label><button class="floatright" data-value="4096" id="resetAnalogDeadzone1X">Reset</button><span class="gc" id="AnalogDeadzone1XText">4096</span></p>
+<p>&nbsp;</p>
+<p><input id="AnalogDeadzone1Y" name="AnalogDeadzone1Y" type="range" min="0" max="32768" step="512" value="4096"><label for="AnalogDeadzone1Y">Analog Deadzone Y</label><button class="floatright" data-value="4096" id="resetAnalogDeadzone1Y">Reset</button><span class="gc" id="AnalogDeadzone1YText">4096</span></p>
+<p>&nbsp;</p>
+<p><input id="AnalogPeak1X" name="AnalogPeak1X" type="range" min="0" max="32768" step="512" value="32768"><label for="AnalogPeak1X">Analog Peak X</label><button class="floatright" data-value="32768" id="resetAnalogPeak1X">Reset</button><span class="gc" id="AnalogPeak1XText">32768</span></p>
+<p>&nbsp;</p>
+<p><input id="AnalogPeak1Y" name="AnalogPeak1Y" type="range" min="0" max="32768" step="512" value="32768"><label for="AnalogPeak1Y">Analog Peak Y</label><button class="floatright" data-value="32768" id="resetAnalogPeak1Y">Reset</button><span class="gc" id="AnalogPeak1YText">32768</span></p>
+<p>&nbsp;</p>
+</div>
+<div id="c1_controls" class="show">
+<p>&nbsp;</p>
+<div id="c1_keyboard" class="hotkeys show">
 <p><label for="StickU1">Stick Up</label><input data-key="" value="" type="text" id="StickU1" readonly><button id="clearStickU1">Clear</button></p>
 <p>&nbsp;</p>
 <p><label for="StickL1">Stick Left</label><input data-key="" value="" type="text" id="StickL1" readonly><button id="clearStickL1">Clear</button></p>
@@ -390,7 +428,7 @@
 <p>&nbsp;</p>
 <p><label for="RumblepakSwitch1">Rumble Pak</label><input data-key="" value="" type="text" id="RumblepakSwitch1" readonly><button id="clearRumblepakSwitch1">Clear</button></p>
 </div>
-<div id="c1_controller" class="hotkeys">
+<div id="c1_controller" class="hotkeys hide">
 <p><label for="StickU1c">Stick Up</label><input value="" type="text" id="StickU1c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="StickU1cb" readonly><button id="clearStickU1c">Clear</button></p>
 <p>&nbsp;</p>
 <p><label for="StickL1c">Stick Left</label><input value="" type="text" id="StickL1c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="StickL1cb" readonly><button id="clearStickL1c">Clear</button></p>
@@ -431,57 +469,16 @@
 <p>&nbsp;</p>
 <p><label for="RumblepakSwitch1c">Rumble Pak</label><input value="" type="text" id="RumblepakSwitch1c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="RumblepakSwitch1cb" readonly><button id="clearRumblepakSwitch1c">Clear</button></p>
 </div>
-<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<p>&nbsp;</p>
+</div>
+</div>
+<p>&nbsp;</p><p>&nbsp;</p>
 <div id="controller2Anchor" class="anchor"></div>
 <p class="sub">Controller 2</p>
 <p>&nbsp;</p>
-<p><input id="plugged2" type="checkbox" data-store="plugged2" checked><label for="plugged2">Plugged</label></p>
-<p>&nbsp;</p>
-<p title="Analog Stick is mapped to mouse movement and mouse buttons are able to be mapped alongside keyboard controls."><input id="mouse2" type="checkbox" data-store="mouse2"><label for="mouse2">Enable Mouse</label></p>
-<p>&nbsp;</p><p>&nbsp;</p>
-<select class="width175m" name="mouse2_1" id="mouse2_1">
-<option value="" selected>None</option>
-<option value="a">A Button</option>
-<option value="b">B Button</option>
-<option value="l">L Button</option>
-<option value="r">R Button</option>
-<option value="z">Z-Trigger</option>
-</select><label for="mouse2_1">Mouse Button: Left</label>
-<p>&nbsp;</p>
-<select class="width175m" name="mouse2_2" id="mouse2_2">
-<option value="" selected>None</option>
-<option value="a">A Button</option>
-<option value="b">B Button</option>
-<option value="l">L Button</option>
-<option value="r">R Button</option>
-<option value="z">Z-Trigger</option>
-</select><label for="mouse2_2">Mouse Button: Middle</label>
-<p>&nbsp;</p>
-<select class="width175m" name="mouse2_3" id="mouse2_3">
-<option value="" selected>None</option>
-<option value="a">A Button</option>
-<option value="b">B Button</option>
-<option value="l">L Button</option>
-<option value="r">R Button</option>
-<option value="z">Z-Trigger</option>
-</select><label for="mouse2_3">Mouse Button: Right</label>
-<p>&nbsp;</p><p>&nbsp;</p>
-<p><input id="MouseSensitivity2X" name="MouseSensitivity2X" type="range" min="0.25" max="10.00" step="0.25" value="2.00"><label for="MouseSensitivity2X">Mouse Sensitivity X</label><button class="floatright" data-value="2.00" id="resetMouseSensitivity2X">Reset</button><span class="gc" id="MouseSensitivity2XText">2.00</span></p>
-<p>&nbsp;</p>
-<p><input id="MouseSensitivity2Y" name="MouseSensitivity2Y" type="range" min="0.25" max="10.00" step="0.25" value="2.00"><label for="MouseSensitivity2Y">Mouse Sensitivity Y</label><button class="floatright" data-value="2.00" id="resetMouseSensitivity2Y">Reset</button><span class="gc" id="MouseSensitivity2YText">2.00</span></p>
-<p>&nbsp;</p>
-<p><input id="AnalogDeadzone2X" name="AnalogDeadzone2X" type="range" min="0" max="32768" step="512" value="4096"><label for="AnalogDeadzone2X">Analog Deadzone X</label><button class="floatright" data-value="4096" id="resetAnalogDeadzone2X">Reset</button><span class="gc" id="AnalogDeadzone2XText">4096</span></p>
-<p>&nbsp;</p>
-<p><input id="AnalogDeadzone2Y" name="AnalogDeadzone2Y" type="range" min="0" max="32768" step="512" value="4096"><label for="AnalogDeadzone2Y">Analog Deadzone Y</label><button class="floatright" data-value="4096" id="resetAnalogDeadzone2Y">Reset</button><span class="gc" id="AnalogDeadzone2YText">4096</span></p>
-<p>&nbsp;</p>
-<p><input id="AnalogPeak2X" name="AnalogPeak2X" type="range" min="0" max="32768" step="512" value="32768"><label for="AnalogPeak2X">Analog Peak X</label><button class="floatright" data-value="32768" id="resetAnalogPeak2X">Reset</button><span class="gc" id="AnalogPeak2XText">32768</span></p>
-<p>&nbsp;</p>
-<p><input id="AnalogPeak2Y" name="AnalogPeak2Y" type="range" min="0" max="32768" step="512" value="32768"><label for="AnalogPeak2Y">Analog Peak Y</label><button class="floatright" data-value="32768" id="resetAnalogPeak2Y">Reset</button><span class="gc" id="AnalogPeak2YText">32768</span></p>
-<p>&nbsp;</p><p>&nbsp;</p>
-<div title="Fully Automatic: Try to configure everything automatically. Semi-automatic: Configure buttons automatically with given SDL Device Name. Manual: Do nothing automatically."><select class="width175m" name="mode2" id="mode2">
+<div title="Configure everything, including the selected device minus the controller plugin either automatically or manually."><select class="width175m" name="mode2" id="mode2">
 <option value="Input-SDL-Control2[mode]=0">Manual</option>
-<option value="Input-SDL-Control2[mode]=1">Semi-automatic</option>
-<option value="Input-SDL-Control2[mode]=2" selected>Fully Automatic</option>
+<option value="Input-SDL-Control2[mode]=2" selected>Automatic</option>
 </select><label for="mode2">Configuration Mode</label></div>
 <p>&nbsp;</p>
 <select class="width175m" name="plugin2" id="plugin2">
@@ -491,14 +488,96 @@
 <option value="Input-SDL-Control2[plugin]=5" selected>Rumble Pak</option>
 </select><label for="plugin2">Controller Plugin</label>
 <p>&nbsp;</p>
-<p><input class="width250m left" id="name2" value="Keyboard" type="text"><label for="name2">SDL Device Name</label><button class="floatright" id="resetname2">Reset</button></p>
-<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
-<ul class="ul-buttons">
-<li id="ul_c2_keyboard">Keyboard</li>
-<li title="Secondary bindings (second box) needs to be of a different button type to work. Works: Axis and Button, Hat and Button. Does not work: Button and Button." id="ul_c2_controller" class="active">Controller</li>
-</ul>
+<div title="Select SDL device to be used for this controller port. Will be ignored if configuration mode is set to Automatic, except for hotkey settings."><select class="width85p" name="c2" id="c2">
+<option value="Keyboard" selected>Keyboard</option>
+</select><button class="floatright" id="refreshc2">Refresh</button></div>
 <p>&nbsp;</p>
-<div id="c2_keyboard" class="hotkeys hide">
+<div class="hide" id="manual2">
+<p>&nbsp;</p>
+<p title="Specifies whether this controller is connected to the simulated N64."><input id="plugged2" type="checkbox" data-store="plugged2" checked><label for="plugged2">Plugged</label></p>
+<p>&nbsp;</p>
+<p title="Analog Stick is controlled by mouse movement and secondary bindings can be assigned to mouse buttons. To toggle the mouse grab while playing a game, press the Left Control and Left Alt keys together."><input id="mouse2" type="checkbox" data-store="mouse2"><label for="mouse2">Enable Mouse</label></p>
+<p>&nbsp;</p>
+<div id="mouse2options" class="hide">
+<select class="width175m" name="mouse2_1" id="mouse2_1">
+<option value="" selected>None</option>
+<option value="a">A Button</option>
+<option value="b">B Button</option>
+<option value="l">L Button</option>
+<option value="r">R Button</option>
+<option value="z">Z-Trigger</option>
+<option value="cr">C-Right</option>
+<option value="cl">C-Left</option>
+<option value="cd">C-Down</option>
+<option value="cu">C-Up</option>
+<option value="dpadr">D-Pad Right</option>
+<option value="dpadl">D-Pad Left</option>
+<option value="dpadd">D-Pad Down</option>
+<option value="dpadu">D-Pad Up</option>
+<option value="start">Start Button</option>
+<option value="ms">Mempak Switch</option>
+<option value="rs">Rumblepak Switch</option>
+</select><label for="mouse2_1">Mouse Button: Left</label>
+<p>&nbsp;</p>
+<select class="width175m" name="mouse2_2" id="mouse2_2">
+<option value="" selected>None</option>
+<option value="a">A Button</option>
+<option value="b">B Button</option>
+<option value="l">L Button</option>
+<option value="r">R Button</option>
+<option value="z">Z-Trigger</option>
+<option value="cr">C-Right</option>
+<option value="cl">C-Left</option>
+<option value="cd">C-Down</option>
+<option value="cu">C-Up</option>
+<option value="dpadr">D-Pad Right</option>
+<option value="dpadl">D-Pad Left</option>
+<option value="dpadd">D-Pad Down</option>
+<option value="dpadu">D-Pad Up</option>
+<option value="start">Start Button</option>
+<option value="ms">Mempak Switch</option>
+<option value="rs">Rumblepak Switch</option>
+</select><label for="mouse2_2">Mouse Button: Middle</label>
+<p>&nbsp;</p>
+<select class="width175m" name="mouse2_3" id="mouse2_3">
+<option value="" selected>None</option>
+<option value="a">A Button</option>
+<option value="b">B Button</option>
+<option value="l">L Button</option>
+<option value="r">R Button</option>
+<option value="z">Z-Trigger</option>
+<option value="cr">C-Right</option>
+<option value="cl">C-Left</option>
+<option value="cd">C-Down</option>
+<option value="cu">C-Up</option>
+<option value="dpadr">D-Pad Right</option>
+<option value="dpadl">D-Pad Left</option>
+<option value="dpadd">D-Pad Down</option>
+<option value="dpadu">D-Pad Up</option>
+<option value="start">Start Button</option>
+<option value="ms">Mempak Switch</option>
+<option value="rs">Rumblepak Switch</option>
+</select><label for="mouse2_3">Mouse Button: Right</label>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p><input id="MouseSensitivity2X" name="MouseSensitivity2X" type="range" min="0.25" max="10.00" step="0.25" value="2.00"><label for="MouseSensitivity2X">Mouse Sensitivity X</label><button class="floatright" data-value="2.00" id="resetMouseSensitivity2X">Reset</button><span class="gc" id="MouseSensitivity2XText">2.00</span></p>
+<p>&nbsp;</p>
+<p><input id="MouseSensitivity2Y" name="MouseSensitivity2Y" type="range" min="0.25" max="10.00" step="0.25" value="2.00"><label for="MouseSensitivity2Y">Mouse Sensitivity Y</label><button class="floatright" data-value="2.00" id="resetMouseSensitivity2Y">Reset</button><span class="gc" id="MouseSensitivity2YText">2.00</span></p>
+<p>&nbsp;</p>
+</div>
+<div id="analog2" class="hide">
+<p>&nbsp;</p>
+<p><input id="AnalogDeadzone2X" name="AnalogDeadzone2X" type="range" min="0" max="32768" step="512" value="4096"><label for="AnalogDeadzone2X">Analog Deadzone X</label><button class="floatright" data-value="4096" id="resetAnalogDeadzone2X">Reset</button><span class="gc" id="AnalogDeadzone2XText">4096</span></p>
+<p>&nbsp;</p>
+<p><input id="AnalogDeadzone2Y" name="AnalogDeadzone2Y" type="range" min="0" max="32768" step="512" value="4096"><label for="AnalogDeadzone2Y">Analog Deadzone Y</label><button class="floatright" data-value="4096" id="resetAnalogDeadzone2Y">Reset</button><span class="gc" id="AnalogDeadzone2YText">4096</span></p>
+<p>&nbsp;</p>
+<p><input id="AnalogPeak2X" name="AnalogPeak2X" type="range" min="0" max="32768" step="512" value="32768"><label for="AnalogPeak2X">Analog Peak X</label><button class="floatright" data-value="32768" id="resetAnalogPeak2X">Reset</button><span class="gc" id="AnalogPeak2XText">32768</span></p>
+<p>&nbsp;</p>
+<p><input id="AnalogPeak2Y" name="AnalogPeak2Y" type="range" min="0" max="32768" step="512" value="32768"><label for="AnalogPeak2Y">Analog Peak Y</label><button class="floatright" data-value="32768" id="resetAnalogPeak2Y">Reset</button><span class="gc" id="AnalogPeak2YText">32768</span></p>
+<p>&nbsp;</p>
+</div>
+<div id="c2_controls" class="show">
+<p>&nbsp;</p>
+<div id="c2_keyboard" class="hotkeys show">
 <p><label for="StickU2">Stick Up</label><input data-key="" value="" type="text" id="StickU2" readonly><button id="clearStickU2">Clear</button></p>
 <p>&nbsp;</p>
 <p><label for="StickL2">Stick Left</label><input data-key="" value="" type="text" id="StickL2" readonly><button id="clearStickL2">Clear</button></p>
@@ -539,7 +618,7 @@
 <p>&nbsp;</p>
 <p><label for="RumblepakSwitch2">Rumble Pak</label><input data-key="" value="" type="text" id="RumblepakSwitch2" readonly><button id="clearRumblepakSwitch2">Clear</button></p>
 </div>
-<div id="c2_controller" class="hotkeys">
+<div id="c2_controller" class="hotkeys hide">
 <p><label for="StickU2c">Stick Up</label><input value="" type="text" id="StickU2c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="StickU2cb" readonly><button id="clearStickU2c">Clear</button></p>
 <p>&nbsp;</p>
 <p><label for="StickL2c">Stick Left</label><input value="" type="text" id="StickL2c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="StickL2cb" readonly><button id="clearStickL2c">Clear</button></p>
@@ -580,57 +659,16 @@
 <p>&nbsp;</p>
 <p><label for="RumblepakSwitch2c">Rumble Pak</label><input value="" type="text" id="RumblepakSwitch2c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="RumblepakSwitch2cb" readonly><button id="clearRumblepakSwitch2c">Clear</button></p>
 </div>
-<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<p>&nbsp;</p>
+</div>
+</div>
+<p>&nbsp;</p><p>&nbsp;</p>
 <div id="controller3Anchor" class="anchor"></div>
 <p class="sub">Controller 3</p>
 <p>&nbsp;</p>
-<p><input id="plugged3" type="checkbox" data-store="plugged3" checked><label for="plugged3">Plugged</label></p>
-<p>&nbsp;</p>
-<p title="Analog Stick is mapped to mouse movement and mouse buttons are able to be mapped alongside keyboard controls."><input id="mouse3" type="checkbox" data-store="mouse3"><label for="mouse3">Enable Mouse</label></p>
-<p>&nbsp;</p><p>&nbsp;</p>
-<select class="width175m" name="mouse3_1" id="mouse3_1">
-<option value="" selected>None</option>
-<option value="a">A Button</option>
-<option value="b">B Button</option>
-<option value="l">L Button</option>
-<option value="r">R Button</option>
-<option value="z">Z-Trigger</option>
-</select><label for="mouse3_1">Mouse Button: Left</label>
-<p>&nbsp;</p>
-<select class="width175m" name="mouse3_2" id="mouse3_2">
-<option value="" selected>None</option>
-<option value="a">A Button</option>
-<option value="b">B Button</option>
-<option value="l">L Button</option>
-<option value="r">R Button</option>
-<option value="z">Z-Trigger</option>
-</select><label for="mouse3_2">Mouse Button: Middle</label>
-<p>&nbsp;</p>
-<select class="width175m" name="mouse3_3" id="mouse3_3">
-<option value="" selected>None</option>
-<option value="a">A Button</option>
-<option value="b">B Button</option>
-<option value="l">L Button</option>
-<option value="r">R Button</option>
-<option value="z">Z-Trigger</option>
-</select><label for="mouse3_3">Mouse Button: Right</label>
-<p>&nbsp;</p><p>&nbsp;</p>
-<p><input id="MouseSensitivity3X" name="MouseSensitivity3X" type="range" min="0.25" max="10.00" step="0.25" value="2.00"><label for="MouseSensitivity3X">Mouse Sensitivity X</label><button class="floatright" data-value="2.00" id="resetMouseSensitivity3X">Reset</button><span class="gc" id="MouseSensitivity3XText">2.00</span></p>
-<p>&nbsp;</p>
-<p><input id="MouseSensitivity3Y" name="MouseSensitivity3Y" type="range" min="0.25" max="10.00" step="0.25" value="2.00"><label for="MouseSensitivity3Y">Mouse Sensitivity Y</label><button class="floatright" data-value="2.00" id="resetMouseSensitivity3Y">Reset</button><span class="gc" id="MouseSensitivity3YText">2.00</span></p>
-<p>&nbsp;</p>
-<p><input id="AnalogDeadzone3X" name="AnalogDeadzone3X" type="range" min="0" max="32768" step="512" value="4096"><label for="AnalogDeadzone3X">Analog Deadzone X</label><button class="floatright" data-value="4096" id="resetAnalogDeadzone3X">Reset</button><span class="gc" id="AnalogDeadzone3XText">4096</span></p>
-<p>&nbsp;</p>
-<p><input id="AnalogDeadzone3Y" name="AnalogDeadzone3Y" type="range" min="0" max="32768" step="512" value="4096"><label for="AnalogDeadzone3Y">Analog Deadzone Y</label><button class="floatright" data-value="4096" id="resetAnalogDeadzone3Y">Reset</button><span class="gc" id="AnalogDeadzone3YText">4096</span></p>
-<p>&nbsp;</p>
-<p><input id="AnalogPeak3X" name="AnalogPeak3X" type="range" min="0" max="32768" step="512" value="32768"><label for="AnalogPeak3X">Analog Peak X</label><button class="floatright" data-value="32768" id="resetAnalogPeak3X">Reset</button><span class="gc" id="AnalogPeak3XText">32768</span></p>
-<p>&nbsp;</p>
-<p><input id="AnalogPeak3Y" name="AnalogPeak3Y" type="range" min="0" max="32768" step="512" value="32768"><label for="AnalogPeak3Y">Analog Peak Y</label><button class="floatright" data-value="32768" id="resetAnalogPeak3Y">Reset</button><span class="gc" id="AnalogPeak3YText">32768</span></p>
-<p>&nbsp;</p><p>&nbsp;</p>
-<div title="Fully Automatic: Try to configure everything automatically. Semi-automatic: Configure buttons automatically with given SDL Device Name. Manual: Do nothing automatically."><select class="width175m" name="mode3" id="mode3">
+<div title="Configure everything, including the selected device minus the controller plugin either automatically or manually."><select class="width175m" name="mode3" id="mode3">
 <option value="Input-SDL-Control3[mode]=0">Manual</option>
-<option value="Input-SDL-Control3[mode]=1">Semi-automatic</option>
-<option value="Input-SDL-Control3[mode]=2" selected>Fully Automatic</option>
+<option value="Input-SDL-Control3[mode]=2" selected>Automatic</option>
 </select><label for="mode3">Configuration Mode</label></div>
 <p>&nbsp;</p>
 <select class="width175m" name="plugin3" id="plugin3">
@@ -640,14 +678,96 @@
 <option value="Input-SDL-Control3[plugin]=5" selected>Rumble Pak</option>
 </select><label for="plugin3">Controller Plugin</label>
 <p>&nbsp;</p>
-<p><input class="width250m left" id="name3" value="Keyboard" type="text"><label for="name3">SDL Device Name</label><button class="floatright" id="resetname3">Reset</button></p>
-<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
-<ul class="ul-buttons">
-<li id="ul_c3_keyboard">Keyboard</li>
-<li title="Secondary bindings (second box) needs to be of a different button type to work. Works: Axis and Button, Hat and Button. Does not work: Button and Button." id="ul_c3_controller" class="active">Controller</li>
-</ul>
+<div title="Select SDL device to be used for this controller port. Will be ignored if configuration mode is set to Automatic, except for hotkey settings."><select class="width85p" name="c3" id="c3">
+<option value="Keyboard" selected>Keyboard</option>
+</select><button class="floatright" id="refreshc3">Refresh</button></div>
 <p>&nbsp;</p>
-<div id="c3_keyboard" class="hotkeys hide">
+<div class="hide" id="manual3">
+<p>&nbsp;</p>
+<p title="Specifies whether this controller is connected to the simulated N64."><input id="plugged3" type="checkbox" data-store="plugged3" checked><label for="plugged3">Plugged</label></p>
+<p>&nbsp;</p>
+<p title="Analog Stick is controlled by mouse movement and secondary bindings can be assigned to mouse buttons. To toggle the mouse grab while playing a game, press the Left Control and Left Alt keys together."><input id="mouse3" type="checkbox" data-store="mouse3"><label for="mouse3">Enable Mouse</label></p>
+<p>&nbsp;</p>
+<div id="mouse3options" class="hide">
+<select class="width175m" name="mouse3_1" id="mouse3_1">
+<option value="" selected>None</option>
+<option value="a">A Button</option>
+<option value="b">B Button</option>
+<option value="l">L Button</option>
+<option value="r">R Button</option>
+<option value="z">Z-Trigger</option>
+<option value="cr">C-Right</option>
+<option value="cl">C-Left</option>
+<option value="cd">C-Down</option>
+<option value="cu">C-Up</option>
+<option value="dpadr">D-Pad Right</option>
+<option value="dpadl">D-Pad Left</option>
+<option value="dpadd">D-Pad Down</option>
+<option value="dpadu">D-Pad Up</option>
+<option value="start">Start Button</option>
+<option value="ms">Mempak Switch</option>
+<option value="rs">Rumblepak Switch</option>
+</select><label for="mouse3_1">Mouse Button: Left</label>
+<p>&nbsp;</p>
+<select class="width175m" name="mouse3_2" id="mouse3_2">
+<option value="" selected>None</option>
+<option value="a">A Button</option>
+<option value="b">B Button</option>
+<option value="l">L Button</option>
+<option value="r">R Button</option>
+<option value="z">Z-Trigger</option>
+<option value="cr">C-Right</option>
+<option value="cl">C-Left</option>
+<option value="cd">C-Down</option>
+<option value="cu">C-Up</option>
+<option value="dpadr">D-Pad Right</option>
+<option value="dpadl">D-Pad Left</option>
+<option value="dpadd">D-Pad Down</option>
+<option value="dpadu">D-Pad Up</option>
+<option value="start">Start Button</option>
+<option value="ms">Mempak Switch</option>
+<option value="rs">Rumblepak Switch</option>
+</select><label for="mouse3_2">Mouse Button: Middle</label>
+<p>&nbsp;</p>
+<select class="width175m" name="mouse3_3" id="mouse3_3">
+<option value="" selected>None</option>
+<option value="a">A Button</option>
+<option value="b">B Button</option>
+<option value="l">L Button</option>
+<option value="r">R Button</option>
+<option value="z">Z-Trigger</option>
+<option value="cr">C-Right</option>
+<option value="cl">C-Left</option>
+<option value="cd">C-Down</option>
+<option value="cu">C-Up</option>
+<option value="dpadr">D-Pad Right</option>
+<option value="dpadl">D-Pad Left</option>
+<option value="dpadd">D-Pad Down</option>
+<option value="dpadu">D-Pad Up</option>
+<option value="start">Start Button</option>
+<option value="ms">Mempak Switch</option>
+<option value="rs">Rumblepak Switch</option>
+</select><label for="mouse3_3">Mouse Button: Right</label>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p><input id="MouseSensitivity3X" name="MouseSensitivity3X" type="range" min="0.25" max="10.00" step="0.25" value="2.00"><label for="MouseSensitivity3X">Mouse Sensitivity X</label><button class="floatright" data-value="2.00" id="resetMouseSensitivity3X">Reset</button><span class="gc" id="MouseSensitivity3XText">2.00</span></p>
+<p>&nbsp;</p>
+<p><input id="MouseSensitivity3Y" name="MouseSensitivity3Y" type="range" min="0.25" max="10.00" step="0.25" value="2.00"><label for="MouseSensitivity3Y">Mouse Sensitivity Y</label><button class="floatright" data-value="2.00" id="resetMouseSensitivity3Y">Reset</button><span class="gc" id="MouseSensitivity3YText">2.00</span></p>
+<p>&nbsp;</p>
+</div>
+<div id="analog3" class="hide">
+<p>&nbsp;</p>
+<p><input id="AnalogDeadzone3X" name="AnalogDeadzone3X" type="range" min="0" max="32768" step="512" value="4096"><label for="AnalogDeadzone3X">Analog Deadzone X</label><button class="floatright" data-value="4096" id="resetAnalogDeadzone3X">Reset</button><span class="gc" id="AnalogDeadzone3XText">4096</span></p>
+<p>&nbsp;</p>
+<p><input id="AnalogDeadzone3Y" name="AnalogDeadzone3Y" type="range" min="0" max="32768" step="512" value="4096"><label for="AnalogDeadzone3Y">Analog Deadzone Y</label><button class="floatright" data-value="4096" id="resetAnalogDeadzone3Y">Reset</button><span class="gc" id="AnalogDeadzone3YText">4096</span></p>
+<p>&nbsp;</p>
+<p><input id="AnalogPeak3X" name="AnalogPeak3X" type="range" min="0" max="32768" step="512" value="32768"><label for="AnalogPeak3X">Analog Peak X</label><button class="floatright" data-value="32768" id="resetAnalogPeak3X">Reset</button><span class="gc" id="AnalogPeak3XText">32768</span></p>
+<p>&nbsp;</p>
+<p><input id="AnalogPeak3Y" name="AnalogPeak3Y" type="range" min="0" max="32768" step="512" value="32768"><label for="AnalogPeak3Y">Analog Peak Y</label><button class="floatright" data-value="32768" id="resetAnalogPeak3Y">Reset</button><span class="gc" id="AnalogPeak3YText">32768</span></p>
+<p>&nbsp;</p>
+</div>
+<div id="c3_controls" class="show">
+<p>&nbsp;</p>
+<div id="c3_keyboard" class="hotkeys show">
 <p><label for="StickU3">Stick Up</label><input data-key="" value="" type="text" id="StickU3" readonly><button id="clearStickU3">Clear</button></p>
 <p>&nbsp;</p>
 <p><label for="StickL3">Stick Left</label><input data-key="" value="" type="text" id="StickL3" readonly><button id="clearStickL3">Clear</button></p>
@@ -688,7 +808,7 @@
 <p>&nbsp;</p>
 <p><label for="RumblepakSwitch3">Rumble Pak</label><input data-key="" value="" type="text" id="RumblepakSwitch3" readonly><button id="clearRumblepakSwitch3">Clear</button></p>
 </div>
-<div id="c3_controller" class="hotkeys">
+<div id="c3_controller" class="hotkeys hide">
 <p><label for="StickU3c">Stick Up</label><input value="" type="text" id="StickU3c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="StickU3cb" readonly><button id="clearStickU3c">Clear</button></p>
 <p>&nbsp;</p>
 <p><label for="StickL3c">Stick Left</label><input value="" type="text" id="StickL3c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="StickL3cb" readonly><button id="clearStickL3c">Clear</button></p>
@@ -729,57 +849,16 @@
 <p>&nbsp;</p>
 <p><label for="RumblepakSwitch3c">Rumble Pak</label><input value="" type="text" id="RumblepakSwitch3c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="RumblepakSwitch3cb" readonly><button id="clearRumblepakSwitch3c">Clear</button></p>
 </div>
-<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<p>&nbsp;</p>
+</div>
+</div>
+<p>&nbsp;</p><p>&nbsp;</p>
 <div id="controller4Anchor" class="anchor"></div>
 <p class="sub">Controller 4</p>
 <p>&nbsp;</p>
-<p><input id="plugged4" type="checkbox" data-store="plugged4" checked><label for="plugged4">Plugged</label></p>
-<p>&nbsp;</p>
-<p title="Analog Stick is mapped to mouse movement and mouse buttons are able to be mapped alongside keyboard controls."><input id="mouse4" type="checkbox" data-store="mouse4"><label for="mouse4">Enable Mouse</label></p>
-<p>&nbsp;</p><p>&nbsp;</p>
-<select class="width175m" name="mouse4_1" id="mouse4_1">
-<option value="" selected>None</option>
-<option value="a">A Button</option>
-<option value="b">B Button</option>
-<option value="l">L Button</option>
-<option value="r">R Button</option>
-<option value="z">Z-Trigger</option>
-</select><label for="mouse4_1">Mouse Button: Left</label>
-<p>&nbsp;</p>
-<select class="width175m" name="mouse4_2" id="mouse4_2">
-<option value="" selected>None</option>
-<option value="a">A Button</option>
-<option value="b">B Button</option>
-<option value="l">L Button</option>
-<option value="r">R Button</option>
-<option value="z">Z-Trigger</option>
-</select><label for="mouse4_2">Mouse Button: Middle</label>
-<p>&nbsp;</p>
-<select class="width175m" name="mouse4_3" id="mouse4_3">
-<option value="" selected>None</option>
-<option value="a">A Button</option>
-<option value="b">B Button</option>
-<option value="l">L Button</option>
-<option value="r">R Button</option>
-<option value="z">Z-Trigger</option>
-</select><label for="mouse4_3">Mouse Button: Right</label>
-<p>&nbsp;</p><p>&nbsp;</p>
-<p><input id="MouseSensitivity4X" name="MouseSensitivity4X" type="range" min="0.25" max="10.00" step="0.25" value="2.00"><label for="MouseSensitivity4X">Mouse Sensitivity X</label><button class="floatright" data-value="2.00" id="resetMouseSensitivity4X">Reset</button><span class="gc" id="MouseSensitivity4XText">2.00</span></p>
-<p>&nbsp;</p>
-<p><input id="MouseSensitivity4Y" name="MouseSensitivity4Y" type="range" min="0.25" max="10.00" step="0.25" value="2.00"><label for="MouseSensitivity4Y">Mouse Sensitivity Y</label><button class="floatright" data-value="2.00" id="resetMouseSensitivity4Y">Reset</button><span class="gc" id="MouseSensitivity4YText">2.00</span></p>
-<p>&nbsp;</p>
-<p><input id="AnalogDeadzone4X" name="AnalogDeadzone4X" type="range" min="0" max="32768" step="512" value="4096"><label for="AnalogDeadzone4X">Analog Deadzone X</label><button class="floatright" data-value="4096" id="resetAnalogDeadzone4X">Reset</button><span class="gc" id="AnalogDeadzone4XText">4096</span></p>
-<p>&nbsp;</p>
-<p><input id="AnalogDeadzone4Y" name="AnalogDeadzone4Y" type="range" min="0" max="32768" step="512" value="4096"><label for="AnalogDeadzone4Y">Analog Deadzone Y</label><button class="floatright" data-value="4096" id="resetAnalogDeadzone4Y">Reset</button><span class="gc" id="AnalogDeadzone4YText">4096</span></p>
-<p>&nbsp;</p>
-<p><input id="AnalogPeak4X" name="AnalogPeak4X" type="range" min="0" max="32768" step="512" value="32768"><label for="AnalogPeak4X">Analog Peak X</label><button class="floatright" data-value="32768" id="resetAnalogPeak4X">Reset</button><span class="gc" id="AnalogPeak4XText">32768</span></p>
-<p>&nbsp;</p>
-<p><input id="AnalogPeak4Y" name="AnalogPeak4Y" type="range" min="0" max="32768" step="512" value="32768"><label for="AnalogPeak4Y">Analog Peak Y</label><button class="floatright" data-value="32768" id="resetAnalogPeak4Y">Reset</button><span class="gc" id="AnalogPeak4YText">32768</span></p>
-<p>&nbsp;</p><p>&nbsp;</p>
-<div title="Fully Automatic: Try to configure everything automatically. Semi-automatic: Configure buttons automatically with given SDL Device Name. Manual: Do nothing automatically."><select class="width175m" name="mode4" id="mode4">
+<div title="Configure everything, including the selected device minus the controller plugin either automatically or manually."><select class="width175m" name="mode4" id="mode4">
 <option value="Input-SDL-Control4[mode]=0">Manual</option>
-<option value="Input-SDL-Control4[mode]=1">Semi-automatic</option>
-<option value="Input-SDL-Control4[mode]=2" selected>Fully Automatic</option>
+<option value="Input-SDL-Control4[mode]=2" selected>Automatic</option>
 </select><label for="mode4">Configuration Mode</label></div>
 <p>&nbsp;</p>
 <select class="width175m" name="plugin4" id="plugin4">
@@ -789,14 +868,96 @@
 <option value="Input-SDL-Control4[plugin]=5" selected>Rumble Pak</option>
 </select><label for="plugin4">Controller Plugin</label>
 <p>&nbsp;</p>
-<p><input class="width250m left" id="name4" value="Keyboard" type="text"><label for="name4">SDL Device Name</label><button class="floatright" id="resetname4">Reset</button></p>
-<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
-<ul class="ul-buttons">
-<li id="ul_c4_keyboard">Keyboard</li>
-<li title="Secondary bindings (second box) needs to be of a different button type to work. Works: Axis and Button, Hat and Button. Does not work: Button and Button." id="ul_c4_controller" class="active">Controller</li>
-</ul>
+<div title="Select SDL device to be used for this controller port. Will be ignored if configuration mode is set to Automatic, except for hotkey settings."><select class="width85p" name="c4" id="c4">
+<option value="Keyboard" selected>Keyboard</option>
+</select><button class="floatright" id="refreshc4">Refresh</button></div>
 <p>&nbsp;</p>
-<div id="c4_keyboard" class="hotkeys hide">
+<div class="hide" id="manual4">
+<p>&nbsp;</p>
+<p title="Specifies whether this controller is connected to the simulated N64."><input id="plugged4" type="checkbox" data-store="plugged4" checked><label for="plugged4">Plugged</label></p>
+<p>&nbsp;</p>
+<p title="Analog Stick is controlled by mouse movement and secondary bindings can be assigned to mouse buttons. To toggle the mouse grab while playing a game, press the Left Control and Left Alt keys together."><input id="mouse4" type="checkbox" data-store="mouse4"><label for="mouse4">Enable Mouse</label></p>
+<p>&nbsp;</p>
+<div id="mouse4options" class="hide">
+<select class="width175m" name="mouse4_1" id="mouse4_1">
+<option value="" selected>None</option>
+<option value="a">A Button</option>
+<option value="b">B Button</option>
+<option value="l">L Button</option>
+<option value="r">R Button</option>
+<option value="z">Z-Trigger</option>
+<option value="cr">C-Right</option>
+<option value="cl">C-Left</option>
+<option value="cd">C-Down</option>
+<option value="cu">C-Up</option>
+<option value="dpadr">D-Pad Right</option>
+<option value="dpadl">D-Pad Left</option>
+<option value="dpadd">D-Pad Down</option>
+<option value="dpadu">D-Pad Up</option>
+<option value="start">Start Button</option>
+<option value="ms">Mempak Switch</option>
+<option value="rs">Rumblepak Switch</option>
+</select><label for="mouse4_1">Mouse Button: Left</label>
+<p>&nbsp;</p>
+<select class="width175m" name="mouse4_2" id="mouse4_2">
+<option value="" selected>None</option>
+<option value="a">A Button</option>
+<option value="b">B Button</option>
+<option value="l">L Button</option>
+<option value="r">R Button</option>
+<option value="z">Z-Trigger</option>
+<option value="cr">C-Right</option>
+<option value="cl">C-Left</option>
+<option value="cd">C-Down</option>
+<option value="cu">C-Up</option>
+<option value="dpadr">D-Pad Right</option>
+<option value="dpadl">D-Pad Left</option>
+<option value="dpadd">D-Pad Down</option>
+<option value="dpadu">D-Pad Up</option>
+<option value="start">Start Button</option>
+<option value="ms">Mempak Switch</option>
+<option value="rs">Rumblepak Switch</option>
+</select><label for="mouse4_2">Mouse Button: Middle</label>
+<p>&nbsp;</p>
+<select class="width175m" name="mouse4_3" id="mouse4_3">
+<option value="" selected>None</option>
+<option value="a">A Button</option>
+<option value="b">B Button</option>
+<option value="l">L Button</option>
+<option value="r">R Button</option>
+<option value="z">Z-Trigger</option>
+<option value="cr">C-Right</option>
+<option value="cl">C-Left</option>
+<option value="cd">C-Down</option>
+<option value="cu">C-Up</option>
+<option value="dpadr">D-Pad Right</option>
+<option value="dpadl">D-Pad Left</option>
+<option value="dpadd">D-Pad Down</option>
+<option value="dpadu">D-Pad Up</option>
+<option value="start">Start Button</option>
+<option value="ms">Mempak Switch</option>
+<option value="rs">Rumblepak Switch</option>
+</select><label for="mouse4_3">Mouse Button: Right</label>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p><input id="MouseSensitivity4X" name="MouseSensitivity4X" type="range" min="0.25" max="10.00" step="0.25" value="2.00"><label for="MouseSensitivity4X">Mouse Sensitivity X</label><button class="floatright" data-value="2.00" id="resetMouseSensitivity4X">Reset</button><span class="gc" id="MouseSensitivity4XText">2.00</span></p>
+<p>&nbsp;</p>
+<p><input id="MouseSensitivity4Y" name="MouseSensitivity4Y" type="range" min="0.25" max="10.00" step="0.25" value="2.00"><label for="MouseSensitivity4Y">Mouse Sensitivity Y</label><button class="floatright" data-value="2.00" id="resetMouseSensitivity4Y">Reset</button><span class="gc" id="MouseSensitivity4YText">2.00</span></p>
+<p>&nbsp;</p>
+</div>
+<div id="analog4" class="hide">
+<p>&nbsp;</p>
+<p><input id="AnalogDeadzone4X" name="AnalogDeadzone4X" type="range" min="0" max="32768" step="512" value="4096"><label for="AnalogDeadzone4X">Analog Deadzone X</label><button class="floatright" data-value="4096" id="resetAnalogDeadzone4X">Reset</button><span class="gc" id="AnalogDeadzone4XText">4096</span></p>
+<p>&nbsp;</p>
+<p><input id="AnalogDeadzone4Y" name="AnalogDeadzone4Y" type="range" min="0" max="32768" step="512" value="4096"><label for="AnalogDeadzone4Y">Analog Deadzone Y</label><button class="floatright" data-value="4096" id="resetAnalogDeadzone4Y">Reset</button><span class="gc" id="AnalogDeadzone4YText">4096</span></p>
+<p>&nbsp;</p>
+<p><input id="AnalogPeak4X" name="AnalogPeak4X" type="range" min="0" max="32768" step="512" value="32768"><label for="AnalogPeak4X">Analog Peak X</label><button class="floatright" data-value="32768" id="resetAnalogPeak4X">Reset</button><span class="gc" id="AnalogPeak4XText">32768</span></p>
+<p>&nbsp;</p>
+<p><input id="AnalogPeak4Y" name="AnalogPeak4Y" type="range" min="0" max="32768" step="512" value="32768"><label for="AnalogPeak4Y">Analog Peak Y</label><button class="floatright" data-value="32768" id="resetAnalogPeak4Y">Reset</button><span class="gc" id="AnalogPeak4YText">32768</span></p>
+<p>&nbsp;</p>
+</div>
+<div id="c4_controls" class="show">
+<p>&nbsp;</p>
+<div id="c4_keyboard" class="hotkeys show">
 <p><label for="StickU4">Stick Up</label><input data-key="" value="" type="text" id="StickU4" readonly><button id="clearStickU4">Clear</button></p>
 <p>&nbsp;</p>
 <p><label for="StickL4">Stick Left</label><input data-key="" value="" type="text" id="StickL4" readonly><button id="clearStickL4">Clear</button></p>
@@ -837,7 +998,7 @@
 <p>&nbsp;</p>
 <p><label for="RumblepakSwitch4">Rumble Pak</label><input data-key="" value="" type="text" id="RumblepakSwitch4" readonly><button id="clearRumblepakSwitch4">Clear</button></p>
 </div>
-<div id="c4_controller" class="hotkeys">
+<div id="c4_controller" class="hotkeys hide">
 <p><label for="StickU4c">Stick Up</label><input value="" type="text" id="StickU4c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="StickU4cb" readonly><button id="clearStickU4c">Clear</button></p>
 <p>&nbsp;</p>
 <p><label for="StickL4c">Stick Left</label><input value="" type="text" id="StickL4c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="StickL4cb" readonly><button id="clearStickL4c">Clear</button></p>
@@ -878,7 +1039,10 @@
 <p>&nbsp;</p>
 <p><label for="RumblepakSwitch4c">Rumble Pak</label><input value="" type="text" id="RumblepakSwitch4c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="RumblepakSwitch4cb" readonly><button id="clearRumblepakSwitch4c">Clear</button></p>
 </div>
-<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<p>&nbsp;</p>
+</div>
+</div>
+<p>&nbsp;</p><p>&nbsp;</p>
 <div id="gcaAnchor" class="anchor"></div>
 <p class="sub">GC Adapter</p>
 <p>&nbsp;</p>

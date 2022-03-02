@@ -60,7 +60,13 @@ ipcMain.on('jstestChild', (e, jstestConfig) => {
 	jstestChild.stdout.on('data', (data) => {e.reply('jsLog', data.toString())})
 	jstestChild.on('close', () => {e.reply('jsClosed')})
 })
+
 ipcMain.on('jstestKill', () => {if(jstestChild != undefined)jstestChild.kill('SIGTERM')})
+
+ipcMain.on('jsrefresh', (e) => {
+	let child = childSpawnSync(jstestPath, ['-ls'], options);
+	e.returnValue = child.stdout.toString()
+})
 
 ipcMain.on('cwd', (e) => {e.returnValue = cwd})
 ipcMain.on('executablePath', (e) => {e.returnValue = executablePath})

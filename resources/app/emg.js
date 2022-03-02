@@ -8,6 +8,7 @@ listArchive = window.listArchive,
 extractArchive = window.extractArchive,
 returnPath = window.returnPath,
 jstest = window.jstest,
+jsrefresh = window.jsrefresh,
 showCheats = window.showCheats,
 writeGCA = window.writeGCA,
 hires_texture = window.hires_texture,
@@ -16,7 +17,7 @@ texture_dump = window.texture_dump,
 working_directory = window.working_directory,
 textInputs = document.querySelectorAll("input[type='text']"),
 
-regjoy = /axis|button|hat|\(|\)/g, regsplit = /\s*\n/, regradio = /^\s\s\s/g, regbox = /_.*/g, regkb = /key\(\)|key\(,\)/g,
+regjoy = /axis|button|hat|\(|\)/g, regsplit = /\s*\n/, regradio = /^\s\s\s/g, regbox = /_.*/g, regkb = /key\(\)/g, regkbaxis = /key\(,\)/g, regc = /\:/g, regid = /^\d: |^\d\d: /,
 
 keys = {32:1,33:1,34:1,35:1,36:1,37:1,38:1,39:1,40:1}, /* spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36, left: 37, up: 38, right: 39, down: 40 */
 
@@ -45,7 +46,8 @@ numbers = ['OverscanNtscTop','OverscanNtscLeft','OverscanNtscRight','OverscanNts
 dropdowns = [
 'emumode','resolution','SaveDiskFormat', /* mupen64plus */
 'gfx','audio','input','rsp','RspFallback', /* mupen64plus plugins */
-'plugin1','plugin2','plugin3','plugin4','mode1','mode2','mode3','mode4','mouse1_1','mouse1_2','mouse1_3','mouse2_1','mouse2_2','mouse2_3','mouse3_1','mouse3_2','mouse3_3','mouse4_1','mouse4_2','mouse4_3', // mupen64plus-input
+'plugin1','plugin2','plugin3','plugin4','mode1','mode2','mode3','mode4','c1','c2','c3','c4',
+'mouse1_1','mouse1_2','mouse1_3','mouse2_1','mouse2_2','mouse2_3','mouse3_1','mouse3_2','mouse3_3','mouse4_1','mouse4_2','mouse4_3', // mupen64plus-input
 'DEFAULT_FREQUENCY','SECONDARY_BUFFER_SIZE','RESAMPLE', /* mupen64plus-audio */
 'a','b','x','y','start','z','l','r','d_pad_left','d_pad_right','d_pad_down','d_pad_up','c_stick_left','c_stick_right','c_stick_down','c_stick_up', /* mupen64plus-input-gca */
 'msaa','aspectRatio','bufferSwapMode','CountersPos','useNativeResolutionFactor','anisotropy','cache','RDRAMImageDitheringMode','CorrectTexrectCoords','EnableNativeResTexrects','BackgroundsMode','EnableN64DepthCompare','EnableCopyColorToRDRAM','EnableCopyDepthToRDRAM','txFilterMode','txEnhancementMode', /* GLideN64 */
@@ -56,12 +58,37 @@ dropdowns = [
 
 
 
+if(localStorage.getItem('c1Element') != null)id('c1').innerHTML = localStorage.getItem('c1Element')
+if(localStorage.getItem('c2Element') != null)id('c2').innerHTML = localStorage.getItem('c2Element')
+if(localStorage.getItem('c3Element') != null)id('c3').innerHTML = localStorage.getItem('c3Element')
+if(localStorage.getItem('c4Element') != null)id('c4').innerHTML = localStorage.getItem('c4Element')
+
+id('refreshc1').addEventListener('click', function(){refresh(c1)})
+id('refreshc2').addEventListener('click', function(){refresh(c2)})
+id('refreshc3').addEventListener('click', function(){refresh(c3)})
+id('refreshc4').addEventListener('click', function(){refresh(c4)})
+
+function refresh(drop){
+Array.from(drop.getElementsByClassName('generated')).forEach(generated => generated.remove());
+let list = jsrefresh();
+var datasplit = list.split(regsplit);
+datasplit.forEach(device => update(device));
+
+function update(device){
+if(device === '' || device === 'No joysticks were found' || device === null || device === undefined)return
+localStorage.removeItem(drop.id)
+var newDevice = document.createElement('option');
+newDevice.value = device;
+newDevice.innerHTML = device;
+newDevice.className = 'generated';
+drop.appendChild(newDevice)}
+
+localStorage.setItem(drop.id+'Element',(drop.innerHTML))}
+
+
+
 n64_buttons.forEach(n64_button => { // Keyboard input
-var box = id(n64_button),
-name = 'name1';
-if(n64_button.includes(2)){name = 'name2'}
-if(n64_button.includes(3)){name = 'name3'}
-if(n64_button.includes(4)){name = 'name4'}
+var box = id(n64_button);
 
 id('clear'+n64_button).addEventListener('click', function(){
 box.value = '';
@@ -71,7 +98,7 @@ localStorage.removeItem(n64_button)})
 if(localStorage.getItem(n64_button) != null){
 box.value = keyCodes[localStorage.getItem(n64_button)];
 box.dataset.key = keySyms[localStorage.getItem(n64_button)]}
-box.addEventListener('keyup', function(e){id(name).value = 'Keyboard';localStorage.setItem(name,'Keyboard')
+box.addEventListener('keyup', function(e){
 if(keyCodes[e.keyCode] != undefined){
 box.value = keyCodes[e.keyCode];
 box.dataset.key = keySyms[e.keyCode];
@@ -108,18 +135,7 @@ dropdowns.forEach(dropdown => {
 var drop = id(dropdown);
 if(localStorage.getItem(dropdown) != null){drop.value = localStorage.getItem(dropdown)}
 if(drop.selectedIndex === -1){drop.selectedIndex = 0;localStorage.removeItem(dropdown)}
-drop.addEventListener('change', function(){localStorage.setItem(dropdown, drop.options[drop.selectedIndex].value)})})
-
-if(localStorage.getItem('rsp') != null){
-if(localStorage.getItem('rsp') === 'mupen64plus-rsp-hle'){id('RspFallback').disabled = false;id('rspGFX').disabled = true;id('rspAudio').disabled = false;id('WaitForCPUHost').disabled = true;id('SupportCPUSemaphoreLock').disabled = true}
-else if(localStorage.getItem('rsp') === 'mupen64plus-rsp-cxd4-sse2'){id('RspFallback').disabled = true;id('rspGFX').disabled = false;id('rspAudio').disabled = false;id('WaitForCPUHost').disabled = false;id('SupportCPUSemaphoreLock').disabled = false}
-else if(localStorage.getItem('rsp') === 'mupen64plus-rsp-parallel'){id('RspFallback').disabled = true;id('rspGFX').disabled = true;id('rspAudio').disabled = true;id('WaitForCPUHost').disabled = true;id('SupportCPUSemaphoreLock').disabled = true}}
-function rspDropdownDisable(){
-if(id('rsp').value === 'mupen64plus-rsp-hle'){id('RspFallback').disabled = false;id('rspGFX').disabled = true;id('rspAudio').disabled = false;id('WaitForCPUHost').disabled = true;id('SupportCPUSemaphoreLock').disabled = true}
-else if(id('rsp').value === 'mupen64plus-rsp-cxd4-sse2'){id('RspFallback').disabled = true;id('rspGFX').disabled = false;id('rspAudio').disabled = false;id('WaitForCPUHost').disabled = false;id('SupportCPUSemaphoreLock').disabled = false}
-else if(id('rsp').value === 'mupen64plus-rsp-parallel'){id('RspFallback').disabled = true;id('rspGFX').disabled = true;id('rspAudio').disabled = true;id('WaitForCPUHost').disabled = true;id('SupportCPUSemaphoreLock').disabled = true}}
-id('rsp').addEventListener('change', function(){rspDropdownDisable()})
-rspDropdownDisable();
+drop.addEventListener('change', function(){localStorage.setItem(dropdown, drop.value)})})
 
 ranges.forEach(range => {
 var range_input = id(range),
@@ -163,23 +179,16 @@ localStorage.setItem(number, number_input.value)}})})
 
 
 
-if(localStorage.getItem('name1') != null){id('name1').value = localStorage.getItem('name1')}
-id('name1').addEventListener('change', function(){localStorage.setItem('name1', id('name1').value)})
-id('resetname1').addEventListener('click', function(){id('name1').value = 'Keyboard';localStorage.setItem('name1','Keyboard')})
-
-if(localStorage.getItem('name2') != null){id('name2').value = localStorage.getItem('name2')}
-id('name2').addEventListener('change', function(){localStorage.setItem('name2', id('name2').value)})
-id('resetname2').addEventListener('click', function(){id('name2').value = 'Keyboard';localStorage.setItem('name2','Keyboard')})
-
-if(localStorage.getItem('name3') != null){id('name3').value = localStorage.getItem('name3')}
-id('name3').addEventListener('change', function(){localStorage.setItem('name3', id('name3').value)})
-id('resetname3').addEventListener('click', function(){id('name3').value = 'Keyboard';localStorage.setItem('name3','Keyboard')})
-
-if(localStorage.getItem('name4') != null){id('name4').value = localStorage.getItem('name4')}
-id('name4').addEventListener('change', function(){localStorage.setItem('name4', id('name4').value)})
-id('resetname4').addEventListener('click', function(){id('name4').value = 'Keyboard';localStorage.setItem('name4','Keyboard')})
-
-
+if(localStorage.getItem('rsp') != null){
+if(localStorage.getItem('rsp') === 'mupen64plus-rsp-hle'){id('RspFallback').disabled = false;id('rspGFX').disabled = true;id('rspAudio').disabled = false;id('WaitForCPUHost').disabled = true;id('SupportCPUSemaphoreLock').disabled = true}
+else if(localStorage.getItem('rsp') === 'mupen64plus-rsp-cxd4-sse2'){id('RspFallback').disabled = true;id('rspGFX').disabled = false;id('rspAudio').disabled = false;id('WaitForCPUHost').disabled = false;id('SupportCPUSemaphoreLock').disabled = false}
+else if(localStorage.getItem('rsp') === 'mupen64plus-rsp-parallel'){id('RspFallback').disabled = true;id('rspGFX').disabled = true;id('rspAudio').disabled = true;id('WaitForCPUHost').disabled = true;id('SupportCPUSemaphoreLock').disabled = true}}
+function rspDropdownDisable(){
+if(id('rsp').value === 'mupen64plus-rsp-hle'){id('RspFallback').disabled = false;id('rspGFX').disabled = true;id('rspAudio').disabled = false;id('WaitForCPUHost').disabled = true;id('SupportCPUSemaphoreLock').disabled = true}
+else if(id('rsp').value === 'mupen64plus-rsp-cxd4-sse2'){id('RspFallback').disabled = true;id('rspGFX').disabled = false;id('rspAudio').disabled = false;id('WaitForCPUHost').disabled = false;id('SupportCPUSemaphoreLock').disabled = false}
+else if(id('rsp').value === 'mupen64plus-rsp-parallel'){id('RspFallback').disabled = true;id('rspGFX').disabled = true;id('rspAudio').disabled = true;id('WaitForCPUHost').disabled = true;id('SupportCPUSemaphoreLock').disabled = true}}
+id('rsp').addEventListener('change', function(){rspDropdownDisable()})
+rspDropdownDisable();
 
 function EnableFBEmulationDisable(){if(id('EnableFBEmulation').checked){id('EnableCopyColorFromRDRAM').disabled = false;id('EnableCopyDepthToMainDepthBuffer').disabled = false;id('EnableCopyAuxiliaryToRDRAM').disabled = false;id('ForceDepthBufferClear').disabled = false;id('FBInfoReadColorChunk').disabled = false;id('FBInfoReadDepthChunk').disabled = false}else{id('EnableCopyColorFromRDRAM').disabled = true;id('EnableCopyDepthToMainDepthBuffer').disabled = true;id('EnableCopyAuxiliaryToRDRAM').disabled = true;id('ForceDepthBufferClear').disabled = true;id('FBInfoReadColorChunk').disabled = true;id('FBInfoReadDepthChunk').disabled = true}}
 id('EnableFBEmulation').addEventListener('change', function(){EnableFBEmulationDisable()})
@@ -222,43 +231,95 @@ function ghq_hirsDisable(){if(id('ghq_hirs').checked){id('ghq_hirs_cmpr').disabl
 id('ghq_hirs').addEventListener('change', function(){ghq_hirsDisable()})
 ghq_hirsDisable()
 
-function mode1Disable(){if(id('mode1').value === 'Input-SDL-Control1[mode]=2'){id('plugged1').disabled = true;id('name1').disabled = true}else{id('plugged1').disabled = false;id('name1').disabled = false}}
+function mode1Disable(){
+if(id('mode1').value === 'Input-SDL-Control1[mode]=0'){id('manual1').classList.replace('hide','show')}else{id('manual1').classList.replace('show','hide')}}
 id('mode1').addEventListener('change', function(){mode1Disable()})
-mode1Disable();
+mode1Disable()
 
-function mode2Disable(){if(id('mode2').value === 'Input-SDL-Control2[mode]=2'){id('plugged2').disabled = true;id('name2').disabled = true}else{id('plugged2').disabled = false;id('name2').disabled = false}}
+function mode2Disable(){
+if(id('mode2').value === 'Input-SDL-Control2[mode]=0'){id('manual2').classList.replace('hide','show')}else{id('manual2').classList.replace('show','hide')}}
 id('mode2').addEventListener('change', function(){mode2Disable()})
-mode2Disable();
+mode2Disable()
 
-function mode3Disable(){if(id('mode3').value === 'Input-SDL-Control3[mode]=2'){id('plugged3').disabled = true;id('name3').disabled = true}else{id('plugged3').disabled = false;id('name3').disabled = false}}
+function mode3Disable(){
+if(id('mode3').value === 'Input-SDL-Control3[mode]=0'){id('manual3').classList.replace('hide','show')}else{id('manual3').classList.replace('show','hide')}}
 id('mode3').addEventListener('change', function(){mode3Disable()})
-mode3Disable();
+mode3Disable()
 
-function mode4Disable(){if(id('mode4').value === 'Input-SDL-Control4[mode]=2'){id('plugged4').disabled = true;id('name4').disabled = true}else{id('plugged4').disabled = false;id('name4').disabled = false}}
+function mode4Disable(){
+if(id('mode4').value === 'Input-SDL-Control4[mode]=0'){id('manual4').classList.replace('hide','show')}else{id('manual4').classList.replace('show','hide')}}
 id('mode4').addEventListener('change', function(){mode4Disable()})
-mode4Disable();
+mode4Disable()
+
+function c1Disable(){
+if(id('c1').value === 'Keyboard'){id('c1_keyboard').classList.replace('hide','show');id('c1_controller').classList.replace('show','hide');id('analog1').classList.replace('show','hide')}
+else{id('c1_keyboard').classList.replace('show','hide');id('c1_controller').classList.replace('hide','show');id('analog1').classList.replace('hide','show')}}
+id('c1').addEventListener('change', function(){c1Disable()})
+c1Disable()
+
+function c2Disable(){
+if(id('c2').value === 'Keyboard'){id('c2_keyboard').classList.replace('hide','show');id('c2_controller').classList.replace('show','hide');id('analog2').classList.replace('show','hide')}
+else{id('c2_keyboard').classList.replace('show','hide');id('c2_controller').classList.replace('hide','show');id('analog2').classList.replace('hide','show')}}
+id('c2').addEventListener('change', function(){c2Disable()})
+c2Disable()
+
+function c3Disable(){
+if(id('c3').value === 'Keyboard'){id('c3_keyboard').classList.replace('hide','show');id('c3_controller').classList.replace('show','hide');id('analog3').classList.replace('show','hide')}
+else{id('c3_keyboard').classList.replace('show','hide');id('c3_controller').classList.replace('hide','show');id('analog3').classList.replace('hide','show')}}
+id('c3').addEventListener('change', function(){c3Disable()})
+c3Disable()
+
+function c4Disable(){
+if(id('c4').value === 'Keyboard'){id('c4_keyboard').classList.replace('hide','show');id('c4_controller').classList.replace('show','hide');id('analog4').classList.replace('show','hide')}
+else{id('c4_keyboard').classList.replace('show','hide');id('c4_controller').classList.replace('hide','show');id('analog4').classList.replace('hide','show')}}
+id('c4').addEventListener('change', function(){c4Disable()})
+c4Disable()
+
+function c1_controlsDisable(){
+if(!id('plugged1').checked){id('c1_controls').classList.replace('show','hide')}
+else{id('c1_controls').classList.replace('hide','show')}}
+id('plugged1').addEventListener('change', function(){c1_controlsDisable()})
+c1_controlsDisable()
+
+function c2_controlsDisable(){
+if(!id('plugged2').checked){id('c2_controls').classList.replace('show','hide')}
+else{id('c2_controls').classList.replace('hide','show')}}
+id('plugged2').addEventListener('change', function(){c2_controlsDisable()})
+c2_controlsDisable()
+
+function c3_controlsDisable(){
+if(!id('plugged3').checked){id('c3_controls').classList.replace('show','hide')}
+else{id('c3_controls').classList.replace('hide','show')}}
+id('plugged3').addEventListener('change', function(){c3_controlsDisable()})
+c3_controlsDisable()
+
+function c4_controlsDisable(){
+if(!id('plugged4').checked){id('c4_controls').classList.replace('show','hide')}
+else{id('c4_controls').classList.replace('hide','show')}}
+id('plugged4').addEventListener('change', function(){c4_controlsDisable()})
+c4_controlsDisable()
 
 function mouse1Disable(){
-if(!id('mouse1').checked){id('mouse1_1').disabled = true;id('mouse1_2').disabled = true;id('mouse1_3').disabled = true;id('MouseSensitivity1X').disabled = true;id('MouseSensitivity1Y').disabled = true}
-else{id('mouse1_1').disabled = false;id('mouse1_2').disabled = false;id('mouse1_3').disabled = false;id('MouseSensitivity1X').disabled = false;id('MouseSensitivity1Y').disabled = false}}
+if(id('mouse1').checked){id('AnalogDeadzone1X').disabled = true;id('AnalogDeadzone1Y').disabled = true;id('AnalogPeak1X').disabled = true;id('AnalogPeak1Y').disabled = true;id('mouse1options').classList.replace('hide','show')}
+else{id('AnalogDeadzone1X').disabled = false;id('AnalogDeadzone1Y').disabled = false;id('AnalogPeak1X').disabled = false;id('AnalogPeak1Y').disabled = false;id('mouse1options').classList.replace('show','hide')}}
 id('mouse1').addEventListener('change', function(){mouse1Disable()})
 mouse1Disable()
 
 function mouse2Disable(){
-if(!id('mouse2').checked){id('mouse2_1').disabled = true;id('mouse2_2').disabled = true;id('mouse2_3').disabled = true;id('MouseSensitivity2X').disabled = true;id('MouseSensitivity2Y').disabled = true}
-else{id('mouse2_1').disabled = false;id('mouse2_2').disabled = false;id('mouse2_3').disabled = false;id('MouseSensitivity2X').disabled = false;id('MouseSensitivity2Y').disabled = false}}
+if(id('mouse2').checked){id('AnalogDeadzone2X').disabled = true;id('AnalogDeadzone2Y').disabled = true;id('AnalogPeak2X').disabled = true;id('AnalogPeak2Y').disabled = true;id('mouse2options').classList.replace('hide','show')}
+else{id('AnalogDeadzone2X').disabled = false;id('AnalogDeadzone2Y').disabled = false;id('AnalogPeak2X').disabled = false;id('AnalogPeak2Y').disabled = false;id('mouse2options').classList.replace('show','hide')}}
 id('mouse2').addEventListener('change', function(){mouse2Disable()})
 mouse2Disable()
 
 function mouse3Disable(){
-if(!id('mouse3').checked){id('mouse3_1').disabled = true;id('mouse3_2').disabled = true;id('mouse3_3').disabled = true;id('MouseSensitivity3X').disabled = true;id('MouseSensitivity3Y').disabled = true}
-else{id('mouse3_1').disabled = false;id('mouse3_2').disabled = false;id('mouse3_3').disabled = false;id('MouseSensitivity3X').disabled = false;id('MouseSensitivity3Y').disabled = false}}
+if(id('mouse3').checked){id('AnalogDeadzone3X').disabled = true;id('AnalogDeadzone3Y').disabled = true;id('AnalogPeak3X').disabled = true;id('AnalogPeak3Y').disabled = true;id('mouse3options').classList.replace('hide','show')}
+else{id('AnalogDeadzone3X').disabled = false;id('AnalogDeadzone3Y').disabled = false;id('AnalogPeak3X').disabled = false;id('AnalogPeak3Y').disabled = false;id('mouse3options').classList.replace('show','hide')}}
 id('mouse3').addEventListener('change', function(){mouse3Disable()})
 mouse3Disable()
 
 function mouse4Disable(){
-if(!id('mouse4').checked){id('mouse4_1').disabled = true;id('mouse4_2').disabled = true;id('mouse4_3').disabled = true;id('MouseSensitivity4X').disabled = true;id('MouseSensitivity4Y').disabled = true}
-else{id('mouse4_1').disabled = false;id('mouse4_2').disabled = false;id('mouse4_3').disabled = false;id('MouseSensitivity4X').disabled = false;id('MouseSensitivity4Y').disabled = false}}
+if(id('mouse4').checked){id('AnalogDeadzone4X').disabled = true;id('AnalogDeadzone4Y').disabled = true;id('AnalogPeak4X').disabled = true;id('AnalogPeak4Y').disabled = true;id('mouse4options').classList.replace('hide','show')}
+else{id('AnalogDeadzone4X').disabled = false;id('AnalogDeadzone4Y').disabled = false;id('AnalogPeak4X').disabled = false;id('AnalogPeak4Y').disabled = false;id('mouse4options').classList.replace('show','hide')}}
 id('mouse4').addEventListener('change', function(){mouse4Disable()})
 mouse4Disable()
 
@@ -352,15 +413,34 @@ for (var i = 0; i < radioBoxes.length; i++){var box = radioBoxes[i];if(box.id.in
 
 
 
+if(localStorage.getItem('hkULActive') != null && localStorage.getItem('hkDIVActive') != null){
+currentHK(id(localStorage.getItem('hkULActive')),id(localStorage.getItem('hkDIVActive')))}
+
+function currentHK(currentUL,currentDIV){
+if(id('ul_hk_keyboard').classList.contains('active'))id('ul_hk_keyboard').classList.remove('active');
+if(id('ul_hk_controller1').classList.contains('active'))id('ul_hk_controller1').classList.remove('active');
+if(id('ul_hk_controller2').classList.contains('active'))id('ul_hk_controller2').classList.remove('active');
+if(id('ul_hk_controller3').classList.contains('active'))id('ul_hk_controller3').classList.remove('active');
+if(id('ul_hk_controller4').classList.contains('active'))id('ul_hk_controller4').classList.remove('active');
+if(!id('hk_keyboard').classList.contains('hide'))id('hk_keyboard').classList.add('hide');
+if(!id('hk_controller1').classList.contains('hide'))id('hk_controller1').classList.add('hide');
+if(!id('hk_controller2').classList.contains('hide'))id('hk_controller2').classList.add('hide');
+if(!id('hk_controller3').classList.contains('hide'))id('hk_controller3').classList.add('hide');
+if(!id('hk_controller4').classList.contains('hide'))id('hk_controller4').classList.add('hide');
+currentUL.classList.add('active');localStorage.setItem('hkULActive',currentUL.id);
+currentDIV.classList.remove('hide');localStorage.setItem('hkDIVActive',currentDIV.id)}
+
+id('ul_hk_keyboard').addEventListener('click', function(){currentHK(id('ul_hk_keyboard'),id('hk_keyboard'))})
+id('ul_hk_controller1').addEventListener('click', function(){currentHK(id('ul_hk_controller1'),id('hk_controller1'))})
+id('ul_hk_controller2').addEventListener('click', function(){currentHK(id('ul_hk_controller2'),id('hk_controller2'))})
+id('ul_hk_controller3').addEventListener('click', function(){currentHK(id('ul_hk_controller3'),id('hk_controller3'))})
+id('ul_hk_controller4').addEventListener('click', function(){currentHK(id('ul_hk_controller4'),id('hk_controller4'))})
+
 function noScroll(e){if(keys[e.keyCode]){e.preventDefault();return false}}
 for (var i = 0; i < textInputs.length; i++){var textInput = textInputs[i];preventScroll(textInput)}
 function preventScroll(textInput){
 textInput.addEventListener('focus',(e) => {window.addEventListener('keydown',noScroll,false)})
 textInput.addEventListener('blur',(e) => {window.removeEventListener('keydown',noScroll,false)})}
-id('name1').addEventListener('focus',(e) => {window.removeEventListener('keydown',noScroll,false)})
-id('name2').addEventListener('focus',(e) => {window.removeEventListener('keydown',noScroll,false)})
-id('name3').addEventListener('focus',(e) => {window.removeEventListener('keydown',noScroll,false)})
-id('name4').addEventListener('focus',(e) => {window.removeEventListener('keydown',noScroll,false)})
 
 function currentGFX(){
 if(!id('angrylion').classList.contains('hide'))id('angrylion').classList.add('hide')
@@ -680,7 +760,7 @@ id('fontColor').addEventListener('change', function(){localStorage.setItem('font
 
 
 
-function joystick(joyinput){jstest(joyinput,id('name1'),id('name2'),id('name3'),id('name4'))}
+function joystick(joyinput){jstest(joyinput,id('c1'),id('c2'),id('c3'),id('c4'))}
 
 n64_buttons.forEach(n64_button => { // Joystick input
 var n64_button = n64_button+'c',
@@ -699,79 +779,6 @@ var box = id(joykey);
 box.addEventListener('click', function(){joystick(box)})
 if(localStorage.getItem(joykey) != null){box.value = localStorage.getItem(joykey)}
 id('clear'+joykey).addEventListener('click', function(){box.value = '';localStorage.removeItem(joykey)})})
-
-
-
-if(localStorage.getItem('hkULActive') != null && localStorage.getItem('hkDIVActive') != null){
-currentHK(id(localStorage.getItem('hkULActive')),id(localStorage.getItem('hkDIVActive')))}
-
-function currentHK(currentUL,currentDIV){
-if(id('ul_hk_keyboard').classList.contains('active'))id('ul_hk_keyboard').classList.remove('active');
-if(id('ul_hk_controller1').classList.contains('active'))id('ul_hk_controller1').classList.remove('active');
-if(id('ul_hk_controller2').classList.contains('active'))id('ul_hk_controller2').classList.remove('active');
-if(id('ul_hk_controller3').classList.contains('active'))id('ul_hk_controller3').classList.remove('active');
-if(id('ul_hk_controller4').classList.contains('active'))id('ul_hk_controller4').classList.remove('active');
-if(!id('hk_keyboard').classList.contains('hide'))id('hk_keyboard').classList.add('hide');
-if(!id('hk_controller1').classList.contains('hide'))id('hk_controller1').classList.add('hide');
-if(!id('hk_controller2').classList.contains('hide'))id('hk_controller2').classList.add('hide');
-if(!id('hk_controller3').classList.contains('hide'))id('hk_controller3').classList.add('hide');
-if(!id('hk_controller4').classList.contains('hide'))id('hk_controller4').classList.add('hide');
-currentUL.classList.add('active');localStorage.setItem('hkULActive',currentUL.id);
-currentDIV.classList.remove('hide');localStorage.setItem('hkDIVActive',currentDIV.id)}
-
-id('ul_hk_keyboard').addEventListener('click', function(){currentHK(id('ul_hk_keyboard'),id('hk_keyboard'))})
-id('ul_hk_controller1').addEventListener('click', function(){currentHK(id('ul_hk_controller1'),id('hk_controller1'))})
-id('ul_hk_controller2').addEventListener('click', function(){currentHK(id('ul_hk_controller2'),id('hk_controller2'))})
-id('ul_hk_controller3').addEventListener('click', function(){currentHK(id('ul_hk_controller3'),id('hk_controller3'))})
-id('ul_hk_controller4').addEventListener('click', function(){currentHK(id('ul_hk_controller4'),id('hk_controller4'))})
-
-if(localStorage.getItem('cULActive1') != null && localStorage.getItem('cDIVActive1') != null){
-currentController(id(localStorage.getItem('cULActive1')),id(localStorage.getItem('cDIVActive1')))}
-if(localStorage.getItem('cULActive2') != null && localStorage.getItem('cDIVActive2') != null){
-currentController(id(localStorage.getItem('cULActive2')),id(localStorage.getItem('cDIVActive2')))}
-if(localStorage.getItem('cULActive3') != null && localStorage.getItem('cDIVActive3') != null){
-currentController(id(localStorage.getItem('cULActive3')),id(localStorage.getItem('cDIVActive3')))}
-if(localStorage.getItem('cULActive4') != null && localStorage.getItem('cDIVActive4') != null){
-currentController(id(localStorage.getItem('cULActive4')),id(localStorage.getItem('cDIVActive4')))}
-
-function currentController(currentUL,currentDIV){
-if(currentUL.id.includes('1')){
-if(id('ul_c1_keyboard').classList.contains('active'))id('ul_c1_keyboard').classList.remove('active');
-if(id('ul_c1_controller').classList.contains('active'))id('ul_c1_controller').classList.remove('active');
-if(!id('c1_keyboard').classList.contains('hide'))id('c1_keyboard').classList.add('hide');
-if(!id('c1_controller').classList.contains('hide'))id('c1_controller').classList.add('hide');
-currentUL.classList.add('active');localStorage.setItem('cULActive1',currentUL.id);
-currentDIV.classList.remove('hide');localStorage.setItem('cDIVActive1',currentDIV.id)}
-if(currentUL.id.includes('2')){
-if(id('ul_c2_keyboard').classList.contains('active'))id('ul_c2_keyboard').classList.remove('active');
-if(id('ul_c2_controller').classList.contains('active'))id('ul_c2_controller').classList.remove('active');
-if(!id('c2_keyboard').classList.contains('hide'))id('c2_keyboard').classList.add('hide');
-if(!id('c2_controller').classList.contains('hide'))id('c2_controller').classList.add('hide');
-currentUL.classList.add('active');localStorage.setItem('cULActive2',currentUL.id);
-currentDIV.classList.remove('hide');localStorage.setItem('cDIVActive2',currentDIV.id)}
-if(currentUL.id.includes('3')){
-if(id('ul_c3_keyboard').classList.contains('active'))id('ul_c3_keyboard').classList.remove('active');
-if(id('ul_c3_controller').classList.contains('active'))id('ul_c3_controller').classList.remove('active');
-if(!id('c3_keyboard').classList.contains('hide'))id('c3_keyboard').classList.add('hide');
-if(!id('c3_controller').classList.contains('hide'))id('c3_controller').classList.add('hide');
-currentUL.classList.add('active');localStorage.setItem('cULActive3',currentUL.id);
-currentDIV.classList.remove('hide');localStorage.setItem('cDIVActive3',currentDIV.id)}
-if(currentUL.id.includes('4')){
-if(id('ul_c4_keyboard').classList.contains('active'))id('ul_c4_keyboard').classList.remove('active');
-if(id('ul_c4_controller').classList.contains('active'))id('ul_c4_controller').classList.remove('active');
-if(!id('c4_keyboard').classList.contains('hide'))id('c4_keyboard').classList.add('hide');
-if(!id('c4_controller').classList.contains('hide'))id('c4_controller').classList.add('hide');
-currentUL.classList.add('active');localStorage.setItem('cULActive4',currentUL.id);
-currentDIV.classList.remove('hide');localStorage.setItem('cDIVActive4',currentDIV.id)}}
-
-id('ul_c1_keyboard').addEventListener('click', function(){currentController(id('ul_c1_keyboard'),id('c1_keyboard'))})
-id('ul_c2_keyboard').addEventListener('click', function(){currentController(id('ul_c2_keyboard'),id('c2_keyboard'))})
-id('ul_c3_keyboard').addEventListener('click', function(){currentController(id('ul_c3_keyboard'),id('c3_keyboard'))})
-id('ul_c4_keyboard').addEventListener('click', function(){currentController(id('ul_c4_keyboard'),id('c4_keyboard'))})
-id('ul_c1_controller').addEventListener('click', function(){currentController(id('ul_c1_controller'),id('c1_controller'))})
-id('ul_c2_controller').addEventListener('click', function(){currentController(id('ul_c2_controller'),id('c2_controller'))})
-id('ul_c3_controller').addEventListener('click', function(){currentController(id('ul_c3_controller'),id('c3_controller'))})
-id('ul_c4_controller').addEventListener('click', function(){currentController(id('ul_c4_controller'),id('c4_controller'))})
 
 
 
@@ -899,103 +906,103 @@ ghq_cache_save = 'Video-Glide64mk2[ghq_cache_save]=' + id('ghq_cache_save').chec
 ghq_hirs_let_texartists_fly = 'Video-Glide64mk2[ghq_hirs_let_texartists_fly]=' + id('ghq_hirs_let_texartists_fly').checked,
 ghq_hirs_dump = 'Video-Glide64mk2[ghq_hirs_dump]=' + id('ghq_hirs_dump').checked,
 
-resolution = id('resolution').options[id('resolution').selectedIndex].value,
+resolution = id('resolution').value,
 ParallelScreenWidth = 'Video-Parallel[ScreenWidth]=' + id('resolution').options[id('resolution').selectedIndex].dataset.width,
 ParallelScreenHeight = 'Video-Parallel[ScreenHeight]=' + id('resolution').options[id('resolution').selectedIndex].dataset.height,
-gfx = id('gfx').options[id('gfx').selectedIndex].value,
-audio = id('audio').options[id('audio').selectedIndex].value,
-input = id('input').options[id('input').selectedIndex].value,
-rsp = id('rsp').options[id('rsp').selectedIndex].value,
-RspFallback = id('RspFallback').options[id('RspFallback').selectedIndex].value,
-emumode = id('emumode').options[id('emumode').selectedIndex].value,
-plugin1 = id('plugin1').options[id('plugin1').selectedIndex].value,
-plugin2 = id('plugin2').options[id('plugin2').selectedIndex].value,
-plugin3 = id('plugin3').options[id('plugin3').selectedIndex].value,
-plugin4 = id('plugin4').options[id('plugin4').selectedIndex].value,
-mode1 = id('mode1').options[id('mode1').selectedIndex].value,
-mode2 = id('mode2').options[id('mode2').selectedIndex].value,
-mode3 = id('mode3').options[id('mode3').selectedIndex].value,
-mode4 = id('mode4').options[id('mode4').selectedIndex].value,
-msaa = id('msaa').options[id('msaa').selectedIndex].value,
-aspectRatio = id('aspectRatio').options[id('aspectRatio').selectedIndex].value,
-bufferSwapMode = id('bufferSwapMode').options[id('bufferSwapMode').selectedIndex].value,
-useNativeResolutionFactor = id('useNativeResolutionFactor').options[id('useNativeResolutionFactor').selectedIndex].value,
-anisotropy = id('anisotropy').options[id('anisotropy').selectedIndex].value,
-cache = id('cache').options[id('cache').selectedIndex].value,
-RDRAMImageDitheringMode = id('RDRAMImageDitheringMode').options[id('RDRAMImageDitheringMode').selectedIndex].value,
-CorrectTexrectCoords = id('CorrectTexrectCoords').options[id('CorrectTexrectCoords').selectedIndex].value,
-EnableNativeResTexrects = id('EnableNativeResTexrects').options[id('EnableNativeResTexrects').selectedIndex].value,
-BackgroundsMode = id('BackgroundsMode').options[id('BackgroundsMode').selectedIndex].value,
-EnableN64DepthCompare = id('EnableN64DepthCompare').options[id('EnableN64DepthCompare').selectedIndex].value,
-EnableCopyColorToRDRAM = id('EnableCopyColorToRDRAM').options[id('EnableCopyColorToRDRAM').selectedIndex].value,
-EnableCopyDepthToRDRAM = id('EnableCopyDepthToRDRAM').options[id('EnableCopyDepthToRDRAM').selectedIndex].value,
-txFilterMode = id('txFilterMode').options[id('txFilterMode').selectedIndex].value,
-txEnhancementMode = id('txEnhancementMode').options[id('txEnhancementMode').selectedIndex].value,
-ViMode = id('ViMode').options[id('ViMode').selectedIndex].value,
-ViInterpolation = id('ViInterpolation').options[id('ViInterpolation').selectedIndex].value,
-DpCompat = id('DpCompat').options[id('DpCompat').selectedIndex].value,
-ParallelUpscaling = id('ParallelUpscaling').options[id('ParallelUpscaling').selectedIndex].value,
-ParallelDeinterlace = id('ParallelDeinterlace').options[id('ParallelDeinterlace').selectedIndex].value,
-ParallelDownScale = id('ParallelDownScale').options[id('ParallelDownScale').selectedIndex].value,
-CountersPos = id('CountersPos').options[id('CountersPos').selectedIndex].value,
-SaveDiskFormat = id('SaveDiskFormat').options[id('SaveDiskFormat').selectedIndex].value,
-DEFAULT_FREQUENCY = id('DEFAULT_FREQUENCY').options[id('DEFAULT_FREQUENCY').selectedIndex].value,
+gfx = id('gfx').value,
+audio = id('audio').value,
+input = id('input').value,
+rsp = id('rsp').value,
+RspFallback = id('RspFallback').value,
+emumode = id('emumode').value,
+plugin1 = id('plugin1').value,
+plugin2 = id('plugin2').value,
+plugin3 = id('plugin3').value,
+plugin4 = id('plugin4').value,
+mode1 = id('mode1').value,
+mode2 = id('mode2').value,
+mode3 = id('mode3').value,
+mode4 = id('mode4').value,
+msaa = id('msaa').value,
+aspectRatio = id('aspectRatio').value,
+bufferSwapMode = id('bufferSwapMode').value,
+useNativeResolutionFactor = id('useNativeResolutionFactor').value,
+anisotropy = id('anisotropy').value,
+cache = id('cache').value,
+RDRAMImageDitheringMode = id('RDRAMImageDitheringMode').value,
+CorrectTexrectCoords = id('CorrectTexrectCoords').value,
+EnableNativeResTexrects = id('EnableNativeResTexrects').value,
+BackgroundsMode = id('BackgroundsMode').value,
+EnableN64DepthCompare = id('EnableN64DepthCompare').value,
+EnableCopyColorToRDRAM = id('EnableCopyColorToRDRAM').value,
+EnableCopyDepthToRDRAM = id('EnableCopyDepthToRDRAM').value,
+txFilterMode = id('txFilterMode').value,
+txEnhancementMode = id('txEnhancementMode').value,
+ViMode = id('ViMode').value,
+ViInterpolation = id('ViInterpolation').value,
+DpCompat = id('DpCompat').value,
+ParallelUpscaling = id('ParallelUpscaling').value,
+ParallelDeinterlace = id('ParallelDeinterlace').value,
+ParallelDownScale = id('ParallelDownScale').value,
+CountersPos = id('CountersPos').value,
+SaveDiskFormat = id('SaveDiskFormat').value,
+DEFAULT_FREQUENCY = id('DEFAULT_FREQUENCY').value,
 PRIMARY_BUFFER_TARGET = id('SECONDARY_BUFFER_SIZE').options[id('SECONDARY_BUFFER_SIZE').selectedIndex].dataset.buffer,
-SECONDARY_BUFFER_SIZE = id('SECONDARY_BUFFER_SIZE').options[id('SECONDARY_BUFFER_SIZE').selectedIndex].value,
-RESAMPLE = id('RESAMPLE').options[id('RESAMPLE').selectedIndex].value,
-FrameBufferWriteBackControl = id('FrameBufferWriteBackControl').options[id('FrameBufferWriteBackControl').selectedIndex].value,
-RenderToTexture = id('RenderToTexture').options[id('RenderToTexture').selectedIndex].value,
-ScreenUpdateSetting = id('ScreenUpdateSetting').options[id('ScreenUpdateSetting').selectedIndex].value,
-Mipmapping = id('Mipmapping').options[id('Mipmapping').selectedIndex].value,
-ForceTextureFilter = id('ForceTextureFilter').options[id('ForceTextureFilter').selectedIndex].value,
-TextureEnhancement = id('TextureEnhancement').options[id('TextureEnhancement').selectedIndex].value,
-TextureEnhancementControl = id('TextureEnhancementControl').options[id('TextureEnhancementControl').selectedIndex].value,
-TextureQuality = id('TextureQuality').options[id('TextureQuality').selectedIndex].value,
-OpenGLDepthBufferSetting = id('OpenGLDepthBufferSetting').options[id('OpenGLDepthBufferSetting').selectedIndex].value,
-RiceMultiSampling = id('RiceMultiSampling').options[id('RiceMultiSampling').selectedIndex].value,
-ColorQuality = id('ColorQuality').options[id('ColorQuality').selectedIndex].value,
-AnisotropicFiltering = id('AnisotropicFiltering').options[id('AnisotropicFiltering').selectedIndex].value,
-wrpAntiAliasing = id('wrpAntiAliasing').options[id('wrpAntiAliasing').selectedIndex].value,
-show_fps = id('show_fps').options[id('show_fps').selectedIndex].value,
-ghq_fltr = id('ghq_fltr').options[id('ghq_fltr').selectedIndex].value,
-ghq_cmpr = id('ghq_cmpr').options[id('ghq_cmpr').selectedIndex].value,
-ghq_enht = id('ghq_enht').options[id('ghq_enht').selectedIndex].value,
-alt_tex_size = id('alt_tex_size').options[id('alt_tex_size').selectedIndex].value,
-use_sts1_only = id('use_sts1_only').options[id('use_sts1_only').selectedIndex].value,
-force_calc_sphere = id('force_calc_sphere').options[id('force_calc_sphere').selectedIndex].value,
-correct_viewport = id('correct_viewport').options[id('correct_viewport').selectedIndex].value,
-increase_texrect_edge = id('increase_texrect_edge').options[id('increase_texrect_edge').selectedIndex].value,
-decrease_fillrect_edge = id('decrease_fillrect_edge').options[id('decrease_fillrect_edge').selectedIndex].value,
-texture_correction = id('texture_correction').options[id('texture_correction').selectedIndex].value,
-pal230 = id('pal230').options[id('pal230').selectedIndex].value,
-force_microcheck = id('force_microcheck').options[id('force_microcheck').selectedIndex].value,
-force_quad3d = id('force_quad3d').options[id('force_quad3d').selectedIndex].value,
-clip_zmin = id('clip_zmin').options[id('clip_zmin').selectedIndex].value,
-clip_zmax = id('clip_zmax').options[id('clip_zmax').selectedIndex].value,
-fast_crc = id('fast_crc').options[id('fast_crc').selectedIndex].value,
-adjust_aspect = id('adjust_aspect').options[id('adjust_aspect').selectedIndex].value,
-zmode_compare_less = id('zmode_compare_less').options[id('zmode_compare_less').selectedIndex].value,
-old_style_adither = id('old_style_adither').options[id('old_style_adither').selectedIndex].value,
-n64_z_scale = id('n64_z_scale').options[id('n64_z_scale').selectedIndex].value,
-optimize_texrect = id('optimize_texrect').options[id('optimize_texrect').selectedIndex].value,
-ignore_aux_copy = id('ignore_aux_copy').options[id('ignore_aux_copy').selectedIndex].value,
-hires_buf_clear = id('hires_buf_clear').options[id('hires_buf_clear').selectedIndex].value,
-fb_read_alpha = id('fb_read_alpha').options[id('fb_read_alpha').selectedIndex].value,
-useless_is_useless = id('useless_is_useless').options[id('useless_is_useless').selectedIndex].value,
-fb_crc_mode = id('fb_crc_mode').options[id('fb_crc_mode').selectedIndex].value,
-filtering = id('filtering').options[id('filtering').selectedIndex].value,
-fog = id('fog').options[id('fog').selectedIndex].value,
-buff_clear = id('buff_clear').options[id('buff_clear').selectedIndex].value,
-swapmode = id('swapmode').options[id('swapmode').selectedIndex].value,
-aspect = id('aspect').options[id('aspect').selectedIndex].value,
-lodmode = id('lodmode').options[id('lodmode').selectedIndex].value,
-fb_smart = id('fb_smart').options[id('fb_smart').selectedIndex].value,
-fb_hires = id('fb_hires').options[id('fb_hires').selectedIndex].value,
-fb_read_always = id('fb_read_always').options[id('fb_read_always').selectedIndex].value,
-read_back_to_screen = id('read_back_to_screen').options[id('read_back_to_screen').selectedIndex].value,
-detect_cpu_write = id('detect_cpu_write').options[id('detect_cpu_write').selectedIndex].value,
-fb_get_info = id('fb_get_info').options[id('fb_get_info').selectedIndex].value,
-fb_render = id('fb_render').options[id('fb_render').selectedIndex].value,
+SECONDARY_BUFFER_SIZE = id('SECONDARY_BUFFER_SIZE').value,
+RESAMPLE = id('RESAMPLE').value,
+FrameBufferWriteBackControl = id('FrameBufferWriteBackControl').value,
+RenderToTexture = id('RenderToTexture').value,
+ScreenUpdateSetting = id('ScreenUpdateSetting').value,
+Mipmapping = id('Mipmapping').value,
+ForceTextureFilter = id('ForceTextureFilter').value,
+TextureEnhancement = id('TextureEnhancement').value,
+TextureEnhancementControl = id('TextureEnhancementControl').value,
+TextureQuality = id('TextureQuality').value,
+OpenGLDepthBufferSetting = id('OpenGLDepthBufferSetting').value,
+RiceMultiSampling = id('RiceMultiSampling').value,
+ColorQuality = id('ColorQuality').value,
+AnisotropicFiltering = id('AnisotropicFiltering').value,
+wrpAntiAliasing = id('wrpAntiAliasing').value,
+show_fps = id('show_fps').value,
+ghq_fltr = id('ghq_fltr').value,
+ghq_cmpr = id('ghq_cmpr').value,
+ghq_enht = id('ghq_enht').value,
+alt_tex_size = id('alt_tex_size').value,
+use_sts1_only = id('use_sts1_only').value,
+force_calc_sphere = id('force_calc_sphere').value,
+correct_viewport = id('correct_viewport').value,
+increase_texrect_edge = id('increase_texrect_edge').value,
+decrease_fillrect_edge = id('decrease_fillrect_edge').value,
+texture_correction = id('texture_correction').value,
+pal230 = id('pal230').value,
+force_microcheck = id('force_microcheck').value,
+force_quad3d = id('force_quad3d').value,
+clip_zmin = id('clip_zmin').value,
+clip_zmax = id('clip_zmax').value,
+fast_crc = id('fast_crc').value,
+adjust_aspect = id('adjust_aspect').value,
+zmode_compare_less = id('zmode_compare_less').value,
+old_style_adither = id('old_style_adither').value,
+n64_z_scale = id('n64_z_scale').value,
+optimize_texrect = id('optimize_texrect').value,
+ignore_aux_copy = id('ignore_aux_copy').value,
+hires_buf_clear = id('hires_buf_clear').value,
+fb_read_alpha = id('fb_read_alpha').value,
+useless_is_useless = id('useless_is_useless').value,
+fb_crc_mode = id('fb_crc_mode').value,
+filtering = id('filtering').value,
+fog = id('fog').value,
+buff_clear = id('buff_clear').value,
+swapmode = id('swapmode').value,
+aspect = id('aspect').value,
+lodmode = id('lodmode').value,
+fb_smart = id('fb_smart').value,
+fb_hires = id('fb_hires').value,
+fb_read_always = id('fb_read_always').value,
+read_back_to_screen = id('read_back_to_screen').value,
+detect_cpu_write = id('detect_cpu_write').value,
+fb_get_info = id('fb_get_info').value,
+fb_render = id('fb_render').value,
 
 OverscanNtscTop = 'Video-GLideN64[OverscanNtscTop]=' + id('OverscanNtscTop').value,
 OverscanNtscLeft = 'Video-GLideN64[OverscanNtscLeft]=' + id('OverscanNtscLeft').value,
@@ -1016,10 +1023,14 @@ CountPerOp = 'Core[CountPerOp]=' + id('CountPerOp').value,
 CountPerOpDenomPot = 'Core[CountPerOpDenomPot]=' + id('CountPerOpDenomPot').value,
 SiDmaDuration = 'Core[SiDmaDuration]=' + id('SiDmaDuration').value,
 CurrentStateSlot = 'Core[CurrentStateSlot]=' + id('CurrentStateSlot').value,
-name1 = 'Input-SDL-Control1[name]=' + id('name1').value,
-name2 = 'Input-SDL-Control2[name]=' + id('name2').value,
-name3 = 'Input-SDL-Control3[name]=' + id('name3').value,
-name4 = 'Input-SDL-Control4[name]=' + id('name4').value,
+device1 = 'Input-SDL-Control1[device]=' + id('c1').value.substring(0,2).replace(regc,''),
+device2 = 'Input-SDL-Control2[device]=' + id('c2').value.substring(0,2).replace(regc,''),
+device3 = 'Input-SDL-Control3[device]=' + id('c3').value.substring(0,2).replace(regc,''),
+device4 = 'Input-SDL-Control4[device]=' + id('c4').value.substring(0,2).replace(regc,''),
+name1 = 'Input-SDL-Control1[name]=' + id('c1').value.replace(regid,''),
+name2 = 'Input-SDL-Control2[name]=' + id('c2').value.replace(regid,''),
+name3 = 'Input-SDL-Control3[name]=' + id('c3').value.replace(regid,''),
+name4 = 'Input-SDL-Control4[name]=' + id('c4').value.replace(regid,''),
 VOLUME_ADJUST = 'Audio-SDL[VOLUME_ADJUST]=' + id('VOLUME_ADJUST').value,
 VOLUME_DEFAULT = 'Audio-SDL[VOLUME_DEFAULT]=' + id('VOLUME_DEFAULT').value,
 PolygonOffsetFactor = 'Video-Rice[PolygonOffsetFactor]=' + id('PolygonOffsetFactor').value,
@@ -1105,7 +1116,6 @@ hkTexCoordBounds = 'Video-GLideN64[hkTexCoordBounds]=' + id('hkTexCoordBounds').
 hkNativeResTexrects = 'Video-GLideN64[hkNativeResTexrects]=' + id('hkNativeResTexrects').value,
 hkForceGammaCorrection = 'Video-GLideN64[hkForceGammaCorrection]=' + id('hkForceGammaCorrection').value,
 
-device1, device2, device3, device4,
 plugged1 = 'Input-SDL-Control1[plugged]=' + id('plugged1').checked,
 plugged2 = 'Input-SDL-Control2[plugged]=' + id('plugged2').checked,
 plugged3 = 'Input-SDL-Control3[plugged]=' + id('plugged3').checked,
@@ -1114,6 +1124,18 @@ mouse1 = 'Input-SDL-Control1[mouse]=' + id('mouse1').checked,
 mouse2 = 'Input-SDL-Control2[mouse]=' + id('mouse2').checked,
 mouse3 = 'Input-SDL-Control3[mouse]=' + id('mouse3').checked,
 mouse4 = 'Input-SDL-Control4[mouse]=' + id('mouse4').checked,
+mouse1_1 = id('mouse1_1').value,
+mouse1_2 = id('mouse1_2').value,
+mouse1_3 = id('mouse1_3').value,
+mouse2_1 = id('mouse2_1').value,
+mouse2_2 = id('mouse2_2').value,
+mouse2_3 = id('mouse2_3').value,
+mouse3_1 = id('mouse3_1').value,
+mouse3_2 = id('mouse3_2').value,
+mouse3_3 = id('mouse3_3').value,
+mouse4_1 = id('mouse4_1').value,
+mouse4_2 = id('mouse4_2').value,
+mouse4_3 = id('mouse4_3').value,
 msensitivity1 = 'Input-SDL-Control1[MouseSensitivity]=' + MouseSensitivity1X.value + ',' + MouseSensitivity1Y.value,
 msensitivity2 = 'Input-SDL-Control2[MouseSensitivity]=' + MouseSensitivity2X.value + ',' + MouseSensitivity2Y.value,
 msensitivity3 = 'Input-SDL-Control3[MouseSensitivity]=' + MouseSensitivity3X.value + ',' + MouseSensitivity3Y.value,
@@ -1157,10 +1179,7 @@ AButton1,AButton2,AButton3,AButton4,BButton1,BButton2,BButton3,BButton4,LTrig1,L
 
 
 
-if(id('name1').value === 'Keyboard'){
-var mouse1_1 = 	id('mouse1_1').options[id('mouse1_1').selectedIndex].value,
-mouse1_2 = 	id('mouse1_2').options[id('mouse1_2').selectedIndex].value,
-mouse1_3 = 	id('mouse1_3').options[id('mouse1_3').selectedIndex].value;
+if(name1.includes('Keyboard')){
 device1 = 'Input-SDL-Control1[device]=-1';
 AButton1 = 'Input-SDL-Control1[A Button]=' + 'key(' + id('AButton1').dataset.key + ')';
 BButton1 = 'Input-SDL-Control1[B Button]=' + 'key(' + id('BButton1').dataset.key + ')';
@@ -1181,25 +1200,57 @@ RumblepakSwitch1 = 'Input-SDL-Control1[Rumblepak Switch]=' + 'key(' + id('Rumble
 XAxis1 = 'Input-SDL-Control1[X Axis]=' + 'key(' + id('StickL1').dataset.key + ',' + id('StickR1').dataset.key + ')';
 YAxis1 = 'Input-SDL-Control1[Y Axis]=' + 'key(' + id('StickU1').dataset.key + ',' + id('StickD1').dataset.key + ')';
 if(id('mouse1').checked && mouse1_1 != ''){
-if(mouse1_1 === 'a'){AButton1 = 'Input-SDL-Control1[A Button]=mouse(1)'}
-if(mouse1_1 === 'b'){BButton1 = 'Input-SDL-Control1[B Button]=mouse(1)'}
-if(mouse1_1 === 'l'){LTrig1 = 'Input-SDL-Control1[L Trig]=mouse(1)'}
-if(mouse1_1 === 'r'){RTrig1 = 'Input-SDL-Control1[R Trig]=mouse(1)'}
-if(mouse1_1 === 'z'){ZTrig1 = 'Input-SDL-Control1[Z Trig]=mouse(1)'}}
+if(mouse1_1 === 'a'){AButton1 = AButton1 + ' mouse(1)'}
+if(mouse1_1 === 'b'){BButton1 = BButton1 + ' mouse(1)'}
+if(mouse1_1 === 'l'){LTrig1 = LTrig1 + ' mouse(1)'}
+if(mouse1_1 === 'r'){RTrig1 = RTrig1 + ' mouse(1)'}
+if(mouse1_1 === 'z'){ZTrig1 = ZTrig1 + ' mouse(1)'}
+if(mouse1_1 === 'cr'){CButtonR1 = CButtonR1 + ' mouse(1)'}
+if(mouse1_1 === 'cl'){CButtonL1 = CButtonL1 + ' mouse(1)'}
+if(mouse1_1 === 'cd'){CButtonD1 = CButtonD1 + ' mouse(1)'}
+if(mouse1_1 === 'cu'){CButtonU1 = CButtonU1 + ' mouse(1)'}
+if(mouse1_1 === 'dpadr'){DPadR1 = DPadR1 + ' mouse(1)'}
+if(mouse1_1 === 'dpadl'){DPadL1 = DPadL1 + ' mouse(1)'}
+if(mouse1_1 === 'dpadd'){DPadD1 = DPadD1 + ' mouse(1)'}
+if(mouse1_1 === 'dpadu'){DPadU1 = DPadU1 + ' mouse(1)'}
+if(mouse1_1 === 'start'){Start1 = Start1 + ' mouse(1)'}
+if(mouse1_1 === 'ms'){MempakSwitch1 = MempakSwitch1 + ' mouse(1)'}
+if(mouse1_1 === 'rs'){RumblepakSwitch1 = RumblepakSwitch1 + ' mouse(1)'}}
 if(id('mouse1').checked && mouse1_2 != ''){
-if(mouse1_2 === 'a'){AButton1 = 'Input-SDL-Control1[A Button]=mouse(2)'}
-if(mouse1_2 === 'b'){BButton1 = 'Input-SDL-Control1[B Button]=mouse(2)'}
-if(mouse1_2 === 'l'){LTrig1 = 'Input-SDL-Control1[L Trig]=mouse(2)'}
-if(mouse1_2 === 'r'){RTrig1 = 'Input-SDL-Control1[R Trig]=mouse(2)'}
-if(mouse1_2 === 'z'){ZTrig1 = 'Input-SDL-Control1[Z Trig]=mouse(2)'}}
+if(mouse1_2 === 'a'){AButton1 = AButton1 + ' mouse(2)'}
+if(mouse1_2 === 'b'){BButton1 = BButton1 + ' mouse(2)'}
+if(mouse1_2 === 'l'){LTrig1 = LTrig1 + ' mouse(2)'}
+if(mouse1_2 === 'r'){RTrig1 = RTrig1 + ' mouse(2)'}
+if(mouse1_2 === 'z'){ZTrig1 = ZTrig1 + ' mouse(2)'}
+if(mouse1_2 === 'cr'){CButtonR1 = CButtonR1 + ' mouse(2)'}
+if(mouse1_2 === 'cl'){CButtonL1 = CButtonL1 + ' mouse(2)'}
+if(mouse1_2 === 'cd'){CButtonD1 = CButtonD1 + ' mouse(2)'}
+if(mouse1_2 === 'cu'){CButtonU1 = CButtonU1 + ' mouse(2)'}
+if(mouse1_2 === 'dpadr'){DPadR1 = DPadR1 + ' mouse(2)'}
+if(mouse1_2 === 'dpadl'){DPadL1 = DPadL1 + ' mouse(2)'}
+if(mouse1_2 === 'dpadd'){DPadD1 = DPadD1 + ' mouse(2)'}
+if(mouse1_2 === 'dpadu'){DPadU1 = DPadU1 + ' mouse(2)'}
+if(mouse1_2 === 'start'){Start1 = Start1 + ' mouse(2)'}
+if(mouse1_2 === 'ms'){MempakSwitch1 = MempakSwitch1 + ' mouse(2)'}
+if(mouse1_2 === 'rs'){RumblepakSwitch1 = RumblepakSwitch1 + ' mouse(2)'}}
 if(id('mouse1').checked && mouse1_3 != ''){
-if(mouse1_3 === 'a'){AButton1 = 'Input-SDL-Control1[A Button]=mouse(3)'}
-if(mouse1_3 === 'b'){BButton1 = 'Input-SDL-Control1[B Button]=mouse(3)'}
-if(mouse1_3 === 'l'){LTrig1 = 'Input-SDL-Control1[L Trig]=mouse(3)'}
-if(mouse1_3 === 'r'){RTrig1 = 'Input-SDL-Control1[R Trig]=mouse(3)'}
-if(mouse1_3 === 'z'){ZTrig1 = 'Input-SDL-Control1[Z Trig]=mouse(3)'}}
+if(mouse1_3 === 'a'){AButton1 = AButton1 + ' mouse(3)'}
+if(mouse1_3 === 'b'){BButton1 = BButton1 + ' mouse(3)'}
+if(mouse1_3 === 'l'){LTrig1 = LTrig1 + ' mouse(3)'}
+if(mouse1_3 === 'r'){RTrig1 = RTrig1 + ' mouse(3)'}
+if(mouse1_3 === 'z'){ZTrig1 = ZTrig1 + ' mouse(3)'}
+if(mouse1_3 === 'cr'){CButtonR1 = CButtonR1 + ' mouse(3)'}
+if(mouse1_3 === 'cl'){CButtonL1 = CButtonL1 + ' mouse(3)'}
+if(mouse1_3 === 'cd'){CButtonD1 = CButtonD1 + ' mouse(3)'}
+if(mouse1_3 === 'cu'){CButtonU1 = CButtonU1 + ' mouse(3)'}
+if(mouse1_3 === 'dpadr'){DPadR1 = DPadR1 + ' mouse(3)'}
+if(mouse1_3 === 'dpadl'){DPadL1 = DPadL1 + ' mouse(3)'}
+if(mouse1_3 === 'dpadd'){DPadD1 = DPadD1 + ' mouse(3)'}
+if(mouse1_3 === 'dpadu'){DPadU1 = DPadU1 + ' mouse(3)'}
+if(mouse1_3 === 'start'){Start1 = Start1 + ' mouse(3)'}
+if(mouse1_3 === 'ms'){MempakSwitch1 = MempakSwitch1 + ' mouse(3)'}
+if(mouse1_3 === 'rs'){RumblepakSwitch1 = RumblepakSwitch1 + ' mouse(3)'}}
 }else{
-device1 = 'Input-SDL-Control1[device]=0';
 var buttonType = '', buttonTypeB = '';
 if(id('StickU1c').value.includes('axis') || id('StickL1c').value.includes('axis') || id('StickR1c').value.includes('axis') || id('StickD1c').value.includes('axis')){buttonType = 'axis'}
 if(id('StickU1cb').value.includes('axis') || id('StickL1cb').value.includes('axis') || id('StickR1cb').value.includes('axis') || id('StickD1cb').value.includes('axis')){buttonTypeB = 'axis'}
@@ -1232,12 +1283,60 @@ CButtonD1 = 'Input-SDL-Control1[C Button D]=' + id('CButtonD1c').value + ' ' + i
 MempakSwitch1 = 'Input-SDL-Control1[Mempak Switch]=' + id('MempakSwitch1c').value + ' ' + id('MempakSwitch1cb').value;
 RumblepakSwitch1 = 'Input-SDL-Control1[Rumblepak Switch]=' + id('RumblepakSwitch1c').value + ' ' + id('RumblepakSwitch1cb').value;
 XAxis1 = 'Input-SDL-Control1[X Axis]=' + buttonType + '(' + StickL1value + ',' + StickR1value + ')' + ' ' + buttonTypeB + '(' + StickL1bvalue + ',' + StickR1bvalue + ')';
-YAxis1 = 'Input-SDL-Control1[Y Axis]=' + buttonType + '(' + StickU1value + ',' + StickD1value + ')' + ' ' + buttonTypeB + '(' + StickU1bvalue + ',' + StickD1bvalue + ')'}
+YAxis1 = 'Input-SDL-Control1[Y Axis]=' + buttonType + '(' + StickU1value + ',' + StickD1value + ')' + ' ' + buttonTypeB + '(' + StickU1bvalue + ',' + StickD1bvalue + ')';
+if(id('mouse1').checked && mouse1_1 != ''){
+if(mouse1_1 === 'a'){AButton1 = 'Input-SDL-Control1[A Button]=' + id('AButton1c').value + ' mouse(1)'}
+if(mouse1_1 === 'b'){BButton1 = 'Input-SDL-Control1[B Button]=' + id('BButton1c').value + ' mouse(1)'}
+if(mouse1_1 === 'l'){LTrig1 = 'Input-SDL-Control1[L Trig]=' + id('LTrig1c').value + ' mouse(1)'}
+if(mouse1_1 === 'r'){RTrig1 = 'Input-SDL-Control1[R Trig]=' + id('RTrig1c').value + ' mouse(1)'}
+if(mouse1_1 === 'z'){ZTrig1 = 'Input-SDL-Control1[Z Trig]=' + id('ZTrig1c').value + ' mouse(1)'}
+if(mouse1_1 === 'cr'){CButtonR1 = 'Input-SDL-Control1[C Button R]=' + id('CButtonR1c').value + ' mouse(1)'}
+if(mouse1_1 === 'cl'){CButtonR1 = 'Input-SDL-Control1[C Button L]=' + id('CButtonL1c').value + ' mouse(1)'}
+if(mouse1_1 === 'cd'){CButtonR1 = 'Input-SDL-Control1[C Button D]=' + id('CButtonD1c').value + ' mouse(1)'}
+if(mouse1_1 === 'cu'){CButtonR1 = 'Input-SDL-Control1[C Button U]=' + id('CButtonU1c').value + ' mouse(1)'}
+if(mouse1_1 === 'dpadr'){DPadR1 = 'Input-SDL-Control1[DPad R]=' + id('DPadR1c').value + ' mouse(1)'}
+if(mouse1_1 === 'dpadl'){DPadR1 = 'Input-SDL-Control1[DPad L]=' + id('DPadL1c').value + ' mouse(1)'}
+if(mouse1_1 === 'dpadd'){DPadR1 = 'Input-SDL-Control1[DPad D]=' + id('DPadD1c').value + ' mouse(1)'}
+if(mouse1_1 === 'dpadu'){DPadR1 = 'Input-SDL-Control1[DPad U]=' + id('DPadU1c').value + ' mouse(1)'}
+if(mouse1_1 === 'start'){Start1 = 'Input-SDL-Control1[Start]=' + id('Start1c').value + ' mouse(1)'}
+if(mouse1_1 === 'ms'){MempakSwitch1 = 'Input-SDL-Control1[Mempak Switch]=' + id('MempakSwitch1c').value + ' mouse(1)'}
+if(mouse1_1 === 'rs'){RumblepakSwitch1 = 'Input-SDL-Control1[Rumblepak Switch]=' + id('RumblepakSwitch1c').value + ' mouse(1)'}}
+if(id('mouse1').checked && mouse1_2 != ''){
+if(mouse1_2 === 'a'){AButton1 = 'Input-SDL-Control1[A Button]=' + id('AButton1c').value + ' mouse(2)'}
+if(mouse1_2 === 'b'){BButton1 = 'Input-SDL-Control1[B Button]=' + id('BButton1c').value + ' mouse(2)'}
+if(mouse1_2 === 'l'){LTrig1 = 'Input-SDL-Control1[L Trig]=' + id('LTrig1c').value + ' mouse(2)'}
+if(mouse1_2 === 'r'){RTrig1 = 'Input-SDL-Control1[R Trig]=' + id('RTrig1c').value + ' mouse(2)'}
+if(mouse1_2 === 'z'){ZTrig1 = 'Input-SDL-Control1[Z Trig]=' + id('ZTrig1c').value + ' mouse(2)'}
+if(mouse1_2 === 'cr'){CButtonR1 = 'Input-SDL-Control1[C Button R]=' + id('CButtonR1c').value + ' mouse(2)'}
+if(mouse1_2 === 'cl'){CButtonL1 = 'Input-SDL-Control1[C Button L]=' + id('CButtonL1c').value + ' mouse(2)'}
+if(mouse1_2 === 'cd'){CButtonD1 = 'Input-SDL-Control1[C Button D]=' + id('CButtonD1c').value + ' mouse(2)'}
+if(mouse1_2 === 'cu'){CButtonU1 = 'Input-SDL-Control1[C Button U]=' + id('CButtonU1c').value + ' mouse(2)'}
+if(mouse1_2 === 'dpadr'){DPadR1 = 'Input-SDL-Control1[DPad R]=' + id('DPadR1c').value + ' mouse(2)'}
+if(mouse1_2 === 'dpadl'){DPadL1 = 'Input-SDL-Control1[DPad L]=' + id('DPadL1c').value + ' mouse(2)'}
+if(mouse1_2 === 'dpadd'){DPadD1 = 'Input-SDL-Control1[DPad D]=' + id('DPadD1c').value + ' mouse(2)'}
+if(mouse1_2 === 'dpadu'){DPadU1 = 'Input-SDL-Control1[DPad U]=' + id('DPadU1c').value + ' mouse(2)'}
+if(mouse1_2 === 'start'){Start1 = 'Input-SDL-Control1[Start]=' + id('Start1c').value + ' mouse(2)'}
+if(mouse1_2 === 'ms'){MempakSwitch1 = 'Input-SDL-Control1[Mempak Switch]=' + id('MempakSwitch1c').value + ' mouse(2)'}
+if(mouse1_2 === 'rs'){RumblepakSwitch1 = 'Input-SDL-Control1[Rumblepak Switch]=' + id('RumblepakSwitch1c').value + ' mouse(2)'}}
+if(id('mouse1').checked && mouse1_3 != ''){
+if(mouse1_3 === 'a'){AButton1 = 'Input-SDL-Control1[A Button]=' + id('AButton1c').value + ' mouse(3)'}
+if(mouse1_3 === 'b'){BButton1 = 'Input-SDL-Control1[B Button]=' + id('BButton1c').value + ' mouse(3)'}
+if(mouse1_3 === 'l'){LTrig1 = 'Input-SDL-Control1[L Trig]=' + id('LTrig1c').value + ' mouse(3)'}
+if(mouse1_3 === 'r'){RTrig1 = 'Input-SDL-Control1[R Trig]=' + id('RTrig1c').value + ' mouse(3)'}
+if(mouse1_3 === 'z'){ZTrig1 = 'Input-SDL-Control1[Z Trig]=' + id('ZTrig1c').value + ' mouse(3)'}
+if(mouse1_3 === 'cr'){CButtonR1 = 'Input-SDL-Control1[C Button R]=' + id('CButtonR1c').value + ' mouse(3)'}
+if(mouse1_3 === 'cl'){CButtonL1 = 'Input-SDL-Control1[C Button L]=' + id('CButtonL1c').value + ' mouse(3)'}
+if(mouse1_3 === 'cd'){CButtonD1 = 'Input-SDL-Control1[C Button D]=' + id('CButtonD1c').value + ' mouse(3)'}
+if(mouse1_3 === 'cu'){CButtonU1 = 'Input-SDL-Control1[C Button U]=' + id('CButtonU1c').value + ' mouse(3)'}
+if(mouse1_3 === 'dpadr'){DPadR1 = 'Input-SDL-Control1[DPad R]=' + id('DPadR1c').value + ' mouse(3)'}
+if(mouse1_3 === 'dpadl'){DPadL1 = 'Input-SDL-Control1[DPad L]=' + id('DPadL1c').value + ' mouse(3)'}
+if(mouse1_3 === 'dpadd'){DPadD1 = 'Input-SDL-Control1[DPad D]=' + id('DPadD1c').value + ' mouse(3)'}
+if(mouse1_3 === 'dpadu'){DPadU1 = 'Input-SDL-Control1[DPad U]=' + id('DPadU1c').value + ' mouse(3)'}
+if(mouse1_3 === 'start'){Start1 = 'Input-SDL-Control1[Start]=' + id('Start1c').value + ' mouse(3)'}
+if(mouse1_3 === 'ms'){MempakSwitch1 = 'Input-SDL-Control1[Mempak Switch]=' + id('MempakSwitch1c').value + ' mouse(3)'}
+if(mouse1_3 === 'rs'){RumblepakSwitch1 = 'Input-SDL-Control1[Rumblepak Switch]=' + id('RumblepakSwitch1c').value + ' mouse(3)'}}}
 
-if(id('name2').value === 'Keyboard'){
-var mouse2_1 = 	id('mouse2_1').options[id('mouse2_1').selectedIndex].value,
-mouse2_2 = 	id('mouse2_2').options[id('mouse2_2').selectedIndex].value,
-mouse2_3 = 	id('mouse2_3').options[id('mouse2_3').selectedIndex].value;
+if(name2.includes('Keyboard')){
 device2 = 'Input-SDL-Control2[device]=-1';
 AButton2 = 'Input-SDL-Control2[A Button]=' + 'key(' + id('AButton2').dataset.key + ')';
 BButton2 = 'Input-SDL-Control2[B Button]=' + 'key(' + id('BButton2').dataset.key + ')';
@@ -1256,27 +1355,59 @@ CButtonD2 = 'Input-SDL-Control2[C Button D]=' + 'key(' + id('CButtonD2').dataset
 MempakSwitch2 = 'Input-SDL-Control2[Mempak Switch]=' + 'key(' + id('MempakSwitch2').dataset.key + ')';
 RumblepakSwitch2 = 'Input-SDL-Control2[Rumblepak Switch]=' + 'key(' + id('RumblepakSwitch2').dataset.key + ')';
 XAxis2 = 'Input-SDL-Control2[X Axis]=' + 'key(' + id('StickL2').dataset.key + ',' + id('StickR2').dataset.key + ')';
-YAxis2 = 'Input-SDL-Control2[Y Axis]=' + 'key(' + id('StickU2').dataset.key + ',' + id('StickD2').dataset.key + ')'
+YAxis2 = 'Input-SDL-Control2[Y Axis]=' + 'key(' + id('StickU2').dataset.key + ',' + id('StickD2').dataset.key + ')';
 if(id('mouse2').checked && mouse2_1 != ''){
-if(mouse2_1 === 'a'){AButton2 = 'Input-SDL-Control2[A Button]=mouse(1)'}
-if(mouse2_1 === 'b'){BButton2 = 'Input-SDL-Control2[B Button]=mouse(1)'}
-if(mouse2_1 === 'l'){LTrig2 = 'Input-SDL-Control2[L Trig]=mouse(1)'}
-if(mouse2_1 === 'r'){RTrig2 = 'Input-SDL-Control2[R Trig]=mouse(1)'}
-if(mouse2_1 === 'z'){ZTrig2 = 'Input-SDL-Control2[Z Trig]=mouse(1)'}}
+if(mouse2_1 === 'a'){AButton2 = AButton2 + ' mouse(1)'}
+if(mouse2_1 === 'b'){BButton2 = BButton2 + ' mouse(1)'}
+if(mouse2_1 === 'l'){LTrig2 = LTrig2 + ' mouse(1)'}
+if(mouse2_1 === 'r'){RTrig2 = RTrig2 + ' mouse(1)'}
+if(mouse2_1 === 'z'){ZTrig2 = ZTrig2 + ' mouse(1)'}
+if(mouse2_1 === 'cr'){CButtonR2 = CButtonR2 + ' mouse(1)'}
+if(mouse2_1 === 'cl'){CButtonL2 = CButtonL2 + ' mouse(1)'}
+if(mouse2_1 === 'cd'){CButtonD2 = CButtonD2 + ' mouse(1)'}
+if(mouse2_1 === 'cu'){CButtonU2 = CButtonU2 + ' mouse(1)'}
+if(mouse2_1 === 'dpadr'){DPadR2 = DPadR2 + ' mouse(1)'}
+if(mouse2_1 === 'dpadl'){DPadL2 = DPadL2 + ' mouse(1)'}
+if(mouse2_1 === 'dpadd'){DPadD2 = DPadD2 + ' mouse(1)'}
+if(mouse2_1 === 'dpadu'){DPadU2 = DPadU2 + ' mouse(1)'}
+if(mouse2_1 === 'start'){Start2 = Start2 + ' mouse(1)'}
+if(mouse2_1 === 'ms'){MempakSwitch2 = MempakSwitch2 + ' mouse(1)'}
+if(mouse2_1 === 'rs'){RumblepakSwitch2 = RumblepakSwitch2 + ' mouse(1)'}}
 if(id('mouse2').checked && mouse2_2 != ''){
-if(mouse2_2 === 'a'){AButton2 = 'Input-SDL-Control2[A Button]=mouse(2)'}
-if(mouse2_2 === 'b'){BButton2 = 'Input-SDL-Control2[B Button]=mouse(2)'}
-if(mouse2_2 === 'l'){LTrig2 = 'Input-SDL-Control2[L Trig]=mouse(2)'}
-if(mouse2_2 === 'r'){RTrig2 = 'Input-SDL-Control2[R Trig]=mouse(2)'}
-if(mouse2_2 === 'z'){ZTrig2 = 'Input-SDL-Control2[Z Trig]=mouse(2)'}}
+if(mouse2_2 === 'a'){AButton2 = AButton2 + ' mouse(2)'}
+if(mouse2_2 === 'b'){BButton2 = BButton2 + ' mouse(2)'}
+if(mouse2_2 === 'l'){LTrig2 = LTrig2 + ' mouse(2)'}
+if(mouse2_2 === 'r'){RTrig2 = RTrig2 + ' mouse(2)'}
+if(mouse2_2 === 'z'){ZTrig2 = ZTrig2 + ' mouse(2)'}
+if(mouse2_2 === 'cr'){CButtonR2 = CButtonR2 + ' mouse(2)'}
+if(mouse2_2 === 'cl'){CButtonL2 = CButtonL2 + ' mouse(2)'}
+if(mouse2_2 === 'cd'){CButtonD2 = CButtonD2 + ' mouse(2)'}
+if(mouse2_2 === 'cu'){CButtonU2 = CButtonU2 + ' mouse(2)'}
+if(mouse2_2 === 'dpadr'){DPadR2 = DPadR2 + ' mouse(2)'}
+if(mouse2_2 === 'dpadl'){DPadL2 = DPadL2 + ' mouse(2)'}
+if(mouse2_2 === 'dpadd'){DPadD2 = DPadD2 + ' mouse(2)'}
+if(mouse2_2 === 'dpadu'){DPadU2 = DPadU2 + ' mouse(2)'}
+if(mouse2_2 === 'start'){Start2 = Start2 + ' mouse(2)'}
+if(mouse2_2 === 'ms'){MempakSwitch2 = MempakSwitch2 + ' mouse(2)'}
+if(mouse2_2 === 'rs'){RumblepakSwitch2 = RumblepakSwitch2 + ' mouse(2)'}}
 if(id('mouse2').checked && mouse2_3 != ''){
-if(mouse2_3 === 'a'){AButton2 = 'Input-SDL-Control2[A Button]=mouse(3)'}
-if(mouse2_3 === 'b'){BButton2 = 'Input-SDL-Control2[B Button]=mouse(3)'}
-if(mouse2_3 === 'l'){LTrig2 = 'Input-SDL-Control2[L Trig]=mouse(3)'}
-if(mouse2_3 === 'r'){RTrig2 = 'Input-SDL-Control2[R Trig]=mouse(3)'}
-if(mouse2_3 === 'z'){ZTrig2 = 'Input-SDL-Control2[Z Trig]=mouse(3)'}}
+if(mouse2_3 === 'a'){AButton2 = AButton2 + ' mouse(3)'}
+if(mouse2_3 === 'b'){BButton2 = BButton2 + ' mouse(3)'}
+if(mouse2_3 === 'l'){LTrig2 = LTrig2 + ' mouse(3)'}
+if(mouse2_3 === 'r'){RTrig2 = RTrig2 + ' mouse(3)'}
+if(mouse2_3 === 'z'){ZTrig2 = ZTrig2 + ' mouse(3)'}
+if(mouse2_3 === 'cr'){CButtonR2 = CButtonR2 + ' mouse(3)'}
+if(mouse2_3 === 'cl'){CButtonL2 = CButtonL2 + ' mouse(3)'}
+if(mouse2_3 === 'cd'){CButtonD2 = CButtonD2 + ' mouse(3)'}
+if(mouse2_3 === 'cu'){CButtonU2 = CButtonU2 + ' mouse(3)'}
+if(mouse2_3 === 'dpadr'){DPadR2 = DPadR2 + ' mouse(3)'}
+if(mouse2_3 === 'dpadl'){DPadL2 = DPadL2 + ' mouse(3)'}
+if(mouse2_3 === 'dpadd'){DPadD2 = DPadD2 + ' mouse(3)'}
+if(mouse2_3 === 'dpadu'){DPadU2 = DPadU2 + ' mouse(3)'}
+if(mouse2_3 === 'start'){Start2 = Start2 + ' mouse(3)'}
+if(mouse2_3 === 'ms'){MempakSwitch2 = MempakSwitch2 + ' mouse(3)'}
+if(mouse2_3 === 'rs'){RumblepakSwitch2 = RumblepakSwitch2 + ' mouse(3)'}}
 }else{
-device2 = 'Input-SDL-Control2[device]=1';
 var buttonType = '', buttonTypeB = '';
 if(id('StickU2c').value.includes('axis') || id('StickL2c').value.includes('axis') || id('StickR2c').value.includes('axis') || id('StickD2c').value.includes('axis')){buttonType = 'axis'}
 if(id('StickU2cb').value.includes('axis') || id('StickL2cb').value.includes('axis') || id('StickR2cb').value.includes('axis') || id('StickD2cb').value.includes('axis')){buttonTypeB = 'axis'}
@@ -1309,12 +1440,60 @@ CButtonD2 = 'Input-SDL-Control2[C Button D]=' + id('CButtonD2c').value + ' ' + i
 MempakSwitch2 = 'Input-SDL-Control2[Mempak Switch]=' + id('MempakSwitch2c').value + ' ' + id('MempakSwitch2cb').value;
 RumblepakSwitch2 = 'Input-SDL-Control2[Rumblepak Switch]=' + id('RumblepakSwitch2c').value + ' ' + id('RumblepakSwitch2cb').value;
 XAxis2 = 'Input-SDL-Control2[X Axis]=' + buttonType + '(' + StickL2value + ',' + StickR2value + ')' + ' ' + buttonTypeB + '(' + StickL2bvalue + ',' + StickR2bvalue + ')';
-YAxis2 = 'Input-SDL-Control2[Y Axis]=' + buttonType + '(' + StickU2value + ',' + StickD2value + ')' + ' ' + buttonTypeB + '(' + StickU2bvalue + ',' + StickD2bvalue + ')'}
+YAxis2 = 'Input-SDL-Control2[Y Axis]=' + buttonType + '(' + StickU2value + ',' + StickD2value + ')' + ' ' + buttonTypeB + '(' + StickU2bvalue + ',' + StickD2bvalue + ')';
+if(id('mouse2').checked && mouse2_1 != ''){
+if(mouse2_1 === 'a'){AButton2 = 'Input-SDL-Control2[A Button]=' + id('AButton2c').value + ' mouse(1)'}
+if(mouse2_1 === 'b'){BButton2 = 'Input-SDL-Control2[B Button]=' + id('BButton2c').value + ' mouse(1)'}
+if(mouse2_1 === 'l'){LTrig2 = 'Input-SDL-Control2[L Trig]=' + id('LTrig2c').value + ' mouse(1)'}
+if(mouse2_1 === 'r'){RTrig2 = 'Input-SDL-Control2[R Trig]=' + id('RTrig2c').value + ' mouse(1)'}
+if(mouse2_1 === 'z'){ZTrig2 = 'Input-SDL-Control2[Z Trig]=' + id('ZTrig2c').value + ' mouse(1)'}
+if(mouse2_1 === 'cr'){CButtonR2 = 'Input-SDL-Control2[C Button R]=' + id('CButtonR2c').value + ' mouse(1)'}
+if(mouse2_1 === 'cl'){CButtonL2 = 'Input-SDL-Control2[C Button L]=' + id('CButtonL2c').value + ' mouse(1)'}
+if(mouse2_1 === 'cd'){CButtonD2 = 'Input-SDL-Control2[C Button D]=' + id('CButtonD2c').value + ' mouse(1)'}
+if(mouse2_1 === 'cu'){CButtonU2 = 'Input-SDL-Control2[C Button U]=' + id('CButtonU2c').value + ' mouse(1)'}
+if(mouse2_1 === 'dpadr'){DPadR2 = 'Input-SDL-Control2[DPad R]=' + id('DPadR2c').value + ' mouse(1)'}
+if(mouse2_1 === 'dpadl'){DPadL2 = 'Input-SDL-Control2[DPad L]=' + id('DPadL2c').value + ' mouse(1)'}
+if(mouse2_1 === 'dpadd'){DPadD2 = 'Input-SDL-Control2[DPad D]=' + id('DPadD2c').value + ' mouse(1)'}
+if(mouse2_1 === 'dpadu'){DPadU2 = 'Input-SDL-Control2[DPad U]=' + id('DPadU2c').value + ' mouse(1)'}
+if(mouse2_1 === 'start'){Start2 = 'Input-SDL-Control2[Start]=' + id('Start2c').value + ' mouse(1)'}
+if(mouse2_1 === 'ms'){MempakSwitch2 = 'Input-SDL-Control2[Mempak Switch]=' + id('MempakSwitch2c').value + ' mouse(1)'}
+if(mouse2_1 === 'rs'){RumblepakSwitch2 = 'Input-SDL-Control2[Rumblepak Switch]=' + id('RumblepakSwitch2c').value + ' mouse(1)'}}
+if(id('mouse2').checked && mouse2_2 != ''){
+if(mouse2_2 === 'a'){AButton2 = 'Input-SDL-Control2[A Button]=' + id('AButton2c').value + ' mouse(2)'}
+if(mouse2_2 === 'b'){BButton2 = 'Input-SDL-Control2[B Button]=' + id('BButton2c').value + ' mouse(2)'}
+if(mouse2_2 === 'l'){LTrig2 = 'Input-SDL-Control2[L Trig]=' + id('LTrig2c').value + ' mouse(2)'}
+if(mouse2_2 === 'r'){RTrig2 = 'Input-SDL-Control2[R Trig]=' + id('RTrig2c').value + ' mouse(2)'}
+if(mouse2_2 === 'z'){ZTrig2 = 'Input-SDL-Control2[Z Trig]=' + id('ZTrig2c').value + ' mouse(2)'}
+if(mouse2_2 === 'cr'){CButtonR2 = 'Input-SDL-Control2[C Button R]=' + id('CButtonR2c').value + ' mouse(2)'}
+if(mouse2_2 === 'cl'){CButtonL2 = 'Input-SDL-Control2[C Button L]=' + id('CButtonL2c').value + ' mouse(2)'}
+if(mouse2_2 === 'cd'){CButtonD2 = 'Input-SDL-Control2[C Button D]=' + id('CButtonD2c').value + ' mouse(2)'}
+if(mouse2_2 === 'cu'){CButtonU2 = 'Input-SDL-Control2[C Button U]=' + id('CButtonU2c').value + ' mouse(2)'}
+if(mouse2_2 === 'dpadr'){DPadR2 = 'Input-SDL-Control2[DPad R]=' + id('DPadR2c').value + ' mouse(2)'}
+if(mouse2_2 === 'dpadl'){DPadL2 = 'Input-SDL-Control2[DPad L]=' + id('DPadL2c').value + ' mouse(2)'}
+if(mouse2_2 === 'dpadd'){DPadD2 = 'Input-SDL-Control2[DPad D]=' + id('DPadD2c').value + ' mouse(2)'}
+if(mouse2_2 === 'dpadu'){DPadU2 = 'Input-SDL-Control2[DPad U]=' + id('DPadU2c').value + ' mouse(2)'}
+if(mouse2_2 === 'start'){Start2 = 'Input-SDL-Control2[Start]=' + id('Start2c').value + ' mouse(2)'}
+if(mouse2_2 === 'ms'){MempakSwitch2 = 'Input-SDL-Control2[Mempak Switch]=' + id('MempakSwitch2c').value + ' mouse(2)'}
+if(mouse2_2 === 'rs'){RumblepakSwitch2 = 'Input-SDL-Control2[Rumblepak Switch]=' + id('RumblepakSwitch2c').value + ' mouse(2)'}}
+if(id('mouse2').checked && mouse2_3 != ''){
+if(mouse2_3 === 'a'){AButton2 = 'Input-SDL-Control2[A Button]=' + id('AButton2c').value + ' mouse(3)'}
+if(mouse2_3 === 'b'){BButton2 = 'Input-SDL-Control2[B Button]=' + id('BButton2c').value + ' mouse(3)'}
+if(mouse2_3 === 'l'){LTrig2 = 'Input-SDL-Control2[L Trig]=' + id('LTrig2c').value + ' mouse(3)'}
+if(mouse2_3 === 'r'){RTrig2 = 'Input-SDL-Control2[R Trig]=' + id('RTrig2c').value + ' mouse(3)'}
+if(mouse2_3 === 'z'){ZTrig2 = 'Input-SDL-Control2[Z Trig]=' + id('ZTrig2c').value + ' mouse(3)'}
+if(mouse2_3 === 'cr'){CButtonR2 = 'Input-SDL-Control2[C Button R]=' + id('CButtonR2c').value + ' mouse(3)'}
+if(mouse2_3 === 'cl'){CButtonL2 = 'Input-SDL-Control2[C Button L]=' + id('CButtonL2c').value + ' mouse(3)'}
+if(mouse2_3 === 'cd'){CButtonD2 = 'Input-SDL-Control2[C Button D]=' + id('CButtonD2c').value + ' mouse(3)'}
+if(mouse2_3 === 'cu'){CButtonU2 = 'Input-SDL-Control2[C Button U]=' + id('CButtonU2c').value + ' mouse(3)'}
+if(mouse2_3 === 'dpadr'){DPadR2 = 'Input-SDL-Control2[DPad R]=' + id('DPadR2c').value + ' mouse(3)'}
+if(mouse2_3 === 'dpadl'){DPadL2 = 'Input-SDL-Control2[DPad L]=' + id('DPadL2c').value + ' mouse(3)'}
+if(mouse2_3 === 'dpadd'){DPadD2 = 'Input-SDL-Control2[DPad D]=' + id('DPadD2c').value + ' mouse(3)'}
+if(mouse2_3 === 'dpadu'){DPadU2 = 'Input-SDL-Control2[DPad U]=' + id('DPadU2c').value + ' mouse(3)'}
+if(mouse2_3 === 'start'){Start2 = 'Input-SDL-Control2[Start]=' + id('Start2c').value + ' mouse(3)'}
+if(mouse2_3 === 'ms'){MempakSwitch2 = 'Input-SDL-Control2[Mempak Switch]=' + id('MempakSwitch2c').value + ' mouse(3)'}
+if(mouse2_3 === 'rs'){RumblepakSwitch2 = 'Input-SDL-Control2[Rumblepak Switch]=' + id('RumblepakSwitch2c').value + ' mouse(3)'}}}
 
-if(id('name3').value === 'Keyboard'){
-var mouse3_1 = 	id('mouse3_1').options[id('mouse3_1').selectedIndex].value,
-mouse3_2 = 	id('mouse3_2').options[id('mouse3_2').selectedIndex].value,
-mouse3_3 = 	id('mouse3_3').options[id('mouse3_3').selectedIndex].value;
+if(name3.includes('Keyboard')){
 device3 = 'Input-SDL-Control3[device]=-1';
 AButton3 = 'Input-SDL-Control3[A Button]=' + 'key(' + id('AButton3').dataset.key + ')';
 BButton3 = 'Input-SDL-Control3[B Button]=' + 'key(' + id('BButton3').dataset.key + ')';
@@ -1333,27 +1512,59 @@ CButtonD3 = 'Input-SDL-Control3[C Button D]=' + 'key(' + id('CButtonD3').dataset
 MempakSwitch3 = 'Input-SDL-Control3[Mempak Switch]=' + 'key(' + id('MempakSwitch3').dataset.key + ')';
 RumblepakSwitch3 = 'Input-SDL-Control3[Rumblepak Switch]=' + 'key(' + id('RumblepakSwitch3').dataset.key + ')';
 XAxis3 = 'Input-SDL-Control3[X Axis]=' + 'key(' + id('StickL3').dataset.key + ',' + id('StickR3').dataset.key + ')';
-YAxis3 = 'Input-SDL-Control3[Y Axis]=' + 'key(' + id('StickU3').dataset.key + ',' + id('StickD3').dataset.key + ')'
+YAxis3 = 'Input-SDL-Control3[Y Axis]=' + 'key(' + id('StickU3').dataset.key + ',' + id('StickD3').dataset.key + ')';
 if(id('mouse3').checked && mouse3_1 != ''){
-if(mouse3_1 === 'a'){AButton3 = 'Input-SDL-Control3[A Button]=mouse(1)'}
-if(mouse3_1 === 'b'){BButton3 = 'Input-SDL-Control3[B Button]=mouse(1)'}
-if(mouse3_1 === 'l'){LTrig3 = 'Input-SDL-Control3[L Trig]=mouse(1)'}
-if(mouse3_1 === 'r'){RTrig3 = 'Input-SDL-Control3[R Trig]=mouse(1)'}
-if(mouse3_1 === 'z'){ZTrig3 = 'Input-SDL-Control3[Z Trig]=mouse(1)'}}
+if(mouse3_1 === 'a'){AButton3 = AButton3 + ' mouse(1)'}
+if(mouse3_1 === 'b'){BButton3 = BButton3 + ' mouse(1)'}
+if(mouse3_1 === 'l'){LTrig3 = LTrig3 + ' mouse(1)'}
+if(mouse3_1 === 'r'){RTrig3 = RTrig3 + ' mouse(1)'}
+if(mouse3_1 === 'z'){ZTrig3 = ZTrig3 + ' mouse(1)'}
+if(mouse3_1 === 'cr'){CButtonR3 = CButtonR3 + ' mouse(1)'}
+if(mouse3_1 === 'cl'){CButtonL3 = CButtonL3 + ' mouse(1)'}
+if(mouse3_1 === 'cd'){CButtonD3 = CButtonD3 + ' mouse(1)'}
+if(mouse3_1 === 'cu'){CButtonU3 = CButtonU3 + ' mouse(1)'}
+if(mouse3_1 === 'dpadr'){DPadR3 = DPadR3 + ' mouse(1)'}
+if(mouse3_1 === 'dpadl'){DPadL3 = DPadL3 + ' mouse(1)'}
+if(mouse3_1 === 'dpadd'){DPadD3 = DPadD3 + ' mouse(1)'}
+if(mouse3_1 === 'dpadu'){DPadU3 = DPadU3 + ' mouse(1)'}
+if(mouse3_1 === 'start'){Start3 = Start3 + ' mouse(1)'}
+if(mouse3_1 === 'ms'){MempakSwitch3 = MempakSwitch3 + ' mouse(1)'}
+if(mouse3_1 === 'rs'){RumblepakSwitch3 = RumblepakSwitch3 + ' mouse(1)'}}
 if(id('mouse3').checked && mouse3_2 != ''){
-if(mouse3_2 === 'a'){AButton3 = 'Input-SDL-Control3[A Button]=mouse(2)'}
-if(mouse3_2 === 'b'){BButton3 = 'Input-SDL-Control3[B Button]=mouse(2)'}
-if(mouse3_2 === 'l'){LTrig3 = 'Input-SDL-Control3[L Trig]=mouse(2)'}
-if(mouse3_2 === 'r'){RTrig3 = 'Input-SDL-Control3[R Trig]=mouse(2)'}
-if(mouse3_2 === 'z'){ZTrig3 = 'Input-SDL-Control3[Z Trig]=mouse(2)'}}
+if(mouse3_2 === 'a'){AButton3 = AButton3 + ' mouse(2)'}
+if(mouse3_2 === 'b'){BButton3 = BButton3 + ' mouse(2)'}
+if(mouse3_2 === 'l'){LTrig3 = LTrig3 + ' mouse(2)'}
+if(mouse3_2 === 'r'){RTrig3 = RTrig3 + ' mouse(2)'}
+if(mouse3_2 === 'z'){ZTrig3 = ZTrig3 + ' mouse(2)'}
+if(mouse3_2 === 'cr'){CButtonR3 = CButtonR3 + ' mouse(2)'}
+if(mouse3_2 === 'cl'){CButtonL3 = CButtonL3 + ' mouse(2)'}
+if(mouse3_2 === 'cd'){CButtonD3 = CButtonD3 + ' mouse(2)'}
+if(mouse3_2 === 'cu'){CButtonU3 = CButtonU3 + ' mouse(2)'}
+if(mouse3_2 === 'dpadr'){DPadR3 = DPadR3 + ' mouse(2)'}
+if(mouse3_2 === 'dpadl'){DPadL3 = DPadL3 + ' mouse(2)'}
+if(mouse3_2 === 'dpadd'){DPadD3 = DPadD3 + ' mouse(2)'}
+if(mouse3_2 === 'dpadu'){DPadU3 = DPadU3 + ' mouse(2)'}
+if(mouse3_2 === 'start'){Start3 = Start3 + ' mouse(2)'}
+if(mouse3_2 === 'ms'){MempakSwitch3 = MempakSwitch3 + ' mouse(2)'}
+if(mouse3_2 === 'rs'){RumblepakSwitch3 = RumblepakSwitch3 + ' mouse(2)'}}
 if(id('mouse3').checked && mouse3_3 != ''){
-if(mouse3_3 === 'a'){AButton3 = 'Input-SDL-Control3[A Button]=mouse(3)'}
-if(mouse3_3 === 'b'){BButton3 = 'Input-SDL-Control3[B Button]=mouse(3)'}
-if(mouse3_3 === 'l'){LTrig3 = 'Input-SDL-Control3[L Trig]=mouse(3)'}
-if(mouse3_3 === 'r'){RTrig3 = 'Input-SDL-Control3[R Trig]=mouse(3)'}
-if(mouse3_3 === 'z'){ZTrig3 = 'Input-SDL-Control3[Z Trig]=mouse(3)'}}
+if(mouse3_3 === 'a'){AButton3 = AButton3 + ' mouse(3)'}
+if(mouse3_3 === 'b'){BButton3 = BButton3 + ' mouse(3)'}
+if(mouse3_3 === 'l'){LTrig3 = LTrig3 + ' mouse(3)'}
+if(mouse3_3 === 'r'){RTrig3 = RTrig3 + ' mouse(3)'}
+if(mouse3_3 === 'z'){ZTrig3 = ZTrig3 + ' mouse(3)'}
+if(mouse3_3 === 'cr'){CButtonR3 = CButtonR3 + ' mouse(3)'}
+if(mouse3_3 === 'cl'){CButtonL3 = CButtonL3 + ' mouse(3)'}
+if(mouse3_3 === 'cd'){CButtonD3 = CButtonD3 + ' mouse(3)'}
+if(mouse3_3 === 'cu'){CButtonU3 = CButtonU3 + ' mouse(3)'}
+if(mouse3_3 === 'dpadr'){DPadR3 = DPadR3 + ' mouse(3)'}
+if(mouse3_3 === 'dpadl'){DPadL3 = DPadL3 + ' mouse(3)'}
+if(mouse3_3 === 'dpadd'){DPadD3 = DPadD3 + ' mouse(3)'}
+if(mouse3_3 === 'dpadu'){DPadU3 = DPadU3 + ' mouse(3)'}
+if(mouse3_3 === 'start'){Start3 = Start3 + ' mouse(3)'}
+if(mouse3_3 === 'ms'){MempakSwitch3 = MempakSwitch3 + ' mouse(3)'}
+if(mouse3_3 === 'rs'){RumblepakSwitch3 = RumblepakSwitch3 + ' mouse(3)'}}
 }else{
-device3 = 'Input-SDL-Control3[device]=2';
 var buttonType = '', buttonTypeB = '';
 if(id('StickU3c').value.includes('axis') || id('StickL3c').value.includes('axis') || id('StickR3c').value.includes('axis') || id('StickD3c').value.includes('axis')){buttonType = 'axis'}
 if(id('StickU3cb').value.includes('axis') || id('StickL3cb').value.includes('axis') || id('StickR3cb').value.includes('axis') || id('StickD3cb').value.includes('axis')){buttonTypeB = 'axis'}
@@ -1386,12 +1597,60 @@ CButtonD3 = 'Input-SDL-Control3[C Button D]=' + id('CButtonD3c').value + ' ' + i
 MempakSwitch3 = 'Input-SDL-Control3[Mempak Switch]=' + id('MempakSwitch3c').value + ' ' + id('MempakSwitch3cb').value;
 RumblepakSwitch3 = 'Input-SDL-Control3[Rumblepak Switch]=' + id('RumblepakSwitch3c').value + ' ' + id('RumblepakSwitch3cb').value;
 XAxis3 = 'Input-SDL-Control3[X Axis]=' + buttonType + '(' + StickL3value + ',' + StickR3value + ')' + ' ' + buttonTypeB + '(' + StickL3bvalue + ',' + StickR3bvalue + ')';
-YAxis3 = 'Input-SDL-Control3[Y Axis]=' + buttonType + '(' + StickU3value + ',' + StickD3value + ')' + ' ' + buttonTypeB + '(' + StickU3bvalue + ',' + StickD3bvalue + ')'}
+YAxis3 = 'Input-SDL-Control3[Y Axis]=' + buttonType + '(' + StickU3value + ',' + StickD3value + ')' + ' ' + buttonTypeB + '(' + StickU3bvalue + ',' + StickD3bvalue + ')';
+if(id('mouse3').checked && mouse3_1 != ''){
+if(mouse3_1 === 'a'){AButton3 = 'Input-SDL-Control3[A Button]=' + id('AButton3c').value + ' mouse(1)'}
+if(mouse3_1 === 'b'){BButton3 = 'Input-SDL-Control3[B Button]=' + id('BButton3c').value + ' mouse(1)'}
+if(mouse3_1 === 'l'){LTrig3 = 'Input-SDL-Control3[L Trig]=' + id('LTrig3c').value + ' mouse(1)'}
+if(mouse3_1 === 'r'){RTrig3 = 'Input-SDL-Control3[R Trig]=' + id('RTrig3c').value + ' mouse(1)'}
+if(mouse3_1 === 'z'){ZTrig3 = 'Input-SDL-Control3[Z Trig]=' + id('ZTrig3c').value + ' mouse(1)'}
+if(mouse3_1 === 'cr'){CButtonR3 = 'Input-SDL-Control3[C Button R]=' + id('CButtonR3c').value + ' mouse(1)'}
+if(mouse3_1 === 'cl'){CButtonL3 = 'Input-SDL-Control3[C Button L]=' + id('CButtonL3c').value + ' mouse(1)'}
+if(mouse3_1 === 'cd'){CButtonD3 = 'Input-SDL-Control3[C Button D]=' + id('CButtonD3c').value + ' mouse(1)'}
+if(mouse3_1 === 'cu'){CButtonU3 = 'Input-SDL-Control3[C Button U]=' + id('CButtonU3c').value + ' mouse(1)'}
+if(mouse3_1 === 'dpadr'){DPadR3 = 'Input-SDL-Control3[DPad R]=' + id('DPadR3c').value + ' mouse(1)'}
+if(mouse3_1 === 'dpadl'){DPadL3 = 'Input-SDL-Control3[DPad L]=' + id('DPadL3c').value + ' mouse(1)'}
+if(mouse3_1 === 'dpadd'){DPadD3 = 'Input-SDL-Control3[DPad D]=' + id('DPadD3c').value + ' mouse(1)'}
+if(mouse3_1 === 'dpadu'){DPadU3 = 'Input-SDL-Control3[DPad U]=' + id('DPadU3c').value + ' mouse(1)'}
+if(mouse3_1 === 'start'){Start3 = 'Input-SDL-Control3[Start]=' + id('Start3c').value + ' mouse(1)'}
+if(mouse3_1 === 'ms'){MempakSwitch3 = 'Input-SDL-Control3[Mempak Switch]=' + id('MempakSwitch3c').value + ' mouse(1)'}
+if(mouse3_1 === 'rs'){RumblepakSwitch3 = 'Input-SDL-Control3[Rumblepak Switch]=' + id('RumblepakSwitch3c').value + ' mouse(1)'}}
+if(id('mouse3').checked && mouse3_2 != ''){
+if(mouse3_2 === 'a'){AButton3 = 'Input-SDL-Control3[A Button]=' + id('AButton3c').value + ' mouse(2)'}
+if(mouse3_2 === 'b'){BButton3 = 'Input-SDL-Control3[B Button]=' + id('BButton3c').value + ' mouse(2)'}
+if(mouse3_2 === 'l'){LTrig3 = 'Input-SDL-Control3[L Trig]=' + id('LTrig3c').value + ' mouse(2)'}
+if(mouse3_2 === 'r'){RTrig3 = 'Input-SDL-Control3[R Trig]=' + id('RTrig3c').value + ' mouse(2)'}
+if(mouse3_2 === 'z'){ZTrig3 = 'Input-SDL-Control3[Z Trig]=' + id('ZTrig3c').value + ' mouse(2)'}
+if(mouse3_2 === 'cr'){CButtonL3 = 'Input-SDL-Control3[C Button R]=' + id('CButtonR3c').value + ' mouse(2)'}
+if(mouse3_2 === 'cl'){CButtonD3 = 'Input-SDL-Control3[C Button L]=' + id('CButtonL3c').value + ' mouse(2)'}
+if(mouse3_2 === 'cd'){CButtonU3 = 'Input-SDL-Control3[C Button D]=' + id('CButtonD3c').value + ' mouse(2)'}
+if(mouse3_2 === 'cu'){CButtonR3 = 'Input-SDL-Control3[C Button U]=' + id('CButtonU3c').value + ' mouse(2)'}
+if(mouse3_2 === 'dpadr'){DPadR3 = 'Input-SDL-Control3[DPad R]=' + id('DPadR3c').value + ' mouse(2)'}
+if(mouse3_2 === 'dpadl'){DPadL3 = 'Input-SDL-Control3[DPad L]=' + id('DPadL3c').value + ' mouse(2)'}
+if(mouse3_2 === 'dpadd'){DPadD3 = 'Input-SDL-Control3[DPad D]=' + id('DPadD3c').value + ' mouse(2)'}
+if(mouse3_2 === 'dpadu'){DPadU3 = 'Input-SDL-Control3[DPad U]=' + id('DPadU3c').value + ' mouse(2)'}
+if(mouse3_2 === 'start'){Start3 = 'Input-SDL-Control3[Start]=' + id('Start3c').value + ' mouse(2)'}
+if(mouse3_2 === 'ms'){MempakSwitch3 = 'Input-SDL-Control3[Mempak Switch]=' + id('MempakSwitch3c').value + ' mouse(2)'}
+if(mouse3_2 === 'rs'){RumblepakSwitch3 = 'Input-SDL-Control3[Rumblepak Switch]=' + id('RumblepakSwitch3c').value + ' mouse(2)'}}
+if(id('mouse3').checked && mouse3_3 != ''){
+if(mouse3_3 === 'a'){AButton3 = 'Input-SDL-Control3[A Button]=' + id('AButton3c').value + ' mouse(3)'}
+if(mouse3_3 === 'b'){BButton3 = 'Input-SDL-Control3[B Button]=' + id('BButton3c').value + ' mouse(3)'}
+if(mouse3_3 === 'l'){LTrig3 = 'Input-SDL-Control3[L Trig]=' + id('LTrig3c').value + ' mouse(3)'}
+if(mouse3_3 === 'r'){RTrig3 = 'Input-SDL-Control3[R Trig]=' + id('RTrig3c').value + ' mouse(3)'}
+if(mouse3_3 === 'z'){ZTrig3 = 'Input-SDL-Control3[Z Trig]=' + id('ZTrig3c').value + ' mouse(3)'}
+if(mouse3_3 === 'cr'){CButtonR3 = 'Input-SDL-Control3[C Button R]=' + id('CButtonR3c').value + ' mouse(3)'}
+if(mouse3_3 === 'cl'){CButtonL3 = 'Input-SDL-Control3[C Button L]=' + id('CButtonL3c').value + ' mouse(3)'}
+if(mouse3_3 === 'cd'){CButtonD3 = 'Input-SDL-Control3[C Button D]=' + id('CButtonD3c').value + ' mouse(3)'}
+if(mouse3_3 === 'cu'){CButtonU3 = 'Input-SDL-Control3[C Button U]=' + id('CButtonU3c').value + ' mouse(3)'}
+if(mouse3_3 === 'dpadr'){DPadR3 = 'Input-SDL-Control3[DPad R]=' + id('DPadR3c').value + ' mouse(3)'}
+if(mouse3_3 === 'dpadl'){DPadL3 = 'Input-SDL-Control3[DPad L]=' + id('DPadL3c').value + ' mouse(3)'}
+if(mouse3_3 === 'dpadd'){DPadD3 = 'Input-SDL-Control3[DPad D]=' + id('DPadD3c').value + ' mouse(3)'}
+if(mouse3_3 === 'dpadu'){DPadU3 = 'Input-SDL-Control3[DPad U]=' + id('DPadU3c').value + ' mouse(3)'}
+if(mouse3_3 === 'start'){Start3 = 'Input-SDL-Control3[Start]=' + id('Start3c').value + ' mouse(3)'}
+if(mouse3_3 === 'ms'){MempakSwitch3 = 'Input-SDL-Control3[Mempak Switch]=' + id('MempakSwitch3c').value + ' mouse(3)'}
+if(mouse3_3 === 'rs'){RumblepakSwitch3 = 'Input-SDL-Control3[Rumblepak Switch]=' + id('RumblepakSwitch3c').value + ' mouse(3)'}}}
 
-if(id('name4').value === 'Keyboard'){
-var mouse4_1 = 	id('mouse4_1').options[id('mouse4_1').selectedIndex].value,
-mouse4_2 = 	id('mouse4_2').options[id('mouse4_2').selectedIndex].value,
-mouse4_3 = 	id('mouse4_3').options[id('mouse4_3').selectedIndex].value;
+if(name4.includes('Keyboard')){
 device4 = 'Input-SDL-Control4[device]=-1';
 AButton4 = 'Input-SDL-Control4[A Button]=' + 'key(' + id('AButton4').dataset.key + ')';
 BButton4 = 'Input-SDL-Control4[B Button]=' + 'key(' + id('BButton4').dataset.key + ')';
@@ -1410,27 +1669,59 @@ CButtonD4 = 'Input-SDL-Control4[C Button D]=' + 'key(' + id('CButtonD4').dataset
 MempakSwitch4 = 'Input-SDL-Control4[Mempak Switch]=' + 'key(' + id('MempakSwitch4').dataset.key + ')';
 RumblepakSwitch4 = 'Input-SDL-Control4[Rumblepak Switch]=' + 'key(' + id('RumblepakSwitch4').dataset.key + ')';
 XAxis4 = 'Input-SDL-Control4[X Axis]=' + 'key(' + id('StickL4').dataset.key + ',' + id('StickR4').dataset.key + ')';
-YAxis4 = 'Input-SDL-Control4[Y Axis]=' + 'key(' + id('StickU4').dataset.key + ',' + id('StickD4').dataset.key + ')'
+YAxis4 = 'Input-SDL-Control4[Y Axis]=' + 'key(' + id('StickU4').dataset.key + ',' + id('StickD4').dataset.key + ')';
 if(id('mouse4').checked && mouse4_1 != ''){
-if(mouse4_1 === 'a'){AButton4 = 'Input-SDL-Control4[A Button]=mouse(1)'}
-if(mouse4_1 === 'b'){BButton4 = 'Input-SDL-Control4[B Button]=mouse(1)'}
-if(mouse4_1 === 'l'){LTrig4 = 'Input-SDL-Control4[L Trig]=mouse(1)'}
-if(mouse4_1 === 'r'){RTrig4 = 'Input-SDL-Control4[R Trig]=mouse(1)'}
-if(mouse4_1 === 'z'){ZTrig4 = 'Input-SDL-Control4[Z Trig]=mouse(1)'}}
+if(mouse4_1 === 'a'){AButton4 = AButton4 + ' mouse(1)'}
+if(mouse4_1 === 'b'){BButton4 = BButton4 + ' mouse(1)'}
+if(mouse4_1 === 'l'){LTrig4 = LTrig4 + ' mouse(1)'}
+if(mouse4_1 === 'r'){RTrig4 = RTrig4 + ' mouse(1)'}
+if(mouse4_1 === 'z'){ZTrig4 = ZTrig4 + ' mouse(1)'}
+if(mouse4_1 === 'cr'){CButtonR4 = CButtonR4 + ' mouse(1)'}
+if(mouse4_1 === 'cl'){CButtonL4 = CButtonL4 + ' mouse(1)'}
+if(mouse4_1 === 'cd'){CButtonD4 = CButtonD4 + ' mouse(1)'}
+if(mouse4_1 === 'cu'){CButtonU4 = CButtonU4 + ' mouse(1)'}
+if(mouse4_1 === 'dpadr'){DPadR4 = DPadR4 + ' mouse(1)'}
+if(mouse4_1 === 'dpadl'){DPadL4 = DPadL4 + ' mouse(1)'}
+if(mouse4_1 === 'dpadd'){DPadD4 = DPadD4 + ' mouse(1)'}
+if(mouse4_1 === 'dpadu'){DPadU4 = DPadU4 + ' mouse(1)'}
+if(mouse4_1 === 'start'){Start4 = Start4 + ' mouse(1)'}
+if(mouse4_1 === 'ms'){MempakSwitch4 = MempakSwitch4 + ' mouse(1)'}
+if(mouse4_1 === 'rs'){RumblepakSwitch4 = RumblepakSwitch4 + ' mouse(1)'}}
 if(id('mouse4').checked && mouse4_2 != ''){
-if(mouse4_2 === 'a'){AButton4 = 'Input-SDL-Control4[A Button]=mouse(2)'}
-if(mouse4_2 === 'b'){BButton4 = 'Input-SDL-Control4[B Button]=mouse(2)'}
-if(mouse4_2 === 'l'){LTrig4 = 'Input-SDL-Control4[L Trig]=mouse(2)'}
-if(mouse4_2 === 'r'){RTrig4 = 'Input-SDL-Control4[R Trig]=mouse(2)'}
-if(mouse4_2 === 'z'){ZTrig4 = 'Input-SDL-Control4[Z Trig]=mouse(2)'}}
+if(mouse4_2 === 'a'){AButton4 = AButton4 + ' mouse(2)'}
+if(mouse4_2 === 'b'){BButton4 = BButton4 + ' mouse(2)'}
+if(mouse4_2 === 'l'){LTrig4 = LTrig4 + ' mouse(2)'}
+if(mouse4_2 === 'r'){RTrig4 = RTrig4 + ' mouse(2)'}
+if(mouse4_2 === 'z'){ZTrig4 = ZTrig4 + ' mouse(2)'}
+if(mouse4_2 === 'cr'){CButtonR4 = CButtonR4 + ' mouse(2)'}
+if(mouse4_2 === 'cl'){CButtonL4 = CButtonL4 + ' mouse(2)'}
+if(mouse4_2 === 'cd'){CButtonD4 = CButtonD4 + ' mouse(2)'}
+if(mouse4_2 === 'cu'){CButtonU4 = CButtonU4 + ' mouse(2)'}
+if(mouse4_2 === 'dpadr'){DPadR4 = DPadR4 + ' mouse(2)'}
+if(mouse4_2 === 'dpadl'){DPadL4 = DPadL4 + ' mouse(2)'}
+if(mouse4_2 === 'dpadd'){DPadD4 = DPadD4 + ' mouse(2)'}
+if(mouse4_2 === 'dpadu'){DPadU4 = DPadU4 + ' mouse(2)'}
+if(mouse4_2 === 'start'){Start4 = Start4 + ' mouse(2)'}
+if(mouse4_2 === 'ms'){MempakSwitch4 = MempakSwitch4 + ' mouse(2)'}
+if(mouse4_2 === 'rs'){RumblepakSwitch4 = RumblepakSwitch4 + ' mouse(2)'}}
 if(id('mouse4').checked && mouse4_3 != ''){
-if(mouse4_3 === 'a'){AButton4 = 'Input-SDL-Control4[A Button]=mouse(3)'}
-if(mouse4_3 === 'b'){BButton4 = 'Input-SDL-Control4[B Button]=mouse(3)'}
-if(mouse4_3 === 'l'){LTrig4 = 'Input-SDL-Control4[L Trig]=mouse(3)'}
-if(mouse4_3 === 'r'){RTrig4 = 'Input-SDL-Control4[R Trig]=mouse(3)'}
-if(mouse4_3 === 'z'){ZTrig4 = 'Input-SDL-Control4[Z Trig]=mouse(3)'}}
+if(mouse4_3 === 'a'){AButton4 = AButton4 + ' mouse(3)'}
+if(mouse4_3 === 'b'){BButton4 = BButton4 + ' mouse(3)'}
+if(mouse4_3 === 'l'){LTrig4 = LTrig4 + ' mouse(3)'}
+if(mouse4_3 === 'r'){RTrig4 = RTrig4 + ' mouse(3)'}
+if(mouse4_3 === 'z'){ZTrig4 = ZTrig4 + ' mouse(3)'}
+if(mouse4_3 === 'cr'){CButtonR4 = CButtonR4 + ' mouse(3)'}
+if(mouse4_3 === 'cl'){CButtonL4 = CButtonL4 + ' mouse(3)'}
+if(mouse4_3 === 'cd'){CButtonD4 = CButtonD4 + ' mouse(3)'}
+if(mouse4_3 === 'cu'){CButtonU4 = CButtonU4 + ' mouse(3)'}
+if(mouse4_3 === 'dpadr'){DPadR4 = DPadR4 + ' mouse(3)'}
+if(mouse4_3 === 'dpadl'){DPadL4 = DPadL4 + ' mouse(3)'}
+if(mouse4_3 === 'dpadd'){DPadD4 = DPadD4 + ' mouse(3)'}
+if(mouse4_3 === 'dpadu'){DPadU4 = DPadU4 + ' mouse(3)'}
+if(mouse4_3 === 'start'){Start4 = Start4 + ' mouse(3)'}
+if(mouse4_3 === 'ms'){MempakSwitch4 = MempakSwitch4 + ' mouse(3)'}
+if(mouse4_3 === 'rs'){RumblepakSwitch4 = RumblepakSwitch4 + ' mouse(3)'}}
 }else{
-device4 = 'Input-SDL-Control4[device]=3';
 var buttonType = '', buttonTypeB = '';
 if(id('StickU4c').value.includes('axis') || id('StickL4c').value.includes('axis') || id('StickR4c').value.includes('axis') || id('StickD4c').value.includes('axis')){buttonType = 'axis'}
 if(id('StickU4cb').value.includes('axis') || id('StickL4cb').value.includes('axis') || id('StickR4cb').value.includes('axis') || id('StickD4cb').value.includes('axis')){buttonTypeB = 'axis'}
@@ -1463,11 +1754,65 @@ CButtonD4 = 'Input-SDL-Control4[C Button D]=' + id('CButtonD4c').value + ' ' + i
 MempakSwitch4 = 'Input-SDL-Control4[Mempak Switch]=' + id('MempakSwitch4c').value + ' ' + id('MempakSwitch4cb').value;
 RumblepakSwitch4 = 'Input-SDL-Control4[Rumblepak Switch]=' + id('RumblepakSwitch4c').value + ' ' + id('RumblepakSwitch4cb').value;
 XAxis4 = 'Input-SDL-Control4[X Axis]=' + buttonType + '(' + StickL4value + ',' + StickR4value + ')' + ' ' + buttonTypeB + '(' + StickL4bvalue + ',' + StickR4bvalue + ')';
-YAxis4 = 'Input-SDL-Control4[Y Axis]=' + buttonType + '(' + StickU4value + ',' + StickD4value + ')' + ' ' + buttonTypeB + '(' + StickU4bvalue + ',' + StickD4bvalue + ')'}
+YAxis4 = 'Input-SDL-Control4[Y Axis]=' + buttonType + '(' + StickU4value + ',' + StickD4value + ')' + ' ' + buttonTypeB + '(' + StickU4bvalue + ',' + StickD4bvalue + ')';
+if(id('mouse4').checked && mouse4_1 != ''){
+if(mouse4_1 === 'a'){AButton4 = 'Input-SDL-Control4[A Button]=' + id('AButton4c').value + ' mouse(1)'}
+if(mouse4_1 === 'b'){BButton4 = 'Input-SDL-Control4[B Button]=' + id('BButton4c').value + ' mouse(1)'}
+if(mouse4_1 === 'l'){LTrig4 = 'Input-SDL-Control4[L Trig]=' + id('LTrig4c').value + ' mouse(1)'}
+if(mouse4_1 === 'r'){RTrig4 = 'Input-SDL-Control4[R Trig]=' + id('RTrig4c').value + ' mouse(1)'}
+if(mouse4_1 === 'z'){ZTrig4 = 'Input-SDL-Control4[Z Trig]=' + id('ZTrig4c').value + ' mouse(1)'}
+if(mouse4_1 === 'cr'){CButtonR4 = 'Input-SDL-Control4[C Button R]=' + id('CButtonR4c').value + ' mouse(1)'}
+if(mouse4_1 === 'cl'){CButtonL4 = 'Input-SDL-Control4[C Button L]=' + id('CButtonL4c').value + ' mouse(1)'}
+if(mouse4_1 === 'cd'){CButtonD4 = 'Input-SDL-Control4[C Button D]=' + id('CButtonD4c').value + ' mouse(1)'}
+if(mouse4_1 === 'cu'){CButtonU4 = 'Input-SDL-Control4[C Button U]=' + id('CButtonU4c').value + ' mouse(1)'}
+if(mouse4_1 === 'dpadr'){DPadR4 = 'Input-SDL-Control4[DPad R]=' + id('DPadR4c').value + ' mouse(1)'}
+if(mouse4_1 === 'dpadl'){DPadL4 = 'Input-SDL-Control4[DPad L]=' + id('DPadL4c').value + ' mouse(1)'}
+if(mouse4_1 === 'dpadd'){DPadD4 = 'Input-SDL-Control4[DPad D]=' + id('DPadD4c').value + ' mouse(1)'}
+if(mouse4_1 === 'dpadu'){DPadU4 = 'Input-SDL-Control4[DPad U]=' + id('DPadU4c').value + ' mouse(1)'}
+if(mouse4_1 === 'start'){Start4 = 'Input-SDL-Control4[Start]=' + id('Start4c').value + ' mouse(1)'}
+if(mouse4_1 === 'ms'){MempakSwitch4 = 'Input-SDL-Control4[Mempak Switch]=' + id('MempakSwitch4c').value + ' mouse(1)'}
+if(mouse4_1 === 'rs'){RumblepakSwitch4 = 'Input-SDL-Control4[Rumblepak Switch]=' + id('RumblepakSwitch4c').value + ' mouse(1)'}}
+if(id('mouse4').checked && mouse4_2 != ''){
+if(mouse4_2 === 'a'){AButton4 = 'Input-SDL-Control4[A Button]=' + id('AButton4c').value + ' mouse(2)'}
+if(mouse4_2 === 'b'){BButton4 = 'Input-SDL-Control4[B Button]=' + id('BButton4c').value + ' mouse(2)'}
+if(mouse4_2 === 'l'){LTrig4 = 'Input-SDL-Control4[L Trig]=' + id('LTrig4c').value + ' mouse(2)'}
+if(mouse4_2 === 'r'){RTrig4 = 'Input-SDL-Control4[R Trig]=' + id('RTrig4c').value + ' mouse(2)'}
+if(mouse4_2 === 'z'){ZTrig4 = 'Input-SDL-Control4[Z Trig]=' + id('ZTrig4c').value + ' mouse(2)'}
+if(mouse4_2 === 'cr'){CButtonR4 = 'Input-SDL-Control4[C Button R]=' + id('CButtonR4c').value + ' mouse(2)'}
+if(mouse4_2 === 'cl'){CButtonL4 = 'Input-SDL-Control4[C Button L]=' + id('CButtonL4c').value + ' mouse(2)'}
+if(mouse4_2 === 'cd'){CButtonD4 = 'Input-SDL-Control4[C Button D]=' + id('CButtonD4c').value + ' mouse(2)'}
+if(mouse4_2 === 'cu'){CButtonU4 = 'Input-SDL-Control4[C Button U]=' + id('CButtonU4c').value + ' mouse(2)'}
+if(mouse4_2 === 'dpadr'){DPadR4 = 'Input-SDL-Control4[DPad R]=' + id('DPadR4c').value + ' mouse(2)'}
+if(mouse4_2 === 'dpadl'){DPadL4 = 'Input-SDL-Control4[DPad L]=' + id('DPadL4c').value + ' mouse(2)'}
+if(mouse4_2 === 'dpadd'){DPadD4 = 'Input-SDL-Control4[DPad D]=' + id('DPadD4c').value + ' mouse(2)'}
+if(mouse4_2 === 'dpadu'){DPadU4 = 'Input-SDL-Control4[DPad U]=' + id('DPadU4c').value + ' mouse(2)'}
+if(mouse4_2 === 'start'){Start4 = 'Input-SDL-Control4[Start]=' + id('Start4c').value + ' mouse(2)'}
+if(mouse4_2 === 'ms'){MempakSwitch4 = 'Input-SDL-Control4[Mempak Switch]=' + id('MempakSwitch4c').value + ' mouse(2)'}
+if(mouse4_2 === 'rs'){RumblepakSwitch4 = 'Input-SDL-Control4[Rumblepak Switch]=' + id('RumblepakSwitch4c').value + ' mouse(2)'}}
+if(id('mouse4').checked && mouse4_3 != ''){
+if(mouse4_3 === 'a'){AButton4 = 'Input-SDL-Control4[A Button]=' + id('AButton4c').value + ' mouse(3)'}
+if(mouse4_3 === 'b'){BButton4 = 'Input-SDL-Control4[B Button]=' + id('BButton4c').value + ' mouse(3)'}
+if(mouse4_3 === 'l'){LTrig4 = 'Input-SDL-Control4[L Trig]=' + id('LTrig4c').value + ' mouse(3)'}
+if(mouse4_3 === 'r'){RTrig4 = 'Input-SDL-Control4[R Trig]=' + id('RTrig4c').value + ' mouse(3)'}
+if(mouse4_3 === 'z'){ZTrig4 = 'Input-SDL-Control4[Z Trig]=' + id('ZTrig4c').value + ' mouse(3)'}
+if(mouse4_3 === 'cr'){CButtonR4 = 'Input-SDL-Control4[C Button R]=' + id('CButtonR4c').value + ' mouse(3)'}
+if(mouse4_3 === 'cl'){CButtonL4 = 'Input-SDL-Control4[C Button L]=' + id('CButtonL4c').value + ' mouse(3)'}
+if(mouse4_3 === 'cd'){CButtonD4 = 'Input-SDL-Control4[C Button D]=' + id('CButtonD4c').value + ' mouse(3)'}
+if(mouse4_3 === 'cu'){CButtonU4 = 'Input-SDL-Control4[C Button U]=' + id('CButtonU4c').value + ' mouse(3)'}
+if(mouse4_3 === 'dpadr'){DPadR4 = 'Input-SDL-Control4[DPad R]=' + id('DPadR4c').value + ' mouse(3)'}
+if(mouse4_3 === 'dpadl'){DPadL4 = 'Input-SDL-Control4[DPad L]=' + id('DPadL4c').value + ' mouse(3)'}
+if(mouse4_3 === 'dpadd'){DPadD4 = 'Input-SDL-Control4[DPad D]=' + id('DPadD4c').value + ' mouse(3)'}
+if(mouse4_3 === 'dpadu'){DPadU4 = 'Input-SDL-Control4[DPad U]=' + id('DPadU4c').value + ' mouse(3)'}
+if(mouse4_3 === 'start'){Start4 = 'Input-SDL-Control4[Start]=' + id('Start4c').value + ' mouse(3)'}
+if(mouse4_3 === 'ms'){MempakSwitch4 = 'Input-SDL-Control4[Mempak Switch]=' + id('MempakSwitch4c').value + ' mouse(3)'}
+if(mouse4_3 === 'rs'){RumblepakSwitch4 = 'Input-SDL-Control4[Rumblepak Switch]=' + id('RumblepakSwitch4c').value + ' mouse(3)'}}}
 
 
 
-function kb(kb){if(kb.match(regkb))kb = kb.replace(regkb,'');return kb}
+function kb(kb){
+if(kb.match(regkb))kb = kb.replace(regkb,'key(0)')
+if(kb.match(regkbaxis))kb = kb.replace(regkbaxis,'key(0,0)')
+return kb}
 
 AButton1 = kb(AButton1);
 BButton1 = kb(BButton1);
