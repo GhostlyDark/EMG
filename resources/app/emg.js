@@ -188,7 +188,7 @@ if(id('rsp').value === 'mupen64plus-rsp-hle'){id('RspFallback').disabled = false
 else if(id('rsp').value === 'mupen64plus-rsp-cxd4-sse2'){id('RspFallback').disabled = true;id('rspGFX').disabled = false;id('rspAudio').disabled = false;id('WaitForCPUHost').disabled = false;id('SupportCPUSemaphoreLock').disabled = false}
 else if(id('rsp').value === 'mupen64plus-rsp-parallel'){id('RspFallback').disabled = true;id('rspGFX').disabled = true;id('rspAudio').disabled = true;id('WaitForCPUHost').disabled = true;id('SupportCPUSemaphoreLock').disabled = true}}
 id('rsp').addEventListener('change', function(){rspDropdownDisable()})
-rspDropdownDisable();
+rspDropdownDisable()
 
 function EnableFBEmulationDisable(){if(id('EnableFBEmulation').checked){id('EnableCopyColorFromRDRAM').disabled = false;id('EnableCopyDepthToMainDepthBuffer').disabled = false;id('EnableCopyAuxiliaryToRDRAM').disabled = false;id('ForceDepthBufferClear').disabled = false;id('FBInfoReadColorChunk').disabled = false;id('FBInfoReadDepthChunk').disabled = false}else{id('EnableCopyColorFromRDRAM').disabled = true;id('EnableCopyDepthToMainDepthBuffer').disabled = true;id('EnableCopyAuxiliaryToRDRAM').disabled = true;id('ForceDepthBufferClear').disabled = true;id('FBInfoReadColorChunk').disabled = true;id('FBInfoReadDepthChunk').disabled = true}}
 id('EnableFBEmulation').addEventListener('change', function(){EnableFBEmulationDisable()})
@@ -300,26 +300,26 @@ id('plugged4').addEventListener('change', function(){c4_controlsDisable()})
 c4_controlsDisable()
 
 function mouse1Disable(){
-if(id('mouse1').checked){id('AnalogDeadzone1X').disabled = true;id('AnalogDeadzone1Y').disabled = true;id('AnalogPeak1X').disabled = true;id('AnalogPeak1Y').disabled = true;id('mouse1options').classList.replace('hide','show')}
-else{id('AnalogDeadzone1X').disabled = false;id('AnalogDeadzone1Y').disabled = false;id('AnalogPeak1X').disabled = false;id('AnalogPeak1Y').disabled = false;id('mouse1options').classList.replace('show','hide')}}
+if(id('mouse1').checked){id('mouse1options').classList.replace('hide','show')}
+else{id('mouse1options').classList.replace('show','hide')}}
 id('mouse1').addEventListener('change', function(){mouse1Disable()})
 mouse1Disable()
 
 function mouse2Disable(){
-if(id('mouse2').checked){id('AnalogDeadzone2X').disabled = true;id('AnalogDeadzone2Y').disabled = true;id('AnalogPeak2X').disabled = true;id('AnalogPeak2Y').disabled = true;id('mouse2options').classList.replace('hide','show')}
-else{id('AnalogDeadzone2X').disabled = false;id('AnalogDeadzone2Y').disabled = false;id('AnalogPeak2X').disabled = false;id('AnalogPeak2Y').disabled = false;id('mouse2options').classList.replace('show','hide')}}
+if(id('mouse2').checked){id('mouse2options').classList.replace('hide','show')}
+else{id('mouse2options').classList.replace('show','hide')}}
 id('mouse2').addEventListener('change', function(){mouse2Disable()})
 mouse2Disable()
 
 function mouse3Disable(){
-if(id('mouse3').checked){id('AnalogDeadzone3X').disabled = true;id('AnalogDeadzone3Y').disabled = true;id('AnalogPeak3X').disabled = true;id('AnalogPeak3Y').disabled = true;id('mouse3options').classList.replace('hide','show')}
-else{id('AnalogDeadzone3X').disabled = false;id('AnalogDeadzone3Y').disabled = false;id('AnalogPeak3X').disabled = false;id('AnalogPeak3Y').disabled = false;id('mouse3options').classList.replace('show','hide')}}
+if(id('mouse3').checked){id('mouse3options').classList.replace('hide','show')}
+else{id('mouse3options').classList.replace('show','hide')}}
 id('mouse3').addEventListener('change', function(){mouse3Disable()})
 mouse3Disable()
 
 function mouse4Disable(){
-if(id('mouse4').checked){id('AnalogDeadzone4X').disabled = true;id('AnalogDeadzone4Y').disabled = true;id('AnalogPeak4X').disabled = true;id('AnalogPeak4Y').disabled = true;id('mouse4options').classList.replace('hide','show')}
-else{id('AnalogDeadzone4X').disabled = false;id('AnalogDeadzone4Y').disabled = false;id('AnalogPeak4X').disabled = false;id('AnalogPeak4Y').disabled = false;id('mouse4options').classList.replace('show','hide')}}
+if(id('mouse4').checked){id('mouse4options').classList.replace('hide','show')}
+else{id('mouse4options').classList.replace('show','hide')}}
 id('mouse4').addEventListener('change', function(){mouse4Disable()})
 mouse4Disable()
 
