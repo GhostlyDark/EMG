@@ -342,17 +342,9 @@ if(archiveResult != undefined){archivePath = archiveResult;id('archiveText').inn
 
 function recentFilesUpdate(){
 id('optionDefault').selected = true;
-if(recentFiles[0] != null){id('option0').value = recentFiles[0];id('option0').innerHTML = '1. ' + recentFiles[0]}
-if(recentFiles[1] != null){id('option1').value = recentFiles[1];id('option1').innerHTML = '2. ' + recentFiles[1]}
-if(recentFiles[2] != null){id('option2').value = recentFiles[2];id('option2').innerHTML = '3. ' + recentFiles[2]}
-if(recentFiles[3] != null){id('option3').value = recentFiles[3];id('option3').innerHTML = '4. ' + recentFiles[3]}
-if(recentFiles[4] != null){id('option4').value = recentFiles[4];id('option4').innerHTML = '5. ' + recentFiles[4]}
-if(recentFiles[5] != null){id('option5').value = recentFiles[5];id('option5').innerHTML = '6. ' + recentFiles[5]}
-if(recentFiles[6] != null){id('option6').value = recentFiles[6];id('option6').innerHTML = '7. ' + recentFiles[6]}
-if(recentFiles[7] != null){id('option7').value = recentFiles[7];id('option7').innerHTML = '8. ' + recentFiles[7]}
-if(recentFiles[8] != null){id('option8').value = recentFiles[8];id('option8').innerHTML = '9. ' + recentFiles[8]}
-if(recentFiles[9] != null){id('option9').value = recentFiles[9];id('option9').innerHTML = '10. ' + recentFiles[9]}}
+recentFiles.forEach(rf => {var i = recentFiles.indexOf(rf);if(recentFiles[i] != null){id('option'+i).value = recentFiles[i];id('option'+i).innerHTML = i + 1 + '. ' + recentFiles[i]}})}
 recentFilesUpdate()
+
 id('recent').addEventListener('change', function(){
 if(id('recent').value != null && id('recent').value != ''){filePath = id('recent').value;id('fileText').innerHTML = filePath;localStorage.setItem('filePath', filePath);if(!recentFiles.includes(filePath))recentFiles.unshift(filePath);recentFiles.splice(10);localStorage.setItem('recentFiles',JSON.stringify(recentFiles));if(id('cheatList').innerHTML!='')id('cheatList').innerHTML=''}})
 
@@ -360,16 +352,7 @@ id('clearRecent').addEventListener('click', function(){
 recentFiles = [];
 localStorage.removeItem('recentFiles');
 id('optionDefault').selected = true;
-id('option0').value = '';id('option0').innerHTML = '';
-id('option1').value = '';id('option1').innerHTML = '';
-id('option2').value = '';id('option2').innerHTML = '';
-id('option3').value = '';id('option3').innerHTML = '';
-id('option4').value = '';id('option4').innerHTML = '';
-id('option5').value = '';id('option5').innerHTML = '';
-id('option6').value = '';id('option6').innerHTML = '';
-id('option7').value = '';id('option7').innerHTML = '';
-id('option8').value = '';id('option8').innerHTML = '';
-id('option9').value = '';id('option9').innerHTML = ''})
+Array.from(id('recent').getElementsByTagName('option')).forEach(opt => {if(opt.innerHTML != 'Recent Files'){opt.value = '';opt.innerHTML = ''}})})
 
 
 
