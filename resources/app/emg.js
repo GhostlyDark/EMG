@@ -49,7 +49,7 @@ if(localStorage.getItem(c+'Element') != null)id(c).innerHTML = localStorage.getI
 id('refresh'+c).addEventListener('click', function(){refresh(id(c))})})
 
 function refresh(drop){
-Array.from(drop.getElementsByClassName('generated')).forEach(generated => generated.remove());
+Array.from(drop.querySelectorAll('.generated')).forEach(generated => generated.remove());
 let list = jsrefresh();
 var datasplit = list.split(regsplit);
 datasplit.forEach(device => update(device));
@@ -363,22 +363,18 @@ dataremove = datafilter.replace(/\r/gm,'');
 datasplit = dataremove.split(regsplit);
 datasplit.forEach(e => cheat(e));
 function cheat(e){if(e != ''){
-var cheatCheckbox,cheat;
-cheatCheckbox = e.replace(/\:.*/g,'');
+var cheatCheckbox = e.replace(/\:.*/g,'');
 if(!e.match(regradio)){cheatRadio = cheatCheckbox}
 if(e.match(regradio)){cheatCheckbox = cheatCheckbox.replace(regradio,cheatRadio + '_')}
 if(cheatCheckbox.includes('_')){id(cheatCheckbox.replace(regbox,'')).disabled = true}
-cheat = "<input id='" + cheatCheckbox + "' type='checkbox'><label for='" + cheatCheckbox + "'>" + e.replace(regradio,'') + "</label>";
-id('cheatList').innerHTML += cheat + '<br><br>';
-if(cheatCheckbox.includes('_')){var radioBox = id('cheatList').querySelector('#' + CSS.escape(cheatCheckbox));radioBox.classList.add('radio')}
-}}
-if(id('cheatList').innerHTML === ''){id('cheatList').innerHTML = 'No cheats for this ROM found.'}
-})
+id('cheatList').innerHTML += "<input id='" + cheatCheckbox + "' type='checkbox'><label for='" + cheatCheckbox + "'>" + e.replace(regradio,'') + "</label>" + '<br><br>';
+if(cheatCheckbox.includes('_')){id('cheatList').querySelector('#' + CSS.escape(cheatCheckbox)).classList.add('radio')}}}
+if(id('cheatList').innerHTML === ''){id('cheatList').innerHTML = 'No cheats for this ROM found.'}})
 
 id('cheatList').addEventListener('change', function(e){
 if(e.target.classList.contains('radio')){
 var id = e.target.id.replace(regbox,'_');
-const radioBoxes = id('cheatList').querySelectorAll('.radio');
+const radioBoxes = cheatList.querySelectorAll('.radio');
 for (var i = 0; i < radioBoxes.length; i++){var box = radioBoxes[i];if(box.id.includes(id)){if(box.id != e.target.id)box.checked = false}}}})
 
 
