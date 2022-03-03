@@ -35,14 +35,18 @@ if(joydata.includes('hat')){joyvalue = joydata.replace('hat(','H').replace(' ','
 if(joydata.includes('axis')){joyvalue = joyvalue.replace(/xis\(|\)/g,'').replace('a','A')}
 if(joyvalue != joyinput.value && joyinput.value != '' && !joyinput.value.includes('/')){joyvalue = joyinput.value + '/' + joyvalue}}
 else{
-if(joydata.includes('button')){joyvalue = joydata};
+if(joydata.includes('button')){joyvalue = joydata}
 if(joydata.includes('hat')){joyvalue = joydata.replace('1)','Up)').replace('2)','Right)').replace('4)','Down)').replace('8)','Left)')}}
 if(joyvalue != undefined){joyinput.value = joyvalue;localStorage.setItem(joyinput.id,joyvalue)}})
 joyinput.addEventListener('blur', function(){ipcRenderer.send('jstestKill')})
 ipcRenderer.once('jsClosed', () => {joyinput.blur()})}
 
 ipcRenderer.on('spawnargs', (e, spawnargs) => {console.log(spawnargs)})
-ipcRenderer.on('m64pLog', (e, stdout) => {console.log(stdout)})
+
+ipcRenderer.on('m64pLog', (e, stdout) => {console.log(stdout)
+if(log.innerHTML != '')log.innerHTML = ''
+var data = stdout.replace(/\r/gm,'').split(/\s*\n/);
+data.forEach(data => {if(data.includes('Error:'))log.innerHTML += '<p>' + data + '</p>'})})
 
 contextBridge.exposeInMainWorld('hires_texture',hires_texture)
 contextBridge.exposeInMainWorld('cache',cache)
