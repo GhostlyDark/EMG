@@ -15,7 +15,7 @@ returnPath = (workingDirectory, rom) => {return ipcRenderer.sendSync('returnPath
 showCheats = (parameters) => {return ipcRenderer.sendSync('showCheats', parameters)},
 jsrefresh = () => {return ipcRenderer.sendSync('jsrefresh')},
 
-jstest = (joyinput,c1,c2,c3,c4) => {
+jstest = (joyinput) => {
 var joyvalue,joydata,jstestConfig,config;
 if(joyinput.id.includes('1'))config = c1
 if(joyinput.id.includes('2'))config = c2

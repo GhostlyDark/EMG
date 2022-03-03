@@ -67,8 +67,6 @@ localStorage.setItem(drop.id+'Element',(drop.innerHTML))}
 
 
 
-function joystick(joyinput){jstest(joyinput,id('c1'),id('c2'),id('c3'),id('c4'))}
-
 n64_buttons.forEach(n64_button => {
 var n64_button_c = n64_button+'c',
 n64_button_cb = n64_button+'cb',
@@ -76,8 +74,8 @@ box = id(n64_button),
 box_c = id(n64_button_c),
 box_cb = id(n64_button_cb);
 
-box_c.addEventListener('click', function(){joystick(box_c)}) // Joystick input
-box_cb.addEventListener('click', function(){joystick(box_cb)})
+box_c.addEventListener('click', function(){jstest(box_c)}) // Joystick input
+box_cb.addEventListener('click', function(){jstest(box_cb)})
 if(localStorage.getItem(n64_button_c) != null){box_c.value = localStorage.getItem(n64_button_c)}
 if(localStorage.getItem(n64_button_cb) != null){box_cb.value = localStorage.getItem(n64_button_cb)}
 id('clear'+n64_button_c).addEventListener('click', function(){box_c.value = '';localStorage.removeItem(n64_button_c);box_cb.value = '';localStorage.removeItem(n64_button_cb)})
@@ -121,7 +119,7 @@ localStorage.setItem(m64p_hotkey, e.keyCode)}})})
 
 m64p_joykeys.forEach(joykey => { // mupen64plus joystick hotkeys
 var box = id(joykey);
-box.addEventListener('click', function(){joystick(box)})
+box.addEventListener('click', function(){jstest(box)})
 if(localStorage.getItem(joykey) != null){box.value = localStorage.getItem(joykey)}
 id('clear'+joykey).addEventListener('click', function(){box.value = '';localStorage.removeItem(joykey)})})
 
