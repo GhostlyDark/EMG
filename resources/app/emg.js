@@ -73,22 +73,30 @@ localStorage.setItem(drop.id+'Element',(drop.innerHTML))}
 
 
 
-n64_buttons.forEach(n64_button => { // Keyboard input
-var box = id(n64_button);
+function joystick(joyinput){jstest(joyinput,id('c1'),id('c2'),id('c3'),id('c4'))}
 
-id('clear'+n64_button).addEventListener('click', function(){
-box.value = '';
-box.dataset.key = '0';
-localStorage.removeItem(n64_button)})
+n64_buttons.forEach(n64_button => {
+var n64_button_c = n64_button+'c',
+n64_button_cb = n64_button+'cb',
+box = id(n64_button),
+box_c = id(n64_button_c),
+box_cb = id(n64_button_cb);
 
-if(localStorage.getItem(n64_button) != null){
+box_c.addEventListener('click', function(){joystick(box_c)}) // Joystick input
+box_cb.addEventListener('click', function(){joystick(box_cb)})
+if(localStorage.getItem(n64_button_c) != null){box_c.value = localStorage.getItem(n64_button_c)}
+if(localStorage.getItem(n64_button_cb) != null){box_cb.value = localStorage.getItem(n64_button_cb)}
+id('clear'+n64_button_c).addEventListener('click', function(){box_c.value = '';localStorage.removeItem(n64_button_c);box_cb.value = '';localStorage.removeItem(n64_button_cb)})
+
+if(localStorage.getItem(n64_button) != null){ // Keyboard input
 box.value = keyCodes[localStorage.getItem(n64_button)];
 box.dataset.key = keySyms[localStorage.getItem(n64_button)]}
 box.addEventListener('keyup', function(e){
 if(keyCodes[e.keyCode] != undefined){
 box.value = keyCodes[e.keyCode];
 box.dataset.key = keySyms[e.keyCode];
-localStorage.setItem(n64_button, e.keyCode)}})})
+localStorage.setItem(n64_button, e.keyCode)}})
+id('clear'+n64_button).addEventListener('click', function(){box.value = '';box.dataset.key = '0';localStorage.removeItem(n64_button)})})
 
 gliden64_hotkeys.forEach(gliden64_hotkey => { // GLideN64 hotkeys
 var box = id(gliden64_hotkey);
@@ -116,6 +124,12 @@ if(keyCodes[e.keyCode] != undefined){
 box.value = keyCodes[e.keyCode];
 box.dataset.key = keySyms[e.keyCode];
 localStorage.setItem(m64p_hotkey, e.keyCode)}})})
+
+m64p_joykeys.forEach(joykey => { // mupen64plus joystick hotkeys
+var box = id(joykey);
+box.addEventListener('click', function(){joystick(box)})
+if(localStorage.getItem(joykey) != null){box.value = localStorage.getItem(joykey)}
+id('clear'+joykey).addEventListener('click', function(){box.value = '';localStorage.removeItem(joykey)})})
 
 dropdowns.forEach(dropdown => {
 var drop = id(dropdown);
@@ -739,28 +753,6 @@ if(txDumpPathResult != undefined){txDumpPath = txDumpPathResult.toString();id('t
 id('resetfontColor').addEventListener('click', function(){fontColor = id('resetfontColor').dataset.value;id('fontColor').value = id('resetfontColor').dataset.value;localStorage.removeItem('fontColor')})
 if(localStorage.getItem('fontColor') != null){id('fontColor').value = localStorage.getItem('fontColor')}
 id('fontColor').addEventListener('change', function(){localStorage.setItem('fontColor', id('fontColor').value)})
-
-
-
-function joystick(joyinput){jstest(joyinput,id('c1'),id('c2'),id('c3'),id('c4'))}
-
-n64_buttons.forEach(n64_button => { // Joystick input
-n64_button += 'c';
-var box = id(n64_button),
-n64_button_b = n64_button+'b',
-boxB = id(n64_button_b);
-
-box.addEventListener('click', function(){joystick(box)})
-boxB.addEventListener('click', function(){joystick(boxB)})
-if(localStorage.getItem(n64_button) != null){box.value = localStorage.getItem(n64_button)}
-if(localStorage.getItem(n64_button_b) != null){boxB.value = localStorage.getItem(n64_button_b)}
-id('clear'+n64_button).addEventListener('click', function(){box.value = '';localStorage.removeItem(n64_button);boxB.value = '';localStorage.removeItem(n64_button_b)})})
-
-m64p_joykeys.forEach(joykey => { // mupen64plus joystick hotkeys
-var box = id(joykey);
-box.addEventListener('click', function(){joystick(box)})
-if(localStorage.getItem(joykey) != null){box.value = localStorage.getItem(joykey)}
-id('clear'+joykey).addEventListener('click', function(){box.value = '';localStorage.removeItem(joykey)})})
 
 
 
