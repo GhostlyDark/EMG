@@ -165,10 +165,6 @@ localStorage.setItem(number, number_input.value)}})})
 
 
 
-if(localStorage.getItem('rsp') != null){
-if(localStorage.getItem('rsp') === 'mupen64plus-rsp-hle'){id('RspFallback').disabled = false;id('rspGFX').disabled = true;id('rspAudio').disabled = false;id('WaitForCPUHost').disabled = true;id('SupportCPUSemaphoreLock').disabled = true}
-else if(localStorage.getItem('rsp') === 'mupen64plus-rsp-cxd4-sse2'){id('RspFallback').disabled = true;id('rspGFX').disabled = false;id('rspAudio').disabled = false;id('WaitForCPUHost').disabled = false;id('SupportCPUSemaphoreLock').disabled = false}
-else if(localStorage.getItem('rsp') === 'mupen64plus-rsp-parallel'){id('RspFallback').disabled = true;id('rspGFX').disabled = true;id('rspAudio').disabled = true;id('WaitForCPUHost').disabled = true;id('SupportCPUSemaphoreLock').disabled = true}}
 function rspDropdownDisable(){
 if(id('rsp').value === 'mupen64plus-rsp-hle'){id('RspFallback').disabled = false;id('rspGFX').disabled = true;id('rspAudio').disabled = false;id('WaitForCPUHost').disabled = true;id('SupportCPUSemaphoreLock').disabled = true}
 else if(id('rsp').value === 'mupen64plus-rsp-cxd4-sse2'){id('RspFallback').disabled = true;id('rspGFX').disabled = false;id('rspAudio').disabled = false;id('WaitForCPUHost').disabled = false;id('SupportCPUSemaphoreLock').disabled = false}
