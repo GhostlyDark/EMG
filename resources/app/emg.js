@@ -44,15 +44,9 @@ dropdowns = [
 
 
 
-if(localStorage.getItem('c1Element') != null)id('c1').innerHTML = localStorage.getItem('c1Element')
-if(localStorage.getItem('c2Element') != null)id('c2').innerHTML = localStorage.getItem('c2Element')
-if(localStorage.getItem('c3Element') != null)id('c3').innerHTML = localStorage.getItem('c3Element')
-if(localStorage.getItem('c4Element') != null)id('c4').innerHTML = localStorage.getItem('c4Element')
-
-id('refreshc1').addEventListener('click', function(){refresh(c1)})
-id('refreshc2').addEventListener('click', function(){refresh(c2)})
-id('refreshc3').addEventListener('click', function(){refresh(c3)})
-id('refreshc4').addEventListener('click', function(){refresh(c4)})
+['c1','c2','c3','c4'].forEach(c => {
+if(localStorage.getItem(c+'Element') != null)id(c).innerHTML = localStorage.getItem(c+'Element')
+id('refresh'+c).addEventListener('click', function(){refresh(id(c))})})
 
 function refresh(drop){
 Array.from(drop.getElementsByClassName('generated')).forEach(generated => generated.remove());
