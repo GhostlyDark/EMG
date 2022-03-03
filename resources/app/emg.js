@@ -322,15 +322,14 @@ if(localStorage.getItem('archivePath') != null){archivePath = localStorage.getIt
 id('extractROM').addEventListener('click', function(){
 if(archivePath != undefined){
 let list = listArchive(archivePath);
+if(list === '')return
 var datastring = list.replace(/.*  /g,''),
 datasplit = datastring.split(regsplit);
-if(list === ''){return}else{let unzip = extractArchive(archivePath,workingDirectory)}
+let unzip = extractArchive(archivePath,workingDirectory);
 datasplit.forEach(rom => ROMFiles(rom));
 function ROMFiles(rom){if(rom != ''){
 let pathToROM = returnPath(workingDirectory,rom);
-if(!recentFiles.includes(pathToROM))recentFiles.unshift(pathToROM);recentFiles.splice(10);recentFilesUpdate();localStorage.setItem('recentFiles',JSON.stringify(recentFiles));if(id('cheatList').innerHTML!='')id('cheatList').innerHTML=''}}
-id('recent').selectedIndex = '1';
-filePath = id('option0').value;id('fileText').innerHTML = filePath;localStorage.setItem('filePath', filePath)}})
+if(!recentFiles.includes(pathToROM))recentFiles.unshift(pathToROM);recentFiles.splice(10);recentFilesUpdate();localStorage.setItem('recentFiles',JSON.stringify(recentFiles));if(id('cheatList').innerHTML!='')id('cheatList').innerHTML='';id('recent').selectedIndex = '0';filePath = pathToROM;id('fileText').innerHTML = filePath;localStorage.setItem('filePath', filePath)}}}})
 
 id('fileInput').addEventListener('click', function(){
 fileResult = dialogFile({name:'N64 ROM',extensions:['n64','v64','z64']});
@@ -1201,7 +1200,7 @@ c_stick_up = id('c_stick_up').value,
 gcaSettings = 'control_stick_deadzone = ' +  control_stick_deadzone + '\n' + 'control_stick_sensitivity = ' + control_stick_sensitivity + '\n' + 'c_stick_deadzone = ' + c_stick_deadzone + '\n' + 'trigger_threshold = ' + trigger_threshold + '\n' + '\n' + '[controller_mapping]' + '\n' + 'a = ' + a + '\n' + 'b = ' + b + '\n' + 'x = ' + x + '\n' + 'y = ' + y + '\n' + 'start = ' + start + '\n' + 'z = ' + z + '\n' + 'l = ' + l + '\n' + 'r = ' + r + '\n' + 'd_pad_left = ' + d_pad_left + '\n' + 'd_pad_right = ' + d_pad_right + '\n' + 'd_pad_down = ' + d_pad_down + '\n' + 'd_pad_up = ' + d_pad_up + '\n' + 'c_stick_left = ' + c_stick_left + '\n' + 'c_stick_right = ' + c_stick_right + '\n' + 'c_stick_down = ' + c_stick_down + '\n' + 'c_stick_up = ' + c_stick_up;
 
 if(id('nospeedlimit').checked){audio = 'dummy';vsync = 'Video-General[VerticalSync]=False';Glide64VSync = 'Video-Glide64mk2[vsync]=False'}
-if(gfx === 'mupen64plus-video-angrylion-plus' || gfx === 'mupen64plus-video-parallel'){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=False'; cxd4Audio = 'rsp-cxd4[DisplayListToAudioPlugin]=False'}
+if(gfx === 'mupen64plus-video-angrylion-plus' || gfx === 'mupen64plus-video-parallel'){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=False';cxd4Audio = 'rsp-cxd4[DisplayListToAudioPlugin]=False'}
 else if(gfx === 'mupen64plus-video-rice' || gfx === 'mupen64plus-video-glide64mk2'){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=True'}
 if(gfx === 'mupen64plus-video-angrylion-plus' && rsp === 'mupen64plus-rsp-hle'){rsp = 'mupen64plus-rsp-cxd4-sse2'}
 else if(gfx === 'mupen64plus-video-parallel' && rsp === 'mupen64plus-rsp-hle'){rsp = 'mupen64plus-rsp-parallel'}
