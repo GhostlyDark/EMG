@@ -327,7 +327,7 @@ let unzip = extractArchive(archivePath,workingDirectory);
 datasplit.forEach(rom => ROMFiles(rom));
 function ROMFiles(rom){if(rom != ''){
 let pathToROM = returnPath(workingDirectory,rom);
-if(!recentFiles.includes(pathToROM))recentFiles.unshift(pathToROM);recentFiles.splice(10);recentFilesUpdate();localStorage.setItem('recentFiles',JSON.stringify(recentFiles));if(id('cheatList').innerHTML!='')id('cheatList').innerHTML='';id('recent').selectedIndex = '0';filePath = pathToROM;id('fileText').innerHTML = filePath;localStorage.setItem('filePath', filePath)}}}})
+if(!recentFiles.includes(pathToROM))recentFiles.unshift(pathToROM);recentFiles.splice(10);recentFilesUpdate();localStorage.setItem('recentFiles',JSON.stringify(recentFiles));if(id('cheatList').innerHTML!='')id('cheatList').innerHTML='';id('recent').selectedIndex = 0;filePath = pathToROM;id('fileText').innerHTML = filePath;localStorage.setItem('filePath', filePath)}}}})
 
 id('fileInput').addEventListener('click', function(){
 fileResult = dialogFile({name:'N64 ROM',extensions:['n64','v64','z64']});
