@@ -51,7 +51,6 @@ line.forEach(line => {
 if(line.includes('RSP Error: RSP: unknown opcode'))line = 'RSP Error: unknown opcode'
 if(line.includes('RSP Error: unknown task type:'))line = 'RSP Error: unknown task type'
 if(line.includes('Error:') && !data.includes(line))data += '<p>' + line + '</p>'})
-if(data === '')data = '<p>No errors found.</p>'
 log.innerHTML = data})
 
 contextBridge.exposeInMainWorld('hires_texture',hires_texture)
