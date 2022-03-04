@@ -93,6 +93,6 @@ header li:last-child{float:right;background-color:rgba(0,0,0,.25);padding-right:
 #name1,#name2,#name3,#name4{padding-left:7px;padding-right:7px}
 #cheatList,#log{height:400px;overflow-y:scroll;border:2px solid #444;padding:15px 15px 0 15px;background-color:rgba(150,150,150,.1)}
 #log{height:340px;user-select:text}
-#log p{padding-top:10px;padding-bottom:10px}
+#log p{padding-bottom:20px}
 .dark #cheatList,.dark #log{border-color:#ccc;background-color:rgba(0,0,0,.2)}
 .dark.custom #cheatList,.dark.custom #log{background-color:rgba(50,50,50,.1)}
