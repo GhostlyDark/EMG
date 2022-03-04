@@ -43,12 +43,15 @@ ipcRenderer.once('jsClosed', () => {joyinput.blur()})}
 
 ipcRenderer.on('spawnargs', (e, spawnargs) => {console.log(spawnargs)})
 
-ipcRenderer.on('m64pLog', (e, stdout) => {console.log(stdout)
+ipcRenderer.on('m64pLog', (e, stdout) => {
+console.log(stdout)
 if(log.innerHTML != '')log.innerHTML = ''
-var data = stdout.replace(/\r/gm,'').split(/\s*\n/);
-data.forEach(data => {
-if(data.includes('RSP Error: unknown task type:'))data = 'RSP Error: unknown task type'
-if(data.includes('Error:') && !log.innerHTML.includes(data))log.innerHTML += '<p>' + data + '</p>'})})
+var data = '', line = stdout.replace(/\r/gm,'').split(/\s*\n/);
+line.forEach(line => {
+if(line.includes('RSP Error: unknown task type:'))line = 'RSP Error: unknown task type'
+if(line.includes('Error:') && !data.includes(line))data += '<p>' + line + '</p>'})
+if(data === '')data = '<p>No errors found.</p>'
+log.innerHTML = data})
 
 contextBridge.exposeInMainWorld('hires_texture',hires_texture)
 contextBridge.exposeInMainWorld('cache',cache)
