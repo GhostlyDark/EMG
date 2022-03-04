@@ -335,7 +335,7 @@ if(fileResult != undefined){filePath = fileResult;id('fileText').innerHTML = fil
 	
 id('archiveInput').addEventListener('click', function(){
 archiveResult = dialogFile({name:'ROM Archive',extensions:['7z','rar','zip']});
-if(archiveResult != undefined){archivePath = archiveResult;id('archiveText').innerHTML = archivePath;localStorage.setItem('archivePath',archivePath)}})
+if(archiveResult != undefined){archivePath = archiveResult;id('archiveText').innerHTML = archivePath;localStorage.setItem('archivePath',archivePath);id('extractROM').click()}})
 
 function recentFilesUpdate(){
 id('optionDefault').selected = true;
@@ -478,7 +478,7 @@ else{fPath = e.dataTransfer.files[0].path;ROMInput(fPath)}}
 function ArchiveInput(fPath){
 if(fPath != undefined){
 if(fileExtension(fPath) === '7z' || fileExtension(fPath) === 'rar' || fileExtension(fPath) === 'zip'){
-archivePath = fPath;id('archiveText').innerHTML = fPath;localStorage.setItem('archivePath', fPath)}}}
+archivePath = fPath;id('archiveText').innerHTML = fPath;localStorage.setItem('archivePath', fPath);id('extractROM').click()}}}
 id('archiveInput').addEventListener('drop', handleDropArchive, false)
 id('archiveInput').addEventListener('dragover', prevent, false)
 function handleDropArchive(e) {prevent(e);
