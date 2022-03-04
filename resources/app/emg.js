@@ -373,9 +373,8 @@ if(id('cheatList').innerHTML === ''){id('cheatList').innerHTML = 'No cheats for 
 
 id('cheatList').addEventListener('change', function(e){
 if(e.target.classList.contains('radio')){
-var id = e.target.id.replace(regbox,'_');
-const radioBoxes = cheatList.querySelectorAll('.radio');
-for (var i = 0; i < radioBoxes.length; i++){var box = radioBoxes[i];if(box.id.includes(id)){if(box.id != e.target.id)box.checked = false}}}})
+let radioBoxes = id('cheatList').querySelectorAll('.radio');
+for (var i = 0; i < radioBoxes.length; i++){var box = radioBoxes[i];if(box.id.includes(e.target.id.replace(regbox,'_'))){if(box.id != e.target.id)box.checked = false}}}})
 
 
 
