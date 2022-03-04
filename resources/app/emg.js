@@ -359,15 +359,14 @@ const parameters = ['--cheats','list',filePath],
 child = showCheats(parameters);
 var datastring = child.replace(/^((?!UI-Console\:\s\s\s\s*\d).)*$/gm,''),
 datafilter = datastring.replace(/UI-Console\:\s\s\s\s/gm,''),
-dataremove = datafilter.replace(/\r/gm,'');
+dataremove = datafilter.replace(/\r/gm,''),
 datasplit = dataremove.split(regsplit);
 datasplit.forEach(e => cheat(e));
 function cheat(e){if(e != ''){
 var cheatCheckbox = e.replace(/\:.*/g,'');
 if(!e.match(regradio)){cheatRadio = cheatCheckbox}
-if(e.match(regradio)){cheatCheckbox = cheatCheckbox.replace(regradio,cheatRadio + '_')}
-if(cheatCheckbox.includes('_')){id(cheatCheckbox.replace(regbox,'')).disabled = true}
-id('cheatList').innerHTML += "<input id='" + cheatCheckbox + "' type='checkbox'><label for='" + cheatCheckbox + "'>" + e.replace(regradio,'') + "</label>" + '<br><br>';
+if(e.match(regradio)){cheatCheckbox = cheatCheckbox.replace(regradio,cheatRadio + '_');id(cheatCheckbox.replace(regbox,'')).disabled = true}
+id('cheatList').innerHTML += "<input id='" + cheatCheckbox + "' type='checkbox'><label for='" + cheatCheckbox + "'>" + e.replace(regradio,'') + "</label><br><br>";
 if(cheatCheckbox.includes('_')){id('cheatList').querySelector('#' + CSS.escape(cheatCheckbox)).classList.add('radio')}}}
 if(id('cheatList').innerHTML === ''){id('cheatList').innerHTML = 'No cheats for this ROM found.'}})
 
