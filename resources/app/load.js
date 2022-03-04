@@ -97,8 +97,8 @@ if(ev === undefined){return false}
 if(file === undefined || file === ''){file = ev.target.files[0]}
 if(!file.type.match('image.*')) {background_input.value = '';file = ''; return}
 else if (typeof FileReader !== 'undefined' && file.size > 3.65*1024*1024) {
-if(body.classList.contains('de'))alert('Datei zu groß (max. 3,6 MB).')
-else{alert('File is too large (3.6 MB max).')};
+if(body.classList.contains('de'))alert('Bild zu groß (max. 3,6 MB).')
+else{alert('Image too large (3.6 MB max).')};
 background_input.value = '';file = ''; return}
 var reader = new FileReader();
 reader.addEventListener('load', (function() {return function(e) {
