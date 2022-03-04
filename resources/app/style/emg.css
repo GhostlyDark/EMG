@@ -88,7 +88,7 @@ header li:last-child{float:right;background-color:rgba(0,0,0,.25);padding-right:
 
 .hide{display:none}
 .width85p{width:85%}
-.radio{margin-left:40px}
+#cheatList input[id*=_]{margin-left:40px}
 #recent{width:625px;padding-left:12px;height:29px}
 #name1,#name2,#name3,#name4{padding-left:7px;padding-right:7px}
 #cheatList,#log{height:400px;overflow-y:scroll;border:2px solid #444;padding:15px 15px 0 15px;background-color:rgba(150,150,150,.1)}

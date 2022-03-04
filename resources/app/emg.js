@@ -354,6 +354,7 @@ Array.from(id('recent').getElementsByTagName('option')).forEach(opt => {if(opt.i
 
 
 id('listCheats').addEventListener('click', function(){
+var cheats = '';
 id('cheatList').innerHTML = '';
 const parameters = ['--cheats','list',filePath],
 child = showCheats(parameters);
@@ -367,14 +368,16 @@ datasplit.forEach(e => cheat(e));
 function cheat(e){if(e != ''){
 var cheatCheckbox = e.replace(/\:.*/g,'');
 if(!e.match(regradio)){cheatRadio = cheatCheckbox}
-if(e.match(regradio)){cheatCheckbox = cheatCheckbox.replace(regradio,cheatRadio + '_');id(cheatCheckbox.replace(regbox,'')).disabled = true}
-id('cheatList').innerHTML += "<input id='" + cheatCheckbox + "' type='checkbox'><label for='" + cheatCheckbox + "'>" + e.replace(regradio,'') + "</label><br><br>";
-if(cheatCheckbox.includes('_')){id('cheatList').querySelector('#' + CSS.escape(cheatCheckbox)).classList.add('radio')}}}
+if(e.match(regradio)){cheatCheckbox = cheatCheckbox.replace(regradio,cheatRadio + '_')}
+cheats += "<input id='" + cheatCheckbox + "' type='checkbox'><label for='" + cheatCheckbox + "'>" + e.replace(regradio,'') + "</label><br><br>"}}
+id('cheatList').innerHTML = cheats
+let radioBoxes = id('cheatList').querySelectorAll('input[id*=_]');
+for (var i = 0; i < radioBoxes.length; i++){var box = radioBoxes[i];if(box.id.includes('_')){id(box.id.replace(regbox,'')).disabled = true}}
 if(id('cheatList').innerHTML === ''){id('cheatList').innerHTML = 'No cheats for this ROM found.'}})
 
 id('cheatList').addEventListener('change', function(e){
-if(e.target.classList.contains('radio')){
-let radioBoxes = id('cheatList').querySelectorAll('.radio');
+if(e.target.id.includes('_')){
+let radioBoxes = id('cheatList').querySelectorAll('input[id*=_]');
 for (var i = 0; i < radioBoxes.length; i++){var box = radioBoxes[i];if(box.id.includes(e.target.id.replace(regbox,'_'))){if(box.id != e.target.id)box.checked = false}}}})
 
 
