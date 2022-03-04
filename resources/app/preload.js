@@ -48,6 +48,7 @@ console.log(stdout)
 if(log.innerHTML != '')log.innerHTML = ''
 var data = '', line = stdout.replace(/\r/gm,'').split(/\s*\n/);
 line.forEach(line => {
+if(line.includes('RSP Error: RSP: unknown opcode'))line = 'RSP Error: unknown opcode'
 if(line.includes('RSP Error: unknown task type:'))line = 'RSP Error: unknown task type'
 if(line.includes('Error:') && !data.includes(line))data += '<p>' + line + '</p>'})
 if(data === '')data = '<p>No errors found.</p>'
