@@ -320,7 +320,7 @@ if(localStorage.getItem('archivePath') != null){archivePath = localStorage.getIt
 id('extractROM').addEventListener('click', function(){
 if(archivePath != undefined){
 let list = listArchive(archivePath);
-if(list === '')return
+if(list === ''){alert('No ROMs (.n64, .v64, .z64) in archive found.');return}
 var datastring = list.replace(/.*  /g,''),
 datasplit = datastring.split(regsplit);
 let unzip = extractArchive(archivePath,workingDirectory);
