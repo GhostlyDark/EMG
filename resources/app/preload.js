@@ -49,7 +49,7 @@ line.forEach(line => {
 if(line.includes('RSP Error: RSP: unknown opcode'))line = 'RSP Error: unknown opcode'
 if(line.includes('RSP Error: unknown task type:'))line = 'RSP Error: unknown task type'
 if(line.includes('Error:') && !data.includes(line))data += '<p>' + line + '</p>'})
-if(data.includes("couldn't open ROM file"))alert('Mupen64Plus Error: Unable to open ROM file')
+if(data.includes("couldn't open ROM file") || data.includes('failed to open ROM image file'))alert('Mupen64Plus Error: Unable to open ROM file')
 else if(data.includes('plugin not found'))alert('Mupen64Plus Error: A plugin failed to initialize')
 else if(data.includes('AttachCoreLib() Error:'))alert('Mupen64Plus Error: Core files or dependencies missing')
 else if(stdout === ''){alert('Mupen64Plus Error: Emulator instance crashed');data = 'Emulator instance crashed.'}
