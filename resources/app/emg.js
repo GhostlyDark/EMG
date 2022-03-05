@@ -172,9 +172,9 @@ localStorage.setItem(number, number_input.value)}})})
 
 
 function rspDropdownDisable(){
-if(id('rsp').value === 'mupen64plus-rsp-hle'){id('RspFallback').disabled = false;id('rspGFX').disabled = true;id('rspAudio').disabled = false;id('WaitForCPUHost').disabled = true;id('SupportCPUSemaphoreLock').disabled = true}
-else if(id('rsp').value === 'mupen64plus-rsp-cxd4-sse2'){id('RspFallback').disabled = true;id('rspGFX').disabled = false;id('rspAudio').disabled = false;id('WaitForCPUHost').disabled = false;id('SupportCPUSemaphoreLock').disabled = false}
-else if(id('rsp').value === 'mupen64plus-rsp-parallel'){id('RspFallback').disabled = true;id('rspGFX').disabled = true;id('rspAudio').disabled = true;id('WaitForCPUHost').disabled = true;id('SupportCPUSemaphoreLock').disabled = true}}
+if(id('rsp').value === 'mupen64plus-rsp-hle'){id('RspFallback').disabled = false;id('rspGFX').disabled = true;id('rspAudio').disabled = false}
+else if(id('rsp').value === 'mupen64plus-rsp-cxd4-sse2'){id('RspFallback').disabled = true;id('rspGFX').disabled = false;id('rspAudio').disabled = false}
+else if(id('rsp').value === 'mupen64plus-rsp-parallel'){id('RspFallback').disabled = true;id('rspGFX').disabled = true;id('rspAudio').disabled = true}}
 id('rsp').addEventListener('change', rspDropdownDisable)
 rspDropdownDisable()
 
@@ -737,8 +737,8 @@ m64pGFX = 'Rsp-HLE[DisplayListToGraphicsPlugin]=True',
 cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=' + id('rspGFX').checked,
 cxd4Audio = 'rsp-cxd4[AudioListToAudioPlugin]=' + id('rspAudio').checked,
 m64pAudio = 'Rsp-HLE[AudioListToAudioPlugin]=' + id('rspAudio').checked,
-WaitForCPUHost = 'rsp-cxd4[WaitForCPUHost]=' + id('WaitForCPUHost').checked,
-SupportCPUSemaphoreLock = 'rsp-cxd4[SupportCPUSemaphoreLock]=' + id('SupportCPUSemaphoreLock').checked,
+WaitForCPUHost = 'rsp-cxd4[WaitForCPUHost]=False',
+SupportCPUSemaphoreLock = 'rsp-cxd4[SupportCPUSemaphoreLock]=False',
 threadedVideo = 'Video-GLideN64[threadedVideo]=False',
 bilinearMode = 'Video-GLideN64[bilinearMode]=' + id('bilinearMode').checked,
 fxaa = 'Video-GLideN64[fxaa]=' + id('fxaa').checked,
