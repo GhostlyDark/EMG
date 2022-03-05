@@ -13,13 +13,14 @@ EMG is a launcher for [Mupen64Plus](https://github.com/mupen64plus/mupen64plus-c
 
 **System Requirements:**
 
-- **CPU:** SSE3 capable
-- **GPU:** OpenGL 3.3 (GLideN64), Vulkan 1.1 (Parallel)
+- **CPU:** SSE3 capable (GUI)
+- **GPU:** OpenGL 3.3 (Angrylion Plus, GLideN64), Vulkan 1.1 (Parallel)
 - **OS:** Linux (64-bit) or Windows 7+ (64-bit)
 
 **GameCube Adapter:**
 
 Follow the [Dolphin instructions](https://dolphin-emu.org/docs/guides/how-use-official-gc-controller-adapter-wii-u/#Installation) to set up the adapter. Knock off adapters may or may not work.
+
 
 ## Linux
 
@@ -36,8 +37,6 @@ chmod u+x ./install.sh
 ./emg
 ```
 
-### Dependencies (Ubuntu)
-
 **Minimum libc version:**
 
 `GLIBC v2.30` or higher is required by some plugins. Check version:
@@ -45,28 +44,7 @@ chmod u+x ./install.sh
 ldd --version ldd
 ```
 
-**mupen64plus-core**
-```
-sudo apt-get install -y libsdl2-2.0-0 libminizip-dev
-```
-
-**Glide64 MK2**
-```
-sudo apt-get install -y libboost-filesystem-dev
-```
-
-**Parallel**
-
-Needs an up-to-date graphics driver with Vulkan support.
-
-**Raphnetraw**
-
-For Raphnetraw controller adapters.
-```
-sudo apt-get install -y libhidapi-hidraw0
-```
 
 ## Troubleshooting
 
-Open Developer Tools by pressing `CTRL + I` or by activating it via the menubar (unhide with `ALT`).
-If no Mupen64Plus log appears, the emulator core is missing dependencies. Logging happens once Mupen64Plus closes after pressing `Launch`.
+Logging happens once Mupen64Plus closes after pressing `Launch`. Open Developer Tools by pressing `CTRL + I` or by activating it via the menubar (unhide with `ALT`). To save a log file, click the `Console` tab, right click on the relevant log -> `Save as...` to save it as text file. Post the log file as part of an issue if applicable.
