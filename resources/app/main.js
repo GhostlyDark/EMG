@@ -2,11 +2,16 @@ let win, choice, whitelist;
 const {app, BrowserWindow, dialog, ipcMain, Menu, nativeImage, session, shell} = require('electron'),
 childSpawn = require('child_process').spawn,
 childSpawnSync = require('child_process').spawnSync,
-fs = require('fs').writeFileSync,
+existsSync = require('fs').existsSync,
+mkdirSync = require('fs').mkdirSync,
+writeFileSync = require('fs').writeFileSync,
 url = require('url').URL,
 path = require('path').join,
 dir = __dirname,
 appData = app.getPath('appData'),
+emg = path(appData, 'EMG'),
+m64pAppData = path(appData, 'mupen64plus'),
+m64pCache = path(appData, '../', '.cache', 'mupen64plus'),
 cwd = path(dir, 'm64p'),
 executablePath = path(cwd, 'mupen64plus'),
 jstestPath = path(cwd, 'sdl2-jstest'),
@@ -40,8 +45,6 @@ ipcMain.on('extractArchive', (e, archivePath, workingDirectory) => {
 	e.returnValue = ''
 })
 
-ipcMain.on('returnPath', (e, workingDirectory, rom) => {e.returnValue = path(workingDirectory, rom)})
-
 ipcMain.on('emuLaunch', (e, parameters) => {
 	var stdout = '';
 	let child = childSpawn(executablePath, parameters, emuOptions);
@@ -60,23 +63,27 @@ ipcMain.on('jstestChild', (e, jstestConfig) => {
 	jstestChild.on('close', () => {e.reply('jsClosed')})
 })
 
-ipcMain.on('jstestKill', () => {if(jstestChild != undefined)jstestChild.kill('SIGTERM')})
-
 ipcMain.on('jsrefresh', (e) => {
 	let child = childSpawnSync(jstestPath, ['-ls'], options);
 	e.returnValue = child.stdout.toString()
 })
 
+ipcMain.on('writeGCA', (e, gcaSettings) => {
+	if(!existsSync(m64pAppData)){mkdirSync(m64pAppData,{recursive:true})}
+	e.returnValue = writeFileSync(path(m64pAppData, 'mupen64plus-input-gca.toml'),gcaSettings)
+})
+
 ipcMain.on('cwd', (e) => {e.returnValue = cwd})
 ipcMain.on('executablePath', (e) => {e.returnValue = executablePath})
 ipcMain.on('jstestPath', (e) => {e.returnValue = jstestPath})
-ipcMain.on('hires_texture', (e) => {e.returnValue = path(appData, 'mupen64plus', 'hires_texture')})
-ipcMain.on('cache', (e) => {if(process.platform === 'linux'){e.returnValue = path(appData, '../', '.cache', 'mupen64plus', 'cache')}else{e.returnValue = path(appData, 'mupen64plus', 'cache')}})
-ipcMain.on('texture_dump', (e) => {if(process.platform === 'linux'){e.returnValue = path(appData, '../', '.cache', 'mupen64plus', 'texture_dump')}else{e.returnValue = path(appData, 'mupen64plus', 'texture_dump')}})
-ipcMain.on('working_directory', (e) => {e.returnValue = path(appData, 'EMG', 'ROMs')})
+ipcMain.on('jstestKill', () => {if(jstestChild != undefined)jstestChild.kill('SIGTERM')})
+ipcMain.on('hires_texture', (e) => {e.returnValue = path(m64pAppData, 'hires_texture')})
+ipcMain.on('cache', (e) => {if(process.platform === 'linux'){e.returnValue = path(m64pCache, 'cache')}else{e.returnValue = path(m64pAppData, 'cache')}})
+ipcMain.on('texture_dump', (e) => {if(process.platform === 'linux'){e.returnValue = path(m64pCache, 'texture_dump')}else{e.returnValue = path(m64pAppData, 'texture_dump')}})
+ipcMain.on('working_directory', (e) => {e.returnValue = path(emg, 'ROMs')})
+ipcMain.on('returnPath', (e, workingDirectory, rom) => {e.returnValue = path(workingDirectory, rom)})
 ipcMain.on('dialogDirectory', (e) => {e.returnValue = dialog.showOpenDialogSync({properties:['openDirectory']})})
 ipcMain.on('dialogFile', (e, data) => {e.returnValue = dialog.showOpenDialogSync({properties:['openFile'],filters:[data]})})
-ipcMain.on('writeGCA', (e, gcaSettings) => {e.returnValue = fs(path(appData, 'mupen64plus', 'mupen64plus-input-gca.toml'),gcaSettings)})
 
 app.on('second-instance', (e) => {if(win.isMinimized()){win.restore()}else{win.focus()}})
 if(!app.requestSingleInstanceLock()){return app.quit()}
@@ -106,8 +113,8 @@ Menu.setApplicationMenu(Menu.buildFromTemplate([
 		]},
 	{label: menuFunctions, submenu: [
 		{icon: nativeImage.createFromPath(path(dir, 'img', 'delete.png')).resize(scale), label: menuClear, click () {choice = dialog.showMessageBoxSync(win,deleteDialog);if(choice !== 1){session.defaultSession.clearStorageData();session.defaultSession.clearCache()}}},
-		{icon: nativeImage.createFromPath(path(dir, 'img', 'emg.png')).resize(scale), label: menuEMG, click () {shell.openPath(path(appData, 'EMG'))}},
-		{icon: nativeImage.createFromPath(path(dir, 'img', 'mupen64plus.png')).resize(scale), label: menuSaves, click () {shell.openPath(path(appData, 'mupen64plus'))}},
+		{icon: nativeImage.createFromPath(path(dir, 'img', 'emg.png')).resize(scale), label: menuEMG, click () {shell.openPath(emg)}},
+		{icon: nativeImage.createFromPath(path(dir, 'img', 'mupen64plus.png')).resize(scale), label: menuSaves, click () {shell.openPath(m64pAppData)}},
 		{type: 'separator'},
 		{icon: nativeImage.createFromPath(path(dir, 'img', 'github.png')).resize(scale), label: menuGitHub, click () {shell.openExternal('https://github.com/GhostlyDark/EMG')}},
 		{icon: nativeImage.createFromPath(path(dir, 'img', 'icon-ghostly-nx.png')).resize(scale), label: menuSite, click () {shell.openExternal('https://evilgames.eu/')}}
