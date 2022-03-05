@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-var filePath,fileResult,archivePath,archiveResult,cheatRadio,txPath,txPathResult,txCachePath,txCachePathResult,txDumpPath,txDumpPathResult,workingDirectory,workingDirectoryResult,PIF,PIFResult,IPLROM,IPLROMResult,Disk,DiskResult,ScreenshotPath,ScreenshotPathResult,SaveStatePath,SaveStatePathResult,SaveSRAMPath,SaveSRAMPathResult,gbROM1,gbROM1Result,gbROM2,gbROM2Result,gbROM3,gbROM3Result,gbROM4,gbROM4Result,gbRAM1,gbRAM1Result,gbRAM2,gbRAM2Result,gbRAM3,gbRAM3Result,gbRAM4,gbRAM4Result,recentFiles = [];
+var filePath,fileResult,cheatRadio,txPath,txPathResult,txCachePath,txCachePathResult,txDumpPath,txDumpPathResult,workingDirectory,workingDirectoryResult,PIF,PIFResult,IPLROM,IPLROMResult,Disk,DiskResult,ScreenshotPath,ScreenshotPathResult,SaveStatePath,SaveStatePathResult,SaveSRAMPath,SaveSRAMPathResult,gbROM1,gbROM1Result,gbROM2,gbROM2Result,gbROM3,gbROM3Result,gbROM4,gbROM4Result,gbRAM1,gbRAM1Result,gbRAM2,gbRAM2Result,gbRAM3,gbRAM3Result,gbRAM4,gbRAM4Result,recentFiles = [];
 
 const textInputs = document.querySelectorAll("input[type='text']"),
 
@@ -315,27 +315,21 @@ mouse4Disable()
 
 if(localStorage.getItem('recentFiles') != null){recentFiles = JSON.parse(localStorage.getItem('recentFiles'))}
 if(localStorage.getItem('filePath') != null){filePath = localStorage.getItem('filePath');id('fileText').innerHTML = filePath}
-if(localStorage.getItem('archivePath') != null){archivePath = localStorage.getItem('archivePath');id('archiveText').innerHTML = archivePath}
-
-id('extractROM').addEventListener('click', function(){
-if(archivePath != undefined){
-let list = listArchive(archivePath);
-if(list === ''){alert('No ROMs (.n64, .v64, .z64) in archive found.');return}
-var datastring = list.replace(/.*  /g,''),
-datasplit = datastring.split(regsplit);
-let unzip = extractArchive(archivePath,workingDirectory);
-datasplit.forEach(rom => ROMFiles(rom));
-function ROMFiles(rom){if(rom != ''){
-let pathToROM = returnPath(workingDirectory,rom);
-if(!recentFiles.includes(pathToROM))recentFiles.unshift(pathToROM);recentFiles.splice(10);recentFilesUpdate();localStorage.setItem('recentFiles',JSON.stringify(recentFiles));if(id('cheatList').innerHTML!='')id('cheatList').innerHTML='';id('recent').selectedIndex = 0;filePath = pathToROM;id('fileText').innerHTML = filePath;localStorage.setItem('filePath', filePath)}}}})
 
 id('fileInput').addEventListener('click', function(){
-fileResult = dialogFile({name:'N64 ROM',extensions:['n64','v64','z64']});
-if(fileResult != undefined){filePath = fileResult;id('fileText').innerHTML = filePath;localStorage.setItem('filePath', filePath);if(!recentFiles.includes(filePath.toString()))recentFiles.unshift(filePath.toString());recentFiles.splice(10);recentFilesUpdate();localStorage.setItem('recentFiles',JSON.stringify(recentFiles));if(id('cheatList').innerHTML!='')id('cheatList').innerHTML=''}})
-	
-id('archiveInput').addEventListener('click', function(){
-archiveResult = dialogFile({name:'ROM Archive',extensions:['7z','rar','zip']});
-if(archiveResult != undefined){archivePath = archiveResult;id('archiveText').innerHTML = archivePath;localStorage.setItem('archivePath',archivePath);id('extractROM').click()}})
+fileResult = dialogFile({name:'N64 ROM',extensions:['n64','v64','z64','7z','rar','zip']});
+if(fileResult != undefined){
+if(fileResult.toString().endsWith('.7z') || fileResult.toString().endsWith('.rar') || fileResult.toString().endsWith('.zip')){
+let list = listArchive(fileResult);
+if(list === ''){alert('No ROM (.n64, .v64, .z64) in archive found.');return}
+var datastring = list.replace(/.*  /g,''),
+datasplit = datastring.split(regsplit);
+if(datasplit.length > 2){alert('Archive with multiple ROMs unsupported.');return}
+let unzip = extractArchive(fileResult,workingDirectory);
+var rom = datasplit[0];
+if(rom != ''){let pathToROM = returnPath(workingDirectory,rom);filePath = pathToROM}}
+else{filePath = fileResult}
+id('fileText').innerHTML = filePath;localStorage.setItem('filePath', filePath);if(!recentFiles.includes(filePath.toString()))recentFiles.unshift(filePath.toString());recentFiles.splice(10);recentFilesUpdate();localStorage.setItem('recentFiles',JSON.stringify(recentFiles));if(id('cheatList').innerHTML!='')id('cheatList').innerHTML=''}})
 
 function recentFilesUpdate(){
 id('optionDefault').selected = true;
@@ -467,23 +461,22 @@ function fileExtension(fpath,ext){ext = fpath.slice((fpath.lastIndexOf(".") - 1 
 
 function ROMInput(fPath){
 if(fPath != undefined){
-if(fileExtension(fPath) === 'n64' || fileExtension(fPath) === 'v64' || fileExtension(fPath) === 'z64'){
+if(fileExtension(fPath) === '7z' || fileExtension(fPath) === 'rar' || fileExtension(fPath) === 'zip'){
+let list = listArchive(fPath);
+if(list === ''){alert('No ROM (.n64, .v64, .z64) in archive found.');return}
+var datastring = list.replace(/.*  /g,''),
+datasplit = datastring.split(regsplit);
+if(datasplit.length > 2){alert('Archive with multiple ROMs unsupported.');return}
+let unzip = extractArchive(fPath,workingDirectory);
+var rom = datasplit[0];
+if(rom != ''){let pathToROM = returnPath(workingDirectory,rom);filePath = pathToROM;id('fileText').innerHTML = filePath;localStorage.setItem('filePath', filePath);if(!recentFiles.includes(filePath))recentFiles.unshift(filePath);recentFiles.splice(10);recentFilesUpdate();localStorage.setItem('recentFiles',JSON.stringify(recentFiles));if(id('cheatList').innerHTML!='')id('cheatList').innerHTML=''}}
+else if(fileExtension(fPath) === 'n64' || fileExtension(fPath) === 'v64' || fileExtension(fPath) === 'z64'){
 filePath = fPath;id('fileText').innerHTML = fPath;localStorage.setItem('filePath', fPath);if(!recentFiles.includes(filePath))recentFiles.unshift(filePath);recentFiles.splice(10);recentFilesUpdate();localStorage.setItem('recentFiles',JSON.stringify(recentFiles));if(id('cheatList').innerHTML!='')id('cheatList').innerHTML=''}}}
 id('fileInput').addEventListener('drop', handleDropROM, false)
 id('fileInput').addEventListener('dragover', prevent, false)
 function handleDropROM(e) {prevent(e);
 if(e.dataTransfer.files[0] === undefined)return
 else{fPath = e.dataTransfer.files[0].path;ROMInput(fPath)}}
-
-function ArchiveInput(fPath){
-if(fPath != undefined){
-if(fileExtension(fPath) === '7z' || fileExtension(fPath) === 'rar' || fileExtension(fPath) === 'zip'){
-archivePath = fPath;id('archiveText').innerHTML = fPath;localStorage.setItem('archivePath', fPath);id('extractROM').click()}}}
-id('archiveInput').addEventListener('drop', handleDropArchive, false)
-id('archiveInput').addEventListener('dragover', prevent, false)
-function handleDropArchive(e) {prevent(e);
-if(e.dataTransfer.files[0] === undefined)return
-else{fPath = e.dataTransfer.files[0].path;ArchiveInput(fPath)}}
 
 function PIFFile(fPath){
 if(fPath != undefined){
