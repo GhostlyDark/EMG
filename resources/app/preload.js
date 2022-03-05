@@ -41,10 +41,8 @@ if(joyvalue != undefined){joyinput.value = joyvalue;localStorage.setItem(joyinpu
 joyinput.addEventListener('blur', function(){ipcRenderer.send('jstestKill')})
 ipcRenderer.once('jsClosed', () => {joyinput.blur()})}
 
-ipcRenderer.on('spawnargs', (e, spawnargs) => {console.log(spawnargs)})
-
-ipcRenderer.on('m64pLog', (e, stdout) => {
-console.log(stdout)
+ipcRenderer.on('m64pLog', (e, spawnargs, stdout) => {
+console.dir(JSON.stringify(spawnargs, null, 1) + '\n' + stdout)
 if(log.innerHTML != '')log.innerHTML = ''
 var data = '', line = stdout.replace(/\r/gm,'').split(/\s*\n/);
 line.forEach(line => {

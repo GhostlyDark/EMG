@@ -45,9 +45,8 @@ ipcMain.on('returnPath', (e, workingDirectory, rom) => {e.returnValue = path(wor
 ipcMain.on('emuLaunch', (e, parameters) => {
 	var stdout = '';
 	let child = childSpawn(executablePath, parameters, emuOptions);
-	e.reply('spawnargs', child.spawnargs)
 	child.stdout.on('data', (data) => {stdout += data.toString()})
-	child.on('exit', () => {e.reply('m64pLog', stdout)})
+	child.on('exit', () => {e.reply('m64pLog', child.spawnargs, stdout)})
 })
 
 ipcMain.on('showCheats', (e, parameters) => {
