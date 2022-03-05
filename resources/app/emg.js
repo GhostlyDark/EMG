@@ -358,7 +358,7 @@ var cheats = '';
 id('cheatList').innerHTML = '';
 const parameters = ['--cheats','list',filePath],
 child = showCheats(parameters);
-if(child.includes('AttachCoreLib() Error:')){id('cheatList').innerHTML = 'Failed to open Mupen64Plus.';return}
+if(child.includes('AttachCoreLib() Error:') || child === ''){id('cheatList').innerHTML = 'Failed to open Mupen64Plus.';return}
 if(child.includes("couldn't open ROM file")){id('cheatList').innerHTML = 'Unable to open ROM file.';return}
 var datastring = child.replace(/^((?!UI-Console\:\s\s\s\s*\d).)*$/gm,''),
 datafilter = datastring.replace(/UI-Console\:\s\s\s\s/gm,''),
