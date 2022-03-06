@@ -501,8 +501,18 @@ if(e.dataTransfer.files[0] === undefined)return
 else{fPath = e.dataTransfer.files[0].path;IPLROMFile(fPath)}}
 
 function DiskFile(fPath){
+const ext = ['*.ndd'];
 if(fPath != undefined){
-if(fileExtension(fPath) === 'ndd'){
+if(fileExtension(fPath) === '7z' || fileExtension(fPath) === 'rar' || fileExtension(fPath) === 'zip'){
+let list = listArchive(fPath,ext);
+if(list === ''){alert('No ROM (.ndd) in archive found.');return}
+var datastring = list.replace(/.*  /g,''),
+datasplit = datastring.split(regsplit);
+if(datasplit.length > 2){alert('Archive with multiple ROMs unsupported.');return}
+let unzip = extractArchive(fPath,workingDirectory,ext);
+var rom = datasplit[0];
+if(rom != ''){let pathToROM = returnPath(workingDirectory,rom);Disk = pathToROM;id('DiskText').innerHTML = Disk;localStorage.setItem('Disk', Disk)}}
+else if(fileExtension(fPath) === 'ndd'){
 Disk = fPath;id('DiskText').innerHTML = fPath;localStorage.setItem('Disk', fPath)}}}
 id('Disk').addEventListener('drop', handleDropDisk, false)
 id('Disk').addEventListener('dragover', prevent, false)
@@ -610,8 +620,20 @@ id('clearDisk').addEventListener('click', function(){Disk = '';id('DiskText').in
 if(localStorage.getItem('Disk') === null){Disk = '';id('DiskText').innerHTML = Disk}
 if(localStorage.getItem('Disk') != null){Disk = localStorage.getItem('Disk');id('DiskText').innerHTML = Disk}
 id('Disk').addEventListener('click', function(){
-DiskResult = dialogFile({name:'64DD Disk',extensions:['ndd']})
-if(DiskResult != undefined){Disk = DiskResult.toString();id('DiskText').innerHTML = Disk;localStorage.setItem('Disk', Disk)}})
+const ext = ['*.ndd'];
+DiskResult = dialogFile({name:'64DD Disk',extensions:['ndd','7z','rar','zip']})
+if(DiskResult != undefined){
+if(DiskResult.toString().endsWith('.7z') || DiskResult.toString().endsWith('.rar') || DiskResult.toString().endsWith('.zip')){
+let list = listArchive(DiskResult,ext);
+if(list === ''){alert('No ROM (.ndd) in archive found.');return}
+var datastring = list.replace(/.*  /g,''),
+datasplit = datastring.split(regsplit);
+if(datasplit.length > 2){alert('Archive with multiple ROMs unsupported.');return}
+let unzip = extractArchive(DiskResult,workingDirectory,ext);
+var rom = datasplit[0];
+if(rom != ''){let pathToROM = returnPath(workingDirectory,rom);Disk = pathToROM}}
+else{Disk = DiskResult.toString()}
+id('DiskText').innerHTML = Disk;localStorage.setItem('Disk', Disk)}})
 
 id('cleargbROM1').addEventListener('click', function(){gbROM1 = '';id('gbROM1Text').innerHTML = '';localStorage.removeItem('gbROM1')})
 if(localStorage.getItem('gbROM1') === null){gbROM1 = '';id('gbROM1Text').innerHTML = gbROM1}
