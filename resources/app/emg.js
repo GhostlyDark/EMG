@@ -180,9 +180,9 @@ localStorage.setItem(number, number_input.value)}})})
 
 
 function rspDropdownDisable(){
-if(id('rsp').value === 'mupen64plus-rsp-hle'){id('RspFallback').disabled = false;id('rspGFX').disabled = true;id('rspAudio').disabled = false}
-else if(id('rsp').value === 'mupen64plus-rsp-cxd4-sse2'){id('RspFallback').disabled = true;id('rspGFX').disabled = false;id('rspAudio').disabled = false}
-else if(id('rsp').value === 'mupen64plus-rsp-parallel'){id('RspFallback').disabled = true;id('rspGFX').disabled = true;id('rspAudio').disabled = true}}
+if(id('rsp').value.includes('rsp-hle')){id('RspFallback').disabled = false;id('rspGFX').disabled = true;id('rspAudio').disabled = false}
+else if(id('rsp').value.includes('rsp-cxd4')){id('RspFallback').disabled = true;id('rspGFX').disabled = false;id('rspAudio').disabled = false}
+else if(id('rsp').value.includes('rsp-parallel')){id('RspFallback').disabled = true;id('rspGFX').disabled = true;id('rspAudio').disabled = true}}
 id('rsp').addEventListener('change', rspDropdownDisable)
 rspDropdownDisable()
 
@@ -412,11 +412,11 @@ if(!id('gliden64').classList.contains('hide'))id('gliden64').classList.add('hide
 if(!id('parallel').classList.contains('hide'))id('parallel').classList.add('hide')
 if(!id('rice').classList.contains('hide'))id('rice').classList.add('hide')
 if(!id('glide64mk2').classList.contains('hide'))id('glide64mk2').classList.add('hide')
-if(id('gfx').value === 'mupen64plus-video-angrylion-plus')id('angrylion').classList.remove('hide')
-if(id('gfx').value === 'mupen64plus-video-GLideN64')id('gliden64').classList.remove('hide')
-if(id('gfx').value === 'mupen64plus-video-parallel')id('parallel').classList.remove('hide')
-if(id('gfx').value === 'mupen64plus-video-rice')id('rice').classList.remove('hide')
-if(id('gfx').value === 'mupen64plus-video-glide64mk2')id('glide64mk2').classList.remove('hide')}
+if(id('gfx').value.includes('angrylion'))id('angrylion').classList.remove('hide')
+if(id('gfx').value.includes('GLideN64'))id('gliden64').classList.remove('hide')
+if(id('gfx').value.includes('parallel'))id('parallel').classList.remove('hide')
+if(id('gfx').value.includes('rice'))id('rice').classList.remove('hide')
+if(id('gfx').value.includes('glide64mk2'))id('glide64mk2').classList.remove('hide')}
 id('gfx').addEventListener('change', currentGFX)
 currentGFX()
 
@@ -1148,11 +1148,11 @@ YAxis4 = 'Input-SDL-Control4[Y Axis]=',
 gcaSettings = 'control_stick_deadzone = ' +  id('control_stick_deadzone').value + '\n' + 'control_stick_sensitivity = ' + id('control_stick_sensitivity').value + '\n' + 'c_stick_deadzone = ' + id('c_stick_deadzone').value + '\n' + 'trigger_threshold = ' + id('trigger_threshold').value + '\n\n' + '[controller_mapping]' + '\n' + 'a = ' + id('a').value + '\n' + 'b = ' + id('b').value + '\n' + 'x = ' + id('x').value + '\n' + 'y = ' + id('y').value + '\n' + 'start = ' + id('start').value + '\n' + 'z = ' + id('z').value + '\n' + 'l = ' + id('l').value + '\n' + 'r = ' + id('r').value + '\n' + 'd_pad_left = ' + id('d_pad_left').value + '\n' + 'd_pad_right = ' + id('d_pad_right').value + '\n' + 'd_pad_down = ' + id('d_pad_down').value + '\n' + 'd_pad_up = ' + id('d_pad_up').value + '\n' + 'c_stick_left = ' + id('c_stick_left').value + '\n' + 'c_stick_right = ' + id('c_stick_right').value + '\n' + 'c_stick_down = ' + id('c_stick_down').value + '\n' + 'c_stick_up = ' + id('c_stick_up').value;
 
 if(id('nospeedlimit').checked){audio = 'dummy';vsync = 'Video-General[VerticalSync]=False';Glide64VSync = 'Video-Glide64mk2[vsync]=False'}
-if(gfx === 'mupen64plus-video-angrylion-plus' || gfx === 'mupen64plus-video-parallel'){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=False';cxd4Audio = 'rsp-cxd4[DisplayListToAudioPlugin]=False'}
-else if(gfx === 'mupen64plus-video-rice' || gfx === 'mupen64plus-video-glide64mk2'){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=True'}
-if(gfx === 'mupen64plus-video-angrylion-plus' && rsp === 'mupen64plus-rsp-hle'){rsp = 'mupen64plus-rsp-cxd4-sse2'}
-else if(gfx === 'mupen64plus-video-parallel' && rsp === 'mupen64plus-rsp-hle'){rsp = 'mupen64plus-rsp-parallel'}
-else if((gfx === 'mupen64plus-video-rice' || gfx === 'mupen64plus-video-glide64mk2') && rsp === 'mupen64plus-rsp-parallel'){rsp = 'mupen64plus-rsp-hle'}
+if(gfx.includes('angrylion') || gfx.includes('parallel')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=False';cxd4Audio = 'rsp-cxd4[DisplayListToAudioPlugin]=False'}
+else if(gfx.includes('rice') || gfx.includes('glide64mk2')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=True'}
+if(gfx.includes('angrylion') && rsp.includes('rsp-hle')){rsp = 'mupen64plus-rsp-cxd4-sse2'}
+else if(gfx.includes('parallel') && rsp.includes('rsp-hle')){rsp = 'mupen64plus-rsp-parallel'}
+else if((gfx.includes('rice') || gfx.includes('glide64mk2')) && rsp.includes('rsp-parallel')){rsp = 'mupen64plus-rsp-hle'}
 
 
 
@@ -1869,9 +1869,17 @@ YAxis4 = kb(YAxis4);
 
 
 
-var core = ['--corelib','mupen64plus','--plugindir','.',osd,fullscreen,'--resolution',resolution,'--gfx',gfx,'--audio',audio,'--input',input,'--rsp',rsp,'--set',RspFallback,'--emumode',emumode,'--set',exp,'--set',vsync,'--set',cxd4GFX,'--set',m64pGFX,'--set',IPLROMSetting,'--set',DiskSetting,'--set',NoCompiledJump,'--set',CountPerOp,'--set',CountPerOpDenomPot,'--set',SiDmaDuration,'--set',AutoStateSlotIncrement,'--set',CurrentStateSlot,'--set',SharedDataPath,'--set',ScreenshotPathSetting,'--set',SaveStatePathSetting,'--set',SaveSRAMPathSetting,'--set',RandomizeInterrupt,'--set',SaveDiskFormat,'--set',WaitForCPUHost,'--set',SupportCPUSemaphoreLock,'--set',gbROM1Setting,'--set',gbROM2Setting,'--set',gbROM3Setting,'--set',gbROM4Setting,'--set',gbRAM1Setting,'--set',gbRAM2Setting,'--set',gbRAM3Setting,'--set',gbRAM4Setting,'--set',DEFAULT_FREQUENCY,'--set',SWAP_CHANNELS,'--set',PRIMARY_BUFFER_TARGET,'--set',SECONDARY_BUFFER_SIZE,'--set',RESAMPLE,'--set',VOLUME_ADJUST,'--set',VOLUME_DEFAULT,'--set',AUDIO_SYNC,'--set',KbdMappingSlot0,'--set',KbdMappingSlot1,'--set',KbdMappingSlot2,'--set',KbdMappingSlot3,'--set',KbdMappingSlot4,'--set',KbdMappingSlot5,'--set',KbdMappingSlot6,'--set',KbdMappingSlot7,'--set',KbdMappingSlot8,'--set',KbdMappingSlot9,'--set',KbdMappingStop,'--set',KbdMappingFullscreen,'--set',KbdMappingSaveState,'--set',KbdMappingLoadState,'--set',KbdMappingIncrementSlot,'--set',KbdMappingReset,'--set',KbdMappingSpeedDown,'--set',KbdMappingSpeedUp,'--set',KbdMappingScreenshot,'--set',KbdMappingPause,'--set',KbdMappingMute,'--set',KbdMappingIncreaseVolume,'--set',KbdMappingDecreaseVolume,'--set',KbdMappingFastForward,'--set',KbdMappingFrameAdvance,'--set',KbdMappingGameshark,'--set',JoyMappingStop,'--set',JoyMappingFullscreen,'--set',JoyMappingSaveState,'--set',JoyMappingLoadState,'--set',JoyMappingIncrementSlot,'--set',JoyMappingReset,'--set',JoyMappingSpeedDown,'--set',JoyMappingSpeedUp,'--set',JoyMappingScreenshot,'--set',JoyMappingPause,'--set',JoyMappingMute,'--set',JoyMappingIncreaseVolume,'--set',JoyMappingDecreaseVolume,'--set',JoyMappingFastForward,'--set',JoyMappingFrameAdvance,'--set',JoyMappingGameshark],
+var core = ['--corelib','mupen64plus','--plugindir','.',osd,fullscreen,'--resolution',resolution,'--gfx',gfx,'--audio',audio,'--input',input,'--rsp',rsp,'--set',RspFallback,'--emumode',emumode,'--set',exp,'--set',vsync,'--set',cxd4GFX,'--set',m64pGFX,'--set',IPLROMSetting,'--set',DiskSetting,'--set',NoCompiledJump,'--set',CountPerOp,'--set',CountPerOpDenomPot,'--set',SiDmaDuration,'--set',AutoStateSlotIncrement,'--set',CurrentStateSlot,'--set',SharedDataPath,'--set',ScreenshotPathSetting,'--set',SaveStatePathSetting,'--set',SaveSRAMPathSetting,'--set',RandomizeInterrupt,'--set',SaveDiskFormat,'--set',WaitForCPUHost,'--set',SupportCPUSemaphoreLock,'--set',DEFAULT_FREQUENCY,'--set',SWAP_CHANNELS,'--set',PRIMARY_BUFFER_TARGET,'--set',SECONDARY_BUFFER_SIZE,'--set',RESAMPLE,'--set',VOLUME_ADJUST,'--set',VOLUME_DEFAULT,'--set',AUDIO_SYNC,'--set',KbdMappingSlot0,'--set',KbdMappingSlot1,'--set',KbdMappingSlot2,'--set',KbdMappingSlot3,'--set',KbdMappingSlot4,'--set',KbdMappingSlot5,'--set',KbdMappingSlot6,'--set',KbdMappingSlot7,'--set',KbdMappingSlot8,'--set',KbdMappingSlot9,'--set',KbdMappingStop,'--set',KbdMappingFullscreen,'--set',KbdMappingSaveState,'--set',KbdMappingLoadState,'--set',KbdMappingIncrementSlot,'--set',KbdMappingReset,'--set',KbdMappingSpeedDown,'--set',KbdMappingSpeedUp,'--set',KbdMappingScreenshot,'--set',KbdMappingPause,'--set',KbdMappingMute,'--set',KbdMappingIncreaseVolume,'--set',KbdMappingDecreaseVolume,'--set',KbdMappingFastForward,'--set',KbdMappingFrameAdvance,'--set',KbdMappingGameshark],
 
-controls = ['--set',AButton1,'--set',BButton1,'--set',LTrig1,'--set',RTrig1,'--set',ZTrig1,'--set',Start1,'--set',DPadU1,'--set',DPadL1,'--set',DPadR1,'--set',DPadD1,'--set',CButtonU1,'--set',CButtonL1,'--set',CButtonR1,'--set',CButtonD1,'--set',MempakSwitch1,'--set',RumblepakSwitch1,'--set',XAxis1,'--set',YAxis1,'--set',AButton2,'--set',BButton2,'--set',LTrig2,'--set',RTrig2,'--set',ZTrig2,'--set',Start2,'--set',DPadU2,'--set',DPadL2,'--set',DPadR2,'--set',DPadD2,'--set',CButtonU2,'--set',CButtonL2,'--set',CButtonR2,'--set',CButtonD2,'--set',MempakSwitch2,'--set',RumblepakSwitch2,'--set',XAxis2,'--set',YAxis2,'--set',AButton3,'--set',BButton3,'--set',LTrig3,'--set',RTrig3,'--set',ZTrig3,'--set',Start3,'--set',DPadU3,'--set',DPadL3,'--set',DPadR3,'--set',DPadD3,'--set',CButtonU3,'--set',CButtonL3,'--set',CButtonR3,'--set',CButtonD3,'--set',MempakSwitch3,'--set',RumblepakSwitch3,'--set',XAxis3,'--set',YAxis3,'--set',AButton4,'--set',BButton4,'--set',LTrig4,'--set',RTrig4,'--set',ZTrig4,'--set',Start4,'--set',DPadU4,'--set',DPadL4,'--set',DPadR4,'--set',DPadD4,'--set',CButtonU4,'--set',CButtonL4,'--set',CButtonR4,'--set',CButtonD4,'--set',MempakSwitch4,'--set',RumblepakSwitch4,'--set',XAxis4,'--set',YAxis4,'--set',plugin1,'--set',plugin2,'--set',plugin3,'--set',plugin4,'--set',plugged1,'--set',plugged2,'--set',plugged3,'--set',plugged4,'--set',mode1,'--set',mode2,'--set',mode3,'--set',mode4,'--set',name1,'--set',name2,'--set',name3,'--set',name4,'--set',mouse1,'--set',mouse2,'--set',mouse3,'--set',mouse4,'--set',msensitivity1,'--set',msensitivity2,'--set',msensitivity3,'--set',msensitivity4,'--set',analogdeadzone1,'--set',analogdeadzone2,'--set',analogdeadzone3,'--set',analogdeadzone4,'--set',analogpeak1,'--set',analogpeak2,'--set',analogpeak3,'--set',analogpeak4,'--set',device1,'--set',device2,'--set',device3,'--set',device4],
+controls = ['--set',JoyMappingStop,'--set',JoyMappingFullscreen,'--set',JoyMappingSaveState,'--set',JoyMappingLoadState,'--set',JoyMappingIncrementSlot,'--set',JoyMappingReset,'--set',JoyMappingSpeedDown,'--set',JoyMappingSpeedUp,'--set',JoyMappingScreenshot,'--set',JoyMappingPause,'--set',JoyMappingMute,'--set',JoyMappingIncreaseVolume,'--set',JoyMappingDecreaseVolume,'--set',JoyMappingFastForward,'--set',JoyMappingFrameAdvance,'--set',JoyMappingGameshark,'--set',mode1,'--set',mode2,'--set',mode3,'--set',mode4,'--set',plugin1,'--set',plugin2,'--set',plugin3,'--set',plugin4,'--set',plugged1,'--set',plugged2,'--set',plugged3,'--set',plugged4,'--set',name1,'--set',name2,'--set',name3,'--set',name4,'--set',device1,'--set',device2,'--set',device3,'--set',device4,'--set',gbROM1Setting,'--set',gbROM2Setting,'--set',gbROM3Setting,'--set',gbROM4Setting,'--set',gbRAM1Setting,'--set',gbRAM2Setting,'--set',gbRAM3Setting,'--set',gbRAM4Setting],
+
+controller1 = ['--set',AButton1,'--set',BButton1,'--set',LTrig1,'--set',RTrig1,'--set',ZTrig1,'--set',Start1,'--set',DPadU1,'--set',DPadL1,'--set',DPadR1,'--set',DPadD1,'--set',CButtonU1,'--set',CButtonL1,'--set',CButtonR1,'--set',CButtonD1,'--set',MempakSwitch1,'--set',RumblepakSwitch1,'--set',XAxis1,'--set',YAxis1,'--set',analogdeadzone1,'--set',analogpeak1,'--set',mouse1,'--set',msensitivity1],
+
+controller2 = ['--set',AButton2,'--set',BButton2,'--set',LTrig2,'--set',RTrig2,'--set',ZTrig2,'--set',Start2,'--set',DPadU2,'--set',DPadL2,'--set',DPadR2,'--set',DPadD2,'--set',CButtonU2,'--set',CButtonL2,'--set',CButtonR2,'--set',CButtonD2,'--set',MempakSwitch2,'--set',RumblepakSwitch2,'--set',XAxis2,'--set',YAxis2,'--set',analogdeadzone2,'--set',analogpeak2,'--set',mouse2,'--set',msensitivity2],
+
+controller3 = ['--set',AButton3,'--set',BButton3,'--set',LTrig3,'--set',RTrig3,'--set',ZTrig3,'--set',Start3,'--set',DPadU3,'--set',DPadL3,'--set',DPadR3,'--set',DPadD3,'--set',CButtonU3,'--set',CButtonL3,'--set',CButtonR3,'--set',CButtonD3,'--set',MempakSwitch3,'--set',RumblepakSwitch3,'--set',XAxis3,'--set',YAxis3,'--set',analogdeadzone3,'--set',analogpeak3,'--set',mouse3,'--set',msensitivity3],
+
+controller4 = ['--set',AButton4,'--set',BButton4,'--set',LTrig4,'--set',RTrig4,'--set',ZTrig4,'--set',Start4,'--set',DPadU4,'--set',DPadL4,'--set',DPadR4,'--set',DPadD4,'--set',CButtonU4,'--set',CButtonL4,'--set',CButtonR4,'--set',CButtonD4,'--set',MempakSwitch4,'--set',RumblepakSwitch4,'--set',XAxis4,'--set',YAxis4,'--set',analogdeadzone4,'--set',analogpeak4,'--set',mouse4,'--set',msensitivity4],
 
 Angrylion = ['--set',Parallel,'--set',NumWorkers,'--set',BusyLoop,'--set',ViMode,'--set',ViInterpolation,'--set',ViWidescreen,'--set',ViHideOverscan,'--set',ViIntegerScaling,'--set',DpCompat],
 
@@ -1892,18 +1900,22 @@ for (var i = 0; i < cheatInputs.length; i++){var cheatInput = cheatInputs[i];che
 function checkCheats(cheatInput){if(cheatInput.checked){var id = cheatInput.id.replace('_','-');activeCheats += id + ','}}
 cheats = ['--cheats',activeCheats]}
 
-if(!input.includes('mupen64plus-input-sdl'))controls = []
-if(gfx.includes('mupen64plus-video-angrylion-plus'))graphics = Angrylion
-if(gfx.includes('mupen64plus-video-glide64mk2'))graphics = Glide64MK2
-if(gfx.includes('mupen64plus-video-GLideN64'))graphics = GLideN64
-if(gfx.includes('mupen64plus-video-parallel'))graphics = Parallel
-if(gfx.includes('mupen64plus-video-rice'))graphics = Rice
+if(!input.includes('input-sdl')){controls = []; controller1 = []; controller2 = []; controller3 = []; controller4 = []}
+if(mode1 === 'Input-SDL-Control1[mode]=2' || (mode1 === 'Input-SDL-Control1[mode]=0' && !id('plugged1').checked))controller1 = []
+if(mode2 === 'Input-SDL-Control2[mode]=2' || (mode2 === 'Input-SDL-Control2[mode]=0' && !id('plugged2').checked))controller2 = []
+if(mode3 === 'Input-SDL-Control3[mode]=2' || (mode3 === 'Input-SDL-Control3[mode]=0' && !id('plugged3').checked))controller3 = []
+if(mode4 === 'Input-SDL-Control4[mode]=2' || (mode4 === 'Input-SDL-Control4[mode]=0' && !id('plugged4').checked))controller4 = []
+if(gfx.includes('angrylion'))graphics = Angrylion
+if(gfx.includes('glide64mk2'))graphics = Glide64MK2
+if(gfx.includes('GLideN64'))graphics = GLideN64
+if(gfx.includes('parallel'))graphics = Parallel
+if(gfx.includes('rice'))graphics = Rice
 
-if(input.includes('mupen64plus-input-gca')){
+if(input.includes('input-gca')){
 try {writeGCA(gcaSettings)}
 catch (e) {console.warn(e)}}
 
-const parameters = core.concat(PIFROM,nospeedlimit,verbose,cheats,controls,graphics,filePath),
+const parameters = core.concat(PIFROM,nospeedlimit,verbose,cheats,controls,controller1,controller2,controller3,controller4,graphics,filePath),
 child = emuLaunch(parameters);
 
 })
