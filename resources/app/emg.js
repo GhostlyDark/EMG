@@ -17,6 +17,8 @@ n64Ext = ['*.n64,*.v64','*.z64'], nddExt = ['*.ndd'], gbExt = ['*.gb','*.gbc'],
 
 dragDrop = ['fileInput','PIF','IPLROM','Disk','gbROM1','gbROM2','gbROM3','gbROM4','gbRAM1','gbRAM2','gbRAM3','gbRAM4'],
 
+hk = ['hk_keyboard','hk_controller1','hk_controller2','hk_controller3','hk_controller4'],
+
 menu = ['main','input','video','gliden64','rice','glide64mk2'],
 
 n64_buttons = ['AButton1','AButton2','AButton3','AButton4','BButton1','BButton2','BButton3','BButton4','LTrig1','LTrig2','LTrig3','LTrig4','RTrig1','RTrig2','RTrig3','RTrig4','ZTrig1','ZTrig2','ZTrig3','ZTrig4','Start1','Start2','Start3','Start4','DPadU1','DPadU2','DPadU3','DPadU4','DPadD1','DPadD2','DPadD3','DPadD4','DPadL1','DPadL2','DPadL3','DPadL4','DPadR1','DPadR2','DPadR3','DPadR4','StickU1','StickU2','StickU3','StickU4','StickD1','StickD2','StickD3','StickD4','StickL1','StickL2','StickL3','StickL4','StickR1','StickR2','StickR3','StickR4','CButtonU1','CButtonU2','CButtonU3','CButtonU4','CButtonD1','CButtonD2','CButtonD3','CButtonD4','CButtonL1','CButtonL2','CButtonL3','CButtonL4','CButtonR1','CButtonR2','CButtonR3','CButtonR4','MempakSwitch1','MempakSwitch2','MempakSwitch3','MempakSwitch4','RumblepakSwitch1','RumblepakSwitch2','RumblepakSwitch3','RumblepakSwitch4'],
@@ -384,31 +386,23 @@ for (var i = 0; i < radioBoxes.length; i++){var box = radioBoxes[i];if(box.id.in
 if(localStorage.getItem('hkULActive') != null && localStorage.getItem('hkDIVActive') != null){
 currentHK(id(localStorage.getItem('hkULActive')),id(localStorage.getItem('hkDIVActive')))}
 
-function currentHK(currentUL,currentDIV){
-if(id('ul_hk_keyboard').classList.contains('active'))id('ul_hk_keyboard').classList.remove('active');
-if(id('ul_hk_controller1').classList.contains('active'))id('ul_hk_controller1').classList.remove('active');
-if(id('ul_hk_controller2').classList.contains('active'))id('ul_hk_controller2').classList.remove('active');
-if(id('ul_hk_controller3').classList.contains('active'))id('ul_hk_controller3').classList.remove('active');
-if(id('ul_hk_controller4').classList.contains('active'))id('ul_hk_controller4').classList.remove('active');
-if(!id('hk_keyboard').classList.contains('hide'))id('hk_keyboard').classList.add('hide');
-if(!id('hk_controller1').classList.contains('hide'))id('hk_controller1').classList.add('hide');
-if(!id('hk_controller2').classList.contains('hide'))id('hk_controller2').classList.add('hide');
-if(!id('hk_controller3').classList.contains('hide'))id('hk_controller3').classList.add('hide');
-if(!id('hk_controller4').classList.contains('hide'))id('hk_controller4').classList.add('hide');
+function currentHK(currentUL,currentDIV){hk.forEach(hk => {
+if(id('ul_'+hk).classList.contains('active'))id('ul_'+hk).classList.remove('active')
+if(!id(hk).classList.contains('hide'))id(hk).classList.add('hide')})
 currentUL.classList.add('active');localStorage.setItem('hkULActive',currentUL.id);
 currentDIV.classList.remove('hide');localStorage.setItem('hkDIVActive',currentDIV.id)}
 
-id('ul_hk_keyboard').addEventListener('click', function(){currentHK(id('ul_hk_keyboard'),id('hk_keyboard'))})
-id('ul_hk_controller1').addEventListener('click', function(){currentHK(id('ul_hk_controller1'),id('hk_controller1'))})
-id('ul_hk_controller2').addEventListener('click', function(){currentHK(id('ul_hk_controller2'),id('hk_controller2'))})
-id('ul_hk_controller3').addEventListener('click', function(){currentHK(id('ul_hk_controller3'),id('hk_controller3'))})
-id('ul_hk_controller4').addEventListener('click', function(){currentHK(id('ul_hk_controller4'),id('hk_controller4'))})
+hk.forEach(hk => {id('ul_'+hk).addEventListener('click', function(){currentHK(id('ul_'+hk),id(hk))})})
+
+
 
 function noScroll(e){if(keys[e.keyCode]){e.preventDefault();return false}}
 for (var i = 0; i < textInputs.length; i++){var textInput = textInputs[i];preventScroll(textInput)}
 function preventScroll(textInput){
 textInput.addEventListener('focus',(e) => {html.addEventListener('keydown',noScroll,false)})
 textInput.addEventListener('blur',(e) => {html.removeEventListener('keydown',noScroll,false)})}
+
+
 
 function currentGFX(){
 if(!id('angrylion').classList.contains('hide'))id('angrylion').classList.add('hide')
