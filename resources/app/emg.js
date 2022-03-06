@@ -1224,27 +1224,7 @@ YAxis2 = 'Input-SDL-Control2[Y Axis]=',
 YAxis3 = 'Input-SDL-Control3[Y Axis]=',
 YAxis4 = 'Input-SDL-Control4[Y Axis]=',
 
-control_stick_deadzone = id('control_stick_deadzone').value,
-control_stick_sensitivity = id('control_stick_sensitivity').value,
-c_stick_deadzone = id('c_stick_deadzone').value,
-trigger_threshold = id('trigger_threshold').value,
-a = id('a').value,
-b = id('b').value,
-x = id('x').value,
-y = id('y').value,
-start = id('start').value,
-z = id('z').value,
-l = id('l').value,
-r = id('r').value,
-d_pad_left = id('d_pad_left').value,
-d_pad_right = id('d_pad_right').value,
-d_pad_down = id('d_pad_down').value,
-d_pad_up = id('d_pad_up').value,
-c_stick_left = id('c_stick_left').value,
-c_stick_right = id('c_stick_right').value,
-c_stick_down = id('c_stick_down').value,
-c_stick_up = id('c_stick_up').value,
-gcaSettings = 'control_stick_deadzone = ' +  control_stick_deadzone + '\n' + 'control_stick_sensitivity = ' + control_stick_sensitivity + '\n' + 'c_stick_deadzone = ' + c_stick_deadzone + '\n' + 'trigger_threshold = ' + trigger_threshold + '\n' + '\n' + '[controller_mapping]' + '\n' + 'a = ' + a + '\n' + 'b = ' + b + '\n' + 'x = ' + x + '\n' + 'y = ' + y + '\n' + 'start = ' + start + '\n' + 'z = ' + z + '\n' + 'l = ' + l + '\n' + 'r = ' + r + '\n' + 'd_pad_left = ' + d_pad_left + '\n' + 'd_pad_right = ' + d_pad_right + '\n' + 'd_pad_down = ' + d_pad_down + '\n' + 'd_pad_up = ' + d_pad_up + '\n' + 'c_stick_left = ' + c_stick_left + '\n' + 'c_stick_right = ' + c_stick_right + '\n' + 'c_stick_down = ' + c_stick_down + '\n' + 'c_stick_up = ' + c_stick_up;
+gcaSettings = 'control_stick_deadzone = ' +  id('control_stick_deadzone').value + '\n' + 'control_stick_sensitivity = ' + id('control_stick_sensitivity').value + '\n' + 'c_stick_deadzone = ' + id('c_stick_deadzone').value + '\n' + 'trigger_threshold = ' + id('trigger_threshold').value + '\n\n' + '[controller_mapping]' + '\n' + 'a = ' + id('a').value + '\n' + 'b = ' + id('b').value + '\n' + 'x = ' + id('x').value + '\n' + 'y = ' + id('y').value + '\n' + 'start = ' + id('start').value + '\n' + 'z = ' + id('z').value + '\n' + 'l = ' + id('l').value + '\n' + 'r = ' + id('r').value + '\n' + 'd_pad_left = ' + id('d_pad_left').value + '\n' + 'd_pad_right = ' + id('d_pad_right').value + '\n' + 'd_pad_down = ' + id('d_pad_down').value + '\n' + 'd_pad_up = ' + id('d_pad_up').value + '\n' + 'c_stick_left = ' + id('c_stick_left').value + '\n' + 'c_stick_right = ' + id('c_stick_right').value + '\n' + 'c_stick_down = ' + id('c_stick_down').value + '\n' + 'c_stick_up = ' + id('c_stick_up').value;
 
 if(id('nospeedlimit').checked){audio = 'dummy';vsync = 'Video-General[VerticalSync]=False';Glide64VSync = 'Video-Glide64mk2[vsync]=False'}
 if(gfx === 'mupen64plus-video-angrylion-plus' || gfx === 'mupen64plus-video-parallel'){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=False';cxd4Audio = 'rsp-cxd4[DisplayListToAudioPlugin]=False'}
