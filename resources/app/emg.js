@@ -317,15 +317,16 @@ if(localStorage.getItem('recentFiles') != null){recentFiles = JSON.parse(localSt
 if(localStorage.getItem('filePath') != null){filePath = localStorage.getItem('filePath');id('fileText').innerHTML = filePath}
 
 id('fileInput').addEventListener('click', function(){
+const ext = ['*.n64','*.v64','*.z64'];
 fileResult = dialogFile({name:'N64 ROM',extensions:['n64','v64','z64','7z','rar','zip']});
 if(fileResult != undefined){
 if(fileResult.toString().endsWith('.7z') || fileResult.toString().endsWith('.rar') || fileResult.toString().endsWith('.zip')){
-let list = listArchive(fileResult);
+let list = listArchive(fileResult,ext);
 if(list === ''){alert('No ROM (.n64, .v64, .z64) in archive found.');return}
 var datastring = list.replace(/.*  /g,''),
 datasplit = datastring.split(regsplit);
 if(datasplit.length > 2){alert('Archive with multiple ROMs unsupported.');return}
-let unzip = extractArchive(fileResult,workingDirectory);
+let unzip = extractArchive(fileResult,workingDirectory,ext);
 var rom = datasplit[0];
 if(rom != ''){let pathToROM = returnPath(workingDirectory,rom);filePath = pathToROM}}
 else{filePath = fileResult}
@@ -460,14 +461,15 @@ function prevent(e){e.preventDefault();e.stopPropagation()}
 function fileExtension(fpath,ext){ext = fpath.slice((fpath.lastIndexOf(".") - 1 >>> 0) + 2);return ext}
 
 function ROMInput(fPath){
+const ext = ['*.n64','*.v64','*.z64'];
 if(fPath != undefined){
 if(fileExtension(fPath) === '7z' || fileExtension(fPath) === 'rar' || fileExtension(fPath) === 'zip'){
-let list = listArchive(fPath);
+let list = listArchive(fPath,ext);
 if(list === ''){alert('No ROM (.n64, .v64, .z64) in archive found.');return}
 var datastring = list.replace(/.*  /g,''),
 datasplit = datastring.split(regsplit);
 if(datasplit.length > 2){alert('Archive with multiple ROMs unsupported.');return}
-let unzip = extractArchive(fPath,workingDirectory);
+let unzip = extractArchive(fPath,workingDirectory,ext);
 var rom = datasplit[0];
 if(rom != ''){let pathToROM = returnPath(workingDirectory,rom);filePath = pathToROM;id('fileText').innerHTML = filePath;localStorage.setItem('filePath', filePath);if(!recentFiles.includes(filePath))recentFiles.unshift(filePath);recentFiles.splice(10);recentFilesUpdate();localStorage.setItem('recentFiles',JSON.stringify(recentFiles));if(id('cheatList').innerHTML!='')id('cheatList').innerHTML=''}}
 else if(fileExtension(fPath) === 'n64' || fileExtension(fPath) === 'v64' || fileExtension(fPath) === 'z64'){

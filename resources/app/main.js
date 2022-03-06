@@ -33,14 +33,14 @@ var jstestChild,
 zipPath = path(cwd, '7z');
 if(process.platform === 'linux')zipPath = '7z';
 
-ipcMain.on('listArchive', (e, archivePath) => {
-	const parameters = ['l',archivePath,'*.n64','*.v64','*.z64','-r','-ba'];
+ipcMain.on('listArchive', (e, archivePath, ext) => {
+	const parameters = ['l',archivePath,...ext,'-r','-ba'];
 	let child = childSpawnSync(zipPath, parameters, options);
 	e.returnValue = child.stdout.toString()
 })
 
-ipcMain.on('extractArchive', (e, archivePath, workingDirectory) => {
-	const parameters = ['e','-o'+workingDirectory,archivePath,'*.n64','*.v64','*.z64','-r','-y'];
+ipcMain.on('extractArchive', (e, archivePath, workingDirectory, ext) => {
+	const parameters = ['e','-o'+workingDirectory,archivePath,...ext,'-r','-y'];
 	let child = childSpawnSync(zipPath, parameters, options);
 	e.returnValue = ''
 })
