@@ -437,132 +437,90 @@ function fileExtension(fpath,ext){ext = fpath.slice((fpath.lastIndexOf(".") - 1 
 
 id('fileInput').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
-const fPath = e.dataTransfer.files[0].path;
+let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
-if(fileExtension(fPath) === '7z' || fileExtension(fPath) === 'rar' || fileExtension(fPath) === 'zip'){
-let list = listArchive(fPath,n64Ext);
-if(list === ''){alert('No ROM (.n64, .v64, .z64) in archive found.');return}
-var datastring = list.replace(/.*  /g,''),
-datasplit = datastring.split(regsplit);
-if(datasplit.length > 2){alert('Archives with multiple ROMs unsupported.');return}
-extractArchive(fPath,workingDirectory,n64Ext);
-if(datasplit[0] != ''){filePath = returnPath(workingDirectory,datasplit[0])}}
+if(fileExtension(fPath) === '7z' || fileExtension(fPath) === 'rar' || fileExtension(fPath) === 'zip'){filePath = extract(fPath,n64Ext)}
 else if(fileExtension(fPath) === 'n64' || fileExtension(fPath) === 'v64' || fileExtension(fPath) === 'z64'){filePath = fPath}
 if(filePath != undefined){id('fileText').innerHTML = filePath;localStorage.setItem('filePath', filePath);if(!recentFiles.includes(filePath))recentFiles.unshift(filePath);recentFiles.splice(10);recentFilesUpdate();localStorage.setItem('recentFiles',JSON.stringify(recentFiles));if(id('cheatList').innerHTML!='')id('cheatList').innerHTML=''}}})
 
 id('PIF').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
-const fPath = e.dataTransfer.files[0].path;
+let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
 if(fileExtension(fPath) === 'n64' || fileExtension(fPath) === 'v64' || fileExtension(fPath) === 'z64' || fileExtension(fPath) === 'bin' || fileExtension(fPath) === 'rom'){
 PIF = fPath;id('PIFText').innerHTML = fPath;localStorage.setItem('PIF', fPath)}}})
 
 id('IPLROM').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
-const fPath = e.dataTransfer.files[0].path;
+let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
 if(fileExtension(fPath) === 'n64' || fileExtension(fPath) === 'v64' || fileExtension(fPath) === 'z64' || fileExtension(fPath) === 'bin' || fileExtension(fPath) === 'rom'){
 IPLROM = fPath;id('IPLROMText').innerHTML = fPath;localStorage.setItem('IPLROM', fPath)}}})
 
 id('Disk').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
-const fPath = e.dataTransfer.files[0].path;
+let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
-if(fileExtension(fPath) === '7z' || fileExtension(fPath) === 'rar' || fileExtension(fPath) === 'zip'){
-let list = listArchive(fPath,nddExt);
-if(list === ''){alert('No ROM (.ndd) in archive found.');return}
-var datastring = list.replace(/.*  /g,''),
-datasplit = datastring.split(regsplit);
-if(datasplit.length > 2){alert('Archives with multiple ROMs unsupported.');return}
-extractArchive(fPath,workingDirectory,nddExt);
-if(datasplit[0] != ''){Disk = returnPath(workingDirectory,datasplit[0])}}
+if(fileExtension(fPath) === '7z' || fileExtension(fPath) === 'rar' || fileExtension(fPath) === 'zip'){Disk = extract(fPath,nddExt)}
 else if(fileExtension(fPath) === 'ndd'){Disk = fPath}
 if(Disk != undefined){id('DiskText').innerHTML = Disk;localStorage.setItem('Disk', Disk)}}})
 
 id('gbROM1').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
-const fPath = e.dataTransfer.files[0].path;
+let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
-if(fileExtension(fPath) === '7z' || fileExtension(fPath) === 'rar' || fileExtension(fPath) === 'zip'){
-let list = listArchive(fPath,gbExt);
-if(list === ''){alert('No ROM (.gb, .gbc) in archive found.');return}
-var datastring = list.replace(/.*  /g,''),
-datasplit = datastring.split(regsplit);
-if(datasplit.length > 2){alert('Archives with multiple ROMs unsupported.');return}
-extractArchive(fPath,workingDirectory,gbExt);
-if(datasplit[0] != ''){gbROM1 = returnPath(workingDirectory,datasplit[0])}}
+if(fileExtension(fPath) === '7z' || fileExtension(fPath) === 'rar' || fileExtension(fPath) === 'zip'){gbROM1 = extract(fPath,gbExt)}
 else if(fileExtension(fPath) === 'gb' || fileExtension(fPath) === 'gbc'){gbROM1 = fPath}
 if(gbROM1 != undefined){id('gbROM1Text').innerHTML = gbROM1;localStorage.setItem('gbROM1', gbROM1)}}})
 
 id('gbROM2').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
-const fPath = e.dataTransfer.files[0].path;
+let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
-if(fileExtension(fPath) === '7z' || fileExtension(fPath) === 'rar' || fileExtension(fPath) === 'zip'){
-let list = listArchive(fPath,gbExt);
-if(list === ''){alert('No ROM (.gb, .gbc) in archive found.');return}
-var datastring = list.replace(/.*  /g,''),
-datasplit = datastring.split(regsplit);
-if(datasplit.length > 2){alert('Archives with multiple ROMs unsupported.');return}
-extractArchive(fPath,workingDirectory,gbExt);
-if(datasplit[0] != ''){gbROM2 = returnPath(workingDirectory,datasplit[0])}}
+if(fileExtension(fPath) === '7z' || fileExtension(fPath) === 'rar' || fileExtension(fPath) === 'zip'){gbROM2 = extract(fPath,gbExt)}
 else if(fileExtension(fPath) === 'gb' || fileExtension(fPath) === 'gbc'){gbROM2 = fPath}
 if(gbROM2 != undefined){id('gbROM2Text').innerHTML = gbROM2;localStorage.setItem('gbROM2', gbROM2)}}})
 
 id('gbROM3').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
-const fPath = e.dataTransfer.files[0].path;
+let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
-if(fileExtension(fPath) === '7z' || fileExtension(fPath) === 'rar' || fileExtension(fPath) === 'zip'){
-let list = listArchive(fPath,gbExt);
-if(list === ''){alert('No ROM (.gb, .gbc) in archive found.');return}
-var datastring = list.replace(/.*  /g,''),
-datasplit = datastring.split(regsplit);
-if(datasplit.length > 2){alert('Archives with multiple ROMs unsupported.');return}
-extractArchive(fPath,workingDirectory,gbExt);
-if(datasplit[0] != ''){gbROM3 = returnPath(workingDirectory,datasplit[0])}}
+if(fileExtension(fPath) === '7z' || fileExtension(fPath) === 'rar' || fileExtension(fPath) === 'zip'){gbROM3 = extract(fPath,gbExt)}
 else if(fileExtension(fPath) === 'gb' || fileExtension(fPath) === 'gbc'){gbROM3 = fPath}
 if(gbROM3 != undefined){id('gbROM3Text').innerHTML = gbROM3;localStorage.setItem('gbROM3', gbROM3)}}})
 
 id('gbROM4').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
-const fPath = e.dataTransfer.files[0].path;
+let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
-if(fileExtension(fPath) === '7z' || fileExtension(fPath) === 'rar' || fileExtension(fPath) === 'zip'){
-let list = listArchive(fPath,gbExt);
-if(list === ''){alert('No ROM (.gb, .gbc) in archive found.');return}
-var datastring = list.replace(/.*  /g,''),
-datasplit = datastring.split(regsplit);
-if(datasplit.length > 2){alert('Archives with multiple ROMs unsupported.');return}
-extractArchive(fPath,workingDirectory,gbExt);
-if(datasplit[0] != ''){gbROM4 = returnPath(workingDirectory,datasplit[0])}}
+if(fileExtension(fPath) === '7z' || fileExtension(fPath) === 'rar' || fileExtension(fPath) === 'zip'){gbROM4 = extract(fPath,gbExt)}
 else if(fileExtension(fPath) === 'gb' || fileExtension(fPath) === 'gbc'){gbROM4 = fPath}
 if(gbROM4 != undefined){id('gbROM4Text').innerHTML = gbROM4;localStorage.setItem('gbROM4', gbROM4)}}})
 
 id('gbRAM1').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
-const fPath = e.dataTransfer.files[0].path;
+let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
 if(fileExtension(fPath) === 'sav'){
 gbRAM1 = fPath;id('gbRAM1Text').innerHTML = fPath;localStorage.setItem('gbRAM1', fPath)}}})
 
 id('gbRAM2').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
-const fPath = e.dataTransfer.files[0].path;
+let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
 if(fileExtension(fPath) === 'sav'){
 gbRAM2 = fPath;id('gbRAM2Text').innerHTML = fPath;localStorage.setItem('gbRAM2', fPath)}}})
 
 id('gbRAM3').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
-const fPath = e.dataTransfer.files[0].path;
+let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
 if(fileExtension(fPath) === 'sav'){
 gbRAM3 = fPath;id('gbRAM3Text').innerHTML = fPath;localStorage.setItem('gbRAM3', fPath)}}})
 
 id('gbRAM4').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
-const fPath = e.dataTransfer.files[0].path;
+let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
 if(fileExtension(fPath) === 'sav'){
 gbRAM4 = fPath;id('gbRAM4Text').innerHTML = fPath;localStorage.setItem('gbRAM4', fPath)}}})
