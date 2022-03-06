@@ -13,12 +13,12 @@ keySyms = {0:0,3:318,8:8,9:9,12:12,13:13,16:304,17:306,18:308,19:19,20:301,27:27
 
 hotKeys = {0:'',48:'0',49:'1',50:'2',51:'3',52:'4',53:'5',54:'6',55:'7',56:'8',57:'9',65:'A',66:'B',67:'C',68:'D',69:'E',70:'F',71:'G',72:'H',73:'I',74:'J',75:'K',76:'L',77:'M',78:'N',79:'O',80:'P',81:'Q',82:'R',83:'S',84:'T',85:'U',86:'V',87:'W',88:'X',89:'Y',90:'Z'}, /* HTML DOM keycodes to GLideN64 hotkeys */
 
-n64Ext = ['*.n64,*.v64','*.z64'], nddExt = ['*.ndd'], gbExt = ['*.gb','*.gbc'],
+n64Ext = ['*.n64','*.v64','*.z64'], nddExt = ['*.ndd'], gbExt = ['*.gb','*.gbc'], saveExt = ['*.sav'], biosExt = ['*.bin','*.rom',...n64Ext],
+n64 = ['n64','v64','z64'], ndd = ['ndd'], gb = ['gb','gbc'], save = ['sav'], bios = [...n64,'bin','rom'], zip = ['7z','rar','zip'],
+n64Type = [...n64,...zip], nddType = [...ndd,...zip], gbType = [...gb,...zip], saveType = [...save,...zip], biosType = [...bios,...zip],
 
 dragDrop = ['fileInput','PIF','IPLROM','Disk','gbROM1','gbROM2','gbROM3','gbROM4','gbRAM1','gbRAM2','gbRAM3','gbRAM4'],
-
 hk = ['hk_keyboard','hk_controller1','hk_controller2','hk_controller3','hk_controller4'],
-
 menu = ['main','input','video','gliden64','rice','glide64mk2'],
 
 n64_buttons = ['AButton1','AButton2','AButton3','AButton4','BButton1','BButton2','BButton3','BButton4','LTrig1','LTrig2','LTrig3','LTrig4','RTrig1','RTrig2','RTrig3','RTrig4','ZTrig1','ZTrig2','ZTrig3','ZTrig4','Start1','Start2','Start3','Start4','DPadU1','DPadU2','DPadU3','DPadU4','DPadD1','DPadD2','DPadD3','DPadD4','DPadL1','DPadL2','DPadL3','DPadL4','DPadR1','DPadR2','DPadR3','DPadR4','StickU1','StickU2','StickU3','StickU4','StickD1','StickD2','StickD3','StickD4','StickL1','StickL2','StickL3','StickL4','StickR1','StickR2','StickR3','StickR4','CButtonU1','CButtonU2','CButtonU3','CButtonU4','CButtonD1','CButtonD2','CButtonD3','CButtonD4','CButtonL1','CButtonL2','CButtonL3','CButtonL4','CButtonR1','CButtonR2','CButtonR3','CButtonR4','MempakSwitch1','MempakSwitch2','MempakSwitch3','MempakSwitch4','RumblepakSwitch1','RumblepakSwitch2','RumblepakSwitch3','RumblepakSwitch4'],
@@ -334,7 +334,7 @@ extractArchive(fpath,workingDirectory,ext);
 if(datasplit[0] != ''){return returnPath(workingDirectory,datasplit[0])}}
 
 id('fileInput').addEventListener('click', function(){
-fileResult = dialogFile({name:'N64 ROM',extensions:['n64','v64','z64','7z','rar','zip']});
+fileResult = dialogFile({name:'N64 ROM',extensions:n64Type});
 if(fileResult != undefined){
 if(fileResult.toString().endsWith('.7z') || fileResult.toString().endsWith('.rar') || fileResult.toString().endsWith('.zip')){filePath = extract(fileResult,n64Ext)}
 else{filePath = fileResult}
@@ -433,97 +433,103 @@ html.addEventListener('click', function(e){if(!e.target.matches('.dropbutton')){
 
 dragDrop.forEach(inp => {id(inp).addEventListener('dragover', prevent, false)})
 function prevent(e){e.preventDefault();e.stopPropagation()}
-function fileExtension(fpath,ext){ext = fpath.slice((fpath.lastIndexOf(".") - 1 >>> 0) + 2);return ext}
+function fileExtension(fpath,ext){ext = fpath.slice((fpath.lastIndexOf('.') - 1 >>> 0) + 2);return ext}
 
 id('fileInput').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
 let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
-if(fileExtension(fPath) === '7z' || fileExtension(fPath) === 'rar' || fileExtension(fPath) === 'zip'){filePath = extract(fPath,n64Ext)}
-else if(fileExtension(fPath) === 'n64' || fileExtension(fPath) === 'v64' || fileExtension(fPath) === 'z64'){filePath = fPath}
+if(zip.includes(fileExtension(fPath))){filePath = extract(fPath,n64Ext)}
+else if(n64.includes(fileExtension(fPath))){filePath = fPath}
 if(filePath != undefined){id('fileText').innerHTML = filePath;localStorage.setItem('filePath', filePath);if(!recentFiles.includes(filePath))recentFiles.unshift(filePath);recentFiles.splice(10);recentFilesUpdate();localStorage.setItem('recentFiles',JSON.stringify(recentFiles));if(id('cheatList').innerHTML!='')id('cheatList').innerHTML=''}}})
 
 id('PIF').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
 let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
-if(fileExtension(fPath) === 'n64' || fileExtension(fPath) === 'v64' || fileExtension(fPath) === 'z64' || fileExtension(fPath) === 'bin' || fileExtension(fPath) === 'rom'){
-PIF = fPath;id('PIFText').innerHTML = fPath;localStorage.setItem('PIF', fPath)}}})
+if(zip.includes(fileExtension(fPath))){PIF = extract(fPath,biosExt)}
+else if(bios.includes(fileExtension(fPath))){PIF = fPath}
+if(PIF != undefined){id('PIFText').innerHTML = PIF;localStorage.setItem('PIF', PIF)}}})
 
 id('IPLROM').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
 let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
-if(fileExtension(fPath) === 'n64' || fileExtension(fPath) === 'v64' || fileExtension(fPath) === 'z64' || fileExtension(fPath) === 'bin' || fileExtension(fPath) === 'rom'){
-IPLROM = fPath;id('IPLROMText').innerHTML = fPath;localStorage.setItem('IPLROM', fPath)}}})
+if(zip.includes(fileExtension(fPath))){IPLROM = extract(fPath,biosExt)}
+else if(bios.includes(fileExtension(fPath))){IPLROM = fPath}
+if(IPLROM != undefined){id('IPLROMText').innerHTML = IPLROM;localStorage.setItem('IPLROM', IPLROM)}}})
 
 id('Disk').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
 let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
-if(fileExtension(fPath) === '7z' || fileExtension(fPath) === 'rar' || fileExtension(fPath) === 'zip'){Disk = extract(fPath,nddExt)}
-else if(fileExtension(fPath) === 'ndd'){Disk = fPath}
+if(zip.includes(fileExtension(fPath))){Disk = extract(fPath,nddExt)}
+else if(ndd.includes(fileExtension(fPath))){Disk = fPath}
 if(Disk != undefined){id('DiskText').innerHTML = Disk;localStorage.setItem('Disk', Disk)}}})
 
 id('gbROM1').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
 let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
-if(fileExtension(fPath) === '7z' || fileExtension(fPath) === 'rar' || fileExtension(fPath) === 'zip'){gbROM1 = extract(fPath,gbExt)}
-else if(fileExtension(fPath) === 'gb' || fileExtension(fPath) === 'gbc'){gbROM1 = fPath}
+if(zip.includes(fileExtension(fPath))){gbROM1 = extract(fPath,gbExt)}
+else if(gb.includes(fileExtension(fPath))){gbROM1 = fPath}
 if(gbROM1 != undefined){id('gbROM1Text').innerHTML = gbROM1;localStorage.setItem('gbROM1', gbROM1)}}})
 
 id('gbROM2').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
 let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
-if(fileExtension(fPath) === '7z' || fileExtension(fPath) === 'rar' || fileExtension(fPath) === 'zip'){gbROM2 = extract(fPath,gbExt)}
-else if(fileExtension(fPath) === 'gb' || fileExtension(fPath) === 'gbc'){gbROM2 = fPath}
+if(zip.includes(fileExtension(fPath))){gbROM2 = extract(fPath,gbExt)}
+else if(gb.includes(fileExtension(fPath))){gbROM2 = fPath}
 if(gbROM2 != undefined){id('gbROM2Text').innerHTML = gbROM2;localStorage.setItem('gbROM2', gbROM2)}}})
 
 id('gbROM3').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
 let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
-if(fileExtension(fPath) === '7z' || fileExtension(fPath) === 'rar' || fileExtension(fPath) === 'zip'){gbROM3 = extract(fPath,gbExt)}
-else if(fileExtension(fPath) === 'gb' || fileExtension(fPath) === 'gbc'){gbROM3 = fPath}
+if(zip.includes(fileExtension(fPath))){gbROM3 = extract(fPath,gbExt)}
+else if(gb.includes(fileExtension(fPath))){gbROM3 = fPath}
 if(gbROM3 != undefined){id('gbROM3Text').innerHTML = gbROM3;localStorage.setItem('gbROM3', gbROM3)}}})
 
 id('gbROM4').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
 let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
-if(fileExtension(fPath) === '7z' || fileExtension(fPath) === 'rar' || fileExtension(fPath) === 'zip'){gbROM4 = extract(fPath,gbExt)}
-else if(fileExtension(fPath) === 'gb' || fileExtension(fPath) === 'gbc'){gbROM4 = fPath}
+if(zip.includes(fileExtension(fPath))){gbROM4 = extract(fPath,gbExt)}
+else if(gb.includes(fileExtension(fPath))){gbROM4 = fPath}
 if(gbROM4 != undefined){id('gbROM4Text').innerHTML = gbROM4;localStorage.setItem('gbROM4', gbROM4)}}})
 
 id('gbRAM1').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
 let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
-if(fileExtension(fPath) === 'sav'){
-gbRAM1 = fPath;id('gbRAM1Text').innerHTML = fPath;localStorage.setItem('gbRAM1', fPath)}}})
+if(zip.includes(fileExtension(fPath))){gbRAM1 = extract(fPath,saveExt)}
+else if(save.includes(fileExtension(fPath))){gbRAM1 = fPath}
+if(gbRAM1 != undefined){id('gbRAM1Text').innerHTML = gbRAM1;localStorage.setItem('gbRAM1', gbRAM1)}}})
 
 id('gbRAM2').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
 let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
-if(fileExtension(fPath) === 'sav'){
-gbRAM2 = fPath;id('gbRAM2Text').innerHTML = fPath;localStorage.setItem('gbRAM2', fPath)}}})
+if(zip.includes(fileExtension(fPath))){gbRAM2 = extract(fPath,saveExt)}
+else if(save.includes(fileExtension(fPath))){gbRAM2 = fPath}
+if(gbRAM2 != undefined){id('gbRAM2Text').innerHTML = gbRAM2;localStorage.setItem('gbRAM2', gbRAM2)}}})
 
 id('gbRAM3').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
 let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
-if(fileExtension(fPath) === 'sav'){
-gbRAM3 = fPath;id('gbRAM3Text').innerHTML = fPath;localStorage.setItem('gbRAM3', fPath)}}})
+if(zip.includes(fileExtension(fPath))){gbRAM3 = extract(fPath,saveExt)}
+else if(save.includes(fileExtension(fPath))){gbRAM3 = fPath}
+if(gbRAM3 != undefined){id('gbRAM3Text').innerHTML = gbRAM3;localStorage.setItem('gbRAM3', gbRAM3)}}})
 
 id('gbRAM4').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
 let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
-if(fileExtension(fPath) === 'sav'){
-gbRAM4 = fPath;id('gbRAM4Text').innerHTML = fPath;localStorage.setItem('gbRAM4', fPath)}}})
+if(zip.includes(fileExtension(fPath))){gbRAM4 = extract(fPath,saveExt)}
+else if(save.includes(fileExtension(fPath))){gbRAM4 = fPath}
+if(gbRAM4 != undefined){id('gbRAM4Text').innerHTML = gbRAM4;localStorage.setItem('gbRAM4', gbRAM4)}}})
 
 
 
@@ -531,23 +537,29 @@ id('clearPIF').addEventListener('click', function(){PIF = '';id('PIFText').inner
 if(localStorage.getItem('PIF') === null){PIF = '';id('PIFText').innerHTML = PIF}
 if(localStorage.getItem('PIF') != null){PIF = localStorage.getItem('PIF');id('PIFText').innerHTML = PIF}
 id('PIF').addEventListener('click', function(){
-PIFResult = dialogFile({name:'64DD IPL',extensions:['n64','v64','z64','bin','rom']})
-if(PIFResult != undefined){PIF = PIFResult.toString();id('PIFText').innerHTML = PIF;localStorage.setItem('PIF', PIF)}})
+PIFResult = dialogFile({name:'64DD IPL',extensions:biosType})
+if(PIFResult != undefined){
+if(zip.includes(fileExtension(PIFResult.toString()))){PIF = extract(PIFResult,biosExt)}
+else{PIF = PIFResult.toString()}
+if(PIF != undefined){id('PIFText').innerHTML = PIF;localStorage.setItem('PIF', PIF)}}})
 
 id('clearIPLROM').addEventListener('click', function(){IPLROM = '';id('IPLROMText').innerHTML = '';localStorage.removeItem('IPLROM')})
 if(localStorage.getItem('IPLROM') === null){IPLROM = '';id('IPLROMText').innerHTML = IPLROM}
 if(localStorage.getItem('IPLROM') != null){IPLROM = localStorage.getItem('IPLROM');id('IPLROMText').innerHTML = IPLROM}
 id('IPLROM').addEventListener('click', function(){
-IPLROMResult = dialogFile({name:'64DD IPL',extensions:['n64','v64','z64','bin','rom']})
-if(IPLROMResult != undefined){IPLROM = IPLROMResult.toString();id('IPLROMText').innerHTML = IPLROM;localStorage.setItem('IPLROM', IPLROM)}})
+IPLROMResult = dialogFile({name:'64DD IPL',extensions:biosType})
+if(IPLROMResult != undefined){
+if(zip.includes(fileExtension(IPLROMResult.toString()))){IPLROM = extract(IPLROMResult,biosExt)}
+else{IPLROM = IPLROMResult.toString()}
+if(IPLROM != undefined){id('IPLROMText').innerHTML = IPLROM;localStorage.setItem('IPLROM', IPLROM)}}})
 
 id('clearDisk').addEventListener('click', function(){Disk = '';id('DiskText').innerHTML = '';localStorage.removeItem('Disk')})
 if(localStorage.getItem('Disk') === null){Disk = '';id('DiskText').innerHTML = Disk}
 if(localStorage.getItem('Disk') != null){Disk = localStorage.getItem('Disk');id('DiskText').innerHTML = Disk}
 id('Disk').addEventListener('click', function(){
-DiskResult = dialogFile({name:'64DD Disk',extensions:['ndd','7z','rar','zip']})
+DiskResult = dialogFile({name:'64DD Disk',extensions:nddType})
 if(DiskResult != undefined){
-if(DiskResult.toString().endsWith('.7z') || DiskResult.toString().endsWith('.rar') || DiskResult.toString().endsWith('.zip')){Disk = extract(DiskResult,nddExt)}
+if(zip.includes(fileExtension(DiskResult.toString()))){Disk = extract(DiskResult,nddExt)}
 else{Disk = DiskResult.toString()}
 if(Disk != undefined){id('DiskText').innerHTML = Disk;localStorage.setItem('Disk', Disk)}}})
 
@@ -555,9 +567,9 @@ id('cleargbROM1').addEventListener('click', function(){gbROM1 = '';id('gbROM1Tex
 if(localStorage.getItem('gbROM1') === null){gbROM1 = '';id('gbROM1Text').innerHTML = gbROM1}
 if(localStorage.getItem('gbROM1') != null){gbROM1 = localStorage.getItem('gbROM1');id('gbROM1Text').innerHTML = gbROM1}
 id('gbROM1').addEventListener('click', function(){
-gbROM1Result = dialogFile({name:'GB ROM',extensions:['gb','gbc','7z','rar','zip']})
+gbROM1Result = dialogFile({name:'GB ROM',extensions:gbType})
 if(gbROM1Result != undefined){
-if(gbROM1Result.toString().endsWith('.7z') || gbROM1Result.toString().endsWith('.rar') || gbROM1Result.toString().endsWith('.zip')){gbROM1 = extract(gbROM1Result,gbExt)}
+if(zip.includes(fileExtension(gbROM1Result.toString()))){gbROM1 = extract(gbROM1Result,gbExt)}
 else{gbROM1 = gbROM1Result.toString()}
 if(gbROM1 != undefined){id('gbROM1Text').innerHTML = gbROM1;localStorage.setItem('gbROM1', gbROM1)}}})
 
@@ -565,9 +577,9 @@ id('cleargbROM2').addEventListener('click', function(){gbROM2 = '';id('gbROM2Tex
 if(localStorage.getItem('gbROM2') === null){gbROM2 = '';id('gbROM2Text').innerHTML = gbROM2}
 if(localStorage.getItem('gbROM2') != null){gbROM2 = localStorage.getItem('gbROM2');id('gbROM2Text').innerHTML = gbROM2}
 id('gbROM2').addEventListener('click', function(){
-gbROM2Result = dialogFile({name:'GB ROM',extensions:['gb','gbc','7z','rar','zip']})
+gbROM2Result = dialogFile({name:'GB ROM',extensions:gbType})
 if(gbROM2Result != undefined){
-if(gbROM2Result.toString().endsWith('.7z') || gbROM2Result.toString().endsWith('.rar') || gbROM2Result.toString().endsWith('.zip')){gbROM2 = extract(gbROM2Result,gbExt)}
+if(zip.includes(fileExtension(gbROM2Result.toString()))){gbROM2 = extract(gbROM2Result,gbExt)}
 else{gbROM2 = gbROM2Result.toString()}
 if(gbROM2 != undefined){id('gbROM2Text').innerHTML = gbROM2;localStorage.setItem('gbROM2', gbROM2)}}})
 
@@ -575,9 +587,9 @@ id('cleargbROM3').addEventListener('click', function(){gbROM3 = '';id('gbROM3Tex
 if(localStorage.getItem('gbROM3') === null){gbROM3 = '';id('gbROM3Text').innerHTML = gbROM3}
 if(localStorage.getItem('gbROM3') != null){gbROM3 = localStorage.getItem('gbROM3');id('gbROM3Text').innerHTML = gbROM3}
 id('gbROM3').addEventListener('click', function(){
-gbROM3Result = dialogFile({name:'GB ROM',extensions:['gb','gbc','7z','rar','zip']})
+gbROM3Result = dialogFile({name:'GB ROM',extensions:gbType})
 if(gbROM3Result != undefined){
-if(gbROM3Result.toString().endsWith('.7z') || gbROM3Result.toString().endsWith('.rar') || gbROM3Result.toString().endsWith('.zip')){gbROM3 = extract(gbROM3Result,gbExt)}
+if(zip.includes(fileExtension(gbROM3Result.toString()))){gbROM3 = extract(gbROM3Result,gbExt)}
 else{gbROM3 = gbROM3Result.toString()}
 if(gbROM3 != undefined){id('gbROM3Text').innerHTML = gbROM3;localStorage.setItem('gbROM3', gbROM3)}}})
 
@@ -585,9 +597,9 @@ id('cleargbROM4').addEventListener('click', function(){gbROM4 = '';id('gbROM4Tex
 if(localStorage.getItem('gbROM4') === null){gbROM4 = '';id('gbROM4Text').innerHTML = gbROM4}
 if(localStorage.getItem('gbROM4') != null){gbROM4 = localStorage.getItem('gbROM4');id('gbROM4Text').innerHTML = gbROM4}
 id('gbROM4').addEventListener('click', function(){
-gbROM4Result = dialogFile({name:'GB ROM',extensions:['gb','gbc','7z','rar','zip']})
+gbROM4Result = dialogFile({name:'GB ROM',extensions:gbType})
 if(gbROM4Result != undefined){
-if(gbROM4Result.toString().endsWith('.7z') || gbROM4Result.toString().endsWith('.rar') || gbROM4Result.toString().endsWith('.zip')){gbROM4 = extract(gbROM4Result,gbExt)}
+if(zip.includes(fileExtension(gbROM4Result.toString()))){gbROM4 = extract(gbROM4Result,gbExt)}
 else{gbROM4 = gbROM4Result.toString()}
 if(gbROM4 != undefined){id('gbROM4Text').innerHTML = gbROM4;localStorage.setItem('gbROM4', gbROM4)}}})
 
@@ -595,29 +607,43 @@ id('cleargbRAM1').addEventListener('click', function(){gbRAM1 = '';id('gbRAM1Tex
 if(localStorage.getItem('gbRAM1') === null){gbRAM1 = '';id('gbRAM1Text').innerHTML = gbRAM1}
 if(localStorage.getItem('gbRAM1') != null){gbRAM1 = localStorage.getItem('gbRAM1');id('gbRAM1Text').innerHTML = gbRAM1}
 id('gbRAM1').addEventListener('click', function(){
-gbRAM1Result = dialogFile({name:'GB Save File',extensions:['sav']})
-if(gbRAM1Result != undefined){gbRAM1 = gbRAM1Result.toString();id('gbRAM1Text').innerHTML = gbRAM1;localStorage.setItem('gbRAM1', gbRAM1)}})
+gbRAM1Result = dialogFile({name:'GB Save File',extensions:saveType})
+if(gbRAM1Result != undefined){
+if(zip.includes(fileExtension(gbRAM1Result.toString()))){gbRAM1 = extract(gbRAM1Result,saveExt)}
+else{gbRAM1 = gbRAM1Result.toString()}
+if(gbRAM1 != undefined){id('gbRAM1Text').innerHTML = gbRAM1;localStorage.setItem('gbRAM1', gbRAM1)}}})
 
 id('cleargbRAM2').addEventListener('click', function(){gbRAM2 = '';id('gbRAM2Text').innerHTML = '';localStorage.removeItem('gbRAM2')})
 if(localStorage.getItem('gbRAM2') === null){gbRAM2 = '';id('gbRAM2Text').innerHTML = gbRAM2}
 if(localStorage.getItem('gbRAM2') != null){gbRAM2 = localStorage.getItem('gbRAM2');id('gbRAM2Text').innerHTML = gbRAM2}
 id('gbRAM2').addEventListener('click', function(){
-gbRAM2Result = dialogFile({name:'GB Save File',extensions:['sav']})
-if(gbRAM2Result != undefined){gbRAM2 = gbRAM2Result.toString();id('gbRAM2Text').innerHTML = gbRAM2;localStorage.setItem('gbRAM2', gbRAM2)}})
+gbRAM2Result = dialogFile({name:'GB Save File',extensions:saveType})
+if(gbRAM2Result != undefined){
+if(zip.includes(fileExtension(gbRAM2Result.toString()))){gbRAM2 = extract(gbRAM2Result,saveExt)}
+else{gbRAM2 = gbRAM2Result.toString()}
+if(gbRAM2 != undefined){id('gbRAM2Text').innerHTML = gbRAM2;localStorage.setItem('gbRAM2', gbRAM2)}}})
 
 id('cleargbRAM3').addEventListener('click', function(){gbRAM3 = '';id('gbRAM3Text').innerHTML = '';localStorage.removeItem('gbRAM3')})
 if(localStorage.getItem('gbRAM3') === null){gbRAM3 = '';id('gbRAM3Text').innerHTML = gbRAM3}
 if(localStorage.getItem('gbRAM3') != null){gbRAM3 = localStorage.getItem('gbRAM3');id('gbRAM3Text').innerHTML = gbRAM3}
 id('gbRAM3').addEventListener('click', function(){
-gbRAM3Result = dialogFile({name:'GB Save File',extensions:['sav']})
-if(gbRAM3Result != undefined){gbRAM3 = gbRAM3Result.toString();id('gbRAM3Text').innerHTML = gbRAM3;localStorage.setItem('gbRAM3', gbRAM3)}})
+gbRAM3Result = dialogFile({name:'GB Save File',extensions:saveType})
+if(gbRAM3Result != undefined){
+if(zip.includes(fileExtension(gbRAM3Result.toString()))){gbRAM3 = extract(gbRAM3Result,saveExt)}
+else{gbRAM3 = gbRAM3Result.toString()}
+if(gbRAM3 != undefined){id('gbRAM3Text').innerHTML = gbRAM3;localStorage.setItem('gbRAM3', gbRAM3)}}})
 
 id('cleargbRAM4').addEventListener('click', function(){gbRAM4 = '';id('gbRAM4Text').innerHTML = '';localStorage.removeItem('gbRAM4')})
 if(localStorage.getItem('gbRAM4') === null){gbRAM4 = '';id('gbRAM4Text').innerHTML = gbRAM4}
 if(localStorage.getItem('gbRAM4') != null){gbRAM4 = localStorage.getItem('gbRAM4');id('gbRAM4Text').innerHTML = gbRAM4}
 id('gbRAM4').addEventListener('click', function(){
-gbRAM4Result = dialogFile({name:'GB Save File',extensions:['sav']})
-if(gbRAM4Result != undefined){gbRAM4 = gbRAM4Result.toString();id('gbRAM4Text').innerHTML = gbRAM4;localStorage.setItem('gbRAM4', gbRAM4)}})
+gbRAM4Result = dialogFile({name:'GB Save File',extensions:saveType})
+if(gbRAM4Result != undefined){
+if(zip.includes(fileExtension(gbRAM4Result.toString()))){gbRAM4 = extract(gbRAM4Result,saveExt)}
+else{gbRAM4 = gbRAM4Result.toString()}
+if(gbRAM4 != undefined){id('gbRAM4Text').innerHTML = gbRAM4;localStorage.setItem('gbRAM4', gbRAM4)}}})
+
+
 
 id('resetScreenshotPath').addEventListener('click', function(){ScreenshotPath = '';id('ScreenshotPathText').innerHTML = '';localStorage.removeItem('ScreenshotPath')})
 if(localStorage.getItem('ScreenshotPath') === null){ScreenshotPath = '';id('ScreenshotPathText').innerHTML = ScreenshotPath}
