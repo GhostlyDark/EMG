@@ -42,7 +42,7 @@ ipcMain.on('listArchive', (e, archivePath, ext) => {
 ipcMain.on('extractArchive', (e, archivePath, workingDirectory, ext) => {
 	const parameters = ['e','-o'+workingDirectory,archivePath,...ext,'-r','-y'];
 	let child = childSpawnSync(zipPath, parameters, options);
-	e.returnValue = ''
+	e.returnValue = child.stdout.toString()
 })
 
 ipcMain.on('emuLaunch', (e, parameters) => {
