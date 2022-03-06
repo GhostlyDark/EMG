@@ -17,6 +17,8 @@ n64Ext = ['*.n64,*.v64','*.z64'], nddExt = ['*.ndd'], gbExt = ['*.gb','*.gbc'],
 
 dragDrop = ['fileInput','PIF','IPLROM','Disk','gbROM1','gbROM2','gbROM3','gbROM4','gbRAM1','gbRAM2','gbRAM3','gbRAM4'],
 
+menu = ['main','input','video','gliden64','rice','glide64mk2'],
+
 n64_buttons = ['AButton1','AButton2','AButton3','AButton4','BButton1','BButton2','BButton3','BButton4','LTrig1','LTrig2','LTrig3','LTrig4','RTrig1','RTrig2','RTrig3','RTrig4','ZTrig1','ZTrig2','ZTrig3','ZTrig4','Start1','Start2','Start3','Start4','DPadU1','DPadU2','DPadU3','DPadU4','DPadD1','DPadD2','DPadD3','DPadD4','DPadL1','DPadL2','DPadL3','DPadL4','DPadR1','DPadR2','DPadR3','DPadR4','StickU1','StickU2','StickU3','StickU4','StickD1','StickD2','StickD3','StickD4','StickL1','StickL2','StickL3','StickL4','StickR1','StickR2','StickR3','StickR4','CButtonU1','CButtonU2','CButtonU3','CButtonU4','CButtonD1','CButtonD2','CButtonD3','CButtonD4','CButtonL1','CButtonL2','CButtonL3','CButtonL4','CButtonR1','CButtonR2','CButtonR3','CButtonR4','MempakSwitch1','MempakSwitch2','MempakSwitch3','MempakSwitch4','RumblepakSwitch1','RumblepakSwitch2','RumblepakSwitch3','RumblepakSwitch4'],
 
 gliden64_hotkeys = ['hkTexDump','hkHdTexReload','hkHdTexToggle','hkInaccurateTexCords','hkVsync','hkFBEmulation','hkN64DepthCompare','hkOsdVis','hkOsdFps','hkOsdPercent','hkOsdInternalResolution','hkOsdRenderingResolution','hkTexCoordBounds','hkNativeResTexrects','hkForceGammaCorrection'],
@@ -422,38 +424,12 @@ if(id('gfx').value === 'mupen64plus-video-glide64mk2')id('glide64mk2').classList
 id('gfx').addEventListener('change', currentGFX)
 currentGFX()
 
-function removeShow(){
-if(id('mainSettings').classList.contains('active'))id('mainSettings').classList.remove('active');
-if(id('inputSettings').classList.contains('active'))id('inputSettings').classList.remove('active');
-if(id('videoSettings').classList.contains('active'))id('videoSettings').classList.remove('active');
-if(id('gliden64Settings').classList.contains('active'))id('gliden64Settings').classList.remove('active');
-if(id('riceSettings').classList.contains('active'))id('riceSettings').classList.remove('active');
-if(id('glide64mk2Settings').classList.contains('active'))id('glide64mk2Settings').classList.remove('active');
-if(id('mainSettingsDropdown').classList.contains('show'))id('mainSettingsDropdown').classList.remove('show');
-if(id('inputSettingsDropdown').classList.contains('show'))id('inputSettingsDropdown').classList.remove('show');
-if(id('videoSettingsDropdown').classList.contains('show'))id('videoSettingsDropdown').classList.remove('show');
-if(id('gliden64SettingsDropdown').classList.contains('show'))id('gliden64SettingsDropdown').classList.remove('show')
-if(id('riceSettingsDropdown').classList.contains('show'))id('riceSettingsDropdown').classList.remove('show')
-if(id('glide64mk2SettingsDropdown').classList.contains('show'))id('glide64mk2SettingsDropdown').classList.remove('show')}
+function removeShow(){menu.forEach(menu => {
+if(id(menu+'Settings').classList.contains('active'))id(menu+'Settings').classList.remove('active');
+if(id(menu+'SettingsDropdown').classList.contains('show'))id(menu+'SettingsDropdown').classList.remove('show')})}
 
-id('mainSettings').addEventListener('click', function(){
-if(id('mainSettingsDropdown').classList.contains('show')){removeShow()}
-else{removeShow();id('mainSettingsDropdown').classList.toggle('show');id('mainSettings').classList.toggle('active')}})
-id('inputSettings').addEventListener('click', function(){
-if(id('inputSettingsDropdown').classList.contains('show')){removeShow()}
-else{removeShow();id('inputSettingsDropdown').classList.toggle('show');id('inputSettings').classList.toggle('active')}})
-id('videoSettings').addEventListener('click', function(){
-if(id('videoSettingsDropdown').classList.contains('show')){removeShow()}
-else{removeShow();id('videoSettingsDropdown').classList.toggle('show');id('videoSettings').classList.toggle('active')}})
-id('gliden64Settings').addEventListener('click', function(){
-if(id('gliden64SettingsDropdown').classList.contains('show')){removeShow()}
-else{removeShow();id('gliden64SettingsDropdown').classList.toggle('show');id('gliden64Settings').classList.toggle('active')}})
-id('riceSettings').addEventListener('click', function(){
-if(id('riceSettingsDropdown').classList.contains('show')){removeShow()}
-else{removeShow();id('riceSettingsDropdown').classList.toggle('show');id('riceSettings').classList.toggle('active')}})
-id('glide64mk2Settings').addEventListener('click', function(){
-if(id('glide64mk2SettingsDropdown').classList.contains('show')){removeShow()}
-else{removeShow();id('glide64mk2SettingsDropdown').classList.toggle('show');id('glide64mk2Settings').classList.toggle('active')}})
+menu.forEach(menu => {id(menu+'Settings').addEventListener('click', function(){
+removeShow();if(!id(menu+'SettingsDropdown').classList.contains('show')){id(menu+'SettingsDropdown').classList.toggle('show');id(menu+'Settings').classList.toggle('active')}})})
 
 html.addEventListener('click', function(e){if(!e.target.matches('.dropbutton')){removeShow()}})
 
