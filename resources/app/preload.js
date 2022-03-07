@@ -5,6 +5,7 @@ hires_texture = ipcRenderer.sendSync('hires_texture'),
 cache = ipcRenderer.sendSync('cache'),
 texture_dump = ipcRenderer.sendSync('texture_dump'),
 working_directory = ipcRenderer.sendSync('working_directory'),
+isLinux = ipcRenderer.sendSync('isLinux'),
 dialogDirectory = () => {return ipcRenderer.sendSync('dialogDirectory')},
 dialogFile = (data) => {return ipcRenderer.sendSync('dialogFile', data)},
 writeGCA = (gcaSettings) => {ipcRenderer.sendSync('writeGCA', gcaSettings)},
@@ -59,6 +60,7 @@ contextBridge.exposeInMainWorld('hires_texture',hires_texture)
 contextBridge.exposeInMainWorld('cache',cache)
 contextBridge.exposeInMainWorld('texture_dump',texture_dump)
 contextBridge.exposeInMainWorld('working_directory',working_directory)
+contextBridge.exposeInMainWorld('isLinux',isLinux)
 contextBridge.exposeInMainWorld('dialogDirectory',dialogDirectory)
 contextBridge.exposeInMainWorld('dialogFile',dialogFile)
 contextBridge.exposeInMainWorld('emuLaunch',emuLaunch)

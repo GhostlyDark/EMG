@@ -81,6 +81,7 @@ ipcMain.on('cache', (e) => {e.returnValue = path(m64pCache, 'cache')})
 ipcMain.on('texture_dump', (e) => {e.returnValue = path(m64pTex, 'texture_dump')})
 ipcMain.on('working_directory', (e) => {e.returnValue = path(emg, 'ROMs')})
 ipcMain.on('returnPath', (e, workingDirectory, rom) => {e.returnValue = path(workingDirectory, rom)})
+ipcMain.on('isLinux', (e) => {e.returnValue = isLinux})
 ipcMain.on('dialogDirectory', (e) => {e.returnValue = dialog.showOpenDialogSync({properties:['openDirectory']})})
 ipcMain.on('dialogFile', (e, data) => {e.returnValue = dialog.showOpenDialogSync({properties:['openFile'],filters:[data]})})
 
