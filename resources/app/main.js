@@ -9,9 +9,8 @@ url = require('url').URL,
 path = require('path').join,
 dir = __dirname,
 appData = app.getPath('appData'),
+m64pConfig = path(appData, 'mupen64plus'),
 emg = path(appData, 'EMG'),
-m64pAppData = path(appData, 'mupen64plus'),
-m64pCache = path(appData, '../', '.cache', 'mupen64plus'),
 cwd = path(dir, 'm64p'),
 executablePath = path(cwd, 'mupen64plus'),
 jstestPath = path(cwd, 'sdl2-jstest'),
@@ -29,9 +28,8 @@ app.enableSandbox()
 const menuQuit = 'Quit ' + app.name,menuWindow = 'Window',menuFunctions = 'Functions',menuReload = 'Reload window',menuDev = 'Developer tools',menuZoomIn = 'Increase zoom',menuZoomOut = 'Decrease zoom',menuZoomReset = 'Reset zoom',menuClear = 'Reset settings',menuEMG = 'Show EMG data',menuSaves = 'Show m64p data',menuGitHub = 'Visit GitHub repo',menuSite = 'Visit website',dialogDelete = ' Reset settings',dialogDeleteM = 'Reset all settings?',dialogNo = 'Abort',dialogYes = 'Confirm',
 deleteDialog = {defaultId:1, cancelId:1, icon:path(dir, 'img', 'delete.png'), buttons:[dialogYes,dialogNo], title:dialogDelete, message:dialogDeleteM}
 
-var jstestChild,
-zipPath = path(cwd, '7z');
-if(process.platform === 'linux')zipPath = '7z';
+var jstestChild, m64pCache = m64pConfig, m64pTex = m64pConfig, zipPath = path(cwd, '7z');
+if(process.platform === 'linux'){m64pCache = path(appData, '../', '.cache', 'mupen64plus');m64pTex = path(appData, '../', '.local', 'share', 'mupen64plus');zipPath = '7z'};
 
 ipcMain.on('listArchive', (e, archivePath, ext) => {
 	const parameters = ['l',archivePath,...ext,'-r','-ba'];
@@ -69,17 +67,17 @@ ipcMain.on('jsrefresh', (e) => {
 })
 
 ipcMain.on('writeGCA', (e, gcaSettings) => {
-	if(!existsSync(m64pAppData)){mkdirSync(m64pAppData,{recursive:true})}
-	e.returnValue = writeFileSync(path(m64pAppData, 'mupen64plus-input-gca.toml'),gcaSettings)
+	if(!existsSync(m64pConfig)){mkdirSync(m64pConfig,{recursive:true})}
+	e.returnValue = writeFileSync(path(m64pConfig, 'mupen64plus-input-gca.toml'),gcaSettings)
 })
 
 ipcMain.on('cwd', (e) => {e.returnValue = cwd})
 ipcMain.on('executablePath', (e) => {e.returnValue = executablePath})
 ipcMain.on('jstestPath', (e) => {e.returnValue = jstestPath})
 ipcMain.on('jstestKill', () => {if(jstestChild != undefined)jstestChild.kill('SIGTERM')})
-ipcMain.on('hires_texture', (e) => {e.returnValue = path(m64pAppData, 'hires_texture')})
-ipcMain.on('cache', (e) => {if(process.platform === 'linux'){e.returnValue = path(m64pCache, 'cache')}else{e.returnValue = path(m64pAppData, 'cache')}})
-ipcMain.on('texture_dump', (e) => {if(process.platform === 'linux'){e.returnValue = path(m64pCache, 'texture_dump')}else{e.returnValue = path(m64pAppData, 'texture_dump')}})
+ipcMain.on('hires_texture', (e) => {e.returnValue = path(m64pTex, 'hires_texture')})
+ipcMain.on('cache', (e) => {e.returnValue = path(m64pCache, 'cache')})
+ipcMain.on('texture_dump', (e) => {e.returnValue = path(m64pTex, 'texture_dump')})
 ipcMain.on('working_directory', (e) => {e.returnValue = path(emg, 'ROMs')})
 ipcMain.on('returnPath', (e, workingDirectory, rom) => {e.returnValue = path(workingDirectory, rom)})
 ipcMain.on('dialogDirectory', (e) => {e.returnValue = dialog.showOpenDialogSync({properties:['openDirectory']})})
@@ -114,7 +112,7 @@ Menu.setApplicationMenu(Menu.buildFromTemplate([
 	{label: menuFunctions, submenu: [
 		{icon: nativeImage.createFromPath(path(dir, 'img', 'delete.png')).resize(scale), label: menuClear, click () {choice = dialog.showMessageBoxSync(win,deleteDialog);if(choice !== 1){session.defaultSession.clearStorageData();session.defaultSession.clearCache()}}},
 		{icon: nativeImage.createFromPath(path(dir, 'img', 'emg.png')).resize(scale), label: menuEMG, click () {shell.openPath(emg)}},
-		{icon: nativeImage.createFromPath(path(dir, 'img', 'mupen64plus.png')).resize(scale), label: menuSaves, click () {shell.openPath(m64pAppData)}},
+		{icon: nativeImage.createFromPath(path(dir, 'img', 'mupen64plus.png')).resize(scale), label: menuSaves, click () {shell.openPath(m64pConfig)}},
 		{type: 'separator'},
 		{icon: nativeImage.createFromPath(path(dir, 'img', 'github.png')).resize(scale), label: menuGitHub, click () {shell.openExternal('https://github.com/GhostlyDark/EMG')}},
 		{icon: nativeImage.createFromPath(path(dir, 'img', 'icon-ghostly-nx.png')).resize(scale), label: menuSite, click () {shell.openExternal('https://evilgames.eu/')}}
