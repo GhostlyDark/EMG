@@ -118,12 +118,10 @@ Menu.setApplicationMenu(Menu.buildFromTemplate([
 		{icon: nativeImage.createFromPath(path(dir, 'img', 'github.png')).resize(scale), label: menuGitHub, click () {shell.openExternal('https://github.com/GhostlyDark/EMG')}},
 		{icon: nativeImage.createFromPath(path(dir, 'img', 'icon-ghostly-nx.png')).resize(scale), label: menuSite, click () {shell.openExternal('https://evilgames.eu/')}}
 		]},
-	...(isLinux ? [{
-    label: 'Linux', submenu: [
-      {icon: nativeImage.createFromPath(path(dir, 'img', 'mupen64plus.png')).resize(scale), label: menuCache, click () {shell.openPath(m64pCache)}},
-	  {icon: nativeImage.createFromPath(path(dir, 'img', 'mupen64plus.png')).resize(scale), label: menuTex, click () {shell.openPath(m64pTex)}}
-    ]
-	}] : []),
+	...(isLinux ? [{label: 'Linux', submenu: [
+		{icon: nativeImage.createFromPath(path(dir, 'img', 'mupen64plus.png')).resize(scale), label: menuCache, click () {shell.openPath(m64pCache)}},
+		{icon: nativeImage.createFromPath(path(dir, 'img', 'mupen64plus.png')).resize(scale), label: menuTex, click () {shell.openPath(m64pTex)}}
+		]}] : [])
 ]))
 
 win.on('closed', () => {app.exit()})})
