@@ -14,6 +14,7 @@ emg = path(appData, 'EMG'),
 cwd = path(dir, 'm64p'),
 executablePath = path(cwd, 'mupen64plus'),
 jstestPath = path(cwd, 'sdl2-jstest'),
+isLinux = process.platform === 'linux',
 stdio = ['ignore', 'pipe', 'ignore'],
 options = {cwd: cwd, stdio: stdio, windowsHide: true},
 emuOptions = {cwd: cwd, detached: true, stdio: stdio},
@@ -21,15 +22,15 @@ jstestOptions = {cwd: cwd, stdio: stdio, timeout: 10000, windowsHide: true},
 scale = {width:28},
 load = path(dir, 'index.htm'),
 name = ' ' + app.name + ' v' + app.getVersion(),
-preferences = {preload:path(dir,'preload.js')},
+preferences = {preload:path(dir, 'preload.js')},
 mainWindow = {backgroundColor:'#121212', width:1280, height:800, minWidth:923, minHeight:640, title:name, show:false, autoHideMenuBar:true, webPreferences:preferences};
 app.enableSandbox()
 
-const menuQuit = 'Quit ' + app.name,menuWindow = 'Window',menuFunctions = 'Functions',menuReload = 'Reload window',menuDev = 'Developer tools',menuZoomIn = 'Increase zoom',menuZoomOut = 'Decrease zoom',menuZoomReset = 'Reset zoom',menuClear = 'Reset settings',menuEMG = 'Show EMG data',menuSaves = 'Show m64p data',menuGitHub = 'Visit GitHub repo',menuSite = 'Visit website',dialogDelete = ' Reset settings',dialogDeleteM = 'Reset all settings?',dialogNo = 'Abort',dialogYes = 'Confirm',
+const menuQuit = 'Quit ' + app.name,menuWindow = 'Window',menuFunctions = 'Functions',menuReload = 'Reload window',menuDev = 'Developer tools',menuZoomIn = 'Increase zoom',menuZoomOut = 'Decrease zoom',menuZoomReset = 'Reset zoom',menuClear = 'Reset settings',menuEMG = 'Show EMG data',menuConfig = 'Show m64p data',menuCache = 'Show m64p cache',menuTex = 'Show m64p textures',menuGitHub = 'Visit GitHub repo',menuSite = 'Visit website',dialogDelete = ' Reset settings',dialogDeleteM = 'Reset all settings?',dialogNo = 'Abort',dialogYes = 'Confirm',
 deleteDialog = {defaultId:1, cancelId:1, icon:path(dir, 'img', 'delete.png'), buttons:[dialogYes,dialogNo], title:dialogDelete, message:dialogDeleteM}
 
 var jstestChild, m64pCache = m64pConfig, m64pTex = m64pConfig, zipPath = path(cwd, '7z');
-if(process.platform === 'linux'){m64pCache = path(appData, '../', '.cache', 'mupen64plus');m64pTex = path(appData, '../', '.local', 'share', 'mupen64plus');zipPath = '7z'};
+if(isLinux){m64pCache = path(appData, '../', '.cache', 'mupen64plus');m64pTex = path(appData, '../', '.local', 'share', 'mupen64plus');zipPath = '7z'};
 
 ipcMain.on('listArchive', (e, archivePath, ext) => {
 	const parameters = ['l',archivePath,...ext,'-r','-ba'];
@@ -91,7 +92,7 @@ win = new BrowserWindow(mainWindow)
 win.loadFile(load)
 win.once('ready-to-show', () => {win.maximize();win.show()})
 win.on('page-title-updated', (e) => {e.preventDefault()})
-if(process.platform === 'linux'){win.setIcon(path(dir, 'img', 'emg.png'))}
+if(isLinux){win.setIcon(path(dir, 'img', 'emg.png'))}
 win.webContents.on('new-window', (e) => {e.defaultPrevented = true})
 win.webContents.on('will-navigate', (e, nav) => {const parsed = new url(nav)
 if(parsed.origin != load) {e.preventDefault()}})
@@ -112,11 +113,17 @@ Menu.setApplicationMenu(Menu.buildFromTemplate([
 	{label: menuFunctions, submenu: [
 		{icon: nativeImage.createFromPath(path(dir, 'img', 'delete.png')).resize(scale), label: menuClear, click () {choice = dialog.showMessageBoxSync(win,deleteDialog);if(choice !== 1){session.defaultSession.clearStorageData();session.defaultSession.clearCache()}}},
 		{icon: nativeImage.createFromPath(path(dir, 'img', 'emg.png')).resize(scale), label: menuEMG, click () {shell.openPath(emg)}},
-		{icon: nativeImage.createFromPath(path(dir, 'img', 'mupen64plus.png')).resize(scale), label: menuSaves, click () {shell.openPath(m64pConfig)}},
+		{icon: nativeImage.createFromPath(path(dir, 'img', 'mupen64plus.png')).resize(scale), label: menuConfig, click () {shell.openPath(m64pConfig)}},
 		{type: 'separator'},
 		{icon: nativeImage.createFromPath(path(dir, 'img', 'github.png')).resize(scale), label: menuGitHub, click () {shell.openExternal('https://github.com/GhostlyDark/EMG')}},
 		{icon: nativeImage.createFromPath(path(dir, 'img', 'icon-ghostly-nx.png')).resize(scale), label: menuSite, click () {shell.openExternal('https://evilgames.eu/')}}
 		]},
+	...(isLinux ? [{
+    label: 'Linux', submenu: [
+      {icon: nativeImage.createFromPath(path(dir, 'img', 'mupen64plus.png')).resize(scale), label: menuCache, click () {shell.openPath(m64pCache)}},
+	  {icon: nativeImage.createFromPath(path(dir, 'img', 'mupen64plus.png')).resize(scale), label: menuTex, click () {shell.openPath(m64pTex)}}
+    ]
+	}] : []),
 ]))
 
 win.on('closed', () => {app.exit()})})
