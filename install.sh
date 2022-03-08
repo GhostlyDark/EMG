@@ -1,4 +1,4 @@
-sudo apt install -y build-essential libz-dev libpng-dev libfreetype-dev libsamplerate-dev libspeexdsp-dev liblircclient-dev libboost-dev libboost-filesystem-dev libhidapi-hidraw0 libhidapi-dev libsdl2-dev libncurses5-dev cmake gcc git make nasm p7zip-full unzip wget
+sudo apt install -y build-essential libz-dev libpng-dev libfreetype-dev libsamplerate-dev libspeexdsp-dev liblircclient-dev libboost-dev libboost-filesystem-dev libhidapi-hidraw0 libhidapi-dev libsdl2-dev libncurses5-dev cmake gcc git make nasm p7zip-full p7zip-rar unzip wget
 
 git clone https://github.com/GhostlyDark/EMG.git EMG
 git clone https://github.com/GhostlyDark/sdl-jstest.git sdl-jstest
