@@ -5,7 +5,7 @@ const textInputs = document.querySelectorAll("input[type='text']"),
 
 regjoy = /axis|button|hat|\(|\)/g, regsplit = /\s*\n/, regradio = /^\s\s\s/g, regbox = /_.*/g, regkb = /key\(\)/g, regkbaxis = /key\(,\)/g, regc = /\:/g, regid = /^\d: |^\d\d: /,
 
-keys = {32:1,33:1,34:1,35:1,36:1,37:1,38:1,39:1,40:1}, /* spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36, left: 37, up: 38, right: 39, down: 40 */
+keyScroll = {32:1,33:1,34:1,35:1,36:1,37:1,38:1,39:1,40:1}, /* spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36, left: 37, up: 38, right: 39, down: 40 */
 
 keyCodes = {0:'',3:'break',8:'backspace',9:'tab',12:'clear',13:'enter',16:'shift',17:'ctrl',18:'alt',19:'pause',20:'caps lock',27:'escape',32:'spacebar',33:'page up',34:'page down',35:'end',36:'home',37:'left arrow',38:'up arrow',39:'right arrow',40:'down arrow',45:'insert',46:'delete',47:'help',48:'0',49:'1',50:'2',51:'3',52:'4',53:'5',54:'6',55:'7',56:'8',57:'9',65:'a',66:'b',67:'c',68:'d',69:'e',70:'f',71:'g',72:'h',73:'i',74:'j',75:'k',76:'l',77:'m',78:'n',79:'o',80:'p',81:'q',82:'r',83:'s',84:'t',85:'u',86:'v',87:'w',88:'x',89:'y',90:'z',96:'numpad 0',97:'numpad 1',98:'numpad 2',99:'numpad 3',100:'numpad 4',101:'numpad 5',102:'numpad 6',103:'numpad 7',104:'numpad 8',105:'numpad 9',106:'numpad *',107:'numpad +',109:'numpad -',111:'numpad /',112:'f1',113:'f2',114:'f3',115:'f4',116:'f5',117:'f6',118:'f7',119:'f8',120:'f9',121:'f10',122:'f11',123:'f12',144:'num lock'}, /* HTML DOM keycodes to text */
 
@@ -393,7 +393,7 @@ hk.forEach(hk => {id('ul_'+hk).addEventListener('click', function(){currentHK(id
 
 
 
-function noScroll(e){if(keys[e.keyCode]){e.preventDefault();return false}} // prevent scrolling when focusing text inputs
+function noScroll(e){if(keyScroll[e.keyCode]){e.preventDefault();return false}} // prevent scrolling while focusing text inputs
 for (var i = 0; i < textInputs.length; i++){var textInput = textInputs[i];preventScroll(textInput)}
 function preventScroll(textInput){
 textInput.addEventListener('focus',(e) => {html.addEventListener('keydown',noScroll,false)})
