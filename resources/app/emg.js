@@ -34,7 +34,7 @@ m64p_joykeys = [
 'JoyMappingStop3','JoyMappingFullscreen3','JoyMappingSaveState3','JoyMappingLoadState3','JoyMappingIncrementSlot3','JoyMappingReset3','JoyMappingSpeedDown3','JoyMappingSpeedUp3','JoyMappingScreenshot3','JoyMappingPause3','JoyMappingMute3','JoyMappingIncreaseVolume3','JoyMappingDecreaseVolume3','JoyMappingFastForward3','JoyMappingFrameAdvance3','JoyMappingGameshark3',
 'JoyMappingStop4','JoyMappingFullscreen4','JoyMappingSaveState4','JoyMappingLoadState4','JoyMappingIncrementSlot4','JoyMappingReset4','JoyMappingSpeedDown4','JoyMappingSpeedUp4','JoyMappingScreenshot4','JoyMappingPause4','JoyMappingMute4','JoyMappingIncreaseVolume4','JoyMappingDecreaseVolume4','JoyMappingFastForward4','JoyMappingFrameAdvance4','JoyMappingGameshark4'],
 
-ranges = ['MouseSensitivity1X','MouseSensitivity1Y','MouseSensitivity2X','MouseSensitivity2Y','MouseSensitivity3X','MouseSensitivity3Y','MouseSensitivity4X','MouseSensitivity4Y','AnalogDeadzone1X','AnalogDeadzone1Y','AnalogDeadzone2X','AnalogDeadzone2Y','AnalogDeadzone3X','AnalogDeadzone3Y','AnalogDeadzone4X','AnalogDeadzone4Y','AnalogPeak1X','AnalogPeak1Y','AnalogPeak2X','AnalogPeak2Y','AnalogPeak3X','AnalogPeak3Y','AnalogPeak4X','AnalogPeak4Y','control_stick_deadzone','control_stick_sensitivity','c_stick_deadzone','trigger_threshold'],
+sliders = ['MouseSensitivity1X','MouseSensitivity1Y','MouseSensitivity2X','MouseSensitivity2Y','MouseSensitivity3X','MouseSensitivity3Y','MouseSensitivity4X','MouseSensitivity4Y','AnalogDeadzone1X','AnalogDeadzone1Y','AnalogDeadzone2X','AnalogDeadzone2Y','AnalogDeadzone3X','AnalogDeadzone3Y','AnalogDeadzone4X','AnalogDeadzone4Y','AnalogPeak1X','AnalogPeak1Y','AnalogPeak2X','AnalogPeak2Y','AnalogPeak3X','AnalogPeak3Y','AnalogPeak4X','AnalogPeak4Y','control_stick_deadzone','control_stick_sensitivity','c_stick_deadzone','trigger_threshold'],
 
 numbers = ['OverscanNtscTop','OverscanNtscLeft','OverscanNtscRight','OverscanNtscBottom','OverscanPalTop','OverscanPalLeft','OverscanPalRight','OverscanPalBottom','NumWorkers','ParallelCropOverscan','txCacheSize','txHiresVramLimit','GammaCorrectionLevel','fontSize','CountPerOp','CountPerOpDenomPot','SiDmaDuration','CurrentStateSlot','VOLUME_ADJUST','VOLUME_DEFAULT','PolygonOffsetFactor','PolygonOffsetUnits','polygon_offset_factor','polygon_offset_units','ghq_cache_size'],
 
@@ -53,11 +53,11 @@ dropdowns = [
 
 
 
-['c1','c2','c3','c4'].forEach(c => {
+['c1','c2','c3','c4'].forEach(c => { // initialize SDL device dropdowns
 if(localStorage.getItem(c+'Element') != null)id(c).innerHTML = localStorage.getItem(c+'Element')
 id('refresh'+c).addEventListener('click', function(){refresh(id(c))})})
 
-function refresh(drop){
+function refresh(drop){ // update SDL device dropdown
 Array.from(drop.querySelectorAll('.generated')).forEach(generated => generated.remove());
 let list = jsrefresh();
 var datasplit = list.split(regsplit);
@@ -76,20 +76,20 @@ localStorage.setItem(drop.id+'Element',(drop.innerHTML))}
 
 
 
-n64_buttons.forEach(n64_button => {
+n64_buttons.forEach(n64_button => { // controller input
 var n64_button_c = n64_button+'c',
 n64_button_cb = n64_button+'cb',
 box = id(n64_button),
 box_c = id(n64_button_c),
 box_cb = id(n64_button_cb);
 
-box_c.addEventListener('click', function(){jstest(box_c)}) // Joystick input
+box_c.addEventListener('click', function(){jstest(box_c)}) // joystick input
 box_cb.addEventListener('click', function(){jstest(box_cb)})
 if(localStorage.getItem(n64_button_c) != null){box_c.value = localStorage.getItem(n64_button_c)}
 if(localStorage.getItem(n64_button_cb) != null){box_cb.value = localStorage.getItem(n64_button_cb)}
 id('clear'+n64_button_c).addEventListener('click', function(){box_c.value = '';localStorage.removeItem(n64_button_c);box_cb.value = '';localStorage.removeItem(n64_button_cb)})
 
-if(localStorage.getItem(n64_button) != null){ // Keyboard input
+if(localStorage.getItem(n64_button) != null){ // keyboard input
 box.value = keyCodes[localStorage.getItem(n64_button)];
 box.dataset.key = keySyms[localStorage.getItem(n64_button)]}
 box.addEventListener('keyup', function(e){
@@ -132,24 +132,24 @@ box.addEventListener('click', function(){jstest(box)})
 if(localStorage.getItem(joykey) != null){box.value = localStorage.getItem(joykey)}
 id('clear'+joykey).addEventListener('click', function(){box.value = '';localStorage.removeItem(joykey)})})
 
-dropdowns.forEach(dropdown => {
+dropdowns.forEach(dropdown => { // dropdown inputs
 var drop = id(dropdown);
 if(localStorage.getItem(dropdown) != null){drop.value = localStorage.getItem(dropdown)}
 if(drop.selectedIndex === -1){drop.selectedIndex = 0;localStorage.removeItem(dropdown)}
 drop.addEventListener('change', function(){localStorage.setItem(dropdown, drop.value)})})
 
-ranges.forEach(range => {
-var range_input = id(range),
-range_reset = id('reset'+range),
-range_text = id(range+'Text'),
-range_value = range_reset.dataset.value;
+sliders.forEach(slider => { // slider inputs
+var slider_input = id(slider),
+slider_reset = id('reset'+slider),
+slider_text = id(slider+'Text'),
+slider_value = slider_reset.dataset.value;
 
-range_reset.addEventListener('click', function(){range_input.value = range_value;localStorage.removeItem(range);range_text.innerHTML = range_input.value})
-if(localStorage.getItem(range) != null){range_input.value = localStorage.getItem(range);range_text.innerHTML = range_input.value}
-range_input.addEventListener('input', function(){localStorage.setItem(range, range_input.value);range_text.innerHTML = range_input.value})})
+slider_reset.addEventListener('click', function(){slider_input.value = slider_value;localStorage.removeItem(slider);slider_text.innerHTML = slider_input.value})
+if(localStorage.getItem(slider) != null){slider_input.value = localStorage.getItem(slider);slider_text.innerHTML = slider_input.value}
+slider_input.addEventListener('input', function(){localStorage.setItem(slider, slider_input.value);slider_text.innerHTML = slider_input.value})})
 
 id('NumWorkers').max = navigator.hardwareConcurrency;
-numbers.forEach(number => {
+numbers.forEach(number => { // number inputs
 var number_input = id(number),
 number_reset = id('reset'+number),
 number_value = number_reset.dataset.value,
@@ -180,7 +180,7 @@ localStorage.setItem(number, number_input.value)}})})
 
 
 
-function rspDropdownDisable(){
+function rspDropdownDisable(){ // disable or hide inputs
 if(id('rsp').value.includes('rsp-hle')){id('RspFallback').disabled = false;id('rspGFX').disabled = true;id('rspAudio').disabled = false}
 else if(id('rsp').value.includes('rsp-cxd4')){id('RspFallback').disabled = true;id('rspGFX').disabled = false;id('rspAudio').disabled = false}
 else if(id('rsp').value.includes('rsp-parallel')){id('RspFallback').disabled = true;id('rspGFX').disabled = true;id('rspAudio').disabled = true}}
@@ -324,7 +324,7 @@ mouse4Disable()
 
 if(localStorage.getItem('recentFiles') != null){recentFiles = JSON.parse(localStorage.getItem('recentFiles'))}
 
-function recentFilesUpdate(){
+function recentFilesUpdate(){ // recent N64 ROM files
 id('optionDefault').selected = true;
 recentFiles.forEach(rf => {var i = recentFiles.indexOf(rf);if(recentFiles[i] != null){id('option'+i).value = recentFiles[i];id('option'+i).innerHTML = i + 1 + '. ' + recentFiles[i]}})}
 recentFilesUpdate()
@@ -340,7 +340,7 @@ Array.from(id('recent').getElementsByTagName('option')).forEach(opt => {if(opt.i
 
 
 
-function extract(fpath,ext){
+function extract(fpath,ext){ // reading and extracting archives
 let list = listArchive(fpath,ext);
 if(list === ''){alert('No file (' + ext.toString().replace(/\*/g,'').replace(/,\./g,', .') + ') in archive found.');return}
 var datastring = list.replace(/.*  /g,''),
@@ -351,7 +351,7 @@ if(datasplit[0] != ''){return returnPath(workingDirectory,datasplit[0])}}
 
 
 
-id('listCheats').addEventListener('click', function(){
+id('listCheats').addEventListener('click', function(){ // generate cheat list
 var cheats = '';
 id('cheatList').innerHTML = '';
 const parameters = ['--cheats','list',filePath],
@@ -380,7 +380,7 @@ for (var i = 0; i < radioBoxes.length; i++){var box = radioBoxes[i];if(box.id.in
 
 
 
-if(localStorage.getItem('hkULActive') != null && localStorage.getItem('hkDIVActive') != null){
+if(localStorage.getItem('hkULActive') != null && localStorage.getItem('hkDIVActive') != null){ // mupen64plus hotkey tabs
 currentHK(id(localStorage.getItem('hkULActive')),id(localStorage.getItem('hkDIVActive')))}
 
 function currentHK(currentUL,currentDIV){hk.forEach(hk => {
@@ -393,7 +393,7 @@ hk.forEach(hk => {id('ul_'+hk).addEventListener('click', function(){currentHK(id
 
 
 
-function noScroll(e){if(keys[e.keyCode]){e.preventDefault();return false}}
+function noScroll(e){if(keys[e.keyCode]){e.preventDefault();return false}} // prevent scrolling when focusing text inputs
 for (var i = 0; i < textInputs.length; i++){var textInput = textInputs[i];preventScroll(textInput)}
 function preventScroll(textInput){
 textInput.addEventListener('focus',(e) => {html.addEventListener('keydown',noScroll,false)})
@@ -401,7 +401,7 @@ textInput.addEventListener('blur',(e) => {html.removeEventListener('keydown',noS
 
 
 
-function currentGFX(){
+function currentGFX(){ // top navigation
 if(!id('angrylion').classList.contains('hide'))id('angrylion').classList.add('hide')
 if(!id('gliden64').classList.contains('hide'))id('gliden64').classList.add('hide')
 if(!id('parallel').classList.contains('hide'))id('parallel').classList.add('hide')
@@ -426,11 +426,11 @@ html.addEventListener('click', function(e){if(!e.target.matches('.dropbutton')){
 
 
 
-dragDrop.forEach(inp => {id(inp).addEventListener('dragover', prevent, false)})
+dragDrop.forEach(inp => {id(inp).addEventListener('dragover', prevent, false)}) // prevent dragover event
 function prevent(e){e.preventDefault();e.stopPropagation()}
-function fileExtension(fpath){return fpath.slice((fpath.lastIndexOf('.') - 1 >>> 0) + 2)}
+function fileExtension(fpath){return fpath.slice((fpath.lastIndexOf('.') - 1 >>> 0) + 2)} // return file extension
 
-id('fileInput').addEventListener('drop', function(e){
+id('fileInput').addEventListener('drop', function(e){ // drag and drop for file inputs
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
 let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
@@ -536,7 +536,7 @@ if(gbRAM4 != undefined){id('gbRAM4Text').innerHTML = gbRAM4;localStorage.setItem
 
 
 if(localStorage.getItem('filePath') != null){filePath = localStorage.getItem('filePath');id('fileText').innerHTML = filePath}
-id('fileInput').addEventListener('click', function(){
+id('fileInput').addEventListener('click', function(){ // click event for file inputs
 fileResult = dialogFile({name:'N64 ROM',extensions:n64Type});
 if(fileResult != undefined){
 if(zip.includes(fileExtension(fileResult.toString()))){filePath = extract(fileResult,n64Ext)}
@@ -666,7 +666,7 @@ if(gbRAM4 != undefined){id('gbRAM4Text').innerHTML = gbRAM4;localStorage.setItem
 id('resetScreenshotPath').addEventListener('click', function(){ScreenshotPath = '';id('ScreenshotPathText').innerHTML = '';localStorage.removeItem('ScreenshotPath')})
 if(localStorage.getItem('ScreenshotPath') === null){ScreenshotPath = '';id('ScreenshotPathText').innerHTML = ScreenshotPath}
 if(localStorage.getItem('ScreenshotPath') != null){ScreenshotPath = localStorage.getItem('ScreenshotPath');id('ScreenshotPathText').innerHTML = ScreenshotPath}
-id('ScreenshotPath').addEventListener('click', function(){
+id('ScreenshotPath').addEventListener('click', function(){ // choosing and resetting directories
 ScreenshotPathResult = dialogDirectory()
 if(ScreenshotPathResult != undefined){ScreenshotPath = ScreenshotPathResult.toString();id('ScreenshotPathText').innerHTML = ScreenshotPath;localStorage.setItem('ScreenshotPath', ScreenshotPath)}})
 
@@ -1167,8 +1167,8 @@ YAxis4 = 'Input-SDL-Control4[Y Axis]=',
 gcaSettings = 'control_stick_deadzone = ' +  id('control_stick_deadzone').value + '\n' + 'control_stick_sensitivity = ' + id('control_stick_sensitivity').value + '\n' + 'c_stick_deadzone = ' + id('c_stick_deadzone').value + '\n' + 'trigger_threshold = ' + id('trigger_threshold').value + '\n\n' + '[controller_mapping]' + '\n' + 'a = ' + id('a').value + '\n' + 'b = ' + id('b').value + '\n' + 'x = ' + id('x').value + '\n' + 'y = ' + id('y').value + '\n' + 'start = ' + id('start').value + '\n' + 'z = ' + id('z').value + '\n' + 'l = ' + id('l').value + '\n' + 'r = ' + id('r').value + '\n' + 'd_pad_left = ' + id('d_pad_left').value + '\n' + 'd_pad_right = ' + id('d_pad_right').value + '\n' + 'd_pad_down = ' + id('d_pad_down').value + '\n' + 'd_pad_up = ' + id('d_pad_up').value + '\n' + 'c_stick_left = ' + id('c_stick_left').value + '\n' + 'c_stick_right = ' + id('c_stick_right').value + '\n' + 'c_stick_down = ' + id('c_stick_down').value + '\n' + 'c_stick_up = ' + id('c_stick_up').value;
 
 if(isLinux){RspFallback = './' + RspFallback + '.so'}
-if(id('nospeedlimit').checked){audio = 'dummy';vsync = 'Video-General[VerticalSync]=False';Glide64VSync = 'Video-Glide64mk2[vsync]=False'}
-if(gfx.includes('angrylion') || gfx.includes('parallel')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=False';cxd4Audio = 'rsp-cxd4[DisplayListToAudioPlugin]=False'}
+if(id('nospeedlimit').checked){audio = 'dummy';vsync = 'Video-General[VerticalSync]=False';Glide64VSync = 'Video-Glide64mk2[vsync]=False'} // force muted audio and disabled V-Sync
+if(gfx.includes('angrylion') || gfx.includes('parallel')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=False';cxd4Audio = 'rsp-cxd4[DisplayListToAudioPlugin]=False'} // prevent crashes caused by wrong RSP settings
 else if(gfx.includes('rice') || gfx.includes('glide64mk2')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=True'}
 if(gfx.includes('angrylion') && rsp.includes('rsp-hle')){rsp = 'mupen64plus-rsp-cxd4-sse2'}
 else if(gfx.includes('parallel') && rsp.includes('rsp-hle')){rsp = 'mupen64plus-rsp-parallel'}
@@ -1176,7 +1176,7 @@ else if((gfx.includes('rice') || gfx.includes('glide64mk2')) && rsp.includes('rs
 
 
 
-if(name1.includes('Keyboard')){
+if(name1.includes('Keyboard')){ // controller input
 device1 = 'Input-SDL-Control1[device]=-1';
 AButton1 += 'key(' + id('AButton1').dataset.key + ')';
 BButton1 += 'key(' + id('BButton1').dataset.key + ')';
@@ -1806,7 +1806,7 @@ if(mouse4_3 === 'rs'){RumblepakSwitch4 = 'Input-SDL-Control4[Rumblepak Switch]='
 
 
 
-function kb(kb){
+function kb(kb){ // prevent empty keyboard keys from causing warnings
 if(kb.match(regkb))kb = kb.replace(regkb,'key(0)')
 if(kb.match(regkbaxis))kb = kb.replace(regkbaxis,'key(0,0)')
 return kb}
@@ -1911,16 +1911,15 @@ Rice = ['--set',FrameBufferSetting,'--set',FrameBufferWriteBackControl,'--set',R
 
 Glide64MK2 = ['--set',Glide64VSync,'--set',wrpAntiAliasing,'--set',force_polygon_offset,'--set',polygon_offset_factor,'--set',polygon_offset_units,'--set',show_fps,'--set',clock,'--set',clock_24_hr,'--set',wrpFBO,'--set',wrpAnisotropic,'--set',ghq_fltr,'--set',ghq_cmpr,'--set',ghq_enht,'--set',ghq_hirs,'--set',ghq_enht_cmpr,'--set',ghq_enht_tile,'--set',ghq_enht_f16bpp,'--set',ghq_enht_gz,'--set',ghq_enht_nobg,'--set',ghq_hirs_cmpr,'--set',ghq_hirs_tile,'--set',ghq_hirs_f16bpp,'--set',ghq_hirs_gz,'--set',ghq_hirs_altcrc,'--set',ghq_cache_save,'--set',ghq_cache_size,'--set',ghq_hirs_let_texartists_fly,'--set',ghq_hirs_dump,'--set',alt_tex_size,'--set',use_sts1_only,'--set',force_calc_sphere,'--set',correct_viewport,'--set',increase_texrect_edge,'--set',decrease_fillrect_edge,'--set',texture_correction,'--set',pal230,'--set',force_microcheck,'--set',force_quad3d,'--set',clip_zmin,'--set',clip_zmax,'--set',fast_crc,'--set',adjust_aspect,'--set',zmode_compare_less,'--set',old_style_adither,'--set',n64_z_scale,'--set',optimize_texrect,'--set',ignore_aux_copy,'--set',hires_buf_clear,'--set',fb_read_alpha,'--set',useless_is_useless,'--set',fb_crc_mode,'--set',filtering,'--set',fog,'--set',buff_clear,'--set',swapmode,'--set',aspect,'--set',lodmode,'--set',fb_smart,'--set',fb_hires,'--set',fb_read_always,'--set',read_back_to_screen,'--set',detect_cpu_write,'--set',fb_get_info,'--set',fb_render],
 
-graphics = [],
-cheats = [],
-activeCheats = '';
-if(id('cheatList').innerHTML != ''){
+graphics = [], cheats = [], activeCheats = '';
+
+if(id('cheatList').innerHTML != ''){ // activate cheats
 var cheatInputs = id('cheatList').querySelectorAll("input[type='checkbox']");
 for (var i = 0; i < cheatInputs.length; i++){var cheatInput = cheatInputs[i];checkCheats(cheatInput)}
 function checkCheats(cheatInput){if(cheatInput.checked){var id = cheatInput.id.replace('_','-');activeCheats += id + ','}}
 cheats = ['--cheats',activeCheats]}
 
-if(!input.includes('input-sdl')){controls = []; controller1 = []; controller2 = []; controller3 = []; controller4 = []}
+if(!input.includes('input-sdl')){controls = []; controller1 = []; controller2 = []; controller3 = []; controller4 = []} // reduce number of parameters
 if(mode1 === 'Input-SDL-Control1[mode]=2' || (mode1 === 'Input-SDL-Control1[mode]=0' && !id('plugged1').checked))controller1 = []
 if(mode2 === 'Input-SDL-Control2[mode]=2' || (mode2 === 'Input-SDL-Control2[mode]=0' && !id('plugged2').checked))controller2 = []
 if(mode3 === 'Input-SDL-Control3[mode]=2' || (mode3 === 'Input-SDL-Control3[mode]=0' && !id('plugged3').checked))controller3 = []
@@ -1931,11 +1930,11 @@ if(gfx.includes('GLideN64'))graphics = GLideN64
 if(gfx.includes('parallel'))graphics = Parallel
 if(gfx.includes('rice'))graphics = Rice
 
-if(input.includes('input-gca')){
+if(input.includes('input-gca')){ // write GameCube Adapter settings to file
 try {writeGCA(gcaSettings)}
 catch (e) {console.warn(e)}}
 
-const parameters = core.concat(PIFROM,savestate,nospeedlimit,verbose,cheats,controls,controller1,controller2,controller3,controller4,graphics,filePath),
+const parameters = core.concat(PIFROM,savestate,nospeedlimit,verbose,cheats,controls,controller1,controller2,controller3,controller4,graphics,filePath), // launch parameters
 child = emuLaunch(parameters);
 
 })
