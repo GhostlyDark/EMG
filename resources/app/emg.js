@@ -15,7 +15,7 @@ hotKeys = {0:'',48:'0',49:'1',50:'2',51:'3',52:'4',53:'5',54:'6',55:'7',56:'8',5
 
 n64Ext = ['*.n64','*.v64','*.z64'], nddExt = ['*.d64','*.ndd'], gbExt = ['*.gb','*.gbc'], saveExt = ['*.sav'], biosExt = ['*.bin','*.rom',...n64Ext],
 stExt = ['*.st0','*.st1','*.st2','*.st3','*.st4','*.st5','*.st6','*.st7','*.st8','*.st9','*.state'],
-n64 = ['n64','v64','z64'], ndd = ['d64','ndd'], gb = ['gb','gbc'], save = ['sav'], bios = [...n64,'bin','rom'], zip = ['7z','rar','zip'],
+n64 = ['n64','v64','z64'], ndd = ['d64','ndd'], gb = ['gb','gbc'], save = ['sav'], bios = [...n64,'bin','rom'], zip = ['7z','bz2','gz','rar','xz','zip'],
 st = ['st0','st1','st2','st3','st4','st5','st6','st7','st8','st9','state'],
 n64Type = [...n64,...zip], nddType = [...ndd,...zip], gbType = [...gb,...zip], saveType = [...save,...zip], biosType = [...bios,...zip],
 stType = [...st,...zip],
