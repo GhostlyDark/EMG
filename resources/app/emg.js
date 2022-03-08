@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-var filePath,fileResult,cheatRadio,txPath,txPathResult,txCachePath,txCachePathResult,txDumpPath,txDumpPathResult,workingDirectory,workingDirectoryResult,PIF,PIFResult,IPLROM,IPLROMResult,Disk,DiskResult,ScreenshotPath,ScreenshotPathResult,SaveStatePath,SaveStatePathResult,SaveSRAMPath,SaveSRAMPathResult,gbROM1,gbROM1Result,gbROM2,gbROM2Result,gbROM3,gbROM3Result,gbROM4,gbROM4Result,gbRAM1,gbRAM1Result,gbRAM2,gbRAM2Result,gbRAM3,gbRAM3Result,gbRAM4,gbRAM4Result,recentFiles = [];
+var cheatRadio,filePath,fileResult,txPath,txPathResult,txCachePath,txCachePathResult,txDumpPath,txDumpPathResult,workingDirectory,workingDirectoryResult,PIF,PIFResult,IPLROM,IPLROMResult,Disk,DiskResult,ScreenshotPath,ScreenshotPathResult,SaveStatePath,SaveStatePathResult,SaveSRAMPath,SaveSRAMPathResult,stPath,stResult,gbROM1,gbROM1Result,gbROM2,gbROM2Result,gbROM3,gbROM3Result,gbROM4,gbROM4Result,gbRAM1,gbRAM1Result,gbRAM2,gbRAM2Result,gbRAM3,gbRAM3Result,gbRAM4,gbRAM4Result,recentFiles = [];
 
 const textInputs = document.querySelectorAll("input[type='text']"),
 
@@ -14,10 +14,13 @@ keySyms = {0:0,3:318,8:8,9:9,12:12,13:13,16:304,17:306,18:308,19:19,20:301,27:27
 hotKeys = {0:'',48:'0',49:'1',50:'2',51:'3',52:'4',53:'5',54:'6',55:'7',56:'8',57:'9',65:'A',66:'B',67:'C',68:'D',69:'E',70:'F',71:'G',72:'H',73:'I',74:'J',75:'K',76:'L',77:'M',78:'N',79:'O',80:'P',81:'Q',82:'R',83:'S',84:'T',85:'U',86:'V',87:'W',88:'X',89:'Y',90:'Z'}, /* HTML DOM keycodes to GLideN64 hotkeys */
 
 n64Ext = ['*.n64','*.v64','*.z64'], nddExt = ['*.d64','*.ndd'], gbExt = ['*.gb','*.gbc'], saveExt = ['*.sav'], biosExt = ['*.bin','*.rom',...n64Ext],
+stExt = ['*.st0','*.st1','*.st2','*.st3','*.st4','*.st5','*.st6','*.st7','*.st8','*.st9','*.state'],
 n64 = ['n64','v64','z64'], ndd = ['d64','ndd'], gb = ['gb','gbc'], save = ['sav'], bios = [...n64,'bin','rom'], zip = ['7z','rar','zip'],
+st = ['st0','st1','st2','st3','st4','st5','st6','st7','st8','st9','state'],
 n64Type = [...n64,...zip], nddType = [...ndd,...zip], gbType = [...gb,...zip], saveType = [...save,...zip], biosType = [...bios,...zip],
+stType = [...st,...zip],
 
-dragDrop = ['fileInput','PIF','IPLROM','Disk','gbROM1','gbROM2','gbROM3','gbROM4','gbRAM1','gbRAM2','gbRAM3','gbRAM4'],
+dragDrop = ['fileInput','PIF','IPLROM','Disk','st','gbROM1','gbROM2','gbROM3','gbROM4','gbRAM1','gbRAM2','gbRAM3','gbRAM4'],
 hk = ['hk_keyboard','hk_controller1','hk_controller2','hk_controller3','hk_controller4'],
 menu = ['main','input','video','gliden64','rice','glide64mk2'],
 
@@ -326,10 +329,10 @@ if(localStorage.getItem('filePath') != null){filePath = localStorage.getItem('fi
 
 function extract(fpath,ext){
 let list = listArchive(fpath,ext);
-if(list === ''){alert('No ROM (' + ext.toString().replace(/\*/g,'').replace(/,\./g,', .') + ') in archive found.');return}
+if(list === ''){alert('No file (' + ext.toString().replace(/\*/g,'').replace(/,\./g,', .') + ') in archive found.');return}
 var datastring = list.replace(/.*  /g,''),
 datasplit = datastring.split(regsplit);
-if(datasplit.length > 2){alert('Archives with multiple ROMs unsupported.');return}
+if(datasplit.length > 2){alert('Archives with multiple files unsupported.');return}
 extractArchive(fpath,workingDirectory,ext);
 if(datasplit[0] != ''){return returnPath(workingDirectory,datasplit[0])}}
 
@@ -467,6 +470,14 @@ if(zip.includes(fileExtension(fPath))){Disk = extract(fPath,nddExt)}
 else if(ndd.includes(fileExtension(fPath))){Disk = fPath}
 if(Disk != undefined){id('DiskText').innerHTML = Disk;localStorage.setItem('Disk', Disk)}}})
 
+id('st').addEventListener('drop', function(e){
+prevent(e);if(e.dataTransfer.files[0] === undefined)return
+let fPath = e.dataTransfer.files[0].path;
+if(fPath != undefined){
+if(zip.includes(fileExtension(fPath))){stPath = extract(fPath,stExt)}
+else if(st.includes(fileExtension(fPath))){stPath = fPath}
+if(stPath != undefined){id('stText').innerHTML = stPath;localStorage.setItem('st', stPath)}}})
+
 id('gbROM1').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
 let fPath = e.dataTransfer.files[0].path;
@@ -562,6 +573,16 @@ if(DiskResult != undefined){
 if(zip.includes(fileExtension(DiskResult.toString()))){Disk = extract(DiskResult,nddExt)}
 else{Disk = DiskResult.toString()}
 if(Disk != undefined){id('DiskText').innerHTML = Disk;localStorage.setItem('Disk', Disk)}}})
+
+id('clearst').addEventListener('click', function(){stPath = '';id('stText').innerHTML = '';localStorage.removeItem('st')})
+if(localStorage.getItem('st') === null){stPath = '';id('stText').innerHTML = stPath}
+if(localStorage.getItem('st') != null){stPath = localStorage.getItem('st');id('stText').innerHTML = stPath}
+id('st').addEventListener('click', function(){
+stResult = dialogFile({name:'Mupen64Plus Savestate',extensions:stType})
+if(stResult != undefined){
+if(zip.includes(fileExtension(stResult.toString()))){stPath = extract(stResult,stExt)}
+else{stPath = stResult.toString()}
+if(stPath != undefined){id('stText').innerHTML = stPath;localStorage.setItem('st', stPath)}}})
 
 id('cleargbROM1').addEventListener('click', function(){gbROM1 = '';id('gbROM1Text').innerHTML = '';localStorage.removeItem('gbROM1')})
 if(localStorage.getItem('gbROM1') === null){gbROM1 = '';id('gbROM1Text').innerHTML = gbROM1}
@@ -706,6 +727,7 @@ SharedDataPath = 'Core[SharedDataPath]=',
 nospeedlimit = id('nospeedlimit').checked ? '--nospeedlimit' : [],
 osd = id('osd').checked ? '--osd' : '--noosd',
 verbose = id('verbose').checked ? '--verbose' : [],
+savestate = stPath != '' ? ['--savestate',stPath] : [],
 PIFROM = PIF != '' ? ['--pif',PIF] : [],
 fullscreen = id('fullscreen').checked ? '--fullscreen' : '--windowed',
 ParallelFullscreen = 'Video-Parallel[Fullscreen]=' + id('fullscreen').checked,
@@ -1916,7 +1938,7 @@ if(input.includes('input-gca')){
 try {writeGCA(gcaSettings)}
 catch (e) {console.warn(e)}}
 
-const parameters = core.concat(PIFROM,nospeedlimit,verbose,cheats,controls,controller1,controller2,controller3,controller4,graphics,filePath),
+const parameters = core.concat(PIFROM,savestate,nospeedlimit,verbose,cheats,controls,controller1,controller2,controller3,controller4,graphics,filePath),
 child = emuLaunch(parameters);
 
 })
