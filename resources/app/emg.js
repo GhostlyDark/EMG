@@ -14,11 +14,9 @@ keySyms = {0:0,3:318,8:8,9:9,12:12,13:13,16:304,17:306,18:308,19:19,20:301,27:27
 hotKeys = {0:'',48:'0',49:'1',50:'2',51:'3',52:'4',53:'5',54:'6',55:'7',56:'8',57:'9',65:'A',66:'B',67:'C',68:'D',69:'E',70:'F',71:'G',72:'H',73:'I',74:'J',75:'K',76:'L',77:'M',78:'N',79:'O',80:'P',81:'Q',82:'R',83:'S',84:'T',85:'U',86:'V',87:'W',88:'X',89:'Y',90:'Z'}, /* HTML DOM keycodes to GLideN64 hotkeys */
 
 n64Ext = ['*.n64','*.v64','*.z64'], nddExt = ['*.d64','*.ndd'], gbExt = ['*.gb','*.gbc'], saveExt = ['*.sav'], biosExt = ['*.bin','*.rom',...n64Ext],
-stExt = ['*.st0','*.st1','*.st2','*.st3','*.st4','*.st5','*.st6','*.st7','*.st8','*.st9','*.state'],
 n64 = ['n64','v64','z64'], ndd = ['d64','ndd'], gb = ['gb','gbc'], save = ['sav'], bios = [...n64,'bin','rom'], zip = ['7z','bz2','gz','rar','xz','zip'],
 st = ['st0','st1','st2','st3','st4','st5','st6','st7','st8','st9','state'],
 n64Type = [...n64,...zip], nddType = [...ndd,...zip], gbType = [...gb,...zip], saveType = [...save,...zip], biosType = [...bios,...zip],
-stType = [...st,...zip],
 
 dragDrop = ['fileInput','PIF','IPLROM','Disk','st','gbROM1','gbROM2','gbROM3','gbROM4','gbRAM1','gbRAM2','gbRAM3','gbRAM4'],
 hk = ['hk_keyboard','hk_controller1','hk_controller2','hk_controller3','hk_controller4'],
@@ -474,8 +472,7 @@ id('st').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
 let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
-if(zip.includes(fileExtension(fPath))){stPath = extract(fPath,stExt)}
-else if(st.includes(fileExtension(fPath))){stPath = fPath}
+if(st.includes(fileExtension(fPath))){stPath = fPath}
 if(stPath != undefined){id('stText').innerHTML = stPath;localStorage.setItem('st', stPath)}}})
 
 id('gbROM1').addEventListener('drop', function(e){
@@ -578,11 +575,9 @@ id('clearst').addEventListener('click', function(){stPath = '';id('stText').inne
 if(localStorage.getItem('st') === null){stPath = '';id('stText').innerHTML = stPath}
 if(localStorage.getItem('st') != null){stPath = localStorage.getItem('st');id('stText').innerHTML = stPath}
 id('st').addEventListener('click', function(){
-stResult = dialogFile({name:'Mupen64Plus Savestate',extensions:stType})
-if(stResult != undefined){
-if(zip.includes(fileExtension(stResult.toString()))){stPath = extract(stResult,stExt)}
-else{stPath = stResult.toString()}
-if(stPath != undefined){id('stText').innerHTML = stPath;localStorage.setItem('st', stPath)}}})
+stResult = dialogFile({name:'Savestate',extensions:st})
+if(stResult != undefined){stPath = stResult.toString()}
+if(stPath != undefined){id('stText').innerHTML = stPath;localStorage.setItem('st', stPath)}})
 
 id('cleargbROM1').addEventListener('click', function(){gbROM1 = '';id('gbROM1Text').innerHTML = '';localStorage.removeItem('gbROM1')})
 if(localStorage.getItem('gbROM1') === null){gbROM1 = '';id('gbROM1Text').innerHTML = gbROM1}
