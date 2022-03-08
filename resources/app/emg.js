@@ -323,23 +323,6 @@ mouse4Disable()
 
 
 if(localStorage.getItem('recentFiles') != null){recentFiles = JSON.parse(localStorage.getItem('recentFiles'))}
-if(localStorage.getItem('filePath') != null){filePath = localStorage.getItem('filePath');id('fileText').innerHTML = filePath}
-
-function extract(fpath,ext){
-let list = listArchive(fpath,ext);
-if(list === ''){alert('No file (' + ext.toString().replace(/\*/g,'').replace(/,\./g,', .') + ') in archive found.');return}
-var datastring = list.replace(/.*  /g,''),
-datasplit = datastring.split(regsplit);
-if(datasplit.length > 2){alert('Archives with multiple files unsupported.');return}
-extractArchive(fpath,workingDirectory,ext);
-if(datasplit[0] != ''){return returnPath(workingDirectory,datasplit[0])}}
-
-id('fileInput').addEventListener('click', function(){
-fileResult = dialogFile({name:'N64 ROM',extensions:n64Type});
-if(fileResult != undefined){
-if(fileResult.toString().endsWith('.7z') || fileResult.toString().endsWith('.rar') || fileResult.toString().endsWith('.zip')){filePath = extract(fileResult,n64Ext)}
-else{filePath = fileResult}
-if(filePath != undefined){id('fileText').innerHTML = filePath;localStorage.setItem('filePath', filePath);if(!recentFiles.includes(filePath.toString()))recentFiles.unshift(filePath.toString());recentFiles.splice(10);recentFilesUpdate();localStorage.setItem('recentFiles',JSON.stringify(recentFiles));if(id('cheatList').innerHTML!='')id('cheatList').innerHTML=''}}})
 
 function recentFilesUpdate(){
 id('optionDefault').selected = true;
@@ -354,6 +337,17 @@ recentFiles = [];
 localStorage.removeItem('recentFiles');
 id('optionDefault').selected = true;
 Array.from(id('recent').getElementsByTagName('option')).forEach(opt => {if(opt.innerHTML != 'Recent Files'){opt.value = '';opt.innerHTML = ''}})})
+
+
+
+function extract(fpath,ext){
+let list = listArchive(fpath,ext);
+if(list === ''){alert('No file (' + ext.toString().replace(/\*/g,'').replace(/,\./g,', .') + ') in archive found.');return}
+var datastring = list.replace(/.*  /g,''),
+datasplit = datastring.split(regsplit);
+if(datasplit.length > 2){alert('Archives with multiple files unsupported.');return}
+extractArchive(fpath,workingDirectory,ext);
+if(datasplit[0] != ''){return returnPath(workingDirectory,datasplit[0])}}
 
 
 
@@ -434,7 +428,7 @@ html.addEventListener('click', function(e){if(!e.target.matches('.dropbutton')){
 
 dragDrop.forEach(inp => {id(inp).addEventListener('dragover', prevent, false)})
 function prevent(e){e.preventDefault();e.stopPropagation()}
-function fileExtension(fpath,ext){ext = fpath.slice((fpath.lastIndexOf('.') - 1 >>> 0) + 2);return ext}
+function fileExtension(fpath){return fpath.slice((fpath.lastIndexOf('.') - 1 >>> 0) + 2)}
 
 id('fileInput').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
@@ -540,6 +534,14 @@ else if(save.includes(fileExtension(fPath))){gbRAM4 = fPath}
 if(gbRAM4 != undefined){id('gbRAM4Text').innerHTML = gbRAM4;localStorage.setItem('gbRAM4', gbRAM4)}}})
 
 
+
+if(localStorage.getItem('filePath') != null){filePath = localStorage.getItem('filePath');id('fileText').innerHTML = filePath}
+id('fileInput').addEventListener('click', function(){
+fileResult = dialogFile({name:'N64 ROM',extensions:n64Type});
+if(fileResult != undefined){
+if(zip.includes(fileExtension(fileResult.toString()))){filePath = extract(fileResult,n64Ext)}
+else{filePath = fileResult}
+if(filePath != undefined){id('fileText').innerHTML = filePath;localStorage.setItem('filePath', filePath);if(!recentFiles.includes(filePath.toString()))recentFiles.unshift(filePath.toString());recentFiles.splice(10);recentFilesUpdate();localStorage.setItem('recentFiles',JSON.stringify(recentFiles));if(id('cheatList').innerHTML!='')id('cheatList').innerHTML=''}}})
 
 id('clearPIF').addEventListener('click', function(){PIF = '';id('PIFText').innerHTML = '';localStorage.removeItem('PIF')})
 if(localStorage.getItem('PIF') === null){PIF = '';id('PIFText').innerHTML = PIF}
