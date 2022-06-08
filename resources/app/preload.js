@@ -15,6 +15,7 @@ extractArchive = (archivePath, workingDirectory, ext) => {return ipcRenderer.sen
 returnPath = (workingDirectory, rom) => {return ipcRenderer.sendSync('returnPath', workingDirectory, rom)},
 showCheats = (parameters) => {return ipcRenderer.sendSync('showCheats', parameters)},
 jsrefresh = () => {return ipcRenderer.sendSync('jsrefresh')},
+jsmapping = (padId) => {return ipcRenderer.sendSync('jsmapping', padId)},
 
 jstest = (joyinput) => {
 var joyvalue,joydata,jstestConfig,config;
@@ -69,5 +70,6 @@ contextBridge.exposeInMainWorld('extractArchive',extractArchive)
 contextBridge.exposeInMainWorld('returnPath',returnPath)
 contextBridge.exposeInMainWorld('jstest',jstest)
 contextBridge.exposeInMainWorld('jsrefresh',jsrefresh)
+contextBridge.exposeInMainWorld('jsmapping',jsmapping)
 contextBridge.exposeInMainWorld('showCheats',showCheats)
 contextBridge.exposeInMainWorld('writeGCA',writeGCA)

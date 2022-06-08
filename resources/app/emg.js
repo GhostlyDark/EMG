@@ -24,6 +24,8 @@ menu = ['main','input','video','gliden64','rice','glide64mk2'],
 
 n64_buttons = ['AButton1','AButton2','AButton3','AButton4','BButton1','BButton2','BButton3','BButton4','LTrig1','LTrig2','LTrig3','LTrig4','RTrig1','RTrig2','RTrig3','RTrig4','ZTrig1','ZTrig2','ZTrig3','ZTrig4','Start1','Start2','Start3','Start4','DPadU1','DPadU2','DPadU3','DPadU4','DPadD1','DPadD2','DPadD3','DPadD4','DPadL1','DPadL2','DPadL3','DPadL4','DPadR1','DPadR2','DPadR3','DPadR4','StickU1','StickU2','StickU3','StickU4','StickD1','StickD2','StickD3','StickD4','StickL1','StickL2','StickL3','StickL4','StickR1','StickR2','StickR3','StickR4','CButtonU1','CButtonU2','CButtonU3','CButtonU4','CButtonD1','CButtonD2','CButtonD3','CButtonD4','CButtonL1','CButtonL2','CButtonL3','CButtonL4','CButtonR1','CButtonR2','CButtonR3','CButtonR4','MempakSwitch1','MempakSwitch2','MempakSwitch3','MempakSwitch4','RumblepakSwitch1','RumblepakSwitch2','RumblepakSwitch3','RumblepakSwitch4'],
 
+mappingArray = ['a','b','dpdown','dpleft','dpright','dpup','leftshoulder','lefttrigger','leftx','lefty','rightshoulder','righttrigger','rightx','righty','start','x','y'],
+
 gliden64_hotkeys = ['hkTexDump','hkHdTexReload','hkHdTexToggle','hkInaccurateTexCords','hkVsync','hkFBEmulation','hkN64DepthCompare','hkOsdVis','hkOsdFps','hkOsdPercent','hkOsdInternalResolution','hkOsdRenderingResolution','hkTexCoordBounds','hkNativeResTexrects','hkForceGammaCorrection'],
 
 m64p_hotkeys = ['KbdMappingStop','KbdMappingSlot0','KbdMappingSlot1','KbdMappingSlot2','KbdMappingSlot3','KbdMappingSlot4','KbdMappingSlot5','KbdMappingSlot6','KbdMappingSlot7','KbdMappingSlot8','KbdMappingSlot9','KbdMappingFullscreen','KbdMappingSaveState','KbdMappingLoadState','KbdMappingIncrementSlot','KbdMappingReset','KbdMappingSpeedDown','KbdMappingSpeedUp','KbdMappingScreenshot','KbdMappingPause','KbdMappingMute','KbdMappingIncreaseVolume','KbdMappingDecreaseVolume','KbdMappingFastForward','KbdMappingFrameAdvance','KbdMappingGameshark'],
@@ -73,6 +75,67 @@ newDevice.className = 'generated';
 drop.appendChild(newDevice)}
 
 localStorage.setItem(drop.id+'Element',(drop.innerHTML))}
+
+
+
+['auto1','auto2','auto3','auto4'].forEach(auto => {id(auto).addEventListener('click', function(){autoConfig(id(auto))})}) // gamepad auto config
+
+function autoConfig(auto){
+var padId, cId, tId;
+if(auto.id.includes(1)){tId = id('c1').value;cId = 1}
+if(auto.id.includes(2)){tId = id('c2').value;cId = 2}
+if(auto.id.includes(3)){tId = id('c3').value;cId = 3}
+if(auto.id.includes(4)){tId = id('c4').value;cId = 4}
+cId += 'c'
+padId = tId.substring(0,2).replace(/\:/g,'')
+var aId = 'AButton' + cId,
+bId = 'CButtonD' + cId + 'b',
+dpdId = 'DPadD' + cId,
+dplId = 'DPadL' + cId,
+dprId = 'DPadR' + cId,
+dpuId = 'DPadU' + cId,
+lsId = 'LTrig' + cId,
+ltId = 'ZTrig' + cId,
+ldId = 'StickD' + cId,
+llId = 'StickL' + cId,
+lrId = 'StickR' + cId,
+luId = 'StickU' + cId,
+rsId = 'RTrig' + cId,
+rtId = 'RTrig' + cId + 'b',
+rdId = 'CButtonD' + cId,
+rlId = 'CButtonL' + cId,
+rrId = 'CButtonR' + cId,
+ruId = 'CButtonU' + cId,
+sId = 'Start' + cId,
+xId = 'BButton' + cId,
+yId = 'CButtonL' + cId + 'b';
+let mapping = jsmapping(padId);
+if(mapping === '' || mapping === null || mapping === undefined)return
+mapping = '"' + mapping.replace(/([^,]*),([^,]*),/,'guid:$1,name:$2,').replace(/\:/g,'":"').replace(/,/g,'","').replace(/\r|\n/g,'') + '"'
+mapping = JSON.parse('{' + mapping.replace(/,""/,'') + '}')
+
+mappingArray.forEach(btn => {
+if(mapping[btn] != undefined){
+console.log(mapping[btn])
+var cBtn = mapping[btn].replace(/b(.*)/,'button($1)').replace(/(.)a(\d*)/,'axis($2$1)').replace(/a(?!xis)(\d*)/,'axis($1+)').replace(/h(.)\.(.)/,'hat($1 $2)').replace('hat(0 1)','hat(0 Up)').replace('hat(0 2)','hat(0 Right)').replace('hat(0 4)','hat(0 Down)').replace('hat(0 8)','hat(0 Left)');
+if(btn === 'a'){id(aId).value = cBtn;localStorage.setItem(aId,cBtn)}
+if(btn === 'b'){id(bId).value = cBtn;localStorage.setItem(bId,cBtn)}
+if(btn === 'dpdown'){id(dpdId).value = cBtn;localStorage.setItem(dpdId,cBtn)}
+if(btn === 'dpleft'){id(dplId).value = cBtn;localStorage.setItem(dplId,cBtn)}
+if(btn === 'dpright'){id(dprId).value = cBtn;localStorage.setItem(dprId,cBtn)}
+if(btn === 'dpup'){id(dpuId).value = cBtn;localStorage.setItem(dpuId,cBtn)}
+if(btn === 'leftshoulder'){id(lsId).value = cBtn;localStorage.setItem(lsId,cBtn)}
+if(btn === 'lefttrigger'){id(ltId).value = cBtn;localStorage.setItem(ltId,cBtn)}
+if(btn === 'leftx'){id(llId).value = cBtn.replace('+','-');localStorage.setItem(llId,cBtn.replace('+','-'));id(lrId).value = cBtn;localStorage.setItem(lrId,cBtn)}
+if(btn === 'lefty'){id(luId).value = cBtn.replace('+','-');localStorage.setItem(luId,cBtn.replace('+','-'));id(ldId).value = cBtn;localStorage.setItem(ldId,cBtn)}
+if(btn === 'rightshoulder'){id(rsId).value = cBtn;localStorage.setItem(rsId,cBtn)}
+if(btn === 'righttrigger'){id(rtId).value = cBtn;localStorage.setItem(rtId,cBtn)}
+if(btn === 'rightx'){id(rlId).value = cBtn.replace('+','-');localStorage.setItem(rlId,cBtn.replace('+','-'));id(rrId).value = cBtn;localStorage.setItem(rrId,cBtn)}
+if(btn === 'righty'){id(ruId).value = cBtn.replace('+','-');localStorage.setItem(ruId,cBtn.replace('+','-'));id(rdId).value = cBtn;localStorage.setItem(rdId,cBtn)}
+if(btn === 'start'){id(sId).value = cBtn;localStorage.setItem(sId,cBtn)}
+if(btn === 'x'){id(xId).value = cBtn;localStorage.setItem(xId,cBtn)}
+if(btn === 'y'){id(yId).value = cBtn;localStorage.setItem(yId,cBtn)}
+}})}
 
 
 
@@ -249,26 +312,26 @@ id('mode4').addEventListener('change', mode4Disable)
 mode4Disable()
 
 function c1Disable(){
-if(id('c1').value === 'Keyboard'){id('c1_keyboard').classList.replace('hide','show');id('c1_controller').classList.replace('show','hide');id('analog1').classList.replace('show','hide')}
-else{id('c1_keyboard').classList.replace('show','hide');id('c1_controller').classList.replace('hide','show');id('analog1').classList.replace('hide','show')}}
+if(id('c1').value === 'Keyboard'){id('c1_keyboard').classList.replace('hide','show');id('c1_controller').classList.replace('show','hide');id('c1_auto').classList.replace('show','hide');id('analog1').classList.replace('show','hide')}
+else{id('c1_keyboard').classList.replace('show','hide');id('c1_controller').classList.replace('hide','show');id('c1_auto').classList.replace('hide','show');id('analog1').classList.replace('hide','show')}}
 id('c1').addEventListener('change', c1Disable)
 c1Disable()
 
 function c2Disable(){
-if(id('c2').value === 'Keyboard'){id('c2_keyboard').classList.replace('hide','show');id('c2_controller').classList.replace('show','hide');id('analog2').classList.replace('show','hide')}
-else{id('c2_keyboard').classList.replace('show','hide');id('c2_controller').classList.replace('hide','show');id('analog2').classList.replace('hide','show')}}
+if(id('c2').value === 'Keyboard'){id('c2_keyboard').classList.replace('hide','show');id('c2_controller').classList.replace('show','hide');id('c2_auto').classList.replace('show','hide');id('analog2').classList.replace('show','hide')}
+else{id('c2_keyboard').classList.replace('show','hide');id('c2_controller').classList.replace('hide','show');id('c2_auto').classList.replace('hide','show');id('analog2').classList.replace('hide','show')}}
 id('c2').addEventListener('change', c2Disable)
 c2Disable()
 
 function c3Disable(){
-if(id('c3').value === 'Keyboard'){id('c3_keyboard').classList.replace('hide','show');id('c3_controller').classList.replace('show','hide');id('analog3').classList.replace('show','hide')}
-else{id('c3_keyboard').classList.replace('show','hide');id('c3_controller').classList.replace('hide','show');id('analog3').classList.replace('hide','show')}}
+if(id('c3').value === 'Keyboard'){id('c3_keyboard').classList.replace('hide','show');id('c3_controller').classList.replace('show','hide');id('c3_auto').classList.replace('show','hide');id('analog3').classList.replace('show','hide')}
+else{id('c3_keyboard').classList.replace('show','hide');id('c3_controller').classList.replace('hide','show');id('c3_auto').classList.replace('hide','show');id('analog3').classList.replace('hide','show')}}
 id('c3').addEventListener('change', c3Disable)
 c3Disable()
 
 function c4Disable(){
-if(id('c4').value === 'Keyboard'){id('c4_keyboard').classList.replace('hide','show');id('c4_controller').classList.replace('show','hide');id('analog4').classList.replace('show','hide')}
-else{id('c4_keyboard').classList.replace('show','hide');id('c4_controller').classList.replace('hide','show');id('analog4').classList.replace('hide','show')}}
+if(id('c4').value === 'Keyboard'){id('c4_keyboard').classList.replace('hide','show');id('c4_controller').classList.replace('show','hide');id('c4_auto').classList.replace('show','hide');id('analog4').classList.replace('show','hide')}
+else{id('c4_keyboard').classList.replace('show','hide');id('c4_controller').classList.replace('hide','show');id('c4_auto').classList.replace('hide','show');id('analog4').classList.replace('hide','show')}}
 id('c4').addEventListener('change', c4Disable)
 c4Disable()
 

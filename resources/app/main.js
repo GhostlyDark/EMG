@@ -67,6 +67,11 @@ ipcMain.on('jsrefresh', (e) => {
 	e.returnValue = child.stdout.toString()
 })
 
+ipcMain.on('jsmapping', (e, padId) => {
+	let child = childSpawnSync(jstestPath, ['-m', padId], options);
+	e.returnValue = child.stdout.toString()
+})
+
 ipcMain.on('writeGCA', (e, gcaSettings) => {
 	if(!existsSync(m64pConfig)){mkdirSync(m64pConfig,{recursive:true})}
 	e.returnValue = writeFileSync(path(m64pConfig, 'mupen64plus-input-gca.toml'),gcaSettings)
