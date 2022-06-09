@@ -111,12 +111,11 @@ xId = 'BButton' + cId,
 yId = 'CButtonL' + cId + 'b';
 let mapping = jsmapping(padId);
 if(mapping === '' || mapping === null || mapping === undefined)return
-mapping = '"' + mapping.replace(/([^,]*),([^,]*),/,'guid:$1,name:$2,').replace(/\:/g,'":"').replace(/,/g,'","').replace(/\r|\n/g,'') + '"'
+mapping = '"' + mapping.replace(/hint:(.*):(.*)/,'hint:$1$2').replace(/([^,]*),([^,]*),/,'guid:$1,name:$2,').replace(/\:/g,'":"').replace(/,/g,'","').replace(/\r|\n/g,'') + '"'
 mapping = JSON.parse('{' + mapping.replace(/,""/,'') + '}')
 
 mappingArray.forEach(btn => {
 if(mapping[btn] != undefined){
-console.log(mapping[btn])
 var cBtn = mapping[btn].replace(/b(.*)/,'button($1)').replace(/(.)a(\d*)/,'axis($2$1)').replace(/a(?!xis)(\d*)/,'axis($1+)').replace(/h(.)\.(.)/,'hat($1 $2)').replace('hat(0 1)','hat(0 Up)').replace('hat(0 2)','hat(0 Right)').replace('hat(0 4)','hat(0 Down)').replace('hat(0 8)','hat(0 Left)');
 if(btn === 'a'){id(aId).value = cBtn;localStorage.setItem(aId,cBtn)}
 if(btn === 'b'){id(bId).value = cBtn;localStorage.setItem(bId,cBtn)}
