@@ -86,31 +86,31 @@ if(auto.id.includes(1)){tId = id('c1');cId = 1}
 if(auto.id.includes(2)){tId = id('c2');cId = 2}
 if(auto.id.includes(3)){tId = id('c3');cId = 3}
 if(auto.id.includes(4)){tId = id('c4');cId = 4}
-cId += 'c'
 padId = tId.value.substring(0,2).replace(/\:/g,'')
-var aId = 'AButton' + cId,
-bId = 'CButtonD' + cId + 'b',
-dpdId = 'DPadD' + cId,
-dplId = 'DPadL' + cId,
-dprId = 'DPadR' + cId,
-dpuId = 'DPadU' + cId,
-lsId = 'LTrig' + cId,
-ltId = 'ZTrig' + cId,
-ldId = 'StickD' + cId,
-llId = 'StickL' + cId,
-lrId = 'StickR' + cId,
-luId = 'StickU' + cId,
-rsId = 'RTrig' + cId,
-rtId = 'RTrig' + cId + 'b',
-rdId = 'CButtonD' + cId,
-rlId = 'CButtonL' + cId,
-rrId = 'CButtonR' + cId,
-ruId = 'CButtonU' + cId,
-sId = 'Start' + cId,
-xId = 'BButton' + cId,
-yId = 'CButtonL' + cId + 'b';
+var aId = 'AButton' + cId + 'c',
+bId = 'CButtonD' + cId + 'cb',
+dpdId = 'DPadD' + cId + 'c',
+dplId = 'DPadL' + cId + 'c',
+dprId = 'DPadR' + cId + 'c',
+dpuId = 'DPadU' + cId + 'c',
+lsId = 'LTrig' + cId + 'c',
+ltId = 'ZTrig' + cId + 'c',
+ldId = 'StickD' + cId + 'c',
+llId = 'StickL' + cId + 'c',
+lrId = 'StickR' + cId + 'c',
+luId = 'StickU' + cId + 'c',
+rsId = 'RTrig' + cId + 'c',
+rtId = 'RTrig' + cId + 'cb',
+rdId = 'CButtonD' + cId + 'c',
+rlId = 'CButtonL' + cId + 'c',
+rrId = 'CButtonR' + cId + 'c',
+ruId = 'CButtonU' + cId + 'c',
+sId = 'Start' + cId + 'c',
+xId = 'BButton' + cId + 'c',
+yId = 'CButtonL' + cId + 'cb';
 let mapping = jsmapping(padId);
 if(mapping === '' || mapping === null || mapping === undefined)return
+id('clear_controls'+cId).click()
 mapping = '"' + mapping.replace(/hint:(.*):(.*)/,'hint:$1$2').replace(/([^,]*),([^,]*),/,'guid:$1,name:$2,').replace(/\:/g,'":"').replace(/,/g,'","').replace(/\r|\n/g,'') + '"'
 mapping = JSON.parse('{' + mapping.replace(/,""/,'') + '}')
 
