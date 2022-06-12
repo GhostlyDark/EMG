@@ -82,12 +82,12 @@ localStorage.setItem(drop.id+'Element',(drop.innerHTML))}
 
 function autoConfig(auto){
 var padId, cId, tId;
-if(auto.id.includes(1)){tId = id('c1').value;cId = 1}
-if(auto.id.includes(2)){tId = id('c2').value;cId = 2}
-if(auto.id.includes(3)){tId = id('c3').value;cId = 3}
-if(auto.id.includes(4)){tId = id('c4').value;cId = 4}
+if(auto.id.includes(1)){tId = id('c1');cId = 1}
+if(auto.id.includes(2)){tId = id('c2');cId = 2}
+if(auto.id.includes(3)){tId = id('c3');cId = 3}
+if(auto.id.includes(4)){tId = id('c4');cId = 4}
 cId += 'c'
-padId = tId.substring(0,2).replace(/\:/g,'')
+padId = tId.value.substring(0,2).replace(/\:/g,'')
 var aId = 'AButton' + cId,
 bId = 'CButtonD' + cId + 'b',
 dpdId = 'DPadD' + cId,
