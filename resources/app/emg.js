@@ -138,6 +138,19 @@ if(btn === 'y'){id(yId).value = cBtn;localStorage.setItem(yId,cBtn)}
 
 
 
+function clear_controls(n){n64_buttons.forEach(n64_button => {id('clear'+n64_button.replace(/1|2|3|4/,n)+'c').click()})} // clear all buttons
+function clear_keyboard(n){n64_buttons.forEach(n64_button => {id('clear'+n64_button.replace(/1|2|3|4/,n)).click()})}
+id('clear_controls1').addEventListener('click', function(){clear_controls(1)})
+id('clear_controls2').addEventListener('click', function(){clear_controls(2)})
+id('clear_controls3').addEventListener('click', function(){clear_controls(3)})
+id('clear_controls4').addEventListener('click', function(){clear_controls(4)})
+id('clear_kb1').addEventListener('click', function(){clear_keyboard(1)})
+id('clear_kb2').addEventListener('click', function(){clear_keyboard(2)})
+id('clear_kb3').addEventListener('click', function(){clear_keyboard(3)})
+id('clear_kb4').addEventListener('click', function(){clear_keyboard(4)})
+
+
+
 n64_buttons.forEach(n64_button => { // controller input
 var n64_button_c = n64_button+'c',
 n64_button_cb = n64_button+'cb',
