@@ -23,20 +23,28 @@ if(joyinput.id.includes('1'))config = c1
 if(joyinput.id.includes('2'))config = c2
 if(joyinput.id.includes('3'))config = c3
 if(joyinput.id.includes('4'))config = c4
-jstestConfig = ['-es', config.value.substring(0,2).replace(/\:/g,'')];
+const cvalue = config.value.substring(0,2).replace(/\:/g,'');
+jstestConfig = ['-es', cvalue];
 ipcRenderer.removeAllListeners('jsLog')
 ipcRenderer.removeAllListeners('jsClosed')
 ipcRenderer.send('jstestKill')
 ipcRenderer.send('jstestChild', jstestConfig)
 ipcRenderer.once('jsLog', (e, data) => {
 joydata = data.replace(/\r/gm,'');
-if(joydata.includes('-')){joyvalue = joydata.replace(/\s.*/i,'-)')}else{joyvalue = joydata.replace(/\s.*/i,'+)')}
-if(joyinput.id.includes('JoyMapping')){
+let mapping = jsmapping(cvalue); // force + on trigger axis
+if(mapping != '' && mapping != null && mapping != undefined){
+mapping = '"' + mapping.replace(/hint:(.*):(.*)/,'hint:$1$2').replace(/([^,]*),([^,]*),/,'guid:$1,name:$2,').replace(/\:/g,'":"').replace(/,/g,'","').replace(/\r|\n/g,'') + '"'
+mapping = JSON.parse('{' + mapping.replace(/,""/,'') + '}')
+if(joydata.includes('axis')){
+const jdvalue = joydata.replace(/\n/g).replace(/axis\((.*) .*/,'a$1');
+if(jdvalue == mapping.lefttrigger || jdvalue == mapping.righttrigger)joydata = joydata.replace(' -',' ')}}
+if(joydata.includes('-')){joyvalue = joydata.replace(/\s.*/i,'-)')}else{joyvalue = joydata.replace(/\s.*/i,'+)')} // axis
+if(joyinput.id.includes('JoyMapping')){ // mupen64plus joypad hotkeys
 if(joydata.includes('button')){joyvalue = 'B' + joydata.replace(/button\(|\)/g,'')}
 if(joydata.includes('hat')){joyvalue = joydata.replace('hat(','H').replace(' ','V').replace(')','')}
 if(joydata.includes('axis')){joyvalue = joyvalue.replace(/xis\(|\)/g,'').replace('a','A')}
 if(joyvalue != joyinput.value && joyinput.value != '' && !joyinput.value.includes('/')){joyvalue = joyinput.value + '/' + joyvalue}}
-else{
+else{ // joypad buttons
 if(joydata.includes('button')){joyvalue = joydata}
 if(joydata.includes('hat')){joyvalue = joydata.replace('1)','Up)').replace('2)','Right)').replace('4)','Down)').replace('8)','Left)')}}
 if(joyvalue != undefined){joyinput.value = joyvalue;localStorage.setItem(joyinput.id,joyvalue)}})
