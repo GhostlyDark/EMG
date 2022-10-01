@@ -24,8 +24,8 @@ cd mupen64plus-input-raphnetraw/projects/unix
 make all
 cd ../../../
 
-wget https://github.com/electron/electron/releases/download/v19.0.4/electron-v19.0.4-linux-x64.zip
-unzip electron-v19.0.4-linux-x64.zip -d EMG -x LICENSE
+wget https://github.com/electron/electron/releases/download/v21.0.1/electron-v21.0.1-linux-x64.zip
+unzip electron-v21.0.1-linux-x64.zip -d EMG -x LICENSE
 
 cp -r EMG/assets/scripts/test/* EMG/resources/app/m64p/
 cp -r sdl-jstest/build/sdl2-jstest EMG/resources/app/m64p/
