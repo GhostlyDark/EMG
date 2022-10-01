@@ -495,6 +495,7 @@ if(id(menu+'Settings').classList.contains('active'))id(menu+'Settings').classLis
 if(id(menu+'SettingsDropdown').classList.contains('show'))id(menu+'SettingsDropdown').classList.remove('show')})}
 
 menu.forEach(menu => {id(menu+'Settings').addEventListener('click', function(){
+if(id(menu+'Settings').classList.contains('active')){removeShow();return}
 removeShow();if(!id(menu+'SettingsDropdown').classList.contains('show')){id(menu+'SettingsDropdown').classList.toggle('show');id(menu+'Settings').classList.toggle('active')}})})
 
 html.addEventListener('click', function(e){if(!e.target.matches('.dropbutton')){removeShow()}})
