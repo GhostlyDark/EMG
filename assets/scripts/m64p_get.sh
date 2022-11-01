@@ -43,5 +43,5 @@ for component in ${M64P_COMPONENTS}; do
 	fi
 
 	echo "************************************ Downloading ${component} ${component_type}"
-	git clone https://github.com/mupen64plus/mupen64plus-${component}.git source/mupen64plus-${component} $@
+	git clone https://github.com/ghostlydark/mupen64plus-${component}.git source/mupen64plus-${component} $@
 done
