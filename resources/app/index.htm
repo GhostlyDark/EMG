@@ -292,10 +292,9 @@ Click the box or drag and drop the file into the box below.">Path to Savestate&n
 <p>&nbsp;</p>
 <p class="sub">Controller 1</p>
 <p>&nbsp;</p>
-<div title="Configure everything, including the selected device minus the controller plugin either automatically or manually."><select class="width175m" name="mode1" id="mode1">
-<option value="Input-SDL-Control1[mode]=0">Manual</option>
-<option value="Input-SDL-Control1[mode]=2" selected>Automatic</option>
-</select><label for="mode1">Configuration Mode</label></div>
+<div title="Select SDL device to be used for this controller port. Will be ignored if configuration mode is set to Automatic, except for hotkey settings."><select class="width85p" name="c1" id="c1">
+<option value="Keyboard" selected>Keyboard</option>
+</select><button class="floatright" id="refreshc1">Refresh</button></div>
 <p>&nbsp;</p>
 <select class="width175m" name="plugin1" id="plugin1">
 <option value="Input-SDL-Control1[plugin]=1" selected>None</option>
@@ -303,12 +302,6 @@ Click the box or drag and drop the file into the box below.">Path to Savestate&n
 <option value="Input-SDL-Control1[plugin]=4">Transfer Pak</option>
 <option value="Input-SDL-Control1[plugin]=5">Rumble Pak</option>
 </select><label for="plugin1">Controller Plugin</label>
-<p>&nbsp;</p>
-<div title="Select SDL device to be used for this controller port. Will be ignored if configuration mode is set to Automatic, except for hotkey settings."><select class="width85p" name="c1" id="c1">
-<option value="Keyboard" selected>Keyboard</option>
-</select><button class="floatright" id="refreshc1">Refresh</button></div>
-<p>&nbsp;</p>
-<div class="hide" id="manual1">
 <p>&nbsp;</p>
 <p title="Specifies whether this controller is connected to the simulated N64."><input id="plugged1" type="checkbox" data-store="plugged1" checked><label for="plugged1">Plugged</label></p>
 <p>&nbsp;</p>
@@ -486,15 +479,13 @@ Click the box or drag and drop the file into the box below.">Path to Savestate&n
 </div>
 <p>&nbsp;</p>
 </div>
-</div>
 <p>&nbsp;</p><p>&nbsp;</p>
 <div id="controller2Anchor" class="anchor"></div>
 <p class="sub">Controller 2</p>
 <p>&nbsp;</p>
-<div title="Configure everything, including the selected device minus the controller plugin either automatically or manually."><select class="width175m" name="mode2" id="mode2">
-<option value="Input-SDL-Control2[mode]=0">Manual</option>
-<option value="Input-SDL-Control2[mode]=2" selected>Automatic</option>
-</select><label for="mode2">Configuration Mode</label></div>
+<div title="Select SDL device to be used for this controller port. Will be ignored if configuration mode is set to Automatic, except for hotkey settings."><select class="width85p" name="c2" id="c2">
+<option value="Keyboard" selected>Keyboard</option>
+</select><button class="floatright" id="refreshc2">Refresh</button></div>
 <p>&nbsp;</p>
 <select class="width175m" name="plugin2" id="plugin2">
 <option value="Input-SDL-Control2[plugin]=1" selected>None</option>
@@ -502,12 +493,6 @@ Click the box or drag and drop the file into the box below.">Path to Savestate&n
 <option value="Input-SDL-Control2[plugin]=4">Transfer Pak</option>
 <option value="Input-SDL-Control2[plugin]=5">Rumble Pak</option>
 </select><label for="plugin2">Controller Plugin</label>
-<p>&nbsp;</p>
-<div title="Select SDL device to be used for this controller port. Will be ignored if configuration mode is set to Automatic, except for hotkey settings."><select class="width85p" name="c2" id="c2">
-<option value="Keyboard" selected>Keyboard</option>
-</select><button class="floatright" id="refreshc2">Refresh</button></div>
-<p>&nbsp;</p>
-<div class="hide" id="manual2">
 <p>&nbsp;</p>
 <p title="Specifies whether this controller is connected to the simulated N64."><input id="plugged2" type="checkbox" data-store="plugged2" checked><label for="plugged2">Plugged</label></p>
 <p>&nbsp;</p>
@@ -685,15 +670,13 @@ Click the box or drag and drop the file into the box below.">Path to Savestate&n
 </div>
 <p>&nbsp;</p>
 </div>
-</div>
 <p>&nbsp;</p><p>&nbsp;</p>
 <div id="controller3Anchor" class="anchor"></div>
 <p class="sub">Controller 3</p>
 <p>&nbsp;</p>
-<div title="Configure everything, including the selected device minus the controller plugin either automatically or manually."><select class="width175m" name="mode3" id="mode3">
-<option value="Input-SDL-Control3[mode]=0">Manual</option>
-<option value="Input-SDL-Control3[mode]=2" selected>Automatic</option>
-</select><label for="mode3">Configuration Mode</label></div>
+<div title="Select SDL device to be used for this controller port. Will be ignored if configuration mode is set to Automatic, except for hotkey settings."><select class="width85p" name="c3" id="c3">
+<option value="Keyboard" selected>Keyboard</option>
+</select><button class="floatright" id="refreshc3">Refresh</button></div>
 <p>&nbsp;</p>
 <select class="width175m" name="plugin3" id="plugin3">
 <option value="Input-SDL-Control3[plugin]=1" selected>None</option>
@@ -701,12 +684,6 @@ Click the box or drag and drop the file into the box below.">Path to Savestate&n
 <option value="Input-SDL-Control3[plugin]=4">Transfer Pak</option>
 <option value="Input-SDL-Control3[plugin]=5">Rumble Pak</option>
 </select><label for="plugin3">Controller Plugin</label>
-<p>&nbsp;</p>
-<div title="Select SDL device to be used for this controller port. Will be ignored if configuration mode is set to Automatic, except for hotkey settings."><select class="width85p" name="c3" id="c3">
-<option value="Keyboard" selected>Keyboard</option>
-</select><button class="floatright" id="refreshc3">Refresh</button></div>
-<p>&nbsp;</p>
-<div class="hide" id="manual3">
 <p>&nbsp;</p>
 <p title="Specifies whether this controller is connected to the simulated N64."><input id="plugged3" type="checkbox" data-store="plugged3" checked><label for="plugged3">Plugged</label></p>
 <p>&nbsp;</p>
@@ -884,15 +861,13 @@ Click the box or drag and drop the file into the box below.">Path to Savestate&n
 </div>
 <p>&nbsp;</p>
 </div>
-</div>
 <p>&nbsp;</p><p>&nbsp;</p>
 <div id="controller4Anchor" class="anchor"></div>
 <p class="sub">Controller 4</p>
 <p>&nbsp;</p>
-<div title="Configure everything, including the selected device minus the controller plugin either automatically or manually."><select class="width175m" name="mode4" id="mode4">
-<option value="Input-SDL-Control4[mode]=0">Manual</option>
-<option value="Input-SDL-Control4[mode]=2" selected>Automatic</option>
-</select><label for="mode4">Configuration Mode</label></div>
+<div title="Select SDL device to be used for this controller port. Will be ignored if configuration mode is set to Automatic, except for hotkey settings."><select class="width85p" name="c4" id="c4">
+<option value="Keyboard" selected>Keyboard</option>
+</select><button class="floatright" id="refreshc4">Refresh</button></div>
 <p>&nbsp;</p>
 <select class="width175m" name="plugin4" id="plugin4">
 <option value="Input-SDL-Control4[plugin]=1" selected>None</option>
@@ -900,12 +875,6 @@ Click the box or drag and drop the file into the box below.">Path to Savestate&n
 <option value="Input-SDL-Control4[plugin]=4">Transfer Pak</option>
 <option value="Input-SDL-Control4[plugin]=5">Rumble Pak</option>
 </select><label for="plugin4">Controller Plugin</label>
-<p>&nbsp;</p>
-<div title="Select SDL device to be used for this controller port. Will be ignored if configuration mode is set to Automatic, except for hotkey settings."><select class="width85p" name="c4" id="c4">
-<option value="Keyboard" selected>Keyboard</option>
-</select><button class="floatright" id="refreshc4">Refresh</button></div>
-<p>&nbsp;</p>
-<div class="hide" id="manual4">
 <p>&nbsp;</p>
 <p title="Specifies whether this controller is connected to the simulated N64."><input id="plugged4" type="checkbox" data-store="plugged4" checked><label for="plugged4">Plugged</label></p>
 <p>&nbsp;</p>
@@ -1082,7 +1051,6 @@ Click the box or drag and drop the file into the box below.">Path to Savestate&n
 <p><label for="RumblepakSwitch4c">Rumble Pak</label><input value="" type="text" id="RumblepakSwitch4c" readonly>&nbsp;&nbsp;&nbsp;<input value="" type="text" id="RumblepakSwitch4cb" readonly><button id="clearRumblepakSwitch4c">Clear</button></p>
 </div>
 <p>&nbsp;</p>
-</div>
 </div>
 <p>&nbsp;</p><p>&nbsp;</p>
 <div id="gcaAnchor" class="anchor"></div>

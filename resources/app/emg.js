@@ -43,7 +43,7 @@ numbers = ['OverscanNtscTop','OverscanNtscLeft','OverscanNtscRight','OverscanNts
 dropdowns = [
 'emumode','resolution','SaveDiskFormat', /* mupen64plus */
 'gfx','audio','input','rsp','RspFallback', /* mupen64plus plugins */
-'plugin1','plugin2','plugin3','plugin4','mode1','mode2','mode3','mode4','c1','c2','c3','c4',
+'plugin1','plugin2','plugin3','plugin4','c1','c2','c3','c4',
 'mouse1_1','mouse1_2','mouse1_3','mouse2_1','mouse2_2','mouse2_3','mouse3_1','mouse3_2','mouse3_3','mouse4_1','mouse4_2','mouse4_3', // mupen64plus-input
 'DEFAULT_FREQUENCY','SECONDARY_BUFFER_SIZE','RESAMPLE', /* mupen64plus-audio */
 'a','b','x','y','start','z','l','r','d_pad_left','d_pad_right','d_pad_down','d_pad_up','c_stick_left','c_stick_right','c_stick_down','c_stick_up', /* mupen64plus-input-gca */
@@ -302,26 +302,6 @@ clockDisable()
 function ghq_hirsDisable(){if(id('ghq_hirs').checked){id('ghq_hirs_cmpr').disabled = false;id('ghq_hirs_tile').disabled = false;id('ghq_hirs_f16bpp').disabled = false;id('ghq_hirs_gz').disabled = false;id('ghq_hirs_altcrc').disabled = false;id('ghq_cache_save').disabled = false;id('ghq_hirs_let_texartists_fly').disabled = false}else{id('ghq_hirs_cmpr').disabled = true;id('ghq_hirs_tile').disabled = true;id('ghq_hirs_f16bpp').disabled = true;id('ghq_hirs_gz').disabled = true;id('ghq_hirs_altcrc').disabled = true;id('ghq_cache_save').disabled = true;id('ghq_hirs_let_texartists_fly').disabled = true}}
 id('ghq_hirs').addEventListener('change', ghq_hirsDisable)
 ghq_hirsDisable()
-
-function mode1Disable(){
-if(id('mode1').value === 'Input-SDL-Control1[mode]=0'){id('manual1').classList.replace('hide','show')}else{id('manual1').classList.replace('show','hide')}}
-id('mode1').addEventListener('change', mode1Disable)
-mode1Disable()
-
-function mode2Disable(){
-if(id('mode2').value === 'Input-SDL-Control2[mode]=0'){id('manual2').classList.replace('hide','show')}else{id('manual2').classList.replace('show','hide')}}
-id('mode2').addEventListener('change', mode2Disable)
-mode2Disable()
-
-function mode3Disable(){
-if(id('mode3').value === 'Input-SDL-Control3[mode]=0'){id('manual3').classList.replace('hide','show')}else{id('manual3').classList.replace('show','hide')}}
-id('mode3').addEventListener('change', mode3Disable)
-mode3Disable()
-
-function mode4Disable(){
-if(id('mode4').value === 'Input-SDL-Control4[mode]=0'){id('manual4').classList.replace('hide','show')}else{id('manual4').classList.replace('show','hide')}}
-id('mode4').addEventListener('change', mode4Disable)
-mode4Disable()
 
 function c1Disable(){
 if(id('c1').value === 'Keyboard'){id('c1_keyboard').classList.replace('hide','show');id('c1_controller').classList.replace('show','hide');id('c1_auto').classList.replace('show','hide');id('analog1').classList.replace('show','hide')}
@@ -938,10 +918,10 @@ plugin1 = id('plugin1').value,
 plugin2 = id('plugin2').value,
 plugin3 = id('plugin3').value,
 plugin4 = id('plugin4').value,
-mode1 = id('mode1').value,
-mode2 = id('mode2').value,
-mode3 = id('mode3').value,
-mode4 = id('mode4').value,
+mode1 = 'Input-SDL-Control1[mode]=0',
+mode2 = 'Input-SDL-Control2[mode]=0',
+mode3 = 'Input-SDL-Control3[mode]=0',
+mode4 = 'Input-SDL-Control4[mode]=0',
 msaa = id('msaa').value,
 aspectRatio = id('aspectRatio').value,
 bufferSwapMode = id('bufferSwapMode').value,
@@ -1997,10 +1977,10 @@ function checkCheats(cheatInput){if(cheatInput.checked){var id = cheatInput.id.r
 cheats = ['--cheats',activeCheats]}
 
 if(!input.includes('input-sdl')){controls = []; controller1 = []; controller2 = []; controller3 = []; controller4 = []} // reduce number of parameters
-if(mode1 === 'Input-SDL-Control1[mode]=2' || (mode1 === 'Input-SDL-Control1[mode]=0' && !id('plugged1').checked))controller1 = []
-if(mode2 === 'Input-SDL-Control2[mode]=2' || (mode2 === 'Input-SDL-Control2[mode]=0' && !id('plugged2').checked))controller2 = []
-if(mode3 === 'Input-SDL-Control3[mode]=2' || (mode3 === 'Input-SDL-Control3[mode]=0' && !id('plugged3').checked))controller3 = []
-if(mode4 === 'Input-SDL-Control4[mode]=2' || (mode4 === 'Input-SDL-Control4[mode]=0' && !id('plugged4').checked))controller4 = []
+if(!id('plugged1').checked)controller1 = []
+if(!id('plugged2').checked)controller2 = []
+if(!id('plugged3').checked)controller3 = []
+if(!id('plugged4').checked)controller4 = []
 if(gfx.includes('angrylion'))graphics = Angrylion
 if(gfx.includes('glide64mk2'))graphics = Glide64MK2
 if(gfx.includes('GLideN64'))graphics = GLideN64
