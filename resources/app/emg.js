@@ -283,7 +283,7 @@ function txNoTextureFileStorageDisable(){if(id('txNoTextureFileStorage').checked
 id('txNoTextureFileStorage').addEventListener('change', txNoTextureFileStorageDisable)
 txNoTextureFileStorageDisable()
 
-function txHiresEnableDisable(){if(id('txHiresEnable').checked){id('txDump').disabled = false;id('txHiresFullAlphaChannel').disabled = false;id('txHresAltCRC').disabled = false;id('txCacheCompression').disabled = false;id('txForce16bpp').disabled = false;id('txSaveCache').disabled = false;id('txNoTextureFileStorage').disabled = false}else{id('txDump').disabled = true;id('txHiresFullAlphaChannel').disabled = true;id('txHresAltCRC').disabled = true;id('txCacheCompression').disabled = true;id('txForce16bpp').disabled = true;id('txSaveCache').disabled = true;id('txNoTextureFileStorage').disabled = true}}
+function txHiresEnableDisable(){if(id('txHiresEnable').checked){id('txDump').disabled = false;id('txHiresFullAlphaChannel').disabled = false;id('txHresAltCRC').disabled = false;id('txCacheCompression').disabled = false;id('txSaveCache').disabled = false;id('txNoTextureFileStorage').disabled = false}else{id('txDump').disabled = true;id('txHiresFullAlphaChannel').disabled = true;id('txHresAltCRC').disabled = true;id('txCacheCompression').disabled = true;id('txSaveCache').disabled = true;id('txNoTextureFileStorage').disabled = true}}
 id('txHiresEnable').addEventListener('change', txHiresEnableDisable)
 txHiresEnableDisable()
 
@@ -827,7 +827,7 @@ txFilterIgnoreBG = 'Video-GLideN64[txFilterIgnoreBG]=' + id('txFilterIgnoreBG').
 txHiresFullAlphaChannel = 'Video-GLideN64[txHiresFullAlphaChannel]=' + id('txHiresFullAlphaChannel').checked,
 txHresAltCRC = 'Video-GLideN64[txHresAltCRC]=' + id('txHresAltCRC').checked,
 txCacheCompression = 'Video-GLideN64[txCacheCompression]=' + id('txCacheCompression').checked,
-txForce16bpp = 'Video-GLideN64[txForce16bpp]=' + id('txForce16bpp').checked,
+txForce16bpp = 'Video-GLideN64[txForce16bpp]=False',
 txSaveCache = 'Video-GLideN64[txSaveCache]=' + id('txSaveCache').checked,
 ForceGammaCorrection = 'Video-GLideN64[ForceGammaCorrection]=' + id('ForceGammaCorrection').checked,
 ShowFPS = 'Video-GLideN64[ShowFPS]=' + id('ShowFPS').checked,
