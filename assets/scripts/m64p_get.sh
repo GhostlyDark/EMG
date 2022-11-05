@@ -28,20 +28,20 @@ rm -rf source
 mkdir source
 
 if [ -z "$M64P_COMPONENTS" ]; then
-	M64P_COMPONENTS="core rom ui-console audio-sdl input-sdl rsp-hle video-rice video-glide64mk2"
+	M64P_COMPONENTS="mupen64plus-core mupen64plus-rom mupen64plus-ui-console mupen64plus-audio-sdl mupen64plus-input-sdl mupen64plus-rsp-hle rsp mupen64plus-video-rice mupen64plus-video-glide64mk2"
 fi
 
 for component in ${M64P_COMPONENTS}; do
-	if [ "${component}" = "core" ]; then
+	if [ "${component}" = "mupen64plus-core" ]; then
 		component_type="library"
-	elif  [ "${component}" = "rom" ]; then
+	elif  [ "${component}" = "mupen64plus-rom" ]; then
 		component_type=""
-	elif  [ "${component}" = "ui-console" ]; then
+	elif  [ "${component}" = "mupen64plus-ui-console" ]; then
 		component_type="front-end"
 	else
 		component_type="plugin"
 	fi
 
 	echo "************************************ Downloading ${component} ${component_type}"
-	git clone https://github.com/ghostlydark/mupen64plus-${component}.git source/mupen64plus-${component} $@
+	git clone https://github.com/ghostlydark/${component}.git source/${component} $@
 done
