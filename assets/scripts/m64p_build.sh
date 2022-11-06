@@ -30,7 +30,7 @@ if [ -z "$M64P_COMPONENTS" ]; then
 	M64P_COMPONENTS="mupen64plus-core mupen64plus-rom mupen64plus-ui-console mupen64plus-audio-sdl mupen64plus-input-sdl mupen64plus-rsp-hle rsp mupen64plus-video-rice mupen64plus-video-glide64mk2"
 fi
 
-mkdir -p ./test/
+mkdir -p ./m64p-build/
 MAKE_INSTALL="PLUGINDIR= SHAREDIR= BINDIR= MANDIR= LIBDIR= APPSDIR= ICONSDIR=icons INCDIR=api LDCONFIG=true "
 
 for component in ${M64P_COMPONENTS}; do
@@ -38,8 +38,8 @@ for component in ${M64P_COMPONENTS}; do
 		component_type="library"
 	elif  [ "${component}" = "mupen64plus-rom" ]; then
 		echo "************************************ Building test ROM"
-		mkdir -p ./test/
-		cp source/mupen64plus-rom/m64p_test_rom.v64 ./test/
+		mkdir -p ./m64p-build/
+		cp source/mupen64plus-rom/m64p_test_rom.v64 ./m64p-build/
 		continue
 	elif  [ "${component}" = "mupen64plus-ui-console" ]; then
 		component_type="front-end"
@@ -50,17 +50,17 @@ for component in ${M64P_COMPONENTS}; do
 	echo "************************************ Building ${component} ${component_type}"
 	"$MAKE" -C source/${component}/projects/unix clean $@
 	"$MAKE" -C source/${component}/projects/unix all $@
-	"$MAKE" -C source/${component}/projects/unix install $@ ${MAKE_INSTALL} DESTDIR="$(pwd)/test/"
+	"$MAKE" -C source/${component}/projects/unix install $@ ${MAKE_INSTALL} DESTDIR="$(pwd)/m64p-build/"
 
-	mkdir -p ./test/doc
+	mkdir -p ./m64p-build/doc
 	for doc in LICENSES README RELEASE; do
 		if [ -e "source/${component}/${doc}" ]; then
-			cp "source/${component}/${doc}" "./test/doc/${doc}-${component}"
+			cp "source/${component}/${doc}" "./m64p-build/doc/${doc}-${component}"
 		fi
 	done
 	for subdoc in gpl-license font-license lgpl-license module-api-versions.txt; do
 		if [ -e "source/${component}/doc/${subdoc}" ]; then
-			cp "source/${component}/doc/${subdoc}" ./test/doc/
+			cp "source/${component}/doc/${subdoc}" ./m64p-build/doc/
 		fi
 	done
 done
