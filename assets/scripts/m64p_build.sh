@@ -23,11 +23,30 @@
 # terminate the script if any commands return a non-zero error code
 set -e
 
-if [ -z "$MAKE" ]; then
-	MAKE=make
-fi
+echo "************************************ Creating directories"
+mkdir source
+
 if [ -z "$M64P_COMPONENTS" ]; then
 	M64P_COMPONENTS="mupen64plus-core mupen64plus-rom mupen64plus-ui-console mupen64plus-audio-sdl mupen64plus-input-sdl mupen64plus-rsp-hle rsp mupen64plus-video-rice mupen64plus-video-glide64mk2"
+fi
+
+for component in ${M64P_COMPONENTS}; do
+	if [ "${component}" = "mupen64plus-core" ]; then
+		component_type="library"
+	elif  [ "${component}" = "mupen64plus-rom" ]; then
+		component_type=""
+	elif  [ "${component}" = "mupen64plus-ui-console" ]; then
+		component_type="front-end"
+	else
+		component_type="plugin"
+	fi
+
+	echo "************************************ Downloading ${component} ${component_type}"
+	git clone https://github.com/GhostlyDark/${component}.git source/${component} $@
+done
+
+if [ -z "$MAKE" ]; then
+	MAKE=make
 fi
 
 mkdir -p ./m64p-build/
