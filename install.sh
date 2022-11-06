@@ -1,5 +1,9 @@
 # Install dependencies
-sudo apt install -y build-essential cmake freeglut3-dev gcc git libboost-dev libboost-filesystem-dev libfreetype-dev libhidapi-dev libhidapi-hidraw0 liblircclient-dev libpng-dev libsamplerate0-dev libsdl2-dev libspeexdsp-dev make nasm p7zip-full p7zip-rar unzip wget zlib1g-dev
+sudo apt install -y build-essential cmake curl freeglut3-dev gcc git libboost-dev libboost-filesystem-dev libfreetype-dev libhidapi-dev libhidapi-hidraw0 liblircclient-dev libpng-dev libsamplerate0-dev libsdl2-dev libspeexdsp-dev make nasm p7zip-full p7zip-rar unzip wget zlib1g-dev
+
+# Install Rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+source "$HOME/.cargo/env"
 
 # Variables
 ELECTRON="v21.0.1"
@@ -13,6 +17,7 @@ mkdir -p source
 git clone https://github.com/GhostlyDark/EMG.git EMG
 git clone https://github.com/GhostlyDark/sdl-jstest.git source/sdl-jstest
 git clone https://github.com/GhostlyDark/SDL_GameControllerDB source/SDL_GameControllerDB
+git clone https://github.com/GhostlyDark/mupen64plus-input-gca.git source/mupen64plus-input-gca
 git clone https://github.com/GhostlyDark/mupen64plus-input-raphnetraw.git source/mupen64plus-input-raphnetraw
 git clone https://github.com/GhostlyDark/GLideN64.git source/GLideN64
 git clone https://github.com/GhostlyDark/angrylion-rdp-plus.git source/angrylion-rdp-plus
@@ -67,6 +72,11 @@ cmake ..
 make -j4
 cd ../../../
 
+# Build mupen64plus-input-gca
+cd source/mupen64plus-input-gca
+cargo build --release --features "m64p_compat"
+cd ../../
+
 # Build mupen64plus-input-raphnetraw
 make -j4 -C source/mupen64plus-input-raphnetraw/projects/unix all
 
@@ -97,6 +107,7 @@ cd ../../../
 # Prepare files
 cp source/sdl-jstest/build/sdl2-jstest ${EMG}
 cp source/SDL_GameControllerDB/gamecontrollerdb.txt ${EMG}
+cp source/mupen64plus-input-gca/target/release/libmupen64plus_input_gca.so ${EMG}/mupen64plus-input-gca.so
 cp source/mupen64plus-input-raphnetraw/projects/unix/mupen64plus-input-raphnetraw.so ${EMG}
 cp source/GLideN64/src/build/plugin/Release/mupen64plus-video-GLideN64.so ${EMG}
 cp source/GLideN64/ini/GLideN64.custom.ini ${EMG}
