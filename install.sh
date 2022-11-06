@@ -20,7 +20,7 @@ git clone https://github.com/GhostlyDark/parallel-rsp.git source/parallel-rsp
 
 # Download Electron
 [ ! -f electron-${ELECTRON}-linux-x64.zip ] && wget https://github.com/electron/electron/releases/download/${ELECTRON}/electron-${ELECTRON}-linux-x64.zip
-unzip electron-${ELECTRON}-linux-x64.zip -o -d EMG -x LICENSE
+unzip -o electron-${ELECTRON}-linux-x64.zip -d EMG -x LICENSE
 
 # Download mupen64plus source code
 for component in ${M64P_COMPONENTS}; do
