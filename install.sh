@@ -73,30 +73,27 @@ done
 
 # Downloading additional components
 git clone https://github.com/GhostlyDark/EMG.git EMG
-git clone https://github.com/GhostlyDark/sdl-jstest.git sdl-jstest
-git clone https://github.com/raphnet/mupen64plus-input-raphnetraw.git mupen64plus-input-raphnetraw
-git clone https://github.com/mupen64plus/mupen64plus-core.git mupen64plus-core
+git clone https://github.com/GhostlyDark/sdl-jstest.git source/sdl-jstest
+git clone https://github.com/GhostlyDark/mupen64plus-input-raphnetraw.git source/mupen64plus-input-raphnetraw
 
 # Build sdl2-jstest
-cd sdl-jstest
+cd source/sdl-jstest
 mkdir build
 cd build
 cmake ..
 make
-cd ../../
+cd ../../../
 
 # Build Raphnetraw Input Plugin
-cd mupen64plus-input-raphnetraw/projects/unix
-make all
-cd ../../../
+make -C source/mupen64plus-input-raphnetraw/projects/unix all
 
 # Download Electron
 wget https://github.com/electron/electron/releases/download/v21.0.1/electron-v21.0.1-linux-x64.zip
 unzip electron-v21.0.1-linux-x64.zip -d EMG -x LICENSE
 
 cp -r m64p-build/* EMG/resources/app/m64p/
-cp -r sdl-jstest/build/sdl2-jstest EMG/resources/app/m64p/
-cp -r mupen64plus-input-raphnetraw/projects/unix/mupen64plus-input-raphnetraw.so EMG/resources/app/m64p/
+cp -r source/sdl-jstest/build/sdl2-jstest EMG/resources/app/m64p/
+cp -r source/mupen64plus-input-raphnetraw/projects/unix/mupen64plus-input-raphnetraw.so EMG/resources/app/m64p/
 
 cd EMG
 mv electron emg
