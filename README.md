@@ -1,6 +1,6 @@
 # EMG
 
-EMG is a launcher for [Mupen64Plus](https://github.com/GhostlyDark/mupen64plus-core) using [Electron](https://github.com/electron/electron). For Controller Input, a custom build of [sdl2-jstest](https://github.com/GhostlyDark/sdl-jstest/tree/emg) is used.
+EMG is a launcher for [Mupen64Plus](https://github.com/GhostlyDark/mupen64plus-core) using [Electron](https://github.com/electron/electron). For Controller Input, a custom build of [sdl2-jstest](https://github.com/GhostlyDark/sdl-jstest) is used.
 
 **Bundled plugins:**
 
@@ -35,13 +35,6 @@ chmod u+x ./install.sh
 **Launch:**
 ```
 ./emg
-```
-
-**Minimum libc version:**
-
-`GLIBC v2.30` or higher is required by some plugins. Check version:
-```
-ldd --version ldd
 ```
 
 
