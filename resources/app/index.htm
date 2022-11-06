@@ -1925,8 +1925,6 @@ If this option is turned off, the output resolution is the same as the rendering
 <p>&nbsp;</p>
 <p title="Enable superscaling of dithering when upsampling."><input id="ParallelSuperscaledDither" type="checkbox" data-store="ParallelSuperscaledDither"><label for="ParallelSuperscaledDither">Superscaled Dither</label></p>
 <p>&nbsp;</p>
-<p><input id="ParallelIntegerScale" type="checkbox" data-store="ParallelIntegerScale"><label for="ParallelIntegerScale">Integer Scaling</label></p>
-<p>&nbsp;</p>
 <p title="Smooths polygon edges."><input id="ParallelVIAA" type="checkbox" data-store="ParallelVIAA" checked><label for="ParallelVIAA">Anti-aliasing</label></p>
 <p>&nbsp;</p>
 <p title="Cleans up stray black pixels."><input id="ParallelDivot" type="checkbox" data-store="ParallelDivot" checked><label for="ParallelDivot">Divot Filter</label></p>
@@ -1941,9 +1939,13 @@ If this option is turned off, the output resolution is the same as the rendering
 <p>&nbsp;</p>
 <p title="Native resolution TEX_RECT. TEX_RECT primitives should generally be TEX_RECT primitives should generally be rendered at native resolution to avoid seams."><input id="ParallelNativeTextRECT" type="checkbox" data-store="ParallelNativeTextRECT" checked><label for="ParallelNativeTextRECT">Native Texrect</label></p>
 <p>&nbsp;</p>
+<p title="Enable synchronizing of RDP and CPU."><input id="ParallelSynchronousRDP" type="checkbox" data-store="ParallelSynchronousRDP" checked><label for="ParallelSynchronousRDP">Synchronous RDP</label></p>
+<p>&nbsp;</p>
 <p><input id="ParallelWidescreenStretch" type="checkbox" data-store="ParallelWidescreenStretch"><label for="ParallelWidescreenStretch">Widescreen (Stretch)</label></p>
 <p>&nbsp;</p>
-<p title="Amount of overscan pixels to crop"><span class="numberDecrease" id="decreaseParallelCropOverscan">-</span><input id="ParallelCropOverscan" min="0" max="99" step="1" value="0" type="number"><span class="numberIncrease" id="increaseParallelCropOverscan">+</span><label for="ParallelCropOverscan">Crop Overscan</label><button class="floatright" data-value="0" id="resetParallelCropOverscan">Reset</button></p>
+<p title="Amount of overscan pixels to crop."><span class="numberDecrease" id="decreaseParallelCropOverscan">-</span><input id="ParallelCropOverscan" min="0" max="99" step="1" value="0" type="number"><span class="numberIncrease" id="increaseParallelCropOverscan">+</span><label for="ParallelCropOverscan">Crop Overscan</label><button class="floatright" data-value="0" id="resetParallelCropOverscan">Reset</button></p>
+<p>&nbsp;</p>
+<p title="Amount of pixels to stretch by vertically. Can fix PAL ports that didn't fill the PAL resolution of 288p (use value of 24 in that case)."><span class="numberDecrease" id="decreaseParallelVerticalStretch">-</span><input id="ParallelVerticalStretch" min="0" max="99" step="1" value="0" type="number"><span class="numberIncrease" id="increaseParallelVerticalStretch">+</span><label for="ParallelVerticalStretch">Vertical Stretch</label><button class="floatright" data-value="0" id="resetParallelVerticalStretch">Reset</button></p>
 <p>&nbsp;</p>
 <select class="width125m" name="ParallelUpscaling" id="ParallelUpscaling">
 <option value="Video-Parallel[Upscaling]=1" selected>1x</option>
@@ -1959,10 +1961,10 @@ If this option is turned off, the output resolution is the same as the rendering
 <option value="Video-Parallel[DownScale]=3">1/8</option>
 </select><label for="ParallelDownScale">Downsampling</label></div>
 <p>&nbsp;</p>
-<div title="Weave should only be used with 1x scaling factor."><select class="width125m" name="ParallelDeinterlace" id="ParallelDeinterlace">
-<option value="Video-Parallel[Deinterlace]=False" selected>Bob</option>
-<option value="Video-Parallel[Deinterlace]=True">Weave</option>
-</select><label for="ParallelDeinterlace">Deinterlacing Method</label></div>
+<div title="Weave should only be used with 1x scaling factor."><select class="width125m" name="ParallelDeinterlaceMode" id="ParallelDeinterlaceMode">
+<option value="Video-Parallel[DeinterlaceMode]=False" selected>Bob</option>
+<option value="Video-Parallel[DeinterlaceMode]=True">Weave</option>
+</select><label for="ParallelDeinterlaceMode">Deinterlacing Method</label></div>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
 <div id="riceAnchor" class="anchor"></div>
 <p class="headline">Rice</p>
