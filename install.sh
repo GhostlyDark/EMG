@@ -21,6 +21,7 @@ git clone https://github.com/GhostlyDark/mupen64plus-input-gca.git source/mupen6
 git clone https://github.com/GhostlyDark/mupen64plus-input-raphnetraw.git source/mupen64plus-input-raphnetraw
 git clone https://github.com/GhostlyDark/GLideN64.git source/GLideN64
 git clone https://github.com/GhostlyDark/angrylion-rdp-plus.git source/angrylion-rdp-plus
+git clone https://github.com/GhostlyDark/parallel-rdp-standalone.git source/parallel-rdp-standalone
 git clone https://github.com/GhostlyDark/parallel-rsp.git source/parallel-rsp
 
 # Download Electron
@@ -84,7 +85,7 @@ make -j4 -C source/mupen64plus-input-raphnetraw/projects/unix all
 cd source/GLideN64/src
 mkdir -p build
 cd build
-cmake -DMUPENPLUSAPI=On ..
+cmake .. -DMUPENPLUSAPI=On
 make -j4
 cd ../../../../
 
@@ -93,6 +94,14 @@ cd source/angrylion-rdp-plus
 mkdir -p build
 cd build
 cmake ..
+make -j4
+cd ../../../
+
+# Build mupen64plus-video-parallel
+cd source/parallel-rdp-standalone
+mkdir -p build
+cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release
 make -j4
 cd ../../../
 
@@ -112,6 +121,7 @@ cp source/mupen64plus-input-raphnetraw/projects/unix/mupen64plus-input-raphnetra
 cp source/GLideN64/src/build/plugin/Release/mupen64plus-video-GLideN64.so ${EMG}
 cp source/GLideN64/ini/GLideN64.custom.ini ${EMG}
 cp source/angrylion-rdp-plus/build/mupen64plus-video-angrylion-plus.so ${EMG}
+cp source/parallel-rdp-standalone/build/mupen64plus-video-parallel.so ${EMG}
 cp source/parallel-rsp/build/mupen64plus-rsp-parallel.so ${EMG}
 
 cd EMG
