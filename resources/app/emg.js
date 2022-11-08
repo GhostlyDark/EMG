@@ -20,7 +20,7 @@ n64Type = [...n64,...zip], nddType = [...ndd,...zip], gbType = [...gb,...zip], s
 
 dragDrop = ['fileInput','PIF','IPLROM','Disk','st','gbROM1','gbROM2','gbROM3','gbROM4','gbRAM1','gbRAM2','gbRAM3','gbRAM4'],
 hk = ['hk_keyboard','hk_controller1','hk_controller2','hk_controller3','hk_controller4'],
-menu = ['main','input','video','gliden64','rice','glide64mk2'],
+menu = ['main','input','video','gliden64'],
 
 n64_buttons = ['AButton1','AButton2','AButton3','AButton4','BButton1','BButton2','BButton3','BButton4','LTrig1','LTrig2','LTrig3','LTrig4','RTrig1','RTrig2','RTrig3','RTrig4','ZTrig1','ZTrig2','ZTrig3','ZTrig4','Start1','Start2','Start3','Start4','DPadU1','DPadU2','DPadU3','DPadU4','DPadD1','DPadD2','DPadD3','DPadD4','DPadL1','DPadL2','DPadL3','DPadL4','DPadR1','DPadR2','DPadR3','DPadR4','StickU1','StickU2','StickU3','StickU4','StickD1','StickD2','StickD3','StickD4','StickL1','StickL2','StickL3','StickL4','StickR1','StickR2','StickR3','StickR4','CButtonU1','CButtonU2','CButtonU3','CButtonU4','CButtonD1','CButtonD2','CButtonD3','CButtonD4','CButtonL1','CButtonL2','CButtonL3','CButtonL4','CButtonR1','CButtonR2','CButtonR3','CButtonR4','MempakSwitch1','MempakSwitch2','MempakSwitch3','MempakSwitch4','RumblepakSwitch1','RumblepakSwitch2','RumblepakSwitch3','RumblepakSwitch4'],
 
@@ -38,7 +38,7 @@ m64p_joykeys = [
 
 sliders = ['MouseSensitivity1X','MouseSensitivity1Y','MouseSensitivity2X','MouseSensitivity2Y','MouseSensitivity3X','MouseSensitivity3Y','MouseSensitivity4X','MouseSensitivity4Y','AnalogDeadzone1X','AnalogDeadzone1Y','AnalogDeadzone2X','AnalogDeadzone2Y','AnalogDeadzone3X','AnalogDeadzone3Y','AnalogDeadzone4X','AnalogDeadzone4Y','AnalogPeak1X','AnalogPeak1Y','AnalogPeak2X','AnalogPeak2Y','AnalogPeak3X','AnalogPeak3Y','AnalogPeak4X','AnalogPeak4Y','control_stick_deadzone','control_stick_sensitivity','c_stick_deadzone','trigger_threshold'],
 
-numbers = ['OverscanNtscTop','OverscanNtscLeft','OverscanNtscRight','OverscanNtscBottom','OverscanPalTop','OverscanPalLeft','OverscanPalRight','OverscanPalBottom','NumWorkers','ParallelCropOverscan','ParallelVerticalStretch','txCacheSize','txHiresVramLimit','GammaCorrectionLevel','fontSize','CountPerOp','CountPerOpDenomPot','SiDmaDuration','CurrentStateSlot','VOLUME_ADJUST','VOLUME_DEFAULT','PolygonOffsetFactor','PolygonOffsetUnits','polygon_offset_factor','polygon_offset_units','ghq_cache_size'],
+numbers = ['OverscanNtscTop','OverscanNtscLeft','OverscanNtscRight','OverscanNtscBottom','OverscanPalTop','OverscanPalLeft','OverscanPalRight','OverscanPalBottom','NumWorkers','ParallelCropOverscan','ParallelVerticalStretch','txCacheSize','txHiresVramLimit','GammaCorrectionLevel','fontSize','CountPerOp','CountPerOpDenomPot','SiDmaDuration','CurrentStateSlot','VOLUME_ADJUST','VOLUME_DEFAULT'],
 
 dropdowns = [
 'emumode','resolution','SaveDiskFormat', /* mupen64plus */
@@ -49,9 +49,7 @@ dropdowns = [
 'a','b','x','y','start','z','l','r','d_pad_left','d_pad_right','d_pad_down','d_pad_up','c_stick_left','c_stick_right','c_stick_down','c_stick_up', /* mupen64plus-input-gca */
 'msaa','aspectRatio','bufferSwapMode','CountersPos','useNativeResolutionFactor','anisotropy','cache','RDRAMImageDitheringMode','CorrectTexrectCoords','EnableNativeResTexrects','BackgroundsMode','EnableN64DepthCompare','EnableCopyColorToRDRAM','EnableCopyDepthToRDRAM','txFilterMode','txEnhancementMode', /* GLideN64 */
 'ViMode','ViInterpolation','DpCompat', /* Angrylion-Plus */
-'ParallelUpscaling','ParallelDeinterlaceMode','ParallelDownScale', /* Parallel */
-'FrameBufferWriteBackControl','RenderToTexture','ScreenUpdateSetting','Mipmapping','ForceTextureFilter','TextureEnhancement','TextureEnhancementControl','TextureQuality','OpenGLDepthBufferSetting','RiceMultiSampling','ColorQuality','AnisotropicFiltering','wrpAntiAliasing', /* Rice */
-'show_fps','ghq_fltr','ghq_cmpr','ghq_enht','alt_tex_size','use_sts1_only','force_calc_sphere','correct_viewport','increase_texrect_edge','decrease_fillrect_edge','texture_correction','pal230','force_microcheck','force_quad3d','clip_zmin','clip_zmax','fast_crc','adjust_aspect','zmode_compare_less','old_style_adither','n64_z_scale','optimize_texrect','ignore_aux_copy','hires_buf_clear','fb_read_alpha','useless_is_useless','fb_crc_mode','filtering','fog','buff_clear','swapmode','aspect','lodmode','fb_smart','fb_hires','fb_read_always','read_back_to_screen','detect_cpu_write','fb_get_info','fb_render' /* Glide64 MK2 */];
+'ParallelUpscaling','ParallelDeinterlaceMode','ParallelDownScale', /* Parallel */];
 
 
 
@@ -287,22 +285,6 @@ function txHiresEnableDisable(){if(id('txHiresEnable').checked){id('txDump').dis
 id('txHiresEnable').addEventListener('change', txHiresEnableDisable)
 txHiresEnableDisable()
 
-function ForcePolygonOffsetDisable(){if(id('ForcePolygonOffset').checked){id('PolygonOffsetFactor').disabled = false;id('PolygonOffsetUnits').disabled = false}else{id('PolygonOffsetFactor').disabled = true;id('PolygonOffsetUnits').disabled = true}}
-id('ForcePolygonOffset').addEventListener('change', ForcePolygonOffsetDisable)
-ForcePolygonOffsetDisable()
-
-function force_polygon_offsetDisable(){if(id('force_polygon_offset').checked){id('polygon_offset_factor').disabled = false;id('polygon_offset_units').disabled = false}else{id('polygon_offset_factor').disabled = true;id('polygon_offset_units').disabled = true}}
-id('force_polygon_offset').addEventListener('change', force_polygon_offsetDisable)
-force_polygon_offsetDisable()
-
-function clockDisable(){if(id('clock').checked){id('clock_24_hr').disabled = false}else{id('clock_24_hr').disabled = true}}
-id('clock').addEventListener('change', clockDisable)
-clockDisable()
-
-function ghq_hirsDisable(){if(id('ghq_hirs').checked){id('ghq_hirs_cmpr').disabled = false;id('ghq_hirs_tile').disabled = false;id('ghq_hirs_f16bpp').disabled = false;id('ghq_hirs_gz').disabled = false;id('ghq_hirs_altcrc').disabled = false;id('ghq_cache_save').disabled = false;id('ghq_hirs_let_texartists_fly').disabled = false}else{id('ghq_hirs_cmpr').disabled = true;id('ghq_hirs_tile').disabled = true;id('ghq_hirs_f16bpp').disabled = true;id('ghq_hirs_gz').disabled = true;id('ghq_hirs_altcrc').disabled = true;id('ghq_cache_save').disabled = true;id('ghq_hirs_let_texartists_fly').disabled = true}}
-id('ghq_hirs').addEventListener('change', ghq_hirsDisable)
-ghq_hirsDisable()
-
 function c1Disable(){
 if(id('c1').value === 'Keyboard'){id('c1_keyboard').classList.replace('hide','show');id('c1_controller').classList.replace('show','hide');id('c1_auto').classList.replace('show','hide');id('analog1').classList.replace('show','hide')}
 else{id('c1_keyboard').classList.replace('show','hide');id('c1_controller').classList.replace('hide','show');id('c1_auto').classList.replace('hide','show');id('analog1').classList.replace('hide','show')}}
@@ -463,13 +445,9 @@ function currentGFX(){ // top navigation
 if(!id('angrylion').classList.contains('hide'))id('angrylion').classList.add('hide')
 if(!id('gliden64').classList.contains('hide'))id('gliden64').classList.add('hide')
 if(!id('parallel').classList.contains('hide'))id('parallel').classList.add('hide')
-if(!id('rice').classList.contains('hide'))id('rice').classList.add('hide')
-if(!id('glide64mk2').classList.contains('hide'))id('glide64mk2').classList.add('hide')
 if(id('gfx').value.includes('angrylion'))id('angrylion').classList.remove('hide')
 if(id('gfx').value.includes('GLideN64'))id('gliden64').classList.remove('hide')
-if(id('gfx').value.includes('parallel'))id('parallel').classList.remove('hide')
-if(id('gfx').value.includes('rice'))id('rice').classList.remove('hide')
-if(id('gfx').value.includes('glide64mk2'))id('glide64mk2').classList.remove('hide')}
+if(id('gfx').value.includes('parallel'))id('parallel').classList.remove('hide')}
 id('gfx').addEventListener('change', currentGFX)
 currentGFX()
 
@@ -781,22 +759,20 @@ id('fontColor').addEventListener('change', function(){localStorage.setItem('font
 id('launch').addEventListener('click', function(){
 var exp = 'Core[DisableExtraMem]=' + id('exp').checked,
 nospeedlimit = id('nospeedlimit').checked ? '--nospeedlimit' : [],
-osd = id('osd').checked ? '--osd' : '--noosd',
 verbose = id('verbose').checked ? '--verbose' : [],
 savestate = stPath != '' ? ['--savestate',stPath] : [],
 PIFROM = PIF != '' ? ['--pif',PIF] : [],
 fullscreen = id('fullscreen').checked ? '--fullscreen' : '--windowed',
 ParallelFullscreen = 'Video-Parallel[Fullscreen]=' + id('fullscreen').checked,
 vsync = 'Video-General[VerticalSync]=' + id('vsync').checked,
-Glide64VSync = 'Video-Glide64mk2[vsync]=' + id('vsync').checked,
 ParallelVSync = 'Video-Parallel[Vsync]=' + id('vsync').checked,
-m64pGFX = 'Rsp-HLE[DisplayListToGraphicsPlugin]=True',
+m64pGFX = 'Rsp-HLE[DisplayListToGraphicsPlugin]=true',
 cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=' + id('rspGFX').checked,
 cxd4Audio = 'rsp-cxd4[AudioListToAudioPlugin]=' + id('rspAudio').checked,
 m64pAudio = 'Rsp-HLE[AudioListToAudioPlugin]=' + id('rspAudio').checked,
-WaitForCPUHost = 'rsp-cxd4[WaitForCPUHost]=False',
-SupportCPUSemaphoreLock = 'rsp-cxd4[SupportCPUSemaphoreLock]=False',
-threadedVideo = 'Video-GLideN64[threadedVideo]=False',
+WaitForCPUHost = 'rsp-cxd4[WaitForCPUHost]=false',
+SupportCPUSemaphoreLock = 'rsp-cxd4[SupportCPUSemaphoreLock]=false',
+threadedVideo = 'Video-GLideN64[threadedVideo]=false',
 bilinearMode = 'Video-GLideN64[bilinearMode]=' + id('bilinearMode').checked,
 fxaa = 'Video-GLideN64[fxaa]=' + id('fxaa').checked,
 enableHalosRemoval = 'Video-GLideN64[enableHalosRemoval]=' + id('enableHalosRemoval').checked,
@@ -831,7 +807,7 @@ txFilterIgnoreBG = 'Video-GLideN64[txFilterIgnoreBG]=' + id('txFilterIgnoreBG').
 txHiresFullAlphaChannel = 'Video-GLideN64[txHiresFullAlphaChannel]=' + id('txHiresFullAlphaChannel').checked,
 txHresAltCRC = 'Video-GLideN64[txHresAltCRC]=' + id('txHresAltCRC').checked,
 txCacheCompression = 'Video-GLideN64[txCacheCompression]=' + id('txCacheCompression').checked,
-txForce16bpp = 'Video-GLideN64[txForce16bpp]=False',
+txForce16bpp = 'Video-GLideN64[txForce16bpp]=false',
 txSaveCache = 'Video-GLideN64[txSaveCache]=' + id('txSaveCache').checked,
 ForceGammaCorrection = 'Video-GLideN64[ForceGammaCorrection]=' + id('ForceGammaCorrection').checked,
 ShowFPS = 'Video-GLideN64[ShowFPS]=' + id('ShowFPS').checked,
@@ -864,50 +840,6 @@ ParallelNativeTextLOD = 'Video-Parallel[NativeTextLOD]=' + id('ParallelNativeTex
 ParallelNativeTextRECT = 'Video-Parallel[NativeTextRECT]=' + id('ParallelNativeTextRECT').checked,
 ParallelSynchronousRDP = 'Video-Parallel[SynchronousRDP]=' + id('ParallelSynchronousRDP').checked,
 ParallelWidescreenStretch = 'Video-Parallel[WidescreenStretch]=' + id('ParallelWidescreenStretch').checked,
-
-FrameBufferSetting = 'Video-Rice[FrameBufferSetting]=' + (id('FrameBufferSetting').checked ? '1' : '0'),
-NormalAlphaBlender = 'Video-Rice[NormalAlphaBlender]=' + id('NormalAlphaBlender').checked,
-FastTextureLoading = 'Video-Rice[FastTextureLoading]=' + id('FastTextureLoading').checked,
-AccurateTextureMapping = 'Video-Rice[AccurateTextureMapping]=' + id('AccurateTextureMapping').checked,
-InN64Resolution = 'Video-Rice[InN64Resolution]=' + id('InN64Resolution').checked,
-SaveVRAM = 'Video-Rice[SaveVRAM]=' + id('SaveVRAM').checked,
-DoubleSizeForSmallTxtrBuf = 'Video-Rice[DoubleSizeForSmallTxtrBuf]=' + id('DoubleSizeForSmallTxtrBuf').checked,
-DefaultCombinerDisable = 'Video-Rice[DefaultCombinerDisable]=' + id('DefaultCombinerDisable').checked,
-EnableHacks = 'Video-Rice[EnableHacks]=' + id('EnableHacks').checked,
-WinFrameMode = 'Video-Rice[WinFrameMode]=False',
-FullTMEMEmulation = 'Video-Rice[FullTMEMEmulation]=' + id('FullTMEMEmulation').checked,
-OpenGLVertexClipper = 'Video-Rice[OpenGLVertexClipper]=' + id('OpenGLVertexClipper').checked,
-EnableSSE = 'Video-Rice[EnableSSE]=' + id('EnableSSE').checked,
-SkipFrame = 'Video-Rice[SkipFrame]=' + id('SkipFrame').checked,
-TexRectOnly = 'Video-Rice[TexRectOnly]=' + id('TexRectOnly').checked,
-SmallTextureOnly = 'Video-Rice[SmallTextureOnly]=' + id('SmallTextureOnly').checked,
-LoadHiResCRCOnly = 'Video-Rice[LoadHiResCRCOnly]=' + id('LoadHiResCRCOnly').checked,
-LoadHiResTextures = 'Video-Rice[LoadHiResTextures]=' + id('LoadHiResTextures').checked,
-DumpTexturesToFiles = 'Video-Rice[DumpTexturesToFiles]=' + id('DumpTexturesToFiles').checked,
-RiceShowFPS = 'Video-Rice[RiceShowFPS]=' + id('RiceShowFPS').checked,
-FogMethod = 'Video-Rice[FogMethod]=' + (id('FogMethod').checked ? '1' : '0'),
-OpenGLRenderSetting = 'Video-Rice[OpenGLRenderSetting]=' + (id('OpenGLRenderSetting').checked ? '1' : '0'),
-ForcePolygonOffset = 'Video-Rice[ForcePolygonOffset]=' + id('ForcePolygonOffset').checked,
-
-force_polygon_offset = 'Video-Glide64mk2[force_polygon_offset]=' + id('force_polygon_offset').checked,
-clock = 'Video-Glide64mk2[clock]=' + id('clock').checked,
-clock_24_hr = 'Video-Glide64mk2[clock_24_hr]=' + id('clock_24_hr').checked,
-wrpFBO = 'Video-Glide64mk2[wrpFBO]=' + id('wrpFBO').checked,
-wrpAnisotropic = 'Video-Glide64mk2[wrpAnisotropic]=' + id('wrpAnisotropic').checked,
-ghq_hirs = 'Video-Glide64mk2[ghq_hirs]=' + (id('ghq_hirs').checked ? '1' : '0'),
-ghq_enht_cmpr = 'Video-Glide64mk2[ghq_enht_cmpr]=' + id('ghq_enht_cmpr').checked,
-ghq_enht_tile = 'Video-Glide64mk2[ghq_enht_tile]=' + (id('ghq_enht_tile').checked ? '1' : '0'),
-ghq_enht_f16bpp = 'Video-Glide64mk2[ghq_enht_f16bpp]=' + id('ghq_enht_f16bpp').checked,
-ghq_enht_gz = 'Video-Glide64mk2[ghq_enht_gz]=' + id('ghq_enht_gz').checked,
-ghq_enht_nobg = 'Video-Glide64mk2[ghq_enht_nobg]=' + id('ghq_enht_nobg').checked,
-ghq_hirs_cmpr = 'Video-Glide64mk2[ghq_hirs_cmpr]=' + id('ghq_hirs_cmpr').checked,
-ghq_hirs_tile = 'Video-Glide64mk2[ghq_hirs_tile]=' + id('ghq_hirs_tile').checked,
-ghq_hirs_f16bpp = 'Video-Glide64mk2[ghq_hirs_f16bpp]=' + id('ghq_hirs_f16bpp').checked,
-ghq_hirs_gz = 'Video-Glide64mk2[ghq_hirs_gz]=' + id('ghq_hirs_gz').checked,
-ghq_hirs_altcrc = 'Video-Glide64mk2[ghq_hirs_altcrc]=' + id('ghq_hirs_altcrc').checked,
-ghq_cache_save = 'Video-Glide64mk2[ghq_cache_save]=' + id('ghq_cache_save').checked,
-ghq_hirs_let_texartists_fly = 'Video-Glide64mk2[ghq_hirs_let_texartists_fly]=' + id('ghq_hirs_let_texartists_fly').checked,
-ghq_hirs_dump = 'Video-Glide64mk2[ghq_hirs_dump]=' + id('ghq_hirs_dump').checked,
 
 resolution = id('resolution').value,
 ParallelScreenWidth = 'Video-Parallel[ScreenWidth]=' + id('resolution').options[id('resolution').selectedIndex].dataset.width,
@@ -953,59 +885,6 @@ DEFAULT_FREQUENCY = id('DEFAULT_FREQUENCY').value,
 PRIMARY_BUFFER_TARGET = id('SECONDARY_BUFFER_SIZE').options[id('SECONDARY_BUFFER_SIZE').selectedIndex].dataset.buffer,
 SECONDARY_BUFFER_SIZE = id('SECONDARY_BUFFER_SIZE').value,
 RESAMPLE = id('RESAMPLE').value,
-FrameBufferWriteBackControl = id('FrameBufferWriteBackControl').value,
-RenderToTexture = id('RenderToTexture').value,
-ScreenUpdateSetting = id('ScreenUpdateSetting').value,
-Mipmapping = id('Mipmapping').value,
-ForceTextureFilter = id('ForceTextureFilter').value,
-TextureEnhancement = id('TextureEnhancement').value,
-TextureEnhancementControl = id('TextureEnhancementControl').value,
-TextureQuality = id('TextureQuality').value,
-OpenGLDepthBufferSetting = id('OpenGLDepthBufferSetting').value,
-RiceMultiSampling = id('RiceMultiSampling').value,
-ColorQuality = id('ColorQuality').value,
-AnisotropicFiltering = id('AnisotropicFiltering').value,
-wrpAntiAliasing = id('wrpAntiAliasing').value,
-show_fps = id('show_fps').value,
-ghq_fltr = id('ghq_fltr').value,
-ghq_cmpr = id('ghq_cmpr').value,
-ghq_enht = id('ghq_enht').value,
-alt_tex_size = id('alt_tex_size').value,
-use_sts1_only = id('use_sts1_only').value,
-force_calc_sphere = id('force_calc_sphere').value,
-correct_viewport = id('correct_viewport').value,
-increase_texrect_edge = id('increase_texrect_edge').value,
-decrease_fillrect_edge = id('decrease_fillrect_edge').value,
-texture_correction = id('texture_correction').value,
-pal230 = id('pal230').value,
-force_microcheck = id('force_microcheck').value,
-force_quad3d = id('force_quad3d').value,
-clip_zmin = id('clip_zmin').value,
-clip_zmax = id('clip_zmax').value,
-fast_crc = id('fast_crc').value,
-adjust_aspect = id('adjust_aspect').value,
-zmode_compare_less = id('zmode_compare_less').value,
-old_style_adither = id('old_style_adither').value,
-n64_z_scale = id('n64_z_scale').value,
-optimize_texrect = id('optimize_texrect').value,
-ignore_aux_copy = id('ignore_aux_copy').value,
-hires_buf_clear = id('hires_buf_clear').value,
-fb_read_alpha = id('fb_read_alpha').value,
-useless_is_useless = id('useless_is_useless').value,
-fb_crc_mode = id('fb_crc_mode').value,
-filtering = id('filtering').value,
-fog = id('fog').value,
-buff_clear = id('buff_clear').value,
-swapmode = id('swapmode').value,
-aspect = id('aspect').value,
-lodmode = id('lodmode').value,
-fb_smart = id('fb_smart').value,
-fb_hires = id('fb_hires').value,
-fb_read_always = id('fb_read_always').value,
-read_back_to_screen = id('read_back_to_screen').value,
-detect_cpu_write = id('detect_cpu_write').value,
-fb_get_info = id('fb_get_info').value,
-fb_render = id('fb_render').value,
 
 OverscanNtscTop = 'Video-GLideN64[OverscanNtscTop]=' + id('OverscanNtscTop').value,
 OverscanNtscLeft = 'Video-GLideN64[OverscanNtscLeft]=' + id('OverscanNtscLeft').value,
@@ -1037,11 +916,6 @@ name3 = 'Input-SDL-Control3[name]=' + id('c3').value.replace(regid,''),
 name4 = 'Input-SDL-Control4[name]=' + id('c4').value.replace(regid,''),
 VOLUME_ADJUST = 'Audio-SDL[VOLUME_ADJUST]=' + id('VOLUME_ADJUST').value,
 VOLUME_DEFAULT = 'Audio-SDL[VOLUME_DEFAULT]=' + id('VOLUME_DEFAULT').value,
-PolygonOffsetFactor = 'Video-Rice[PolygonOffsetFactor]=' + id('PolygonOffsetFactor').value,
-PolygonOffsetUnits = 'Video-Rice[PolygonOffsetUnits]=' + id('PolygonOffsetUnits').value,
-polygon_offset_factor = 'Video-Glide64mk2[polygon_offset_factor]=' + id('polygon_offset_factor').value,
-polygon_offset_units = 'Video-Glide64mk2[polygon_offset_units]=' + id('polygon_offset_units').value,
-ghq_cache_size = 'Video-Glide64mk2[ghq_cache_size]=' + id('ghq_cache_size').value,
 
 IPLROMSetting = '64DD[IPL-ROM]=' + IPLROM,
 DiskSetting = '64DD[Disk]=' + Disk,
@@ -1230,12 +1104,10 @@ YAxis4 = 'Input-SDL-Control4[Y Axis]=',
 gcaSettings = 'control_stick_deadzone = ' +  id('control_stick_deadzone').value + '\n' + 'control_stick_sensitivity = ' + id('control_stick_sensitivity').value + '\n' + 'c_stick_deadzone = ' + id('c_stick_deadzone').value + '\n' + 'trigger_threshold = ' + id('trigger_threshold').value + '\n\n' + '[controller_mapping]' + '\n' + 'a = ' + id('a').value + '\n' + 'b = ' + id('b').value + '\n' + 'x = ' + id('x').value + '\n' + 'y = ' + id('y').value + '\n' + 'start = ' + id('start').value + '\n' + 'z = ' + id('z').value + '\n' + 'l = ' + id('l').value + '\n' + 'r = ' + id('r').value + '\n' + 'd_pad_left = ' + id('d_pad_left').value + '\n' + 'd_pad_right = ' + id('d_pad_right').value + '\n' + 'd_pad_down = ' + id('d_pad_down').value + '\n' + 'd_pad_up = ' + id('d_pad_up').value + '\n' + 'c_stick_left = ' + id('c_stick_left').value + '\n' + 'c_stick_right = ' + id('c_stick_right').value + '\n' + 'c_stick_down = ' + id('c_stick_down').value + '\n' + 'c_stick_up = ' + id('c_stick_up').value;
 
 if(isLinux){RspFallback = './' + RspFallback + '.so'}
-if(id('nospeedlimit').checked){audio = 'dummy';vsync = 'Video-General[VerticalSync]=False';Glide64VSync = 'Video-Glide64mk2[vsync]=False'} // force muted audio and disabled V-Sync
-if(gfx.includes('angrylion') || gfx.includes('parallel')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=False';cxd4Audio = 'rsp-cxd4[DisplayListToAudioPlugin]=False'} // prevent crashes caused by wrong RSP settings
-else if(gfx.includes('rice') || gfx.includes('glide64mk2')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=True'}
+if(id('nospeedlimit').checked){audio = 'dummy';vsync = 'Video-General[VerticalSync]=false';ParallelVSync = 'Video-Parallel[Vsync]=false'} // force muted audio and disabled V-Sync
+if(gfx.includes('angrylion') || gfx.includes('parallel')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=false';cxd4Audio = 'rsp-cxd4[DisplayListToAudioPlugin]=false'} // prevent crashes caused by wrong RSP settings
 if(gfx.includes('angrylion') && rsp.includes('rsp-hle')){rsp = 'mupen64plus-rsp-cxd4-sse2'}
 else if(gfx.includes('parallel') && rsp.includes('rsp-hle')){rsp = 'mupen64plus-rsp-parallel'}
-else if((gfx.includes('rice') || gfx.includes('glide64mk2')) && rsp.includes('rsp-parallel')){rsp = 'mupen64plus-rsp-hle'}
 
 
 
@@ -1952,7 +1824,7 @@ YAxis4 = kb(YAxis4);
 
 
 
-var core = ['--corelib','mupen64plus','--plugindir','.',osd,fullscreen,'--resolution',resolution,'--gfx',gfx,'--audio',audio,'--input',input,'--rsp',rsp,'--set',RspFallback,'--emumode',emumode,'--set',exp,'--set',vsync,'--set',cxd4GFX,'--set',m64pGFX,'--set',IPLROMSetting,'--set',DiskSetting,'--set',NoCompiledJump,'--set',CountPerOp,'--set',CountPerOpDenomPot,'--set',SiDmaDuration,'--set',AutoStateSlotIncrement,'--set',CurrentStateSlot,'--set',SharedDataPath,'--set',ScreenshotPathSetting,'--set',SaveStatePathSetting,'--set',SaveSRAMPathSetting,'--set',RandomizeInterrupt,'--set',SaveDiskFormat,'--set',WaitForCPUHost,'--set',SupportCPUSemaphoreLock,'--set',DEFAULT_FREQUENCY,'--set',SWAP_CHANNELS,'--set',PRIMARY_BUFFER_TARGET,'--set',SECONDARY_BUFFER_SIZE,'--set',RESAMPLE,'--set',VOLUME_ADJUST,'--set',VOLUME_DEFAULT,'--set',AUDIO_SYNC,'--set',KbdMappingSlot0,'--set',KbdMappingSlot1,'--set',KbdMappingSlot2,'--set',KbdMappingSlot3,'--set',KbdMappingSlot4,'--set',KbdMappingSlot5,'--set',KbdMappingSlot6,'--set',KbdMappingSlot7,'--set',KbdMappingSlot8,'--set',KbdMappingSlot9,'--set',KbdMappingStop,'--set',KbdMappingFullscreen,'--set',KbdMappingSaveState,'--set',KbdMappingLoadState,'--set',KbdMappingIncrementSlot,'--set',KbdMappingReset,'--set',KbdMappingSpeedDown,'--set',KbdMappingSpeedUp,'--set',KbdMappingScreenshot,'--set',KbdMappingPause,'--set',KbdMappingMute,'--set',KbdMappingIncreaseVolume,'--set',KbdMappingDecreaseVolume,'--set',KbdMappingFastForward,'--set',KbdMappingFrameAdvance,'--set',KbdMappingGameshark],
+var core = ['--corelib','mupen64plus','--plugindir','.','--noosd',fullscreen,'--resolution',resolution,'--gfx',gfx,'--audio',audio,'--input',input,'--rsp',rsp,'--set',RspFallback,'--emumode',emumode,'--set',exp,'--set',vsync,'--set',cxd4GFX,'--set',m64pGFX,'--set',IPLROMSetting,'--set',DiskSetting,'--set',NoCompiledJump,'--set',CountPerOp,'--set',CountPerOpDenomPot,'--set',SiDmaDuration,'--set',AutoStateSlotIncrement,'--set',CurrentStateSlot,'--set',SharedDataPath,'--set',ScreenshotPathSetting,'--set',SaveStatePathSetting,'--set',SaveSRAMPathSetting,'--set',RandomizeInterrupt,'--set',SaveDiskFormat,'--set',WaitForCPUHost,'--set',SupportCPUSemaphoreLock,'--set',DEFAULT_FREQUENCY,'--set',SWAP_CHANNELS,'--set',PRIMARY_BUFFER_TARGET,'--set',SECONDARY_BUFFER_SIZE,'--set',RESAMPLE,'--set',VOLUME_ADJUST,'--set',VOLUME_DEFAULT,'--set',AUDIO_SYNC,'--set',KbdMappingSlot0,'--set',KbdMappingSlot1,'--set',KbdMappingSlot2,'--set',KbdMappingSlot3,'--set',KbdMappingSlot4,'--set',KbdMappingSlot5,'--set',KbdMappingSlot6,'--set',KbdMappingSlot7,'--set',KbdMappingSlot8,'--set',KbdMappingSlot9,'--set',KbdMappingStop,'--set',KbdMappingFullscreen,'--set',KbdMappingSaveState,'--set',KbdMappingLoadState,'--set',KbdMappingIncrementSlot,'--set',KbdMappingReset,'--set',KbdMappingSpeedDown,'--set',KbdMappingSpeedUp,'--set',KbdMappingScreenshot,'--set',KbdMappingPause,'--set',KbdMappingMute,'--set',KbdMappingIncreaseVolume,'--set',KbdMappingDecreaseVolume,'--set',KbdMappingFastForward,'--set',KbdMappingFrameAdvance,'--set',KbdMappingGameshark],
 
 controls = ['--set',JoyMappingStop,'--set',JoyMappingFullscreen,'--set',JoyMappingSaveState,'--set',JoyMappingLoadState,'--set',JoyMappingIncrementSlot,'--set',JoyMappingReset,'--set',JoyMappingSpeedDown,'--set',JoyMappingSpeedUp,'--set',JoyMappingScreenshot,'--set',JoyMappingPause,'--set',JoyMappingMute,'--set',JoyMappingIncreaseVolume,'--set',JoyMappingDecreaseVolume,'--set',JoyMappingFastForward,'--set',JoyMappingFrameAdvance,'--set',JoyMappingGameshark,'--set',mode1,'--set',mode2,'--set',mode3,'--set',mode4,'--set',plugin1,'--set',plugin2,'--set',plugin3,'--set',plugin4,'--set',plugged1,'--set',plugged2,'--set',plugged3,'--set',plugged4,'--set',name1,'--set',name2,'--set',name3,'--set',name4,'--set',device1,'--set',device2,'--set',device3,'--set',device4,'--set',gbROM1Setting,'--set',gbROM2Setting,'--set',gbROM3Setting,'--set',gbROM4Setting,'--set',gbRAM1Setting,'--set',gbRAM2Setting,'--set',gbRAM3Setting,'--set',gbRAM4Setting],
 
@@ -1970,10 +1842,6 @@ GLideN64 = ['--set',threadedVideo,'--set',msaa,'--set',fxaa,'--set',aspectRatio,
 
 Parallel = ['--set',ParallelFullscreen,'--set',ParallelUpscaling,'--set',ParallelScreenWidth,'--set',ParallelScreenHeight,'--set',ParallelSuperscaledReads,'--set',ParallelSuperscaledDither,'--set',ParallelDeinterlaceMode,'--set',ParallelCropOverscan,'--set',ParallelVerticalStretch,'--set',ParallelVIAA,'--set',ParallelDivot,'--set',ParallelGammaDither,'--set',ParallelVIBilerp,'--set',ParallelVIDither,'--set',ParallelDownScale,'--set',ParallelNativeTextLOD,'--set',ParallelNativeTextRECT,'--set',ParallelSynchronousRDP,'--set',ParallelWidescreenStretch,'--set',ParallelVSync],
 
-Rice = ['--set',FrameBufferSetting,'--set',FrameBufferWriteBackControl,'--set',RenderToTexture,'--set',ScreenUpdateSetting,'--set',NormalAlphaBlender,'--set',FastTextureLoading,'--set',AccurateTextureMapping,'--set',InN64Resolution,'--set',SaveVRAM,'--set',DoubleSizeForSmallTxtrBuf,'--set',DefaultCombinerDisable,'--set',EnableHacks,'--set',WinFrameMode,'--set',FullTMEMEmulation,'--set',OpenGLVertexClipper,'--set',EnableSSE,'--set',SkipFrame,'--set',TexRectOnly,'--set',SmallTextureOnly,'--set',LoadHiResCRCOnly,'--set',LoadHiResTextures,'--set',DumpTexturesToFiles,'--set',RiceShowFPS,'--set',Mipmapping,'--set',FogMethod,'--set',ForceTextureFilter,'--set',TextureEnhancement,'--set',TextureEnhancementControl,'--set',TextureQuality,'--set',OpenGLDepthBufferSetting,'--set',RiceMultiSampling,'--set',ColorQuality,'--set',OpenGLRenderSetting,'--set',AnisotropicFiltering,'--set',ForcePolygonOffset,'--set',PolygonOffsetFactor,'--set',PolygonOffsetUnits],
-
-Glide64MK2 = ['--set',Glide64VSync,'--set',wrpAntiAliasing,'--set',force_polygon_offset,'--set',polygon_offset_factor,'--set',polygon_offset_units,'--set',show_fps,'--set',clock,'--set',clock_24_hr,'--set',wrpFBO,'--set',wrpAnisotropic,'--set',ghq_fltr,'--set',ghq_cmpr,'--set',ghq_enht,'--set',ghq_hirs,'--set',ghq_enht_cmpr,'--set',ghq_enht_tile,'--set',ghq_enht_f16bpp,'--set',ghq_enht_gz,'--set',ghq_enht_nobg,'--set',ghq_hirs_cmpr,'--set',ghq_hirs_tile,'--set',ghq_hirs_f16bpp,'--set',ghq_hirs_gz,'--set',ghq_hirs_altcrc,'--set',ghq_cache_save,'--set',ghq_cache_size,'--set',ghq_hirs_let_texartists_fly,'--set',ghq_hirs_dump,'--set',alt_tex_size,'--set',use_sts1_only,'--set',force_calc_sphere,'--set',correct_viewport,'--set',increase_texrect_edge,'--set',decrease_fillrect_edge,'--set',texture_correction,'--set',pal230,'--set',force_microcheck,'--set',force_quad3d,'--set',clip_zmin,'--set',clip_zmax,'--set',fast_crc,'--set',adjust_aspect,'--set',zmode_compare_less,'--set',old_style_adither,'--set',n64_z_scale,'--set',optimize_texrect,'--set',ignore_aux_copy,'--set',hires_buf_clear,'--set',fb_read_alpha,'--set',useless_is_useless,'--set',fb_crc_mode,'--set',filtering,'--set',fog,'--set',buff_clear,'--set',swapmode,'--set',aspect,'--set',lodmode,'--set',fb_smart,'--set',fb_hires,'--set',fb_read_always,'--set',read_back_to_screen,'--set',detect_cpu_write,'--set',fb_get_info,'--set',fb_render],
-
 cheats = [], activeCheats = '';
 
 if(id('cheatList').innerHTML != ''){ // activate cheats
@@ -1990,7 +1858,7 @@ if(!id('plugged4').checked)controller4 = []
 try {writeGCA(gcaSettings)} // write GameCube Adapter settings to file
 catch (e) {console.warn(e)}
 
-const parameters = core.concat(PIFROM,savestate,nospeedlimit,verbose,cheats,controls,controller1,controller2,controller3,controller4,Angrylion,Glide64MK2,GLideN64,Parallel,Rice,filePath), // launch parameters
+const parameters = core.concat(PIFROM,savestate,nospeedlimit,verbose,cheats,controls,controller1,controller2,controller3,controller4,Angrylion,GLideN64,Parallel,filePath), // launch parameters
 child = emuLaunch(parameters);
 
 })
