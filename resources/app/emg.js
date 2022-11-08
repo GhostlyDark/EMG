@@ -776,7 +776,6 @@ id('fontColor').addEventListener('change', function(){localStorage.setItem('font
 
 id('launch').addEventListener('click', function(){
 var exp = 'Core[DisableExtraMem]=' + id('exp').checked,
-SharedDataPath = 'Core[SharedDataPath]=',
 nospeedlimit = id('nospeedlimit').checked ? '--nospeedlimit' : [],
 osd = id('osd').checked ? '--osd' : '--noosd',
 verbose = id('verbose').checked ? '--verbose' : [],
@@ -1048,6 +1047,7 @@ txDumpPathSetting = 'Video-GLideN64[txDumpPath]=' + txDumpPath,
 ScreenshotPathSetting = 'Core[ScreenshotPath]=' + ScreenshotPath,
 SaveStatePathSetting = 'Core[SaveStatePath]=' + SaveStatePath,
 SaveSRAMPathSetting = 'Core[SaveSRAMPath]=' + SaveSRAMPath,
+SharedDataPath = 'Core[SharedDataPath]=',
 gbROM1Setting = 'Transferpak[GB-rom-1]=' + gbROM1,
 gbROM2Setting = 'Transferpak[GB-rom-2]=' + gbROM2,
 gbROM3Setting = 'Transferpak[GB-rom-3]=' + gbROM3,
@@ -1970,7 +1970,7 @@ Rice = ['--set',FrameBufferSetting,'--set',FrameBufferWriteBackControl,'--set',R
 
 Glide64MK2 = ['--set',Glide64VSync,'--set',wrpAntiAliasing,'--set',force_polygon_offset,'--set',polygon_offset_factor,'--set',polygon_offset_units,'--set',show_fps,'--set',clock,'--set',clock_24_hr,'--set',wrpFBO,'--set',wrpAnisotropic,'--set',ghq_fltr,'--set',ghq_cmpr,'--set',ghq_enht,'--set',ghq_hirs,'--set',ghq_enht_cmpr,'--set',ghq_enht_tile,'--set',ghq_enht_f16bpp,'--set',ghq_enht_gz,'--set',ghq_enht_nobg,'--set',ghq_hirs_cmpr,'--set',ghq_hirs_tile,'--set',ghq_hirs_f16bpp,'--set',ghq_hirs_gz,'--set',ghq_hirs_altcrc,'--set',ghq_cache_save,'--set',ghq_cache_size,'--set',ghq_hirs_let_texartists_fly,'--set',ghq_hirs_dump,'--set',alt_tex_size,'--set',use_sts1_only,'--set',force_calc_sphere,'--set',correct_viewport,'--set',increase_texrect_edge,'--set',decrease_fillrect_edge,'--set',texture_correction,'--set',pal230,'--set',force_microcheck,'--set',force_quad3d,'--set',clip_zmin,'--set',clip_zmax,'--set',fast_crc,'--set',adjust_aspect,'--set',zmode_compare_less,'--set',old_style_adither,'--set',n64_z_scale,'--set',optimize_texrect,'--set',ignore_aux_copy,'--set',hires_buf_clear,'--set',fb_read_alpha,'--set',useless_is_useless,'--set',fb_crc_mode,'--set',filtering,'--set',fog,'--set',buff_clear,'--set',swapmode,'--set',aspect,'--set',lodmode,'--set',fb_smart,'--set',fb_hires,'--set',fb_read_always,'--set',read_back_to_screen,'--set',detect_cpu_write,'--set',fb_get_info,'--set',fb_render],
 
-graphics = [], cheats = [], activeCheats = '';
+cheats = [], activeCheats = '';
 
 if(id('cheatList').innerHTML != ''){ // activate cheats
 var cheatInputs = id('cheatList').querySelectorAll("input[type='checkbox']");
@@ -1978,22 +1978,15 @@ for (var i = 0; i < cheatInputs.length; i++){var cheatInput = cheatInputs[i];che
 function checkCheats(cheatInput){if(cheatInput.checked){var id = cheatInput.id.replace('_','-');activeCheats += id + ','}}
 cheats = ['--cheats',activeCheats]}
 
-if(!input.includes('input-sdl')){controls = []; controller1 = []; controller2 = []; controller3 = []; controller4 = []} // reduce number of parameters
-if(!id('plugged1').checked)controller1 = []
+if(!id('plugged1').checked)controller1 = [] // reduce number of parameters
 if(!id('plugged2').checked)controller2 = []
 if(!id('plugged3').checked)controller3 = []
 if(!id('plugged4').checked)controller4 = []
-if(gfx.includes('angrylion'))graphics = Angrylion
-if(gfx.includes('glide64mk2'))graphics = Glide64MK2
-if(gfx.includes('GLideN64'))graphics = GLideN64
-if(gfx.includes('parallel'))graphics = Parallel
-if(gfx.includes('rice'))graphics = Rice
 
-if(input.includes('input-gca')){ // write GameCube Adapter settings to file
-try {writeGCA(gcaSettings)}
-catch (e) {console.warn(e)}}
+try {writeGCA(gcaSettings)} // write GameCube Adapter settings to file
+catch (e) {console.warn(e)}
 
-const parameters = core.concat(PIFROM,savestate,nospeedlimit,verbose,cheats,controls,controller1,controller2,controller3,controller4,graphics,filePath), // launch parameters
+const parameters = core.concat(PIFROM,savestate,nospeedlimit,verbose,cheats,controls,controller1,controller2,controller3,controller4,Angrylion,Glide64MK2,GLideN64,Parallel,Rice,filePath), // launch parameters
 child = emuLaunch(parameters);
 
 })
