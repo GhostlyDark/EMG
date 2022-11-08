@@ -12,6 +12,7 @@ appData = app.getPath('appData'),
 m64pConfig = path(appData, 'mupen64plus'),
 emg = path(appData, 'EMG'),
 cwd = path(dir, 'm64p'),
+testROM = path(cwd, 'm64p_test_rom.v64'),
 executablePath = path(cwd, 'mupen64plus'),
 jstestPath = path(cwd, 'sdl2-jstest'),
 isLinux = process.platform === 'linux',
@@ -78,6 +79,7 @@ ipcMain.on('writeGCA', (e, gcaSettings) => {
 })
 
 ipcMain.on('cwd', (e) => {e.returnValue = cwd})
+ipcMain.on('testROM', (e) => {e.returnValue = testROM})
 ipcMain.on('executablePath', (e) => {e.returnValue = executablePath})
 ipcMain.on('jstestPath', (e) => {e.returnValue = jstestPath})
 ipcMain.on('jstestKill', () => {if(jstestChild != undefined)jstestChild.kill('SIGTERM')})

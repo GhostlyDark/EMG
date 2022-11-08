@@ -388,6 +388,9 @@ id('recent').addEventListener('change', function(){
 if(id('recent').value != null && id('recent').value != ''){filePath = id('recent').value;id('fileText').innerHTML = filePath;localStorage.setItem('filePath', filePath);if(!recentFiles.includes(filePath))recentFiles.unshift(filePath);recentFiles.splice(10);localStorage.setItem('recentFiles',JSON.stringify(recentFiles));if(id('cheatList').innerHTML!='')id('cheatList').innerHTML=''}})
 
 id('clearRecent').addEventListener('click', function(){
+filePath = testROM;
+localStorage.removeItem('filePath');
+id('fileText').innerHTML = filePath;
 recentFiles = [];
 localStorage.removeItem('recentFiles');
 id('optionDefault').selected = true;
@@ -591,6 +594,7 @@ if(gbRAM4 != undefined){id('gbRAM4Text').innerHTML = gbRAM4;localStorage.setItem
 
 
 
+if(localStorage.getItem('filePath') === null){filePath = testROM; id('fileText').innerHTML = filePath}
 if(localStorage.getItem('filePath') != null){filePath = localStorage.getItem('filePath');id('fileText').innerHTML = filePath}
 id('fileInput').addEventListener('click', function(){ // click event for file inputs
 fileResult = dialogFile({name:'N64 ROM',extensions:n64Type});
