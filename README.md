@@ -4,12 +4,10 @@ EMG is a launcher for [Mupen64Plus](https://github.com/GhostlyDark/mupen64plus-c
 
 **Bundled plugins:**
 
-- **GFX:** [Angrylion Plus](https://github.com/GhostlyDark/angrylion-rdp-plus), [GLideN64](https://github.com/GhostlyDark/GLideN64), [Parallel](https://github.com/GhostlyDark/parallel-rdp-standalone), [Glide64 MK2](https://github.com/GhostlyDark/mupen64plus-video-glide64mk2), [Rice](https://github.com/GhostlyDark/mupen64plus-video-rice)
+- **GFX:** [Angrylion Plus](https://github.com/GhostlyDark/angrylion-rdp-plus), [GLideN64](https://github.com/GhostlyDark/GLideN64), [Parallel](https://github.com/GhostlyDark/parallel-rdp-standalone)
 - **Audio:** [Mupen64Plus Audio SDL](https://github.com/GhostlyDark/mupen64plus-audio-sdl)
 - **Input:** [GameCube Adapter](https://github.com/GhostlyDark/mupen64plus-input-gca), [Mupen64Plus Input SDL](https://github.com/GhostlyDark/mupen64plus-input-sdl), [Raphnetraw](https://github.com/GhostlyDark/mupen64plus-input-raphnetraw)
 - **RSP:** [Mupen64Plus HLE](https://github.com/GhostlyDark/mupen64plus-rsp-hle), [Static Interpreter](https://github.com/GhostlyDark/rsp), [Parallel RSP](https://github.com/GhostlyDark/parallel-rsp)
-
-*Glide64 MK2 and Rice are legacy video plugins. Performance may be slow and functionality broken. Only use them if you know what you are doing.*
 
 **System Requirements:**
 
