@@ -357,6 +357,30 @@ else{id('mouse4options').classList.replace('show','hide')}}
 id('mouse4').addEventListener('change', mouse4Disable)
 mouse4Disable()
 
+function transferPak1Disable(){
+if(id('plugin1').value === 'Input-SDL-Control1[plugin]=4'){id('transferPak1').classList.replace('hide','show')}
+else{id('transferPak1').classList.replace('show','hide')}}
+id('plugin1').addEventListener('change', transferPak1Disable)
+transferPak1Disable()
+
+function transferPak2Disable(){
+if(id('plugin2').value === 'Input-SDL-Control2[plugin]=4'){id('transferPak2').classList.replace('hide','show')}
+else{id('transferPak2').classList.replace('show','hide')}}
+id('plugin2').addEventListener('change', transferPak2Disable)
+transferPak2Disable()
+
+function transferPak3Disable(){
+if(id('plugin3').value === 'Input-SDL-Control3[plugin]=4'){id('transferPak3').classList.replace('hide','show')}
+else{id('transferPak3').classList.replace('show','hide')}}
+id('plugin3').addEventListener('change', transferPak3Disable)
+transferPak3Disable()
+
+function transferPak4Disable(){
+if(id('plugin4').value === 'Input-SDL-Control4[plugin]=4'){id('transferPak4').classList.replace('hide','show')}
+else{id('transferPak4').classList.replace('show','hide')}}
+id('plugin4').addEventListener('change', transferPak4Disable)
+transferPak4Disable()
+
 
 
 if(localStorage.getItem('recentFiles') != null){recentFiles = JSON.parse(localStorage.getItem('recentFiles'))}
