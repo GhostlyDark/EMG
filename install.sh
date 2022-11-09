@@ -1,5 +1,5 @@
 # Install dependencies
-sudo apt install -y build-essential cmake curl freeglut3-dev gcc git libboost-dev libboost-filesystem-dev libfreetype-dev libhidapi-dev libhidapi-hidraw0 liblircclient-dev libpng-dev libsamplerate0-dev libsdl2-dev libspeexdsp-dev make nasm p7zip-full p7zip-rar unzip wget zlib1g-dev
+sudo apt install -y build-essential cmake curl freeglut3-dev gcc git libfreetype-dev libhidapi-dev libhidapi-hidraw0 liblircclient-dev libpng-dev libsamplerate0-dev libsdl2-dev libspeexdsp-dev make nasm p7zip-full p7zip-rar unzip wget zlib1g-dev
 
 # Install Rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
