@@ -14,15 +14,15 @@ M64P_COMPONENTS="mupen64plus-core mupen64plus-rom mupen64plus-ui-console mupen64
 mkdir -p source
 
 # Download source code
-git clone https://github.com/GhostlyDark/EMG.git EMG
-git clone https://github.com/GhostlyDark/sdl-jstest.git source/sdl-jstest
-git clone https://github.com/GhostlyDark/SDL_GameControllerDB source/SDL_GameControllerDB
-git clone https://github.com/GhostlyDark/mupen64plus-input-gca.git source/mupen64plus-input-gca
-git clone https://github.com/GhostlyDark/mupen64plus-input-raphnetraw.git source/mupen64plus-input-raphnetraw
-git clone https://github.com/GhostlyDark/GLideN64.git source/GLideN64
-git clone https://github.com/GhostlyDark/angrylion-rdp-plus.git source/angrylion-rdp-plus
-git clone https://github.com/GhostlyDark/parallel-rdp-standalone.git source/parallel-rdp-standalone
-git clone https://github.com/GhostlyDark/parallel-rsp.git source/parallel-rsp
+git clone --depth 1 https://github.com/GhostlyDark/EMG.git EMG
+git clone --depth 1 https://github.com/GhostlyDark/sdl-jstest.git source/sdl-jstest
+git clone --depth 1 https://github.com/GhostlyDark/SDL_GameControllerDB source/SDL_GameControllerDB
+git clone --depth 1 https://github.com/GhostlyDark/mupen64plus-input-gca.git source/mupen64plus-input-gca
+git clone --depth 1 https://github.com/GhostlyDark/mupen64plus-input-raphnetraw.git source/mupen64plus-input-raphnetraw
+git clone --depth 1 https://github.com/GhostlyDark/GLideN64.git source/GLideN64
+git clone --depth 1 https://github.com/GhostlyDark/angrylion-rdp-plus.git source/angrylion-rdp-plus
+git clone --depth 1 https://github.com/GhostlyDark/parallel-rdp-standalone.git source/parallel-rdp-standalone
+git clone --depth 1 https://github.com/GhostlyDark/parallel-rsp.git source/parallel-rsp
 
 # Download Electron
 [ ! -f electron-${ELECTRON}-linux-x64.zip ] && wget https://github.com/electron/electron/releases/download/${ELECTRON}/electron-${ELECTRON}-linux-x64.zip
@@ -41,7 +41,7 @@ for component in ${M64P_COMPONENTS}; do
 	fi
 
 	echo "*** Downloading ${component} ${component_type} ***"
-	git clone https://github.com/GhostlyDark/${component}.git source/${component} $@
+	git clone --depth 1 https://github.com/GhostlyDark/${component}.git source/${component} $@
 done
 
 # Build mupen64plus components
