@@ -24,11 +24,7 @@
 <li>
 <a id="inputSettings" class="dropbutton" href="#settings">Input</a>
 <div id="inputSettingsDropdown" class="dropdown">
-<a href="#controller1Anchor">Controller 1</a>
-<a href="#controller2Anchor">Controller 2</a>
-<a href="#controller3Anchor">Controller 3</a>
-<a href="#controller4Anchor">Controller 4</a>
-<a href="#gcaAnchor">GC Adapter</a>
+<a href="#controllerAnchor">Controller</a>
 <a href="#hotkeysAnchor">Hotkeys</a>
 </div>
 </li>
@@ -260,12 +256,21 @@ Click the box or drag and drop the file into the box below.">Path to Savestate&n
 <p>&nbsp;</p><p>&nbsp;</p>
 <p title="Directory where EMG stores temporary files such as extracted ROMs.">Working Directory&nbsp;&nbsp;<button class="floatright" id="resetworkingDirectory">Reset</button><br><br><div id="workingDirectory" class="box"><span id="workingDirectoryText"></span></div></p>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
-<div id="controller1Anchor" class="anchor"></div>
+<div id="controllerAnchor" class="anchor"></div>
 <p class="headline">Input</p>
 <p>&nbsp;</p>
-<p class="sub">Controller 1</p>
+<p class="sub">Controller</p>
 <p>&nbsp;</p>
-<div title="Select SDL device to be used for this controller port. Will be ignored if configuration mode is set to Automatic, except for hotkey settings."><select class="width85p" name="c1" id="c1">
+<ul class="ul-buttons width90p">
+<li id="ul_input_controller1" class="active">Controller 1</li>
+<li id="ul_input_controller2">Controller 2</li>
+<li id="ul_input_controller3">Controller 3</li>
+<li id="ul_input_controller4">Controller 4</li>
+<li id="ul_input_gca">GC Adapter</li>
+</ul>
+<p>&nbsp;</p>
+<div id="input_controller1">
+<div class="mt-10" title="Select SDL device to be used for this controller port. Will be ignored if configuration mode is set to Automatic, except for hotkey settings."><select class="width85p" name="c1" id="c1">
 <option value="Keyboard" selected>Keyboard</option>
 </select><button class="floatright" id="refreshc1">Refresh</button></div>
 <p>&nbsp;</p>
@@ -461,10 +466,8 @@ Archives containing a single file are also supported.">GB(C) Save for Transfer P
 </div>
 <p>&nbsp;</p>
 </div>
-<p>&nbsp;</p><p>&nbsp;</p>
-<div id="controller2Anchor" class="anchor"></div>
-<p class="sub">Controller 2</p>
-<p>&nbsp;</p>
+</div>
+<div id="input_controller2" class="hide mt-10">
 <div title="Select SDL device to be used for this controller port. Will be ignored if configuration mode is set to Automatic, except for hotkey settings."><select class="width85p" name="c2" id="c2">
 <option value="Keyboard" selected>Keyboard</option>
 </select><button class="floatright" id="refreshc2">Refresh</button></div>
@@ -661,10 +664,8 @@ Archives containing a single file are also supported.">GB(C) Save for Transfer P
 </div>
 <p>&nbsp;</p>
 </div>
-<p>&nbsp;</p><p>&nbsp;</p>
-<div id="controller3Anchor" class="anchor"></div>
-<p class="sub">Controller 3</p>
-<p>&nbsp;</p>
+</div>
+<div id="input_controller3" class="hide mt-10">
 <div title="Select SDL device to be used for this controller port. Will be ignored if configuration mode is set to Automatic, except for hotkey settings."><select class="width85p" name="c3" id="c3">
 <option value="Keyboard" selected>Keyboard</option>
 </select><button class="floatright" id="refreshc3">Refresh</button></div>
@@ -861,10 +862,8 @@ Archives containing a single file are also supported.">GB(C) Save for Transfer P
 </div>
 <p>&nbsp;</p>
 </div>
-<p>&nbsp;</p><p>&nbsp;</p>
-<div id="controller4Anchor" class="anchor"></div>
-<p class="sub">Controller 4</p>
-<p>&nbsp;</p>
+</div>
+<div id="input_controller4" class="hide mt-10">
 <div title="Select SDL device to be used for this controller port. Will be ignored if configuration mode is set to Automatic, except for hotkey settings."><select class="width85p" name="c4" id="c4">
 <option value="Keyboard" selected>Keyboard</option>
 </select><button class="floatright" id="refreshc4">Refresh</button></div>
@@ -1061,10 +1060,8 @@ Archives containing a single file are also supported.">GB(C) Save for Transfer P
 </div>
 <p>&nbsp;</p>
 </div>
-<p>&nbsp;</p><p>&nbsp;</p>
-<div id="gcaAnchor" class="anchor"></div>
-<p class="sub">GC Adapter</p>
-<p>&nbsp;</p>
+</div>
+<div id="input_gca" class="hide mt-10">
 <p><input id="control_stick_deadzone" name="control_stick_deadzone" type="range" min="0" max="255" value="20"><label for="control_stick_deadzone">Control Stick Deadzone</label><button class="floatright" data-value="20" id="resetcontrol_stick_deadzone">Reset</button><span class="gc" id="control_stick_deadzoneText">20</span></p>
 <p>&nbsp;</p>
 <p title="This controls how far you have to move the stick in order to reach max input."><input id="control_stick_sensitivity" name="control_stick_sensitivity" type="range" min="0" max="255" value="180"><label for="control_stick_sensitivity">Control Stick Sensitivity</label><button class="floatright" data-value="180" id="resetcontrol_stick_sensitivity">Reset</button><span class="gc" id="control_stick_sensitivityText">180</span></p>
@@ -1344,7 +1341,9 @@ Archives containing a single file are also supported.">GB(C) Save for Transfer P
 <option value="'CDown'">C-Button Down</option>
 <option value="'CUp'" selected>C-Button Up</option>
 </select><label for="c_stick_up">C-Stick Up</label>
-<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<p>&nbsp;</p>
+</div>
+<p>&nbsp;</p><p>&nbsp;</p>
 <div id="hotkeysAnchor" class="anchor"></div>
 <p class="sub">Hotkeys</p>
 <p>&nbsp;</p>

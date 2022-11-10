@@ -19,6 +19,7 @@ st = ['st0','st1','st2','st3','st4','st5','st6','st7','st8','st9','state'],
 n64Type = [...n64,...zip], nddType = [...ndd,...zip], gbType = [...gb,...zip], saveType = [...save,...zip], biosType = [...bios,...zip],
 
 dragDrop = ['fileInput','PIF','IPLROM','Disk','st','gbROM1','gbROM2','gbROM3','gbROM4','gbRAM1','gbRAM2','gbRAM3','gbRAM4'],
+input_controller = ['input_controller1','input_controller2','input_controller3','input_controller4','input_gca'],
 hk = ['hk_keyboard','hk_controller1','hk_controller2','hk_controller3','hk_controller4'],
 menu = ['main','input','video','gliden64'],
 
@@ -441,6 +442,19 @@ id('cheatList').addEventListener('change', function(e){
 if(e.target.id.includes('_')){
 let radioBoxes = id('cheatList').querySelectorAll('input[id*=_]');
 for (var i = 0; i < radioBoxes.length; i++){var box = radioBoxes[i];if(box.id.includes(e.target.id.replace(regbox,'_'))){if(box.id != e.target.id)box.checked = false}}}})
+
+
+
+if(localStorage.getItem('inputULActive') != null && localStorage.getItem('inputDIVActive') != null){ // Controller tabs
+currentInput(id(localStorage.getItem('inputULActive')),id(localStorage.getItem('inputDIVActive')))}
+
+function currentInput(currentUL,currentDIV){input_controller.forEach(input_controller => {
+if(id('ul_'+input_controller).classList.contains('active'))id('ul_'+input_controller).classList.remove('active')
+if(!id(input_controller).classList.contains('hide'))id(input_controller).classList.add('hide')})
+currentUL.classList.add('active');localStorage.setItem('inputULActive',currentUL.id);
+currentDIV.classList.remove('hide');localStorage.setItem('inputDIVActive',currentDIV.id)}
+
+input_controller.forEach(input_controller => {id('ul_'+input_controller).addEventListener('click', function(){currentInput(id('ul_'+input_controller),id(input_controller))})})
 
 
 

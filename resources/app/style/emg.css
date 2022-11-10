@@ -88,6 +88,7 @@ header li:last-child{float:right;background-color:rgba(0,0,0,.25);padding-right:
 
 .hide{display:none}
 .width85p{width:85%}
+.width90p{width:90%}
 #cheatList input[id*=_]{margin-left:40px}
 #recent{width:625px;padding-left:12px;height:29px}
 #name1,#name2,#name3,#name4{padding-left:7px;padding-right:7px}
