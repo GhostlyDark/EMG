@@ -73,11 +73,27 @@ Archives containing a single file are also supported." class="mt--5">Input ROM</
 <p><input id="error" type="checkbox" data-store="error"><label for="error">Show mupen64plus error log</label></p>
 <div class="mt-20 hide" id="log"></div>
 <p>&nbsp;</p><p>&nbsp;</p>
+<ul class="ul-buttons width75p">
+<li id="ul_core_core" class="active">Core</li>
+<li id="ul_core_advanced">Advanced</li>
+<li id="ul_core_audio">Audio</li>
+<li id="ul_core_directories">Directories</li>
+<li id="ul_core_plugins">Plugins</li>
+<li id="ul_core_64dd">64DD</li>
+</ul>
+<p>&nbsp;</p>
+<div id="core_core" class="mt-10">
 <p><input id="vsync" type="checkbox" data-store="vsync"><label for="vsync">V-Sync</label></p>
 <p>&nbsp;</p>
 <p title="Start emulation in fullscreen."><input id="fullscreen" type="checkbox" data-store="fullscreen"><label for="fullscreen">Fullscreen</label></p>
 <p>&nbsp;</p>
 <p title="Disable extra memory."><input id="exp" type="checkbox" data-store="exp"><label for="exp">Force 4 MB</label></p>
+<p>&nbsp;</p>
+<p title="Force number of cycles per emulated instruction (speed hack, not recommended). Leave at 0 to disable."><span class="numberDecrease" id="decreaseCountPerOp">-</span><input id="CountPerOp" min="0" max="6" step="1" value="0" type="number"><span class="numberIncrease" id="increaseCountPerOp">+</span><label for="CountPerOp">Counter Factor</label><button class="floatright" data-value="0" id="resetCountPerOp">Reset</button></p>
+<p>&nbsp;</p>
+<p title="Reduce number of cycles per update by power of two (overclock)."><span class="numberDecrease" id="decreaseCountPerOpDenomPot">-</span><input id="CountPerOpDenomPot" min="0" max="11" step="1" value="0" type="number"><span class="numberIncrease" id="increaseCountPerOpDenomPot">+</span><label for="CountPerOpDenomPot">Overclock</label><button class="floatright" data-value="0" id="resetCountPerOpDenomPot">Reset</button></p>
+<p>&nbsp;</p>
+<p title="Duration of SI DMA. Use -1 for default (per-game settings)."><span class="numberDecrease" id="decreaseSiDmaDuration">-</span><input id="SiDmaDuration" min="-1" max="1000" step="10" value="-1" type="number"><span class="numberIncrease" id="increaseSiDmaDuration">+</span><label for="SiDmaDuration">SI DMA Duration</label><button class="floatright" data-value="-1" id="resetSiDmaDuration">Reset</button></p>
 <p>&nbsp;</p>
 <select class="width200m" name="resolution" id="resolution">
 <option disabled>4:3</option>
@@ -110,52 +126,28 @@ Archives containing a single file are also supported." class="mt--5">Input ROM</
 <option value="1">Cached Interpreter</option>
 <option value="2" selected>Dynamic Recompiler</option>
 </select><label for="emumode">R4300 Emulator</label></div>
-<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
-<div id="pluginsAnchor" class="anchor"></div>
-<p class="sub">Plugins</p>
+</div>
+<div id="core_advanced" class="hide mt-10">
+<p title="Disable compiled jump commands in dynamic recompiler (not recommended)."><input id="NoCompiledJump" type="checkbox" data-store="NoCompiledJump"><label for="NoCompiledJump">Disable Compiled Jump</label></p>
 <p>&nbsp;</p>
-<div title="Angrylion Plus: LLE,
-GLideN64: HLE (recommended) and LLE,
-Parallel: LLE"><select class="width250m" name="gfx" id="gfx">
-<option value="mupen64plus-video-angrylion-plus">Angrylion Plus</option>
-<option value="mupen64plus-video-GLideN64" selected>GLideN64</option>
-<option value="mupen64plus-video-parallel">Parallel</option>
-</select><label for="gfx">Graphics Plugin</label></div>
+<p title="Disables speed limit, V-Sync and mutes audio. Useful for performance testing."><input id="nospeedlimit" type="checkbox" data-store="nospeedlimit"><label for="nospeedlimit">Disable Speed Limit</label></p>
 <p>&nbsp;</p>
-<select class="width250m" name="audio" id="audio">
-<option value="dummy">Disable</option>
-<option value="mupen64plus-audio-sdl" selected>Mupen64Plus Audio SDL</option>
-</select><label for="audio">Audio Plugin</label>
+<p title="Randomize PI/SI Interrupt Timing."><input id="RandomizeInterrupt" type="checkbox" data-store="RandomizeInterrupt" checked><label for="RandomizeInterrupt">Randomize Interrupt</label></p>
 <p>&nbsp;</p>
-<div title="GameCube Adapter: Only works with official Wii U GameCube Adapter,
-Raphnetraw: Only works with Raphnetraw adapters"><select class="width250m" name="input" id="input">
-<option value="dummy">Disable</option>
-<option value="mupen64plus-input-gca">GameCube Adapter</option>
-<option value="mupen64plus-input-sdl" selected>Mupen64Plus Input SDL</option>
-<option value="mupen64plus-input-raphnetraw">Raphnetraw</option>
-</select><label for="input">Input Plugin</label></div>
+<p title="Print more information on logging."><input id="verbose" type="checkbox" data-store="verbose"><label for="verbose">Verbose Logging</label></p>
 <p>&nbsp;</p>
-<div title="Mupen64Plus HLE: HLE only,
-Static Interpreter: HLE and LLE,
-Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
-<option value="mupen64plus-rsp-hle" selected>Mupen64Plus HLE</option>
-<option value="mupen64plus-rsp-cxd4-sse2">Static Interpreter</option>
-<option value="mupen64plus-rsp-parallel">Parallel RSP</option>
-</select><label for="rsp">RSP Plugin</label></div>
+<p title="Increment the save state slot after each save operation."><input id="AutoStateSlotIncrement" type="checkbox" data-store="AutoStateSlotIncrement"><label for="AutoStateSlotIncrement">Auto increment state slot</label></p>
 <p>&nbsp;</p>
-<div title="RSP plugin used when encountering an unknown ucode. HLE RSP only."><select class="width250m" name="RspFallback" id="RspFallback">
-<option value="Rsp-HLE[RspFallback]=">Disable</option>
-<option value="Rsp-HLE[RspFallback]=mupen64plus-rsp-cxd4-sse2" selected>Static Interpreter</option>
-<option value="Rsp-HLE[RspFallback]=mupen64plus-rsp-parallel">Parallel RSP</option>
-</select><label for="RspFallback">RSP Fallback</label></div>
+<p title="Save state slot (0-9) to use when starting emulation."><span class="numberDecrease" id="decreaseCurrentStateSlot">-</span><input id="CurrentStateSlot" min="0" max="9" step="1" value="0" type="number"><span class="numberIncrease" id="increaseCurrentStateSlot">+</span><label for="CurrentStateSlot">Default state slot</label><button class="floatright" data-value="0" id="resetCurrentStateSlot">Reset</button></p>
 <p>&nbsp;</p><p>&nbsp;</p>
-<p title="Use High Level Emulation for graphics."><input id="rspGFX" type="checkbox" data-store="rspGFX" checked><label for="rspGFX">GFX HLE</label></p>
-<p>&nbsp;</p>
-<p title="Use High Level Emulation for audio. Not recommended."><input id="rspAudio" type="checkbox" data-store="rspAudio"><label for="rspAudio">Audio HLE</label></p>
-<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
-<div id="audioAnchor" class="anchor"></div>
-<p class="sub">Audio</p>
-<p>&nbsp;</p>
+<p title="Path to savestate (.st0, .st1, .st2, .st3, .st4, .st5, .st6, .st7, .st8, .st9, .state) to load at startup.
+This option may not work with some games (e.g. Banjo-Kazooie) unless Pure Interpreter is used.
+Click the box or drag and drop the file into the box below.">Path to Savestate&nbsp;&nbsp;<button class="floatright" id="clearst">Clear</button><br><br><div id="st" class="box"><span id="stText"></span></div></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p title="Path to PIF ROM file. Click the box or drag and drop the file into the box below.
+Archives containing a single file are also supported.">Path to PIF ROM&nbsp;&nbsp;<button class="floatright" id="clearPIF">Clear</button><br><br><div id="PIF" class="box"><span id="PIFText"></span></div></p>
+</div>
+<div id="core_audio" class="hide mt-10">
 <p title="Swap left and right channels."><input id="SWAP_CHANNELS" type="checkbox" data-store="SWAP_CHANNELS"><label for="SWAP_CHANNELS">Swap Channels</label></p>
 <p>&nbsp;</p>
 <p><input id="AUDIO_SYNC" type="checkbox" data-store="AUDIO_SYNC" checked><label for="AUDIO_SYNC">Synchronize Video/Audio</label></p>
@@ -195,28 +187,57 @@ Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
 <option value="Audio-SDL[RESAMPLE]=speex-fixed-0">SPEEX Fixed 0</option>
 <option value="Audio-SDL[RESAMPLE]=trivial">Trivial</option>
 </select><label for="RESAMPLE">Resampling Algorithm</label></div>
-<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
-<div id="advancedAnchor" class="anchor"></div>
-<p class="sub">Advanced</p>
-<p>&nbsp;</p>
-<p title="Disables speed limit, V-Sync and mutes audio. Useful for performance testing."><input id="nospeedlimit" type="checkbox" data-store="nospeedlimit"><label for="nospeedlimit">Disable Speed Limit</label></p>
-<p>&nbsp;</p>
-<p title="Randomize PI/SI Interrupt Timing."><input id="RandomizeInterrupt" type="checkbox" data-store="RandomizeInterrupt" checked><label for="RandomizeInterrupt">Randomize Interrupt</label></p>
-<p>&nbsp;</p>
-<p title="Disable compiled jump commands in dynamic recompiler (not recommended)."><input id="NoCompiledJump" type="checkbox" data-store="NoCompiledJump"><label for="NoCompiledJump">Disable Compiled Jump</label></p>
-<p>&nbsp;</p>
-<p title="Print more information on logging."><input id="verbose" type="checkbox" data-store="verbose"><label for="verbose">Verbose Logging</label></p>
-<p>&nbsp;</p>
-<p title="Increment the save state slot after each save operation."><input id="AutoStateSlotIncrement" type="checkbox" data-store="AutoStateSlotIncrement"><label for="AutoStateSlotIncrement">Auto increment state slot</label></p>
-<p>&nbsp;</p>
-<p title="Save state slot (0-9) to use when starting emulation."><span class="numberDecrease" id="decreaseCurrentStateSlot">-</span><input id="CurrentStateSlot" min="0" max="9" step="1" value="0" type="number"><span class="numberIncrease" id="increaseCurrentStateSlot">+</span><label for="CurrentStateSlot">Default state slot</label><button class="floatright" data-value="0" id="resetCurrentStateSlot">Reset</button></p>
-<p>&nbsp;</p>
-<p title="Force number of cycles per emulated instruction (speed hack, not recommended). Leave at 0 to disable."><span class="numberDecrease" id="decreaseCountPerOp">-</span><input id="CountPerOp" min="0" max="6" step="1" value="0" type="number"><span class="numberIncrease" id="increaseCountPerOp">+</span><label for="CountPerOp">Counter Factor</label><button class="floatright" data-value="0" id="resetCountPerOp">Reset</button></p>
-<p>&nbsp;</p>
-<p title="Reduce number of cycles per update by power of two (overclock)."><span class="numberDecrease" id="decreaseCountPerOpDenomPot">-</span><input id="CountPerOpDenomPot" min="0" max="11" step="1" value="0" type="number"><span class="numberIncrease" id="increaseCountPerOpDenomPot">+</span><label for="CountPerOpDenomPot">Overclock</label><button class="floatright" data-value="0" id="resetCountPerOpDenomPot">Reset</button></p>
-<p>&nbsp;</p>
-<p title="Duration of SI DMA. Use -1 for default (per-game settings)."><span class="numberDecrease" id="decreaseSiDmaDuration">-</span><input id="SiDmaDuration" min="-1" max="1000" step="10" value="-1" type="number"><span class="numberIncrease" id="increaseSiDmaDuration">+</span><label for="SiDmaDuration">SI DMA Duration</label><button class="floatright" data-value="-1" id="resetSiDmaDuration">Reset</button></p>
+</div>
+<div id="core_directories" class="hide mt-15">
+<p title="Path to directory where screenshots are saved. Keep blank for default. Click the box below to change it.">Directory: Screenshots&nbsp;&nbsp;<button class="floatright" id="resetScreenshotPath">Reset</button><br><br><div id="ScreenshotPath" class="box"><span id="ScreenshotPathText"></span></div></p>
 <p>&nbsp;</p><p>&nbsp;</p>
+<p title="Path to directory where emulator savestates are saved. Keep blank for default. Click the box below to change it.">Directory: Savestates&nbsp;&nbsp;<button class="floatright" id="resetSaveStatePath">Reset</button><br><br><div id="SaveStatePath" class="box"><span id="SaveStatePathText"></span></div></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p title="Path to directory where SRAM/EEPROM data (in-game saves) are stored. Keep blank for default. Click the box below to change it.">Directory: Save Files&nbsp;&nbsp;<button class="floatright" id="resetSaveSRAMPath">Reset</button><br><br><div id="SaveSRAMPath" class="box"><span id="SaveSRAMPathText"></span></div></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p title="Directory where EMG stores temporary files such as extracted ROMs.">Working Directory&nbsp;&nbsp;<button class="floatright" id="resetworkingDirectory">Reset</button><br><br><div id="workingDirectory" class="box"><span id="workingDirectoryText"></span></div></p>
+</div>
+<div id="core_plugins" class="hide mt-15">
+<div title="Angrylion Plus: LLE,
+GLideN64: HLE (recommended) and LLE,
+Parallel: LLE"><select class="width250m" name="gfx" id="gfx">
+<option value="mupen64plus-video-angrylion-plus">Angrylion Plus</option>
+<option value="mupen64plus-video-GLideN64" selected>GLideN64</option>
+<option value="mupen64plus-video-parallel">Parallel</option>
+</select><label for="gfx">Graphics Plugin</label></div>
+<p>&nbsp;</p>
+<select class="width250m" name="audio" id="audio">
+<option value="dummy">Disable</option>
+<option value="mupen64plus-audio-sdl" selected>Mupen64Plus Audio SDL</option>
+</select><label for="audio">Audio Plugin</label>
+<p>&nbsp;</p>
+<div title="GameCube Adapter: Only works with official Wii U GameCube Adapter,
+Raphnetraw: Only works with Raphnetraw adapters"><select class="width250m" name="input" id="input">
+<option value="dummy">Disable</option>
+<option value="mupen64plus-input-gca">GameCube Adapter</option>
+<option value="mupen64plus-input-sdl" selected>Mupen64Plus Input SDL</option>
+<option value="mupen64plus-input-raphnetraw">Raphnetraw</option>
+</select><label for="input">Input Plugin</label></div>
+<p>&nbsp;</p>
+<div title="Mupen64Plus HLE: HLE only,
+Static Interpreter: HLE and LLE,
+Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
+<option value="mupen64plus-rsp-hle" selected>Mupen64Plus HLE</option>
+<option value="mupen64plus-rsp-cxd4-sse2">Static Interpreter</option>
+<option value="mupen64plus-rsp-parallel">Parallel RSP</option>
+</select><label for="rsp">RSP Plugin</label></div>
+<p>&nbsp;</p>
+<div title="RSP plugin used when encountering an unknown ucode. HLE RSP only."><select class="width250m" name="RspFallback" id="RspFallback">
+<option value="Rsp-HLE[RspFallback]=">Disable</option>
+<option value="Rsp-HLE[RspFallback]=mupen64plus-rsp-cxd4-sse2" selected>Static Interpreter</option>
+<option value="Rsp-HLE[RspFallback]=mupen64plus-rsp-parallel">Parallel RSP</option>
+</select><label for="RspFallback">RSP Fallback</label></div>
+<p>&nbsp;</p>
+<p title="Use High Level Emulation for graphics."><input id="rspGFX" type="checkbox" data-store="rspGFX" checked><label for="rspGFX">GFX HLE</label></p>
+<p>&nbsp;</p>
+<p title="Use High Level Emulation for audio. Not recommended."><input id="rspAudio" type="checkbox" data-store="rspAudio"><label for="rspAudio">Audio HLE</label></p>
+</div>
+<div id="core_64dd" class="hide mt-15">
 <select name="SaveDiskFormat" id="SaveDiskFormat">
 <option value="Core[SaveDiskFormat]=0">Full Disk Copy</option>
 <option value="Core[SaveDiskFormat]=1" selected>RAM Area Only</option>
@@ -227,21 +248,7 @@ Archives containing a single file are also supported.">Path to 64DD IPL ROM&nbsp
 <p>&nbsp;</p><p>&nbsp;</p>
 <p title="Path to 64DD ROM file. Click the box or drag and drop a .64d or .ndd file into the box below.
 Archives containing a single file are also supported.">Path to 64DD Disk&nbsp;&nbsp;<button class="floatright" id="clearDisk">Clear</button><br><br><div id="Disk" class="box"><span id="DiskText"></span></div></p>
-<p>&nbsp;</p><p>&nbsp;</p>
-<p title="Path to PIF ROM file. Click the box or drag and drop the file into the box below.
-Archives containing a single file are also supported.">Path to PIF ROM&nbsp;&nbsp;<button class="floatright" id="clearPIF">Clear</button><br><br><div id="PIF" class="box"><span id="PIFText"></span></div></p>
-<p>&nbsp;</p><p>&nbsp;</p>
-<p title="Path to savestate (.st0, .st1, .st2, .st3, .st4, .st5, .st6, .st7, .st8, .st9, .state) to load at startup.
-This option may not work with some games (e.g. Banjo-Kazooie) unless Pure Interpreter is used.
-Click the box or drag and drop the file into the box below.">Path to Savestate&nbsp;&nbsp;<button class="floatright" id="clearst">Clear</button><br><br><div id="st" class="box"><span id="stText"></span></div></p>
-<p>&nbsp;</p><p>&nbsp;</p>
-<p title="Path to directory where screenshots are saved. Keep blank for default. Click the box below to change it.">Directory: Screenshots&nbsp;&nbsp;<button class="floatright" id="resetScreenshotPath">Reset</button><br><br><div id="ScreenshotPath" class="box"><span id="ScreenshotPathText"></span></div></p>
-<p>&nbsp;</p><p>&nbsp;</p>
-<p title="Path to directory where emulator savestates are saved. Keep blank for default. Click the box below to change it.">Directory: Savestates&nbsp;&nbsp;<button class="floatright" id="resetSaveStatePath">Reset</button><br><br><div id="SaveStatePath" class="box"><span id="SaveStatePathText"></span></div></p>
-<p>&nbsp;</p><p>&nbsp;</p>
-<p title="Path to directory where SRAM/EEPROM data (in-game saves) are stored. Keep blank for default. Click the box below to change it.">Directory: Save Files&nbsp;&nbsp;<button class="floatright" id="resetSaveSRAMPath">Reset</button><br><br><div id="SaveSRAMPath" class="box"><span id="SaveSRAMPathText"></span></div></p>
-<p>&nbsp;</p><p>&nbsp;</p>
-<p title="Directory where EMG stores temporary files such as extracted ROMs.">Working Directory&nbsp;&nbsp;<button class="floatright" id="resetworkingDirectory">Reset</button><br><br><div id="workingDirectory" class="box"><span id="workingDirectoryText"></span></div></p>
+</div>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
 <div id="controllerAnchor" class="anchor"></div>
 <p class="headline">Input</p>

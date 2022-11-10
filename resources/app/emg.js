@@ -19,6 +19,7 @@ st = ['st0','st1','st2','st3','st4','st5','st6','st7','st8','st9','state'],
 n64Type = [...n64,...zip], nddType = [...ndd,...zip], gbType = [...gb,...zip], saveType = [...save,...zip], biosType = [...bios,...zip],
 
 dragDrop = ['fileInput','PIF','IPLROM','Disk','st','gbROM1','gbROM2','gbROM3','gbROM4','gbRAM1','gbRAM2','gbRAM3','gbRAM4'],
+core_main = ['core_core','core_plugins','core_audio','core_advanced','core_64dd','core_directories'],
 input_controller = ['input_controller1','input_controller2','input_controller3','input_controller4','input_gca'],
 hk = ['hk_keyboard','hk_controller1','hk_controller2','hk_controller3','hk_controller4'],
 gliden64_setting = ['gliden64_video','gliden64_overscan','gliden64_emulation','gliden64_framebuffer','gliden64_textures','gliden64_osd','gliden64_hotkeys'],
@@ -458,7 +459,20 @@ for (var i = 0; i < radioBoxes.length; i++){var box = radioBoxes[i];if(box.id.in
 
 
 
-if(localStorage.getItem('inputULActive') != null && localStorage.getItem('inputDIVActive') != null){ // Controller tabs
+if(localStorage.getItem('coreULActive') != null && localStorage.getItem('coreDIVActive') != null){ // Core settings tabs
+currentCore(id(localStorage.getItem('coreULActive')),id(localStorage.getItem('coreDIVActive')))}
+
+function currentCore(currentUL,currentDIV){core_main.forEach(core_main => {
+if(id('ul_'+core_main).classList.contains('active'))id('ul_'+core_main).classList.remove('active')
+if(!id(core_main).classList.contains('hide'))id(core_main).classList.add('hide')})
+currentUL.classList.add('active');localStorage.setItem('coreULActive',currentUL.id);
+currentDIV.classList.remove('hide');localStorage.setItem('coreDIVActive',currentDIV.id)}
+
+core_main.forEach(core_main => {id('ul_'+core_main).addEventListener('click', function(){currentCore(id('ul_'+core_main),id(core_main))})})
+
+
+
+if(localStorage.getItem('inputULActive') != null && localStorage.getItem('inputDIVActive') != null){ // Controller settings tabs
 currentInput(id(localStorage.getItem('inputULActive')),id(localStorage.getItem('inputDIVActive')))}
 
 function currentInput(currentUL,currentDIV){input_controller.forEach(input_controller => {
