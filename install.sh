@@ -9,60 +9,26 @@ source "$HOME/.cargo/env"
 ELECTRON="v21.2.2"
 EMG="EMG/resources/app/m64p/"
 MAKE_INSTALL="PLUGINDIR= SHAREDIR= BINDIR= MANDIR= LIBDIR= APPSDIR= ICONSDIR=icons INCDIR=api LDCONFIG=true COREDIR=./ NEW_DYNAREC=1 OSD=0 SSE=SSE2"
-M64P_COMPONENTS="mupen64plus-core mupen64plus-rom mupen64plus-ui-console mupen64plus-audio-sdl mupen64plus-input-sdl mupen64plus-rsp-hle rsp"
+M64P_COMPONENTS="mupen64plus-core mupen64plus-ui-console mupen64plus-audio-sdl mupen64plus-input-sdl mupen64plus-rsp-hle rsp"
+SOURCE="mupen64plus-rom sdl-jstest SDL_GameControllerDB mupen64plus-input-gca mupen64plus-input-raphnetraw GLideN64 angrylion-rdp-plus parallel-rdp-standalone parallel-rsp"
 
 mkdir -p source
 
 # Download source code
 git clone --depth 1 https://github.com/GhostlyDark/EMG.git EMG
-git clone --depth 1 https://github.com/GhostlyDark/sdl-jstest.git source/sdl-jstest
-git clone --depth 1 https://github.com/GhostlyDark/SDL_GameControllerDB source/SDL_GameControllerDB
-git clone --depth 1 https://github.com/GhostlyDark/mupen64plus-input-gca.git source/mupen64plus-input-gca
-git clone --depth 1 https://github.com/GhostlyDark/mupen64plus-input-raphnetraw.git source/mupen64plus-input-raphnetraw
-git clone --depth 1 https://github.com/GhostlyDark/GLideN64.git source/GLideN64
-git clone --depth 1 https://github.com/GhostlyDark/angrylion-rdp-plus.git source/angrylion-rdp-plus
-git clone --depth 1 https://github.com/GhostlyDark/parallel-rdp-standalone.git source/parallel-rdp-standalone
-git clone --depth 1 https://github.com/GhostlyDark/parallel-rsp.git source/parallel-rsp
 
-# Download Electron
-[ ! -f electron-${ELECTRON}-linux-x64.zip ] && wget https://github.com/electron/electron/releases/download/${ELECTRON}/electron-${ELECTRON}-linux-x64.zip
-7z x electron-${ELECTRON}-linux-x64.zip -oEMG '-x!LICENSE' -y
-
-# Download mupen64plus source code
-for component in ${M64P_COMPONENTS}; do
-	if [ "${component}" = "mupen64plus-core" ]; then
-		component_type="library"
-	elif  [ "${component}" = "mupen64plus-rom" ]; then
-		component_type=""
-	elif  [ "${component}" = "mupen64plus-ui-console" ]; then
-		component_type="front-end"
-	else
-		component_type="plugin"
-	fi
-
-	echo "*** Downloading ${component} ${component_type} ***"
+for component in ${M64P_COMPONENTS} ${SOURCE}; do
 	git clone --depth 1 https://github.com/GhostlyDark/${component}.git source/${component} $@
 done
 
+# Download and extract Electron
+[ ! -f electron-${ELECTRON}-linux-x64.zip ] && wget https://github.com/electron/electron/releases/download/${ELECTRON}/electron-${ELECTRON}-linux-x64.zip
+7z x electron-${ELECTRON}-linux-x64.zip -oEMG '-x!LICENSE' -y
+
 # Build mupen64plus components
 for component in ${M64P_COMPONENTS}; do
-	if [ "${component}" = "mupen64plus-core" ]; then
-		component_type="library"
-	elif  [ "${component}" = "mupen64plus-rom" ]; then
-		echo "*** Building test ROM ***"
-		cp source/mupen64plus-rom/m64p_test_rom.v64 ${EMG}
-		continue
-	elif  [ "${component}" = "mupen64plus-ui-console" ]; then
-		component_type="front-end"
-	else
-		component_type="plugin"
-	fi
-
-	echo "*** Building ${component} ${component_type} ***"
-	make -j4 -C source/${component}/projects/unix clean $@
 	make -j4 -C source/${component}/projects/unix all $@ ${MAKE_INSTALL}
 	make -j4 -C source/${component}/projects/unix install $@ ${MAKE_INSTALL} DESTDIR="$(pwd)/${EMG}"
-
 done
 
 # Build sdl2-jstest
@@ -114,6 +80,7 @@ make -j4
 cd ../../../
 
 # Prepare files
+cp source/mupen64plus-rom/m64p_test_rom.v64 ${EMG}
 cp source/sdl-jstest/build/sdl2-jstest ${EMG}
 cp source/SDL_GameControllerDB/gamecontrollerdb.txt ${EMG}
 cp source/mupen64plus-input-gca/target/release/libmupen64plus_input_gca.so ${EMG}/mupen64plus-input-gca.so
