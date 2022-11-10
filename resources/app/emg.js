@@ -23,7 +23,6 @@ core_main = ['core_core','core_plugins','core_audio','core_advanced','core_64dd'
 input_controller = ['input_controller1','input_controller2','input_controller3','input_controller4','input_gca'],
 hk = ['hk_keyboard','hk_controller1','hk_controller2','hk_controller3','hk_controller4'],
 gliden64_setting = ['gliden64_video','gliden64_overscan','gliden64_emulation','gliden64_framebuffer','gliden64_textures','gliden64_osd','gliden64_hotkeys'],
-menu = ['main','input','video'],
 
 n64_buttons = ['AButton1','AButton2','AButton3','AButton4','BButton1','BButton2','BButton3','BButton4','LTrig1','LTrig2','LTrig3','LTrig4','RTrig1','RTrig2','RTrig3','RTrig4','ZTrig1','ZTrig2','ZTrig3','ZTrig4','Start1','Start2','Start3','Start4','DPadU1','DPadU2','DPadU3','DPadU4','DPadD1','DPadD2','DPadD3','DPadD4','DPadL1','DPadL2','DPadL3','DPadL4','DPadR1','DPadR2','DPadR3','DPadR4','StickU1','StickU2','StickU3','StickU4','StickD1','StickD2','StickD3','StickD4','StickL1','StickL2','StickL3','StickL4','StickR1','StickR2','StickR3','StickR4','CButtonU1','CButtonU2','CButtonU3','CButtonU4','CButtonD1','CButtonD2','CButtonD3','CButtonD4','CButtonL1','CButtonL2','CButtonL3','CButtonL4','CButtonR1','CButtonR2','CButtonR3','CButtonR4','MempakSwitch1','MempakSwitch2','MempakSwitch3','MempakSwitch4','RumblepakSwitch1','RumblepakSwitch2','RumblepakSwitch3','RumblepakSwitch4'],
 
@@ -516,28 +515,6 @@ for (var i = 0; i < textInputs.length; i++){var textInput = textInputs[i];preven
 function preventScroll(textInput){
 textInput.addEventListener('focus',(e) => {html.addEventListener('keydown',noScroll,false)})
 textInput.addEventListener('blur',(e) => {html.removeEventListener('keydown',noScroll,false)})}
-
-
-
-function currentGFX(){ // top navigation
-if(!id('angrylion').classList.contains('hide'))id('angrylion').classList.add('hide')
-if(!id('gliden64').classList.contains('hide'))id('gliden64').classList.add('hide')
-if(!id('parallel').classList.contains('hide'))id('parallel').classList.add('hide')
-if(id('gfx').value.includes('angrylion'))id('angrylion').classList.remove('hide')
-if(id('gfx').value.includes('GLideN64'))id('gliden64').classList.remove('hide')
-if(id('gfx').value.includes('parallel'))id('parallel').classList.remove('hide')}
-id('gfx').addEventListener('change', currentGFX)
-currentGFX()
-
-function removeShow(){menu.forEach(menu => {
-if(id(menu+'Settings').classList.contains('active'))id(menu+'Settings').classList.remove('active');
-if(id(menu+'SettingsDropdown').classList.contains('show'))id(menu+'SettingsDropdown').classList.remove('show')})}
-
-menu.forEach(menu => {id(menu+'Settings').addEventListener('click', function(){
-if(id(menu+'Settings').classList.contains('active')){removeShow();return}
-removeShow();if(!id(menu+'SettingsDropdown').classList.contains('show')){id(menu+'SettingsDropdown').classList.toggle('show');id(menu+'Settings').classList.toggle('active')}})})
-
-html.addEventListener('click', function(e){if(!e.target.matches('.dropbutton')){removeShow()}})
 
 
 

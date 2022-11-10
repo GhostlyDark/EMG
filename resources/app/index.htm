@@ -12,41 +12,18 @@
 <main>
 <header>
 <ul>
-<li>
-<a id="mainSettings" class="dropbutton" href="#settings">Main</a>
-<div id="mainSettingsDropdown" class="dropdown">
-<a href="#coreAnchor">Core</a>
-<a href="#pluginsAnchor">Plugins</a>
-<a href="#audioAnchor">Audio</a>
-<a href="#advancedAnchor">Advanced</a>
-</div>
-</li>
-<li>
-<a id="inputSettings" class="dropbutton" href="#settings">Input</a>
-<div id="inputSettingsDropdown" class="dropdown">
-<a href="#controllerAnchor">Controller</a>
-<a href="#hotkeysAnchor">Hotkeys</a>
-</div>
-</li>
-<li>
-<a id="videoSettings" class="dropbutton" href="#settings">Video</a>
-<div id="videoSettingsDropdown" class="dropdown">
-<a href="#angrylionAnchor">Angrylion Plus</a>
-<a href="#gliden64Anchor">GLideN64</a>
-<a href="#parallelAnchor">Parallel</a>
-</div>
-</li>
-<li id="angrylion" class="hide"><a href="#angrylionAnchor">Angrylion Plus</a></li>
-<li id="gliden64" class="hide"><a href="#gliden64Anchor">GLideN64</a></li>
-<li id="parallel" class="hide"><a href="#parallelAnchor">Parallel</a></li>
+<li><a href="#mainAnchor">Main</a></li>
+<li><a href="#inputAnchor">Input</a></li>
+<li><a href="#hotkeysAnchor">Hotkeys</a></li>
+<li class="ml-55"><a href="#angrylionAnchor">Angrylion</a></li>
+<li><a href="#gliden64Anchor">GLideN64</a></li>
+<li><a href="#parallelAnchor">Parallel</a></li>
 <li><a id="launch" href="#boot">Launch</a></li>
 </ul>
 </header>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
-<div id="coreAnchor" class="anchor"></div>
+<div id="mainAnchor" class="anchor"></div>
 <p class="headline">Main</p>
-<p>&nbsp;</p>
-<p class="sub">Core</p>
 <p>&nbsp;</p>
 <p title="Click the box below or drag and drop an .n64, .v64 or .z64 ROM into the box.
 Archives containing a single file are also supported." class="mt--5">Input ROM</p>
@@ -250,10 +227,8 @@ Archives containing a single file are also supported.">Path to 64DD IPL ROM&nbsp
 Archives containing a single file are also supported.">Path to 64DD Disk&nbsp;&nbsp;<button class="floatright" id="clearDisk">Clear</button><br><br><div id="Disk" class="box"><span id="DiskText"></span></div></p>
 </div>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
-<div id="controllerAnchor" class="anchor"></div>
+<div id="inputAnchor" class="anchor"></div>
 <p class="headline">Input</p>
-<p>&nbsp;</p>
-<p class="sub">Controller</p>
 <p>&nbsp;</p>
 <ul class="ul-buttons width90p">
 <li id="ul_input_controller1" class="active">Controller 1</li>
@@ -1339,10 +1314,10 @@ Archives containing a single file are also supported.">GB(C) Save for Transfer P
 </div>
 <p>&nbsp;</p><p>&nbsp;</p>
 <div id="hotkeysAnchor" class="anchor"></div>
-<p class="sub">Hotkeys</p>
+<p class="headline">Hotkeys</p>
 <p>&nbsp;</p>
 <p><b>Gamepads:</b> For a hotkey combo, press another key after focusing the box a second time.</p>
-<p>&nbsp;</p><p>&nbsp;</p>
+<p>&nbsp;</p>
 <ul class="ul-buttons width85p">
 <li id="ul_hk_keyboard" class="active">Keyboard</li>
 <li id="ul_hk_controller1">Controller 1</li>
