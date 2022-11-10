@@ -383,6 +383,18 @@ else{id('transferPak4').classList.replace('show','hide')}}
 id('plugin4').addEventListener('change', transferPak4Disable)
 transferPak4Disable()
 
+function hideCheats(){
+if(id('cheat').checked){id('cheatList').classList.remove('hide');id('listCheats').classList.remove('hide')}
+else{id('cheatList').classList.add('hide');id('listCheats').classList.add('hide')}}
+id('cheat').addEventListener('change', hideCheats)
+hideCheats()
+
+function hideLog(){
+if(id('error').checked){id('log').classList.remove('hide')}
+else{id('log').classList.add('hide')}}
+id('error').addEventListener('change', hideLog)
+hideLog()
+
 
 
 if(localStorage.getItem('recentFiles') != null){recentFiles = JSON.parse(localStorage.getItem('recentFiles'))}

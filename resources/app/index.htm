@@ -67,12 +67,11 @@ Archives containing a single file are also supported." class="mt--5">Input ROM</
 <option id="option9"></option>
 </select><button class="floatright" id="clearRecent">Clear</button>
 <p>&nbsp;</p><p>&nbsp;</p>
-<div><button id="listCheats">List Cheats</button></div>
+<div><input id="cheat" type="checkbox" data-store="cheat"><label for="cheat">Show cheat options</label><button class="floatright hide" id="listCheats">List cheats</button></div>
+<div class="mt-20 hide" id="cheatList"></div>
 <p>&nbsp;</p>
-<div id="cheatList"></div>
-<p>&nbsp;</p><p>&nbsp;</p>
-<p>Mupen64Plus Errors</p>
-<div class="mt-20" id="log"></div>
+<p><input id="error" type="checkbox" data-store="error"><label for="error">Show mupen64plus error log</label></p>
+<div class="mt-20 hide" id="log"></div>
 <p>&nbsp;</p><p>&nbsp;</p>
 <p><input id="vsync" type="checkbox" data-store="vsync"><label for="vsync">V-Sync</label></p>
 <p>&nbsp;</p>
