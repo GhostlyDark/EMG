@@ -80,11 +80,14 @@ header li:last-child{float:right;background-color:rgba(0,0,0,.25);padding-right:
 .palette-ocean .dropdown{background:rgba(65,105,225,.98)}.dark.palette-ocean .dropdown{background:rgba(45,85,205,.98)}
 
 .ul-buttons{list-style-type:none;margin:10px auto 0 auto;padding:0;overflow:hidden}
-.ul-buttons li{cursor:pointer;float:left;margin:0;display:block;padding:9px 15px;border:0;transition:background-color .2s cubic-bezier(.4,0,.22,1)}
+.ul-buttons li{cursor:pointer;float:left;margin:0 3px;display:block;padding:9px 15px;border:0;transition:background-color .2s cubic-bezier(.4,0,.22,1),color .2s cubic-bezier(.4,0,.22,1);border-radius:25px;color:#666}
+.dark .ul-button li{color:#aaa}
+.ul-buttons li.active{color:#000}
+.dark .ul-buttons li.active{color:#eee}
 .ul-buttons li:hover,.ul-buttons li.active{background-color:rgb(225,225,225)}
-.dark .ul-buttons li:hover,.dark .ul-buttons li.active{background-color:rgb(30,30,30)}
+.dark .ul-buttons li:hover,.dark .ul-buttons li.active{background-color:rgb(35,35,35)}
 .custom .ul-buttons li:hover,.custom .ul-buttons li.active{background-color:rgba(200,200,200,.7)}
-.dark.custom .ul-buttons li:hover,.dark.custom .ul-buttons li.active{background-color:rgba(30,30,30,.7)}
+.dark.custom .ul-buttons li:hover,.dark.custom .ul-buttons li.active{background-color:rgba(35,35,35,.7)}
 
 .hide{display:none}
 .ml-55{margin-left:55px}
