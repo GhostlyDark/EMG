@@ -21,7 +21,8 @@ n64Type = [...n64,...zip], nddType = [...ndd,...zip], gbType = [...gb,...zip], s
 dragDrop = ['fileInput','PIF','IPLROM','Disk','st','gbROM1','gbROM2','gbROM3','gbROM4','gbRAM1','gbRAM2','gbRAM3','gbRAM4'],
 input_controller = ['input_controller1','input_controller2','input_controller3','input_controller4','input_gca'],
 hk = ['hk_keyboard','hk_controller1','hk_controller2','hk_controller3','hk_controller4'],
-menu = ['main','input','video','gliden64'],
+gliden64_setting = ['gliden64_video','gliden64_overscan','gliden64_emulation','gliden64_framebuffer','gliden64_textures','gliden64_osd','gliden64_hotkeys'],
+menu = ['main','input','video'],
 
 n64_buttons = ['AButton1','AButton2','AButton3','AButton4','BButton1','BButton2','BButton3','BButton4','LTrig1','LTrig2','LTrig3','LTrig4','RTrig1','RTrig2','RTrig3','RTrig4','ZTrig1','ZTrig2','ZTrig3','ZTrig4','Start1','Start2','Start3','Start4','DPadU1','DPadU2','DPadU3','DPadU4','DPadD1','DPadD2','DPadD3','DPadD4','DPadL1','DPadL2','DPadL3','DPadL4','DPadR1','DPadR2','DPadR3','DPadR4','StickU1','StickU2','StickU3','StickU4','StickD1','StickD2','StickD3','StickD4','StickL1','StickL2','StickL3','StickL4','StickR1','StickR2','StickR3','StickR4','CButtonU1','CButtonU2','CButtonU3','CButtonU4','CButtonD1','CButtonD2','CButtonD3','CButtonD4','CButtonL1','CButtonL2','CButtonL3','CButtonL4','CButtonR1','CButtonR2','CButtonR3','CButtonR4','MempakSwitch1','MempakSwitch2','MempakSwitch3','MempakSwitch4','RumblepakSwitch1','RumblepakSwitch2','RumblepakSwitch3','RumblepakSwitch4'],
 
@@ -468,6 +469,19 @@ currentUL.classList.add('active');localStorage.setItem('hkULActive',currentUL.id
 currentDIV.classList.remove('hide');localStorage.setItem('hkDIVActive',currentDIV.id)}
 
 hk.forEach(hk => {id('ul_'+hk).addEventListener('click', function(){currentHK(id('ul_'+hk),id(hk))})})
+
+
+
+if(localStorage.getItem('GLideN64ULActive') != null && localStorage.getItem('GLideN64DIVActive') != null){ // GLideN64 settings tabs
+currentGLideN64(id(localStorage.getItem('GLideN64ULActive')),id(localStorage.getItem('GLideN64DIVActive')))}
+
+function currentGLideN64(currentUL,currentDIV){gliden64_setting.forEach(gliden64_setting => {
+if(id('ul_'+gliden64_setting).classList.contains('active'))id('ul_'+gliden64_setting).classList.remove('active')
+if(!id(gliden64_setting).classList.contains('hide'))id(gliden64_setting).classList.add('hide')})
+currentUL.classList.add('active');localStorage.setItem('GLideN64ULActive',currentUL.id);
+currentDIV.classList.remove('hide');localStorage.setItem('GLideN64DIVActive',currentDIV.id)}
+
+gliden64_setting.forEach(gliden64_setting => {id('ul_'+gliden64_setting).addEventListener('click', function(){currentGLideN64(id('ul_'+gliden64_setting),id(gliden64_setting))})})
 
 
 

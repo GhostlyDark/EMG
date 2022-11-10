@@ -37,19 +37,7 @@
 </div>
 </li>
 <li id="angrylion" class="hide"><a href="#angrylionAnchor">Angrylion Plus</a></li>
-<li id="gliden64" class="hide">
-<a id="gliden64Settings" class="dropbutton" href="#settings">GLideN64</a>
-<div id="gliden64SettingsDropdown" class="dropdown">
-<a href="#gliden64Anchor">Emulation</a>
-<a href="#gliden64FramebufferAnchor">Framebuffer</a>
-<a href="#gliden64VideoAnchor">Video Settings</a>
-<a href="#gliden64OverscanAnchor">Overscan</a>
-<a href="#gliden64EnhancementAnchor">Texture Enhancement</a>
-<a href="#gliden64HDAnchor">HD Textures</a>
-<a href="#gliden64OSDAnchor">On-Screen Display</a>
-<a href="#gliden64HotkeysAnchor">GLideN64 Hotkeys</a>
-</div>
-</li>
+<li id="gliden64" class="hide"><a href="#gliden64Anchor">GLideN64</a></li>
 <li id="parallel" class="hide"><a href="#parallelAnchor">Parallel</a></li>
 <li><a id="launch" href="#boot">Launch</a></li>
 </ul>
@@ -1580,109 +1568,17 @@ Archives containing a single file are also supported.">GB(C) Save for Transfer P
 <div id="gliden64Anchor" class="anchor"></div>
 <p class="headline">GLideN64</p>
 <p>&nbsp;</p>
-<p class="sub">Emulation</p>
+<ul class="ul-buttons width95p">
+<li id="ul_gliden64_video" class="active">Video</li>
+<li id="ul_gliden64_overscan">Overscan</li>
+<li id="ul_gliden64_emulation">Emulation</li>
+<li id="ul_gliden64_framebuffer">Framebuffer</li>
+<li id="ul_gliden64_textures">Textures</li>
+<li id="ul_gliden64_osd">OSD</li>
+<li id="ul_gliden64_hotkeys">Hotkeys</li>
+</ul>
 <p>&nbsp;</p>
-<p title="Remove halos around filtered textures."><input id="enableHalosRemoval" type="checkbox" data-store="enableHalosRemoval"><label for="enableHalosRemoval">Halos Removal</label></p>
-<p>&nbsp;</p>
-<p><input id="EnableLOD" type="checkbox" data-store="EnableLOD" checked><label for="EnableLOD">LOD Emulation (Mipmapping)</label></p>
-<p>&nbsp;</p>
-<p title="Enable hardware per-pixel lighting."><input id="EnableHWLighting" type="checkbox" data-store="EnableHWLighting" checked><label for="EnableHWLighting">Per-pixel Lighting</label></p>
-<p>&nbsp;</p>
-<p title="Enable pixel coverage calculation. Used for better blending emulation and wire-frame mode. Needs fast GPU."><input id="EnableCoverage" type="checkbox" data-store="EnableCoverage"><label for="EnableCoverage">Pixel Coverage Calculation</label></p>
-<p>&nbsp;</p>
-<p title="Increases performance at the expense of accuracy. May help with texture pack compatibility."><input id="EnableInaccurateTextureCoordinates" type="checkbox" data-store="EnableInaccurateTextureCoordinates"><label for="EnableInaccurateTextureCoordinates">Inaccurate Texture Coordinates</label></p>
-<p>&nbsp;</p>
-<p title="Enable software vertices clipping. Brings various benefits."><input id="EnableClipping" type="checkbox" data-store="EnableClipping" checked><label for="EnableClipping">Clipping</label></p>
-<p>&nbsp;</p>
-<p title="Use persistent storage for compiled shaders."><input id="EnableShadersStorage" type="checkbox" data-store="EnableShadersStorage" checked><label for="EnableShadersStorage">Shader Storage</label></p>
-<p>&nbsp;</p>
-<p title="Do not use shaders to emulate N64 blending modes. Works faster on slow GPU. Can cause glitches."><input id="EnableLegacyBlending" type="checkbox" data-store="EnableLegacyBlending"><label for="EnableLegacyBlending">Legacy Blending</label></p>
-<p>&nbsp;</p>
-<p title="Enable hybrid integer scaling filter, this can be slow with low-end GPUs."><input id="EnableHybridFilter" type="checkbox" data-store="EnableHybridFilter" checked><label for="EnableHybridFilter">Hybrid Filter</label></p>
-<p>&nbsp;</p>
-<p title="Enable writing of fragment depth. Some mobile GPUs do not support it, thus it made optional. Leave enabled."><input id="EnableFragmentDepthWrite" type="checkbox" data-store="EnableFragmentDepthWrite" checked><label for="EnableFragmentDepthWrite">Fragment Depth Write</label></p>
-<p>&nbsp;</p>
-<p title="Use GLideN64 per-game settings."><input id="EnableCustomSettings" type="checkbox" data-store="EnableCustomSettings" checked><label for="EnableCustomSettings">Per-game settings</label></p>
-<p>&nbsp;</p>
-<p title="Bind texture rectangle texture coordinates to the values they take in native resolutions. It prevents garbage due to fetching out of texture bounds, but can result in hard edges."><input id="EnableTexCoordBounds" type="checkbox" data-store="EnableTexCoordBounds"><label for="EnableTexCoordBounds">Texture Coordinate Bounds</label></p>
-<p>&nbsp;</p>
-<p title="Enable dithering pattern on output image."><input id="EnableDitheringPattern" type="checkbox" data-store="EnableDitheringPattern"><label for="EnableDitheringPattern">Dithering Pattern</label></p>
-<p>&nbsp;</p>
-<p title="Enable hi-res noise dithering."><input id="EnableHiresNoiseDithering" type="checkbox" data-store="EnableHiresNoiseDithering" checked><label for="EnableHiresNoiseDithering">Hi-res Noise Dithering</label></p>
-<p>&nbsp;</p>
-<p title="Dither with color quantization."><input id="DitheringQuantization" type="checkbox" data-store="DitheringQuantization" checked><label for="DitheringQuantization">Dithering Quantization</label></p>
-<p>&nbsp;</p>
-<div title="Dithering mode for image in RDRAM."><select class="width150m" name="RDRAMImageDitheringMode" id="RDRAMImageDitheringMode">
-<option value="Video-GLideN64[RDRAMImageDitheringMode]=0">Disable</option>
-<option value="Video-GLideN64[RDRAMImageDitheringMode]=1">Bayer</option>
-<option value="Video-GLideN64[RDRAMImageDitheringMode]=2">Magic Square</option>
-<option value="Video-GLideN64[RDRAMImageDitheringMode]=3" selected>Blue Noise</option>
-</select><label for="RDRAMImageDitheringMode">Dithering Mode</label></div>
-<p>&nbsp;</p>
-<div title="Render backgrounds mode (HLE only)."><select class="width150m" name="BackgroundsMode" id="BackgroundsMode">
-<option value="Video-GLideN64[BackgroundsMode]=0" selected>One Piece</option>
-<option value="Video-GLideN64[BackgroundsMode]=1">Stripped</option>
-</select><label for="BackgroundsMode">Backgrounds Mode</label></div>
-<p>&nbsp;</p>
-<div title="Make texrect coordinates continuous to avoid black lines between them."><select class="width150m" name="CorrectTexrectCoords" id="CorrectTexrectCoords">
-<option value="Video-GLideN64[CorrectTexrectCoords]=0">Off</option>
-<option value="Video-GLideN64[CorrectTexrectCoords]=1" selected>Auto</option>
-<option value="Video-GLideN64[CorrectTexrectCoords]=2">Force</option>
-</select><label for="CorrectTexrectCoords">Correct Texrect Coordinates</label></div>
-<p>&nbsp;</p>
-<div title="Render 2D texrects in native resolution to fix misalignment between parts of 2D image."><select class="width150m" name="EnableNativeResTexrects" id="EnableNativeResTexrects">
-<option value="Video-GLideN64[EnableNativeResTexrects]=0" selected>Off</option>
-<option value="Video-GLideN64[EnableNativeResTexrects]=1">Optimized</option>
-<option value="Video-GLideN64[EnableNativeResTexrects]=2">Unoptimized</option>
-</select><label for="EnableNativeResTexrects">Enable Native Resolution Texrects</label></div>
-<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
-<div id="gliden64FramebufferAnchor" class="anchor"></div>
-<p class="sub">Framebuffer</p>
-<p>&nbsp;</p>
-<p title="Disable buffers read/write with FBInfo. Use for games which do not work with FBInfo. Only takes effect with cached or pure interpreter."><input id="DisableFBInfo" type="checkbox" data-store="DisableFBInfo"><label for="DisableFBInfo">Disable FBInfo</label></p>
-<p>&nbsp;</p>
-<p title="Disabling framebuffer emulation breaks game effects and disables overscan, aspect ratio, N64 resolution factor, N64-style depth compare and more."><input id="EnableFBEmulation" type="checkbox" data-store="EnableFBEmulation" checked><label for="EnableFBEmulation">Framebuffer Emulation</label></p>
-<p>&nbsp;</p>
-<p title="Enable color buffer copy from RDRAM."><input id="EnableCopyColorFromRDRAM" type="checkbox" data-store="EnableCopyColorFromRDRAM"><label for="EnableCopyColorFromRDRAM">Color Buffer Copy from RDRAM</label></p>
-<p>&nbsp;</p>
-<p title="Enable copy of depth information from FBO to main depth buffer. Required for some Reshade shaders."><input id="EnableCopyDepthToMainDepthBuffer" type="checkbox" data-store="EnableCopyDepthToMainDepthBuffer"><label for="EnableCopyDepthToMainDepthBuffer">Copy Depth to Main Buffer</label></p>
-<p>&nbsp;</p>
-<p><input id="EnableCopyAuxiliaryToRDRAM" type="checkbox" data-store="EnableCopyAuxiliaryToRDRAM"><label for="EnableCopyAuxiliaryToRDRAM">Copy Auxiliary Buffers to RDRAM</label></p>
-<p>&nbsp;</p>
-<p title="Force depth buffer clear. Hack. Needed for Eikou no Saint Andrews."><input id="ForceDepthBufferClear" type="checkbox" data-store="ForceDepthBufferClear"><label for="ForceDepthBufferClear">Force Depth Buffer Clear</label></p>
-<p>&nbsp;</p>
-<p title="Read color buffer by 4kb chunks."><input id="FBInfoReadColorChunk" type="checkbox" data-store="FBInfoReadColorChunk"><label for="FBInfoReadColorChunk">Read Color Buffer in Chunks</label></p>
-<p>&nbsp;</p>
-<p title="Read depth buffer by 4kb chunks."><input id="FBInfoReadDepthChunk" type="checkbox" data-store="FBInfoReadDepthChunk" checked><label for="FBInfoReadDepthChunk">Read Depth Buffer in Chunks</label></p>
-<p>&nbsp;</p>
-<div title="On buffer update offers the best performance but causes the most issues."><select class="width250m" name="bufferSwapMode" id="bufferSwapMode">
-<option value="Video-GLideN64[BufferSwapMode]=0" selected>On VI update call</option>
-<option value="Video-GLideN64[BufferSwapMode]=1">On VI origin change</option>
-<option value="Video-GLideN64[BufferSwapMode]=2">On buffer update</option>
-</select><label for="bufferSwapMode">Buffer Swap Mode</label></div>
-<p>&nbsp;</p>
-<div title="Enable color buffer copy to RDRAM."><select class="width250m" name="EnableCopyColorToRDRAM" id="EnableCopyColorToRDRAM">
-<option value="Video-GLideN64[EnableCopyColorToRDRAM]=0">Do not copy</option>
-<option value="Video-GLideN64[EnableCopyColorToRDRAM]=1">Copy in sync mode</option>
-<option value="Video-GLideN64[EnableCopyColorToRDRAM]=2" selected>Double Buffer</option>
-<option value="Video-GLideN64[EnableCopyColorToRDRAM]=3">Triple Buffer</option>
-</select><label for="EnableCopyColorToRDRAM">Copy Color Buffer to RDRAM</label></div>
-<p>&nbsp;</p>
-<div title="Enable depth buffer copy to RDRAM."><select class="width250m" name="EnableCopyDepthToRDRAM" id="EnableCopyDepthToRDRAM">
-<option value="Video-GLideN64[EnableCopyDepthToRDRAM]=0">Do not copy</option>
-<option value="Video-GLideN64[EnableCopyDepthToRDRAM]=1">Copy from video memory</option>
-<option value="Video-GLideN64[EnableCopyDepthToRDRAM]=2" selected>Use Software Render</option>
-</select><label for="EnableCopyDepthToRDRAM">Copy Depth Buffer to RDRAM</label></div>
-<p>&nbsp;</p>
-<div title="Enable N64 depth compare instead of OpenGL standard one."><select class="width250m" name="EnableN64DepthCompare" id="EnableN64DepthCompare">
-<option value="Video-GLideN64[EnableN64DepthCompare]=0" selected>Off</option>
-<option value="Video-GLideN64[EnableN64DepthCompare]=1">Fast</option>
-<option value="Video-GLideN64[EnableN64DepthCompare]=2">Compatible</option>
-</select><label for="EnableN64DepthCompare">N64 Depth Compare</label></div>
-<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
-<div id="gliden64VideoAnchor" class="anchor"></div>
-<p class="sub">Video Settings</p>
-<p>&nbsp;</p>
+<div id="gliden64_video" class="mt-10">
 <p title="Off: N64 3-point"><input id="bilinearMode" type="checkbox" data-store="bilinearMode"><label for="bilinearMode">Bilinear Filtering</label></p>
 <p>&nbsp;</p>
 <p><input id="fxaa" type="checkbox" data-store="fxaa"><label for="fxaa">FXAA</label></p>
@@ -1746,10 +1642,8 @@ If this option is turned off, the output resolution is the same as the rendering
 <p title="Override gamma correction specified by the game."><input id="ForceGammaCorrection" type="checkbox" data-store="ForceGammaCorrection"><label for="ForceGammaCorrection">Force Gamma Correction</label></p>
 <p>&nbsp;</p>
 <p><span class="numberDecrease" id="decreaseGammaCorrectionLevel">-</span><input id="GammaCorrectionLevel" min="1.00" max="4.00" step="0.1" value="1.00" type="number"><span class="numberIncrease" id="increaseGammaCorrectionLevel">+</span><label for="GammaCorrectionLevel">Gamma Correction Level</label><button class="floatright" data-value="1.00" id="resetGammaCorrectionLevel">Reset</button></p>
-<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
-<div id="gliden64OverscanAnchor" class="anchor"></div>
-<p class="sub">Overscan</p>
-<p>&nbsp;</p>
+</div>
+<div id="gliden64_overscan" class="mt-10">
 <p title="Crop image to remove black bars."><input id="EnableOverscan" type="checkbox" data-store="EnableOverscan"><label for="EnableOverscan">Enable Overscan</label></p>
 <p>&nbsp;</p>
 <p><span class="numberDecrease" id="decreaseOverscanNtscTop">-</span><input id="OverscanNtscTop" min="0" max="99" step="1" value="0" type="number"><span class="numberIncrease" id="increaseOverscanNtscTop">+</span><label for="OverscanNtscTop">NTSC Top</label><button class="floatright" data-value="0" id="resetOverscanNtscTop">Reset</button></p>
@@ -1767,10 +1661,105 @@ If this option is turned off, the output resolution is the same as the rendering
 <p><span class="numberDecrease" id="decreaseOverscanPalRight">-</span><input id="OverscanPalRight" min="0" max="99" value="0" step="1" type="number"><span class="numberIncrease" id="increaseOverscanPalRight">+</span><label for="OverscanPalRight">PAL Right</label><button class="floatright" data-value="0" id="resetOverscanPalRight">Reset</button></p>
 <p>&nbsp;</p>
 <p><span class="numberDecrease" id="decreaseOverscanPalBottom">-</span><input id="OverscanPalBottom" min="0" max="99" value="0" step="1" type="number"><span class="numberIncrease" id="increaseOverscanPalBottom">+</span><label for="OverscanPalBottom">PAL Bottom</label><button class="floatright" data-value="0" id="resetOverscanPalBottom">Reset</button></p>
-<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
-<div id="gliden64EnhancementAnchor" class="anchor"></div>
-<p class="sub">Texture Enhancement</p>
+</div>
+<div id="gliden64_emulation" class="hide mt-10">
+<p title="Remove halos around filtered textures."><input id="enableHalosRemoval" type="checkbox" data-store="enableHalosRemoval"><label for="enableHalosRemoval">Halos Removal</label></p>
 <p>&nbsp;</p>
+<p><input id="EnableLOD" type="checkbox" data-store="EnableLOD" checked><label for="EnableLOD">LOD Emulation (Mipmapping)</label></p>
+<p>&nbsp;</p>
+<p title="Enable hardware per-pixel lighting."><input id="EnableHWLighting" type="checkbox" data-store="EnableHWLighting" checked><label for="EnableHWLighting">Per-pixel Lighting</label></p>
+<p>&nbsp;</p>
+<p title="Enable pixel coverage calculation. Used for better blending emulation and wire-frame mode. Needs fast GPU."><input id="EnableCoverage" type="checkbox" data-store="EnableCoverage"><label for="EnableCoverage">Pixel Coverage Calculation</label></p>
+<p>&nbsp;</p>
+<p title="Increases performance at the expense of accuracy. May help with texture pack compatibility."><input id="EnableInaccurateTextureCoordinates" type="checkbox" data-store="EnableInaccurateTextureCoordinates"><label for="EnableInaccurateTextureCoordinates">Inaccurate Texture Coordinates</label></p>
+<p>&nbsp;</p>
+<p title="Enable software vertices clipping. Brings various benefits."><input id="EnableClipping" type="checkbox" data-store="EnableClipping" checked><label for="EnableClipping">Clipping</label></p>
+<p>&nbsp;</p>
+<p title="Use persistent storage for compiled shaders."><input id="EnableShadersStorage" type="checkbox" data-store="EnableShadersStorage" checked><label for="EnableShadersStorage">Shader Storage</label></p>
+<p>&nbsp;</p>
+<p title="Do not use shaders to emulate N64 blending modes. Works faster on slow GPU. Can cause glitches."><input id="EnableLegacyBlending" type="checkbox" data-store="EnableLegacyBlending"><label for="EnableLegacyBlending">Legacy Blending</label></p>
+<p>&nbsp;</p>
+<p title="Enable hybrid integer scaling filter, this can be slow with low-end GPUs."><input id="EnableHybridFilter" type="checkbox" data-store="EnableHybridFilter" checked><label for="EnableHybridFilter">Hybrid Filter</label></p>
+<p>&nbsp;</p>
+<p title="Enable writing of fragment depth. Some mobile GPUs do not support it, thus it made optional. Leave enabled."><input id="EnableFragmentDepthWrite" type="checkbox" data-store="EnableFragmentDepthWrite" checked><label for="EnableFragmentDepthWrite">Fragment Depth Write</label></p>
+<p>&nbsp;</p>
+<p title="Use GLideN64 per-game settings."><input id="EnableCustomSettings" type="checkbox" data-store="EnableCustomSettings" checked><label for="EnableCustomSettings">Per-game settings</label></p>
+<p>&nbsp;</p>
+<p title="Bind texture rectangle texture coordinates to the values they take in native resolutions. It prevents garbage due to fetching out of texture bounds, but can result in hard edges."><input id="EnableTexCoordBounds" type="checkbox" data-store="EnableTexCoordBounds"><label for="EnableTexCoordBounds">Texture Coordinate Bounds</label></p>
+<p>&nbsp;</p>
+<p title="Enable dithering pattern on output image."><input id="EnableDitheringPattern" type="checkbox" data-store="EnableDitheringPattern"><label for="EnableDitheringPattern">Dithering Pattern</label></p>
+<p>&nbsp;</p>
+<p title="Enable hi-res noise dithering."><input id="EnableHiresNoiseDithering" type="checkbox" data-store="EnableHiresNoiseDithering" checked><label for="EnableHiresNoiseDithering">Hi-res Noise Dithering</label></p>
+<p>&nbsp;</p>
+<p title="Dither with color quantization."><input id="DitheringQuantization" type="checkbox" data-store="DitheringQuantization" checked><label for="DitheringQuantization">Dithering Quantization</label></p>
+<p>&nbsp;</p>
+<div title="Dithering mode for image in RDRAM."><select class="width150m" name="RDRAMImageDitheringMode" id="RDRAMImageDitheringMode">
+<option value="Video-GLideN64[RDRAMImageDitheringMode]=0">Disable</option>
+<option value="Video-GLideN64[RDRAMImageDitheringMode]=1">Bayer</option>
+<option value="Video-GLideN64[RDRAMImageDitheringMode]=2">Magic Square</option>
+<option value="Video-GLideN64[RDRAMImageDitheringMode]=3" selected>Blue Noise</option>
+</select><label for="RDRAMImageDitheringMode">Dithering Mode</label></div>
+<p>&nbsp;</p>
+<div title="Render backgrounds mode (HLE only)."><select class="width150m" name="BackgroundsMode" id="BackgroundsMode">
+<option value="Video-GLideN64[BackgroundsMode]=0" selected>One Piece</option>
+<option value="Video-GLideN64[BackgroundsMode]=1">Stripped</option>
+</select><label for="BackgroundsMode">Backgrounds Mode</label></div>
+<p>&nbsp;</p>
+<div title="Make texrect coordinates continuous to avoid black lines between them."><select class="width150m" name="CorrectTexrectCoords" id="CorrectTexrectCoords">
+<option value="Video-GLideN64[CorrectTexrectCoords]=0">Off</option>
+<option value="Video-GLideN64[CorrectTexrectCoords]=1" selected>Auto</option>
+<option value="Video-GLideN64[CorrectTexrectCoords]=2">Force</option>
+</select><label for="CorrectTexrectCoords">Correct Texrect Coordinates</label></div>
+<p>&nbsp;</p>
+<div title="Render 2D texrects in native resolution to fix misalignment between parts of 2D image."><select class="width150m" name="EnableNativeResTexrects" id="EnableNativeResTexrects">
+<option value="Video-GLideN64[EnableNativeResTexrects]=0" selected>Off</option>
+<option value="Video-GLideN64[EnableNativeResTexrects]=1">Optimized</option>
+<option value="Video-GLideN64[EnableNativeResTexrects]=2">Unoptimized</option>
+</select><label for="EnableNativeResTexrects">Enable Native Resolution Texrects</label></div>
+</div>
+<div id="gliden64_framebuffer" class="hide mt-10">
+<p title="Disable buffers read/write with FBInfo. Use for games which do not work with FBInfo. Only takes effect with cached or pure interpreter."><input id="DisableFBInfo" type="checkbox" data-store="DisableFBInfo"><label for="DisableFBInfo">Disable FBInfo</label></p>
+<p>&nbsp;</p>
+<p title="Disabling framebuffer emulation breaks game effects and disables overscan, aspect ratio, N64 resolution factor, N64-style depth compare and more."><input id="EnableFBEmulation" type="checkbox" data-store="EnableFBEmulation" checked><label for="EnableFBEmulation">Framebuffer Emulation</label></p>
+<p>&nbsp;</p>
+<p title="Enable color buffer copy from RDRAM."><input id="EnableCopyColorFromRDRAM" type="checkbox" data-store="EnableCopyColorFromRDRAM"><label for="EnableCopyColorFromRDRAM">Color Buffer Copy from RDRAM</label></p>
+<p>&nbsp;</p>
+<p title="Enable copy of depth information from FBO to main depth buffer. Required for some Reshade shaders."><input id="EnableCopyDepthToMainDepthBuffer" type="checkbox" data-store="EnableCopyDepthToMainDepthBuffer"><label for="EnableCopyDepthToMainDepthBuffer">Copy Depth to Main Buffer</label></p>
+<p>&nbsp;</p>
+<p><input id="EnableCopyAuxiliaryToRDRAM" type="checkbox" data-store="EnableCopyAuxiliaryToRDRAM"><label for="EnableCopyAuxiliaryToRDRAM">Copy Auxiliary Buffers to RDRAM</label></p>
+<p>&nbsp;</p>
+<p title="Force depth buffer clear. Hack. Needed for Eikou no Saint Andrews."><input id="ForceDepthBufferClear" type="checkbox" data-store="ForceDepthBufferClear"><label for="ForceDepthBufferClear">Force Depth Buffer Clear</label></p>
+<p>&nbsp;</p>
+<p title="Read color buffer by 4kb chunks."><input id="FBInfoReadColorChunk" type="checkbox" data-store="FBInfoReadColorChunk"><label for="FBInfoReadColorChunk">Read Color Buffer in Chunks</label></p>
+<p>&nbsp;</p>
+<p title="Read depth buffer by 4kb chunks."><input id="FBInfoReadDepthChunk" type="checkbox" data-store="FBInfoReadDepthChunk" checked><label for="FBInfoReadDepthChunk">Read Depth Buffer in Chunks</label></p>
+<p>&nbsp;</p>
+<div title="On buffer update offers the best performance but causes the most issues."><select class="width250m" name="bufferSwapMode" id="bufferSwapMode">
+<option value="Video-GLideN64[BufferSwapMode]=0" selected>On VI update call</option>
+<option value="Video-GLideN64[BufferSwapMode]=1">On VI origin change</option>
+<option value="Video-GLideN64[BufferSwapMode]=2">On buffer update</option>
+</select><label for="bufferSwapMode">Buffer Swap Mode</label></div>
+<p>&nbsp;</p>
+<div title="Enable color buffer copy to RDRAM."><select class="width250m" name="EnableCopyColorToRDRAM" id="EnableCopyColorToRDRAM">
+<option value="Video-GLideN64[EnableCopyColorToRDRAM]=0">Do not copy</option>
+<option value="Video-GLideN64[EnableCopyColorToRDRAM]=1">Copy in sync mode</option>
+<option value="Video-GLideN64[EnableCopyColorToRDRAM]=2" selected>Double Buffer</option>
+<option value="Video-GLideN64[EnableCopyColorToRDRAM]=3">Triple Buffer</option>
+</select><label for="EnableCopyColorToRDRAM">Copy Color Buffer to RDRAM</label></div>
+<p>&nbsp;</p>
+<div title="Enable depth buffer copy to RDRAM."><select class="width250m" name="EnableCopyDepthToRDRAM" id="EnableCopyDepthToRDRAM">
+<option value="Video-GLideN64[EnableCopyDepthToRDRAM]=0">Do not copy</option>
+<option value="Video-GLideN64[EnableCopyDepthToRDRAM]=1">Copy from video memory</option>
+<option value="Video-GLideN64[EnableCopyDepthToRDRAM]=2" selected>Use Software Render</option>
+</select><label for="EnableCopyDepthToRDRAM">Copy Depth Buffer to RDRAM</label></div>
+<p>&nbsp;</p>
+<div title="Enable N64 depth compare instead of OpenGL standard one."><select class="width250m" name="EnableN64DepthCompare" id="EnableN64DepthCompare">
+<option value="Video-GLideN64[EnableN64DepthCompare]=0" selected>Off</option>
+<option value="Video-GLideN64[EnableN64DepthCompare]=1">Fast</option>
+<option value="Video-GLideN64[EnableN64DepthCompare]=2">Compatible</option>
+</select><label for="EnableN64DepthCompare">N64 Depth Compare</label></div>
+</div>
+<div id="gliden64_textures" class="hide mt-10">
 <select class="width200m" name="txFilterMode" id="txFilterMode">
 <option value="Video-GLideN64[txFilterMode]=0" selected>None</option>
 <option value="Video-GLideN64[txFilterMode]=1">Smooth Filtering 1</option>
@@ -1803,10 +1792,7 @@ If this option is turned off, the output resolution is the same as the rendering
 <p title="Deposterize texture before enhancement."><input id="txDeposterize" type="checkbox" data-store="txDeposterize"><label for="txDeposterize">Deposterize Texture</label></p>
 <p>&nbsp;</p>
 <p title="Don't filter background textures."><input id="txFilterIgnoreBG" type="checkbox" data-store="txFilterIgnoreBG"><label for="txFilterIgnoreBG">Disable background filtering</label></p>
-<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
-<div id="gliden64HDAnchor" class="anchor"></div>
-<p class="sub">HD Textures</p>
-<p>&nbsp;</p>
+<p>&nbsp;</p><p>&nbsp;</p>
 <p><input id="txHiresEnable" type="checkbox" data-store="txHiresEnable" checked><label for="txHiresEnable">Enable HD textures</label></p>
 <p>&nbsp;</p>
 <p title="Dump textures without the need to press a hotkey."><input id="txDump" type="checkbox" data-store="txDump"><label for="txDump">Dump textures</label></p>
@@ -1833,10 +1819,8 @@ If this option is turned off, the output resolution is the same as the rendering
 <p title="Path to folder where plugin saves texture cache files (HTC/HTS). Click the box below to change it.">Directory: cache<button class="floatright" id="resetTxCachePath">Reset</button><br><br><div class="box" id="txCachePath"><span id="txCachePathText"></span></div></p>
 <p>&nbsp;</p><p>&nbsp;</p>
 <p title="Path to folder where plugin saves dumped textures. Click the box below to change it.">Directory: texture_dump<button class="floatright" id="resetTxDumpPath">Reset</button><br><br><div class="box" id="txDumpPath"><span id="txDumpPathText"></span></div></p>
-<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
-<div id="gliden64OSDAnchor" class="anchor"></div>
-<p class="sub">On-Screen Display</p>
-<p>&nbsp;</p>
+</div>
+<div id="gliden64_osd" class="hide mt-10">
 <p><span class="numberDecrease" id="decreasefontSize">-</span><input id="fontSize" min="6" max="99" step="1" value="18" type="number"><span class="numberIncrease" id="increasefontSize">+</span><label for="fontSize">Font Size (in px)</label><button class="floatright" data-value="18" id="resetfontSize">Reset</button></p>
 <p>&nbsp;</p>
 <p><input id="fontColor" value="#B5E61D" type="color" data-store="fontColor"><label for="fontColor">Font Color</label><button class="floatright" data-value="#B5E61D" id="resetfontColor">Reset</button></p>
@@ -1861,11 +1845,9 @@ If this option is turned off, the output resolution is the same as the rendering
 <option value="Video-GLideN64[CountersPos]=16">Bottom Center</option>
 <option value="Video-GLideN64[CountersPos]=32">Bottom Right</option>
 </select><label for="CountersPos">Counters Position</label>
-<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
-<div id="gliden64HotkeysAnchor" class="anchor"></div>
-<p class="sub">GLideN64 Hotkeys</p>
-<p>&nbsp;</p>
-<p class="mb-15">Supported keys are 0-9 and A-Z.</p>
+</div>
+<div id="gliden64_hotkeys" class="hide mt-10">
+<p class="mb-15 center">Supported keys are 0-9 and A-Z.</p>
 <div class="hotkeys hotkeys2">
 <p><label for="hkTexDump">Toogle textures dump</label><input value="" type="text" id="hkTexDump" readonly><button id="clearhkTexDump">Clear</button></p>
 <p>&nbsp;</p>
@@ -1896,6 +1878,7 @@ If this option is turned off, the output resolution is the same as the rendering
 <p><label for="hkNativeResTexrects">Toogle 2D texrects in native resolution</label><input value="" type="text" id="hkNativeResTexrects" readonly><button id="clearhkNativeResTexrects">Clear</button></p>
 <p>&nbsp;</p>
 <p><label for="hkForceGammaCorrection">Toogle force gamma correction</label><input value="" type="text" id="hkForceGammaCorrection" readonly><button id="clearhkForceGammaCorrection">Clear</button></p>
+</div>
 </div>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
 <div id="parallelAnchor" class="anchor"></div>
