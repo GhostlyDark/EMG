@@ -1,6 +1,6 @@
 # EMG
 
-EMG is a launcher for [Mupen64Plus](https://github.com/GhostlyDark/mupen64plus-core) using [Electron](https://github.com/electron/electron). For Controller Input, a custom build of [sdl2-jstest](https://github.com/GhostlyDark/sdl-jstest) is used.
+EMG is a launcher for [mupen64plus](https://github.com/GhostlyDark/mupen64plus-core) using [Electron](https://github.com/electron/electron). For Controller Input, a custom build of [sdl2-jstest](https://github.com/GhostlyDark/sdl-jstest) is used.
 
 **Bundled plugins:**
 
@@ -22,20 +22,12 @@ Follow the [Dolphin instructions](https://dolphin-emu.org/docs/guides/how-use-of
 
 ## Linux
 
-**Install script:**
-
-Download [install.sh](https://raw.githubusercontent.com/GhostlyDark/EMG/master/install.sh) into an empty folder and run it. It uses `apt` as package manager to install required dependencies. Files are downloaded and built as necessary.
+Download [linux.sh](https://raw.githubusercontent.com/GhostlyDark/EMG/master/assets/sh/linux.sh) into an empty folder and run it. It uses `apt` as package manager to install required dependencies. Files are downloaded and built as necessary.
 ```
-chmod u+x ./install.sh
-./install.sh
-```
-
-**Launch:**
-```
-./emg
+chmod u+x linux.sh && ./linux.sh
 ```
 
 
 ## Troubleshooting
 
-Logging happens once Mupen64Plus closes after pressing `Launch`. Open Developer Tools by pressing `CTRL + I` or by activating it via the menubar (unhide with `ALT`). To save a log file, click the `Console` tab, right click on the relevant log -> `Save as...` to save it as text file. Post the log file as part of an issue if applicable.
+Logging happens once mupen64plus closes after pressing `Launch`. Open Developer Tools by pressing `CTRL + I` or by activating it via the menubar (unhide with `ALT`). To save a log file, click the `Console` tab, right click on the relevant log -> `Save as...` to save it as text file. Post the log file as part of an issue if applicable.
