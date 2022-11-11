@@ -47,7 +47,7 @@ dropdowns = [
 'gfx','audio','input','rsp','RspFallback', /* mupen64plus plugins */
 'plugin1','plugin2','plugin3','plugin4','c1','c2','c3','c4',
 'mouse1_1','mouse1_2','mouse1_3','mouse2_1','mouse2_2','mouse2_3','mouse3_1','mouse3_2','mouse3_3','mouse4_1','mouse4_2','mouse4_3', // mupen64plus-input
-'DEFAULT_FREQUENCY','SECONDARY_BUFFER_SIZE','RESAMPLE', /* mupen64plus-audio */
+'SECONDARY_BUFFER_SIZE','RESAMPLE', /* mupen64plus-audio */
 'a','b','x','y','start','z','l','r','d_pad_left','d_pad_right','d_pad_down','d_pad_up','c_stick_left','c_stick_right','c_stick_down','c_stick_up', /* mupen64plus-input-gca */
 'msaa','aspectRatio','bufferSwapMode','CountersPos','useNativeResolutionFactor','anisotropy','cache','RDRAMImageDitheringMode','CorrectTexrectCoords','EnableNativeResTexrects','BackgroundsMode','EnableN64DepthCompare','EnableCopyColorToRDRAM','EnableCopyDepthToRDRAM','txFilterMode','txEnhancementMode', /* GLideN64 */
 'ViMode','ViInterpolation','DpCompat', /* Angrylion-Plus */
@@ -936,7 +936,7 @@ ParallelDeinterlaceMode = id('ParallelDeinterlaceMode').value,
 ParallelDownScale = id('ParallelDownScale').value,
 CountersPos = id('CountersPos').value,
 SaveDiskFormat = id('SaveDiskFormat').value,
-DEFAULT_FREQUENCY = id('DEFAULT_FREQUENCY').value,
+DEFAULT_FREQUENCY = 'Audio-SDL[DEFAULT_FREQUENCY]=44100',
 PRIMARY_BUFFER_TARGET = id('SECONDARY_BUFFER_SIZE').options[id('SECONDARY_BUFFER_SIZE').selectedIndex].dataset.buffer,
 SECONDARY_BUFFER_SIZE = id('SECONDARY_BUFFER_SIZE').value,
 RESAMPLE = id('RESAMPLE').value,
