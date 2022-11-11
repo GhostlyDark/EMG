@@ -9,8 +9,8 @@ source "$HOME/.cargo/env"
 ELECTRON="v21.2.2"
 EMG="EMG/resources/app/m64p/"
 MAKE_INSTALL="PLUGINDIR= SHAREDIR= BINDIR= MANDIR= LIBDIR= APPSDIR= ICONSDIR=icons INCDIR=api LDCONFIG=true COREDIR=./ NEW_DYNAREC=1 OSD=0 POSTFIX="
-M64P_COMPONENTS="mupen64plus-core mupen64plus-ui-console mupen64plus-audio-sdl mupen64plus-input-sdl mupen64plus-rsp-hle rsp"
-SOURCE="mupen64plus-rom sdl-jstest SDL_GameControllerDB mupen64plus-input-gca mupen64plus-input-raphnetraw GLideN64 angrylion-rdp-plus parallel-rdp-standalone parallel-rsp"
+M64P_COMPONENTS="mupen64plus-core mupen64plus-ui-console mupen64plus-audio-sdl mupen64plus-input-sdl mupen64plus-input-raphnetraw mupen64plus-rsp-hle rsp"
+SOURCE="mupen64plus-rom sdl-jstest SDL_GameControllerDB mupen64plus-input-gca GLideN64 angrylion-rdp-plus parallel-rdp-standalone parallel-rsp"
 
 mkdir -p source
 
@@ -43,9 +43,6 @@ cd ../../../
 cd source/mupen64plus-input-gca
 cargo build --release --features "m64p_compat"
 cd ../../
-
-# Build mupen64plus-input-raphnetraw
-make -j4 -C source/mupen64plus-input-raphnetraw/projects/unix all
 
 #Build mupen64plus-video-GLideN64
 cd source/GLideN64/src
@@ -84,7 +81,6 @@ cp source/mupen64plus-rom/m64p_test_rom.v64 ${EMG}
 cp source/sdl-jstest/build/sdl2-jstest ${EMG}
 cp source/SDL_GameControllerDB/gamecontrollerdb.txt ${EMG}
 cp source/mupen64plus-input-gca/target/release/libmupen64plus_input_gca.so ${EMG}/mupen64plus-input-gca.so
-cp source/mupen64plus-input-raphnetraw/projects/unix/mupen64plus-input-raphnetraw.so ${EMG}
 cp source/GLideN64/src/build/plugin/Release/mupen64plus-video-GLideN64.so ${EMG}
 cp source/GLideN64/ini/GLideN64.custom.ini ${EMG}
 cp source/angrylion-rdp-plus/build/mupen64plus-video-angrylion-plus.so ${EMG}
