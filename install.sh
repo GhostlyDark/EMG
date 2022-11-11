@@ -48,7 +48,7 @@ cd ../../
 cd source/GLideN64/src
 mkdir -p build
 cd build
-cmake .. -DMUPENPLUSAPI=On
+cmake .. -DMUPENPLUSAPI=On -DUSE_SYSTEM_LIBS=ON
 make -j4
 cd ../../../../
 
