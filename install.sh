@@ -8,7 +8,7 @@ source "$HOME/.cargo/env"
 # Variables
 ELECTRON="v21.2.2"
 EMG="EMG/resources/app/m64p/"
-MAKE_INSTALL="PLUGINDIR= SHAREDIR= BINDIR= MANDIR= LIBDIR= APPSDIR= ICONSDIR=icons INCDIR=api LDCONFIG=true COREDIR=./ NEW_DYNAREC=1 OSD=0 SSE=SSE2"
+MAKE_INSTALL="PLUGINDIR= SHAREDIR= BINDIR= MANDIR= LIBDIR= APPSDIR= ICONSDIR=icons INCDIR=api LDCONFIG=true COREDIR=./ NEW_DYNAREC=1 OSD=0 POSTFIX="
 M64P_COMPONENTS="mupen64plus-core mupen64plus-ui-console mupen64plus-audio-sdl mupen64plus-input-sdl mupen64plus-rsp-hle rsp"
 SOURCE="mupen64plus-rom sdl-jstest SDL_GameControllerDB mupen64plus-input-gca mupen64plus-input-raphnetraw GLideN64 angrylion-rdp-plus parallel-rdp-standalone parallel-rsp"
 
