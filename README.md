@@ -28,6 +28,18 @@ chmod u+x linux.sh && ./linux.sh
 ```
 
 
+## Windows
+
+Download and install [MSYS2](https://www.msys2.org/). Run `MSYS2 MinGW x64` and install dependencies.
+```
+pacman -S git make mingw-w64-x86_64-cmake mingw-w64-x86_64-freetype mingw-w64-x86_64-gcc mingw-w64-x86_64-hidapi mingw-w64-x86_64-libpng mingw-w64-x86_64-nasm mingw-w64-x86_64-rust mingw-w64-x86_64-SDL2 p7zip
+```
+Download [windows.sh](https://raw.githubusercontent.com/GhostlyDark/EMG/master/assets/sh/windows.sh) into an empty folder and run it.
+```
+./windows.sh
+```
+
+
 ## Troubleshooting
 
 Logging happens once mupen64plus closes after pressing `Launch`. Open Developer Tools by pressing `CTRL + I` or by activating it via the menubar (unhide with `ALT`). To save a log file, click the `Console` tab, right click on the relevant log -> `Save as...` to save it as text file. Post the log file as part of an issue if applicable.
