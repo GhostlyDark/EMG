@@ -87,6 +87,9 @@ cp source/angrylion-rdp-plus/build/mupen64plus-video-angrylion-plus.so ${EMG}
 cp source/parallel-rdp-standalone/build/mupen64plus-video-parallel.so ${EMG}
 cp source/parallel-rsp/build/mupen64plus-rsp-parallel.so ${EMG}
 
+# Strip binaries
+for f in ${EMG}/*.so; do strip -s $f; done
+
 cd EMG
 mv electron emg
 ./emg

@@ -61,13 +61,15 @@ fi
 cp mupen64plus-rom/m64p_test_rom.v64 $install_dir
 cp SDL_GameControllerDB/gamecontrollerdb.txt $install_dir
 
-pushd "$install_dir"
-
-mv mupen64plus_input_gca.dll mupen64plus-input-gca.dll
-
 pushd "$toplvl_dir"
 
 cmd //c $bin_dir/rcedit-x64 $install_dir/mupen64plus.exe --set-icon $ico_dir/mupen64plus.ico
 cmd //c $bin_dir/rcedit-x64 $emg_dir/EMG.exe --set-icon $ico_dir/emg.ico --set-version-string LegalCopyright "(C) 2022 EvilGames.eu" --set-version-string  OriginalFilename "electron.exe" --set-version-string FileDescription "EMG" --set-version-string ProductName "EMG" --set-version-string CompanyName "EvilGames.eu"
+
+pushd "$install_dir"
+
+mv mupen64plus_input_gca.dll mupen64plus-input-gca.dll
+
+for f in $install_dir/*.dll; do strip -s $f; done
 
 popd
