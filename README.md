@@ -22,9 +22,9 @@ Follow the [Dolphin instructions](https://dolphin-emu.org/docs/guides/how-use-of
 
 ## Linux
 
-Download [linux.sh](https://raw.githubusercontent.com/GhostlyDark/EMG/master/assets/sh/linux.sh) into an empty folder and run it. It uses `apt` as package manager to install required dependencies. Files are downloaded and built as necessary.
+Download [compile.sh](https://raw.githubusercontent.com/GhostlyDark/EMG/master/assets/sh/compile.sh) into an empty folder and run it. It uses `apt` as package manager to install required dependencies. Files are downloaded and built as necessary.
 ```
-chmod u+x linux.sh && ./linux.sh
+chmod u+x compile.sh && ./compile.sh
 ```
 
 
@@ -34,9 +34,9 @@ Download and install [MSYS2](https://www.msys2.org/). Run `MSYS2 MinGW x64` and 
 ```
 pacman -S git make mingw-w64-x86_64-cmake mingw-w64-x86_64-freetype mingw-w64-x86_64-gcc mingw-w64-x86_64-hidapi mingw-w64-x86_64-libpng mingw-w64-x86_64-nasm mingw-w64-x86_64-rust mingw-w64-x86_64-SDL2 p7zip
 ```
-Download [windows.sh](https://raw.githubusercontent.com/GhostlyDark/EMG/master/assets/sh/windows.sh) into an empty folder and run it.
+Download [compile.sh](https://raw.githubusercontent.com/GhostlyDark/EMG/master/assets/sh/compile.sh) into an empty folder and run it.
 ```
-./windows.sh
+./compile.sh
 ```
 
 
