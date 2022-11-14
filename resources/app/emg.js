@@ -210,7 +210,7 @@ id('clear'+joykey).addEventListener('click', function(){box.value = '';localStor
 dropdowns.forEach(dropdown => { // dropdown inputs
 var drop = id(dropdown);
 if(localStorage.getItem(dropdown) != null){drop.value = localStorage.getItem(dropdown)}
-if(drop.selectedIndex === -1){localStorage.removeItem(dropdown);drop.options[0].disabled = true ? drop.selectedIndex = 1 : drop.selectedIndex = 0}
+if(drop.selectedIndex === -1){localStorage.removeItem(dropdown);drop.options[0].disabled === true ? drop.selectedIndex = 1 : drop.selectedIndex = 0}
 drop.addEventListener('change', function(){localStorage.setItem(dropdown, drop.value)})})
 
 sliders.forEach(slider => { // slider inputs
