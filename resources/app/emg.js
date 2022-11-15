@@ -47,7 +47,7 @@ dropdowns = [
 'gfx','audio','input','rsp','RspFallback', /* mupen64plus plugins */
 'plugin1','plugin2','plugin3','plugin4','c1','c2','c3','c4',
 'mouse1_1','mouse1_2','mouse1_3','mouse2_1','mouse2_2','mouse2_3','mouse3_1','mouse3_2','mouse3_3','mouse4_1','mouse4_2','mouse4_3', // mupen64plus-input
-'SECONDARY_BUFFER_SIZE', /* mupen64plus-audio */
+'PRIMARY_BUFFER_TARGET', /* mupen64plus-audio */
 'a','b','x','y','start','z','l','r','d_pad_left','d_pad_right','d_pad_down','d_pad_up','c_stick_left','c_stick_right','c_stick_down','c_stick_up', /* mupen64plus-input-gca */
 'msaa','aspectRatio','bufferSwapMode','CountersPos','useNativeResolutionFactor','anisotropy','cache','RDRAMImageDitheringMode','CorrectTexrectCoords','EnableNativeResTexrects','BackgroundsMode','EnableN64DepthCompare','EnableCopyColorToRDRAM','EnableCopyDepthToRDRAM','txFilterMode','txEnhancementMode', /* GLideN64 */
 'ViMode','ViInterpolation','DpCompat', /* Angrylion-Plus */
@@ -936,10 +936,10 @@ ParallelDeinterlaceMode = id('ParallelDeinterlaceMode').value,
 ParallelDownScale = id('ParallelDownScale').value,
 CountersPos = id('CountersPos').value,
 SaveDiskFormat = id('SaveDiskFormat').value,
-DEFAULT_FREQUENCY = 'Audio-SDL[DEFAULT_FREQUENCY]=44100',
+DEFAULT_FREQUENCY = 'Audio-SDL[DEFAULT_FREQUENCY]=33600',
 PRIMARY_BUFFER_SIZE = 'Audio-SDL[PRIMARY_BUFFER_SIZE]=16384',
-PRIMARY_BUFFER_TARGET = id('SECONDARY_BUFFER_SIZE').options[id('SECONDARY_BUFFER_SIZE').selectedIndex].dataset.buffer,
-SECONDARY_BUFFER_SIZE = id('SECONDARY_BUFFER_SIZE').value,
+PRIMARY_BUFFER_TARGET = id('PRIMARY_BUFFER_TARGET').value,
+SECONDARY_BUFFER_SIZE = 'Audio-SDL[SECONDARY_BUFFER_SIZE]=1024',
 RESAMPLE = 'Audio-SDL[RESAMPLE]=trivial',
 VOLUME_CONTROL_TYPE = 'Audio-SDL[VOLUME_CONTROL_TYPE]=1',
 
@@ -1881,7 +1881,7 @@ YAxis4 = kb(YAxis4);
 
 
 
-var core = ['--corelib','mupen64plus','--plugindir','.','--noosd',fullscreen,'--resolution',resolution,'--gfx',gfx,'--audio',audio,'--input',input,'--rsp',rsp,'--set',RspFallback,'--emumode',emumode,'--set',exp,'--set',vsync,'--set',cxd4GFX,'--set',m64pGFX,'--set',cxd4Audio,'--set',m64pAudio,'--set',IPLROMSetting,'--set',DiskSetting,'--set',NoCompiledJump,'--set',CountPerOp,'--set',CountPerOpDenomPot,'--set',SiDmaDuration,'--set',AutoStateSlotIncrement,'--set',CurrentStateSlot,'--set',SharedDataPath,'--set',ScreenshotPathSetting,'--set',SaveStatePathSetting,'--set',SaveSRAMPathSetting,'--set',RandomizeInterrupt,'--set',SaveDiskFormat,'--set',WaitForCPUHost,'--set',SupportCPUSemaphoreLock,'--set',DEFAULT_FREQUENCY,'--set',PRIMARY_BUFFER_SIZE,'--set',VOLUME_CONTROL_TYPE,'--set',SWAP_CHANNELS,'--set',PRIMARY_BUFFER_TARGET,'--set',SECONDARY_BUFFER_SIZE,'--set',RESAMPLE,'--set',VOLUME_ADJUST,'--set',VOLUME_DEFAULT,'--set',AUDIO_SYNC,'--set',KbdMappingSlot0,'--set',KbdMappingSlot1,'--set',KbdMappingSlot2,'--set',KbdMappingSlot3,'--set',KbdMappingSlot4,'--set',KbdMappingSlot5,'--set',KbdMappingSlot6,'--set',KbdMappingSlot7,'--set',KbdMappingSlot8,'--set',KbdMappingSlot9,'--set',KbdMappingStop,'--set',KbdMappingFullscreen,'--set',KbdMappingSaveState,'--set',KbdMappingLoadState,'--set',KbdMappingIncrementSlot,'--set',KbdMappingReset,'--set',KbdMappingSpeedDown,'--set',KbdMappingSpeedUp,'--set',KbdMappingScreenshot,'--set',KbdMappingPause,'--set',KbdMappingMute,'--set',KbdMappingIncreaseVolume,'--set',KbdMappingDecreaseVolume,'--set',KbdMappingFastForward,'--set',KbdMappingFrameAdvance,'--set',KbdMappingGameshark],
+var core = ['--corelib','mupen64plus','--plugindir','.','--noosd',fullscreen,'--resolution',resolution,'--gfx',gfx,'--audio',audio,'--input',input,'--rsp',rsp,'--set',RspFallback,'--emumode',emumode,'--set',exp,'--set',vsync,'--set',cxd4GFX,'--set',m64pGFX,'--set',cxd4Audio,'--set',m64pAudio,'--set',IPLROMSetting,'--set',DiskSetting,'--set',NoCompiledJump,'--set',CountPerOp,'--set',CountPerOpDenomPot,'--set',SiDmaDuration,'--set',AutoStateSlotIncrement,'--set',CurrentStateSlot,'--set',SharedDataPath,'--set',ScreenshotPathSetting,'--set',SaveStatePathSetting,'--set',SaveSRAMPathSetting,'--set',RandomizeInterrupt,'--set',SaveDiskFormat,'--set',WaitForCPUHost,'--set',SupportCPUSemaphoreLock,'--set',DEFAULT_FREQUENCY,'--set',VOLUME_CONTROL_TYPE,'--set',SWAP_CHANNELS,'--set',PRIMARY_BUFFER_SIZE,'--set',PRIMARY_BUFFER_TARGET,'--set',SECONDARY_BUFFER_SIZE,'--set',RESAMPLE,'--set',VOLUME_ADJUST,'--set',VOLUME_DEFAULT,'--set',AUDIO_SYNC,'--set',KbdMappingSlot0,'--set',KbdMappingSlot1,'--set',KbdMappingSlot2,'--set',KbdMappingSlot3,'--set',KbdMappingSlot4,'--set',KbdMappingSlot5,'--set',KbdMappingSlot6,'--set',KbdMappingSlot7,'--set',KbdMappingSlot8,'--set',KbdMappingSlot9,'--set',KbdMappingStop,'--set',KbdMappingFullscreen,'--set',KbdMappingSaveState,'--set',KbdMappingLoadState,'--set',KbdMappingIncrementSlot,'--set',KbdMappingReset,'--set',KbdMappingSpeedDown,'--set',KbdMappingSpeedUp,'--set',KbdMappingScreenshot,'--set',KbdMappingPause,'--set',KbdMappingMute,'--set',KbdMappingIncreaseVolume,'--set',KbdMappingDecreaseVolume,'--set',KbdMappingFastForward,'--set',KbdMappingFrameAdvance,'--set',KbdMappingGameshark],
 
 controls = ['--set',JoyMappingStop,'--set',JoyMappingFullscreen,'--set',JoyMappingSaveState,'--set',JoyMappingLoadState,'--set',JoyMappingIncrementSlot,'--set',JoyMappingReset,'--set',JoyMappingSpeedDown,'--set',JoyMappingSpeedUp,'--set',JoyMappingScreenshot,'--set',JoyMappingPause,'--set',JoyMappingMute,'--set',JoyMappingIncreaseVolume,'--set',JoyMappingDecreaseVolume,'--set',JoyMappingFastForward,'--set',JoyMappingFrameAdvance,'--set',JoyMappingGameshark,'--set',mode1,'--set',mode2,'--set',mode3,'--set',mode4,'--set',plugin1,'--set',plugin2,'--set',plugin3,'--set',plugin4,'--set',plugged1,'--set',plugged2,'--set',plugged3,'--set',plugged4,'--set',name1,'--set',name2,'--set',name3,'--set',name4,'--set',device1,'--set',device2,'--set',device3,'--set',device4,'--set',gbROM1Setting,'--set',gbROM2Setting,'--set',gbROM3Setting,'--set',gbROM4Setting,'--set',gbRAM1Setting,'--set',gbRAM2Setting,'--set',gbRAM3Setting,'--set',gbRAM4Setting],
 
