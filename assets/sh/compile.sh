@@ -7,7 +7,7 @@ ELECTRON="v21.2.2"
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
 # Install dependencies
-sudo apt install -y build-essential cmake curl freeglut3-dev gcc git libfreetype-dev libhidapi-dev libhidapi-hidraw0 libpng-dev libsdl2-dev make nasm p7zip-full p7zip-rar wget zlib1g-dev
+sudo apt install -y build-essential cmake curl freeglut3-dev gcc git libfreetype-dev libhidapi-dev libhidapi-hidraw0 libpng-dev libsdl2-dev make nasm p7zip-full wget zlib1g-dev
 
 
 # Install Rust
@@ -152,13 +152,6 @@ mkdir -p "$bin_dir"
 
 # Download binary files
 pushd "$bin_dir"
-
-if [ ! -d "7z-binary" ] ; then
-    git clone --depth 1 https://github.com/GhostlyDark/7z-binary 7z-binary
-fi
-
-cp 7z-binary/7z.dll $install_dir
-cp 7z-binary/7z.exe $install_dir
 
 [ ! -f electron-${ELECTRON}-win32-x64.zip ] && wget https://github.com/electron/electron/releases/download/${ELECTRON}/electron-${ELECTRON}-win32-x64.zip
 7z x electron-${ELECTRON}-win32-x64.zip -o../EMG '-x!LICENSE' -y

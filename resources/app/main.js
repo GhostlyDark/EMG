@@ -30,20 +30,8 @@ app.enableSandbox()
 const menuQuit = 'Quit ' + app.name,menuWindow = 'Window',menuFunctions = 'Functions',menuReload = 'Reload window',menuDev = 'Developer tools',menuZoomIn = 'Increase zoom',menuZoomOut = 'Decrease zoom',menuZoomReset = 'Reset zoom',menuClear = 'Reset settings',menuEMG = 'Show EMG data',menuConfig = 'Show m64p data',menuCache = 'Show m64p cache',menuTex = 'Show m64p textures',menuGitHub = 'Visit GitHub repo',menuSite = 'Visit website',dialogDelete = ' Reset settings',dialogDeleteM = 'Reset all settings?',dialogNo = 'Abort',dialogYes = 'Confirm',
 deleteDialog = {defaultId:1, cancelId:1, icon:path(dir, 'img', 'delete.png'), buttons:[dialogYes,dialogNo], title:dialogDelete, message:dialogDeleteM}
 
-var jstestChild, m64pCache = m64pConfig, m64pTex = m64pConfig, zipPath = path(cwd, '7z');
-if(isLinux){m64pCache = path(appData, '../', '.cache', 'mupen64plus');m64pTex = path(appData, '../', '.local', 'share', 'mupen64plus');zipPath = '7z'};
-
-ipcMain.on('listArchive', (e, archivePath, ext) => {
-	const parameters = ['l',archivePath,...ext,'-r','-ba'];
-	let child = childSpawnSync(zipPath, parameters, options);
-	e.returnValue = child.stdout.toString()
-})
-
-ipcMain.on('extractArchive', (e, archivePath, workingDirectory, ext) => {
-	const parameters = ['e','-o'+workingDirectory,archivePath,...ext,'-r','-y'];
-	let child = childSpawnSync(zipPath, parameters, options);
-	e.returnValue = child.stdout.toString()
-})
+var jstestChild, m64pCache = m64pConfig, m64pTex = m64pConfig;
+if(isLinux){m64pCache = path(appData, '../', '.cache', 'mupen64plus');m64pTex = path(appData, '../', '.local', 'share', 'mupen64plus')};
 
 ipcMain.on('emuLaunch', (e, parameters) => {
 	var stdout = '';
@@ -86,8 +74,6 @@ ipcMain.on('jstestKill', () => {if(jstestChild != undefined)jstestChild.kill('SI
 ipcMain.on('hires_texture', (e) => {e.returnValue = path(m64pTex, 'hires_texture')})
 ipcMain.on('cache', (e) => {e.returnValue = path(m64pCache, 'cache')})
 ipcMain.on('texture_dump', (e) => {e.returnValue = path(m64pTex, 'texture_dump')})
-ipcMain.on('working_directory', (e) => {e.returnValue = path(emg, 'ROMs')})
-ipcMain.on('returnPath', (e, workingDirectory, rom) => {e.returnValue = path(workingDirectory, rom)})
 ipcMain.on('isLinux', (e) => {e.returnValue = isLinux})
 ipcMain.on('dialogDirectory', (e) => {e.returnValue = dialog.showOpenDialogSync({properties:['openDirectory']})})
 ipcMain.on('dialogFile', (e, data) => {e.returnValue = dialog.showOpenDialogSync({properties:['openFile'],filters:[data]})})

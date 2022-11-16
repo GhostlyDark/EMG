@@ -5,15 +5,11 @@ executablePath = ipcRenderer.sendSync('executablePath'),
 hires_texture = ipcRenderer.sendSync('hires_texture'),
 cache = ipcRenderer.sendSync('cache'),
 texture_dump = ipcRenderer.sendSync('texture_dump'),
-working_directory = ipcRenderer.sendSync('working_directory'),
 isLinux = ipcRenderer.sendSync('isLinux'),
 dialogDirectory = () => {return ipcRenderer.sendSync('dialogDirectory')},
 dialogFile = (data) => {return ipcRenderer.sendSync('dialogFile', data)},
 writeGCA = (gcaSettings) => {ipcRenderer.sendSync('writeGCA', gcaSettings)},
 emuLaunch = (parameters) => {ipcRenderer.send('emuLaunch', parameters)},
-listArchive = (archivePath, ext) => {return ipcRenderer.sendSync('listArchive', archivePath, ext)},
-extractArchive = (archivePath, workingDirectory, ext) => {return ipcRenderer.sendSync('extractArchive', archivePath, workingDirectory, ext)},
-returnPath = (workingDirectory, rom) => {return ipcRenderer.sendSync('returnPath', workingDirectory, rom)},
 showCheats = (parameters) => {return ipcRenderer.sendSync('showCheats', parameters)},
 jsrefresh = () => {return ipcRenderer.sendSync('jsrefresh')},
 jsmapping = (padId) => {return ipcRenderer.sendSync('jsmapping', padId)},
@@ -70,14 +66,10 @@ contextBridge.exposeInMainWorld('testROM',testROM)
 contextBridge.exposeInMainWorld('hires_texture',hires_texture)
 contextBridge.exposeInMainWorld('cache',cache)
 contextBridge.exposeInMainWorld('texture_dump',texture_dump)
-contextBridge.exposeInMainWorld('working_directory',working_directory)
 contextBridge.exposeInMainWorld('isLinux',isLinux)
 contextBridge.exposeInMainWorld('dialogDirectory',dialogDirectory)
 contextBridge.exposeInMainWorld('dialogFile',dialogFile)
 contextBridge.exposeInMainWorld('emuLaunch',emuLaunch)
-contextBridge.exposeInMainWorld('listArchive',listArchive)
-contextBridge.exposeInMainWorld('extractArchive',extractArchive)
-contextBridge.exposeInMainWorld('returnPath',returnPath)
 contextBridge.exposeInMainWorld('jstest',jstest)
 contextBridge.exposeInMainWorld('jsrefresh',jsrefresh)
 contextBridge.exposeInMainWorld('jsmapping',jsmapping)
