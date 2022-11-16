@@ -7,7 +7,7 @@ set(M64P_CORE_DIR ${THIRDPARTY_DIR}/mupen64plus-core)
 set(CORE_FILE "mupen64plus.dll")
 
     set(MUPEN64PLUSCORE_URL           "https://github.com/GhostlyDark/mupen64plus-core")
-    set(MUPEN64PLUSCORE_TAG           "origin/master")
+    set(MUPEN64PLUSCORE_TAG           "origin/emg")
 
     set(MUPEN64PLUS_UI_URL           "https://github.com/GhostlyDark/mupen64plus-ui-console")
     set(MUPEN64PLUS_UI_TAG           "origin/master")
