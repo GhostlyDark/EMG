@@ -133,9 +133,9 @@ Click the box or drag and drop the file into the box below.">Path to Savestate&n
 <p>&nbsp;</p>
 <div title="Lower values reduce audio latency but require faster hardware to avoid choppiness.
 Higher values increase audio latency but reduce the chance of audio drop-outs."><select class="width125m" name="PRIMARY_BUFFER_TARGET" id="PRIMARY_BUFFER_TARGET">
-<option value="Audio-SDL[PRIMARY_BUFFER_TARGET]=2048" selected>2048</option>
-<option value="Audio-SDL[PRIMARY_BUFFER_TARGET]=4096">4096</option>
-<option value="Audio-SDL[PRIMARY_BUFFER_TARGET]=8192">8192</option>
+<option value="2048" selected>2048</option>
+<option value="4096">4096</option>
+<option value="8192">8192</option>
 </select><label for="PRIMARY_BUFFER_TARGET">Primary Buffer Target</label></div>
 </div>
 <div id="core_directories" class="hide mt-15">
@@ -185,8 +185,8 @@ Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
 </div>
 <div id="core_64dd" class="hide mt-15">
 <select name="SaveDiskFormat" id="SaveDiskFormat">
-<option value="Core[SaveDiskFormat]=0">Full Disk Copy</option>
-<option value="Core[SaveDiskFormat]=1" selected>RAM Area Only</option>
+<option value="0">Full Disk Copy</option>
+<option value="1" selected>RAM Area Only</option>
 </select><label for="SaveDiskFormat">64DD Save Format</label>
 <p>&nbsp;</p><p>&nbsp;</p>
 <p title="Path to 64DD BIOS file. Click the box or drag and drop the file into the box below.">Path to 64DD IPL ROM&nbsp;&nbsp;<button class="floatright" id="clearIPLROM">Clear</button><br><br><div id="IPLROM" class="box"><span id="IPLROMText"></span></div></p>
@@ -211,10 +211,10 @@ Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
 </select><button class="floatright" id="refreshc1">Refresh</button></div>
 <p>&nbsp;</p>
 <select class="width175m" name="plugin1" id="plugin1">
-<option value="Input-SDL-Control1[plugin]=1" selected>None</option>
-<option value="Input-SDL-Control1[plugin]=2">Memory Pak</option>
-<option value="Input-SDL-Control1[plugin]=4">Transfer Pak</option>
-<option value="Input-SDL-Control1[plugin]=5">Rumble Pak</option>
+<option value="1" selected>None</option>
+<option value="2">Memory Pak</option>
+<option value="4">Transfer Pak</option>
+<option value="5">Rumble Pak</option>
 </select><label for="plugin1">Controller Plugin</label>
 <p>&nbsp;</p>
 <div id="transferPak1" class="hide">
@@ -407,10 +407,10 @@ Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
 </select><button class="floatright" id="refreshc2">Refresh</button></div>
 <p>&nbsp;</p>
 <select class="width175m" name="plugin2" id="plugin2">
-<option value="Input-SDL-Control2[plugin]=1" selected>None</option>
-<option value="Input-SDL-Control2[plugin]=2">Memory Pak</option>
-<option value="Input-SDL-Control2[plugin]=4">Transfer Pak</option>
-<option value="Input-SDL-Control2[plugin]=5">Rumble Pak</option>
+<option value="1" selected>None</option>
+<option value="I2">Memory Pak</option>
+<option value="4">Transfer Pak</option>
+<option value="5">Rumble Pak</option>
 </select><label for="plugin2">Controller Plugin</label>
 <p>&nbsp;</p>
 <div id="transferPak2" class="hide">
@@ -603,10 +603,10 @@ Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
 </select><button class="floatright" id="refreshc3">Refresh</button></div>
 <p>&nbsp;</p>
 <select class="width175m" name="plugin3" id="plugin3">
-<option value="Input-SDL-Control3[plugin]=1" selected>None</option>
-<option value="Input-SDL-Control3[plugin]=2">Memory Pak</option>
-<option value="Input-SDL-Control3[plugin]=4">Transfer Pak</option>
-<option value="Input-SDL-Control3[plugin]=5">Rumble Pak</option>
+<option value="1" selected>None</option>
+<option value="2">Memory Pak</option>
+<option value="4">Transfer Pak</option>
+<option value="5">Rumble Pak</option>
 </select><label for="plugin3">Controller Plugin</label>
 <p>&nbsp;</p>
 <div id="transferPak3" class="hide">
@@ -799,10 +799,10 @@ Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
 </select><button class="floatright" id="refreshc4">Refresh</button></div>
 <p>&nbsp;</p>
 <select class="width175m" name="plugin4" id="plugin4">
-<option value="Input-SDL-Control4[plugin]=1" selected>None</option>
-<option value="Input-SDL-Control4[plugin]=2">Memory Pak</option>
-<option value="Input-SDL-Control4[plugin]=4">Transfer Pak</option>
-<option value="Input-SDL-Control4[plugin]=5">Rumble Pak</option>
+<option value="1" selected>None</option>
+<option value="2">Memory Pak</option>
+<option value="4">Transfer Pak</option>
+<option value="5">Rumble Pak</option>
 </select><label for="plugin4">Controller Plugin</label>
 <p>&nbsp;</p>
 <div id="transferPak4" class="hide">
@@ -1487,22 +1487,22 @@ Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
 <p title="Number of logical processors to use. 0 uses all."><span class="numberDecrease" id="decreaseNumWorkers">-</span><input id="NumWorkers" min="0" step="1" value="0" type="number"><span class="numberIncrease" id="increaseNumWorkers">+</span><label for="NumWorkers">Rendering Workers</label><button class="floatright" data-value="0" id="resetNumWorkers">Reset</button></p>
 <p>&nbsp;</p>
 <select class="width200m" name="ViMode" id="ViMode">
-<option value="Video-AngrylionPlus[ViMode]=0" selected>Filtered</option>
-<option value="Video-AngrylionPlus[ViMode]=1">Unfiltered</option>
-<option value="Video-AngrylionPlus[ViMode]=2">Depth</option>
-<option value="Video-AngrylionPlus[ViMode]=3">Coverage</option>
+<option value="0" selected>Filtered</option>
+<option value="1">Unfiltered</option>
+<option value="2">Depth</option>
+<option value="3">Coverage</option>
 </select><label for="ViMode">VI Mode</label>
 <p>&nbsp;</p>
 <div title="Scaling interpolation type."><select class="width200m" name="ViInterpolation" id="ViInterpolation">
-<option value="Video-AngrylionPlus[ViInterpolation]=0">Nearest-neighbor</option>
-<option value="Video-AngrylionPlus[ViInterpolation]=1">Bilinear</option>
-<option value="Video-AngrylionPlus[ViInterpolation]=2" selected>Hybrid</option>
+<option value="0">Nearest-neighbor</option>
+<option value="1">Bilinear</option>
+<option value="2" selected>Hybrid</option>
 </select><label for="ViInterpolation">VI Interpolation</label></div>
 <p>&nbsp;</p>
 <select class="width200m" name="DpCompat" id="DpCompat">
-<option value="Video-AngrylionPlus[DpCompat]=0" selected>Fast</option>
-<option value="Video-AngrylionPlus[DpCompat]=1">Moderate</option>
-<option value="Video-AngrylionPlus[DpCompat]=2">Slow</option>
+<option value="0" selected>Fast</option>
+<option value="1">Moderate</option>
+<option value="2">Slow</option>
 </select><label for="DpCompat">Compatibility Mode</label>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
 <div id="gliden64Anchor" class="anchor"></div>
@@ -1524,59 +1524,59 @@ Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
 <p><input id="fxaa" type="checkbox" data-store="fxaa"><label for="fxaa">FXAA</label></p>
 <p>&nbsp;</p>
 <div title="Multisample anti-aliasing is incompatible with N64 Depth Compare."><select class="width125m" name="msaa" id="msaa">
-<option value="Video-GLideN64[MultiSampling]=0" selected>0x</option>
-<option value="Video-GLideN64[MultiSampling]=2">2x</option>
-<option value="Video-GLideN64[MultiSampling]=4">4x</option>
-<option value="Video-GLideN64[MultiSampling]=8">8x</option>
-<option value="Video-GLideN64[MultiSampling]=16">16x</option>
+<option value="0" selected>0x</option>
+<option value="2">2x</option>
+<option value="4">4x</option>
+<option value="8">8x</option>
+<option value="16">16x</option>
 </select><label for="msaa">MSAA</label></div>
 <p>&nbsp;</p>
 <div title="Choose adjust for using a generic Widescreen hack."><select class="width125m" name="aspectRatio" id="aspectRatio">
-<option value="Video-GLideN64[AspectRatio]=1" selected>4:3</option>
-<option value="Video-GLideN64[AspectRatio]=2">16:9</option>
-<option value="Video-GLideN64[AspectRatio]=3">Adjust</option>
-<option value="Video-GLideN64[AspectRatio]=0">Stretch</option>
+<option value="1" selected>4:3</option>
+<option value="2">16:9</option>
+<option value="3">Adjust</option>
+<option value="0">Stretch</option>
 </select><label for="aspectRatio">Aspect Ratio</label></div>
 <p>&nbsp;</p>
 <div title="Frame buffer size (rendering resolution) is the factor of N64 native resolution.
 If this option is turned off, the output resolution is the same as the rendering resolution."><select class="width125m" name="useNativeResolutionFactor" id="useNativeResolutionFactor">
-<option value="Video-GLideN64[UseNativeResolutionFactor]=0" selected>Off</option>
-<option value="Video-GLideN64[UseNativeResolutionFactor]=1">1</option>
-<option value="Video-GLideN64[UseNativeResolutionFactor]=2">2</option>
-<option value="Video-GLideN64[UseNativeResolutionFactor]=3">3</option>
-<option value="Video-GLideN64[UseNativeResolutionFactor]=4">4</option>
-<option value="Video-GLideN64[UseNativeResolutionFactor]=5">5</option>
-<option value="Video-GLideN64[UseNativeResolutionFactor]=6">6</option>
-<option value="Video-GLideN64[UseNativeResolutionFactor]=7">7</option>
-<option value="Video-GLideN64[UseNativeResolutionFactor]=8">8</option>
-<option value="Video-GLideN64[UseNativeResolutionFactor]=9">9</option>
-<option value="Video-GLideN64[UseNativeResolutionFactor]=10">10</option>
-<option value="Video-GLideN64[UseNativeResolutionFactor]=11">11</option>
-<option value="Video-GLideN64[UseNativeResolutionFactor]=12">12</option>
-<option value="Video-GLideN64[UseNativeResolutionFactor]=13">13</option>
-<option value="Video-GLideN64[UseNativeResolutionFactor]=14">14</option>
-<option value="Video-GLideN64[UseNativeResolutionFactor]=15">15</option>
-<option value="Video-GLideN64[UseNativeResolutionFactor]=16">16</option>
+<option value="0" selected>Off</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
 </select><label for="useNativeResolutionFactor">Native Resolution Factor</label></div>
 <p>&nbsp;</p>
 <select class="width125m" name="anisotropy" id="anisotropy">
-<option value="Video-GLideN64[anisotropy]=0" selected>Off</option>
-<option value="Video-GLideN64[anisotropy]=1">1x</option>
-<option value="Video-GLideN64[anisotropy]=2">2x</option>
-<option value="Video-GLideN64[anisotropy]=3">3x</option>
-<option value="Video-GLideN64[anisotropy]=4">4x</option>
-<option value="Video-GLideN64[anisotropy]=5">5x</option>
-<option value="Video-GLideN64[anisotropy]=6">6x</option>
-<option value="Video-GLideN64[anisotropy]=7">7x</option>
-<option value="Video-GLideN64[anisotropy]=8">8x</option>
-<option value="Video-GLideN64[anisotropy]=9">9x</option>
-<option value="Video-GLideN64[anisotropy]=10">10x</option>
-<option value="Video-GLideN64[anisotropy]=11">11x</option>
-<option value="Video-GLideN64[anisotropy]=12">12x</option>
-<option value="Video-GLideN64[anisotropy]=13">13x</option>
-<option value="Video-GLideN64[anisotropy]=14">14x</option>
-<option value="Video-GLideN64[anisotropy]=15">15x</option>
-<option value="Video-GLideN64[anisotropy]=16">16x</option>
+<option value="0" selected>Off</option>
+<option value="1">1x</option>
+<option value="2">2x</option>
+<option value="3">3x</option>
+<option value="4">4x</option>
+<option value="5">5x</option>
+<option value="6">6x</option>
+<option value="7">7x</option>
+<option value="8">8x</option>
+<option value="9">9x</option>
+<option value="10">10x</option>
+<option value="11">11x</option>
+<option value="12">12x</option>
+<option value="13">13x</option>
+<option value="14">14x</option>
+<option value="15">15x</option>
+<option value="16">16x</option>
 </select><label for="anisotropy">Anisotropic Filtering</label>
 <p>&nbsp;</p>
 <p title="Override gamma correction specified by the game."><input id="ForceGammaCorrection" type="checkbox" data-store="ForceGammaCorrection"><label for="ForceGammaCorrection">Force Gamma Correction</label></p>
@@ -1634,27 +1634,27 @@ If this option is turned off, the output resolution is the same as the rendering
 <p title="Dither with color quantization."><input id="DitheringQuantization" type="checkbox" data-store="DitheringQuantization" checked><label for="DitheringQuantization">Dithering Quantization</label></p>
 <p>&nbsp;</p>
 <div title="Dithering mode for image in RDRAM."><select class="width150m" name="RDRAMImageDitheringMode" id="RDRAMImageDitheringMode">
-<option value="Video-GLideN64[RDRAMImageDitheringMode]=0">Disable</option>
-<option value="Video-GLideN64[RDRAMImageDitheringMode]=1">Bayer</option>
-<option value="Video-GLideN64[RDRAMImageDitheringMode]=2">Magic Square</option>
-<option value="Video-GLideN64[RDRAMImageDitheringMode]=3" selected>Blue Noise</option>
+<option value="0">Disable</option>
+<option value="1">Bayer</option>
+<option value="2">Magic Square</option>
+<option value="3" selected>Blue Noise</option>
 </select><label for="RDRAMImageDitheringMode">Dithering Mode</label></div>
 <p>&nbsp;</p>
 <div title="Render backgrounds mode (HLE only)."><select class="width150m" name="BackgroundsMode" id="BackgroundsMode">
-<option value="Video-GLideN64[BackgroundsMode]=0" selected>One Piece</option>
-<option value="Video-GLideN64[BackgroundsMode]=1">Stripped</option>
+<option value="0" selected>One Piece</option>
+<option value="1">Stripped</option>
 </select><label for="BackgroundsMode">Backgrounds Mode</label></div>
 <p>&nbsp;</p>
 <div title="Make texrect coordinates continuous to avoid black lines between them."><select class="width150m" name="CorrectTexrectCoords" id="CorrectTexrectCoords">
-<option value="Video-GLideN64[CorrectTexrectCoords]=0">Off</option>
-<option value="Video-GLideN64[CorrectTexrectCoords]=1" selected>Auto</option>
-<option value="Video-GLideN64[CorrectTexrectCoords]=2">Force</option>
+<option value="0">Off</option>
+<option value="1" selected>Auto</option>
+<option value="2">Force</option>
 </select><label for="CorrectTexrectCoords">Correct Texrect Coordinates</label></div>
 <p>&nbsp;</p>
 <div title="Render 2D texrects in native resolution to fix misalignment between parts of 2D image."><select class="width150m" name="EnableNativeResTexrects" id="EnableNativeResTexrects">
-<option value="Video-GLideN64[EnableNativeResTexrects]=0" selected>Off</option>
-<option value="Video-GLideN64[EnableNativeResTexrects]=1">Optimized</option>
-<option value="Video-GLideN64[EnableNativeResTexrects]=2">Unoptimized</option>
+<option value="0" selected>Off</option>
+<option value="1">Optimized</option>
+<option value="2">Unoptimized</option>
 </select><label for="EnableNativeResTexrects">Enable Native Resolution Texrects</label></div>
 </div>
 <div id="gliden64_framebuffer" class="hide mt-10">
@@ -1675,56 +1675,56 @@ If this option is turned off, the output resolution is the same as the rendering
 <p title="Read depth buffer by 4kb chunks."><input id="FBInfoReadDepthChunk" type="checkbox" data-store="FBInfoReadDepthChunk" checked><label for="FBInfoReadDepthChunk">Read Depth Buffer in Chunks</label></p>
 <p>&nbsp;</p>
 <div title="On buffer update offers the best performance but causes the most issues."><select class="width250m" name="bufferSwapMode" id="bufferSwapMode">
-<option value="Video-GLideN64[BufferSwapMode]=0" selected>On VI update call</option>
-<option value="Video-GLideN64[BufferSwapMode]=1">On VI origin change</option>
-<option value="Video-GLideN64[BufferSwapMode]=2">On buffer update</option>
+<option value="0" selected>On VI update call</option>
+<option value="1">On VI origin change</option>
+<option value="2">On buffer update</option>
 </select><label for="bufferSwapMode">Buffer Swap Mode</label></div>
 <p>&nbsp;</p>
 <div title="Enable color buffer copy to RDRAM."><select class="width250m" name="EnableCopyColorToRDRAM" id="EnableCopyColorToRDRAM">
-<option value="Video-GLideN64[EnableCopyColorToRDRAM]=0">Do not copy</option>
-<option value="Video-GLideN64[EnableCopyColorToRDRAM]=1">Copy in sync mode</option>
-<option value="Video-GLideN64[EnableCopyColorToRDRAM]=2" selected>Double Buffer</option>
-<option value="Video-GLideN64[EnableCopyColorToRDRAM]=3">Triple Buffer</option>
+<option value="0">Do not copy</option>
+<option value="1">Copy in sync mode</option>
+<option value="2" selected>Double Buffer</option>
+<option value="3">Triple Buffer</option>
 </select><label for="EnableCopyColorToRDRAM">Copy Color Buffer to RDRAM</label></div>
 <p>&nbsp;</p>
 <div title="Enable depth buffer copy to RDRAM."><select class="width250m" name="EnableCopyDepthToRDRAM" id="EnableCopyDepthToRDRAM">
-<option value="Video-GLideN64[EnableCopyDepthToRDRAM]=0">Do not copy</option>
-<option value="Video-GLideN64[EnableCopyDepthToRDRAM]=1">Copy from video memory</option>
-<option value="Video-GLideN64[EnableCopyDepthToRDRAM]=2" selected>Use Software Render</option>
+<option value="0">Do not copy</option>
+<option value="1">Copy from video memory</option>
+<option value="2" selected>Use Software Render</option>
 </select><label for="EnableCopyDepthToRDRAM">Copy Depth Buffer to RDRAM</label></div>
 <p>&nbsp;</p>
 <div title="Enable N64 depth compare instead of OpenGL standard one."><select class="width250m" name="EnableN64DepthCompare" id="EnableN64DepthCompare">
-<option value="Video-GLideN64[EnableN64DepthCompare]=0" selected>Off</option>
-<option value="Video-GLideN64[EnableN64DepthCompare]=1">Fast</option>
-<option value="Video-GLideN64[EnableN64DepthCompare]=2">Compatible</option>
+<option value="0" selected>Off</option>
+<option value="1">Fast</option>
+<option value="2">Compatible</option>
 </select><label for="EnableN64DepthCompare">N64 Depth Compare</label></div>
 </div>
 <div id="gliden64_textures" class="hide mt-10">
 <select class="width200m" name="txFilterMode" id="txFilterMode">
-<option value="Video-GLideN64[txFilterMode]=0" selected>None</option>
-<option value="Video-GLideN64[txFilterMode]=1">Smooth Filtering 1</option>
-<option value="Video-GLideN64[txFilterMode]=2">Smooth Filtering 2</option>
-<option value="Video-GLideN64[txFilterMode]=3">Smooth Filtering 3</option>
-<option value="Video-GLideN64[txFilterMode]=4">Smooth Filtering 4</option>
-<option value="Video-GLideN64[txFilterMode]=5">Sharp Filtering 1</option>
-<option value="Video-GLideN64[txFilterMode]=6">Sharp Filtering 2</option>
+<option value="0" selected>None</option>
+<option value="1">Smooth Filtering 1</option>
+<option value="2">Smooth Filtering 2</option>
+<option value="3">Smooth Filtering 3</option>
+<option value="4">Smooth Filtering 4</option>
+<option value="5">Sharp Filtering 1</option>
+<option value="6">Sharp Filtering 2</option>
 </select><label for="txFilterMode">Texture Filter</label>
 <p>&nbsp;</p>
 <select class="width200m" name="txEnhancementMode" id="txEnhancementMode">
-<option value="Video-GLideN64[txEnhancementMode]=0" selected>None</option>
-<option value="Video-GLideN64[txEnhancementMode]=1">Store as is</option>
-<option value="Video-GLideN64[txEnhancementMode]=2">X2</option>
-<option value="Video-GLideN64[txEnhancementMode]=3">X2SAI</option>
-<option value="Video-GLideN64[txEnhancementMode]=4">HQ2X</option>
-<option value="Video-GLideN64[txEnhancementMode]=5">HQ2XS</option>
-<option value="Video-GLideN64[txEnhancementMode]=6">LQ2X</option>
-<option value="Video-GLideN64[txEnhancementMode]=7">LQ2XS</option>
-<option value="Video-GLideN64[txEnhancementMode]=8">HQ4X</option>
-<option value="Video-GLideN64[txEnhancementMode]=9">2xBRZ</option>
-<option value="Video-GLideN64[txEnhancementMode]=10">3xBRZ</option>
-<option value="Video-GLideN64[txEnhancementMode]=11">4xBRZ</option>
-<option value="Video-GLideN64[txEnhancementMode]=12">5xBRZ</option>
-<option value="Video-GLideN64[txEnhancementMode]=13">6xBRZ</option>
+<option value="0" selected>None</option>
+<option value="1">Store as is</option>
+<option value="2">X2</option>
+<option value="3">X2SAI</option>
+<option value="4">HQ2X</option>
+<option value="5">HQ2XS</option>
+<option value="6">LQ2X</option>
+<option value="7">LQ2XS</option>
+<option value="8">HQ4X</option>
+<option value="9">2xBRZ</option>
+<option value="10">3xBRZ</option>
+<option value="11">4xBRZ</option>
+<option value="12">5xBRZ</option>
+<option value="13">6xBRZ</option>
 </select><label for="txEnhancementMode">Texture Enhancement</label>
 <p>&nbsp;</p>
 <p><span class="numberDecrease" id="decreasetxCacheSize">-</span><input id="txCacheSize" min="0" max="1024" step="128" value="1024" type="number"><span class="numberIncrease" id="increasetxCacheSize">+</span><label title="Size of memory cache for enhanced textures in megabytes." for="txCacheSize">Memory Cache Size (in MB)</label><button class="floatright" data-value="1024" id="resettxCacheSize">Reset</button></p>
@@ -1748,8 +1748,8 @@ If this option is turned off, the output resolution is the same as the rendering
 <p title="Disables HTC/HTS cache. Not recommended for casual play."><input id="txNoTextureFileStorage" type="checkbox" data-store="txNoTextureFileStorage"><label for="txNoTextureFileStorage">Don't use cache</label></p>
 <p>&nbsp;</p>
 <div title="HTC: Prefetch all textures at boot into RAM. HTS: Read textures as they are needed from hard disk."><select name="cache" id="cache">
-<option value="Video-GLideN64[txHiresTextureFileStorage]=False">HTC</option>
-<option value="Video-GLideN64[txHiresTextureFileStorage]=True" selected>HTS</option>
+<option value="false">HTC</option>
+<option value="true" selected>HTS</option>
 </select><label for="cache">Cache Type</label></div>
 <p>&nbsp;</p>
 <p><span class="numberDecrease" id="decreasetxHiresVramLimit">-</span><input id="txHiresVramLimit" min="0" max="102400" step="512" value="0" type="number"><span class="numberIncrease" id="increasetxHiresVramLimit">+</span><label title="Limit hi-res textures size in VRAM." for="txHiresVramLimit">VRAM Limit (in MB)</label><button class="floatright" data-value="0" id="resettxHiresVramLimit">Reset</button></p>
@@ -1778,12 +1778,12 @@ If this option is turned off, the output resolution is the same as the rendering
 <p><input id="ShowStatistics" type="checkbox" data-store="ShowStatistics"><label for="ShowStatistics">Show Statistics</label></p>
 <p>&nbsp;</p>
 <select name="CountersPos" id="CountersPos">
-<option value="Video-GLideN64[CountersPos]=1">Top Left</option>
-<option value="Video-GLideN64[CountersPos]=2">Top Center</option>
-<option value="Video-GLideN64[CountersPos]=4">Top Center</option>
-<option value="Video-GLideN64[CountersPos]=8" selected>Bottom Left</option>
-<option value="Video-GLideN64[CountersPos]=16">Bottom Center</option>
-<option value="Video-GLideN64[CountersPos]=32">Bottom Right</option>
+<option value="1">Top Left</option>
+<option value="2">Top Center</option>
+<option value="4">Top Center</option>
+<option value="8" selected>Bottom Left</option>
+<option value="16">Bottom Center</option>
+<option value="32">Bottom Right</option>
 </select><label for="CountersPos">Counters Position</label>
 </div>
 <div id="gliden64_hotkeys" class="hide mt-10">
@@ -1851,22 +1851,22 @@ If this option is turned off, the output resolution is the same as the rendering
 <p title="Amount of pixels to stretch by vertically. Can fix PAL ports that didn't fill the PAL resolution of 288p (use value of 24 in that case)."><span class="numberDecrease" id="decreaseParallelVerticalStretch">-</span><input id="ParallelVerticalStretch" min="0" max="99" step="1" value="0" type="number"><span class="numberIncrease" id="increaseParallelVerticalStretch">+</span><label for="ParallelVerticalStretch">Vertical Stretch</label><button class="floatright" data-value="0" id="resetParallelVerticalStretch">Reset</button></p>
 <p>&nbsp;</p>
 <select class="width125m" name="ParallelUpscaling" id="ParallelUpscaling">
-<option value="Video-Parallel[Upscaling]=1" selected>1x</option>
-<option value="Video-Parallel[Upscaling]=2">2x</option>
-<option value="Video-Parallel[Upscaling]=4">4x</option>
-<option value="Video-Parallel[Upscaling]=8">8x</option>
+<option value="1" selected>1x</option>
+<option value="2">2x</option>
+<option value="4">4x</option>
+<option value="8">8x</option>
 </select><label for="ParallelUpscaling">Upscaling</label>
 <p>&nbsp;</p>
 <div title="Downscales output after VI, equivalent to SSAA."><select class="width125m" name="ParallelDownScale" id="ParallelDownScale">
-<option value="Video-Parallel[DownScale]=0" selected>Disabled</option>
-<option value="Video-Parallel[DownScale]=1">1/2</option>
-<option value="Video-Parallel[DownScale]=2">1/4</option>
-<option value="Video-Parallel[DownScale]=3">1/8</option>
+<option value="0" selected>Disabled</option>
+<option value="1">1/2</option>
+<option value="2">1/4</option>
+<option value="3">1/8</option>
 </select><label for="ParallelDownScale">Downsampling</label></div>
 <p>&nbsp;</p>
 <div title="Weave should only be used with 1x scaling factor."><select class="width125m" name="ParallelDeinterlaceMode" id="ParallelDeinterlaceMode">
-<option value="Video-Parallel[DeinterlaceMode]=False" selected>Bob</option>
-<option value="Video-Parallel[DeinterlaceMode]=True">Weave</option>
+<option value="false" selected>Bob</option>
+<option value="true">Weave</option>
 </select><label for="ParallelDeinterlaceMode">Deinterlacing Method</label></div>
 <p>&nbsp;</p><p>&nbsp;</p>
 <footer id="footer">
