@@ -1448,8 +1448,8 @@ CButtonR3 += 'key(' + id('CButtonR3').dataset.key + ')';
 CButtonD3 += 'key(' + id('CButtonD3').dataset.key + ')';
 MempakSwitch3 += 'key(' + id('MempakSwitch3').dataset.key + ')';
 RumblepakSwitch3 += 'key(' + id('RumblepakSwitch3').dataset.key + ')';
-XAxis3 += 'Input-SDL-Control3[X Axis]=' + 'key(' + id('StickL3').dataset.key + ',' + id('StickR3').dataset.key + ')';
-YAxis3 += 'Input-SDL-Control3[Y Axis]=' + 'key(' + id('StickU3').dataset.key + ',' + id('StickD3').dataset.key + ')';
+XAxis3 += 'key(' + id('StickL3').dataset.key + ',' + id('StickR3').dataset.key + ')';
+YAxis3 += 'key(' + id('StickU3').dataset.key + ',' + id('StickD3').dataset.key + ')';
 if(id('mouse3').checked && mouse3_1 != ''){
 if(mouse3_1 === 'a'){AButton3 += ' mouse(1)'}
 if(mouse3_1 === 'b'){BButton3 += ' mouse(1)'}
