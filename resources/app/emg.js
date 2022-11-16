@@ -758,11 +758,12 @@ id('fontColor').addEventListener('change', function(){localStorage.setItem('font
 
 id('launch').addEventListener('click', function(){
 var exp = 'Core[DisableExtraMem]=' + id('exp').checked,
+osd = 'Core[OnScreenDisplay]=false',
 nospeedlimit = id('nospeedlimit').checked ? '--nospeedlimit' : [],
 verbose = id('verbose').checked ? '--verbose' : [],
 savestate = stPath != '' ? ['--savestate',stPath] : [],
 PIFROM = PIF != '' ? ['--pif',PIF] : [],
-fullscreen = id('fullscreen').checked ? '--fullscreen' : '--windowed',
+fullscreen = 'Video-General[Fullscreen]=' + id('fullscreen').checked,
 ParallelFullscreen = 'Video-Parallel[Fullscreen]=' + id('fullscreen').checked,
 vsync = 'Video-General[VerticalSync]=' + id('vsync').checked,
 ParallelVSync = 'Video-Parallel[Vsync]=' + id('vsync').checked,
@@ -820,6 +821,7 @@ ShowStatistics = 'Video-GLideN64[ShowStatistics]=' + id('ShowStatistics').checke
 NoCompiledJump = 'Core[NoCompiledJump]=' + id('NoCompiledJump').checked,
 AutoStateSlotIncrement = 'Core[AutoStateSlotIncrement]=' + id('AutoStateSlotIncrement').checked,
 RandomizeInterrupt = 'Core[RandomizeInterrupt]=' + id('RandomizeInterrupt').checked,
+EnableDebugger = 'Core[EnableDebugger]=false',
 SWAP_CHANNELS = 'Audio-SDL[SWAP_CHANNELS]=' + id('SWAP_CHANNELS').checked,
 AUDIO_SYNC = 'Audio-SDL[AUDIO_SYNC]=' + id('AUDIO_SYNC').checked,
 
@@ -841,7 +843,8 @@ ParallelNativeTextRECT = 'Video-Parallel[NativeTextRECT]=' + id('ParallelNativeT
 ParallelSynchronousRDP = 'Video-Parallel[SynchronousRDP]=' + id('ParallelSynchronousRDP').checked,
 ParallelWidescreenStretch = 'Video-Parallel[WidescreenStretch]=' + id('ParallelWidescreenStretch').checked,
 
-resolution = id('resolution').value,
+ScreenWidth = 'Video-General[ScreenWidth]=' + id('resolution').options[id('resolution').selectedIndex].dataset.width,
+ScreenHeight = 'Video-General[ScreenHeight]=' + id('resolution').options[id('resolution').selectedIndex].dataset.height,
 ParallelScreenWidth = 'Video-Parallel[ScreenWidth]=' + id('resolution').options[id('resolution').selectedIndex].dataset.width,
 ParallelScreenHeight = 'Video-Parallel[ScreenHeight]=' + id('resolution').options[id('resolution').selectedIndex].dataset.height,
 gfx = id('gfx').value,
@@ -849,7 +852,7 @@ audio = id('audio').value,
 input = id('input').value,
 rsp = id('rsp').value,
 RspFallback = id('RspFallback').value,
-emumode = id('emumode').value,
+emumode = 'Core[R4300Emulator]=' + id('emumode').value,
 plugin1 = id('plugin1').value,
 plugin2 = id('plugin2').value,
 plugin3 = id('plugin3').value,
@@ -1826,25 +1829,39 @@ YAxis4 = kb(YAxis4);
 
 
 
-var core = ['--corelib','mupen64plus','--plugindir','.','--noosd',fullscreen,'--resolution',resolution,'--gfx',gfx,'--audio',audio,'--input',input,'--rsp',rsp,'--set',RspFallback,'--emumode',emumode,'--set',exp,'--set',vsync,'--set',cxd4GFX,'--set',m64pGFX,'--set',cxd4Audio,'--set',m64pAudio,'--set',IPLROMSetting,'--set',DiskSetting,'--set',NoCompiledJump,'--set',CountPerOp,'--set',CountPerOpDenomPot,'--set',SiDmaDuration,'--set',AutoStateSlotIncrement,'--set',CurrentStateSlot,'--set',SharedDataPath,'--set',ScreenshotPathSetting,'--set',SaveStatePathSetting,'--set',SaveSRAMPathSetting,'--set',RandomizeInterrupt,'--set',SaveDiskFormat,'--set',WaitForCPUHost,'--set',SupportCPUSemaphoreLock,'--set',DEFAULT_FREQUENCY,'--set',VOLUME_CONTROL_TYPE,'--set',SWAP_CHANNELS,'--set',PRIMARY_BUFFER_SIZE,'--set',PRIMARY_BUFFER_TARGET,'--set',SECONDARY_BUFFER_SIZE,'--set',RESAMPLE,'--set',VOLUME_ADJUST,'--set',VOLUME_DEFAULT,'--set',AUDIO_SYNC,'--set',KbdMappingSlot0,'--set',KbdMappingSlot1,'--set',KbdMappingSlot2,'--set',KbdMappingSlot3,'--set',KbdMappingSlot4,'--set',KbdMappingSlot5,'--set',KbdMappingSlot6,'--set',KbdMappingSlot7,'--set',KbdMappingSlot8,'--set',KbdMappingSlot9,'--set',KbdMappingStop,'--set',KbdMappingFullscreen,'--set',KbdMappingSaveState,'--set',KbdMappingLoadState,'--set',KbdMappingIncrementSlot,'--set',KbdMappingReset,'--set',KbdMappingSpeedDown,'--set',KbdMappingSpeedUp,'--set',KbdMappingScreenshot,'--set',KbdMappingPause,'--set',KbdMappingMute,'--set',KbdMappingIncreaseVolume,'--set',KbdMappingDecreaseVolume,'--set',KbdMappingFastForward,'--set',KbdMappingFrameAdvance,'--set',KbdMappingGameshark],
+var core = ['--corelib','mupen64plus','--plugindir','./','--gfx',gfx,'--audio',audio,'--input',input,'--rsp',rsp],
 
-controls = ['--set',JoyMappingStop,'--set',JoyMappingFullscreen,'--set',JoyMappingSaveState,'--set',JoyMappingLoadState,'--set',JoyMappingIncrementSlot,'--set',JoyMappingReset,'--set',JoyMappingSpeedDown,'--set',JoyMappingSpeedUp,'--set',JoyMappingScreenshot,'--set',JoyMappingPause,'--set',JoyMappingMute,'--set',JoyMappingIncreaseVolume,'--set',JoyMappingDecreaseVolume,'--set',JoyMappingFastForward,'--set',JoyMappingFrameAdvance,'--set',JoyMappingGameshark,'--set',mode1,'--set',mode2,'--set',mode3,'--set',mode4,'--set',plugin1,'--set',plugin2,'--set',plugin3,'--set',plugin4,'--set',plugged1,'--set',plugged2,'--set',plugged3,'--set',plugged4,'--set',name1,'--set',name2,'--set',name3,'--set',name4,'--set',device1,'--set',device2,'--set',device3,'--set',device4,'--set',gbROM1Setting,'--set',gbROM2Setting,'--set',gbROM3Setting,'--set',gbROM4Setting,'--set',gbRAM1Setting,'--set',gbRAM2Setting,'--set',gbRAM3Setting,'--set',gbRAM4Setting],
+settings = [RspFallback,cxd4GFX,m64pGFX,cxd4Audio,m64pAudio,WaitForCPUHost,SupportCPUSemaphoreLock, // RSP
 
-controller1 = ['--set',AButton1,'--set',BButton1,'--set',LTrig1,'--set',RTrig1,'--set',ZTrig1,'--set',Start1,'--set',DPadU1,'--set',DPadL1,'--set',DPadR1,'--set',DPadD1,'--set',CButtonU1,'--set',CButtonL1,'--set',CButtonR1,'--set',CButtonD1,'--set',MempakSwitch1,'--set',RumblepakSwitch1,'--set',XAxis1,'--set',YAxis1,'--set',analogdeadzone1,'--set',analogpeak1,'--set',mouse1,'--set',msensitivity1],
+exp,osd,emumode,NoCompiledJump,CountPerOp,CountPerOpDenomPot,SiDmaDuration,AutoStateSlotIncrement,CurrentStateSlot,SharedDataPath,ScreenshotPathSetting,SaveStatePathSetting,SaveSRAMPathSetting,RandomizeInterrupt,EnableDebugger,SaveDiskFormat, // Core
 
-controller2 = ['--set',AButton2,'--set',BButton2,'--set',LTrig2,'--set',RTrig2,'--set',ZTrig2,'--set',Start2,'--set',DPadU2,'--set',DPadL2,'--set',DPadR2,'--set',DPadD2,'--set',CButtonU2,'--set',CButtonL2,'--set',CButtonR2,'--set',CButtonD2,'--set',MempakSwitch2,'--set',RumblepakSwitch2,'--set',XAxis2,'--set',YAxis2,'--set',analogdeadzone2,'--set',analogpeak2,'--set',mouse2,'--set',msensitivity2],
+IPLROMSetting,DiskSetting, // 64DD
 
-controller3 = ['--set',AButton3,'--set',BButton3,'--set',LTrig3,'--set',RTrig3,'--set',ZTrig3,'--set',Start3,'--set',DPadU3,'--set',DPadL3,'--set',DPadR3,'--set',DPadD3,'--set',CButtonU3,'--set',CButtonL3,'--set',CButtonR3,'--set',CButtonD3,'--set',MempakSwitch3,'--set',RumblepakSwitch3,'--set',XAxis3,'--set',YAxis3,'--set',analogdeadzone3,'--set',analogpeak3,'--set',mouse3,'--set',msensitivity3],
+fullscreen,ScreenWidth,ScreenHeight,vsync, // Video
 
-controller4 = ['--set',AButton4,'--set',BButton4,'--set',LTrig4,'--set',RTrig4,'--set',ZTrig4,'--set',Start4,'--set',DPadU4,'--set',DPadL4,'--set',DPadR4,'--set',DPadD4,'--set',CButtonU4,'--set',CButtonL4,'--set',CButtonR4,'--set',CButtonD4,'--set',MempakSwitch4,'--set',RumblepakSwitch4,'--set',XAxis4,'--set',YAxis4,'--set',analogdeadzone4,'--set',analogpeak4,'--set',mouse4,'--set',msensitivity4],
+DEFAULT_FREQUENCY,VOLUME_CONTROL_TYPE,SWAP_CHANNELS,PRIMARY_BUFFER_SIZE,PRIMARY_BUFFER_TARGET,SECONDARY_BUFFER_SIZE,RESAMPLE,VOLUME_ADJUST,VOLUME_DEFAULT,AUDIO_SYNC, // Audio
 
-Angrylion = ['--set',Parallel,'--set',NumWorkers,'--set',BusyLoop,'--set',ViMode,'--set',ViInterpolation,'--set',ViWidescreen,'--set',ViHideOverscan,'--set',ViIntegerScaling,'--set',DpCompat],
+KbdMappingSlot0,KbdMappingSlot1,KbdMappingSlot2,KbdMappingSlot3,KbdMappingSlot4,KbdMappingSlot5,KbdMappingSlot6,KbdMappingSlot7,KbdMappingSlot8,KbdMappingSlot9,KbdMappingStop,KbdMappingFullscreen,KbdMappingSaveState,KbdMappingLoadState,KbdMappingIncrementSlot,KbdMappingReset,KbdMappingSpeedDown,KbdMappingSpeedUp,KbdMappingScreenshot,KbdMappingPause,KbdMappingMute,KbdMappingIncreaseVolume,KbdMappingDecreaseVolume,KbdMappingFastForward,KbdMappingFrameAdvance,KbdMappingGameshark, // Keyboard Hotkeys
 
-GLideN64 = ['--set',threadedVideo,'--set',msaa,'--set',fxaa,'--set',aspectRatio,'--set',bufferSwapMode,'--set',useNativeResolutionFactor,'--set',bilinearMode,'--set',enableHalosRemoval,'--set',anisotropy,'--set',cache,'--set',txDump,'--set',txHiresEnable,'--set',txNoTextureFileStorage,'--set',EnableInaccurateTextureCoordinates,'--set',EnableDitheringPattern,'--set',EnableHiresNoiseDithering,'--set',DitheringQuantization,'--set',RDRAMImageDitheringMode,'--set',EnableLOD,'--set',EnableHWLighting,'--set',EnableCoverage,'--set',EnableClipping,'--set',EnableShadersStorage,'--set',EnableLegacyBlending,'--set',EnableHybridFilter,'--set',EnableCustomSettings,'--set',CorrectTexrectCoords,'--set',EnableNativeResTexrects,'--set',BackgroundsMode,'--set',EnableTexCoordBounds,'--set',EnableFBEmulation,'--set',EnableCopyAuxiliaryToRDRAM,'--set',EnableN64DepthCompare,'--set',ForceDepthBufferClear,'--set',DisableFBInfo,'--set',FBInfoReadColorChunk,'--set',FBInfoReadDepthChunk,'--set',EnableCopyColorToRDRAM,'--set',EnableCopyDepthToRDRAM,'--set',EnableCopyColorFromRDRAM,'--set',EnableCopyDepthToMainDepthBuffer,'--set',EnableOverscan,'--set',OverscanNtscTop,'--set',OverscanNtscLeft,'--set',OverscanNtscRight,'--set',OverscanNtscBottom,'--set',OverscanPalTop,'--set',OverscanPalLeft,'--set',OverscanPalRight,'--set',OverscanPalBottom,'--set',txFilterMode,'--set',txEnhancementMode,'--set',txDeposterize,'--set',txFilterIgnoreBG,'--set',txCacheSize,'--set',txHiresVramLimit,'--set',txHiresFullAlphaChannel,'--set',txHresAltCRC,'--set',txCacheCompression, '--set',txForce16bpp, '--set',txSaveCache,'--set',txPathSetting,'--set',txCachePathSetting,'--set',txDumpPathSetting,'--set',hkTexDump,'--set',hkHdTexReload,'--set',hkHdTexToggle,'--set',hkInaccurateTexCords,'--set',hkVsync,'--set',hkFBEmulation,'--set',hkN64DepthCompare,'--set',hkOsdVis,'--set',hkOsdFps,'--set',hkOsdPercent,'--set',hkOsdInternalResolution,'--set',hkOsdRenderingResolution,'--set',hkTexCoordBounds,'--set',hkNativeResTexrects,'--set',hkForceGammaCorrection,'--set',ForceGammaCorrection,'--set',GammaCorrectionLevel,'--set',fontSize,'--set',fontColor,'--set',ShowFPS,'--set',ShowVIS,'--set',ShowPercent,'--set',ShowInternalResolution,'--set',ShowRenderingResolution,'--set',ShowStatistics,'--set',CountersPos],
+JoyMappingStop,JoyMappingFullscreen,JoyMappingSaveState,JoyMappingLoadState,JoyMappingIncrementSlot,JoyMappingReset,JoyMappingSpeedDown,JoyMappingSpeedUp,JoyMappingScreenshot,JoyMappingPause,JoyMappingMute,JoyMappingIncreaseVolume,JoyMappingDecreaseVolume,JoyMappingFastForward,JoyMappingFrameAdvance,JoyMappingGameshark, // Gamepad Hotkeys
 
-Parallel = ['--set',ParallelFullscreen,'--set',ParallelUpscaling,'--set',ParallelScreenWidth,'--set',ParallelScreenHeight,'--set',ParallelSuperscaledReads,'--set',ParallelSuperscaledDither,'--set',ParallelDeinterlaceMode,'--set',ParallelCropOverscan,'--set',ParallelVerticalStretch,'--set',ParallelVIAA,'--set',ParallelDivot,'--set',ParallelGammaDither,'--set',ParallelVIBilerp,'--set',ParallelVIDither,'--set',ParallelDownScale,'--set',ParallelNativeTextLOD,'--set',ParallelNativeTextRECT,'--set',ParallelSynchronousRDP,'--set',ParallelWidescreenStretch,'--set',ParallelVSync],
+mode1,mode2,mode3,mode4,plugin1,plugin2,plugin3,plugin4,plugged1,plugged2,plugged3,plugged4,name1,name2,name3,name4,device1,device2,device3,device4,gbROM1Setting,gbROM2Setting,gbROM3Setting,gbROM4Setting,gbRAM1Setting,gbRAM2Setting,gbRAM3Setting,gbRAM4Setting, // Input
 
-cheats = [], activeCheats = '';
+AButton1,BButton1,LTrig1,RTrig1,ZTrig1,Start1,DPadU1,DPadL1,DPadR1,DPadD1,CButtonU1,CButtonL1,CButtonR1,CButtonD1,MempakSwitch1,RumblepakSwitch1,XAxis1,YAxis1,analogdeadzone1,analogpeak1,mouse1,msensitivity1, // Controller 1
+
+AButton2,BButton2,LTrig2,RTrig2,ZTrig2,Start2,DPadU2,DPadL2,DPadR2,DPadD2,CButtonU2,CButtonL2,CButtonR2,CButtonD2,MempakSwitch2,RumblepakSwitch2,XAxis2,YAxis2,analogdeadzone2,analogpeak2,mouse2,msensitivity2, // Controller 2
+
+AButton3,BButton3,LTrig3,RTrig3,ZTrig3,Start3,DPadU3,DPadL3,DPadR3,DPadD3,CButtonU3,CButtonL3,CButtonR3,CButtonD3,MempakSwitch3,RumblepakSwitch3,XAxis3,YAxis3,analogdeadzone3,analogpeak3,mouse3,msensitivity3, // Controller 3
+
+AButton4,BButton4,LTrig4,RTrig4,ZTrig4,Start4,DPadU4,DPadL4,DPadR4,DPadD4,CButtonU4,CButtonL4,CButtonR4,CButtonD4,MempakSwitch4,RumblepakSwitch4,XAxis4,YAxis4,analogdeadzone4,analogpeak4,mouse4,msensitivity4, // Controller 4
+
+Parallel,NumWorkers,BusyLoop,ViMode,ViInterpolation,ViWidescreen,ViHideOverscan,ViIntegerScaling,DpCompat, // Angrylion Plus
+
+threadedVideo,msaa,fxaa,aspectRatio,bufferSwapMode,useNativeResolutionFactor,bilinearMode,enableHalosRemoval,anisotropy,cache,txDump,txHiresEnable,txNoTextureFileStorage,EnableInaccurateTextureCoordinates,EnableDitheringPattern,EnableHiresNoiseDithering,DitheringQuantization,RDRAMImageDitheringMode,EnableLOD,EnableHWLighting,EnableCoverage,EnableClipping,EnableShadersStorage,EnableLegacyBlending,EnableHybridFilter,EnableCustomSettings,CorrectTexrectCoords,EnableNativeResTexrects,BackgroundsMode,EnableTexCoordBounds,EnableFBEmulation,EnableCopyAuxiliaryToRDRAM,EnableN64DepthCompare,ForceDepthBufferClear,DisableFBInfo,FBInfoReadColorChunk,FBInfoReadDepthChunk,EnableCopyColorToRDRAM,EnableCopyDepthToRDRAM,EnableCopyColorFromRDRAM,EnableCopyDepthToMainDepthBuffer,EnableOverscan,OverscanNtscTop,OverscanNtscLeft,OverscanNtscRight,OverscanNtscBottom,OverscanPalTop,OverscanPalLeft,OverscanPalRight,OverscanPalBottom,txFilterMode,txEnhancementMode,txDeposterize,txFilterIgnoreBG,txCacheSize,txHiresVramLimit,txHiresFullAlphaChannel,txHresAltCRC,txCacheCompression, txForce16bpp, txSaveCache,txPathSetting,txCachePathSetting,txDumpPathSetting,hkTexDump,hkHdTexReload,hkHdTexToggle,hkInaccurateTexCords,hkVsync,hkFBEmulation,hkN64DepthCompare,hkOsdVis,hkOsdFps,hkOsdPercent,hkOsdInternalResolution,hkOsdRenderingResolution,hkTexCoordBounds,hkNativeResTexrects,hkForceGammaCorrection,ForceGammaCorrection,GammaCorrectionLevel,fontSize,fontColor,ShowFPS,ShowVIS,ShowPercent,ShowInternalResolution,ShowRenderingResolution,ShowStatistics,CountersPos, // GLideN64
+
+ParallelFullscreen,ParallelUpscaling,ParallelScreenWidth,ParallelScreenHeight,ParallelSuperscaledReads,ParallelSuperscaledDither,ParallelDeinterlaceMode,ParallelCropOverscan,ParallelVerticalStretch,ParallelVIAA,ParallelDivot,ParallelGammaDither,ParallelVIBilerp,ParallelVIDither,ParallelDownScale,ParallelNativeTextLOD,ParallelNativeTextRECT,ParallelSynchronousRDP,ParallelWidescreenStretch,ParallelVSync // Parallel
+
+], cheats = [], activeCheats = '';
 
 if(id('cheatList').innerHTML != ''){ // activate cheats
 var cheatInputs = id('cheatList').querySelectorAll("input[type='checkbox']");
@@ -1852,15 +1869,12 @@ for (var i = 0; i < cheatInputs.length; i++){var cheatInput = cheatInputs[i];che
 function checkCheats(cheatInput){if(cheatInput.checked){var id = cheatInput.id.replace('_','-');activeCheats += id + ','}}
 cheats = ['--cheats',activeCheats]}
 
-if(!id('plugged1').checked)controller1 = [] // reduce number of parameters
-if(!id('plugged2').checked)controller2 = []
-if(!id('plugged3').checked)controller3 = []
-if(!id('plugged4').checked)controller4 = []
+settings = settings.flatMap((w,i) => (i+1) % 1 === 0 ? ['--set', w] : w) // insert '--set'
 
 try {writeGCA(gcaSettings)} // write GameCube Adapter settings to file
 catch (e) {console.warn(e)}
 
-const parameters = core.concat(PIFROM,savestate,nospeedlimit,verbose,cheats,controls,controller1,controller2,controller3,controller4,Angrylion,GLideN64,Parallel,filePath), // launch parameters
+const parameters = core.concat(settings,PIFROM,savestate,nospeedlimit,verbose,cheats,filePath), // launch parameters
 child = emuLaunch(parameters);
 
 })
