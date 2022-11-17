@@ -11,8 +11,8 @@ dialogFile = (data) => {return ipcRenderer.sendSync('dialogFile', data)},
 writeGCA = (gcaSettings) => {ipcRenderer.sendSync('writeGCA', gcaSettings)},
 emuLaunch = (parameters) => {ipcRenderer.send('emuLaunch', parameters)},
 showCheats = (parameters) => {return ipcRenderer.sendSync('showCheats', parameters)},
-jsrefresh = () => {return ipcRenderer.sendSync('jsrefresh')},
-jsmapping = (padId) => {return ipcRenderer.sendSync('jsmapping', padId)},
+jsRefresh = () => {return ipcRenderer.sendSync('jsRefresh')},
+jsMapping = (padId) => {return ipcRenderer.sendSync('jsMapping', padId)},
 
 jstest = (joyinput) => {
 var joyvalue,joydata,jstestConfig,config;
@@ -28,7 +28,7 @@ ipcRenderer.send('jstestKill')
 ipcRenderer.send('jstestChild', jstestConfig)
 ipcRenderer.once('jsLog', (e, data) => {
 joydata = data.replace(/\r/gm,'');
-let mapping = jsmapping(cvalue); // force + on trigger axis
+let mapping = jsMapping(cvalue); // force + on trigger axis
 if(mapping != '' && mapping != null && mapping != undefined){
 mapping = '"' + mapping.replace(/hint:(.*):(.*)/,'hint:$1$2').replace(/([^,]*),([^,]*),/,'guid:$1,name:$2,').replace(/\:/g,'":"').replace(/,/g,'","').replace(/\r|\n/g,'') + '"'
 mapping = JSON.parse('{' + mapping.replace(/,""/,'') + '}')
@@ -71,7 +71,7 @@ contextBridge.exposeInMainWorld('dialogDirectory',dialogDirectory)
 contextBridge.exposeInMainWorld('dialogFile',dialogFile)
 contextBridge.exposeInMainWorld('emuLaunch',emuLaunch)
 contextBridge.exposeInMainWorld('jstest',jstest)
-contextBridge.exposeInMainWorld('jsrefresh',jsrefresh)
-contextBridge.exposeInMainWorld('jsmapping',jsmapping)
+contextBridge.exposeInMainWorld('jsRefresh',jsRefresh)
+contextBridge.exposeInMainWorld('jsMapping',jsMapping)
 contextBridge.exposeInMainWorld('showCheats',showCheats)
 contextBridge.exposeInMainWorld('writeGCA',writeGCA)

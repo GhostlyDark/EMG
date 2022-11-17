@@ -17,9 +17,9 @@ executablePath = path(cwd, 'mupen64plus'),
 jstestPath = path(cwd, 'sdl2-jstest'),
 isLinux = process.platform === 'linux',
 stdio = ['ignore', 'pipe', 'ignore'],
-options = {cwd: cwd, stdio: stdio, windowsHide: true},
 emuOptions = {cwd: cwd, detached: true, stdio: stdio},
-jstestOptions = {cwd: cwd, stdio: stdio, timeout: 10000, windowsHide: true},
+cheatOptions = {cwd: cwd, stdio: stdio, windowsHide: true},
+jsOptions = {cwd: cwd, stdio: stdio, timeout: 5000, windowsHide: true},
 scale = {width:28},
 load = path(dir, 'index.htm'),
 name = ' ' + app.name + ' v' + app.getVersion(),
@@ -41,23 +41,23 @@ ipcMain.on('emuLaunch', (e, parameters) => {
 })
 
 ipcMain.on('showCheats', (e, parameters) => {
-	let child = childSpawnSync(executablePath, parameters, options);
+	let child = childSpawnSync(executablePath, parameters, cheatOptions);
 	e.returnValue = child.stdout.toString()
 })
 
 ipcMain.on('jstestChild', (e, jstestConfig) => {
-	jstestChild = childSpawn(jstestPath, jstestConfig, jstestOptions);
+	jstestChild = childSpawn(jstestPath, jstestConfig, jsOptions);
 	jstestChild.stdout.on('data', (data) => {e.reply('jsLog', data.toString())})
 	jstestChild.on('close', () => {e.reply('jsClosed')})
 })
 
-ipcMain.on('jsrefresh', (e) => {
-	let child = childSpawnSync(jstestPath, ['-ls'], options);
+ipcMain.on('jsRefresh', (e) => {
+	let child = childSpawnSync(jstestPath, ['-ls'], jsOptions);
 	e.returnValue = child.stdout.toString()
 })
 
-ipcMain.on('jsmapping', (e, padId) => {
-	let child = childSpawnSync(jstestPath, ['-m', padId], options);
+ipcMain.on('jsMapping', (e, padId) => {
+	let child = childSpawnSync(jstestPath, ['-m', padId], jsOptions);
 	e.returnValue = child.stdout.toString()
 })
 

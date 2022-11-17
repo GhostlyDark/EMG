@@ -60,7 +60,7 @@ id('refresh'+c).addEventListener('click', function(){refresh(id(c))})})
 
 function refresh(drop){ // update SDL device dropdown
 Array.from(drop.querySelectorAll('.generated')).forEach(generated => generated.remove());
-let list = jsrefresh();
+let list = jsRefresh();
 var datasplit = list.split(regsplit);
 datasplit.forEach(device => update(device));
 
@@ -107,7 +107,7 @@ ruId = 'CButtonU' + cId + 'c',
 sId = 'Start' + cId + 'c',
 xId = 'BButton' + cId + 'c',
 yId = 'CButtonL' + cId + 'cb';
-let mapping = jsmapping(padId);
+let mapping = jsMapping(padId);
 if(mapping === '' || mapping === null || mapping === undefined)return
 id('clear_controls'+cId).click()
 mapping = '"' + mapping.replace(/hint:(.*):(.*)/,'hint:$1$2').replace(/([^,]*),([^,]*),/,'guid:$1,name:$2,').replace(/\:/g,'":"').replace(/,/g,'","').replace(/\r|\n/g,'') + '"'
