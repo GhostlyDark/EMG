@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-var cheatRadio,filePath,fileResult,txPath,txPathResult,txCachePath,txCachePathResult,txDumpPath,txDumpPathResult,PIF,PIFResult,IPLROM,IPLROMResult,Disk,DiskResult,ScreenshotPath,ScreenshotPathResult,SaveStatePath,SaveStatePathResult,SaveSRAMPath,SaveSRAMPathResult,stPath,stResult,gbROM1,gbROM1Result,gbROM2,gbROM2Result,gbROM3,gbROM3Result,gbROM4,gbROM4Result,gbRAM1,gbRAM1Result,gbRAM2,gbRAM2Result,gbRAM3,gbRAM3Result,gbRAM4,gbRAM4Result,recentFiles = [];
+var cheatRadio,filePath,fileResult,txPath,txPathResult,txCachePath,txCachePathResult,txDumpPath,txDumpPathResult,IPLROM,IPLROMResult,Disk,DiskResult,ScreenshotPath,ScreenshotPathResult,SaveStatePath,SaveStatePathResult,SaveSRAMPath,SaveSRAMPathResult,gbROM1,gbROM1Result,gbROM2,gbROM2Result,gbROM3,gbROM3Result,gbROM4,gbROM4Result,gbRAM1,gbRAM1Result,gbRAM2,gbRAM2Result,gbRAM3,gbRAM3Result,gbRAM4,gbRAM4Result,recentFiles = [];
 
 const textInputs = document.querySelectorAll("input[type='text']"),
 
@@ -15,9 +15,8 @@ hotKeys = {0:'',48:'0',49:'1',50:'2',51:'3',52:'4',53:'5',54:'6',55:'7',56:'8',5
 
 n64Ext = ['*.n64','*.v64','*.z64'], nddExt = ['*.d64','*.ndd'], gbExt = ['*.gb','*.gbc'], saveExt = ['*.sav'], biosExt = ['*.bin','*.rom',...n64Ext],
 n64 = ['n64','v64','z64'], ndd = ['d64','ndd'], gb = ['gb','gbc'], save = ['sav'], bios = [...n64,'bin','rom'],
-st = ['st0','st1','st2','st3','st4','st5','st6','st7','st8','st9','state'],
 
-dragDrop = ['fileInput','PIF','IPLROM','Disk','st','gbROM1','gbROM2','gbROM3','gbROM4','gbRAM1','gbRAM2','gbRAM3','gbRAM4'],
+dragDrop = ['fileInput','IPLROM','Disk','gbROM1','gbROM2','gbROM3','gbROM4','gbRAM1','gbRAM2','gbRAM3','gbRAM4'],
 core_main = ['core_core','core_plugins','core_audio','core_advanced','core_64dd','core_directories'],
 input_controller = ['input_controller1','input_controller2','input_controller3','input_controller4','input_gca'],
 hk = ['hk_keyboard','hk_controller1','hk_controller2','hk_controller3','hk_controller4'],
@@ -517,13 +516,6 @@ if(fPath != undefined){
 if(n64.includes(fileExtension(fPath)))filePath = fPath
 if(filePath != undefined){id('fileText').innerHTML = filePath;localStorage.setItem('filePath', filePath);if(!recentFiles.includes(filePath))recentFiles.unshift(filePath);recentFiles.splice(10);recentFilesUpdate();localStorage.setItem('recentFiles',JSON.stringify(recentFiles));if(id('cheatList').innerHTML!='')id('cheatList').innerHTML=''}}})
 
-id('PIF').addEventListener('drop', function(e){
-prevent(e);if(e.dataTransfer.files[0] === undefined)return
-let fPath = e.dataTransfer.files[0].path;
-if(fPath != undefined){
-if(bios.includes(fileExtension(fPath)))PIF = fPath
-if(PIF != undefined){id('PIFText').innerHTML = PIF;localStorage.setItem('PIF', PIF)}}})
-
 id('IPLROM').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
 let fPath = e.dataTransfer.files[0].path;
@@ -537,13 +529,6 @@ let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
 if(ndd.includes(fileExtension(fPath)))Disk = fPath
 if(Disk != undefined){id('DiskText').innerHTML = Disk;localStorage.setItem('Disk', Disk)}}})
-
-id('st').addEventListener('drop', function(e){
-prevent(e);if(e.dataTransfer.files[0] === undefined)return
-let fPath = e.dataTransfer.files[0].path;
-if(fPath != undefined){
-if(st.includes(fileExtension(fPath))){stPath = fPath}
-if(stPath != undefined){id('stText').innerHTML = stPath;localStorage.setItem('st', stPath)}}})
 
 id('gbROM1').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
@@ -610,14 +595,6 @@ fileResult = dialogFile({name:'N64 ROM',extensions:n64});
 if(fileResult != undefined){filePath = fileResult;
 if(filePath != undefined){id('fileText').innerHTML = filePath;localStorage.setItem('filePath', filePath);if(!recentFiles.includes(filePath.toString()))recentFiles.unshift(filePath.toString());recentFiles.splice(10);recentFilesUpdate();localStorage.setItem('recentFiles',JSON.stringify(recentFiles));if(id('cheatList').innerHTML!='')id('cheatList').innerHTML=''}}})
 
-id('clearPIF').addEventListener('click', function(){PIF = '';id('PIFText').innerHTML = '';localStorage.removeItem('PIF')})
-if(localStorage.getItem('PIF') === null){PIF = '';id('PIFText').innerHTML = PIF}
-if(localStorage.getItem('PIF') != null){PIF = localStorage.getItem('PIF');id('PIFText').innerHTML = PIF}
-id('PIF').addEventListener('click', function(){
-PIFResult = dialogFile({name:'64DD IPL',extensions:bios})
-if(PIFResult != undefined){PIF = PIFResult.toString();
-if(PIF != undefined){id('PIFText').innerHTML = PIF;localStorage.setItem('PIF', PIF)}}})
-
 id('clearIPLROM').addEventListener('click', function(){IPLROM = '';id('IPLROMText').innerHTML = '';localStorage.removeItem('IPLROM')})
 if(localStorage.getItem('IPLROM') === null){IPLROM = '';id('IPLROMText').innerHTML = IPLROM}
 if(localStorage.getItem('IPLROM') != null){IPLROM = localStorage.getItem('IPLROM');id('IPLROMText').innerHTML = IPLROM}
@@ -633,14 +610,6 @@ id('Disk').addEventListener('click', function(){
 DiskResult = dialogFile({name:'64DD Disk',extensions:ndd})
 if(DiskResult != undefined){Disk = DiskResult.toString();
 if(Disk != undefined){id('DiskText').innerHTML = Disk;localStorage.setItem('Disk', Disk)}}})
-
-id('clearst').addEventListener('click', function(){stPath = '';id('stText').innerHTML = '';localStorage.removeItem('st')})
-if(localStorage.getItem('st') === null){stPath = '';id('stText').innerHTML = stPath}
-if(localStorage.getItem('st') != null){stPath = localStorage.getItem('st');id('stText').innerHTML = stPath}
-id('st').addEventListener('click', function(){
-stResult = dialogFile({name:'Savestate',extensions:st})
-if(stResult != undefined){stPath = stResult.toString()}
-if(stPath != undefined){id('stText').innerHTML = stPath;localStorage.setItem('st', stPath)}})
 
 id('cleargbROM1').addEventListener('click', function(){gbROM1 = '';id('gbROM1Text').innerHTML = '';localStorage.removeItem('gbROM1')})
 if(localStorage.getItem('gbROM1') === null){gbROM1 = '';id('gbROM1Text').innerHTML = gbROM1}
@@ -761,8 +730,6 @@ var exp = 'Core[DisableExtraMem]=' + id('exp').checked,
 osd = 'Core[OnScreenDisplay]=false',
 nospeedlimit = id('nospeedlimit').checked ? '--nospeedlimit' : [],
 verbose = id('verbose').checked ? '--verbose' : [],
-savestate = stPath != '' ? ['--savestate',stPath] : [],
-PIFROM = PIF != '' ? ['--pif',PIF] : [],
 fullscreen = 'Video-General[Fullscreen]=' + id('fullscreen').checked,
 ParallelFullscreen = 'Video-Parallel[Fullscreen]=' + id('fullscreen').checked,
 vsync = 'Video-General[VerticalSync]=' + id('vsync').checked,
@@ -1666,7 +1633,7 @@ settings = settings.flatMap((w,i) => (i+1) % 1 === 0 ? ['--set', w] : w) // inse
 try {writeGCA(gcaSettings)} // write GameCube Adapter settings to file
 catch (e) {console.warn(e)}
 
-const parameters = core.concat(settings,PIFROM,savestate,nospeedlimit,verbose,cheats,filePath), // launch parameters
+const parameters = core.concat(settings,nospeedlimit,verbose,cheats,filePath), // launch parameters
 child = emuLaunch(parameters);
 
 })
