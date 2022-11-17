@@ -2,6 +2,7 @@
 
 # Common variables
 ELECTRON="v21.2.2"
+threads="${2:-$(nproc)}"
 
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
@@ -22,7 +23,8 @@ M64P_COMPONENTS="mupen64plus-core mupen64plus-ui-console mupen64plus-audio-sdl m
 SOURCE="mupen64plus-rom sdl-jstest SDL_GameControllerDB mupen64plus-input-gca GLideN64 angrylion-rdp-plus parallel-rdp-standalone parallel-rsp"
 
 
-# Create source directory
+# Create directories
+mkdir -p bin
 mkdir -p source
 
 
@@ -35,14 +37,16 @@ done
 
 
 # Download and extract Electron
+cd bin
 [ ! -f electron-${ELECTRON}-linux-x64.zip ] && wget https://github.com/electron/electron/releases/download/${ELECTRON}/electron-${ELECTRON}-linux-x64.zip
-7z x electron-${ELECTRON}-linux-x64.zip -oEMG '-x!LICENSE' -y
+7z x electron-${ELECTRON}-linux-x64.zip -o../EMG '-x!LICENSE' -y
+cd ../
 
 
 # Build mupen64plus components
 for component in ${M64P_COMPONENTS}; do
-	make -j4 -C source/${component}/projects/unix all $@ ${MAKE_INSTALL}
-	make -j4 -C source/${component}/projects/unix install $@ ${MAKE_INSTALL} DESTDIR="$(pwd)/${EMG}"
+	make -j$threads -C source/${component}/projects/unix all $@ ${MAKE_INSTALL}
+	make -j$threads -C source/${component}/projects/unix install $@ ${MAKE_INSTALL} DESTDIR="$(pwd)/${EMG}"
 done
 
 
@@ -51,7 +55,7 @@ cd source/sdl-jstest
 mkdir -p build
 cd build
 cmake ..
-make -j4
+make -j$threads
 cd ../../../
 
 
@@ -66,7 +70,7 @@ cd source/GLideN64/src
 mkdir -p build
 cd build
 cmake .. -DMUPENPLUSAPI=On -DUSE_SYSTEM_LIBS=ON
-make -j4
+make -j$threads
 cd ../../../../
 
 
@@ -75,7 +79,7 @@ cd source/angrylion-rdp-plus
 mkdir -p build
 cd build
 cmake ..
-make -j4
+make -j$threads
 cd ../../../
 
 
@@ -84,7 +88,7 @@ cd source/parallel-rdp-standalone
 mkdir -p build
 cd build
 cmake .. -DCMAKE_BUILD_TYPE=Release
-make -j4
+make -j$threads
 cd ../../../
 
 
@@ -93,7 +97,7 @@ cd source/parallel-rsp
 mkdir -p build
 cd build
 cmake ..
-make -j4
+make -j$threads
 cd ../../../
 
 
@@ -140,7 +144,6 @@ emg_dir="$toplvl_dir/EMG"
 assets_dir="$emg_dir/assets"
 ico_dir="$assets_dir/ico"
 install_dir="$emg_dir/resources/app/m64p"
-threads="${2:-$(nproc)}"
 
 
 # Create directories
