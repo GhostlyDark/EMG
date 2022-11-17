@@ -15,7 +15,7 @@ jsRefresh = () => {return ipcRenderer.sendSync('jsRefresh')},
 jsMapping = (padId) => {return ipcRenderer.sendSync('jsMapping', padId)},
 
 jstest = (joyinput) => {
-var joyvalue,joydata,jstestConfig,config;
+var id = function(id){return document.getElementById(id)},joyvalue,joydata,jstestConfig,config;
 if(joyinput.id.includes('1'))config = c1
 if(joyinput.id.includes('2'))config = c2
 if(joyinput.id.includes('3'))config = c3
@@ -44,7 +44,18 @@ if(joyvalue != joyinput.value && joyinput.value != '' && !joyinput.value.include
 else{ // joypad buttons
 if(joydata.includes('button')){joyvalue = joydata}
 if(joydata.includes('hat')){joyvalue = joydata.replace('1)','Up)').replace('2)','Right)').replace('4)','Down)').replace('8)','Left)')}}
-if(joyvalue != undefined){joyinput.value = joyvalue;localStorage.setItem(joyinput.id,joyvalue)}})
+if(joyvalue != undefined){
+if(joyinput.id.includes('c') && !joyinput.id.includes('cb')){ // disallow same input type for secondary bindings, slot 1
+const secondary = joyinput.id + 'b';
+if(id(secondary).value.includes('axis') && joyvalue.includes('axis')){id(secondary).value = '';localStorage.removeItem(secondary)}
+if(id(secondary).value.includes('button') && joyvalue.includes('button')){id(secondary).value = '';localStorage.removeItem(secondary)}
+if(id(secondary).value.includes('hat') && joyvalue.includes('hat')){id(secondary).value = '';localStorage.removeItem(secondary)}}
+if(joyinput.id.includes('cb')){ // disallow same input type for secondary bindings, slot 2
+const primary = joyinput.id.replace('cb','c');
+if(id(primary).value.includes('axis') && joyvalue.includes('axis')){id(primary).value = joyvalue;localStorage.setItem(primary,joyvalue);return}
+if(id(primary).value.includes('button') && joyvalue.includes('button')){id(primary).value = joyvalue;localStorage.setItem(primary,joyvalue);return}
+if(id(primary).value.includes('hat') && joyvalue.includes('hat')){id(primary).value = joyvalue;localStorage.setItem(primary,joyvalue);return}}
+joyinput.value = joyvalue;localStorage.setItem(joyinput.id,joyvalue)}}) // finalize
 joyinput.addEventListener('blur', function(){ipcRenderer.send('jstestKill')})
 ipcRenderer.once('jsClosed', () => {joyinput.blur()})}
 
