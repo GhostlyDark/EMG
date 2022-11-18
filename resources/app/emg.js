@@ -1066,7 +1066,7 @@ gcaSettings = 'control_stick_deadzone = ' +  id('control_stick_deadzone').value 
 
 if(isLinux){RspFallback = 'Rsp-HLE[RspFallback]=./' + RspFallback + '.so'}else{RspFallback = 'Rsp-HLE[RspFallback]=' + RspFallback}
 if(id('nospeedlimit').checked){audio = 'dummy';vsync = 'Video-General[VerticalSync]=false';ParallelVSync = 'Video-Parallel[Vsync]=false'} // force muted audio and disabled V-Sync
-if(gfx.includes('angrylion') || gfx.includes('parallel')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=false';cxd4Audio = 'rsp-cxd4[DisplayListToAudioPlugin]=false'} // prevent crashes caused by wrong RSP settings
+if(gfx.includes('angrylion') || gfx.includes('parallel')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=false'} // prevent crashes caused by wrong RSP settings
 if(gfx.includes('angrylion') && rsp.includes('rsp-hle')){rsp = 'mupen64plus-rsp-cxd4'}
 else if(gfx.includes('parallel') && rsp.includes('rsp-hle')){rsp = 'mupen64plus-rsp-parallel'}
 
