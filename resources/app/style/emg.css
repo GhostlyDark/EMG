@@ -48,7 +48,7 @@ option{background:#efefef}
 .floatleft{float:left}
 .floatright{float:right}
 input.floatright,select.floatright{top:-5px}
-input:disabled,select:disabled,input:disabled + label,select:disabled + label{opacity:.5}
+input:disabled,select:disabled,input:disabled + label,input:disabled + span + label,select:disabled + label{opacity:.5}
 [type='checkbox'] + label{position:relative;top:-2px;cursor:pointer;padding-left:5px}
 [type='number'] + label,select + label,[type='text'] + label{padding-left:10px}
 .hotkeys{text-align:center;display:inline-block;width:660px;outline:2px dashed #111;padding:20px;margin-top:10px}
