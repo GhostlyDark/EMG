@@ -280,7 +280,7 @@ function txNoTextureFileStorageDisable(){if(id('txNoTextureFileStorage').checked
 id('txNoTextureFileStorage').addEventListener('change', txNoTextureFileStorageDisable)
 txNoTextureFileStorageDisable()
 
-function txHiresEnableDisable(){if(id('txHiresEnable').checked){id('txDump').disabled = false;id('txHiresFullAlphaChannel').disabled = false;id('txHresAltCRC').disabled = false;id('txCacheCompression').disabled = false;id('txSaveCache').disabled = false;id('txNoTextureFileStorage').disabled = false}else{id('txDump').disabled = true;id('txHiresFullAlphaChannel').disabled = true;id('txHresAltCRC').disabled = true;id('txCacheCompression').disabled = true;id('txSaveCache').disabled = true;id('txNoTextureFileStorage').disabled = true}}
+function txHiresEnableDisable(){if(id('txHiresEnable').checked){id('txFilterMode').disabled = true;id('txEnhancementMode').disabled = true;id('txCacheSize').disabled = true;id('txDeposterize').disabled = true;id('txFilterIgnoreBG').disabled = true;id('txDump').disabled = false;id('txHiresFullAlphaChannel').disabled = false;id('txHresAltCRC').disabled = false;id('txCacheCompression').disabled = false;id('txSaveCache').disabled = false;id('txNoTextureFileStorage').disabled = false}else{id('txFilterMode').disabled = false;id('txEnhancementMode').disabled = false;id('txCacheSize').disabled = false;id('txDeposterize').disabled = false;id('txFilterIgnoreBG').disabled = false;id('txDump').disabled = true;id('txHiresFullAlphaChannel').disabled = true;id('txHresAltCRC').disabled = true;id('txCacheCompression').disabled = true;id('txSaveCache').disabled = true;id('txNoTextureFileStorage').disabled = true}}
 id('txHiresEnable').addEventListener('change', txHiresEnableDisable)
 txHiresEnableDisable()
 
