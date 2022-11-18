@@ -67,7 +67,7 @@
 <p>&nbsp;</p>
 <p title="Force number of cycles per emulated instruction (speed hack, not recommended). Leave at 0 to disable."><span class="numberDecrease" id="decreaseCountPerOp">-</span><input id="CountPerOp" min="0" max="6" step="1" value="0" type="number"><span class="numberIncrease" id="increaseCountPerOp">+</span><label for="CountPerOp">Counter Factor</label><button class="floatright" data-value="0" id="resetCountPerOp">Reset</button></p>
 <p>&nbsp;</p>
-<p title="Reduce number of cycles per update by power of two (overclock)."><span class="numberDecrease" id="decreaseCountPerOpDenomPot">-</span><input id="CountPerOpDenomPot" min="0" max="11" step="1" value="0" type="number"><span class="numberIncrease" id="increaseCountPerOpDenomPot">+</span><label for="CountPerOpDenomPot">Overclock</label><button class="floatright" data-value="0" id="resetCountPerOpDenomPot">Reset</button></p>
+<p title="Reduce number of cycles per update by power of two."><span class="numberDecrease" id="decreaseCountPerOpDenomPot">-</span><input id="CountPerOpDenomPot" min="0" max="11" step="1" value="0" type="number"><span class="numberIncrease" id="increaseCountPerOpDenomPot">+</span><label for="CountPerOpDenomPot">Overclocking Factor</label><button class="floatright" data-value="0" id="resetCountPerOpDenomPot">Reset</button></p>
 <p>&nbsp;</p>
 <p title="Duration of SI DMA. Use -1 for default (per-game settings)."><span class="numberDecrease" id="decreaseSiDmaDuration">-</span><input id="SiDmaDuration" min="-1" max="1000" step="10" value="-1" type="number"><span class="numberIncrease" id="increaseSiDmaDuration">+</span><label for="SiDmaDuration">SI DMA Duration</label><button class="floatright" data-value="-1" id="resetSiDmaDuration">Reset</button></p>
 <p>&nbsp;</p>
@@ -175,7 +175,7 @@ Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
 <option value="mupen64plus-rsp-parallel">Parallel RSP</option>
 </select><label for="RspFallback">RSP Fallback</label></div>
 <p>&nbsp;</p>
-<p title="Use High Level Emulation for graphics."><input id="rspGFX" type="checkbox" data-store="rspGFX" checked><label for="rspGFX">GFX HLE</label></p>
+<p title="Use High Level Emulation for graphics if RSP plugin is Static Interpreter."><input id="rspGFX" type="checkbox" data-store="rspGFX" checked><label for="rspGFX">Use HLE for graphics</label></p>
 </div>
 <div id="core_64dd" class="hide mt-15">
 <select name="SaveDiskFormat" id="SaveDiskFormat">
