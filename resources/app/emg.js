@@ -141,6 +141,12 @@ id('clear_controls2').addEventListener('click', function(){clear_controls(2)})
 id('clear_controls3').addEventListener('click', function(){clear_controls(3)})
 id('clear_controls4').addEventListener('click', function(){clear_controls(4)})
 
+function clear_joymappings(n){m64p_joykeys.forEach(m64p_joykey => {id('clear'+m64p_joykey.replace(/1|2|3|4/,n)).click()})}
+id('clear_joymappings1').addEventListener('click', function(){clear_joymappings(1)})
+id('clear_joymappings2').addEventListener('click', function(){clear_joymappings(2)})
+id('clear_joymappings3').addEventListener('click', function(){clear_joymappings(3)})
+id('clear_joymappings4').addEventListener('click', function(){clear_joymappings(4)})
+
 
 
 n64_buttons.forEach(n64_button => { // controller input
