@@ -69,7 +69,7 @@ cd ../../
 cd source/GLideN64/src
 mkdir -p build
 cd build
-cmake .. -DMUPENPLUSAPI=On -DUSE_SYSTEM_LIBS=ON
+cmake .. -DMUPENPLUSAPI=ON -DUSE_SYSTEM_LIBS=ON
 make -j$threads
 cd ../../../../
 
@@ -78,7 +78,7 @@ cd ../../../../
 cd source/angrylion-rdp-plus
 mkdir -p build
 cd build
-cmake ..
+cmake .. -DBUILD_MUPEN64PLUS=ON -DBUILD_PROJECT64=OFF
 make -j$threads
 cd ../../../
 

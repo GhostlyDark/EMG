@@ -187,7 +187,7 @@ ExternalProject_Add(mupen64plus-video-angrylion-plus
     INSTALL_COMMAND ""
 
     BUILD_IN_SOURCE True
-    CMAKE_ARGS -DCMAKE_BUILD_TYPE=Release
+    CMAKE_ARGS -DBUILD_MUPEN64PLUS=ON -DBUILD_PROJECT64=OFF -DCMAKE_BUILD_TYPE=Release
 
     BUILD_BYPRODUCTS ${THIRDPARTY_DIR}/mupen64plus-video-angrylion-plus/mupen64plus-video-angrylion-plus.dll
     DEPENDS mupen64plus-core
@@ -203,7 +203,7 @@ ExternalProject_Add(mupen64plus-video-GLideN64
     INSTALL_COMMAND ""
 
     BUILD_IN_SOURCE False
-    CMAKE_ARGS -DMUPENPLUSAPI=1 -DUSE_SYSTEM_LIBS=ON -DCMAKE_BUILD_TYPE=Release
+    CMAKE_ARGS -DMUPENPLUSAPI=ON -DUSE_SYSTEM_LIBS=ON -DCMAKE_BUILD_TYPE=Release
 
     SOURCE_SUBDIR ./src/
     BINARY_DIR ${GLIDEN64_BUILD_DIR}
