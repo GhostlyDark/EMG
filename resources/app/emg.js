@@ -135,13 +135,20 @@ if(btn === 'y'){id(yId).value = cBtn;localStorage.setItem(yId,cBtn)}
 
 
 
-function clear_controls(n){n64_buttons.forEach(n64_button => {id('clear'+n64_button.replace(/1|2|3|4/,n)).click()})} // clear all buttons
+function clear_controls(n){n64_buttons.forEach(n64_button => {id('clear'+n64_button.replace(/1|2|3|4/,n)).click()})} // clear all inputs
 id('clear_controls1').addEventListener('click', function(){clear_controls(1)})
 id('clear_controls2').addEventListener('click', function(){clear_controls(2)})
 id('clear_controls3').addEventListener('click', function(){clear_controls(3)})
 id('clear_controls4').addEventListener('click', function(){clear_controls(4)})
 
-function clear_joymappings(n){m64p_joykeys.forEach(m64p_joykey => {id('clear'+m64p_joykey.replace(/1|2|3|4/,n)).click()})}
+id('restore_hotkeys').addEventListener('click', function(){ // restore default keyboard hotkeys
+m64p_hotkeys.forEach(m64p_hotkey => {
+var box = id(m64p_hotkey);
+box.value = box.dataset.restore;
+box.dataset.key = keySyms[box.dataset.restore];
+localStorage.removeItem(m64p_hotkey)})})
+
+function clear_joymappings(n){m64p_joykeys.forEach(m64p_joykey => {id('clear'+m64p_joykey.replace(/1|2|3|4/,n)).click()})} // clear all joypad hotkeys
 id('clear_joymappings1').addEventListener('click', function(){clear_joymappings(1)})
 id('clear_joymappings2').addEventListener('click', function(){clear_joymappings(2)})
 id('clear_joymappings3').addEventListener('click', function(){clear_joymappings(3)})

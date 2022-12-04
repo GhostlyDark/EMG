@@ -791,58 +791,62 @@ Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
 <li id="ul_hk_controller4">Controller 4</li>
 </ul>
 <p>&nbsp;</p>
-<div id="hk_keyboard" class="hotkeys">
-<p><label for="KbdMappingSlot0">Save Slot 0</label><input data-key="48" value="0" type="text" id="KbdMappingSlot0" readonly><button id="clearKbdMappingSlot0">Clear</button></p>
+<div id="hk_keyboard">
+<p><button class="floatright mb-10 mt-10" id="restore_hotkeys">Restore defaults</button></p>
 <p>&nbsp;</p>
-<p><label for="KbdMappingSlot1">Save Slot 1</label><input data-key="49" value="1" type="text" id="KbdMappingSlot1" readonly><button id="clearKbdMappingSlot1">Clear</button></p>
+<div class="hotkeys">
+<p><label for="KbdMappingSlot0">Save Slot 0</label><input data-key="48" data-restore="0" value="0" type="text" id="KbdMappingSlot0" readonly><button id="clearKbdMappingSlot0">Clear</button></p>
 <p>&nbsp;</p>
-<p><label for="KbdMappingSlot2">Save Slot 2</label><input data-key="50" value="2" type="text" id="KbdMappingSlot2" readonly><button id="clearKbdMappingSlot2">Clear</button></p>
+<p><label for="KbdMappingSlot1">Save Slot 1</label><input data-key="49" data-restore="1" value="1" type="text" id="KbdMappingSlot1" readonly><button id="clearKbdMappingSlot1">Clear</button></p>
 <p>&nbsp;</p>
-<p><label for="KbdMappingSlot3">Save Slot 3</label><input data-key="51" value="3" type="text" id="KbdMappingSlot3" readonly><button id="clearKbdMappingSlot3">Clear</button></p>
+<p><label for="KbdMappingSlot2">Save Slot 2</label><input data-key="50" data-restore="2" value="2" type="text" id="KbdMappingSlot2" readonly><button id="clearKbdMappingSlot2">Clear</button></p>
 <p>&nbsp;</p>
-<p><label for="KbdMappingSlot4">Save Slot 4</label><input data-key="52" value="4" type="text" id="KbdMappingSlot4" readonly><button id="clearKbdMappingSlot4">Clear</button></p>
+<p><label for="KbdMappingSlot3">Save Slot 3</label><input data-key="51" data-restore="3" value="3" type="text" id="KbdMappingSlot3" readonly><button id="clearKbdMappingSlot3">Clear</button></p>
 <p>&nbsp;</p>
-<p><label for="KbdMappingSlot5">Save Slot 5</label><input data-key="53" value="5" type="text" id="KbdMappingSlot5" readonly><button id="clearKbdMappingSlot5">Clear</button></p>
+<p><label for="KbdMappingSlot4">Save Slot 4</label><input data-key="52" data-restore="4" value="4" type="text" id="KbdMappingSlot4" readonly><button id="clearKbdMappingSlot4">Clear</button></p>
 <p>&nbsp;</p>
-<p><label for="KbdMappingSlot6">Save Slot 6</label><input data-key="54" value="6" type="text" id="KbdMappingSlot6" readonly><button id="clearKbdMappingSlot6">Clear</button></p>
+<p><label for="KbdMappingSlot5">Save Slot 5</label><input data-key="53" data-restore="5" value="5" type="text" id="KbdMappingSlot5" readonly><button id="clearKbdMappingSlot5">Clear</button></p>
 <p>&nbsp;</p>
-<p><label for="KbdMappingSlot7">Save Slot 7</label><input data-key="55" value="7" type="text" id="KbdMappingSlot7" readonly><button id="clearKbdMappingSlot7">Clear</button></p>
+<p><label for="KbdMappingSlot6">Save Slot 6</label><input data-key="54" data-restore="6" value="6" type="text" id="KbdMappingSlot6" readonly><button id="clearKbdMappingSlot6">Clear</button></p>
 <p>&nbsp;</p>
-<p><label for="KbdMappingSlot8">Save Slot 8</label><input data-key="56" value="8" type="text" id="KbdMappingSlot8" readonly><button id="clearKbdMappingSlot8">Clear</button></p>
+<p><label for="KbdMappingSlot7">Save Slot 7</label><input data-key="55" data-restore="7" value="7" type="text" id="KbdMappingSlot7" readonly><button id="clearKbdMappingSlot7">Clear</button></p>
 <p>&nbsp;</p>
-<p><label for="KbdMappingSlot9">Save Slot 9</label><input data-key="57" value="9" type="text" id="KbdMappingSlot9" readonly><button id="clearKbdMappingSlot9">Clear</button></p>
+<p><label for="KbdMappingSlot8">Save Slot 8</label><input data-key="56" data-restore="8" value="8" type="text" id="KbdMappingSlot8" readonly><button id="clearKbdMappingSlot8">Clear</button></p>
 <p>&nbsp;</p>
-<p><label for="KbdMappingStop">Stop</label><input data-key="0" value="" type="text" id="KbdMappingStop" readonly><button id="clearKbdMappingStop">Clear</button></p>
+<p><label for="KbdMappingSlot9">Save Slot 9</label><input data-key="57" data-restore="9" value="9" type="text" id="KbdMappingSlot9" readonly><button id="clearKbdMappingSlot9">Clear</button></p>
 <p>&nbsp;</p>
-<p><label for="KbdMappingFullscreen">Fullscreen</label><input data-key="0" value="" type="text" id="KbdMappingFullscreen" readonly><button id="clearKbdMappingFullscreen">Clear</button></p>
+<p><label for="KbdMappingStop">Stop</label><input data-key="0" data-restore="" value="" type="text" id="KbdMappingStop" readonly><button id="clearKbdMappingStop">Clear</button></p>
 <p>&nbsp;</p>
-<p><label for="KbdMappingSaveState">Save State</label><input data-key="286" value="f5" type="text" id="KbdMappingSaveState" readonly><button id="clearKbdMappingSaveState">Clear</button></p>
+<p><label for="KbdMappingFullscreen">Fullscreen</label><input data-key="0" data-restore="" value="" type="text" id="KbdMappingFullscreen" readonly><button id="clearKbdMappingFullscreen">Clear</button></p>
 <p>&nbsp;</p>
-<p><label for="KbdMappingLoadState">Load State</label><input data-key="288" value="f7" type="text" id="KbdMappingLoadState" readonly><button id="clearKbdMappingLoadState">Clear</button></p>
+<p><label for="KbdMappingSaveState">Save State</label><input data-key="286" data-restore="f5" value="f5" type="text" id="KbdMappingSaveState" readonly><button id="clearKbdMappingSaveState">Clear</button></p>
 <p>&nbsp;</p>
-<p><label for="KbdMappingIncrementSlot">Increment Slot</label><input data-key="0" value="" type="text" id="KbdMappingIncrementSlot" readonly><button id="clearKbdMappingIncrementSlot">Clear</button></p>
+<p><label for="KbdMappingLoadState">Load State</label><input data-key="288" data-restore="f7" value="f7" type="text" id="KbdMappingLoadState" readonly><button id="clearKbdMappingLoadState">Clear</button></p>
 <p>&nbsp;</p>
-<p><label for="KbdMappingReset">Reset</label><input data-key="290" value="f9" type="text" id="KbdMappingReset" readonly><button id="clearKbdMappingReset">Clear</button></p>
+<p><label for="KbdMappingIncrementSlot">Increment Slot</label><input data-key="0" data-restore="" value="" type="text" id="KbdMappingIncrementSlot" readonly><button id="clearKbdMappingIncrementSlot">Clear</button></p>
 <p>&nbsp;</p>
-<p><label for="KbdMappingSpeedDown">Speed Down</label><input data-key="0" value="" type="text" id="KbdMappingSpeedDown" readonly><button id="clearKbdMappingSpeedDown">Clear</button></p>
+<p><label for="KbdMappingReset">Reset</label><input data-key="290" data-restore="f9" value="f9" type="text" id="KbdMappingReset" readonly><button id="clearKbdMappingReset">Clear</button></p>
 <p>&nbsp;</p>
-<p><label for="KbdMappingSpeedUp">Speed Up</label><input data-key="0" value="" type="text" id="KbdMappingSpeedUp" readonly><button id="clearKbdMappingSpeedUp">Clear</button></p>
+<p><label for="KbdMappingSpeedDown">Speed Down</label><input data-key="0" data-restore="" value="" type="text" id="KbdMappingSpeedDown" readonly><button id="clearKbdMappingSpeedDown">Clear</button></p>
 <p>&nbsp;</p>
-<p><label for="KbdMappingScreenshot">Screenshot</label><input data-key="284" value="f3" type="text" id="KbdMappingScreenshot" readonly><button id="clearKbdMappingScreenshot">Clear</button></p>
+<p><label for="KbdMappingSpeedUp">Speed Up</label><input data-key="0" data-restore="" value="" type="text" id="KbdMappingSpeedUp" readonly><button id="clearKbdMappingSpeedUp">Clear</button></p>
 <p>&nbsp;</p>
-<p><label for="KbdMappingPause">Pause</label><input data-key="283" value="f2" type="text" id="KbdMappingPause" readonly><button id="clearKbdMappingPause">Clear</button></p>
+<p><label for="KbdMappingScreenshot">Screenshot</label><input data-key="284" data-restore="f3" value="f3" type="text" id="KbdMappingScreenshot" readonly><button id="clearKbdMappingScreenshot">Clear</button></p>
 <p>&nbsp;</p>
-<p><label for="KbdMappingMute">Mute</label><input data-key="0" value="" type="text" id="KbdMappingMute" readonly><button id="clearKbdMappingMute">Clear</button></p>
+<p><label for="KbdMappingPause">Pause</label><input data-key="283" data-restore="f2" value="f2" type="text" id="KbdMappingPause" readonly><button id="clearKbdMappingPause">Clear</button></p>
 <p>&nbsp;</p>
-<p><label for="KbdMappingIncreaseVolume">Increase Volume</label><input data-key="0" value="" type="text" id="KbdMappingIncreaseVolume" readonly><button id="clearKbdMappingIncreaseVolume">Clear</button></p>
+<p><label for="KbdMappingMute">Mute</label><input data-key="0" data-restore="" value="" type="text" id="KbdMappingMute" readonly><button id="clearKbdMappingMute">Clear</button></p>
 <p>&nbsp;</p>
-<p><label for="KbdMappingDecreaseVolume">Decrease Volume</label><input data-key="0" value="" type="text" id="KbdMappingDecreaseVolume" readonly><button id="clearKbdMappingDecreaseVolume">Clear</button></p>
+<p><label for="KbdMappingIncreaseVolume">Increase Volume</label><input data-key="0" data-restore="" value="" type="text" id="KbdMappingIncreaseVolume" readonly><button id="clearKbdMappingIncreaseVolume">Clear</button></p>
 <p>&nbsp;</p>
-<p><label for="KbdMappingFastForward">Fast Forward</label><input data-key="0" value="" type="text" id="KbdMappingFastForward" readonly><button id="clearKbdMappingFastForward">Clear</button></p>
+<p><label for="KbdMappingDecreaseVolume">Decrease Volume</label><input data-key="0" data-restore="" value="" type="text" id="KbdMappingDecreaseVolume" readonly><button id="clearKbdMappingDecreaseVolume">Clear</button></p>
 <p>&nbsp;</p>
-<p><label for="KbdMappingFrameAdvance">Frame Advance</label><input data-key="282" value="f1" type="text" id="KbdMappingFrameAdvance" readonly><button id="clearKbdMappingFrameAdvance">Clear</button></p>
+<p><label for="KbdMappingFastForward">Fast Forward</label><input data-key="0" data-restore="" value="" type="text" id="KbdMappingFastForward" readonly><button id="clearKbdMappingFastForward">Clear</button></p>
 <p>&nbsp;</p>
-<p><label for="KbdMappingGameshark">GameShark Button</label><input data-key="0" value="" type="text" id="KbdMappingGameshark" readonly><button id="clearKbdMappingGameshark">Clear</button></p>
+<p><label for="KbdMappingFrameAdvance">Frame Advance</label><input data-key="282" data-restore="f1" value="f1" type="text" id="KbdMappingFrameAdvance" readonly><button id="clearKbdMappingFrameAdvance">Clear</button></p>
+<p>&nbsp;</p>
+<p><label for="KbdMappingGameshark">GameShark Button</label><input data-key="0" data-restore="" value="" type="text" id="KbdMappingGameshark" readonly><button id="clearKbdMappingGameshark">Clear</button></p>
+</div>
 </div>
 <div id="hk_controller1" class="hide">
 <p><button class="floatright mb-10 mt-10" id="clear_joymappings1">Clear all</button></p>
