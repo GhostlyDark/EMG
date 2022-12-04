@@ -87,7 +87,7 @@ win.loadFile(load)
 win.once('ready-to-show', () => {win.maximize();win.show()})
 win.on('page-title-updated', (e) => {e.preventDefault()})
 if(isLinux){win.setIcon(path(dir, 'img', 'emg.png'))}
-win.webContents.on('new-window', (e) => {e.defaultPrevented = true})
+win.webContents.setWindowOpenHandler((details) => {return {action:'deny'}})
 win.webContents.on('will-navigate', (e, nav) => {const parsed = new url(nav)
 if(parsed.origin != load) {e.preventDefault()}})
 
