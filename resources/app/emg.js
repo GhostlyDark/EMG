@@ -196,7 +196,7 @@ var box = id(m64p_hotkey);
 id('clear'+m64p_hotkey).addEventListener('click', function(){
 box.value = '';
 box.dataset.key = '0';
-localStorage.removeItem(m64p_hotkey)})
+localStorage.setItem(m64p_hotkey, '0')})
 if(localStorage.getItem(m64p_hotkey) != null){
 box.value = keyCodes[localStorage.getItem(m64p_hotkey)];
 box.dataset.key = keySyms[localStorage.getItem(m64p_hotkey)]}
