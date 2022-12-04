@@ -12,14 +12,14 @@ button{border:0;outline:0!important;background:#e9e9e9;padding:3px 10px;transiti
 button:hover{background-color:#ddd}
 button:active{background-color:#ccc}
 
-select{border:0;outline:0;padding:5px 35px 5px 8px;transition:background-color .2s cubic-bezier(.4,0,.22,1);margin:0;background:url(arrow-down.svg) no-repeat 99% #eee;appearance:none;font-size:17px}
+select{border:0;outline:0;padding:5px 35px 5px 8px;transition:background-color .2s cubic-bezier(.4,0,.22,1);margin:0;background:url(arrow-down.svg) no-repeat 99% #eee;appearance:none;height:29px}
 select:hover{background-color:#ddd}
 select:active{background-color:#ccc}
 
-[type='text']{max-width:100px;text-align:center}
+[type='text']{max-width:100px;text-align:center;height:19px}
 [type='number']{text-align:center}
 [type='number']::-webkit-inner-spin-button{-webkit-appearance:none}
-[type='number'],[type='text']{border:0;outline:0;padding:5px;transition:background-color .2s cubic-bezier(.4,0,.22,1);margin:0;background-color:#eee;appearance:none;font-size:17px}
+[type='number'],[type='text']{border:0;outline:0;padding:5px;transition:background-color .2s cubic-bezier(.4,0,.22,1);margin:0;background-color:#eee;appearance:none}
 [type='number']:hover,[type='text']:hover{background-color:#ddd}
 [type='number']:active,[type='number']:focus,[type='text']:active,[type='text']:focus{background-color:#ccc}
 
