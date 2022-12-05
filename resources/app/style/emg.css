@@ -90,10 +90,11 @@ header li:last-child{float:right;background-color:rgba(0,0,0,.25);padding-right:
 .dark.custom .ul-buttons li:hover,.dark.custom .ul-buttons li.active{background-color:rgba(35,35,35,.7)}
 
 .hide{display:none}
+.ml--50{margin-left:-50px}
 .ml-13{margin-left:13px}
 .ml-20{margin-left:20px}
-.ml-40{margin-left:40px}
 .ml-55{margin-left:55px}
+.ml-105{margin-left:105px}
 .width80p{width:80%}
 .width85p{width:85%}
 .width90p{width:90%}
