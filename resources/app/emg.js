@@ -43,7 +43,7 @@ numbers = ['OverscanNtscTop','OverscanNtscLeft','OverscanNtscRight','OverscanNts
 dropdowns = [
 'emumode','resolution','SaveDiskFormat', /* mupen64plus */
 'gfx','audio','input','rsp','RspFallback', /* mupen64plus plugins */
-'plugin1','plugin2','plugin3','plugin4','c1','c2','c3','c4', // mupen64plus-input
+'plugin1','plugin2','plugin3','plugin4','c1','c2','c3','c4', /* mupen64plus-input */
 'PRIMARY_BUFFER_TARGET', /* mupen64plus-audio */
 'a','b','x','y','start','z','l','r','d_pad_left','d_pad_right','d_pad_down','d_pad_up','c_stick_left','c_stick_right','c_stick_down','c_stick_up', /* mupen64plus-input-gca */
 'msaa','aspectRatio','bufferSwapMode','CountersPos','useNativeResolutionFactor','anisotropy','cache','RDRAMImageDitheringMode','CorrectTexrectCoords','EnableNativeResTexrects','BackgroundsMode','EnableN64DepthCompare','EnableCopyColorToRDRAM','EnableCopyDepthToRDRAM','txFilterMode','txEnhancementMode', /* GLideN64 */
@@ -52,11 +52,11 @@ dropdowns = [
 
 
 
-['c1','c2','c3','c4'].forEach(c => { // initialize SDL device dropdowns
+['c1','c2','c3','c4'].forEach(c => { /* initialize SDL device dropdowns */
 if(localStorage.getItem(c+'Element') != null)id(c).innerHTML = localStorage.getItem(c+'Element')
 id('refresh'+c).addEventListener('click', function(){refresh(id(c))})})
 
-function refresh(drop){ // update SDL device dropdown
+function refresh(drop){ /* update SDL device dropdown */
 Array.from(drop.querySelectorAll('.generated')).forEach(generated => generated.remove());
 let list = jsRefresh();
 var datasplit = list.split(regsplit);
@@ -75,7 +75,7 @@ localStorage.setItem(drop.id+'Element',(drop.innerHTML))}
 
 
 
-['auto1','auto2','auto3','auto4'].forEach(auto => {id(auto).addEventListener('click', function(){autoConfig(id(auto))})}) // gamepad auto config
+['auto1','auto2','auto3','auto4'].forEach(auto => {id(auto).addEventListener('click', function(){autoConfig(id(auto))})}) /* gamepad auto config */
 
 function autoConfig(auto){
 var padId, cId, tId;
@@ -135,20 +135,20 @@ if(btn === 'y'){id(yId).value = cBtn;localStorage.setItem(yId,cBtn)}
 
 
 
-function clear_controls(n){n64_buttons.forEach(n64_button => {id('clear'+n64_button.replace(/1|2|3|4/,n)).click()})} // clear all inputs
+function clear_controls(n){n64_buttons.forEach(n64_button => {id('clear'+n64_button.replace(/1|2|3|4/,n)).click()})} /* clear all inputs */
 id('clear_controls1').addEventListener('click', function(){clear_controls(1)})
 id('clear_controls2').addEventListener('click', function(){clear_controls(2)})
 id('clear_controls3').addEventListener('click', function(){clear_controls(3)})
 id('clear_controls4').addEventListener('click', function(){clear_controls(4)})
 
-id('restore_hotkeys').addEventListener('click', function(){ // restore default keyboard hotkeys
+id('restore_hotkeys').addEventListener('click', function(){ /* restore default keyboard hotkeys */
 m64p_hotkeys.forEach(m64p_hotkey => {
 var box = id(m64p_hotkey);
 box.value = box.dataset.restore;
 box.dataset.key = keySyms[box.dataset.restore];
 localStorage.removeItem(m64p_hotkey)})})
 
-function clear_joymappings(n){m64p_joykeys.forEach(m64p_joykey => {id('clear'+m64p_joykey.replace(/1|2|3|4/,n)).click()})} // clear all joypad hotkeys
+function clear_joymappings(n){m64p_joykeys.forEach(m64p_joykey => {id('clear'+m64p_joykey.replace(/1|2|3|4/,n)).click()})} /* clear all joypad hotkeys */
 id('clear_joymappings1').addEventListener('click', function(){clear_joymappings(1)})
 id('clear_joymappings2').addEventListener('click', function(){clear_joymappings(2)})
 id('clear_joymappings3').addEventListener('click', function(){clear_joymappings(3)})
@@ -156,19 +156,19 @@ id('clear_joymappings4').addEventListener('click', function(){clear_joymappings(
 
 
 
-n64_buttons.forEach(n64_button => { // controller input
+n64_buttons.forEach(n64_button => { /* controller input */
 var n64_button_c = n64_button+'c',
 n64_button_cb = n64_button+'cb',
 box = id(n64_button),
 box_c = id(n64_button_c),
 box_cb = id(n64_button_cb);
 
-box_c.addEventListener('click', function(){jstest(box_c)}) // joystick input
+box_c.addEventListener('click', function(){jstest(box_c)}) /* joystick input */
 box_cb.addEventListener('click', function(){jstest(box_cb)})
 if(localStorage.getItem(n64_button_c) != null){box_c.value = localStorage.getItem(n64_button_c)}
 if(localStorage.getItem(n64_button_cb) != null){box_cb.value = localStorage.getItem(n64_button_cb)}
 
-if(localStorage.getItem(n64_button) != null){ // keyboard input
+if(localStorage.getItem(n64_button) != null){ /* keyboard input */
 box.value = keyCodes[localStorage.getItem(n64_button)];
 box.dataset.key = keySyms[localStorage.getItem(n64_button)]}
 box.addEventListener('keyup', function(e){
@@ -179,7 +179,7 @@ localStorage.setItem(n64_button, e.keyCode)}})
 
 id('clear'+n64_button).addEventListener('click', function(){box.value = '';box.dataset.key = '0';localStorage.removeItem(n64_button);box_c.value = '';localStorage.removeItem(n64_button_c);box_cb.value = '';localStorage.removeItem(n64_button_cb)})})
 
-gliden64_hotkeys.forEach(gliden64_hotkey => { // GLideN64 hotkeys
+gliden64_hotkeys.forEach(gliden64_hotkey => { /* GLideN64 hotkeys */
 var box = id(gliden64_hotkey);
 id('clear'+gliden64_hotkey).addEventListener('click', function(){
 box.value = '';
@@ -191,7 +191,7 @@ if(hotKeys[e.keyCode] != undefined){
 box.value = hotKeys[e.keyCode];
 localStorage.setItem(gliden64_hotkey, e.keyCode)}})})
 
-m64p_hotkeys.forEach(m64p_hotkey => { // mupen64plus keyboard hotkeys
+m64p_hotkeys.forEach(m64p_hotkey => { /* mupen64plus keyboard hotkeys */
 var box = id(m64p_hotkey);
 id('clear'+m64p_hotkey).addEventListener('click', function(){
 box.value = '';
@@ -206,19 +206,19 @@ box.value = keyCodes[e.keyCode];
 box.dataset.key = keySyms[e.keyCode];
 localStorage.setItem(m64p_hotkey, e.keyCode)}})})
 
-m64p_joykeys.forEach(joykey => { // mupen64plus joystick hotkeys
+m64p_joykeys.forEach(joykey => { /* mupen64plus joystick hotkeys */
 var box = id(joykey);
 box.addEventListener('click', function(){jstest(box)})
 if(localStorage.getItem(joykey) != null){box.value = localStorage.getItem(joykey)}
 id('clear'+joykey).addEventListener('click', function(){box.value = '';localStorage.removeItem(joykey)})})
 
-dropdowns.forEach(dropdown => { // dropdown inputs
+dropdowns.forEach(dropdown => { /* dropdown inputs */
 var drop = id(dropdown);
 if(localStorage.getItem(dropdown) != null){drop.value = localStorage.getItem(dropdown)}
 if(drop.selectedIndex === -1){localStorage.removeItem(dropdown);drop.options[0].disabled === true ? drop.selectedIndex = 1 : drop.selectedIndex = 0}
 drop.addEventListener('change', function(){localStorage.setItem(dropdown, drop.value)})})
 
-sliders.forEach(slider => { // slider inputs
+sliders.forEach(slider => { /* slider inputs */
 var slider_input = id(slider),
 slider_reset = id('reset'+slider),
 slider_text = id(slider+'Text'),
@@ -229,7 +229,7 @@ if(localStorage.getItem(slider) != null){slider_input.value = localStorage.getIt
 slider_input.addEventListener('input', function(){localStorage.setItem(slider, slider_input.value);slider_text.innerHTML = slider_input.value})})
 
 id('NumWorkers').max = navigator.hardwareConcurrency;
-numbers.forEach(number => { // number inputs
+numbers.forEach(number => { /* number inputs */
 var number_input = id(number),
 number_reset = id('reset'+number),
 number_value = number_reset.dataset.value,
@@ -260,7 +260,7 @@ localStorage.setItem(number, number_input.value)}})})
 
 
 
-function rspDropdownDisable(){ // disable or hide inputs
+function rspDropdownDisable(){ /* disable or hide inputs */
 if(id('rsp').value.includes('rsp-hle')){id('RspFallback').disabled = false;id('rspGFX').disabled = true}
 else if(id('rsp').value.includes('rsp-cxd4')){id('RspFallback').disabled = true;id('rspGFX').disabled = false}
 else if(id('rsp').value.includes('rsp-parallel')){id('RspFallback').disabled = true;id('rspGFX').disabled = true}}
@@ -380,7 +380,7 @@ hideLog()
 
 if(localStorage.getItem('recentFiles') != null){recentFiles = JSON.parse(localStorage.getItem('recentFiles'))}
 
-function recentFilesUpdate(){ // recent N64 ROM files
+function recentFilesUpdate(){ /* recent N64 ROM files */
 id('optionDefault').selected = true;
 recentFiles.forEach(rf => {var i = recentFiles.indexOf(rf);if(recentFiles[i] != null){id('option'+i).value = recentFiles[i];id('option'+i).innerHTML = i + 1 + '. ' + recentFiles[i]}})}
 recentFilesUpdate()
@@ -399,7 +399,7 @@ Array.from(id('recent').getElementsByTagName('option')).forEach(opt => {if(opt.i
 
 
 
-id('listCheats').addEventListener('click', function(){ // generate cheat list
+id('listCheats').addEventListener('click', function(){ /* generate cheat list */
 var cheats = '';
 id('cheatList').innerHTML = '';
 const parameters = ['--cheats','list',filePath],
@@ -428,7 +428,7 @@ for (var i = 0; i < radioBoxes.length; i++){var box = radioBoxes[i];if(box.id.in
 
 
 
-if(localStorage.getItem('coreULActive') != null && localStorage.getItem('coreDIVActive') != null){ // Core settings tabs
+if(localStorage.getItem('coreULActive') != null && localStorage.getItem('coreDIVActive') != null){ /* Core settings tabs */
 currentCore(id(localStorage.getItem('coreULActive')),id(localStorage.getItem('coreDIVActive')))}
 
 function currentCore(currentUL,currentDIV){core_main.forEach(core_main => {
@@ -441,7 +441,7 @@ core_main.forEach(core_main => {id('ul_'+core_main).addEventListener('click', fu
 
 
 
-if(localStorage.getItem('inputULActive') != null && localStorage.getItem('inputDIVActive') != null){ // Controller settings tabs
+if(localStorage.getItem('inputULActive') != null && localStorage.getItem('inputDIVActive') != null){ /* Controller settings tabs */
 currentInput(id(localStorage.getItem('inputULActive')),id(localStorage.getItem('inputDIVActive')))}
 
 function currentInput(currentUL,currentDIV){input_controller.forEach(input_controller => {
@@ -454,7 +454,7 @@ input_controller.forEach(input_controller => {id('ul_'+input_controller).addEven
 
 
 
-if(localStorage.getItem('hkULActive') != null && localStorage.getItem('hkDIVActive') != null){ // mupen64plus hotkey tabs
+if(localStorage.getItem('hkULActive') != null && localStorage.getItem('hkDIVActive') != null){ /* mupen64plus hotkey tabs */
 currentHK(id(localStorage.getItem('hkULActive')),id(localStorage.getItem('hkDIVActive')))}
 
 function currentHK(currentUL,currentDIV){hk.forEach(hk => {
@@ -467,7 +467,7 @@ hk.forEach(hk => {id('ul_'+hk).addEventListener('click', function(){currentHK(id
 
 
 
-if(localStorage.getItem('GLideN64ULActive') != null && localStorage.getItem('GLideN64DIVActive') != null){ // GLideN64 settings tabs
+if(localStorage.getItem('GLideN64ULActive') != null && localStorage.getItem('GLideN64DIVActive') != null){ /* GLideN64 settings tabs */
 currentGLideN64(id(localStorage.getItem('GLideN64ULActive')),id(localStorage.getItem('GLideN64DIVActive')))}
 
 function currentGLideN64(currentUL,currentDIV){gliden64_setting.forEach(gliden64_setting => {
@@ -480,7 +480,7 @@ gliden64_setting.forEach(gliden64_setting => {id('ul_'+gliden64_setting).addEven
 
 
 
-function noScroll(e){if(keyScroll[e.keyCode]){e.preventDefault();return false}} // prevent scrolling while focusing text inputs
+function noScroll(e){if(keyScroll[e.keyCode]){e.preventDefault();return false}} /* prevent scrolling while focusing text inputs */
 for (var i = 0; i < textInputs.length; i++){var textInput = textInputs[i];preventScroll(textInput)}
 function preventScroll(textInput){
 textInput.addEventListener('focus',(e) => {html.addEventListener('keydown',noScroll,false)})
@@ -488,11 +488,11 @@ textInput.addEventListener('blur',(e) => {html.removeEventListener('keydown',noS
 
 
 
-dragDrop.forEach(inp => {id(inp).addEventListener('dragover', prevent, false)}) // prevent dragover event
+dragDrop.forEach(inp => {id(inp).addEventListener('dragover', prevent, false)}) /* prevent dragover event */
 function prevent(e){e.preventDefault();e.stopPropagation()}
-function fileExtension(fpath){return fpath.slice((fpath.lastIndexOf('.') - 1 >>> 0) + 2)} // return file extension
+function fileExtension(fpath){return fpath.slice((fpath.lastIndexOf('.') - 1 >>> 0) + 2)} /* return file extension */
 
-id('fileInput').addEventListener('drop', function(e){ // drag and drop for file inputs
+id('fileInput').addEventListener('drop', function(e){ /* drag and drop for file inputs */
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
 let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
@@ -573,7 +573,7 @@ if(gbRAM4 != undefined){id('gbRAM4Text').innerHTML = gbRAM4;localStorage.setItem
 
 if(localStorage.getItem('filePath') === null){filePath = testROM; id('fileText').innerHTML = filePath}
 if(localStorage.getItem('filePath') != null){filePath = localStorage.getItem('filePath');id('fileText').innerHTML = filePath}
-id('fileInput').addEventListener('click', function(){ // click event for file inputs
+id('fileInput').addEventListener('click', function(){ /* click event for file inputs */
 fileResult = dialogFile({name:'N64 ROM',extensions:n64});
 if(fileResult != undefined){filePath = fileResult;
 if(filePath != undefined){id('fileText').innerHTML = filePath;localStorage.setItem('filePath', filePath);if(!recentFiles.includes(filePath.toString()))recentFiles.unshift(filePath.toString());recentFiles.splice(10);recentFilesUpdate();localStorage.setItem('recentFiles',JSON.stringify(recentFiles));if(id('cheatList').innerHTML!='')id('cheatList').innerHTML=''}}})
@@ -663,7 +663,7 @@ if(gbRAM4 != undefined){id('gbRAM4Text').innerHTML = gbRAM4;localStorage.setItem
 id('resetScreenshotPath').addEventListener('click', function(){ScreenshotPath = '';id('ScreenshotPathText').innerHTML = '';localStorage.removeItem('ScreenshotPath')})
 if(localStorage.getItem('ScreenshotPath') === null){ScreenshotPath = '';id('ScreenshotPathText').innerHTML = ScreenshotPath}
 if(localStorage.getItem('ScreenshotPath') != null){ScreenshotPath = localStorage.getItem('ScreenshotPath');id('ScreenshotPathText').innerHTML = ScreenshotPath}
-id('ScreenshotPath').addEventListener('click', function(){ // choosing and resetting directories
+id('ScreenshotPath').addEventListener('click', function(){ /* choosing and resetting directories */
 ScreenshotPathResult = dialogDirectory()
 if(ScreenshotPathResult != undefined){ScreenshotPath = ScreenshotPathResult.toString();id('ScreenshotPathText').innerHTML = ScreenshotPath;localStorage.setItem('ScreenshotPath', ScreenshotPath)}})
 
@@ -1078,14 +1078,14 @@ buttonType1 = '',buttonType1B = '',buttonType2 = '',buttonType2B = '',buttonType
 gcaSettings = 'control_stick_deadzone = ' +  id('control_stick_deadzone').value + '\n' + 'control_stick_sensitivity = ' + id('control_stick_sensitivity').value + '\n' + 'c_stick_deadzone = ' + id('c_stick_deadzone').value + '\n' + 'trigger_threshold = ' + id('trigger_threshold').value + '\n\n' + '[controller_mapping]' + '\n' + 'a = ' + id('a').value + '\n' + 'b = ' + id('b').value + '\n' + 'x = ' + id('x').value + '\n' + 'y = ' + id('y').value + '\n' + 'start = ' + id('start').value + '\n' + 'z = ' + id('z').value + '\n' + 'l = ' + id('l').value + '\n' + 'r = ' + id('r').value + '\n' + 'd_pad_left = ' + id('d_pad_left').value + '\n' + 'd_pad_right = ' + id('d_pad_right').value + '\n' + 'd_pad_down = ' + id('d_pad_down').value + '\n' + 'd_pad_up = ' + id('d_pad_up').value + '\n' + 'c_stick_left = ' + id('c_stick_left').value + '\n' + 'c_stick_right = ' + id('c_stick_right').value + '\n' + 'c_stick_down = ' + id('c_stick_down').value + '\n' + 'c_stick_up = ' + id('c_stick_up').value;
 
 if(isLinux){RspFallback = 'Rsp-HLE[RspFallback]=./' + RspFallback + '.so'}else{RspFallback = 'Rsp-HLE[RspFallback]=' + RspFallback}
-if(id('nospeedlimit').checked){audio = 'dummy';vsync = 'Video-General[VerticalSync]=false';ParallelVSync = 'Video-Parallel[Vsync]=false'} // force muted audio and disabled V-Sync
-if(gfx.includes('angrylion') || gfx.includes('parallel')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=false'} // prevent crashes caused by wrong RSP settings
+if(id('nospeedlimit').checked){audio = 'dummy';vsync = 'Video-General[VerticalSync]=false';ParallelVSync = 'Video-Parallel[Vsync]=false'} /* force muted audio and disabled V-Sync */
+if(gfx.includes('angrylion') || gfx.includes('parallel')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=false'} /* prevent crashes caused by wrong RSP settings */
 if(gfx.includes('angrylion') && rsp.includes('rsp-hle')){rsp = 'mupen64plus-rsp-cxd4'}
 else if(gfx.includes('parallel') && rsp.includes('rsp-hle')){rsp = 'mupen64plus-rsp-parallel'}
 
 
 
-if(name1.includes('Keyboard')){device1 = 'Input-SDL-Control1[device]=-1'} // Controller 1
+if(name1.includes('Keyboard')){device1 = 'Input-SDL-Control1[device]=-1'} /* Controller 1 */
 if(id('StickU1c').value.includes('axis') || id('StickL1c').value.includes('axis') || id('StickR1c').value.includes('axis') || id('StickD1c').value.includes('axis')){buttonType1 = 'axis'}
 if(id('StickU1cb').value.includes('axis') || id('StickL1cb').value.includes('axis') || id('StickR1cb').value.includes('axis') || id('StickD1cb').value.includes('axis')){buttonType1B = 'axis'}
 if(id('StickU1c').value.includes('button') || id('StickL1c').value.includes('button') || id('StickR1c').value.includes('button') || id('StickD1c').value.includes('button')){buttonType1 = 'button'}
@@ -1113,7 +1113,7 @@ YAxis1 += 'key(' + id('StickU1').dataset.key + ',' + id('StickD1').dataset.key +
 
 
 
-if(name2.includes('Keyboard')){device2 = 'Input-SDL-Control2[device]=-1'} // Controller 2
+if(name2.includes('Keyboard')){device2 = 'Input-SDL-Control2[device]=-1'} /* Controller 2 */
 if(id('StickU2c').value.includes('axis') || id('StickL2c').value.includes('axis') || id('StickR2c').value.includes('axis') || id('StickD2c').value.includes('axis')){buttonType2 = 'axis'}
 if(id('StickU2cb').value.includes('axis') || id('StickL2cb').value.includes('axis') || id('StickR2cb').value.includes('axis') || id('StickD2cb').value.includes('axis')){buttonType2B = 'axis'}
 if(id('StickU2c').value.includes('button') || id('StickL2c').value.includes('button') || id('StickR2c').value.includes('button') || id('StickD2c').value.includes('button')){buttonType2 = 'button'}
@@ -1141,7 +1141,7 @@ YAxis2 += 'key(' + id('StickU2').dataset.key + ',' + id('StickD2').dataset.key +
 
 
 
-if(name3.includes('Keyboard')){device3 = 'Input-SDL-Control3[device]=-1'} // Controller 3
+if(name3.includes('Keyboard')){device3 = 'Input-SDL-Control3[device]=-1'} /* Controller 3 */
 if(id('StickU3c').value.includes('axis') || id('StickL3c').value.includes('axis') || id('StickR3c').value.includes('axis') || id('StickD3c').value.includes('axis')){buttonType3 = 'axis'}
 if(id('StickU3cb').value.includes('axis') || id('StickL3cb').value.includes('axis') || id('StickR3cb').value.includes('axis') || id('StickD3cb').value.includes('axis')){buttonType3B = 'axis'}
 if(id('StickU3c').value.includes('button') || id('StickL3c').value.includes('button') || id('StickR3c').value.includes('button') || id('StickD3c').value.includes('button')){buttonType3 = 'button'}
@@ -1169,7 +1169,7 @@ YAxis3 += 'key(' + id('StickU3').dataset.key + ',' + id('StickD3').dataset.key +
 
 
 
-if(name4.includes('Keyboard')){device4 = 'Input-SDL-Control4[device]=-1'} // Controller 4
+if(name4.includes('Keyboard')){device4 = 'Input-SDL-Control4[device]=-1'} /* Controller 4 */
 if(id('StickU4c').value.includes('axis') || id('StickL4c').value.includes('axis') || id('StickR4c').value.includes('axis') || id('StickD4c').value.includes('axis')){buttonType4 = 'axis'}
 if(id('StickU4cb').value.includes('axis') || id('StickL4cb').value.includes('axis') || id('StickR4cb').value.includes('axis') || id('StickD4cb').value.includes('axis')){buttonType4B = 'axis'}
 if(id('StickU4c').value.includes('button') || id('StickL4c').value.includes('button') || id('StickR4c').value.includes('button') || id('StickD4c').value.includes('button')){buttonType4 = 'button'}
@@ -1199,50 +1199,50 @@ YAxis4 += 'key(' + id('StickU4').dataset.key + ',' + id('StickD4').dataset.key +
 
 var core = ['--corelib','mupen64plus','--plugindir','./','--gfx',gfx,'--audio',audio,'--input',input,'--rsp',rsp],
 
-settings = [RspFallback,cxd4GFX,m64pGFX,cxd4Audio,m64pAudio,WaitForCPUHost,SupportCPUSemaphoreLock, // RSP
+settings = [RspFallback,cxd4GFX,m64pGFX,cxd4Audio,m64pAudio,WaitForCPUHost,SupportCPUSemaphoreLock, /* RSP */
 
-exp,osd,emumode,NoCompiledJump,CountPerOp,CountPerOpDenomPot,SiDmaDuration,AutoStateSlotIncrement,CurrentStateSlot,SharedDataPath,ScreenshotPathSetting,SaveStatePathSetting,SaveSRAMPathSetting,RandomizeInterrupt,EnableDebugger,SaveDiskFormat, // Core
+exp,osd,emumode,NoCompiledJump,CountPerOp,CountPerOpDenomPot,SiDmaDuration,AutoStateSlotIncrement,CurrentStateSlot,SharedDataPath,ScreenshotPathSetting,SaveStatePathSetting,SaveSRAMPathSetting,RandomizeInterrupt,EnableDebugger,SaveDiskFormat, /* Core */
 
-IPLROMSetting,DiskSetting, // 64DD
+IPLROMSetting,DiskSetting, /* 64DD */
 
-fullscreen,ScreenWidth,ScreenHeight,vsync, // Video
+fullscreen,ScreenWidth,ScreenHeight,vsync, /* Video */
 
-DEFAULT_FREQUENCY,VOLUME_CONTROL_TYPE,SWAP_CHANNELS,PRIMARY_BUFFER_SIZE,PRIMARY_BUFFER_TARGET,SECONDARY_BUFFER_SIZE,RESAMPLE,VOLUME_ADJUST,VOLUME_DEFAULT,AUDIO_SYNC, // Audio
+DEFAULT_FREQUENCY,VOLUME_CONTROL_TYPE,SWAP_CHANNELS,PRIMARY_BUFFER_SIZE,PRIMARY_BUFFER_TARGET,SECONDARY_BUFFER_SIZE,RESAMPLE,VOLUME_ADJUST,VOLUME_DEFAULT,AUDIO_SYNC, /* Audio */
 
-KbdMappingSlot0,KbdMappingSlot1,KbdMappingSlot2,KbdMappingSlot3,KbdMappingSlot4,KbdMappingSlot5,KbdMappingSlot6,KbdMappingSlot7,KbdMappingSlot8,KbdMappingSlot9,KbdMappingStop,KbdMappingFullscreen,KbdMappingSaveState,KbdMappingLoadState,KbdMappingIncrementSlot,KbdMappingReset,KbdMappingSpeedDown,KbdMappingSpeedUp,KbdMappingScreenshot,KbdMappingPause,KbdMappingMute,KbdMappingIncreaseVolume,KbdMappingDecreaseVolume,KbdMappingFastForward,KbdMappingFrameAdvance,KbdMappingGameshark, // Keyboard Hotkeys
+KbdMappingSlot0,KbdMappingSlot1,KbdMappingSlot2,KbdMappingSlot3,KbdMappingSlot4,KbdMappingSlot5,KbdMappingSlot6,KbdMappingSlot7,KbdMappingSlot8,KbdMappingSlot9,KbdMappingStop,KbdMappingFullscreen,KbdMappingSaveState,KbdMappingLoadState,KbdMappingIncrementSlot,KbdMappingReset,KbdMappingSpeedDown,KbdMappingSpeedUp,KbdMappingScreenshot,KbdMappingPause,KbdMappingMute,KbdMappingIncreaseVolume,KbdMappingDecreaseVolume,KbdMappingFastForward,KbdMappingFrameAdvance,KbdMappingGameshark, /* Keyboard Hotkeys */
 
-JoyMappingStop,JoyMappingFullscreen,JoyMappingSaveState,JoyMappingLoadState,JoyMappingIncrementSlot,JoyMappingReset,JoyMappingSpeedDown,JoyMappingSpeedUp,JoyMappingScreenshot,JoyMappingPause,JoyMappingMute,JoyMappingIncreaseVolume,JoyMappingDecreaseVolume,JoyMappingFastForward,JoyMappingFrameAdvance,JoyMappingGameshark, // Gamepad Hotkeys
+JoyMappingStop,JoyMappingFullscreen,JoyMappingSaveState,JoyMappingLoadState,JoyMappingIncrementSlot,JoyMappingReset,JoyMappingSpeedDown,JoyMappingSpeedUp,JoyMappingScreenshot,JoyMappingPause,JoyMappingMute,JoyMappingIncreaseVolume,JoyMappingDecreaseVolume,JoyMappingFastForward,JoyMappingFrameAdvance,JoyMappingGameshark, /* Gamepad Hotkeys */
 
-mode1,mode2,mode3,mode4,plugin1,plugin2,plugin3,plugin4,plugged1,plugged2,plugged3,plugged4,name1,name2,name3,name4,device1,device2,device3,device4,gbROM1Setting,gbROM2Setting,gbROM3Setting,gbROM4Setting,gbRAM1Setting,gbRAM2Setting,gbRAM3Setting,gbRAM4Setting, // Input
+mode1,mode2,mode3,mode4,plugin1,plugin2,plugin3,plugin4,plugged1,plugged2,plugged3,plugged4,name1,name2,name3,name4,device1,device2,device3,device4,gbROM1Setting,gbROM2Setting,gbROM3Setting,gbROM4Setting,gbRAM1Setting,gbRAM2Setting,gbRAM3Setting,gbRAM4Setting, /* Input */
 
-AButton1,BButton1,LTrig1,RTrig1,ZTrig1,Start1,DPadU1,DPadL1,DPadR1,DPadD1,CButtonU1,CButtonL1,CButtonR1,CButtonD1,MempakSwitch1,RumblepakSwitch1,XAxis1,YAxis1,analogdeadzone1,analogpeak1,mouse1, // Controller 1
+AButton1,BButton1,LTrig1,RTrig1,ZTrig1,Start1,DPadU1,DPadL1,DPadR1,DPadD1,CButtonU1,CButtonL1,CButtonR1,CButtonD1,MempakSwitch1,RumblepakSwitch1,XAxis1,YAxis1,analogdeadzone1,analogpeak1,mouse1, /* Controller 1 */
 
-AButton2,BButton2,LTrig2,RTrig2,ZTrig2,Start2,DPadU2,DPadL2,DPadR2,DPadD2,CButtonU2,CButtonL2,CButtonR2,CButtonD2,MempakSwitch2,RumblepakSwitch2,XAxis2,YAxis2,analogdeadzone2,analogpeak2,mouse2, // Controller 2
+AButton2,BButton2,LTrig2,RTrig2,ZTrig2,Start2,DPadU2,DPadL2,DPadR2,DPadD2,CButtonU2,CButtonL2,CButtonR2,CButtonD2,MempakSwitch2,RumblepakSwitch2,XAxis2,YAxis2,analogdeadzone2,analogpeak2,mouse2, /* Controller 2 */
 
-AButton3,BButton3,LTrig3,RTrig3,ZTrig3,Start3,DPadU3,DPadL3,DPadR3,DPadD3,CButtonU3,CButtonL3,CButtonR3,CButtonD3,MempakSwitch3,RumblepakSwitch3,XAxis3,YAxis3,analogdeadzone3,analogpeak3,mouse3, // Controller 3
+AButton3,BButton3,LTrig3,RTrig3,ZTrig3,Start3,DPadU3,DPadL3,DPadR3,DPadD3,CButtonU3,CButtonL3,CButtonR3,CButtonD3,MempakSwitch3,RumblepakSwitch3,XAxis3,YAxis3,analogdeadzone3,analogpeak3,mouse3, /* Controller 3 */
 
-AButton4,BButton4,LTrig4,RTrig4,ZTrig4,Start4,DPadU4,DPadL4,DPadR4,DPadD4,CButtonU4,CButtonL4,CButtonR4,CButtonD4,MempakSwitch4,RumblepakSwitch4,XAxis4,YAxis4,analogdeadzone4,analogpeak4,mouse4, // Controller 4
+AButton4,BButton4,LTrig4,RTrig4,ZTrig4,Start4,DPadU4,DPadL4,DPadR4,DPadD4,CButtonU4,CButtonL4,CButtonR4,CButtonD4,MempakSwitch4,RumblepakSwitch4,XAxis4,YAxis4,analogdeadzone4,analogpeak4,mouse4, /* Controller 4 */
 
-Parallel,NumWorkers,BusyLoop,ViMode,ViInterpolation,ViWidescreen,ViHideOverscan,ViIntegerScaling,DpCompat, // Angrylion Plus
+Parallel,NumWorkers,BusyLoop,ViMode,ViInterpolation,ViWidescreen,ViHideOverscan,ViIntegerScaling,DpCompat, /* Angrylion Plus */
 
-threadedVideo,msaa,fxaa,aspectRatio,bufferSwapMode,useNativeResolutionFactor,bilinearMode,enableHalosRemoval,anisotropy,cache,txDump,txHiresEnable,txNoTextureFileStorage,EnableInaccurateTextureCoordinates,EnableDitheringPattern,EnableHiresNoiseDithering,DitheringQuantization,RDRAMImageDitheringMode,EnableLOD,EnableHWLighting,EnableCoverage,EnableClipping,EnableShadersStorage,EnableLegacyBlending,EnableHybridFilter,EnableCustomSettings,CorrectTexrectCoords,EnableNativeResTexrects,BackgroundsMode,EnableTexCoordBounds,EnableFBEmulation,EnableCopyAuxiliaryToRDRAM,EnableN64DepthCompare,ForceDepthBufferClear,DisableFBInfo,FBInfoReadColorChunk,FBInfoReadDepthChunk,EnableCopyColorToRDRAM,EnableCopyDepthToRDRAM,EnableCopyColorFromRDRAM,EnableCopyDepthToMainDepthBuffer,EnableOverscan,OverscanNtscTop,OverscanNtscLeft,OverscanNtscRight,OverscanNtscBottom,OverscanPalTop,OverscanPalLeft,OverscanPalRight,OverscanPalBottom,txFilterMode,txEnhancementMode,txDeposterize,txFilterIgnoreBG,txCacheSize,txHiresVramLimit,txHiresFullAlphaChannel,txHresAltCRC,txCacheCompression, txForce16bpp, txSaveCache,txPathSetting,txCachePathSetting,txDumpPathSetting,hkTexDump,hkHdTexReload,hkHdTexToggle,hkInaccurateTexCords,hkVsync,hkFBEmulation,hkN64DepthCompare,hkOsdVis,hkOsdFps,hkOsdPercent,hkOsdInternalResolution,hkOsdRenderingResolution,hkTexCoordBounds,hkNativeResTexrects,hkForceGammaCorrection,ForceGammaCorrection,GammaCorrectionLevel,fontSize,fontColor,ShowFPS,ShowVIS,ShowPercent,ShowInternalResolution,ShowRenderingResolution,ShowStatistics,CountersPos, // GLideN64
+threadedVideo,msaa,fxaa,aspectRatio,bufferSwapMode,useNativeResolutionFactor,bilinearMode,enableHalosRemoval,anisotropy,cache,txDump,txHiresEnable,txNoTextureFileStorage,EnableInaccurateTextureCoordinates,EnableDitheringPattern,EnableHiresNoiseDithering,DitheringQuantization,RDRAMImageDitheringMode,EnableLOD,EnableHWLighting,EnableCoverage,EnableClipping,EnableShadersStorage,EnableLegacyBlending,EnableHybridFilter,EnableCustomSettings,CorrectTexrectCoords,EnableNativeResTexrects,BackgroundsMode,EnableTexCoordBounds,EnableFBEmulation,EnableCopyAuxiliaryToRDRAM,EnableN64DepthCompare,ForceDepthBufferClear,DisableFBInfo,FBInfoReadColorChunk,FBInfoReadDepthChunk,EnableCopyColorToRDRAM,EnableCopyDepthToRDRAM,EnableCopyColorFromRDRAM,EnableCopyDepthToMainDepthBuffer,EnableOverscan,OverscanNtscTop,OverscanNtscLeft,OverscanNtscRight,OverscanNtscBottom,OverscanPalTop,OverscanPalLeft,OverscanPalRight,OverscanPalBottom,txFilterMode,txEnhancementMode,txDeposterize,txFilterIgnoreBG,txCacheSize,txHiresVramLimit,txHiresFullAlphaChannel,txHresAltCRC,txCacheCompression, txForce16bpp, txSaveCache,txPathSetting,txCachePathSetting,txDumpPathSetting,hkTexDump,hkHdTexReload,hkHdTexToggle,hkInaccurateTexCords,hkVsync,hkFBEmulation,hkN64DepthCompare,hkOsdVis,hkOsdFps,hkOsdPercent,hkOsdInternalResolution,hkOsdRenderingResolution,hkTexCoordBounds,hkNativeResTexrects,hkForceGammaCorrection,ForceGammaCorrection,GammaCorrectionLevel,fontSize,fontColor,ShowFPS,ShowVIS,ShowPercent,ShowInternalResolution,ShowRenderingResolution,ShowStatistics,CountersPos, /* GLideN64 */
 
-ParallelFullscreen,ParallelUpscaling,ParallelScreenWidth,ParallelScreenHeight,ParallelSuperscaledReads,ParallelSuperscaledDither,ParallelDeinterlaceMode,ParallelCropOverscan,ParallelVerticalStretch,ParallelVIAA,ParallelDivot,ParallelGammaDither,ParallelVIBilerp,ParallelVIDither,ParallelDownScale,ParallelNativeTextLOD,ParallelNativeTextRECT,ParallelSynchronousRDP,ParallelWidescreenStretch,ParallelVSync // Parallel
+ParallelFullscreen,ParallelUpscaling,ParallelScreenWidth,ParallelScreenHeight,ParallelSuperscaledReads,ParallelSuperscaledDither,ParallelDeinterlaceMode,ParallelCropOverscan,ParallelVerticalStretch,ParallelVIAA,ParallelDivot,ParallelGammaDither,ParallelVIBilerp,ParallelVIDither,ParallelDownScale,ParallelNativeTextLOD,ParallelNativeTextRECT,ParallelSynchronousRDP,ParallelWidescreenStretch,ParallelVSync /* Parallel */],
 
-], cheats = [], activeCheats = '';
+cheats = [], activeCheats = '';
 
-if(id('cheatList').innerHTML != ''){ // activate cheats
+if(id('cheatList').innerHTML != ''){ /* activate cheats  */
 var cheatInputs = id('cheatList').querySelectorAll("input[type='checkbox']");
 for (var i = 0; i < cheatInputs.length; i++){var cheatInput = cheatInputs[i];checkCheats(cheatInput)}
 function checkCheats(cheatInput){if(cheatInput.checked){var id = cheatInput.id.replace('_','-');activeCheats += id + ','}}
 cheats = ['--cheats',activeCheats]}
 
-settings = settings.flatMap((w,i) => (i+1) % 1 === 0 ? ['--set', w] : w) // insert '--set'
+settings = settings.flatMap((w,i) => (i+1) % 1 === 0 ? ['--set', w] : w) /* insert '--set' */
 
-try {writeGCA(gcaSettings)} // write GameCube Adapter settings to file
+try {writeGCA(gcaSettings)} /* write GameCube Adapter settings to file */
 catch (e) {console.warn(e)}
 
-const parameters = core.concat(settings,nospeedlimit,verbose,cheats,filePath), // launch parameters
+const parameters = core.concat(settings,nospeedlimit,verbose,cheats,filePath), /* launch parameters */
 child = emuLaunch(parameters);
 
 })

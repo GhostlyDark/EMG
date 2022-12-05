@@ -28,34 +28,34 @@ ipcRenderer.send('jstestKill')
 ipcRenderer.send('jstestChild', jstestConfig)
 ipcRenderer.once('jsLog', (e, data) => {
 joydata = data.replace(/\r/gm,'');
-let mapping = jsMapping(cvalue); // force + on trigger axis
+let mapping = jsMapping(cvalue); /* force + on trigger axis */
 if(mapping != '' && mapping != null && mapping != undefined){
 mapping = '"' + mapping.replace(/hint:(.*):(.*)/,'hint:$1$2').replace(/([^,]*),([^,]*),/,'guid:$1,name:$2,').replace(/\:/g,'":"').replace(/,/g,'","').replace(/\r|\n/g,'') + '"'
 mapping = JSON.parse('{' + mapping.replace(/,""/,'') + '}')
 if(joydata.includes('axis')){
 const jdvalue = joydata.replace(/\n/g).replace(/axis\((.*) .*/,'a$1');
 if(jdvalue == mapping.lefttrigger || jdvalue == mapping.righttrigger)joydata = joydata.replace(' -',' ')}}
-if(joydata.includes('-')){joyvalue = joydata.replace(/\s.*/i,'-)')}else{joyvalue = joydata.replace(/\s.*/i,'+)')} // axis
-if(joyinput.id.includes('JoyMapping')){ // mupen64plus joypad hotkeys
+if(joydata.includes('-')){joyvalue = joydata.replace(/\s.*/i,'-)')}else{joyvalue = joydata.replace(/\s.*/i,'+)')} /* axis */
+if(joyinput.id.includes('JoyMapping')){ /* mupen64plus joypad hotkeys */
 if(joydata.includes('button')){joyvalue = 'B' + joydata.replace(/button\(|\)/g,'')}
 if(joydata.includes('hat')){joyvalue = joydata.replace('hat(','H').replace(' ','V').replace(')','')}
 if(joydata.includes('axis')){joyvalue = joyvalue.replace(/xis\(|\)/g,'').replace('a','A')}
 if(joyvalue != joyinput.value && joyinput.value != '' && !joyinput.value.includes('/')){joyvalue = joyinput.value + '/' + joyvalue}}
-else{ // joypad buttons
+else{ /* joypad buttons */
 if(joydata.includes('button')){joyvalue = joydata}
 if(joydata.includes('hat')){joyvalue = joydata.replace('1)','Up)').replace('2)','Right)').replace('4)','Down)').replace('8)','Left)')}}
 if(joyvalue != undefined){
-if(!joyinput.id.includes('JoyMapping') && joyinput.id.includes('c') && !joyinput.id.includes('cb')){ // disallow same input type for secondary bindings, slot 1
+if(!joyinput.id.includes('JoyMapping') && joyinput.id.includes('c') && !joyinput.id.includes('cb')){ /* disallow same input type for secondary bindings, slot 1 */
 const secondary = joyinput.id + 'b';
 if(id(secondary).value.includes('axis') && joyvalue.includes('axis')){id(secondary).value = '';localStorage.removeItem(secondary)}
 if(id(secondary).value.includes('button') && joyvalue.includes('button')){id(secondary).value = '';localStorage.removeItem(secondary)}
 if(id(secondary).value.includes('hat') && joyvalue.includes('hat')){id(secondary).value = '';localStorage.removeItem(secondary)}}
-if(!joyinput.id.includes('JoyMapping') && joyinput.id.includes('cb')){ // disallow same input type for secondary bindings, slot 2
+if(!joyinput.id.includes('JoyMapping') && joyinput.id.includes('cb')){ /* disallow same input type for secondary bindings, slot 2 */
 const primary = joyinput.id.replace('cb','c');
 if(id(primary).value.includes('axis') && joyvalue.includes('axis')){id(primary).value = joyvalue;localStorage.setItem(primary,joyvalue);return}
 if(id(primary).value.includes('button') && joyvalue.includes('button')){id(primary).value = joyvalue;localStorage.setItem(primary,joyvalue);return}
 if(id(primary).value.includes('hat') && joyvalue.includes('hat')){id(primary).value = joyvalue;localStorage.setItem(primary,joyvalue);return}}
-joyinput.value = joyvalue;localStorage.setItem(joyinput.id,joyvalue)}}) // finalize
+joyinput.value = joyvalue;localStorage.setItem(joyinput.id,joyvalue)}}) /* finalize */
 joyinput.addEventListener('blur', function(){ipcRenderer.send('jstestKill')})
 ipcRenderer.once('jsClosed', () => {joyinput.blur()})}
 
