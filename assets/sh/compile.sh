@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Common variables
-ELECTRON="v21.3.0"
+ELECTRON="v22.0.0"
 threads="${2:-$(nproc)}"
 
 
