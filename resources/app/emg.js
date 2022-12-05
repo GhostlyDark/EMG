@@ -3,7 +3,7 @@ var cheatRadio,filePath,fileResult,txPath,txPathResult,txCachePath,txCachePathRe
 
 const textInputs = document.querySelectorAll("input[type='text']"),
 
-regjoy = /axis|button|hat|\(|\)/g, regsplit = /\s*\n/, regradio = /^\s\s\s/g, regbox = /_.*/g, regkb = /key\(\)/g, regkbaxis = /key\(,\)/g, regc = /\:/g, regid = /^\d: |^\d\d: /,
+regjoy = /axis|button|hat|\(|\)/g, regsplit = /\s*\n/, regradio = /^\s\s\s/g, regbox = /_.*/g, regc = /\:/g, regid = /^\d: |^\d\d: /,
 
 keyScroll = {32:1,33:1,34:1,35:1,36:1,37:1,38:1,39:1,40:1}, /* spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36, left: 37, up: 38, right: 39, down: 40 */
 
