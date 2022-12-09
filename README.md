@@ -32,7 +32,7 @@ chmod u+x compile.sh && ./compile.sh
 
 Download and install [MSYS2](https://www.msys2.org/). Run `MSYS2 MinGW x64` and install dependencies.
 ```
-pacman -S git make mingw-w64-x86_64-cmake mingw-w64-x86_64-freetype mingw-w64-x86_64-gcc mingw-w64-x86_64-hidapi mingw-w64-x86_64-libpng mingw-w64-x86_64-nasm mingw-w64-x86_64-rust mingw-w64-x86_64-SDL2 p7zip
+pacman -S git make mingw-w64-x86_64-cmake mingw-w64-x86_64-freetype mingw-w64-x86_64-gcc mingw-w64-x86_64-hidapi mingw-w64-x86_64-libpng mingw-w64-x86_64-libsamplerate mingw-w64-x86_64-nasm mingw-w64-x86_64-rust mingw-w64-x86_64-SDL2 mingw-w64-x86_64-speex p7zip
 ```
 Download [compile.sh](https://raw.githubusercontent.com/GhostlyDark/EMG/master/assets/sh/compile.sh) into an empty folder and run it.
 ```

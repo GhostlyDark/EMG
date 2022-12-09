@@ -8,7 +8,7 @@ threads="${2:-$(nproc)}"
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
 # Install dependencies
-sudo apt install -y build-essential cmake curl freeglut3-dev gcc git libfreetype-dev libhidapi-dev libhidapi-hidraw0 libpng-dev libsdl2-dev make nasm p7zip-full wget zlib1g-dev
+sudo apt install -y build-essential cmake curl freeglut3-dev gcc git libfreetype-dev libhidapi-dev libhidapi-hidraw0 libpng-dev libsamplerate0-dev libsdl2-dev libspeexdsp-dev make nasm p7zip-full wget zlib1g-dev
 
 
 # Install Rust
@@ -18,7 +18,7 @@ source "$HOME/.cargo/env"
 
 # Variables
 EMG="EMG/resources/app/m64p/"
-MAKE_INSTALL="PLUGINDIR= SHAREDIR= BINDIR= MANDIR= LIBDIR= APPSDIR= ICONSDIR=icons INCDIR=api LDCONFIG=true COREDIR=./ NEW_DYNAREC=1 OSD=0 POSTFIX= NO_OSS=1 NO_SPEEX=1 NO_SRC=1"
+MAKE_INSTALL="PLUGINDIR= SHAREDIR= BINDIR= MANDIR= LIBDIR= APPSDIR= ICONSDIR=icons INCDIR=api LDCONFIG=true COREDIR=./ NEW_DYNAREC=1 OSD=0 POSTFIX= NO_OSS=1"
 M64P_COMPONENTS="mupen64plus-core mupen64plus-ui-console mupen64plus-audio-sdl mupen64plus-input-sdl mupen64plus-input-raphnetraw mupen64plus-rsp-hle rsp"
 SOURCE="mupen64plus-rom sdl-jstest SDL_GameControllerDB mupen64plus-input-gca GLideN64 angrylion-rdp-plus parallel-rdp-standalone parallel-rsp"
 
