@@ -18,7 +18,7 @@ n64 = ['n64','v64','z64'], ndd = ['d64','ndd'], gb = ['gb','gbc'], save = ['sav'
 
 dragDrop = ['fileInput','IPLROM','Disk','gbROM1','gbROM2','gbROM3','gbROM4','gbRAM1','gbRAM2','gbRAM3','gbRAM4'],
 core_main = ['core_core','core_plugins','core_audio','core_advanced','core_64dd','core_directories'],
-input_controller = ['input_controller1','input_controller2','input_controller3','input_controller4','input_gca'],
+input_controller = ['input_controller1','input_controller2','input_controller3','input_controller4','input_gca','input_mouse'],
 hk = ['hk_keyboard','hk_controller1','hk_controller2','hk_controller3','hk_controller4'],
 gliden64_setting = ['gliden64_video','gliden64_overscan','gliden64_emulation','gliden64_framebuffer','gliden64_textures','gliden64_osd','gliden64_hotkeys'],
 
@@ -36,14 +36,14 @@ m64p_joykeys = [
 'JoyMappingStop3','JoyMappingFullscreen3','JoyMappingSaveState3','JoyMappingLoadState3','JoyMappingIncrementSlot3','JoyMappingReset3','JoyMappingSpeedDown3','JoyMappingSpeedUp3','JoyMappingScreenshot3','JoyMappingPause3','JoyMappingMute3','JoyMappingIncreaseVolume3','JoyMappingDecreaseVolume3','JoyMappingFastForward3','JoyMappingFrameAdvance3','JoyMappingGameshark3',
 'JoyMappingStop4','JoyMappingFullscreen4','JoyMappingSaveState4','JoyMappingLoadState4','JoyMappingIncrementSlot4','JoyMappingReset4','JoyMappingSpeedDown4','JoyMappingSpeedUp4','JoyMappingScreenshot4','JoyMappingPause4','JoyMappingMute4','JoyMappingIncreaseVolume4','JoyMappingDecreaseVolume4','JoyMappingFastForward4','JoyMappingFrameAdvance4','JoyMappingGameshark4'],
 
-sliders = ['AnalogDeadzone1','AnalogDeadzone2','AnalogDeadzone3','AnalogDeadzone4','AnalogPeak1','AnalogPeak2','AnalogPeak3','AnalogPeak4','control_stick_deadzone','control_stick_sensitivity','c_stick_deadzone','trigger_threshold'],
+sliders = ['AnalogDeadzone1','AnalogDeadzone2','AnalogDeadzone3','AnalogDeadzone4','AnalogPeak1','AnalogPeak2','AnalogPeak3','AnalogPeak4','control_stick_deadzone','control_stick_sensitivity','c_stick_deadzone','trigger_threshold','MouseSensitivityX','MouseSensitivityY'],
 
 numbers = ['OverscanNtscTop','OverscanNtscLeft','OverscanNtscRight','OverscanNtscBottom','OverscanPalTop','OverscanPalLeft','OverscanPalRight','OverscanPalBottom','NumWorkers','ParallelCropOverscan','ParallelVerticalStretch','txCacheSize','txHiresVramLimit','GammaCorrectionLevel','fontSize','CountPerOp','CountPerOpDenomPot','SiDmaDuration','CurrentStateSlot','VOLUME_ADJUST','VOLUME_DEFAULT'],
 
 dropdowns = [
 'emumode','resolution','SaveDiskFormat', /* mupen64plus */
 'gfx','audio','input','rsp','RspFallback', /* mupen64plus plugins */
-'plugin1','plugin2','plugin3','plugin4','c1','c2','c3','c4', /* mupen64plus-input */
+'plugin1','plugin2','plugin3','plugin4','c1','c2','c3','c4','mb1','mb2','mb3', /* mupen64plus-input */
 'PRIMARY_BUFFER_TARGET', /* mupen64plus-audio */
 'a','b','x','y','start','z','l','r','d_pad_left','d_pad_right','d_pad_down','d_pad_up','c_stick_left','c_stick_right','c_stick_down','c_stick_up', /* mupen64plus-input-gca */
 'msaa','aspectRatio','bufferSwapMode','CountersPos','useNativeResolutionFactor','anisotropy','cache','RDRAMImageDitheringMode','CorrectTexrectCoords','EnableNativeResTexrects','BackgroundsMode','EnableN64DepthCompare','EnableCopyColorToRDRAM','EnableCopyDepthToRDRAM','txFilterMode','txEnhancementMode', /* GLideN64 */
@@ -954,10 +954,6 @@ plugged1 = 'Input-SDL-Control1[plugged]=' + id('plugged1').checked,
 plugged2 = 'Input-SDL-Control2[plugged]=' + id('plugged2').checked,
 plugged3 = 'Input-SDL-Control3[plugged]=' + id('plugged3').checked,
 plugged4 = 'Input-SDL-Control4[plugged]=' + id('plugged4').checked,
-mouse1 = 'Input-SDL-Control1[mouse]=false',
-mouse2 = 'Input-SDL-Control2[mouse]=false',
-mouse3 = 'Input-SDL-Control3[mouse]=false',
-mouse4 = 'Input-SDL-Control4[mouse]=false',
 analogdeadzone1 = 'Input-SDL-Control1[AnalogDeadzone]=' + AnalogDeadzone1.value + ',' + AnalogDeadzone1.value,
 analogdeadzone2 = 'Input-SDL-Control2[AnalogDeadzone]=' + AnalogDeadzone2.value + ',' + AnalogDeadzone2.value,
 analogdeadzone3 = 'Input-SDL-Control3[AnalogDeadzone]=' + AnalogDeadzone3.value + ',' + AnalogDeadzone3.value,
@@ -966,6 +962,17 @@ analogpeak1 = 'Input-SDL-Control1[AnalogPeak]=' + AnalogPeak1.value + ',' + Anal
 analogpeak2 = 'Input-SDL-Control2[AnalogPeak]=' + AnalogPeak2.value + ',' + AnalogPeak2.value,
 analogpeak3 = 'Input-SDL-Control3[AnalogPeak]=' + AnalogPeak3.value + ',' + AnalogPeak3.value,
 analogpeak4 = 'Input-SDL-Control4[AnalogPeak]=' + AnalogPeak4.value + ',' + AnalogPeak4.value,
+mouse1 = 'Input-SDL-Control1[mouse]=' + id('mouse1').checked,
+mouse2 = 'Input-SDL-Control2[mouse]=' + id('mouse2').checked,
+mouse3 = 'Input-SDL-Control3[mouse]=' + id('mouse3').checked,
+mouse4 = 'Input-SDL-Control4[mouse]=' + id('mouse4').checked,
+mb1 = id('mb1').value,
+mb2 = id('mb2').value,
+mb3 = id('mb3').value,
+msensitivity1 = 'Input-SDL-Control1[MouseSensitivity]=' + MouseSensitivityX.value + ',' + MouseSensitivityY.value,
+msensitivity2 = 'Input-SDL-Control2[MouseSensitivity]=' + MouseSensitivityX.value + ',' + MouseSensitivityY.value,
+msensitivity3 = 'Input-SDL-Control3[MouseSensitivity]=' + MouseSensitivityX.value + ',' + MouseSensitivityY.value,
+msensitivity4 = 'Input-SDL-Control4[MouseSensitivity]=' + MouseSensitivityX.value + ',' + MouseSensitivityY.value,
 
 AButton1 = 'Input-SDL-Control1[A Button]=',
 AButton2 = 'Input-SDL-Control2[A Button]=',
@@ -1197,6 +1204,222 @@ YAxis4 += 'key(' + id('StickU4').dataset.key + ',' + id('StickD4').dataset.key +
 
 
 
+if(id('m1_1').checked){ /* Mouse buttons 1 */
+if(mb1 === 'a'){AButton1 += ' mouse(1)'}
+if(mb1 === 'b'){BButton1 += ' mouse(1)'}
+if(mb1 === 'l'){LTrig1 += ' mouse(1)'}
+if(mb1 === 'r'){RTrig1 += ' mouse(1)'}
+if(mb1 === 'z'){ZTrig1 += ' mouse(1)'}
+if(mb1 === 'cr'){CButtonR1 += ' mouse(1)'}
+if(mb1 === 'cl'){CButtonL1 += ' mouse(1)'}
+if(mb1 === 'cd'){CButtonD1 += ' mouse(1)'}
+if(mb1 === 'cu'){CButtonU1 += ' mouse(1)'}
+if(mb1 === 'dpadr'){DPadR1 += ' mouse(1)'}
+if(mb1 === 'dpadl'){DPadL1 += ' mouse(1)'}
+if(mb1 === 'dpadd'){DPadD1 += ' mouse(1)'}
+if(mb1 === 'dpadu'){DPadU1 += ' mouse(1)'}
+if(mb1 === 'start'){Start1 += ' mouse(1)'}
+if(mb1 === 'ms'){MempakSwitch1 += ' mouse(1)'}
+if(mb1 === 'rs'){RumblepakSwitch1 += ' mouse(1)'}}
+if(id('m2_1').checked){
+if(mb2 === 'a'){AButton1 += ' mouse(2)'}
+if(mb2 === 'b'){BButton1 += ' mouse(2)'}
+if(mb2 === 'l'){LTrig1 += ' mouse(2)'}
+if(mb2 === 'r'){RTrig1 += ' mouse(2)'}
+if(mb2 === 'z'){ZTrig1 += ' mouse(2)'}
+if(mb2 === 'cr'){CButtonR1 += ' mouse(2)'}
+if(mb2 === 'cl'){CButtonL1 += ' mouse(2)'}
+if(mb2 === 'cd'){CButtonD1 += ' mouse(2)'}
+if(mb2 === 'cu'){CButtonU1 += ' mouse(2)'}
+if(mb2 === 'dpadr'){DPadR1 += ' mouse(2)'}
+if(mb2 === 'dpadl'){DPadL1 += ' mouse(2)'}
+if(mb2 === 'dpadd'){DPadD1 += ' mouse(2)'}
+if(mb2 === 'dpadu'){DPadU1 += ' mouse(2)'}
+if(mb2 === 'start'){Start1 += ' mouse(2)'}
+if(mb2 === 'ms'){MempakSwitch1 += ' mouse(2)'}
+if(mb2 === 'rs'){RumblepakSwitch1 += ' mouse(2)'}}
+if(id('m3_1').checked){
+if(mb3 === 'a'){AButton1 += ' mouse(3)'}
+if(mb3 === 'b'){BButton1 += ' mouse(3)'}
+if(mb3 === 'l'){LTrig1 += ' mouse(3)'}
+if(mb3 === 'r'){RTrig1 += ' mouse(3)'}
+if(mb3 === 'z'){ZTrig1 += ' mouse(3)'}
+if(mb3 === 'cr'){CButtonR1 += ' mouse(3)'}
+if(mb3 === 'cl'){CButtonL1 += ' mouse(3)'}
+if(mb3 === 'cd'){CButtonD1 += ' mouse(3)'}
+if(mb3 === 'cu'){CButtonU1 += ' mouse(3)'}
+if(mb3 === 'dpadr'){DPadR1 += ' mouse(3)'}
+if(mb3 === 'dpadl'){DPadL1 += ' mouse(3)'}
+if(mb3 === 'dpadd'){DPadD1 += ' mouse(3)'}
+if(mb3 === 'dpadu'){DPadU1 += ' mouse(3)'}
+if(mb3 === 'start'){Start1 += ' mouse(3)'}
+if(mb3 === 'ms'){MempakSwitch1 += ' mouse(3)'}
+if(mb3 === 'rs'){RumblepakSwitch1 += ' mouse(3)'}}
+
+
+
+if(id('m1_2').checked){ /* Mouse buttons 2 */
+if(mb1 === 'a'){AButton2 += ' mouse(1)'}
+if(mb1 === 'b'){BButton2 += ' mouse(1)'}
+if(mb1 === 'l'){LTrig2 += ' mouse(1)'}
+if(mb1 === 'r'){RTrig2 += ' mouse(1)'}
+if(mb1 === 'z'){ZTrig2 += ' mouse(1)'}
+if(mb1 === 'cr'){CButtonR2 += ' mouse(1)'}
+if(mb1 === 'cl'){CButtonL2 += ' mouse(1)'}
+if(mb1 === 'cd'){CButtonD2 += ' mouse(1)'}
+if(mb1 === 'cu'){CButtonU2 += ' mouse(1)'}
+if(mb1 === 'dpadr'){DPadR2 += ' mouse(1)'}
+if(mb1 === 'dpadl'){DPadL2 += ' mouse(1)'}
+if(mb1 === 'dpadd'){DPadD2 += ' mouse(1)'}
+if(mb1 === 'dpadu'){DPadU2 += ' mouse(1)'}
+if(mb1 === 'start'){Start2 += ' mouse(1)'}
+if(mb1 === 'ms'){MempakSwitch2 += ' mouse(1)'}
+if(mb1 === 'rs'){RumblepakSwitch2 += ' mouse(1)'}}
+if(id('m2_2').checked){
+if(mb2 === 'a'){AButton2 += ' mouse(2)'}
+if(mb2 === 'b'){BButton2 += ' mouse(2)'}
+if(mb2 === 'l'){LTrig2 += ' mouse(2)'}
+if(mb2 === 'r'){RTrig2 += ' mouse(2)'}
+if(mb2 === 'z'){ZTrig2 += ' mouse(2)'}
+if(mb2 === 'cr'){CButtonR2 += ' mouse(2)'}
+if(mb2 === 'cl'){CButtonL2 += ' mouse(2)'}
+if(mb2 === 'cd'){CButtonD2 += ' mouse(2)'}
+if(mb2 === 'cu'){CButtonU2 += ' mouse(2)'}
+if(mb2 === 'dpadr'){DPadR2 += ' mouse(2)'}
+if(mb2 === 'dpadl'){DPadL2 += ' mouse(2)'}
+if(mb2 === 'dpadd'){DPadD2 += ' mouse(2)'}
+if(mb2 === 'dpadu'){DPadU2 += ' mouse(2)'}
+if(mb2 === 'start'){Start2 += ' mouse(2)'}
+if(mb2 === 'ms'){MempakSwitch2 += ' mouse(2)'}
+if(mb2 === 'rs'){RumblepakSwitch2 += ' mouse(2)'}}
+if(id('m3_2').checked){
+if(mb3 === 'a'){AButton2 += ' mouse(3)'}
+if(mb3 === 'b'){BButton2 += ' mouse(3)'}
+if(mb3 === 'l'){LTrig2 += ' mouse(3)'}
+if(mb3 === 'r'){RTrig2 += ' mouse(3)'}
+if(mb3 === 'z'){ZTrig2 += ' mouse(3)'}
+if(mb3 === 'cr'){CButtonR2 += ' mouse(3)'}
+if(mb3 === 'cl'){CButtonL2 += ' mouse(3)'}
+if(mb3 === 'cd'){CButtonD2 += ' mouse(3)'}
+if(mb3 === 'cu'){CButtonU2 += ' mouse(3)'}
+if(mb3 === 'dpadr'){DPadR2 += ' mouse(3)'}
+if(mb3 === 'dpadl'){DPadL2 += ' mouse(3)'}
+if(mb3 === 'dpadd'){DPadD2 += ' mouse(3)'}
+if(mb3 === 'dpadu'){DPadU2 += ' mouse(3)'}
+if(mb3 === 'start'){Start2 += ' mouse(3)'}
+if(mb3 === 'ms'){MempakSwitch2 += ' mouse(3)'}
+if(mb3 === 'rs'){RumblepakSwitch2 += ' mouse(3)'}}
+
+
+
+if(id('m1_3').checked){ /* Mouse buttons 3 */
+if(mb1 === 'a'){AButton3 += ' mouse(1)'}
+if(mb1 === 'b'){BButton3 += ' mouse(1)'}
+if(mb1 === 'l'){LTrig3 += ' mouse(1)'}
+if(mb1 === 'r'){RTrig3 += ' mouse(1)'}
+if(mb1 === 'z'){ZTrig3 += ' mouse(1)'}
+if(mb1 === 'cr'){CButtonR3 += ' mouse(1)'}
+if(mb1 === 'cl'){CButtonL3 += ' mouse(1)'}
+if(mb1 === 'cd'){CButtonD3 += ' mouse(1)'}
+if(mb1 === 'cu'){CButtonU3 += ' mouse(1)'}
+if(mb1 === 'dpadr'){DPadR3 += ' mouse(1)'}
+if(mb1 === 'dpadl'){DPadL3 += ' mouse(1)'}
+if(mb1 === 'dpadd'){DPadD3 += ' mouse(1)'}
+if(mb1 === 'dpadu'){DPadU3 += ' mouse(1)'}
+if(mb1 === 'start'){Start3 += ' mouse(1)'}
+if(mb1 === 'ms'){MempakSwitch3 += ' mouse(1)'}
+if(mb1 === 'rs'){RumblepakSwitch3 += ' mouse(1)'}}
+if(id('m2_3').checked){
+if(mb2 === 'a'){AButton3 += ' mouse(2)'}
+if(mb2 === 'b'){BButton3 += ' mouse(2)'}
+if(mb2 === 'l'){LTrig3 += ' mouse(2)'}
+if(mb2 === 'r'){RTrig3 += ' mouse(2)'}
+if(mb2 === 'z'){ZTrig3 += ' mouse(2)'}
+if(mb2 === 'cr'){CButtonR3 += ' mouse(2)'}
+if(mb2 === 'cl'){CButtonL3 += ' mouse(2)'}
+if(mb2 === 'cd'){CButtonD3 += ' mouse(2)'}
+if(mb2 === 'cu'){CButtonU3 += ' mouse(2)'}
+if(mb2 === 'dpadr'){DPadR3 += ' mouse(2)'}
+if(mb2 === 'dpadl'){DPadL3 += ' mouse(2)'}
+if(mb2 === 'dpadd'){DPadD3 += ' mouse(2)'}
+if(mb2 === 'dpadu'){DPadU3 += ' mouse(2)'}
+if(mb2 === 'start'){Start3 += ' mouse(2)'}
+if(mb2 === 'ms'){MempakSwitch3 += ' mouse(2)'}
+if(mb2 === 'rs'){RumblepakSwitch3 += ' mouse(2)'}}
+if(id('m3_3').checked){
+if(mb3 === 'a'){AButton3 += ' mouse(3)'}
+if(mb3 === 'b'){BButton3 += ' mouse(3)'}
+if(mb3 === 'l'){LTrig3 += ' mouse(3)'}
+if(mb3 === 'r'){RTrig3 += ' mouse(3)'}
+if(mb3 === 'z'){ZTrig3 += ' mouse(3)'}
+if(mb3 === 'cr'){CButtonR3 += ' mouse(3)'}
+if(mb3 === 'cl'){CButtonL3 += ' mouse(3)'}
+if(mb3 === 'cd'){CButtonD3 += ' mouse(3)'}
+if(mb3 === 'cu'){CButtonU3 += ' mouse(3)'}
+if(mb3 === 'dpadr'){DPadR3 += ' mouse(3)'}
+if(mb3 === 'dpadl'){DPadL3 += ' mouse(3)'}
+if(mb3 === 'dpadd'){DPadD3 += ' mouse(3)'}
+if(mb3 === 'dpadu'){DPadU3 += ' mouse(3)'}
+if(mb3 === 'start'){Start3 += ' mouse(3)'}
+if(mb3 === 'ms'){MempakSwitch3 += ' mouse(3)'}
+if(mb3 === 'rs'){RumblepakSwitch3 += ' mouse(3)'}}
+
+
+
+if(id('m1_4').checked){ /* Mouse buttons 4 */
+if(mb1 === 'a'){AButton4 += ' mouse(1)'}
+if(mb1 === 'b'){BButton4 += ' mouse(1)'}
+if(mb1 === 'l'){LTrig4 += ' mouse(1)'}
+if(mb1 === 'r'){RTrig4 += ' mouse(1)'}
+if(mb1 === 'z'){ZTrig4 += ' mouse(1)'}
+if(mb1 === 'cr'){CButtonR4 += ' mouse(1)'}
+if(mb1 === 'cl'){CButtonL4 += ' mouse(1)'}
+if(mb1 === 'cd'){CButtonD4 += ' mouse(1)'}
+if(mb1 === 'cu'){CButtonU4 += ' mouse(1)'}
+if(mb1 === 'dpadr'){DPadR4 += ' mouse(1)'}
+if(mb1 === 'dpadl'){DPadL4 += ' mouse(1)'}
+if(mb1 === 'dpadd'){DPadD4 += ' mouse(1)'}
+if(mb1 === 'dpadu'){DPadU4 += ' mouse(1)'}
+if(mb1 === 'start'){Start4 += ' mouse(1)'}
+if(mb1 === 'ms'){MempakSwitch4 += ' mouse(1)'}
+if(mb1 === 'rs'){RumblepakSwitch4 += ' mouse(1)'}}
+if(id('m2_4').checked){
+if(mb2 === 'a'){AButton4 += ' mouse(2)'}
+if(mb2 === 'b'){BButton4 += ' mouse(2)'}
+if(mb2 === 'l'){LTrig4 += ' mouse(2)'}
+if(mb2 === 'r'){RTrig4 += ' mouse(2)'}
+if(mb2 === 'z'){ZTrig4 += ' mouse(2)'}
+if(mb2 === 'cr'){CButtonR4 += ' mouse(2)'}
+if(mb2 === 'cl'){CButtonL4 += ' mouse(2)'}
+if(mb2 === 'cd'){CButtonD4 += ' mouse(2)'}
+if(mb2 === 'cu'){CButtonU4 += ' mouse(2)'}
+if(mb2 === 'dpadr'){DPadR4 += ' mouse(2)'}
+if(mb2 === 'dpadl'){DPadL4 += ' mouse(2)'}
+if(mb2 === 'dpadd'){DPadD4 += ' mouse(2)'}
+if(mb2 === 'dpadu'){DPadU4 += ' mouse(2)'}
+if(mb2 === 'start'){Start4 += ' mouse(2)'}
+if(mb2 === 'ms'){MempakSwitch4 += ' mouse(2)'}
+if(mb2 === 'rs'){RumblepakSwitch4 += ' mouse(2)'}}
+if(id('m3_4').checked){
+if(mb3 === 'a'){AButton4 += ' mouse(3)'}
+if(mb3 === 'b'){BButton4 += ' mouse(3)'}
+if(mb3 === 'l'){LTrig4 += ' mouse(3)'}
+if(mb3 === 'r'){RTrig4 += ' mouse(3)'}
+if(mb3 === 'z'){ZTrig4 += ' mouse(3)'}
+if(mb3 === 'cr'){CButtonR4 += ' mouse(3)'}
+if(mb3 === 'cl'){CButtonL4 += ' mouse(3)'}
+if(mb3 === 'cd'){CButtonD4 += ' mouse(3)'}
+if(mb3 === 'cu'){CButtonU4 += ' mouse(3)'}
+if(mb3 === 'dpadr'){DPadR4 += ' mouse(3)'}
+if(mb3 === 'dpadl'){DPadL4 += ' mouse(3)'}
+if(mb3 === 'dpadd'){DPadD4 += ' mouse(3)'}
+if(mb3 === 'dpadu'){DPadU4 += ' mouse(3)'}
+if(mb3 === 'start'){Start4 += ' mouse(3)'}
+if(mb3 === 'ms'){MempakSwitch4 += ' mouse(3)'}
+if(mb3 === 'rs'){RumblepakSwitch4 += ' mouse(3)'}}
+
+
+
 var core = ['--corelib','mupen64plus','--plugindir','./','--gfx',gfx,'--audio',audio,'--input',input,'--rsp',rsp],
 
 settings = [RspFallback,cxd4GFX,m64pGFX,cxd4Audio,m64pAudio,WaitForCPUHost,SupportCPUSemaphoreLock, /* RSP */
@@ -1215,13 +1438,13 @@ JoyMappingStop,JoyMappingFullscreen,JoyMappingSaveState,JoyMappingLoadState,JoyM
 
 mode1,mode2,mode3,mode4,plugin1,plugin2,plugin3,plugin4,plugged1,plugged2,plugged3,plugged4,name1,name2,name3,name4,device1,device2,device3,device4,gbROM1Setting,gbROM2Setting,gbROM3Setting,gbROM4Setting,gbRAM1Setting,gbRAM2Setting,gbRAM3Setting,gbRAM4Setting, /* Input */
 
-AButton1,BButton1,LTrig1,RTrig1,ZTrig1,Start1,DPadU1,DPadL1,DPadR1,DPadD1,CButtonU1,CButtonL1,CButtonR1,CButtonD1,MempakSwitch1,RumblepakSwitch1,XAxis1,YAxis1,analogdeadzone1,analogpeak1,mouse1, /* Controller 1 */
+AButton1,BButton1,LTrig1,RTrig1,ZTrig1,Start1,DPadU1,DPadL1,DPadR1,DPadD1,CButtonU1,CButtonL1,CButtonR1,CButtonD1,MempakSwitch1,RumblepakSwitch1,XAxis1,YAxis1,analogdeadzone1,analogpeak1,mouse1,msensitivity1, /* Controller 1 */
 
-AButton2,BButton2,LTrig2,RTrig2,ZTrig2,Start2,DPadU2,DPadL2,DPadR2,DPadD2,CButtonU2,CButtonL2,CButtonR2,CButtonD2,MempakSwitch2,RumblepakSwitch2,XAxis2,YAxis2,analogdeadzone2,analogpeak2,mouse2, /* Controller 2 */
+AButton2,BButton2,LTrig2,RTrig2,ZTrig2,Start2,DPadU2,DPadL2,DPadR2,DPadD2,CButtonU2,CButtonL2,CButtonR2,CButtonD2,MempakSwitch2,RumblepakSwitch2,XAxis2,YAxis2,analogdeadzone2,analogpeak2,mouse2,msensitivity2, /* Controller 2 */
 
-AButton3,BButton3,LTrig3,RTrig3,ZTrig3,Start3,DPadU3,DPadL3,DPadR3,DPadD3,CButtonU3,CButtonL3,CButtonR3,CButtonD3,MempakSwitch3,RumblepakSwitch3,XAxis3,YAxis3,analogdeadzone3,analogpeak3,mouse3, /* Controller 3 */
+AButton3,BButton3,LTrig3,RTrig3,ZTrig3,Start3,DPadU3,DPadL3,DPadR3,DPadD3,CButtonU3,CButtonL3,CButtonR3,CButtonD3,MempakSwitch3,RumblepakSwitch3,XAxis3,YAxis3,analogdeadzone3,analogpeak3,mouse3,msensitivity3, /* Controller 3 */
 
-AButton4,BButton4,LTrig4,RTrig4,ZTrig4,Start4,DPadU4,DPadL4,DPadR4,DPadD4,CButtonU4,CButtonL4,CButtonR4,CButtonD4,MempakSwitch4,RumblepakSwitch4,XAxis4,YAxis4,analogdeadzone4,analogpeak4,mouse4, /* Controller 4 */
+AButton4,BButton4,LTrig4,RTrig4,ZTrig4,Start4,DPadU4,DPadL4,DPadR4,DPadD4,CButtonU4,CButtonL4,CButtonR4,CButtonD4,MempakSwitch4,RumblepakSwitch4,XAxis4,YAxis4,analogdeadzone4,analogpeak4,mouse4,msensitivity4, /* Controller 4 */
 
 Parallel,NumWorkers,BusyLoop,ViMode,ViInterpolation,ViWidescreen,ViHideOverscan,ViIntegerScaling,DpCompat, /* Angrylion Plus */
 

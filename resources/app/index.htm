@@ -176,19 +176,20 @@ Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
 <div id="inputAnchor" class="anchor"></div>
 <p class="headline">Input</p>
 <p>&nbsp;</p>
-<ul class="ul-buttons width92p">
-<li id="ul_input_controller1" class="active">Controller 1</li>
-<li id="ul_input_controller2">Controller 2</li>
-<li id="ul_input_controller3">Controller 3</li>
-<li id="ul_input_controller4">Controller 4</li>
-<li id="ul_input_gca">GC Adapter</li>
+<ul class="ul-buttons width91p">
+<li id="ul_input_controller1" class="active">Port 1</li>
+<li id="ul_input_controller2">Port 2</li>
+<li id="ul_input_controller3">Port 3</li>
+<li id="ul_input_controller4">Port 4</li>
+<li id="ul_input_gca">GameCube Adapter</li>
+<li id="ul_input_mouse">Mouse</li>
 </ul>
 <p>&nbsp;</p>
 <div id="input_controller1">
 <p class="mt-10" title="Specifies whether this controller is connected to the simulated N64."><input id="plugged1" type="checkbox" data-store="plugged1" checked><label for="plugged1">Plugged</label></p>
 <p>&nbsp;</p>
 <div id="c1_controls" class="hide">
-<div title="Select SDL device to be used for this controller port. Will be ignored if configuration mode is set to Automatic, except for hotkey settings."><select class="width85p" name="c1" id="c1">
+<div title="Select SDL device to be used for this controller port and for hotkey settings."><select class="width85p" name="c1" id="c1">
 <option value="Keyboard" selected>Keyboard</option>
 </select><button class="floatright" id="refreshc1">Refresh</button></div>
 <p>&nbsp;</p>
@@ -262,7 +263,7 @@ Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
 <p class="mt-10" title="Specifies whether this controller is connected to the simulated N64."><input id="plugged2" type="checkbox" data-store="plugged2" checked><label for="plugged2">Plugged</label></p>
 <p>&nbsp;</p>
 <div id="c2_controls" class="hide">
-<div title="Select SDL device to be used for this controller port. Will be ignored if configuration mode is set to Automatic, except for hotkey settings."><select class="width85p" name="c2" id="c2">
+<div title="Select SDL device to be used for this controller port and for hotkey settings."><select class="width85p" name="c2" id="c2">
 <option value="Keyboard" selected>Keyboard</option>
 </select><button class="floatright" id="refreshc2">Refresh</button></div>
 <p>&nbsp;</p>
@@ -336,7 +337,7 @@ Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
 <p class="mt-10" title="Specifies whether this controller is connected to the simulated N64."><input id="plugged3" type="checkbox" data-store="plugged3" checked><label for="plugged3">Plugged</label></p>
 <p>&nbsp;</p>
 <div id="c3_controls" class="hide">
-<div title="Select SDL device to be used for this controller port. Will be ignored if configuration mode is set to Automatic, except for hotkey settings."><select class="width85p" name="c3" id="c3">
+<div title="Select SDL device to be used for this controller port and for hotkey settings."><select class="width85p" name="c3" id="c3">
 <option value="Keyboard" selected>Keyboard</option>
 </select><button class="floatright" id="refreshc3">Refresh</button></div>
 <p>&nbsp;</p>
@@ -410,7 +411,7 @@ Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
 <p class="mt-10" title="Specifies whether this controller is connected to the simulated N64."><input id="plugged4" type="checkbox" data-store="plugged4" checked><label for="plugged4">Plugged</label></p>
 <p>&nbsp;</p>
 <div id="c4_controls" class="hide">
-<div title="Select SDL device to be used for this controller port. Will be ignored if configuration mode is set to Automatic, except for hotkey settings."><select class="width85p" name="c4" id="c4">
+<div title="Select SDL device to be used for this controller port and for hotkey settings."><select class="width85p" name="c4" id="c4">
 <option value="Keyboard" selected>Keyboard</option>
 </select><button class="floatright" id="refreshc4">Refresh</button></div>
 <p>&nbsp;</p>
@@ -760,6 +761,83 @@ Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
 <option value="'CDown'">C-Button Down</option>
 <option value="'CUp'" selected>C-Button Up</option>
 </select><label for="c_stick_up">C-Stick Up</label>
+<p>&nbsp;</p>
+</div>
+<div id="input_mouse" class="hide mt-10">
+<p title="Mouse controls analog stick movement. To toggle the mouse grab while playing a game, press the Left Control and Left Alt keys together.">Mouse movement: <input class="ml-20" id="mouse1" type="checkbox" data-store="mouse1"><label for="mouse1">Stick 1</label><input class="ml-20" id="mouse2" type="checkbox" data-store="mouse2"><label for="mouse2">Stick 2</label><input class="ml-20" id="mouse3" type="checkbox" data-store="mouse3"><label for="mouse3">Stick 3</label><input class="ml-20" id="mouse4" type="checkbox" data-store="mouse4"><label for="mouse4">Stick 4</label></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<div title="Bind to left mouse button.">
+<select class="width175m mt-15" name="mb1" id="mb1">
+<option value="" selected>None</option>
+<option value="a">A Button</option>
+<option value="b">B Button</option>
+<option value="l">L Button</option>
+<option value="r">R Button</option>
+<option value="z">Z-Trigger</option>
+<option value="cr">C-Right</option>
+<option value="cl">C-Left</option>
+<option value="cd">C-Down</option>
+<option value="cu">C-Up</option>
+<option value="dpadr">D-Pad Right</option>
+<option value="dpadl">D-Pad Left</option>
+<option value="dpadd">D-Pad Down</option>
+<option value="dpadu">D-Pad Up</option>
+<option value="start">Start Button</option>
+<option value="ms">Mempak Switch</option>
+<option value="rs">Rumblepak Switch</option>
+</select><label for="mb1">MB: Left</label>
+<input class="ml-42" id="m1_1" type="checkbox" data-store="m1_1"><label for="m1_1">Port 1</label><input class="ml-20" id="m1_2" type="checkbox" data-store="m1_2"><label for="m1_2">Port 2</label><input class="ml-20" id="m1_3" type="checkbox" data-store="m1_3"><label for="m1_3">Port 3</label><input class="ml-20" id="m1_4" type="checkbox" data-store="m1_4"><label for="m1_4">Port 4</label>
+</div>
+<p>&nbsp;</p>
+<div title="Bind to middle mouse button.">
+<select class="width175m" name="mb2" id="mb2">
+<option value="" selected>None</option>
+<option value="a">A Button</option>
+<option value="b">B Button</option>
+<option value="l">L Button</option>
+<option value="r">R Button</option>
+<option value="z">Z-Trigger</option>
+<option value="cr">C-Right</option>
+<option value="cl">C-Left</option>
+<option value="cd">C-Down</option>
+<option value="cu">C-Up</option>
+<option value="dpadr">D-Pad Right</option>
+<option value="dpadl">D-Pad Left</option>
+<option value="dpadd">D-Pad Down</option>
+<option value="dpadu">D-Pad Up</option>
+<option value="start">Start Button</option>
+<option value="ms">Mempak Switch</option>
+<option value="rs">Rumblepak Switch</option>
+</select><label for="mb2">MB: Middle</label>
+<input class="ml-20" id="m2_1" type="checkbox" data-store="m2_1"><label for="m2_1">Port 1</label><input class="ml-20" id="m2_2" type="checkbox" data-store="m2_2"><label for="m2_2">Port 2</label><input class="ml-20" id="m2_3" type="checkbox" data-store="m2_3"><label for="m2_3">Port 3</label><input class="ml-20" id="m2_4" type="checkbox" data-store="m2_4"><label for="m2_4">Port 4</label>
+</div>
+<p>&nbsp;</p>
+<div title="Bind to right mouse button.">
+<select class="width175m" name="mb3" id="mb3">
+<option value="" selected>None</option>
+<option value="a">A Button</option>
+<option value="b">B Button</option>
+<option value="l">L Button</option>
+<option value="r">R Button</option>
+<option value="z">Z-Trigger</option>
+<option value="cr">C-Right</option>
+<option value="cl">C-Left</option>
+<option value="cd">C-Down</option>
+<option value="cu">C-Up</option>
+<option value="dpadr">D-Pad Right</option>
+<option value="dpadl">D-Pad Left</option>
+<option value="dpadd">D-Pad Down</option>
+<option value="dpadu">D-Pad Up</option>
+<option value="start">Start Button</option>
+<option value="ms">Mempak Switch</option>
+<option value="rs">Rumblepak Switch</option>
+</select><label for="mb3">MB: Right</label>
+<input class="ml-33" id="m3_1" type="checkbox" data-store="m3_1"><label for="m3_1">Port 1</label><input class="ml-20" id="m3_2" type="checkbox" data-store="m3_2"><label for="m3_2">Port 2</label><input class="ml-20" id="m3_3" type="checkbox" data-store="m3_3"><label for="m3_3">Port 3</label><input class="ml-20" id="m3_4" type="checkbox" data-store="m3_4"><label for="m3_4">Port 4</label>
+</div>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<p><input id="MouseSensitivityX" name="MouseSensitivityX" type="range" min="0.25" max="10.00" step="0.25" value="2.00"><label for="MouseSensitivityX">Mouse Sensitivity X</label><button class="floatright" data-value="2.00" id="resetMouseSensitivityX">Reset</button><span class="gc" id="MouseSensitivityXText">2.00</span></p>
+<p>&nbsp;</p>
+<p><input id="MouseSensitivityY" name="MouseSensitivityY" type="range" min="0.25" max="10.00" step="0.25" value="2.00"><label for="MouseSensitivityY">Mouse Sensitivity Y</label><button class="floatright" data-value="2.00" id="resetMouseSensitivityY">Reset</button><span class="gc" id="MouseSensitivityYText">2.00</span></p>
 <p>&nbsp;</p>
 </div>
 <p>&nbsp;</p><p>&nbsp;</p>
