@@ -15,9 +15,15 @@
 <li><a href="#mainAnchor">Main</a></li>
 <li><a href="#inputAnchor">Input</a></li>
 <li><a href="#hotkeysAnchor">Hotkeys</a></li>
-<li class="ml-55"><a href="#angrylionAnchor">Angrylion</a></li>
-<li><a href="#gliden64Anchor">GLideN64</a></li>
-<li><a href="#parallelAnchor">Parallel</a></li>
+<li>
+<a id="videoSettings" class="dropbutton" href="#settings">Video</a>
+<div id="videoSettingsDropdown" class="dropdown">
+<a href="#angrylionAnchor">Angrylion Plus</a>
+<a href="#gliden64Anchor">GLideN64</a>
+<a href="#parallelAnchor">Parallel</a>
+<a href="#riceAnchor">Rice</a>
+</div>
+</li>
 <li><a id="launch" href="#boot">Launch</a></li>
 </ul>
 </header>
@@ -49,7 +55,7 @@
 <p><input id="error" type="checkbox" data-store="error"><label for="error">Show mupen64plus error log</label></p>
 <div class="mt-20 hide" id="log"></div>
 <p>&nbsp;</p><p>&nbsp;</p>
-<ul class="ul-buttons width80p">
+<ul class="ul-buttons">
 <li id="ul_core_core" class="active">Core</li>
 <li id="ul_core_advanced">Advanced</li>
 <li id="ul_core_audio">Audio</li>
@@ -147,10 +153,12 @@ Higher values increase audio latency but reduce the chance of audio drop-outs.">
 <div id="core_plugins" class="hide mt-15">
 <div title="Angrylion Plus: LLE,
 GLideN64: HLE (recommended) and LLE,
-Parallel: LLE"><select class="width250m" name="gfx" id="gfx">
+Parallel: LLE,
+Rice: HLE"><select class="width250m" name="gfx" id="gfx">
 <option value="mupen64plus-video-angrylion-plus">Angrylion Plus</option>
 <option value="mupen64plus-video-GLideN64" selected>GLideN64</option>
 <option value="mupen64plus-video-parallel">Parallel</option>
+<option value="mupen64plus-video-rice">Rice</option>
 </select><label for="gfx">Graphics Plugin</label></div>
 <p>&nbsp;</p>
 <select class="width250m" name="audio" id="audio">
@@ -196,7 +204,7 @@ Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
 <div id="inputAnchor" class="anchor"></div>
 <p class="headline">Input</p>
 <p>&nbsp;</p>
-<ul class="ul-buttons width91p">
+<ul class="ul-buttons">
 <li id="ul_input_controller1" class="active">Port 1</li>
 <li id="ul_input_controller2">Port 2</li>
 <li id="ul_input_controller3">Port 3</li>
@@ -866,7 +874,7 @@ Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
 <p>&nbsp;</p>
 <p><b>Gamepads:</b> For a hotkey combo, press another key after focusing the box a second time.</p>
 <p>&nbsp;</p>
-<ul class="ul-buttons width90p">
+<ul class="ul-buttons">
 <li id="ul_hk_keyboard" class="active">Keyboard</li>
 <li id="ul_hk_controller1">Controller 1</li>
 <li id="ul_hk_controller2">Controller 2</li>
@@ -1477,6 +1485,117 @@ If this option is turned off, the output resolution is the same as the rendering
 <option value="false" selected>Bob</option>
 <option value="true">Weave</option>
 </select><label for="ParallelDeinterlaceMode">Deinterlacing Method</label></div>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<div id="riceAnchor" class="anchor"></div>
+<p class="headline">Rice</p>
+<p>&nbsp;</p>
+<ul class="ul-buttons">
+<li id="ul_rice_video" class="active">Video</li>
+<li id="ul_rice_emulation">Emulation</li>
+<li id="ul_rice_textures">HD Textures</li>
+</ul>
+<p>&nbsp;</p>
+<div id="rice_video" class="mt-10">
+<p title="Enable Mupen64Plus On-screen display."><input id="osd" type="checkbox" data-store="osd"><label for="osd">On-screen display</label></p>
+<p>&nbsp;</p>
+<p title="Show framerate as part of the window title."><input id="RiceShowFPS" type="checkbox" data-store="RiceShowFPS"><label for="RiceShowFPS">Show FPS</label></p>
+<p>&nbsp;</p>
+<p><input id="ForcePolygonOffset" type="checkbox" data-store="ForcePolygonOffset"><label for="ForcePolygonOffset">Use polygon offset</label></p>
+<p>&nbsp;</p>
+<p title="Specifies a scale factor that is used to create a variable depth offset for each polygon."><span class="numberDecrease" id="decreasePolygonOffsetFactor">-</span><input id="PolygonOffsetFactor" min="0.00" max="10.00" step="0.1" value="0.00" type="number"><span class="numberIncrease" id="increasePolygonOffsetFactor">+</span><label for="PolygonOffsetFactor">Polygon offset factor</label><button class="floatright" data-value="0.00" id="resetPolygonOffsetFactor">Reset</button></p>
+<p>&nbsp;</p>
+<p title="Is multiplied by an implementation-specific value to create a constant depth offset."><span class="numberDecrease" id="decreasePolygonOffsetUnits">-</span><input id="PolygonOffsetUnits" min="0.00" max="10.00" step="0.1" value="0.00" type="number"><span class="numberIncrease" id="increasePolygonOffsetUnits">+</span><label for="PolygonOffsetUnits">Polygon offset units</label><button class="floatright" data-value="0.00" id="resetPolygonOffsetUnits">Reset</button></p>
+<p>&nbsp;</p>
+<select class="width200m" name="AnisotropicFiltering" id="AnisotropicFiltering">
+<option value="0" selected>Off</option>
+<option value="1">1x</option>
+<option value="2">2x</option>
+<option value="3">3x</option>
+<option value="4">4x</option>
+<option value="5">5x</option>
+<option value="6">6x</option>
+<option value="7">7x</option>
+<option value="8">8x</option>
+<option value="9">9x</option>
+<option value="10">10x</option>
+<option value="11">11x</option>
+<option value="12">12x</option>
+<option value="13">13x</option>
+<option value="14">14x</option>
+<option value="15">15x</option>
+<option value="16">16x</option>
+</select><label for="AnisotropicFiltering">Anisotropic filtering</label>
+<p>&nbsp;</p>
+<select class="width200m" name="RiceMultiSampling" id="RiceMultiSampling">
+<option value="0" selected>0x</option>
+<option value="2">2x</option>
+<option value="4">4x</option>
+<option value="8">8x</option>
+<option value="16">16x</option>
+</select><label for="RiceMultiSampling">MSAA</label>
+<p>&nbsp;</p>
+<select class="width200m" name="Mipmapping" id="Mipmapping">
+<option value="0" selected>Disabled</option>
+<option value="1">Nearest-neighbor</option>
+<option value="2">Bilinear</option>
+<option value="3">Trilinear</option>
+</select><label for="Mipmapping">Mipmapping</label>
+<p>&nbsp;</p>
+<select class="width200m" name="ForceTextureFilter" id="ForceTextureFilter">
+<option value="0" selected>Auto</option>
+<option value="1">No Filtering</option>
+<option value="2">Filtering</option>
+</select><label for="ForceTextureFilter">Texture filtering</label>
+</div>
+<div id="rice_emulation" class="hide mt-10">
+<p><input id="EnableHacks" type="checkbox" data-store="EnableHacks" checked><label for="EnableHacks">Game-specific settings</label></p>
+<p>&nbsp;</p>
+<p><input id="FogMethod" type="checkbox" data-store="FogMethod" checked><label for="FogMethod">Enable fog generation</label></p>
+<p>&nbsp;</p>
+<p title="Use different texture coordinate clamping code."><input id="AccurateTextureMapping" type="checkbox" data-store="AccurateTextureMapping" checked><label for="AccurateTextureMapping">Accurate texture mapping</label></p>
+<p>&nbsp;</p>
+<p><input id="FrameBufferSetting" type="checkbox" data-store="FrameBufferSetting"><label for="FrameBufferSetting">Disable framebuffer emulation</label></p>
+<p>&nbsp;</p>
+<p title="Improve render-to-texture quality."><input id="DoubleSizeForSmallTxtrBuf" type="checkbox" data-store="DoubleSizeForSmallTxtrBuf"><label for="DoubleSizeForSmallTxtrBuf">Double size texture buffer</label></p>
+<p>&nbsp;</p>
+<p title="Use a faster algorithm to speed up texture loading and CRC computation."><input id="FastTextureLoading" type="checkbox" data-store="FastTextureLoading"><label for="FastTextureLoading">Fast texture loading</label></p>
+<p>&nbsp;</p>
+<p title="Force emulated frame buffers to be in N64 native resolution."><input id="InN64Resolution" type="checkbox" data-store="InN64Resolution"><label for="InN64Resolution">Native resolution framebuffers</label></p>
+<p>&nbsp;</p>
+<p title="Enable vertex clipper for fog operations."><input id="OpenGLVertexClipper" type="checkbox" data-store="OpenGLVertexClipper"><label for="OpenGLVertexClipper">Vertex clipper</label></p>
+<p>&nbsp;</p>
+<div title="Frequency to write back the frame buffer."><select class="width225m" name="FrameBufferWriteBackControl" id="FrameBufferWriteBackControl">
+<option value="0" selected>Every Frame</option>
+<option value="1">Every 2 Frames</option>
+<option value="2">Every 3 Frames</option>
+<option value="3">Every 4 Frames</option>
+<option value="4">Every 5 Frames</option>
+<option value="5">Every 6 Frames</option>
+<option value="6">Every 7 Frames</option>
+<option value="7">Every 8 Frames</option>
+</select><label for="FrameBufferWriteBackControl">Framebuffer write back</label></div>
+<p>&nbsp;</p>
+<select class="width225m" name="RenderToTexture" id="RenderToTexture">
+<option value="0" selected>None</option>
+<option value="1">Ignore</option>
+<option value="2">Normal</option>
+<option value="3">Write Back</option>
+<option value="4">Write Back and Reload</option>
+</select><label for="RenderToTexture">Render-to-texture Emulation</label>
+<p>&nbsp;</p>
+<div title="Control when the screen will be updated."><select class="width225m" name="ScreenUpdateSetting" id="ScreenUpdateSetting">
+<option value="4" selected>First CI change</option>
+<option value="5">First Primitive Draw</option>
+<option value="7">After Screen Drawn</option>
+</select><label for="ScreenUpdateSetting">Screen update</label></div>
+</div>
+<div id="rice_textures" class="hide mt-10">
+<p title="Select hi-resolution textures based only on the CRC and ignore format and size information (Glide64 compatibility)."><input id="LoadHiResCRCOnly" type="checkbox" data-store="LoadHiResCRCOnly" checked><label for="LoadHiResCRCOnly">Hi-res CRC Only</label></p>
+<p>&nbsp;</p>
+<p><input id="LoadHiResTextures" type="checkbox" data-store="LoadHiResTextures"><label for="LoadHiResTextures">Enable HD textures</label></p>
+<p>&nbsp;</p>
+<p><input id="DumpTexturesToFiles" type="checkbox" data-store="DumpTexturesToFiles"><label for="DumpTexturesToFiles">Enable texture dumping</label></p>
+</div>
 <p>&nbsp;</p><p>&nbsp;</p>
 <footer id="footer">
 <button title="Settings" id="settings"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M19.43 12.98a7.8 7.8 0 0 0 0-1.96l2.11-1.65a.5.5 0 0 0 .12-.64l-2-3.46a.5.5 0 0 0-.61-.22l-2.49 1a7.3 7.3 0 0 0-1.69-.98l-.38-2.65A.49.49 0 0 0 14 2h-4a.49.49 0 0 0-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1a.57.57 0 0 0-.18-.03.5.5 0 0 0-.43.25l-2 3.46a.5.5 0 0 0 .12.64l2.11 1.65a7.93 7.93 0 0 0 0 1.96l-2.11 1.65a.5.5 0 0 0-.12.64l2 3.46a.5.5 0 0 0 .61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65a7.68 7.68 0 0 0 1.69-.98l2.49 1 .18.03a.5.5 0 0 0 .43-.25l2-3.46a.5.5 0 0 0-.12-.64l-2.11-1.65zm-1.98-1.71a5.34 5.34 0 0 1 0 1.46l-.14 1.13.89.7 1.08.84-.7 1.21-1.27-.51-1.04-.42-.9.68c-.43.32-.84.56-1.25.73l-1.06.43-.16 1.13-.2 1.35h-1.4l-.19-1.35-.16-1.13-1.06-.43a5.67 5.67 0 0 1-1.23-.71l-.91-.7-1.06.43-1.27.51-.7-1.21 1.08-.84.89-.7-.14-1.13c-.03-.31-.05-.54-.05-.74s.02-.43.05-.73l.14-1.13-.89-.7-1.08-.84.7-1.21 1.27.51 1.04.42.9-.68c.43-.32.84-.56 1.25-.73l1.06-.43.16-1.13.2-1.35h1.39l.19 1.35.16 1.13 1.06.43c.43.18.83.41 1.23.71l.91.7 1.06-.43 1.27-.51.7 1.21-1.07.85-.89.7.14 1.13zM12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg></button>

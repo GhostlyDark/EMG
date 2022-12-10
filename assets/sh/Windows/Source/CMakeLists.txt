@@ -4,6 +4,7 @@ include(ExternalProject)
 
 set(THIRDPARTY_DIR ${CMAKE_BINARY_DIR}/Source)
 set(M64P_CORE_DIR ${THIRDPARTY_DIR}/mupen64plus-core)
+set(RICE_DIR ${THIRDPARTY_DIR}/mupen64plus-video-rice)
 set(CORE_FILE "mupen64plus.dll")
 set(EMG_TAG "origin/emg")
 
@@ -22,6 +23,7 @@ set(MUPEN64PLUS_INPUT_SDL_URL "https://github.com/GhostlyDark/mupen64plus-input-
 set(MUPEN64PLUS_GFX_ANGRYLION_URL "https://github.com/GhostlyDark/angrylion-rdp-plus")
 set(MUPEN64PLUS_GFX_GLIDEN64_URL "https://github.com/GhostlyDark/GLideN64")
 set(MUPEN64PLUS_GFX_PARALLEL_URL "https://github.com/GhostlyDark/parallel-rdp-standalone")
+set(MUPEN64PLUS_GFX_RICE_URL "https://github.com/GhostlyDark/mupen64plus-video-rice")
 
 set(SDL_JSTEST_URL "https://github.com/GhostlyDark/sdl-jstest")
 
@@ -35,7 +37,7 @@ ExternalProject_Add(mupen64plus-core
     GIT_TAG ${EMG_TAG}
     GIT_SHALLOW 1
 
-    BUILD_COMMAND make all PLUGINDIR= SHAREDIR= BINDIR= MANDIR= LIBDIR= APPSDIR= ICONSDIR= INCDIR= LDCONFIG= COREDIR=./ NEW_DYNAREC=1 OSD=0 TARGET=${CORE_FILE}
+    BUILD_COMMAND make all PLUGINDIR= SHAREDIR= BINDIR= MANDIR= LIBDIR= APPSDIR= ICONSDIR= INCDIR= LDCONFIG= COREDIR=./ NEW_DYNAREC=1 TARGET=${CORE_FILE}
     BUILD_IN_SOURCE False
 
     BINARY_DIR ${M64P_CORE_DIR}/projects/unix
@@ -228,6 +230,26 @@ ExternalProject_Add(mupen64plus-video-parallel
     DEPENDS mupen64plus-core
 )
 
+ExternalProject_Add(mupen64plus-video-rice
+    SOURCE_DIR mupen64plus-video-rice/
+
+    CONFIGURE_COMMAND ""
+    INSTALL_COMMAND ""
+
+    GIT_REPOSITORY ${MUPEN64PLUS_GFX_RICE_URL}
+    GIT_TAG ${EMG_TAG}
+    GIT_SHALLOW 1
+
+    BUILD_COMMAND make all APIDIR=${APIDIR}
+    BUILD_IN_SOURCE False
+
+    BINARY_DIR ${RICE_DIR}/projects/unix
+    
+    BUILD_BYPRODUCTS ${RICE_DIR}/projects/unix/mupen64plus-video-rice.dll
+    BUILD_BYPRODUCTS ${RICE_DIR}/data/RiceVideoLinux.ini
+    DEPENDS mupen64plus-core
+)
+
 ExternalProject_Add(mupen64plus-audio-sdl
     SOURCE_DIR mupen64plus-audio-sdl/
 
@@ -264,6 +286,7 @@ ExternalProject_Add(sdl-jstest
 
 ExternalProject_Get_property(mupen64plus-core BUILD_BYPRODUCTS)
 set(MUPEN64PLUSCORE_LIB ${BUILD_BYPRODUCTS} PARENT_SCOPE)
+set(MUPEN64PLUSCORE_FONT ${M64P_CORE_DIR}/data/font.ttf PARENT_SCOPE)
 set(MUPEN64PLUSCORE_INI ${M64P_CORE_DIR}/data/mupen64plus.ini PARENT_SCOPE)
 set(MUPEN64PLUSCORE_CHT ${M64P_CORE_DIR}/data/mupencheat.txt PARENT_SCOPE)
 
@@ -296,6 +319,9 @@ set(MUPEN64PLUS_PLUGIN_GFX_GLIDEN64 ${BUILD_BYPRODUCTS} PARENT_SCOPE)
 
 ExternalProject_Get_property(mupen64plus-video-parallel BUILD_BYPRODUCTS)
 set(MUPEN64PLUS_PLUGIN_GFX_PARALLEL ${BUILD_BYPRODUCTS} PARENT_SCOPE)
+
+ExternalProject_Get_property(mupen64plus-video-rice BUILD_BYPRODUCTS)
+set(MUPEN64PLUS_PLUGIN_GFX_RICE ${BUILD_BYPRODUCTS} PARENT_SCOPE)
 
 ExternalProject_Get_property(mupen64plus-audio-sdl BUILD_BYPRODUCTS)
 set(MUPEN64PLUS_PLUGIN_AUDIO_SDL ${BUILD_BYPRODUCTS} PARENT_SCOPE)
