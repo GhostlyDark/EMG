@@ -36,7 +36,7 @@
 <div id="fileInput" class="box mt--5"><span id="fileText"></span></div>
 <p>&nbsp;</p>
 <select name="recent" id="recent">
-<option id="optionDefault" disabled selected>Recent Files</option>
+<option id="optionDefault" disabled selected>Recent files</option>
 <option id="option0"></option>
 <option id="option1"></option>
 <option id="option2"></option>
@@ -71,11 +71,11 @@
 <p>&nbsp;</p>
 <p title="Disable extra memory."><input id="exp" type="checkbox" data-store="exp"><label for="exp">Force 4 MB</label></p>
 <p>&nbsp;</p>
-<p title="Force number of cycles per emulated instruction (speed hack, not recommended). Leave at 0 to disable."><span class="numberDecrease" id="decreaseCountPerOp">-</span><input id="CountPerOp" min="0" max="6" step="1" value="0" type="number"><span class="numberIncrease" id="increaseCountPerOp">+</span><label for="CountPerOp">Counter Factor</label><button class="floatright" data-value="0" id="resetCountPerOp">Reset</button></p>
+<p title="Force number of cycles per emulated instruction (speed hack, not recommended). Leave at 0 to disable."><span class="numberDecrease" id="decreaseCountPerOp">-</span><input id="CountPerOp" min="0" max="6" step="1" value="0" type="number"><span class="numberIncrease" id="increaseCountPerOp">+</span><label for="CountPerOp">Counter factor</label><button class="floatright" data-value="0" id="resetCountPerOp">Reset</button></p>
 <p>&nbsp;</p>
-<p title="Reduce number of cycles per update by power of two."><span class="numberDecrease" id="decreaseCountPerOpDenomPot">-</span><input id="CountPerOpDenomPot" min="0" max="11" step="1" value="0" type="number"><span class="numberIncrease" id="increaseCountPerOpDenomPot">+</span><label for="CountPerOpDenomPot">Overclocking Factor</label><button class="floatright" data-value="0" id="resetCountPerOpDenomPot">Reset</button></p>
+<p title="Reduce number of cycles per update by power of two."><span class="numberDecrease" id="decreaseCountPerOpDenomPot">-</span><input id="CountPerOpDenomPot" min="0" max="11" step="1" value="0" type="number"><span class="numberIncrease" id="increaseCountPerOpDenomPot">+</span><label for="CountPerOpDenomPot">Overclocking factor</label><button class="floatright" data-value="0" id="resetCountPerOpDenomPot">Reset</button></p>
 <p>&nbsp;</p>
-<p title="Duration of SI DMA. Use -1 for default (per-game settings)."><span class="numberDecrease" id="decreaseSiDmaDuration">-</span><input id="SiDmaDuration" min="-1" max="1000" step="10" value="-1" type="number"><span class="numberIncrease" id="increaseSiDmaDuration">+</span><label for="SiDmaDuration">SI DMA Duration</label><button class="floatright" data-value="-1" id="resetSiDmaDuration">Reset</button></p>
+<p title="Duration of SI DMA. Use -1 for default (per-game settings)."><span class="numberDecrease" id="decreaseSiDmaDuration">-</span><input id="SiDmaDuration" min="-1" max="1000" step="10" value="-1" type="number"><span class="numberIncrease" id="increaseSiDmaDuration">+</span><label for="SiDmaDuration">SI DMA duration</label><button class="floatright" data-value="-1" id="resetSiDmaDuration">Reset</button></p>
 <p>&nbsp;</p>
 <select class="width200m" name="resolution" id="resolution">
 <option data-width="320" data-height="240" value="320x240">320x240</option>
@@ -86,42 +86,42 @@
 <option data-width="1920" data-height="1440" value="1920x1440">1920x1440</option>
 <option data-width="2240" data-height="1680" value="2240x1680">2240x1680</option>
 <option data-width="2560" data-height="1920" value="2560x1920">2560x1920</option>
-</select><label for="resolution">Windowed Resolution</label>
+</select><label for="resolution">Windowed resolution</label>
 <p>&nbsp;</p>
 <div title="Dynamic Recompiler offers the best performance. Use Interpreter when encountering issues."><select class="width200m" name="emumode" id="emumode">
 <option value="0">Pure Interpreter</option>
 <option value="1">Cached Interpreter</option>
 <option value="2" selected>Dynamic Recompiler</option>
-</select><label for="emumode">R4300 Emulator</label></div>
+</select><label for="emumode">R4300 emulator</label></div>
 </div>
 <div id="core_advanced" class="hide mt-10">
-<p title="Disable compiled jump commands in dynamic recompiler (not recommended)."><input id="NoCompiledJump" type="checkbox" data-store="NoCompiledJump"><label for="NoCompiledJump">Disable Compiled Jump</label></p>
+<p title="Disable compiled jump commands in dynamic recompiler (not recommended)."><input id="NoCompiledJump" type="checkbox" data-store="NoCompiledJump"><label for="NoCompiledJump">Disable compiled jump</label></p>
 <p>&nbsp;</p>
-<p title="Disables speed limit, V-Sync and mutes audio. Useful for performance testing."><input id="nospeedlimit" type="checkbox" data-store="nospeedlimit"><label for="nospeedlimit">Disable Speed Limit</label></p>
+<p title="Disables speed limit, V-Sync and mutes audio. Useful for performance testing."><input id="nospeedlimit" type="checkbox" data-store="nospeedlimit"><label for="nospeedlimit">Disable speed limit</label></p>
 <p>&nbsp;</p>
-<p title="Randomize PI/SI Interrupt Timing."><input id="RandomizeInterrupt" type="checkbox" data-store="RandomizeInterrupt" checked><label for="RandomizeInterrupt">Randomize Interrupt</label></p>
+<p title="Randomize PI/SI interrupt timing."><input id="RandomizeInterrupt" type="checkbox" data-store="RandomizeInterrupt" checked><label for="RandomizeInterrupt">Randomize interrupt</label></p>
 <p>&nbsp;</p>
-<p title="Print more information on logging."><input id="verbose" type="checkbox" data-store="verbose"><label for="verbose">Verbose Logging</label></p>
+<p title="Print more information on logging."><input id="verbose" type="checkbox" data-store="verbose"><label for="verbose">Verbose logging</label></p>
 <p>&nbsp;</p>
 <p title="Increment the save state slot after each save operation."><input id="AutoStateSlotIncrement" type="checkbox" data-store="AutoStateSlotIncrement"><label for="AutoStateSlotIncrement">Auto increment state slot</label></p>
 <p>&nbsp;</p>
 <p title="Save state slot (0-9) to use when starting emulation."><span class="numberDecrease" id="decreaseCurrentStateSlot">-</span><input id="CurrentStateSlot" min="0" max="9" step="1" value="0" type="number"><span class="numberIncrease" id="increaseCurrentStateSlot">+</span><label for="CurrentStateSlot">Default state slot</label><button class="floatright" data-value="0" id="resetCurrentStateSlot">Reset</button></p>
 </div>
 <div id="core_audio" class="hide mt-10">
-<p title="Swap left and right channels."><input id="SWAP_CHANNELS" type="checkbox" data-store="SWAP_CHANNELS"><label for="SWAP_CHANNELS">Swap Channels</label></p>
+<p title="Swap left and right channels."><input id="SWAP_CHANNELS" type="checkbox" data-store="SWAP_CHANNELS"><label for="SWAP_CHANNELS">Swap channels</label></p>
 <p>&nbsp;</p>
-<p><input id="AUDIO_SYNC" type="checkbox" data-store="AUDIO_SYNC" checked><label for="AUDIO_SYNC">Synchronize Video/Audio</label></p>
+<p><input id="AUDIO_SYNC" type="checkbox" data-store="AUDIO_SYNC" checked><label for="AUDIO_SYNC">Synchronize video/audio</label></p>
 <p>&nbsp;</p>
-<p title="Percentage change each time the volume is increased or decreased."><span class="numberDecrease" id="decreaseVOLUME_ADJUST">-</span><input id="VOLUME_ADJUST" min="1" max="100" step="1" value="5" type="number"><span class="numberIncrease" id="increaseVOLUME_ADJUST">+</span><label for="VOLUME_ADJUST">Volume Step (in %)</label><button class="floatright" data-value="5" id="resetVOLUME_ADJUST">Reset</button></p>
+<p title="Percentage change each time the volume is increased or decreased."><span class="numberDecrease" id="decreaseVOLUME_ADJUST">-</span><input id="VOLUME_ADJUST" min="1" max="100" step="1" value="5" type="number"><span class="numberIncrease" id="increaseVOLUME_ADJUST">+</span><label for="VOLUME_ADJUST">Volume step (in %)</label><button class="floatright" data-value="5" id="resetVOLUME_ADJUST">Reset</button></p>
 <p>&nbsp;</p>
-<p title="Default volume when a game is started."><span class="numberDecrease" id="decreaseVOLUME_DEFAULT">-</span><input id="VOLUME_DEFAULT" min="0" max="100" step="1" value="80" type="number"><span class="numberIncrease" id="increaseVOLUME_DEFAULT">+</span><label for="VOLUME_DEFAULT">Default Volume (in %)</label><button class="floatright" data-value="80" id="resetVOLUME_DEFAULT">Reset</button></p>
+<p title="Default volume when a game is started."><span class="numberDecrease" id="decreaseVOLUME_DEFAULT">-</span><input id="VOLUME_DEFAULT" min="0" max="100" step="1" value="80" type="number"><span class="numberIncrease" id="increaseVOLUME_DEFAULT">+</span><label for="VOLUME_DEFAULT">Default volume (in %)</label><button class="floatright" data-value="80" id="resetVOLUME_DEFAULT">Reset</button></p>
 <p>&nbsp;</p>
 <div title="Lower values reduce audio latency but require faster hardware to avoid choppiness.
 Higher values increase audio latency but reduce the chance of audio drop-outs."><select class="width225m" name="PRIMARY_BUFFER_TARGET" id="PRIMARY_BUFFER_TARGET">
 <option value="2048" selected>2048</option>
 <option value="4096">4096</option>
 <option value="8192">8192</option>
-</select><label for="PRIMARY_BUFFER_TARGET">Primary Buffer Target</label></div>
+</select><label for="PRIMARY_BUFFER_TARGET">Primary buffer target</label></div>
 <p>&nbsp;</p>
 <div title="Trivial for fastest, lowest-quality algorithm."><select class="width225m" name="RESAMPLE" id="RESAMPLE">
 <option value="src-sinc-best-quality">SRC Sinc Best</option>
@@ -141,14 +141,14 @@ Higher values increase audio latency but reduce the chance of audio drop-outs.">
 <option value="speex-fixed-1">SPEEX Fixed 1</option>
 <option value="speex-fixed-0">SPEEX Fixed 0</option>
 <option value="trivial" selected>Trivial</option>
-</select><label for="RESAMPLE">Resampling Algorithm</label></div>
+</select><label for="RESAMPLE">Resampling algorithm</label></div>
 </div>
 <div id="core_directories" class="hide mt-15">
-<p title="Path to directory where screenshots are saved. Keep blank for default. Click the box below to change it.">Directory: Screenshots&nbsp;&nbsp;<button class="floatright" id="resetScreenshotPath">Reset</button><br><br><div id="ScreenshotPath" class="box"><span id="ScreenshotPathText"></span></div></p>
+<p title="Path to directory where screenshots are saved. Keep blank for default. Click the box below to change it.">Screenshots&nbsp;&nbsp;<button class="floatright" id="resetScreenshotPath">Reset</button><br><br><div id="ScreenshotPath" class="box"><span id="ScreenshotPathText"></span></div></p>
 <p>&nbsp;</p><p>&nbsp;</p>
-<p title="Path to directory where emulator savestates are saved. Keep blank for default. Click the box below to change it.">Directory: Savestates&nbsp;&nbsp;<button class="floatright" id="resetSaveStatePath">Reset</button><br><br><div id="SaveStatePath" class="box"><span id="SaveStatePathText"></span></div></p>
+<p title="Path to directory where emulator savestates are saved. Keep blank for default. Click the box below to change it.">Savestates&nbsp;&nbsp;<button class="floatright" id="resetSaveStatePath">Reset</button><br><br><div id="SaveStatePath" class="box"><span id="SaveStatePathText"></span></div></p>
 <p>&nbsp;</p><p>&nbsp;</p>
-<p title="Path to directory where SRAM/EEPROM data (in-game saves) are stored. Keep blank for default. Click the box below to change it.">Directory: Save Files&nbsp;&nbsp;<button class="floatright" id="resetSaveSRAMPath">Reset</button><br><br><div id="SaveSRAMPath" class="box"><span id="SaveSRAMPathText"></span></div></p>
+<p title="Path to directory where SRAM/EEPROM data (in-game saves) are stored. Keep blank for default. Click the box below to change it.">Save Files&nbsp;&nbsp;<button class="floatright" id="resetSaveSRAMPath">Reset</button><br><br><div id="SaveSRAMPath" class="box"><span id="SaveSRAMPathText"></span></div></p>
 </div>
 <div id="core_plugins" class="hide mt-15">
 <div title="Angrylion Plus: LLE,
@@ -194,11 +194,11 @@ Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
 <select name="SaveDiskFormat" id="SaveDiskFormat">
 <option value="0">Full Disk Copy</option>
 <option value="1" selected>RAM Area Only</option>
-</select><label for="SaveDiskFormat">64DD Save Format</label>
+</select><label for="SaveDiskFormat">64DD save format</label>
 <p>&nbsp;</p><p>&nbsp;</p>
-<p title="Path to 64DD BIOS file. Click the box or drag and drop the file into the box below.">Path to 64DD IPL ROM&nbsp;&nbsp;<button class="floatright" id="clearIPLROM">Clear</button><br><br><div id="IPLROM" class="box"><span id="IPLROMText"></span></div></p>
+<p title="Path to 64DD BIOS file. Click the box or drag and drop the file into the box below.">64DD IPL ROM&nbsp;&nbsp;<button class="floatright" id="clearIPLROM">Clear</button><br><br><div id="IPLROM" class="box"><span id="IPLROMText"></span></div></p>
 <p>&nbsp;</p><p>&nbsp;</p>
-<p title="Path to 64DD ROM file. Click the box or drag and drop a .64d or .ndd file into the box below.">Path to 64DD Disk&nbsp;&nbsp;<button class="floatright" id="clearDisk">Clear</button><br><br><div id="Disk" class="box"><span id="DiskText"></span></div></p>
+<p title="Path to 64DD ROM file. Click the box or drag and drop a .64d or .ndd file into the box below.">64DD Disk&nbsp;&nbsp;<button class="floatright" id="clearDisk">Clear</button><br><br><div id="Disk" class="box"><span id="DiskText"></span></div></p>
 </div>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
 <div id="inputAnchor" class="anchor"></div>
@@ -300,7 +300,7 @@ Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
 <option value="2">Memory Pak</option>
 <option value="4">Transfer Pak</option>
 <option value="5">Rumble Pak</option>
-</select><label for="plugin2">Controller Plugin</label>
+</select><label for="plugin2">Controller plugin</label>
 <p>&nbsp;</p>
 <div id="transferPak2" class="hide">
 <p>&nbsp;</p>
@@ -374,7 +374,7 @@ Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
 <option value="2">Memory Pak</option>
 <option value="4">Transfer Pak</option>
 <option value="5">Rumble Pak</option>
-</select><label for="plugin3">Controller Plugin</label>
+</select><label for="plugin3">Controller plugin</label>
 <p>&nbsp;</p>
 <div id="transferPak3" class="hide">
 <p>&nbsp;</p>
@@ -448,7 +448,7 @@ Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
 <option value="2">Memory Pak</option>
 <option value="4">Transfer Pak</option>
 <option value="5">Rumble Pak</option>
-</select><label for="plugin4">Controller Plugin</label>
+</select><label for="plugin4">Controller plugin</label>
 <p>&nbsp;</p>
 <div id="transferPak4" class="hide">
 <p>&nbsp;</p>
@@ -1091,36 +1091,36 @@ Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
 <div id="angrylionAnchor" class="anchor"></div>
 <p class="headline">Angrylion Plus</p>
 <p>&nbsp;</p>
-<p title="Use a busyloop while waiting for work."><input id="BusyLoop" type="checkbox" data-store="BusyLoop"><label for="BusyLoop">Busyloop</label></p>
+<p title="Use anamorphic 16:9 output mode." ><input id="ViWidescreen" type="checkbox" data-store="ViWidescreen"><label for="ViWidescreen">16:9 widescreen</label></p>
 <p>&nbsp;</p>
-<p><input id="Parallel" type="checkbox" data-store="Parallel" checked><label for="Parallel">Multi-core Rendering</label></p>
+<p title="Hide overscan area in filtered mode."><input id="ViHideOverscan" type="checkbox" data-store="ViHideOverscan"><label for="ViHideOverscan">Hide overscan</label></p>
 <p>&nbsp;</p>
-<p title="Hide overscan area in filtered mode."><input id="ViHideOverscan" type="checkbox" data-store="ViHideOverscan"><label for="ViHideOverscan">VI Hide Overscan</label></p>
+<p title="Display upscaled pixels as groups of 1x1, 2x2, 3x3, etc."><input id="ViIntegerScaling" type="checkbox" data-store="ViIntegerScaling"><label for="ViIntegerScaling">Integer pixel scaling</label></p>
 <p>&nbsp;</p>
-<p title="Display upscaled pixels as groups of 1x1, 2x2, 3x3, etc."><input id="ViIntegerScaling" type="checkbox" data-store="ViIntegerScaling"><label for="ViIntegerScaling">VI Integer Scaling</label></p>
+<p title="Use a busyloop while waiting for work."><input id="BusyLoop" type="checkbox" data-store="BusyLoop"><label for="BusyLoop">Use busyloop</label></p>
 <p>&nbsp;</p>
-<p title="Use anamorphic 16:9 output mode." ><input id="ViWidescreen" type="checkbox" data-store="ViWidescreen"><label for="ViWidescreen">VI Widescreen</label></p>
+<p><input id="Parallel" type="checkbox" data-store="Parallel" checked><label for="Parallel">Multi-core rendering</label></p>
 <p>&nbsp;</p>
-<p title="Number of logical processors to use. 0 uses all."><span class="numberDecrease" id="decreaseNumWorkers">-</span><input id="NumWorkers" min="0" step="1" value="0" type="number"><span class="numberIncrease" id="increaseNumWorkers">+</span><label for="NumWorkers">Rendering Workers</label><button class="floatright" data-value="0" id="resetNumWorkers">Reset</button></p>
+<p title="Number of logical processors to use. 0 uses all."><span class="numberDecrease" id="decreaseNumWorkers">-</span><input id="NumWorkers" min="0" step="1" value="0" type="number"><span class="numberIncrease" id="increaseNumWorkers">+</span><label for="NumWorkers">Rendering threads</label><button class="floatright" data-value="0" id="resetNumWorkers">Reset</button></p>
 <p>&nbsp;</p>
 <select class="width200m" name="ViMode" id="ViMode">
 <option value="0" selected>Filtered</option>
 <option value="1">Unfiltered</option>
 <option value="2">Depth</option>
 <option value="3">Coverage</option>
-</select><label for="ViMode">VI Mode</label>
+</select><label for="ViMode">Output mode</label>
 <p>&nbsp;</p>
 <div title="Scaling interpolation type."><select class="width200m" name="ViInterpolation" id="ViInterpolation">
 <option value="0">Nearest-neighbor</option>
 <option value="1">Bilinear</option>
 <option value="2" selected>Hybrid</option>
-</select><label for="ViInterpolation">VI Interpolation</label></div>
+</select><label for="ViInterpolation">Interpolation</label></div>
 <p>&nbsp;</p>
 <select class="width200m" name="DpCompat" id="DpCompat">
 <option value="0" selected>Fast</option>
 <option value="1">Moderate</option>
 <option value="2">Slow</option>
-</select><label for="DpCompat">Compatibility Mode</label>
+</select><label for="DpCompat">Compatibility mode</label>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
 <div id="gliden64Anchor" class="anchor"></div>
 <p class="headline">GLideN64</p>
@@ -1136,7 +1136,7 @@ Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
 </ul>
 <p>&nbsp;</p>
 <div id="gliden64_video" class="mt-10">
-<p title="Off: N64 3-point"><input id="bilinearMode" type="checkbox" data-store="bilinearMode"><label for="bilinearMode">Bilinear Filtering</label></p>
+<p title="Off: N64 3-point"><input id="bilinearMode" type="checkbox" data-store="bilinearMode"><label for="bilinearMode">Bilinear filtering</label></p>
 <p>&nbsp;</p>
 <p><input id="fxaa" type="checkbox" data-store="fxaa"><label for="fxaa">FXAA</label></p>
 <p>&nbsp;</p>
@@ -1153,7 +1153,7 @@ Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
 <option value="2">16:9</option>
 <option value="3">Adjust</option>
 <option value="0">Stretch</option>
-</select><label for="aspectRatio">Aspect Ratio</label></div>
+</select><label for="aspectRatio">Aspect ratio</label></div>
 <p>&nbsp;</p>
 <div title="Frame buffer size (rendering resolution) is the factor of N64 native resolution.
 If this option is turned off, the output resolution is the same as the rendering resolution."><select class="width125m" name="useNativeResolutionFactor" id="useNativeResolutionFactor">
@@ -1174,7 +1174,7 @@ If this option is turned off, the output resolution is the same as the rendering
 <option value="14">14</option>
 <option value="15">15</option>
 <option value="16">16</option>
-</select><label for="useNativeResolutionFactor">Native Resolution Factor</label></div>
+</select><label for="useNativeResolutionFactor">Native resolution factor</label></div>
 <p>&nbsp;</p>
 <select class="width125m" name="anisotropy" id="anisotropy">
 <option value="0" selected>Off</option>
@@ -1194,14 +1194,14 @@ If this option is turned off, the output resolution is the same as the rendering
 <option value="14">14x</option>
 <option value="15">15x</option>
 <option value="16">16x</option>
-</select><label for="anisotropy">Anisotropic Filtering</label>
+</select><label for="anisotropy">Anisotropic filtering</label>
 <p>&nbsp;</p>
-<p title="Override gamma correction specified by the game."><input id="ForceGammaCorrection" type="checkbox" data-store="ForceGammaCorrection"><label for="ForceGammaCorrection">Force Gamma Correction</label></p>
+<p title="Override gamma correction specified by the game."><input id="ForceGammaCorrection" type="checkbox" data-store="ForceGammaCorrection"><label for="ForceGammaCorrection">Force gamma correction</label></p>
 <p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreaseGammaCorrectionLevel">-</span><input id="GammaCorrectionLevel" min="1.00" max="4.00" step="0.1" value="1.00" type="number"><span class="numberIncrease" id="increaseGammaCorrectionLevel">+</span><label for="GammaCorrectionLevel">Gamma Correction Level</label><button class="floatright" data-value="1.00" id="resetGammaCorrectionLevel">Reset</button></p>
+<p><span class="numberDecrease" id="decreaseGammaCorrectionLevel">-</span><input id="GammaCorrectionLevel" min="1.00" max="4.00" step="0.1" value="1.00" type="number"><span class="numberIncrease" id="increaseGammaCorrectionLevel">+</span><label for="GammaCorrectionLevel">Gamma correction level</label><button class="floatright" data-value="1.00" id="resetGammaCorrectionLevel">Reset</button></p>
 </div>
 <div id="gliden64_overscan" class="hide mt-10">
-<p title="Crop image to remove black bars."><input id="EnableOverscan" type="checkbox" data-store="EnableOverscan"><label for="EnableOverscan">Enable Overscan</label></p>
+<p title="Crop image to remove black bars."><input id="EnableOverscan" type="checkbox" data-store="EnableOverscan"><label for="EnableOverscan">Use overscan</label></p>
 <p>&nbsp;</p>
 <p><span class="numberDecrease" id="decreaseOverscanNtscTop">-</span><input id="OverscanNtscTop" min="0" max="99" step="1" value="0" type="number"><span class="numberIncrease" id="increaseOverscanNtscTop">+</span><label for="OverscanNtscTop">NTSC Top</label><button class="floatright" data-value="0" id="resetOverscanNtscTop">Reset</button></p>
 <p>&nbsp;</p>
@@ -1220,101 +1220,101 @@ If this option is turned off, the output resolution is the same as the rendering
 <p><span class="numberDecrease" id="decreaseOverscanPalBottom">-</span><input id="OverscanPalBottom" min="0" max="99" value="0" step="1" type="number"><span class="numberIncrease" id="increaseOverscanPalBottom">+</span><label for="OverscanPalBottom">PAL Bottom</label><button class="floatright" data-value="0" id="resetOverscanPalBottom">Reset</button></p>
 </div>
 <div id="gliden64_emulation" class="hide mt-10">
-<p title="Remove halos around filtered textures."><input id="enableHalosRemoval" type="checkbox" data-store="enableHalosRemoval"><label for="enableHalosRemoval">Halos Removal</label></p>
+<p title="Use GLideN64 per-game settings."><input id="EnableCustomSettings" type="checkbox" data-store="EnableCustomSettings" checked><label for="EnableCustomSettings">Per-game settings</label></p>
 <p>&nbsp;</p>
-<p><input id="EnableLOD" type="checkbox" data-store="EnableLOD" checked><label for="EnableLOD">LOD Emulation (Mipmapping)</label></p>
+<p title="Enable hardware per-pixel lighting."><input id="EnableHWLighting" type="checkbox" data-store="EnableHWLighting" checked><label for="EnableHWLighting">Per-pixel lighting</label></p>
 <p>&nbsp;</p>
-<p title="Enable hardware per-pixel lighting."><input id="EnableHWLighting" type="checkbox" data-store="EnableHWLighting" checked><label for="EnableHWLighting">Per-pixel Lighting</label></p>
+<p title="Enable pixel coverage calculation. Used for better blending emulation and wire-frame mode. Requires fast GPU."><input id="EnableCoverage" type="checkbox" data-store="EnableCoverage"><label for="EnableCoverage">Pixel coverage calculation</label></p>
 <p>&nbsp;</p>
-<p title="Enable pixel coverage calculation. Used for better blending emulation and wire-frame mode. Needs fast GPU."><input id="EnableCoverage" type="checkbox" data-store="EnableCoverage"><label for="EnableCoverage">Pixel Coverage Calculation</label></p>
+<p><input id="EnableLOD" type="checkbox" data-store="EnableLOD" checked><label for="EnableLOD">Mipmapping (LOD emulation)</label></p>
 <p>&nbsp;</p>
-<p title="Increases performance at the expense of accuracy. May help with texture pack compatibility."><input id="EnableInaccurateTextureCoordinates" type="checkbox" data-store="EnableInaccurateTextureCoordinates"><label for="EnableInaccurateTextureCoordinates">Inaccurate Texture Coordinates</label></p>
+<p title="Use persistent storage for compiled shaders."><input id="EnableShadersStorage" type="checkbox" data-store="EnableShadersStorage" checked><label for="EnableShadersStorage">Shader storage</label></p>
 <p>&nbsp;</p>
 <p title="Enable software vertices clipping. Brings various benefits."><input id="EnableClipping" type="checkbox" data-store="EnableClipping" checked><label for="EnableClipping">Clipping</label></p>
 <p>&nbsp;</p>
-<p title="Use persistent storage for compiled shaders."><input id="EnableShadersStorage" type="checkbox" data-store="EnableShadersStorage" checked><label for="EnableShadersStorage">Shader Storage</label></p>
+<p title="Enable writing of fragment depth. Some mobile GPUs do not support it. Leave enabled."><input id="EnableFragmentDepthWrite" type="checkbox" data-store="EnableFragmentDepthWrite" checked><label for="EnableFragmentDepthWrite">Fragment depth write</label></p>
 <p>&nbsp;</p>
-<p title="Do not use shaders to emulate N64 blending modes. Works faster on slow GPU. Can cause glitches."><input id="EnableLegacyBlending" type="checkbox" data-store="EnableLegacyBlending"><label for="EnableLegacyBlending">Legacy Blending</label></p>
+<p title="Remove halos around filtered textures."><input id="enableHalosRemoval" type="checkbox" data-store="enableHalosRemoval"><label for="enableHalosRemoval">Halos removal</label></p>
 <p>&nbsp;</p>
-<p title="Enable hybrid integer scaling filter, this can be slow with low-end GPUs."><input id="EnableHybridFilter" type="checkbox" data-store="EnableHybridFilter" checked><label for="EnableHybridFilter">Hybrid Filter</label></p>
+<p title="Enable hybrid integer scaling filter, this can be slow with low-end GPUs."><input id="EnableHybridFilter" type="checkbox" data-store="EnableHybridFilter" checked><label for="EnableHybridFilter">Hybrid filter</label></p>
 <p>&nbsp;</p>
-<p title="Enable writing of fragment depth. Some mobile GPUs do not support it, thus it made optional. Leave enabled."><input id="EnableFragmentDepthWrite" type="checkbox" data-store="EnableFragmentDepthWrite" checked><label for="EnableFragmentDepthWrite">Fragment Depth Write</label></p>
+<p title="Increases performance at the expense of accuracy. May help with texture pack compatibility."><input id="EnableInaccurateTextureCoordinates" type="checkbox" data-store="EnableInaccurateTextureCoordinates"><label for="EnableInaccurateTextureCoordinates">Inaccurate texture coordinates</label></p>
 <p>&nbsp;</p>
-<p title="Use GLideN64 per-game settings."><input id="EnableCustomSettings" type="checkbox" data-store="EnableCustomSettings" checked><label for="EnableCustomSettings">Per-game settings</label></p>
+<p title="Do not use shaders to emulate N64 blending modes. Works faster on slow GPU. Can cause glitches."><input id="EnableLegacyBlending" type="checkbox" data-store="EnableLegacyBlending"><label for="EnableLegacyBlending">Legacy blending</label></p>
 <p>&nbsp;</p>
-<p title="Bind texture rectangle texture coordinates to the values they take in native resolutions. It prevents garbage due to fetching out of texture bounds, but can result in hard edges."><input id="EnableTexCoordBounds" type="checkbox" data-store="EnableTexCoordBounds"><label for="EnableTexCoordBounds">Texture Coordinate Bounds</label></p>
+<p title="Bind texture rectangle texture coordinates to the values they take in native resolutions. It prevents garbage due to fetching out of texture bounds, but can result in hard edges."><input id="EnableTexCoordBounds" type="checkbox" data-store="EnableTexCoordBounds"><label for="EnableTexCoordBounds">Texture coordinate bounds</label></p>
 <p>&nbsp;</p>
-<p title="Enable dithering pattern on output image."><input id="EnableDitheringPattern" type="checkbox" data-store="EnableDitheringPattern"><label for="EnableDitheringPattern">Dithering Pattern</label></p>
+<p title="Enable dithering pattern on output image."><input id="EnableDitheringPattern" type="checkbox" data-store="EnableDitheringPattern"><label for="EnableDitheringPattern">Dithering pattern</label></p>
 <p>&nbsp;</p>
-<p title="Enable hi-res noise dithering."><input id="EnableHiresNoiseDithering" type="checkbox" data-store="EnableHiresNoiseDithering" checked><label for="EnableHiresNoiseDithering">Hi-res Noise Dithering</label></p>
+<p title="Enable hi-res noise dithering."><input id="EnableHiresNoiseDithering" type="checkbox" data-store="EnableHiresNoiseDithering" checked><label for="EnableHiresNoiseDithering">Hi-res noise dithering</label></p>
 <p>&nbsp;</p>
-<p title="Dither with color quantization."><input id="DitheringQuantization" type="checkbox" data-store="DitheringQuantization" checked><label for="DitheringQuantization">Dithering Quantization</label></p>
+<p title="Dither with color quantization."><input id="DitheringQuantization" type="checkbox" data-store="DitheringQuantization" checked><label for="DitheringQuantization">Dithering quantization</label></p>
 <p>&nbsp;</p>
 <div title="Dithering mode for image in RDRAM."><select class="width150m" name="RDRAMImageDitheringMode" id="RDRAMImageDitheringMode">
 <option value="0">Disable</option>
 <option value="1">Bayer</option>
 <option value="2">Magic Square</option>
 <option value="3" selected>Blue Noise</option>
-</select><label for="RDRAMImageDitheringMode">Dithering Mode</label></div>
+</select><label for="RDRAMImageDitheringMode">Dithering mode</label></div>
 <p>&nbsp;</p>
 <div title="Render backgrounds mode (HLE only)."><select class="width150m" name="BackgroundsMode" id="BackgroundsMode">
 <option value="0" selected>One Piece</option>
 <option value="1">Stripped</option>
-</select><label for="BackgroundsMode">Backgrounds Mode</label></div>
+</select><label for="BackgroundsMode">Backgrounds mode</label></div>
 <p>&nbsp;</p>
 <div title="Make texrect coordinates continuous to avoid black lines between them."><select class="width150m" name="CorrectTexrectCoords" id="CorrectTexrectCoords">
 <option value="0">Off</option>
 <option value="1" selected>Auto</option>
 <option value="2">Force</option>
-</select><label for="CorrectTexrectCoords">Correct Texrect Coordinates</label></div>
+</select><label for="CorrectTexrectCoords">Correct texrect coordinates</label></div>
 <p>&nbsp;</p>
 <div title="Render 2D texrects in native resolution to fix misalignment between parts of 2D image."><select class="width150m" name="EnableNativeResTexrects" id="EnableNativeResTexrects">
 <option value="0" selected>Off</option>
 <option value="1">Optimized</option>
 <option value="2">Unoptimized</option>
-</select><label for="EnableNativeResTexrects">Enable Native Resolution Texrects</label></div>
+</select><label for="EnableNativeResTexrects">Enable native resolution texrects</label></div>
 </div>
 <div id="gliden64_framebuffer" class="hide mt-10">
 <p title="Disable buffers read/write with FBInfo. Use for games which do not work with FBInfo. Only takes effect with cached or pure interpreter."><input id="DisableFBInfo" type="checkbox" data-store="DisableFBInfo"><label for="DisableFBInfo">Disable FBInfo</label></p>
 <p>&nbsp;</p>
-<p title="Disabling framebuffer emulation breaks game effects and disables overscan, aspect ratio, N64 resolution factor, N64-style depth compare and more."><input id="EnableFBEmulation" type="checkbox" data-store="EnableFBEmulation" checked><label for="EnableFBEmulation">Framebuffer Emulation</label></p>
+<p title="Disabling framebuffer emulation breaks game effects and disables overscan, aspect ratio, N64 resolution factor, N64-style depth compare and more."><input id="EnableFBEmulation" type="checkbox" data-store="EnableFBEmulation" checked><label for="EnableFBEmulation">Framebuffer emulation</label></p>
 <p>&nbsp;</p>
-<p title="Enable color buffer copy from RDRAM."><input id="EnableCopyColorFromRDRAM" type="checkbox" data-store="EnableCopyColorFromRDRAM"><label for="EnableCopyColorFromRDRAM">Color Buffer Copy from RDRAM</label></p>
+<p title="Enable color buffer copy from RDRAM."><input id="EnableCopyColorFromRDRAM" type="checkbox" data-store="EnableCopyColorFromRDRAM"><label for="EnableCopyColorFromRDRAM">Color buffer copy from RDRAM</label></p>
 <p>&nbsp;</p>
-<p title="Enable copy of depth information from FBO to main depth buffer. Required for some Reshade shaders."><input id="EnableCopyDepthToMainDepthBuffer" type="checkbox" data-store="EnableCopyDepthToMainDepthBuffer"><label for="EnableCopyDepthToMainDepthBuffer">Copy Depth to Main Buffer</label></p>
+<p title="Enable copy of depth information from FBO to main depth buffer. Required for some Reshade shaders."><input id="EnableCopyDepthToMainDepthBuffer" type="checkbox" data-store="EnableCopyDepthToMainDepthBuffer"><label for="EnableCopyDepthToMainDepthBuffer">Copy depth to main buffer</label></p>
 <p>&nbsp;</p>
-<p><input id="EnableCopyAuxiliaryToRDRAM" type="checkbox" data-store="EnableCopyAuxiliaryToRDRAM"><label for="EnableCopyAuxiliaryToRDRAM">Copy Auxiliary Buffers to RDRAM</label></p>
+<p><input id="EnableCopyAuxiliaryToRDRAM" type="checkbox" data-store="EnableCopyAuxiliaryToRDRAM"><label for="EnableCopyAuxiliaryToRDRAM">Copy auxiliary buffers to RDRAM</label></p>
 <p>&nbsp;</p>
-<p title="Force depth buffer clear. Hack. Needed for Eikou no Saint Andrews."><input id="ForceDepthBufferClear" type="checkbox" data-store="ForceDepthBufferClear"><label for="ForceDepthBufferClear">Force Depth Buffer Clear</label></p>
+<p title="Force depth buffer clear. Hack. Needed for Eikou no Saint Andrews."><input id="ForceDepthBufferClear" type="checkbox" data-store="ForceDepthBufferClear"><label for="ForceDepthBufferClear">Force depth buffer clear</label></p>
 <p>&nbsp;</p>
-<p title="Read color buffer by 4kb chunks."><input id="FBInfoReadColorChunk" type="checkbox" data-store="FBInfoReadColorChunk"><label for="FBInfoReadColorChunk">Read Color Buffer in Chunks</label></p>
+<p title="Read color buffer by 4kb chunks."><input id="FBInfoReadColorChunk" type="checkbox" data-store="FBInfoReadColorChunk"><label for="FBInfoReadColorChunk">Read color buffer in chunks</label></p>
 <p>&nbsp;</p>
-<p title="Read depth buffer by 4kb chunks."><input id="FBInfoReadDepthChunk" type="checkbox" data-store="FBInfoReadDepthChunk" checked><label for="FBInfoReadDepthChunk">Read Depth Buffer in Chunks</label></p>
+<p title="Read depth buffer by 4kb chunks."><input id="FBInfoReadDepthChunk" type="checkbox" data-store="FBInfoReadDepthChunk" checked><label for="FBInfoReadDepthChunk">Read depth buffer in chunks</label></p>
 <p>&nbsp;</p>
 <div title="On buffer update offers the best performance but causes the most issues."><select class="width250m" name="bufferSwapMode" id="bufferSwapMode">
 <option value="0" selected>On VI update call</option>
 <option value="1">On VI origin change</option>
 <option value="2">On buffer update</option>
-</select><label for="bufferSwapMode">Buffer Swap Mode</label></div>
+</select><label for="bufferSwapMode">Buffer swap mode</label></div>
 <p>&nbsp;</p>
 <div title="Enable color buffer copy to RDRAM."><select class="width250m" name="EnableCopyColorToRDRAM" id="EnableCopyColorToRDRAM">
 <option value="0">Do not copy</option>
 <option value="1">Copy in sync mode</option>
 <option value="2" selected>Double Buffer</option>
 <option value="3">Triple Buffer</option>
-</select><label for="EnableCopyColorToRDRAM">Copy Color Buffer to RDRAM</label></div>
+</select><label for="EnableCopyColorToRDRAM">Copy color buffer to RDRAM</label></div>
 <p>&nbsp;</p>
 <div title="Enable depth buffer copy to RDRAM."><select class="width250m" name="EnableCopyDepthToRDRAM" id="EnableCopyDepthToRDRAM">
 <option value="0">Do not copy</option>
 <option value="1">Copy from video memory</option>
-<option value="2" selected>Use Software Render</option>
-</select><label for="EnableCopyDepthToRDRAM">Copy Depth Buffer to RDRAM</label></div>
+<option value="2" selected>Use software render</option>
+</select><label for="EnableCopyDepthToRDRAM">Copy depth buffer to RDRAM</label></div>
 <p>&nbsp;</p>
 <div title="Enable N64 depth compare instead of OpenGL standard one."><select class="width250m" name="EnableN64DepthCompare" id="EnableN64DepthCompare">
 <option value="0" selected>Off</option>
 <option value="1">Fast</option>
 <option value="2">Compatible</option>
-</select><label for="EnableN64DepthCompare">N64 Depth Compare</label></div>
+</select><label for="EnableN64DepthCompare">N64 depth compare</label></div>
 </div>
 <div id="gliden64_textures" class="hide mt-10">
 <select class="width200m" name="txFilterMode" id="txFilterMode">
@@ -1325,7 +1325,7 @@ If this option is turned off, the output resolution is the same as the rendering
 <option value="4">Smooth Filtering 4</option>
 <option value="5">Sharp Filtering 1</option>
 <option value="6">Sharp Filtering 2</option>
-</select><label for="txFilterMode">Texture Filter</label>
+</select><label for="txFilterMode">Texture filter</label>
 <p>&nbsp;</p>
 <select class="width200m" name="txEnhancementMode" id="txEnhancementMode">
 <option value="0" selected>None</option>
@@ -1342,21 +1342,21 @@ If this option is turned off, the output resolution is the same as the rendering
 <option value="11">4xBRZ</option>
 <option value="12">5xBRZ</option>
 <option value="13">6xBRZ</option>
-</select><label for="txEnhancementMode">Texture Enhancement</label>
+</select><label for="txEnhancementMode">Texture enhancement</label>
 <p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreasetxCacheSize">-</span><input id="txCacheSize" min="0" max="1024" step="128" value="1024" type="number"><span class="numberIncrease" id="increasetxCacheSize">+</span><label title="Size of memory cache for enhanced textures in megabytes." for="txCacheSize">Memory Cache Size (in MB)</label><button class="floatright" data-value="1024" id="resettxCacheSize">Reset</button></p>
+<p><span class="numberDecrease" id="decreasetxCacheSize">-</span><input id="txCacheSize" min="0" max="1024" step="128" value="1024" type="number"><span class="numberIncrease" id="increasetxCacheSize">+</span><label title="Size of memory cache for enhanced textures in megabytes." for="txCacheSize">Memory cache size (in MB)</label><button class="floatright" data-value="1024" id="resettxCacheSize">Reset</button></p>
 <p>&nbsp;</p>
-<p title="Deposterize texture before enhancement."><input id="txDeposterize" type="checkbox" data-store="txDeposterize"><label for="txDeposterize">Deposterize Texture</label></p>
+<p title="Deposterize texture before enhancement."><input id="txDeposterize" type="checkbox" data-store="txDeposterize"><label for="txDeposterize">Deposterize texture</label></p>
 <p>&nbsp;</p>
 <p title="Don't filter background textures."><input id="txFilterIgnoreBG" type="checkbox" data-store="txFilterIgnoreBG"><label for="txFilterIgnoreBG">Disable background filtering</label></p>
 <p>&nbsp;</p><p>&nbsp;</p>
 <p><input id="txHiresEnable" type="checkbox" data-store="txHiresEnable" checked><label for="txHiresEnable">Enable HD textures</label></p>
 <p>&nbsp;</p>
+<p title="Use alternative method for paletted textures CRC calculation. Activate for old Rice packs."><input id="txHresAltCRC" type="checkbox" data-store="txHresAltCRC"><label for="txHresAltCRC">Alternative CRC calculation</label></p>
+<p>&nbsp;</p>
 <p title="Dump textures without the need to press a hotkey."><input id="txDump" type="checkbox" data-store="txDump"><label for="txDump">Dump textures</label></p>
 <p>&nbsp;</p>
-<p title="Allow to fully use the alpha channel for high resolution textures."><input id="txHiresFullAlphaChannel" type="checkbox" data-store="txHiresFullAlphaChannel" checked><label for="txHiresFullAlphaChannel">Full Alpha Channel</label></p>
-<p>&nbsp;</p>
-<p title="Use alternative method for paletted textures CRC calculation. Activate for old Rice packs."><input id="txHresAltCRC" type="checkbox" data-store="txHresAltCRC"><label for="txHresAltCRC">Alternative CRC calculation</label></p>
+<p title="Allow to fully use the alpha channel for high resolution textures."><input id="txHiresFullAlphaChannel" type="checkbox" data-store="txHiresFullAlphaChannel" checked><label for="txHiresFullAlphaChannel">Full alpha channel</label></p>
 <p>&nbsp;</p>
 <p title="Compress texture cache."><input id="txCacheCompression" type="checkbox" data-store="txCacheCompression"><label for="txCacheCompression">Compress cache</label></p>
 <p>&nbsp;</p>
@@ -1367,32 +1367,32 @@ If this option is turned off, the output resolution is the same as the rendering
 <div title="HTC: Prefetch all textures at boot into RAM. HTS: Read textures as they are needed from hard disk."><select name="cache" id="cache">
 <option value="false">HTC</option>
 <option value="true" selected>HTS</option>
-</select><label for="cache">Cache Type</label></div>
+</select><label for="cache">Cache type</label></div>
 <p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreasetxHiresVramLimit">-</span><input id="txHiresVramLimit" min="0" max="102400" step="512" value="0" type="number"><span class="numberIncrease" id="increasetxHiresVramLimit">+</span><label title="Limit hi-res textures size in VRAM." for="txHiresVramLimit">VRAM Limit (in MB)</label><button class="floatright" data-value="0" id="resettxHiresVramLimit">Reset</button></p>
+<p><span class="numberDecrease" id="decreasetxHiresVramLimit">-</span><input id="txHiresVramLimit" min="0" max="102400" step="512" value="0" type="number"><span class="numberIncrease" id="increasetxHiresVramLimit">+</span><label title="Limit hi-res textures size in VRAM." for="txHiresVramLimit">VRAM limit (in MB)</label><button class="floatright" data-value="0" id="resettxHiresVramLimit">Reset</button></p>
 <p>&nbsp;</p><p>&nbsp;</p>
-<p title="Path to folder with hi-res texture packs (PNG format). Click the box below to change it.">Directory: hires_texture<button class="floatright" id="resetTxPath">Reset</button><br><br><div class="box" id="txPath"><span id="txPathText"></span></div></p>
+<p title="Path to folder with hi-res texture packs (PNG format). Click the box below to change it.">hires_texture<button class="floatright" id="resetTxPath">Reset</button><br><br><div class="box" id="txPath"><span id="txPathText"></span></div></p>
 <p>&nbsp;</p><p>&nbsp;</p>
-<p title="Path to folder where plugin saves texture cache files (HTC/HTS). Click the box below to change it.">Directory: cache<button class="floatright" id="resetTxCachePath">Reset</button><br><br><div class="box" id="txCachePath"><span id="txCachePathText"></span></div></p>
+<p title="Path to folder where plugin saves texture cache files (HTC/HTS). Click the box below to change it.">cache<button class="floatright" id="resetTxCachePath">Reset</button><br><br><div class="box" id="txCachePath"><span id="txCachePathText"></span></div></p>
 <p>&nbsp;</p><p>&nbsp;</p>
-<p title="Path to folder where plugin saves dumped textures. Click the box below to change it.">Directory: texture_dump<button class="floatright" id="resetTxDumpPath">Reset</button><br><br><div class="box" id="txDumpPath"><span id="txDumpPathText"></span></div></p>
+<p title="Path to folder where plugin saves dumped textures. Click the box below to change it.">texture_dump<button class="floatright" id="resetTxDumpPath">Reset</button><br><br><div class="box" id="txDumpPath"><span id="txDumpPathText"></span></div></p>
 </div>
 <div id="gliden64_osd" class="hide mt-10">
-<p><span class="numberDecrease" id="decreasefontSize">-</span><input id="fontSize" min="6" max="99" step="1" value="18" type="number"><span class="numberIncrease" id="increasefontSize">+</span><label for="fontSize">Font Size (in px)</label><button class="floatright" data-value="18" id="resetfontSize">Reset</button></p>
+<p><span class="numberDecrease" id="decreasefontSize">-</span><input id="fontSize" min="6" max="99" step="1" value="18" type="number"><span class="numberIncrease" id="increasefontSize">+</span><label for="fontSize">Font size (in px)</label><button class="floatright" data-value="18" id="resetfontSize">Reset</button></p>
 <p>&nbsp;</p>
-<p><input id="fontColor" value="#B5E61D" type="color" data-store="fontColor"><label for="fontColor">Font Color</label><button class="floatright" data-value="#B5E61D" id="resetfontColor">Reset</button></p>
+<p><input id="fontColor" value="#B5E61D" type="color" data-store="fontColor"><label for="fontColor">Font color</label><button class="floatright" data-value="#B5E61D" id="resetfontColor">Reset</button></p>
 <p>&nbsp;</p>
 <p><input id="ShowFPS" type="checkbox" data-store="ShowFPS"><label for="ShowFPS">Show FPS</label></p>
 <p>&nbsp;</p>
 <p><input id="ShowVIS" type="checkbox" data-store="ShowVIS"><label for="ShowVIS">Show VI/s</label></p>
 <p>&nbsp;</p>
-<p><input id="ShowPercent" type="checkbox" data-store="ShowPercent"><label for="ShowPercent">Show Percent</label></p>
+<p><input id="ShowPercent" type="checkbox" data-store="ShowPercent"><label for="ShowPercent">Show speed in %</label></p>
 <p>&nbsp;</p>
-<p><input id="ShowInternalResolution" type="checkbox" data-store="ShowInternalResolution"><label for="ShowInternalResolution">Show Internal Resolution</label></p>
+<p><input id="ShowInternalResolution" type="checkbox" data-store="ShowInternalResolution"><label for="ShowInternalResolution">Show internal resolution</label></p>
 <p>&nbsp;</p>
-<p><input id="ShowRenderingResolution" type="checkbox" data-store="ShowRenderingResolution"><label for="ShowRenderingResolution">Show Rendering Resolution</label></p>
+<p><input id="ShowRenderingResolution" type="checkbox" data-store="ShowRenderingResolution"><label for="ShowRenderingResolution">Show rendering resolution</label></p>
 <p>&nbsp;</p>
-<p><input id="ShowStatistics" type="checkbox" data-store="ShowStatistics"><label for="ShowStatistics">Show Statistics</label></p>
+<p><input id="ShowStatistics" type="checkbox" data-store="ShowStatistics"><label for="ShowStatistics">Show statistics</label></p>
 <p>&nbsp;</p>
 <select name="CountersPos" id="CountersPos">
 <option value="1">Top Left</option>
@@ -1401,7 +1401,7 @@ If this option is turned off, the output resolution is the same as the rendering
 <option value="8" selected>Bottom Left</option>
 <option value="16">Bottom Center</option>
 <option value="32">Bottom Right</option>
-</select><label for="CountersPos">Counters Position</label>
+</select><label for="CountersPos">Counters position</label>
 </div>
 <div id="gliden64_hotkeys" class="hide mt-10">
 <p class="mb-15 center">Supported keys are 0-9 and A-Z.</p>
@@ -1412,25 +1412,25 @@ If this option is turned off, the output resolution is the same as the rendering
 <p>&nbsp;</p>
 <p><label for="hkHdTexToggle">Toogle HD textures</label><input value="" type="text" id="hkHdTexToggle" readonly><button id="clearhkHdTexToggle">Clear</button></p>
 <p>&nbsp;</p>
-<p><label for="hkInaccurateTexCords">Toogle Inaccurate Texture Coordinates</label><input value="" type="text" id="hkInaccurateTexCords" readonly><button id="clearhkInaccurateTexCords">Clear</button></p>
+<p><label for="hkInaccurateTexCords">Toogle inaccurate texture coordinates</label><input value="" type="text" id="hkInaccurateTexCords" readonly><button id="clearhkInaccurateTexCords">Clear</button></p>
 <p>&nbsp;</p>
 <p><label for="hkVsync">Toogle V-Sync</label><input value="" type="text" id="hkVsync" readonly><button id="clearhkVsync">Clear</button></p>
 <p>&nbsp;</p>
-<p><label for="hkFBEmulation">Toogle Frame Buffer Emulation</label><input value="" type="text" id="hkFBEmulation" readonly><button id="clearhkFBEmulation">Clear</button></p>
+<p><label for="hkFBEmulation">Toogle frame buffer emulation</label><input value="" type="text" id="hkFBEmulation" readonly><button id="clearhkFBEmulation">Clear</button></p>
 <p>&nbsp;</p>
-<p><label for="hkN64DepthCompare">Toogle N64 Depth Compare</label><input value="" type="text" id="hkN64DepthCompare" readonly><button id="clearhkN64DepthCompare">Clear</button></p>
+<p><label for="hkN64DepthCompare">Toogle N64 depth compare</label><input value="" type="text" id="hkN64DepthCompare" readonly><button id="clearhkN64DepthCompare">Clear</button></p>
 <p>&nbsp;</p>
 <p><label for="hkOsdVis">Toogle OSD VI/s</label><input value="" type="text" id="hkOsdVis" readonly><button id="clearhkOsdVis">Clear</button></p>
 <p>&nbsp;</p>
 <p><label for="hkOsdFps">Toogle OSD FPS</label><input value="" type="text" id="hkOsdFps" readonly><button id="clearhkOsdFps">Clear</button></p>
 <p>&nbsp;</p>
-<p><label for="hkOsdPercent">Toogle OSD Percent</label><input value="" type="text" id="hkOsdPercent" readonly><button id="clearhkOsdPercent">Clear</button></p>
+<p><label for="hkOsdPercent">Toogle OSD %</label><input value="" type="text" id="hkOsdPercent" readonly><button id="clearhkOsdPercent">Clear</button></p>
 <p>&nbsp;</p>
-<p><label for="hkOsdInternalResolution">Toogle OSD Internal Resolution</label><input value="" type="text" id="hkOsdInternalResolution" readonly><button id="clearhkOsdInternalResolution">Clear</button></p>
+<p><label for="hkOsdInternalResolution">Toogle OSD internal resolution</label><input value="" type="text" id="hkOsdInternalResolution" readonly><button id="clearhkOsdInternalResolution">Clear</button></p>
 <p>&nbsp;</p>
-<p><label for="hkOsdRenderingResolution">Toogle OSD Rendering Resolution</label><input value="" type="text" id="hkOsdRenderingResolution" readonly><button id="clearhkOsdRenderingResolution">Clear</button></p>
+<p><label for="hkOsdRenderingResolution">Toogle OSD rendering resolution</label><input value="" type="text" id="hkOsdRenderingResolution" readonly><button id="clearhkOsdRenderingResolution">Clear</button></p>
 <p>&nbsp;</p>
-<p><label for="hkTexCoordBounds">Toogle Textcoord Bounds</label><input value="" type="text" id="hkTexCoordBounds" readonly><button id="clearhkTexCoordBounds">Clear</button></p>
+<p><label for="hkTexCoordBounds">Toogle textcoord bounds</label><input value="" type="text" id="hkTexCoordBounds" readonly><button id="clearhkTexCoordBounds">Clear</button></p>
 <p>&nbsp;</p>
 <p><label for="hkNativeResTexrects">Toogle 2D texrects in native resolution</label><input value="" type="text" id="hkNativeResTexrects" readonly><button id="clearhkNativeResTexrects">Clear</button></p>
 <p>&nbsp;</p>
@@ -1441,31 +1441,31 @@ If this option is turned off, the output resolution is the same as the rendering
 <div id="parallelAnchor" class="anchor"></div>
 <p class="headline">Parallel</p>
 <p>&nbsp;</p>
-<p title="Enable superscaling of readbacks when upsampling."><input id="ParallelSuperscaledReads" type="checkbox" data-store="ParallelSuperscaledReads"><label for="ParallelSuperscaledReads">Superscaled Reads</label></p>
-<p>&nbsp;</p>
-<p title="Enable superscaling of dithering when upsampling."><input id="ParallelSuperscaledDither" type="checkbox" data-store="ParallelSuperscaledDither"><label for="ParallelSuperscaledDither">Superscaled Dither</label></p>
-<p>&nbsp;</p>
 <p title="Smooths polygon edges."><input id="ParallelVIAA" type="checkbox" data-store="ParallelVIAA" checked><label for="ParallelVIAA">Anti-aliasing</label></p>
 <p>&nbsp;</p>
-<p title="Cleans up stray black pixels."><input id="ParallelDivot" type="checkbox" data-store="ParallelDivot" checked><label for="ParallelDivot">Divot Filter</label></p>
+<p><input id="ParallelVIBilerp" type="checkbox" data-store="ParallelVIBilerp" checked><label for="ParallelVIBilerp">Bilinear scaling</label></p>
 <p>&nbsp;</p>
-<p><input id="ParallelGammaDither" type="checkbox" data-store="ParallelGammaDither" checked><label for="ParallelGammaDither">Gamma Dither</label></p>
+<p title="Cleans up stray black pixels."><input id="ParallelDivot" type="checkbox" data-store="ParallelDivot" checked><label for="ParallelDivot">Divot filter</label></p>
 <p>&nbsp;</p>
-<p><input id="ParallelVIBilerp" type="checkbox" data-store="ParallelVIBilerp" checked><label for="ParallelVIBilerp">Bilinear Scaling</label></p>
+<p><input id="ParallelGammaDither" type="checkbox" data-store="ParallelGammaDither" checked><label for="ParallelGammaDither">Gamma dither</label></p>
 <p>&nbsp;</p>
-<p><input id="ParallelVIDither" type="checkbox" data-store="ParallelVIDither" checked><label for="ParallelVIDither">VI Dither</label></p>
+<p title="Native resolution TEX_RECT. TEX_RECT primitives should generally be rendered at native resolution to avoid seams."><input id="ParallelNativeTextRECT" type="checkbox" data-store="ParallelNativeTextRECT" checked><label for="ParallelNativeTextRECT">Native texrect</label></p>
 <p>&nbsp;</p>
-<p title="Use native texture LOD computation when upscaling, effectively a LOD bias."><input id="ParallelNativeTextLOD" type="checkbox" data-store="ParallelNativeTextLOD"><label for="ParallelNativeTextLOD">Native Texture LOD</label></p>
+<p title="Use native texture LOD computation when upscaling, effectively a LOD bias."><input id="ParallelNativeTextLOD" type="checkbox" data-store="ParallelNativeTextLOD"><label for="ParallelNativeTextLOD">Native texture LOD</label></p>
 <p>&nbsp;</p>
-<p title="Native resolution TEX_RECT. TEX_RECT primitives should generally be TEX_RECT primitives should generally be rendered at native resolution to avoid seams."><input id="ParallelNativeTextRECT" type="checkbox" data-store="ParallelNativeTextRECT" checked><label for="ParallelNativeTextRECT">Native Texrect</label></p>
+<p title="Enable superscaling of dithering when upsampling."><input id="ParallelSuperscaledDither" type="checkbox" data-store="ParallelSuperscaledDither"><label for="ParallelSuperscaledDither">Superscaled dither</label></p>
 <p>&nbsp;</p>
-<p title="Enable synchronizing of RDP and CPU."><input id="ParallelSynchronousRDP" type="checkbox" data-store="ParallelSynchronousRDP" checked><label for="ParallelSynchronousRDP">Synchronous RDP</label></p>
+<p title="Enable superscaling of readbacks when upsampling."><input id="ParallelSuperscaledReads" type="checkbox" data-store="ParallelSuperscaledReads"><label for="ParallelSuperscaledReads">Superscaled reads</label></p>
 <p>&nbsp;</p>
-<p><input id="ParallelWidescreenStretch" type="checkbox" data-store="ParallelWidescreenStretch"><label for="ParallelWidescreenStretch">Widescreen (Stretch)</label></p>
+<p title="Enable synchronizing of RDP and CPU."><input id="ParallelSynchronousRDP" type="checkbox" data-store="ParallelSynchronousRDP" checked><label for="ParallelSynchronousRDP">Synchronize RDP and CPU</label></p>
 <p>&nbsp;</p>
-<p title="Amount of overscan pixels to crop."><span class="numberDecrease" id="decreaseParallelCropOverscan">-</span><input id="ParallelCropOverscan" min="0" max="99" step="1" value="0" type="number"><span class="numberIncrease" id="increaseParallelCropOverscan">+</span><label for="ParallelCropOverscan">Crop Overscan</label><button class="floatright" data-value="0" id="resetParallelCropOverscan">Reset</button></p>
+<p><input id="ParallelVIDither" type="checkbox" data-store="ParallelVIDither" checked><label for="ParallelVIDither">VI dither</label></p>
 <p>&nbsp;</p>
-<p title="Amount of pixels to stretch by vertically. Can fix PAL ports that didn't fill the PAL resolution of 288p (use value of 24 in that case)."><span class="numberDecrease" id="decreaseParallelVerticalStretch">-</span><input id="ParallelVerticalStretch" min="0" max="99" step="1" value="0" type="number"><span class="numberIncrease" id="increaseParallelVerticalStretch">+</span><label for="ParallelVerticalStretch">Vertical Stretch</label><button class="floatright" data-value="0" id="resetParallelVerticalStretch">Reset</button></p>
+<p><input id="ParallelWidescreenStretch" type="checkbox" data-store="ParallelWidescreenStretch"><label for="ParallelWidescreenStretch">Widescreen (stretch)</label></p>
+<p>&nbsp;</p>
+<p title="Amount of overscan pixels to crop."><span class="numberDecrease" id="decreaseParallelCropOverscan">-</span><input id="ParallelCropOverscan" min="0" max="99" step="1" value="0" type="number"><span class="numberIncrease" id="increaseParallelCropOverscan">+</span><label for="ParallelCropOverscan">Crop overscan</label><button class="floatright" data-value="0" id="resetParallelCropOverscan">Reset</button></p>
+<p>&nbsp;</p>
+<p title="Amount of pixels to stretch by vertically. Can fix PAL ports that didn't fill the PAL resolution of 288p (use value of 24 in that case)."><span class="numberDecrease" id="decreaseParallelVerticalStretch">-</span><input id="ParallelVerticalStretch" min="0" max="99" step="1" value="0" type="number"><span class="numberIncrease" id="increaseParallelVerticalStretch">+</span><label for="ParallelVerticalStretch">Vertical stretch</label><button class="floatright" data-value="0" id="resetParallelVerticalStretch">Reset</button></p>
 <p>&nbsp;</p>
 <select class="width125m" name="ParallelUpscaling" id="ParallelUpscaling">
 <option value="1" selected>1x</option>
@@ -1479,12 +1479,12 @@ If this option is turned off, the output resolution is the same as the rendering
 <option value="1">1/2</option>
 <option value="2">1/4</option>
 <option value="3">1/8</option>
-</select><label for="ParallelDownScale">Downsampling</label></div>
+</select><label for="ParallelDownScale">Downscaling</label></div>
 <p>&nbsp;</p>
 <div title="Weave should only be used with 1x scaling factor."><select class="width125m" name="ParallelDeinterlaceMode" id="ParallelDeinterlaceMode">
 <option value="false" selected>Bob</option>
 <option value="true">Weave</option>
-</select><label for="ParallelDeinterlaceMode">Deinterlacing Method</label></div>
+</select><label for="ParallelDeinterlaceMode">Deinterlacing method</label></div>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
 <div id="riceAnchor" class="anchor"></div>
 <p class="headline">Rice</p>

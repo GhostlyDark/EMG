@@ -295,6 +295,10 @@ function txHiresEnableDisable(){if(id('txHiresEnable').checked){id('txFilterMode
 id('txHiresEnable').addEventListener('change', txHiresEnableDisable)
 txHiresEnableDisable()
 
+function NumWorkersDisable(){if(id('Parallel').checked){id('NumWorkers').disabled = false}else{id('NumWorkers').disabled = true}}
+id('Parallel').addEventListener('change', NumWorkersDisable)
+NumWorkersDisable()
+
 function ForcePolygonOffsetDisable(){if(id('ForcePolygonOffset').checked){id('PolygonOffsetFactor').disabled = false;id('PolygonOffsetUnits').disabled = false}else{id('PolygonOffsetFactor').disabled = true;id('PolygonOffsetUnits').disabled = true}}
 id('ForcePolygonOffset').addEventListener('change', ForcePolygonOffsetDisable)
 ForcePolygonOffsetDisable()
