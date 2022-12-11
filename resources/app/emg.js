@@ -40,7 +40,9 @@ m64p_joykeys = [
 
 sliders = ['AnalogDeadzone1','AnalogDeadzone2','AnalogDeadzone3','AnalogDeadzone4','AnalogPeak1','AnalogPeak2','AnalogPeak3','AnalogPeak4','control_stick_deadzone','control_stick_sensitivity','c_stick_deadzone','trigger_threshold','MouseSensitivityX','MouseSensitivityY'],
 
-numbers = ['OverscanNtscTop','OverscanNtscLeft','OverscanNtscRight','OverscanNtscBottom','OverscanPalTop','OverscanPalLeft','OverscanPalRight','OverscanPalBottom','NumWorkers','ParallelCropOverscan','ParallelVerticalStretch','txCacheSize','txHiresVramLimit','GammaCorrectionLevel','fontSize','CountPerOp','CountPerOpDenomPot','SiDmaDuration','CurrentStateSlot','VOLUME_ADJUST','VOLUME_DEFAULT','PolygonOffsetFactor','PolygonOffsetUnits'],
+overscan = ['OverscanNtscTop','OverscanNtscLeft','OverscanNtscRight','OverscanNtscBottom','OverscanPalTop','OverscanPalLeft','OverscanPalRight','OverscanPalBottom'],
+
+numbers = [...overscan,'NumWorkers','ParallelCropOverscan','ParallelVerticalStretch','txCacheSize','txHiresVramLimit','GammaCorrectionLevel','fontSize','CountPerOp','CountPerOpDenomPot','SiDmaDuration','CurrentStateSlot','VOLUME_ADJUST','VOLUME_DEFAULT','PolygonOffsetFactor','PolygonOffsetUnits'],
 
 dropdowns = [
 'emumode','resolution','SaveDiskFormat', /* mupen64plus */
@@ -156,6 +158,9 @@ id('clear_joymappings1').addEventListener('click', function(){clear_joymappings(
 id('clear_joymappings2').addEventListener('click', function(){clear_joymappings(2)})
 id('clear_joymappings3').addEventListener('click', function(){clear_joymappings(3)})
 id('clear_joymappings4').addEventListener('click', function(){clear_joymappings(4)})
+
+id('clear_hk_gliden64').addEventListener('click', function(){gliden64_hotkeys.forEach(hk => {id('clear'+hk).click()})}) /* clear GLideN64 hotkeys */
+id('reset_overscan').addEventListener('click', function(){overscan.forEach(os => {id('reset'+os).click()})}) /* reset GLideN64 overscan values */
 
 
 
