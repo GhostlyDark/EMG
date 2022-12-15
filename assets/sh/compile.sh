@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # Common variables
+RELEASE="v0.9.0"
 ELECTRON="v22.0.0"
 threads="${2:-$(nproc)}"
 
@@ -29,10 +30,10 @@ mkdir -p source
 
 
 # Download source code
-git clone --depth 1 https://github.com/GhostlyDark/EMG.git EMG
+git clone --depth 1 --branch ${RELEASE} https://github.com/GhostlyDark/EMG EMG
 
 for component in ${M64P_COMPONENTS} ${SOURCE}; do
-	git clone --depth 1 https://github.com/GhostlyDark/${component}.git source/${component} $@
+	git clone --depth 1 https://github.com/GhostlyDark/${component} source/${component} $@
 done
 
 
@@ -129,7 +130,7 @@ fi
 if [[ "$OSTYPE" == "msys"* ]]; then
 
 if [ ! -d "EMG" ] ; then
-    git clone --depth 1 https://github.com/GhostlyDark/EMG EMG
+    git clone --depth 1 --branch ${RELEASE} https://github.com/GhostlyDark/EMG EMG
 fi
 
 cp -r EMG/assets/sh/Windows/* ./
