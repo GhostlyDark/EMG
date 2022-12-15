@@ -133,14 +133,11 @@ if [ ! -d "EMG" ] ; then
     git clone --depth 1 --branch ${RELEASE} https://github.com/GhostlyDark/EMG EMG
 fi
 
-cp -r EMG/assets/sh/Windows/* ./
-
 # Variables
 script_dir="$(dirname "$0")"
 toplvl_dir="$(realpath "$script_dir")"
 bin_dir="$toplvl_dir/Bin"
 build_dir="$toplvl_dir/Build"
-source_dir="$build_dir/Source"
 emg_dir="$toplvl_dir/EMG"
 assets_dir="$emg_dir/assets"
 ico_dir="$assets_dir/ico"
@@ -173,8 +170,6 @@ make bundle_dependencies
 
 
 # Download additional sources
-pushd "$source_dir"
-
 if [ ! -d "mupen64plus-rom" ] ; then
     git clone --depth 1 https://github.com/GhostlyDark/mupen64plus-rom mupen64plus-rom
 fi
