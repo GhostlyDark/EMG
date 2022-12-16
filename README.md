@@ -22,9 +22,18 @@ Follow the [Dolphin instructions](https://dolphin-emu.org/docs/guides/how-use-of
 
 ## Linux
 
-Download [compile.sh](https://raw.githubusercontent.com/GhostlyDark/EMG/master/assets/sh/compile.sh) into an empty folder and run it. It uses `apt` as package manager to install required dependencies. Files are downloaded and built as necessary.
+Install dependencies:
 ```
-chmod u+x compile.sh && ./compile.sh
+sudo apt install -y build-essential cmake curl freeglut3-dev gcc git libfreetype-dev libhidapi-dev libhidapi-hidraw0 libpng-dev libsamplerate0-dev libsdl2-dev libspeexdsp-dev make nasm p7zip-full wget zlib1g-dev
+```
+Install Rust:
+```
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+source "$HOME/.cargo/env"
+```
+Download [CMakeLists.txt](https://raw.githubusercontent.com/GhostlyDark/EMG/master/assets/sh/CMakeLists.txt) and [compile.sh](https://raw.githubusercontent.com/GhostlyDark/EMG/master/assets/sh/compile.sh) into an empty folder and run `compile.sh`.
+```
+./compile.sh
 ```
 
 

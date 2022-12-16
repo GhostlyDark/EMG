@@ -21,11 +21,21 @@ add_custom_target(bundle_dependencies
 
 include(ExternalProject)
 
-set(THIRDPARTY_DIR ${CMAKE_BINARY_DIR})
-set(M64P_CORE_DIR ${THIRDPARTY_DIR}/mupen64plus-core)
-set(RICE_DIR ${THIRDPARTY_DIR}/mupen64plus-video-rice)
+if(WIN32)
+    set(SO_EXT ".dll")
+    set(EXE_EXT ".exe")
+    set(GCA_LIB "mupen64plus_input_gca.dll")
+    set(CORE_FILE "mupen64plus.dll")
+else(WIN32)
+    set(SO_EXT ".so")
+    set(EXE_EXT "")
+    set(GCA_LIB "libmupen64plus_input_gca.so")
+    set(CORE_FILE "libmupen64plus.so")
+endif(WIN32)
+
+set(M64P_CORE_DIR ${CMAKE_BINARY_DIR}/mupen64plus-core)
+set(RICE_DIR ${CMAKE_BINARY_DIR}/mupen64plus-video-rice)
 set(APIDIR ${M64P_CORE_DIR}/src/api)
-set(CORE_FILE "mupen64plus.dll")
 set(EMG_TAG "origin/emg")
 
 set(MUPEN64PLUSCORE_URL "https://github.com/GhostlyDark/mupen64plus-core")
@@ -57,7 +67,7 @@ ExternalProject_Add(mupen64plus-core
     GIT_TAG ${EMG_TAG}
     GIT_SHALLOW 1
 
-    BUILD_COMMAND make all PLUGINDIR= SHAREDIR= BINDIR= MANDIR= LIBDIR= APPSDIR= ICONSDIR= INCDIR= LDCONFIG= COREDIR=./ NEW_DYNAREC=1 TARGET=${CORE_FILE}
+    BUILD_COMMAND make all NEW_DYNAREC=1 TARGET=${CORE_FILE}
     BUILD_IN_SOURCE False
 
     BINARY_DIR ${M64P_CORE_DIR}/projects/unix
@@ -78,9 +88,9 @@ ExternalProject_Add(mupen64plus-ui-console
     BUILD_COMMAND make all APIDIR=${APIDIR}
     BUILD_IN_SOURCE False
 
-    BINARY_DIR ${THIRDPARTY_DIR}/mupen64plus-ui-console/projects/unix
+    BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-ui-console/projects/unix
     
-    BUILD_BYPRODUCTS ${THIRDPARTY_DIR}/mupen64plus-ui-console/projects/unix/mupen64plus.exe
+    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-ui-console/projects/unix/mupen64plus${EXE_EXT}
     DEPENDS mupen64plus-core
 )
 
@@ -97,9 +107,9 @@ ExternalProject_Add(mupen64plus-rsp-cxd4
     BUILD_COMMAND make all APIDIR=${APIDIR} POSTFIX=
     BUILD_IN_SOURCE False
 
-    BINARY_DIR ${THIRDPARTY_DIR}/mupen64plus-rsp-cxd4/projects/unix
+    BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-rsp-cxd4/projects/unix
     
-    BUILD_BYPRODUCTS ${THIRDPARTY_DIR}/mupen64plus-rsp-cxd4/projects/unix/mupen64plus-rsp-cxd4.dll
+    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-rsp-cxd4/projects/unix/mupen64plus-rsp-cxd4${SO_EXT}
     DEPENDS mupen64plus-core
 )
 
@@ -116,9 +126,9 @@ ExternalProject_Add(mupen64plus-rsp-hle
     BUILD_COMMAND make all APIDIR=${APIDIR}
     BUILD_IN_SOURCE False
 
-    BINARY_DIR ${THIRDPARTY_DIR}/mupen64plus-rsp-hle/projects/unix
+    BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-rsp-hle/projects/unix
     
-    BUILD_BYPRODUCTS ${THIRDPARTY_DIR}/mupen64plus-rsp-hle/projects/unix/mupen64plus-rsp-hle.dll
+    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-rsp-hle/projects/unix/mupen64plus-rsp-hle${SO_EXT}
     DEPENDS mupen64plus-core
 )
 
@@ -134,7 +144,7 @@ ExternalProject_Add(mupen64plus-rsp-parallel
     BUILD_IN_SOURCE True
     CMAKE_ARGS -DCMAKE_BUILD_TYPE=Release
 
-    BUILD_BYPRODUCTS ${THIRDPARTY_DIR}/mupen64plus-rsp-parallel/mupen64plus-rsp-parallel.dll
+    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-rsp-parallel/mupen64plus-rsp-parallel${SO_EXT}
     DEPENDS mupen64plus-core
 )
 
@@ -151,9 +161,9 @@ ExternalProject_Add(mupen64plus-input-sdl
     BUILD_COMMAND make all APIDIR=${APIDIR}
     BUILD_IN_SOURCE False
 
-    BINARY_DIR ${THIRDPARTY_DIR}/mupen64plus-input-sdl/projects/unix
+    BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-input-sdl/projects/unix
     
-    BUILD_BYPRODUCTS ${THIRDPARTY_DIR}/mupen64plus-input-sdl/projects/unix/mupen64plus-input-sdl.dll
+    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-input-sdl/projects/unix/mupen64plus-input-sdl${SO_EXT}
     DEPENDS mupen64plus-core
 )
 
@@ -170,9 +180,9 @@ ExternalProject_Add(mupen64plus-input-raphnetraw
     BUILD_COMMAND make all APIDIR=${APIDIR}
     BUILD_IN_SOURCE False
 
-    BINARY_DIR ${THIRDPARTY_DIR}/mupen64plus-input-raphnetraw/projects/unix
+    BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-input-raphnetraw/projects/unix
     
-    BUILD_BYPRODUCTS ${THIRDPARTY_DIR}/mupen64plus-input-raphnetraw/projects/unix/mupen64plus-input-raphnetraw.dll
+    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-input-raphnetraw/projects/unix/mupen64plus-input-raphnetraw${SO_EXT}
     DEPENDS mupen64plus-core
 )
 
@@ -189,13 +199,17 @@ ExternalProject_Add(mupen64plus-input-gca
     BUILD_COMMAND cargo build --release --features "m64p_compat"
     BUILD_IN_SOURCE True
 
-    BUILD_BYPRODUCTS ${THIRDPARTY_DIR}/mupen64plus-input-gca/target/release/mupen64plus_input_gca.dll
+    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-input-gca/target/release/${GCA_LIB}
     DEPENDS mupen64plus-core
 )
 
-set(GLIDEN64_DIR "${THIRDPARTY_DIR}/mupen64plus-video-GLideN64")
+set(GLIDEN64_DIR "${CMAKE_BINARY_DIR}/mupen64plus-video-GLideN64")
 set(GLIDEN64_BUILD_DIR "${GLIDEN64_DIR}/projects/cmake")
-set(GLIDEN64_LIB "${GLIDEN64_BUILD_DIR}/mupen64plus-video-GLideN64.dll")
+if (MSYS)
+	set(GLIDEN64_LIB "${GLIDEN64_BUILD_DIR}/mupen64plus-video-GLideN64${SO_EXT}")
+else()
+	set(GLIDEN64_LIB "${GLIDEN64_BUILD_DIR}/plugin/Release/mupen64plus-video-GLideN64${SO_EXT}")
+endif()
 
 ExternalProject_Add(mupen64plus-video-angrylion-plus
     SOURCE_DIR mupen64plus-video-angrylion-plus
@@ -209,7 +223,7 @@ ExternalProject_Add(mupen64plus-video-angrylion-plus
     BUILD_IN_SOURCE True
     CMAKE_ARGS -DBUILD_MUPEN64PLUS=ON -DBUILD_PROJECT64=OFF -DCMAKE_BUILD_TYPE=Release
 
-    BUILD_BYPRODUCTS ${THIRDPARTY_DIR}/mupen64plus-video-angrylion-plus/mupen64plus-video-angrylion-plus.dll
+    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-video-angrylion-plus/mupen64plus-video-angrylion-plus${SO_EXT}
     DEPENDS mupen64plus-core
 )
 
@@ -244,7 +258,7 @@ ExternalProject_Add(mupen64plus-video-parallel
     BUILD_IN_SOURCE True
     CMAKE_ARGS -DCMAKE_BUILD_TYPE=Release
 
-    BUILD_BYPRODUCTS ${THIRDPARTY_DIR}/mupen64plus-video-parallel/mupen64plus-video-parallel.dll
+    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-video-parallel/mupen64plus-video-parallel${SO_EXT}
     DEPENDS mupen64plus-core
 )
 
@@ -263,7 +277,7 @@ ExternalProject_Add(mupen64plus-video-rice
 
     BINARY_DIR ${RICE_DIR}/projects/unix
     
-    BUILD_BYPRODUCTS ${RICE_DIR}/projects/unix/mupen64plus-video-rice.dll
+    BUILD_BYPRODUCTS ${RICE_DIR}/projects/unix/mupen64plus-video-rice${SO_EXT}
     BUILD_BYPRODUCTS ${RICE_DIR}/data/RiceVideoLinux.ini
     DEPENDS mupen64plus-core
 )
@@ -281,9 +295,9 @@ ExternalProject_Add(mupen64plus-audio-sdl
     BUILD_COMMAND make all APIDIR=${APIDIR} NO_OSS=1
     BUILD_IN_SOURCE False
 
-    BINARY_DIR ${THIRDPARTY_DIR}/mupen64plus-audio-sdl/projects/unix
+    BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-audio-sdl/projects/unix
     
-    BUILD_BYPRODUCTS ${THIRDPARTY_DIR}/mupen64plus-audio-sdl/projects/unix/mupen64plus-audio-sdl.dll
+    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-audio-sdl/projects/unix/mupen64plus-audio-sdl${SO_EXT}
     DEPENDS mupen64plus-core
 )
 
@@ -299,7 +313,7 @@ ExternalProject_Add(sdl-jstest
     BUILD_IN_SOURCE True
     CMAKE_ARGS
     
-    BUILD_BYPRODUCTS ${THIRDPARTY_DIR}/sdl-jstest/sdl2-jstest.exe
+    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/sdl-jstest/sdl2-jstest${EXE_EXT}
 )
 
 ExternalProject_Get_property(mupen64plus-core BUILD_BYPRODUCTS)
