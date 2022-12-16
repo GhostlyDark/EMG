@@ -750,7 +750,8 @@ id('fontColor').addEventListener('change', function(){localStorage.setItem('font
 
 
 id('launch').addEventListener('click', function(){
-var exp = 'Core[DisableExtraMem]=' + id('exp').checked,
+var m64pCore = 'mupen64plus',
+exp = 'Core[DisableExtraMem]=' + id('exp').checked,
 osd = 'Core[OnScreenDisplay]=' + id('osd').checked,
 nospeedlimit = id('nospeedlimit').checked ? '--nospeedlimit' : [],
 verbose = id('verbose').checked ? '--verbose' : [],
@@ -866,7 +867,7 @@ gfx = id('gfx').value,
 audio = id('audio').value,
 input = id('input').value,
 rsp = id('rsp').value,
-RspFallback = id('RspFallback').value,
+RspFallback = 'Rsp-HLE[RspFallback]=' + id('RspFallback').value,
 emumode = 'Core[R4300Emulator]=' + id('emumode').value,
 plugin1 = 'Input-SDL-Control1[plugin]=' + id('plugin1').value,
 plugin2 = 'Input-SDL-Control2[plugin]=' + id('plugin2').value,
@@ -1164,7 +1165,8 @@ buttonType1 = '',buttonType1B = '',buttonType2 = '',buttonType2B = '',buttonType
 
 gcaSettings = 'control_stick_deadzone = ' +  id('control_stick_deadzone').value + '\n' + 'control_stick_sensitivity = ' + id('control_stick_sensitivity').value + '\n' + 'c_stick_deadzone = ' + id('c_stick_deadzone').value + '\n' + 'trigger_threshold = ' + id('trigger_threshold').value + '\n\n' + '[controller_mapping]' + '\n' + 'a = ' + id('a').value + '\n' + 'b = ' + id('b').value + '\n' + 'x = ' + id('x').value + '\n' + 'y = ' + id('y').value + '\n' + 'start = ' + id('start').value + '\n' + 'z = ' + id('z').value + '\n' + 'l = ' + id('l').value + '\n' + 'r = ' + id('r').value + '\n' + 'd_pad_left = ' + id('d_pad_left').value + '\n' + 'd_pad_right = ' + id('d_pad_right').value + '\n' + 'd_pad_down = ' + id('d_pad_down').value + '\n' + 'd_pad_up = ' + id('d_pad_up').value + '\n' + 'c_stick_left = ' + id('c_stick_left').value + '\n' + 'c_stick_right = ' + id('c_stick_right').value + '\n' + 'c_stick_down = ' + id('c_stick_down').value + '\n' + 'c_stick_up = ' + id('c_stick_up').value;
 
-if(isLinux){RspFallback = 'Rsp-HLE[RspFallback]=./' + RspFallback + '.so'}else{RspFallback = 'Rsp-HLE[RspFallback]=' + RspFallback}
+if(isLinux){m64pCore = './libmupen64plus.so';RspFallback = 'Rsp-HLE[RspFallback]=./' + RspFallback + '.so'} // Linux only
+
 if(id('nospeedlimit').checked){audio = 'dummy';vsync = 'Video-General[VerticalSync]=false';ParallelVSync = 'Video-Parallel[Vsync]=false'} /* force muted audio and disabled V-Sync */
 
 if(gfx.includes('angrylion') || gfx.includes('parallel')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=false'} /* prevent crashes caused by wrong RSP settings */
@@ -1505,7 +1507,7 @@ if(mb3 === 'rs'){RumblepakSwitch4 += ' mouse(3)'}}
 
 
 
-var core = ['--corelib','mupen64plus','--plugindir','./','--gfx',gfx,'--audio',audio,'--input',input,'--rsp',rsp],
+var core = ['--corelib',m64pCore,'--plugindir','./','--gfx',gfx,'--audio',audio,'--input',input,'--rsp',rsp],
 
 settings = [RspFallback,cxd4GFX,m64pGFX,cxd4Audio,m64pAudio,WaitForCPUHost,SupportCPUSemaphoreLock, /* RSP */
 
