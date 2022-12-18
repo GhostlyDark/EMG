@@ -1560,7 +1560,7 @@ cheats = ['--cheats',activeCheats]}
 
 settings = settings.flatMap((w,i) => (i+1) % 1 === 0 ? ['--set', w] : w) /* insert '--set' */
 
-try {writeGCA(gcaSettings)} /* write GameCube Adapter settings to file */
+try {writeGCA(configdir,gcaSettings)} /* write GameCube Adapter settings to file */
 catch (e) {console.warn(e)}
 
 const parameters = core.concat(settings,nospeedlimit,verbose,cheats,filePath), /* launch parameters */

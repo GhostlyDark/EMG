@@ -61,9 +61,9 @@ ipcMain.on('jsMapping', (e, padId) => {
 	e.returnValue = child.stdout.toString()
 })
 
-ipcMain.on('writeGCA', (e, gcaSettings) => {
-	if(!existsSync(m64pConfig)){mkdirSync(m64pConfig,{recursive:true})}
-	e.returnValue = writeFileSync(path(m64pConfig, 'mupen64plus-input-gca.toml'),gcaSettings)
+ipcMain.on('writeGCA', (e, gcaSettings, configdir) => {
+	if(!existsSync(configdir)){mkdirSync(configdir,{recursive:true})}
+	e.returnValue = writeFileSync(path(configdir, 'mupen64plus-input-gca.toml'),gcaSettings)
 })
 
 ipcMain.on('cwd', (e) => {e.returnValue = cwd})
