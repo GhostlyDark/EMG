@@ -4,7 +4,7 @@ set -ex
 
 
 # Variables
-release="v0.9.0"
+tag="v0.9.0" # tag="master"
 electron="v22.0.0"
 threads="${2:-$(nproc)}"
 
@@ -36,7 +36,7 @@ fi
 mkdir -p "$bin_dir" "$build_dir" 
 
 if [ ! -d "EMG" ] ; then
-    git clone --depth 1 --branch $release https://github.com/GhostlyDark/EMG EMG
+    git clone --depth 1 --branch $tag https://github.com/GhostlyDark/EMG EMG
 fi
 
 
