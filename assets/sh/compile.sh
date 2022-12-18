@@ -4,9 +4,9 @@ set -ex
 
 
 # Variables
-tag="v0.9.0" # tag="master"
-electron="v22.0.0"
-threads="${2:-$(nproc)}"
+tag="${1:-v0.9.0}"
+electron="${2:-v22.0.0}"
+threads="${3:-$(nproc)}"
 
 script_dir="$(dirname "$0")"
 toplvl_dir="$(realpath "$script_dir")"
@@ -28,6 +28,16 @@ if [[ "$OSTYPE" == "msys"* ]]; then
     gca="mupen64plus_input_gca.dll"
     generator="MSYS Makefiles"
     platform="win32"
+fi
+
+
+
+# Help message
+
+if [ "$1" = "--help" ] || [ "$1" = "-h" ]
+then
+    echo "$0 [git tag] [electron version] [thread count]"
+    exit
 fi
 
 
@@ -104,7 +114,7 @@ pushd "$toplvl_dir"
 
 if [[ "$OSTYPE" == "msys"* ]]; then
     cmd //c $bin_dir/rcedit-x64 $install_dir/mupen64plus.exe --set-icon $ico_dir/mupen64plus.ico
-    cmd //c $bin_dir/rcedit-x64 $emg_dir/EMG.exe --set-icon $ico_dir/emg.ico --set-version-string LegalCopyright "(C) 2022 EvilGames.eu" --set-version-string  OriginalFilename "electron.exe" --set-version-string FileDescription "EMG" --set-version-string ProductName "EMG" --set-version-string CompanyName "EvilGames.eu"
+    cmd //c $bin_dir/rcedit-x64 $emg_dir/EMG.exe --set-icon $ico_dir/emg.ico --set-version-string LegalCopyright "(C) 2022 EvilGames.eu" --set-version-string OriginalFilename "electron.exe" --set-version-string FileDescription "EMG" --set-version-string ProductName "EMG" --set-version-string CompanyName "EvilGames.eu"
 fi
 
 
