@@ -30,8 +30,8 @@ app.enableSandbox()
 const menuQuit = 'Quit ' + app.name,menuWindow = 'Window',menuFunctions = 'Functions',menuReload = 'Reload window',menuDev = 'Developer tools',menuZoomIn = 'Increase zoom',menuZoomOut = 'Decrease zoom',menuZoomReset = 'Reset zoom',menuClear = 'Reset settings',menuEMG = 'Show EMG data',menuConfig = 'Show m64p data',menuCache = 'Show m64p cache',menuTex = 'Show m64p textures',menuGitHub = 'Visit GitHub repo',menuSite = 'Visit website',dialogDelete = ' Reset settings',dialogDeleteM = 'Reset all settings?',dialogNo = 'Abort',dialogYes = 'Confirm',
 deleteDialog = {defaultId:1, cancelId:1, icon:path(dir, 'img', 'delete.png'), buttons:[dialogYes,dialogNo], title:dialogDelete, message:dialogDeleteM}
 
-var jstestChild, m64pCache = m64pConfig, m64pTex = m64pConfig;
-if(isLinux){m64pCache = path(appData, '../', '.cache', 'mupen64plus');m64pTex = path(appData, '../', '.local', 'share', 'mupen64plus')};
+var jstestChild, m64pCache = m64pConfig, m64pShare = m64pConfig;
+if(isLinux){m64pCache = path(appData, '../', '.cache', 'mupen64plus');m64pShare = path(appData, '../', '.local', 'share', 'mupen64plus')};
 
 ipcMain.on('emuLaunch', (e, parameters) => {
 	var stdout = '';
@@ -71,9 +71,11 @@ ipcMain.on('testROM', (e) => {e.returnValue = testROM})
 ipcMain.on('executablePath', (e) => {e.returnValue = executablePath})
 ipcMain.on('jstestPath', (e) => {e.returnValue = jstestPath})
 ipcMain.on('jstestKill', () => {if(jstestChild != undefined)jstestChild.kill('SIGTERM')})
-ipcMain.on('hires_texture', (e) => {e.returnValue = path(m64pTex, 'hires_texture')})
+ipcMain.on('screenshot', (e) => {e.returnValue = path(m64pShare, 'screenshot')})
+ipcMain.on('savePath', (e) => {e.returnValue = path(m64pShare, 'save')})
+ipcMain.on('hires_texture', (e) => {e.returnValue = path(m64pShare, 'hires_texture')})
 ipcMain.on('cache', (e) => {e.returnValue = path(m64pCache, 'cache')})
-ipcMain.on('texture_dump', (e) => {e.returnValue = path(m64pTex, 'texture_dump')})
+ipcMain.on('texture_dump', (e) => {e.returnValue = path(m64pShare, 'texture_dump')})
 ipcMain.on('isLinux', (e) => {e.returnValue = isLinux})
 ipcMain.on('dialogDirectory', (e) => {e.returnValue = dialog.showOpenDialogSync({properties:['openDirectory']})})
 ipcMain.on('dialogFile', (e, data) => {e.returnValue = dialog.showOpenDialogSync({properties:['openFile'],filters:[data]})})
@@ -107,7 +109,7 @@ Menu.setApplicationMenu(Menu.buildFromTemplate([
 	{label: menuFunctions, submenu: [
 		{icon: nativeImage.createFromPath(path(dir, 'img', 'delete.png')).resize(scale), label: menuClear, click () {choice = dialog.showMessageBoxSync(win,deleteDialog);if(choice !== 1){session.defaultSession.clearStorageData();session.defaultSession.clearCache()}}},
 		{icon: nativeImage.createFromPath(path(dir, 'img', 'emg.png')).resize(scale), label: menuEMG, click () {shell.openPath(emg)}},
-		{icon: nativeImage.createFromPath(path(dir, 'img', 'mupen64plus.png')).resize(scale), label: menuConfig, click () {shell.openPath(m64pConfig);if(isLinux){shell.openPath(m64pCache);shell.openPath(m64pTex)}}},
+		{icon: nativeImage.createFromPath(path(dir, 'img', 'mupen64plus.png')).resize(scale), label: menuConfig, click () {shell.openPath(m64pConfig);if(isLinux){shell.openPath(m64pCache);shell.openPath(m64pShare)}}},
 		{type: 'separator'},
 		{icon: nativeImage.createFromPath(path(dir, 'img', 'github.png')).resize(scale), label: menuGitHub, click () {shell.openExternal('https://github.com/GhostlyDark/EMG')}},
 		{icon: nativeImage.createFromPath(path(dir, 'img', 'icon-ghostly-nx.png')).resize(scale), label: menuSite, click () {shell.openExternal('https://evilgames.eu/')}}

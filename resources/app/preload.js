@@ -2,6 +2,8 @@ const {contextBridge,ipcRenderer} = require('electron'),
 cwd = ipcRenderer.sendSync('cwd'),
 testROM = ipcRenderer.sendSync('testROM'),
 executablePath = ipcRenderer.sendSync('executablePath'),
+screenshot = ipcRenderer.sendSync('screenshot'),
+savePath = ipcRenderer.sendSync('savePath'),
 hires_texture = ipcRenderer.sendSync('hires_texture'),
 cache = ipcRenderer.sendSync('cache'),
 texture_dump = ipcRenderer.sendSync('texture_dump'),
@@ -74,6 +76,8 @@ else if(stdout === ''){alert('Mupen64Plus Error: Emulator instance crashed');dat
 log.innerHTML = data})
 
 contextBridge.exposeInMainWorld('testROM',testROM)
+contextBridge.exposeInMainWorld('screenshot',screenshot)
+contextBridge.exposeInMainWorld('savePath',savePath)
 contextBridge.exposeInMainWorld('hires_texture',hires_texture)
 contextBridge.exposeInMainWorld('cache',cache)
 contextBridge.exposeInMainWorld('texture_dump',texture_dump)

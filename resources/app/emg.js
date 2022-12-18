@@ -701,22 +701,22 @@ if(gbRAM4 != undefined){id('gbRAM4Text').innerHTML = gbRAM4;localStorage.setItem
 
 
 
-id('resetScreenshotPath').addEventListener('click', function(){ScreenshotPath = '';id('ScreenshotPathText').innerHTML = '';localStorage.removeItem('ScreenshotPath')})
-if(localStorage.getItem('ScreenshotPath') === null){ScreenshotPath = '';id('ScreenshotPathText').innerHTML = ScreenshotPath}
+id('resetScreenshotPath').addEventListener('click', function(){ScreenshotPath = screenshot;id('ScreenshotPathText').innerHTML = screenshot;localStorage.removeItem('ScreenshotPath')}) /* choose and reset directories */
+if(localStorage.getItem('ScreenshotPath') === null){ScreenshotPath = screenshot;id('ScreenshotPathText').innerHTML = ScreenshotPath}
 if(localStorage.getItem('ScreenshotPath') != null){ScreenshotPath = localStorage.getItem('ScreenshotPath');id('ScreenshotPathText').innerHTML = ScreenshotPath}
-id('ScreenshotPath').addEventListener('click', function(){ /* choosing and resetting directories */
+id('ScreenshotPath').addEventListener('click', function(){
 ScreenshotPathResult = dialogDirectory()
 if(ScreenshotPathResult != undefined){ScreenshotPath = ScreenshotPathResult.toString();id('ScreenshotPathText').innerHTML = ScreenshotPath;localStorage.setItem('ScreenshotPath', ScreenshotPath)}})
 
-id('resetSaveStatePath').addEventListener('click', function(){SaveStatePath = '';id('SaveStatePathText').innerHTML = '';localStorage.removeItem('SaveStatePath')})
-if(localStorage.getItem('SaveStatePath') === null){SaveStatePath = '';id('SaveStatePathText').innerHTML = SaveStatePath}
+id('resetSaveStatePath').addEventListener('click', function(){SaveStatePath = savePath;id('SaveStatePathText').innerHTML = savePath;localStorage.removeItem('SaveStatePath')})
+if(localStorage.getItem('SaveStatePath') === null){SaveStatePath = savePath;id('SaveStatePathText').innerHTML = SaveStatePath}
 if(localStorage.getItem('SaveStatePath') != null){SaveStatePath = localStorage.getItem('SaveStatePath');id('SaveStatePathText').innerHTML = SaveStatePath}
 id('SaveStatePath').addEventListener('click', function(){
 SaveStatePathResult = dialogDirectory()
 if(SaveStatePathResult != undefined){SaveStatePath = SaveStatePathResult.toString();id('SaveStatePathText').innerHTML = SaveStatePath;localStorage.setItem('SaveStatePath', SaveStatePath)}})
 
-id('resetSaveSRAMPath').addEventListener('click', function(){SaveSRAMPath = '';id('SaveSRAMPathText').innerHTML = '';localStorage.removeItem('SaveSRAMPath')})
-if(localStorage.getItem('SaveSRAMPath') === null){SaveSRAMPath = '';id('SaveSRAMPathText').innerHTML = SaveSRAMPath}
+id('resetSaveSRAMPath').addEventListener('click', function(){SaveSRAMPath = savePath;id('SaveSRAMPathText').innerHTML = savePath;localStorage.removeItem('SaveSRAMPath')})
+if(localStorage.getItem('SaveSRAMPath') === null){SaveSRAMPath = savePath;id('SaveSRAMPathText').innerHTML = SaveSRAMPath}
 if(localStorage.getItem('SaveSRAMPath') != null){SaveSRAMPath = localStorage.getItem('SaveSRAMPath');id('SaveSRAMPathText').innerHTML = SaveSRAMPath}
 id('SaveSRAMPath').addEventListener('click', function(){
 SaveSRAMPathResult = dialogDirectory()
