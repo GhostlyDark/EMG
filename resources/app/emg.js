@@ -30,7 +30,7 @@ mappingArray = ['a','b','dpdown','dpleft','dpright','dpup','leftshoulder','leftt
 
 gliden64_hotkeys = ['hkTexDump','hkHdTexReload','hkHdTexToggle','hkInaccurateTexCords','hkVsync','hkFBEmulation','hkN64DepthCompare','hkOsdVis','hkOsdFps','hkOsdPercent','hkOsdInternalResolution','hkOsdRenderingResolution','hkTexCoordBounds','hkNativeResTexrects','hkForceGammaCorrection'],
 
-m64p_hotkeys = ['KbdMappingStop','KbdMappingSlot0','KbdMappingSlot1','KbdMappingSlot2','KbdMappingSlot3','KbdMappingSlot4','KbdMappingSlot5','KbdMappingSlot6','KbdMappingSlot7','KbdMappingSlot8','KbdMappingSlot9','KbdMappingFullscreen','KbdMappingSaveState','KbdMappingLoadState','KbdMappingIncrementSlot','KbdMappingReset','KbdMappingSpeedDown','KbdMappingSpeedUp','KbdMappingScreenshot','KbdMappingPause','KbdMappingMute','KbdMappingIncreaseVolume','KbdMappingDecreaseVolume','KbdMappingFastForward','KbdMappingFrameAdvance','KbdMappingGameshark'],
+m64p_hotkeys = ['KbdMappingStop','KbdMappingSlot0','KbdMappingSlot1','KbdMappingSlot2','KbdMappingSlot3','KbdMappingSlot4','KbdMappingSlot5','KbdMappingSlot6','KbdMappingSlot7','KbdMappingSlot8','KbdMappingSlot9','KbdMappingFullscreen','KbdMappingSaveState','KbdMappingLoadState','KbdMappingIncrementSlot','KbdMappingReset','KbdMappingSpeedDown','KbdMappingSpeedUp','KbdMappingScreenshot','KbdMappingPause','KbdMappingMute','KbdMappingIncreaseVolume','KbdMappingDecreaseVolume','KbdMappingFastForward','KbdMappingSpeedLimiterToggle','KbdMappingFrameAdvance','KbdMappingGameshark'],
 
 m64p_joykeys = [
 'JoyMappingStop1','JoyMappingFullscreen1','JoyMappingSaveState1','JoyMappingLoadState1','JoyMappingIncrementSlot1','JoyMappingReset1','JoyMappingSpeedDown1','JoyMappingSpeedUp1','JoyMappingScreenshot1','JoyMappingPause1','JoyMappingMute1','JoyMappingIncreaseVolume1','JoyMappingDecreaseVolume1','JoyMappingFastForward1','JoyMappingFrameAdvance1','JoyMappingGameshark1',
@@ -995,6 +995,7 @@ KbdMappingMute = 'CoreEvents[Kbd Mapping Mute]=' + id('KbdMappingMute').dataset.
 KbdMappingIncreaseVolume = 'CoreEvents[Kbd Mapping Increase Volume]=' + id('KbdMappingIncreaseVolume').dataset.key,
 KbdMappingDecreaseVolume = 'CoreEvents[Kbd Mapping Decrease Volume]=' + id('KbdMappingDecreaseVolume').dataset.key,
 KbdMappingFastForward = 'CoreEvents[Kbd Mapping Fast Forward]=' + id('KbdMappingFastForward').dataset.key,
+KbdMappingSpeedLimiterToggle = 'CoreEvents[Kbd Mapping Speed Limiter Toggle]=' + id('KbdMappingSpeedLimiterToggle').dataset.key,
 KbdMappingFrameAdvance = 'CoreEvents[Kbd Mapping Frame Advance]=' + id('KbdMappingFrameAdvance').dataset.key,
 KbdMappingGameshark = 'CoreEvents[Kbd Mapping Gameshark]=' + id('KbdMappingGameshark').dataset.key,
 
@@ -1519,7 +1520,7 @@ fullscreen,ScreenWidth,ScreenHeight,vsync, /* Video */
 
 DEFAULT_FREQUENCY,VOLUME_CONTROL_TYPE,SWAP_CHANNELS,PRIMARY_BUFFER_SIZE,PRIMARY_BUFFER_TARGET,SECONDARY_BUFFER_SIZE,RESAMPLE,VOLUME_ADJUST,VOLUME_DEFAULT,AUDIO_SYNC, /* Audio */
 
-KbdMappingSlot0,KbdMappingSlot1,KbdMappingSlot2,KbdMappingSlot3,KbdMappingSlot4,KbdMappingSlot5,KbdMappingSlot6,KbdMappingSlot7,KbdMappingSlot8,KbdMappingSlot9,KbdMappingStop,KbdMappingFullscreen,KbdMappingSaveState,KbdMappingLoadState,KbdMappingIncrementSlot,KbdMappingReset,KbdMappingSpeedDown,KbdMappingSpeedUp,KbdMappingScreenshot,KbdMappingPause,KbdMappingMute,KbdMappingIncreaseVolume,KbdMappingDecreaseVolume,KbdMappingFastForward,KbdMappingFrameAdvance,KbdMappingGameshark, /* Keyboard Hotkeys */
+KbdMappingSlot0,KbdMappingSlot1,KbdMappingSlot2,KbdMappingSlot3,KbdMappingSlot4,KbdMappingSlot5,KbdMappingSlot6,KbdMappingSlot7,KbdMappingSlot8,KbdMappingSlot9,KbdMappingStop,KbdMappingFullscreen,KbdMappingSaveState,KbdMappingLoadState,KbdMappingIncrementSlot,KbdMappingReset,KbdMappingSpeedDown,KbdMappingSpeedUp,KbdMappingScreenshot,KbdMappingPause,KbdMappingMute,KbdMappingIncreaseVolume,KbdMappingDecreaseVolume,KbdMappingFastForward,KbdMappingSpeedLimiterToggle,KbdMappingFrameAdvance,KbdMappingGameshark, /* Keyboard Hotkeys */
 
 JoyMappingStop,JoyMappingFullscreen,JoyMappingSaveState,JoyMappingLoadState,JoyMappingIncrementSlot,JoyMappingReset,JoyMappingSpeedDown,JoyMappingSpeedUp,JoyMappingScreenshot,JoyMappingPause,JoyMappingMute,JoyMappingIncreaseVolume,JoyMappingDecreaseVolume,JoyMappingFastForward,JoyMappingFrameAdvance,JoyMappingGameshark, /* Gamepad Hotkeys */
 
