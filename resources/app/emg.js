@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-var cheatRadio,filePath,fileResult,txPath,txPathResult,txCachePath,txCachePathResult,txDumpPath,txDumpPathResult,IPLROM,IPLROMResult,Disk,DiskResult,ScreenshotPath,ScreenshotPathResult,SaveStatePath,SaveStatePathResult,SaveSRAMPath,SaveSRAMPathResult,gbROM1,gbROM1Result,gbROM2,gbROM2Result,gbROM3,gbROM3Result,gbROM4,gbROM4Result,gbRAM1,gbRAM1Result,gbRAM2,gbRAM2Result,gbRAM3,gbRAM3Result,gbRAM4,gbRAM4Result,recentFiles = [];
+var cheatRadio,filePath,fileResult,txPath,txPathResult,txCachePath,txCachePathResult,txDumpPath,txDumpPathResult,IPLROM,IPLROMResult,Disk,DiskResult,ConfigPath,ConfigPathResult,ScreenshotPath,ScreenshotPathResult,SaveStatePath,SaveStatePathResult,SaveSRAMPath,SaveSRAMPathResult,gbROM1,gbROM1Result,gbROM2,gbROM2Result,gbROM3,gbROM3Result,gbROM4,gbROM4Result,gbRAM1,gbRAM1Result,gbRAM2,gbRAM2Result,gbRAM3,gbRAM3Result,gbRAM4,gbRAM4Result,recentFiles = [];
 
 const textInputs = document.querySelectorAll("input[type='text']"),
 
@@ -701,7 +701,14 @@ if(gbRAM4 != undefined){id('gbRAM4Text').innerHTML = gbRAM4;localStorage.setItem
 
 
 
-id('resetScreenshotPath').addEventListener('click', function(){ScreenshotPath = screenshot;id('ScreenshotPathText').innerHTML = screenshot;localStorage.removeItem('ScreenshotPath')}) /* choose and reset directories */
+id('resetConfigPath').addEventListener('click', function(){ConfigPath = config;id('ConfigPathText').innerHTML = config;localStorage.removeItem('ConfigPath')}) /* choose and reset directories */
+if(localStorage.getItem('ConfigPath') === null){ConfigPath = config;id('ConfigPathText').innerHTML = ConfigPath}
+if(localStorage.getItem('ConfigPath') != null){ConfigPath = localStorage.getItem('ConfigPath');id('ConfigPathText').innerHTML = ConfigPath}
+id('ConfigPath').addEventListener('click', function(){
+ConfigPathResult = dialogDirectory()
+if(ConfigPathResult != undefined){ConfigPath = ConfigPathResult.toString();id('ConfigPathText').innerHTML = ConfigPath;localStorage.setItem('ConfigPath', ConfigPath)}})
+
+id('resetScreenshotPath').addEventListener('click', function(){ScreenshotPath = screenshot;id('ScreenshotPathText').innerHTML = screenshot;localStorage.removeItem('ScreenshotPath')})
 if(localStorage.getItem('ScreenshotPath') === null){ScreenshotPath = screenshot;id('ScreenshotPathText').innerHTML = ScreenshotPath}
 if(localStorage.getItem('ScreenshotPath') != null){ScreenshotPath = localStorage.getItem('ScreenshotPath');id('ScreenshotPathText').innerHTML = ScreenshotPath}
 id('ScreenshotPath').addEventListener('click', function(){
@@ -750,7 +757,8 @@ id('fontColor').addEventListener('change', function(){localStorage.setItem('font
 
 
 id('launch').addEventListener('click', function(){
-var m64pCore = 'mupen64plus',
+var corelib = 'mupen64plus',
+configdir = ConfigPath,
 exp = 'Core[DisableExtraMem]=' + id('exp').checked,
 osd = 'Core[OnScreenDisplay]=' + id('osd').checked,
 nospeedlimit = id('nospeedlimit').checked ? '--nospeedlimit' : [],
@@ -1166,7 +1174,7 @@ buttonType1 = '',buttonType1B = '',buttonType2 = '',buttonType2B = '',buttonType
 
 gcaSettings = 'control_stick_deadzone = ' +  id('control_stick_deadzone').value + '\n' + 'control_stick_sensitivity = ' + id('control_stick_sensitivity').value + '\n' + 'c_stick_deadzone = ' + id('c_stick_deadzone').value + '\n' + 'trigger_threshold = ' + id('trigger_threshold').value + '\n\n' + '[controller_mapping]' + '\n' + 'a = ' + id('a').value + '\n' + 'b = ' + id('b').value + '\n' + 'x = ' + id('x').value + '\n' + 'y = ' + id('y').value + '\n' + 'start = ' + id('start').value + '\n' + 'z = ' + id('z').value + '\n' + 'l = ' + id('l').value + '\n' + 'r = ' + id('r').value + '\n' + 'd_pad_left = ' + id('d_pad_left').value + '\n' + 'd_pad_right = ' + id('d_pad_right').value + '\n' + 'd_pad_down = ' + id('d_pad_down').value + '\n' + 'd_pad_up = ' + id('d_pad_up').value + '\n' + 'c_stick_left = ' + id('c_stick_left').value + '\n' + 'c_stick_right = ' + id('c_stick_right').value + '\n' + 'c_stick_down = ' + id('c_stick_down').value + '\n' + 'c_stick_up = ' + id('c_stick_up').value;
 
-if(isLinux){m64pCore = './libmupen64plus.so';RspFallback = 'Rsp-HLE[RspFallback]=./' + RspFallback + '.so'} // Linux only
+if(isLinux){corelib = './libmupen64plus.so';RspFallback = 'Rsp-HLE[RspFallback]=./' + RspFallback + '.so'} // Linux only
 
 if(id('nospeedlimit').checked){audio = 'dummy';vsync = 'Video-General[VerticalSync]=false';ParallelVSync = 'Video-Parallel[Vsync]=false'} /* force muted audio and disabled V-Sync */
 
@@ -1508,7 +1516,7 @@ if(mb3 === 'rs'){RumblepakSwitch4 += ' mouse(3)'}}
 
 
 
-var core = ['--corelib',m64pCore,'--plugindir','./','--gfx',gfx,'--audio',audio,'--input',input,'--rsp',rsp],
+var core = ['--corelib',corelib,'--configdir',configdir,'--plugindir','./','--gfx',gfx,'--audio',audio,'--input',input,'--rsp',rsp],
 
 settings = [RspFallback,cxd4GFX,m64pGFX,cxd4Audio,m64pAudio,WaitForCPUHost,SupportCPUSemaphoreLock, /* RSP */
 
