@@ -314,7 +314,7 @@ ExternalProject_Add(mupen64plus-audio-sdl
     GIT_TAG ${EMG_TAG}
     GIT_SHALLOW 1
 
-    BUILD_COMMAND $(MAKE) all APIDIR=${APIDIR} NO_OSS=1
+    BUILD_COMMAND $(MAKE) all APIDIR=${APIDIR}
     BUILD_IN_SOURCE False
 
     BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-audio-sdl/projects/unix

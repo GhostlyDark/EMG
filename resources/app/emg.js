@@ -57,6 +57,10 @@ dropdowns = [
 
 
 
+if(!isLinux)id('master_volume').style.display = 'none'; /* hide platform specific settings */
+
+
+
 ['c1','c2','c3','c4'].forEach(c => { /* initialize SDL device dropdowns */
 if(localStorage.getItem(c+'Element') != null)id(c).innerHTML = localStorage.getItem(c+'Element')
 id('refresh'+c).addEventListener('click', function(){refresh(id(c))})})
@@ -379,6 +383,12 @@ if(id('plugin4').value === '4'){id('transferPak4').classList.replace('hide','sho
 else{id('transferPak4').classList.replace('show','hide')}}
 id('plugin4').addEventListener('change', transferPak4Disable)
 transferPak4Disable()
+
+function disableVolumeDefault(){
+if(id('VOLUME_CONTROL_TYPE').checked){id('VOLUME_DEFAULT').disabled = true}
+else{id('VOLUME_DEFAULT').disabled = false}}
+id('VOLUME_CONTROL_TYPE').addEventListener('change', disableVolumeDefault)
+disableVolumeDefault()
 
 function hideCheats(){
 if(id('cheat').checked){id('cheatList').classList.remove('hide');id('listCheats').classList.remove('hide')}
@@ -824,6 +834,7 @@ RandomizeInterrupt = 'Core[RandomizeInterrupt]=' + id('RandomizeInterrupt').chec
 EnableDebugger = 'Core[EnableDebugger]=false',
 SWAP_CHANNELS = 'Audio-SDL[SWAP_CHANNELS]=' + id('SWAP_CHANNELS').checked,
 AUDIO_SYNC = 'Audio-SDL[AUDIO_SYNC]=' + id('AUDIO_SYNC').checked,
+VOLUME_CONTROL_TYPE = id('VOLUME_CONTROL_TYPE').checked ? 'Audio-SDL[VOLUME_CONTROL_TYPE]=2' : 'Audio-SDL[VOLUME_CONTROL_TYPE]=1',
 
 Parallel = 'Video-AngrylionPlus[Parallel]=' + id('Parallel').checked,
 BusyLoop = 'Video-AngrylionPlus[BusyLoop]=' + id('BusyLoop').checked,
@@ -913,7 +924,6 @@ PRIMARY_BUFFER_SIZE = 'Audio-SDL[PRIMARY_BUFFER_SIZE]=16384',
 PRIMARY_BUFFER_TARGET = 'Audio-SDL[PRIMARY_BUFFER_TARGET]=' + id('PRIMARY_BUFFER_TARGET').value,
 SECONDARY_BUFFER_SIZE = 'Audio-SDL[SECONDARY_BUFFER_SIZE]=1024',
 RESAMPLE = 'Audio-SDL[RESAMPLE]=' + id('RESAMPLE').value,
-VOLUME_CONTROL_TYPE = 'Audio-SDL[VOLUME_CONTROL_TYPE]=1',
 
 FrameBufferWriteBackControl = 'Video-Rice[FrameBufferWriteBackControl]=' + id('FrameBufferWriteBackControl').value,
 RenderToTexture = 'Video-Rice[RenderToTexture]=' + id('RenderToTexture').value,
