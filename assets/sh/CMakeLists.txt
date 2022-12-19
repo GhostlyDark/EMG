@@ -67,7 +67,7 @@ ExternalProject_Add(mupen64plus-core
     GIT_TAG ${EMG_TAG}
     GIT_SHALLOW 1
 
-    BUILD_COMMAND make all NEW_DYNAREC=1 TARGET=${CORE_FILE}
+    BUILD_COMMAND $(MAKE) all NEW_DYNAREC=1 TARGET=${CORE_FILE}
     BUILD_IN_SOURCE False
 
     BINARY_DIR ${M64P_CORE_DIR}/projects/unix
@@ -85,7 +85,7 @@ ExternalProject_Add(mupen64plus-ui-console
     GIT_TAG ${EMG_TAG}
     GIT_SHALLOW 1
 
-    BUILD_COMMAND make all APIDIR=${APIDIR}
+    BUILD_COMMAND $(MAKE) all APIDIR=${APIDIR}
     BUILD_IN_SOURCE False
 
     BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-ui-console/projects/unix
@@ -104,7 +104,7 @@ ExternalProject_Add(mupen64plus-rsp-cxd4
     GIT_TAG ${EMG_TAG}
     GIT_SHALLOW 1
 
-    BUILD_COMMAND make all APIDIR=${APIDIR} POSTFIX=
+    BUILD_COMMAND $(MAKE) all APIDIR=${APIDIR} POSTFIX=
     BUILD_IN_SOURCE False
 
     BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-rsp-cxd4/projects/unix
@@ -123,7 +123,7 @@ ExternalProject_Add(mupen64plus-rsp-hle
     GIT_TAG ${EMG_TAG}
     GIT_SHALLOW 1
 
-    BUILD_COMMAND make all APIDIR=${APIDIR}
+    BUILD_COMMAND $(MAKE) all APIDIR=${APIDIR}
     BUILD_IN_SOURCE False
 
     BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-rsp-hle/projects/unix
@@ -158,7 +158,7 @@ ExternalProject_Add(mupen64plus-input-sdl
     GIT_TAG ${EMG_TAG}
     GIT_SHALLOW 1
 
-    BUILD_COMMAND make all APIDIR=${APIDIR}
+    BUILD_COMMAND $(MAKE) all APIDIR=${APIDIR}
     BUILD_IN_SOURCE False
 
     BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-input-sdl/projects/unix
@@ -177,7 +177,7 @@ ExternalProject_Add(mupen64plus-input-raphnetraw
     GIT_TAG ${EMG_TAG}
     GIT_SHALLOW 1
 
-    BUILD_COMMAND make all APIDIR=${APIDIR}
+    BUILD_COMMAND $(MAKE) all APIDIR=${APIDIR}
     BUILD_IN_SOURCE False
 
     BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-input-raphnetraw/projects/unix
@@ -272,7 +272,7 @@ ExternalProject_Add(mupen64plus-video-rice
     GIT_TAG ${EMG_TAG}
     GIT_SHALLOW 1
 
-    BUILD_COMMAND make all APIDIR=${APIDIR}
+    BUILD_COMMAND $(MAKE) all APIDIR=${APIDIR}
     BUILD_IN_SOURCE False
 
     BINARY_DIR ${RICE_DIR}/projects/unix
@@ -292,7 +292,7 @@ ExternalProject_Add(mupen64plus-audio-sdl
     GIT_TAG ${EMG_TAG}
     GIT_SHALLOW 1
 
-    BUILD_COMMAND make all APIDIR=${APIDIR} NO_OSS=1
+    BUILD_COMMAND $(MAKE) all APIDIR=${APIDIR} NO_OSS=1
     BUILD_IN_SOURCE False
 
     BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-audio-sdl/projects/unix
