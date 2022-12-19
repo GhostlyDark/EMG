@@ -1174,7 +1174,11 @@ buttonType1 = '',buttonType1B = '',buttonType2 = '',buttonType2B = '',buttonType
 
 gcaSettings = 'control_stick_deadzone = ' +  id('control_stick_deadzone').value + '\n' + 'control_stick_sensitivity = ' + id('control_stick_sensitivity').value + '\n' + 'c_stick_deadzone = ' + id('c_stick_deadzone').value + '\n' + 'trigger_threshold = ' + id('trigger_threshold').value + '\n\n' + '[controller_mapping]' + '\n' + 'a = ' + id('a').value + '\n' + 'b = ' + id('b').value + '\n' + 'x = ' + id('x').value + '\n' + 'y = ' + id('y').value + '\n' + 'start = ' + id('start').value + '\n' + 'z = ' + id('z').value + '\n' + 'l = ' + id('l').value + '\n' + 'r = ' + id('r').value + '\n' + 'd_pad_left = ' + id('d_pad_left').value + '\n' + 'd_pad_right = ' + id('d_pad_right').value + '\n' + 'd_pad_down = ' + id('d_pad_down').value + '\n' + 'd_pad_up = ' + id('d_pad_up').value + '\n' + 'c_stick_left = ' + id('c_stick_left').value + '\n' + 'c_stick_right = ' + id('c_stick_right').value + '\n' + 'c_stick_down = ' + id('c_stick_down').value + '\n' + 'c_stick_up = ' + id('c_stick_up').value;
 
-if(isLinux){corelib = './libmupen64plus.so';RspFallback = 'Rsp-HLE[RspFallback]=./' + RspFallback + '.so'} // Linux only
+if(id('emumode').value === '3'){emumode = 'Core[R4300Emulator]=2';corelib = 'mupen64plus_old'} /* R4300 emulator */
+if(isLinux){
+if(id('emumode').value === '3'){corelib = './libmupen64plus_old.so'}
+else{corelib = './libmupen64plus.so'};
+RspFallback = 'Rsp-HLE[RspFallback]=./' + RspFallback + '.so'} /* Linux RSP fallback */
 
 if(id('nospeedlimit').checked){audio = 'dummy';vsync = 'Video-General[VerticalSync]=false';ParallelVSync = 'Video-Parallel[Vsync]=false'} /* force muted audio and disabled V-Sync */
 

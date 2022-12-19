@@ -33,7 +33,7 @@ source "$HOME/.cargo/env"
 ```
 Download [CMakeLists.txt](https://raw.githubusercontent.com/GhostlyDark/EMG/master/assets/sh/CMakeLists.txt) and [compile.sh](https://raw.githubusercontent.com/GhostlyDark/EMG/master/assets/sh/compile.sh) into an empty folder and run `compile.sh`.
 ```
-./compile.sh
+chmod u+x compile.sh && ./compile.sh
 ```
 
 

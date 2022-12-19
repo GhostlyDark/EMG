@@ -26,16 +26,28 @@ if(WIN32)
     set(EXE_EXT ".exe")
     set(GCA_LIB "mupen64plus_input_gca.dll")
     set(CORE_FILE "mupen64plus.dll")
+    set(CORE_FILE_OLD "mupen64plus_old.dll")
 else(WIN32)
     set(SO_EXT ".so")
     set(EXE_EXT "")
     set(GCA_LIB "libmupen64plus_input_gca.so")
     set(CORE_FILE "libmupen64plus.so")
+    set(CORE_FILE_OLD "libmupen64plus_old.so")
 endif(WIN32)
 
 set(M64P_CORE_DIR ${CMAKE_BINARY_DIR}/mupen64plus-core)
-set(RICE_DIR ${CMAKE_BINARY_DIR}/mupen64plus-video-rice)
+set(M64P_CORE_DIR_OLD ${CMAKE_BINARY_DIR}/mupen64plus-core-old)
 set(APIDIR ${M64P_CORE_DIR}/src/api)
+set(RICE_DIR ${CMAKE_BINARY_DIR}/mupen64plus-video-rice)
+
+set(GLIDEN64_DIR "${CMAKE_BINARY_DIR}/mupen64plus-video-GLideN64")
+set(GLIDEN64_BUILD_DIR "${GLIDEN64_DIR}/projects/cmake")
+if (MSYS)
+	set(GLIDEN64_LIB "${GLIDEN64_BUILD_DIR}/mupen64plus-video-GLideN64${SO_EXT}")
+else()
+	set(GLIDEN64_LIB "${GLIDEN64_BUILD_DIR}/plugin/Release/mupen64plus-video-GLideN64${SO_EXT}")
+endif()
+
 set(EMG_TAG "origin/emg")
 
 set(MUPEN64PLUSCORE_URL "https://github.com/GhostlyDark/mupen64plus-core")
@@ -73,6 +85,24 @@ ExternalProject_Add(mupen64plus-core
     BINARY_DIR ${M64P_CORE_DIR}/projects/unix
     
     BUILD_BYPRODUCTS ${M64P_CORE_DIR}/projects/unix/${CORE_FILE}
+)
+
+ExternalProject_Add(mupen64plus-core-old
+    SOURCE_DIR mupen64plus-core-old/
+
+    CONFIGURE_COMMAND ""
+    INSTALL_COMMAND ""
+
+    GIT_REPOSITORY ${MUPEN64PLUSCORE_URL}
+    GIT_TAG ${EMG_TAG}
+    GIT_SHALLOW 1
+
+    BUILD_COMMAND $(MAKE) all TARGET=${CORE_FILE_OLD}
+    BUILD_IN_SOURCE False
+
+    BINARY_DIR ${M64P_CORE_DIR_OLD}/projects/unix
+    
+    BUILD_BYPRODUCTS ${M64P_CORE_DIR_OLD}/projects/unix/${CORE_FILE_OLD}
 )
 
 ExternalProject_Add(mupen64plus-ui-console
@@ -203,14 +233,6 @@ ExternalProject_Add(mupen64plus-input-gca
     DEPENDS mupen64plus-core
 )
 
-set(GLIDEN64_DIR "${CMAKE_BINARY_DIR}/mupen64plus-video-GLideN64")
-set(GLIDEN64_BUILD_DIR "${GLIDEN64_DIR}/projects/cmake")
-if (MSYS)
-	set(GLIDEN64_LIB "${GLIDEN64_BUILD_DIR}/mupen64plus-video-GLideN64${SO_EXT}")
-else()
-	set(GLIDEN64_LIB "${GLIDEN64_BUILD_DIR}/plugin/Release/mupen64plus-video-GLideN64${SO_EXT}")
-endif()
-
 ExternalProject_Add(mupen64plus-video-angrylion-plus
     SOURCE_DIR mupen64plus-video-angrylion-plus
 
@@ -322,6 +344,9 @@ set(MUPEN64PLUSCORE_FONT ${M64P_CORE_DIR}/data/font.ttf)
 set(MUPEN64PLUSCORE_INI ${M64P_CORE_DIR}/data/mupen64plus.ini)
 set(MUPEN64PLUSCORE_CHT ${M64P_CORE_DIR}/data/mupencheat.txt)
 
+ExternalProject_Get_property(mupen64plus-core-old BUILD_BYPRODUCTS)
+set(MUPEN64PLUSCORE_LIB_OLD ${BUILD_BYPRODUCTS})
+
 ExternalProject_Get_property(mupen64plus-ui-console BUILD_BYPRODUCTS)
 set(MUPEN64PLUS_UI ${BUILD_BYPRODUCTS})
 
@@ -365,6 +390,9 @@ install(FILES ${MUPEN64PLUSCORE_LIB}
     DESTINATION ${INSTALL_PATH}
 )
 install(FILES ${MUPEN64PLUSCORE_INI} ${MUPEN64PLUSCORE_CHT} ${MUPEN64PLUSCORE_FONT}
+    DESTINATION ${INSTALL_PATH}
+)
+install(FILES ${MUPEN64PLUSCORE_LIB_OLD}
     DESTINATION ${INSTALL_PATH}
 )
 install(FILES ${MUPEN64PLUS_UI}

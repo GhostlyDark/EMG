@@ -77,7 +77,7 @@
 <p>&nbsp;</p>
 <p title="Duration of SI DMA. Use -1 for default (per-game settings)."><span class="numberDecrease" id="decreaseSiDmaDuration">-</span><input id="SiDmaDuration" min="-1" max="1000" step="10" value="-1" type="number"><span class="numberIncrease" id="increaseSiDmaDuration">+</span><label for="SiDmaDuration">SI DMA duration</label><button class="floatright" data-value="-1" id="resetSiDmaDuration">Reset</button></p>
 <p>&nbsp;</p>
-<select class="width200m" name="resolution" id="resolution">
+<select name="resolution" id="resolution">
 <option data-width="320" data-height="240" value="320x240">320x240</option>
 <option data-width="640" data-height="480" value="640x480">640x480</option>
 <option data-width="960" data-height="720" value="960x720">960x720</option>
@@ -88,10 +88,11 @@
 <option data-width="2560" data-height="1920" value="2560x1920">2560x1920</option>
 </select><label for="resolution">Windowed resolution</label>
 <p>&nbsp;</p>
-<div title="Dynamic Recompiler offers the best performance. Use Interpreter when encountering issues."><select class="width200m" name="emumode" id="emumode">
+<div title="Dynamic Recompiler (New) offers the best performance. Change this upon encountering issues."><select name="emumode" id="emumode">
 <option value="0">Pure Interpreter</option>
 <option value="1">Cached Interpreter</option>
-<option value="2" selected>Dynamic Recompiler</option>
+<option value="3">Dynamic Recompiler (Old)</option>
+<option value="2" selected>Dynamic Recompiler (New)</option>
 </select><label for="emumode">R4300 emulator</label></div>
 </div>
 <div id="core_advanced" class="hide mt-10">
