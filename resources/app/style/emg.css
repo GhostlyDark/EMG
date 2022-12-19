@@ -42,7 +42,7 @@ select:active{background-color:#ccc}
 
 option{background:#efefef}
 .dark option{background:#222}
-.box{padding:20px;border:2px dotted #111}
+.box{padding:20px;border:2px dotted #111;word-wrap:break-word}
 .dark .box{border:2px dotted #eee}
 
 .floatleft{float:left}
@@ -97,8 +97,8 @@ header li:last-child{float:right;background-color:rgba(0,0,0,.25);padding-right:
 .ml-42{margin-left:42px}
 .ml-105{margin-left:105px}
 #cheatList input[id*=_]{margin-left:40px}
-#recent{width:625px;padding-left:12px;height:29px}
-#name1,#name2,#name3,#name4{padding-left:7px;padding-right:7px}
+#recent{width:620px}
+#c1,#c2,#c3,#c4{width:600px}
 #cheatList,#log{height:400px;overflow-y:scroll;border:2px solid #444;padding:15px 15px 0 15px;background-color:rgba(150,150,150,.1)}
 #log{height:340px;user-select:text}
 #log p{padding-bottom:20px}
