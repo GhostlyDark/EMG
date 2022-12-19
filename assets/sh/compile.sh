@@ -104,7 +104,7 @@ mv $gca mupen64plus-input-gca$ext
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     chmod u+x mupen64plus
     chmod u+x sdl2-jstest
-    ln libmupen64plus.so libmupen64plus.so.2
+    [ ! -f libmupen64plus.so.2 ] && ln libmupen64plus.so libmupen64plus.so.2
 fi
 
 
