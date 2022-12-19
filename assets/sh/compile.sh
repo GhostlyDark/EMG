@@ -4,7 +4,7 @@ set -ex
 
 
 # Variables
-tag="${1:-v0.9.0}"
+tag="${1:-v0.9.1}"
 electron="${2:-v22.0.0}"
 threads="${3:-$(nproc)}"
 
