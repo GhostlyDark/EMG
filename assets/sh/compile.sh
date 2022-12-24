@@ -4,7 +4,7 @@ set -ex
 
 
 # Variables
-tag="${1:-v0.9.1}"
+tag="${1:-v0.9.2}"
 electron="${2:-v22.0.0}"
 threads="${3:-$(nproc)}"
 
@@ -15,6 +15,8 @@ build_dir="$toplvl_dir/Build"
 emg_dir="$toplvl_dir/EMG"
 ico_dir="$emg_dir/assets/ico"
 install_dir="$emg_dir/resources/app/m64p"
+core_dir="$install_dir/core"
+plugin_dir="$install_dir/plugin"
 
 exe=""
 ext=".so"
@@ -67,7 +69,7 @@ fi
 # Build
 pushd "$build_dir"
 
-cmake -S "$toplvl_dir" -B "$build_dir" -DCMAKE_BUILD_TYPE="Release" -DPORTABLE_INSTALL=ON -G "$generator"
+cmake -S "$toplvl_dir" -B "$build_dir" -DCMAKE_BUILD_TYPE="Release" -G "$generator"
 
 make install DESTDIR="$toplvl_dir" -j$threads
 
@@ -95,13 +97,14 @@ cp SDL_GameControllerDB/gamecontrollerdb.txt $install_dir
 pushd "$emg_dir"
 mv electron$exe EMG$exe
 
-pushd "$install_dir"
+pushd "$plugin_dir"
 mv $gca mupen64plus-input-gca$ext
 
 
 
 # Fix file permissions
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    pushd "$install_dir"
     chmod u+x mupen64plus
     chmod u+x sdl2-jstest
 fi
@@ -119,7 +122,11 @@ fi
 
 
 # Strip binaries
-for f in $install_dir/*$ext; do strip -s $f; done
+if [[ "$OSTYPE" == "msys"* ]]; then
+    for f in $install_dir/*$ext; do strip -s $f; done
+fi
+for f in $core_dir/*$ext; do strip -s $f; done
+for f in $plugin_dir/*$ext; do strip -s $f; done
 
 
 

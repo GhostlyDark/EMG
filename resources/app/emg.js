@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-var cheatRadio,filePath,fileResult,txPath,txPathResult,txCachePath,txCachePathResult,txDumpPath,txDumpPathResult,IPLROM,IPLROMResult,Disk,DiskResult,ConfigPath,ConfigPathResult,ScreenshotPath,ScreenshotPathResult,SaveStatePath,SaveStatePathResult,SaveSRAMPath,SaveSRAMPathResult,gbROM1,gbROM1Result,gbROM2,gbROM2Result,gbROM3,gbROM3Result,gbROM4,gbROM4Result,gbRAM1,gbRAM1Result,gbRAM2,gbRAM2Result,gbRAM3,gbRAM3Result,gbRAM4,gbRAM4Result,recentFiles = [];
+
+var cheatRadio,filePath,fileResult,txPath,txPathResult,txCachePath,txCachePathResult,txDumpPath,txDumpPathResult,IPLROM,IPLROMResult,Disk,DiskResult,ConfigPath,ConfigPathResult,ScreenshotPath,ScreenshotPathResult,SaveStatePath,SaveStatePathResult,SaveSRAMPath,SaveSRAMPathResult,gbROM1,gbROM1Result,gbROM2,gbROM2Result,gbROM3,gbROM3Result,gbROM4,gbROM4Result,gbRAM1,gbRAM1Result,gbRAM2,gbRAM2Result,gbRAM3,gbRAM3Result,gbRAM4,gbRAM4Result,
+
+recentFiles = [], corefile = 'core/mupen64plus';
 
 const textInputs = document.querySelectorAll("input[type='text']"),
 
@@ -57,6 +60,7 @@ dropdowns = [
 
 
 
+if(isLinux)corefile += '.so'; /* Linux core file extension */
 if(!isLinux)id('master_volume').style.display = 'none'; /* hide platform specific settings */
 
 
@@ -428,7 +432,7 @@ Array.from(id('recent').getElementsByTagName('option')).forEach(opt => {if(opt.i
 id('listCheats').addEventListener('click', function(){ /* generate cheat list */
 var cheats = '';
 id('cheatList').innerHTML = '';
-const parameters = ['--cheats','list',filePath],
+const parameters = ['--corelib',corefile,'--datadir','data','--cheats','list',filePath],
 child = showCheats(parameters);
 if(child.includes('AttachCoreLib() Error:') || child === ''){id('cheatList').innerHTML = 'Failed to open Mupen64Plus.';return}
 if(child.includes("couldn't open ROM file")){id('cheatList').innerHTML = 'Unable to open ROM file.';return}
@@ -767,7 +771,7 @@ id('fontColor').addEventListener('change', function(){localStorage.setItem('font
 
 
 id('launch').addEventListener('click', function(){
-var corelib = 'mupen64plus',
+var corelib = corefile,
 configdir = ConfigPath,
 exp = 'Core[DisableExtraMem]=' + id('exp').checked,
 osd = 'Core[OnScreenDisplay]=' + id('osd').checked,
@@ -886,7 +890,7 @@ gfx = id('gfx').value,
 audio = id('audio').value,
 input = id('input').value,
 rsp = id('rsp').value,
-RspFallback = 'Rsp-HLE[RspFallback]=' + id('RspFallback').value,
+RspFallback = 'Rsp-HLE[RspFallback]=plugin/' + id('RspFallback').value,
 emumode = 'Core[R4300Emulator]=' + id('emumode').value,
 plugin1 = 'Input-SDL-Control1[plugin]=' + id('plugin1').value,
 plugin2 = 'Input-SDL-Control2[plugin]=' + id('plugin2').value,
@@ -1184,11 +1188,11 @@ buttonType1 = '',buttonType1B = '',buttonType2 = '',buttonType2B = '',buttonType
 
 gcaSettings = 'control_stick_deadzone = ' +  id('control_stick_deadzone').value + '\n' + 'control_stick_sensitivity = ' + id('control_stick_sensitivity').value + '\n' + 'c_stick_deadzone = ' + id('c_stick_deadzone').value + '\n' + 'trigger_threshold = ' + id('trigger_threshold').value + '\n\n' + '[controller_mapping]' + '\n' + 'a = ' + id('a').value + '\n' + 'b = ' + id('b').value + '\n' + 'x = ' + id('x').value + '\n' + 'y = ' + id('y').value + '\n' + 'start = ' + id('start').value + '\n' + 'z = ' + id('z').value + '\n' + 'l = ' + id('l').value + '\n' + 'r = ' + id('r').value + '\n' + 'd_pad_left = ' + id('d_pad_left').value + '\n' + 'd_pad_right = ' + id('d_pad_right').value + '\n' + 'd_pad_down = ' + id('d_pad_down').value + '\n' + 'd_pad_up = ' + id('d_pad_up').value + '\n' + 'c_stick_left = ' + id('c_stick_left').value + '\n' + 'c_stick_right = ' + id('c_stick_right').value + '\n' + 'c_stick_down = ' + id('c_stick_down').value + '\n' + 'c_stick_up = ' + id('c_stick_up').value;
 
-if(id('emumode').value === '3'){emumode = 'Core[R4300Emulator]=2';corelib = 'mupen64plus_old'} /* R4300 emulator */
+if(id('emumode').value === '3'){emumode = 'Core[R4300Emulator]=2';corelib = 'core/mupen64old'} /* R4300 emulator */
 if(isLinux){
-if(id('emumode').value === '3'){corelib = './libmupen64plus_old.so'}
-else{corelib = './libmupen64plus.so'};
-RspFallback = 'Rsp-HLE[RspFallback]=./' + RspFallback + '.so'} /* Linux RSP fallback */
+if(id('emumode').value === '3'){corelib = 'core/mupen64old.so'}
+else{corelib = 'core/mupen64plus.so'};
+RspFallback += '.so'} /* Linux RSP fallback */
 
 if(id('nospeedlimit').checked){audio = 'dummy';vsync = 'Video-General[VerticalSync]=false';ParallelVSync = 'Video-Parallel[Vsync]=false'} /* force muted audio and disabled V-Sync */
 
@@ -1530,7 +1534,7 @@ if(mb3 === 'rs'){RumblepakSwitch4 += ' mouse(3)'}}
 
 
 
-var core = ['--corelib',corelib,'--configdir',configdir,'--plugindir','./','--gfx',gfx,'--audio',audio,'--input',input,'--rsp',rsp],
+var core = ['--corelib',corelib,'--configdir',configdir,'--datadir','data','--plugindir','plugin','--gfx',gfx,'--audio',audio,'--input',input,'--rsp',rsp],
 
 settings = [RspFallback,cxd4GFX,m64pGFX,cxd4Audio,m64pAudio,WaitForCPUHost,SupportCPUSemaphoreLock, /* RSP */
 
