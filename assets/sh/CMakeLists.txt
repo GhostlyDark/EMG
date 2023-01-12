@@ -76,7 +76,7 @@ ExternalProject_Add(mupen64plus-core
     GIT_TAG "origin/emg"
     GIT_SHALLOW 1
 
-    BUILD_COMMAND $(MAKE) all NEW_DYNAREC=1 TARGET=${CORE_FILE}
+    BUILD_COMMAND $(MAKE) all OSD=0 NEW_DYNAREC=1 TARGET=${CORE_FILE}
     BUILD_IN_SOURCE False
 
     BINARY_DIR ${M64P_CORE_DIR}/projects/unix
@@ -94,7 +94,7 @@ ExternalProject_Add(mupen64plus-core-old
     GIT_TAG "origin/emg"
     GIT_SHALLOW 1
 
-    BUILD_COMMAND $(MAKE) all TARGET=${CORE_FILE_OLD}
+    BUILD_COMMAND $(MAKE) all OSD=0 TARGET=${CORE_FILE_OLD}
     BUILD_IN_SOURCE False
 
     BINARY_DIR ${M64P_CORE_DIR_OLD}/projects/unix
@@ -336,7 +336,6 @@ ExternalProject_Add(sdl-jstest
 
 ExternalProject_Get_property(mupen64plus-core BUILD_BYPRODUCTS)
 set(MUPEN64PLUSCORE_LIB ${BUILD_BYPRODUCTS})
-set(MUPEN64PLUSCORE_FONT ${M64P_CORE_DIR}/data/font.ttf)
 set(MUPEN64PLUSCORE_INI ${M64P_CORE_DIR}/data/mupen64plus.ini)
 set(MUPEN64PLUSCORE_CHT ${M64P_CORE_DIR}/data/mupencheat.txt)
 
@@ -395,7 +394,7 @@ install(FILES ${MUPEN64PLUSCORE_LIB}
 install(FILES ${MUPEN64PLUSCORE_LIB_OLD}
     DESTINATION ${INSTALL_PATH}/core
 )
-install(FILES ${MUPEN64PLUSCORE_INI} ${MUPEN64PLUSCORE_CHT} ${MUPEN64PLUSCORE_FONT} ${RICE_INI}
+install(FILES ${MUPEN64PLUSCORE_INI} ${MUPEN64PLUSCORE_CHT} ${RICE_INI}
     DESTINATION ${INSTALL_PATH}/data
 )
 install(FILES ${MUPEN64PLUS_PLUGIN_RSP_CXD4}

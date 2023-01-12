@@ -774,7 +774,7 @@ id('launch').addEventListener('click', function(){
 var corelib = corefile,
 configdir = ConfigPath,
 exp = 'Core[DisableExtraMem]=' + id('exp').checked,
-osd = 'Core[OnScreenDisplay]=' + id('osd').checked,
+osd = 'Core[OnScreenDisplay]=false',
 nospeedlimit = id('nospeedlimit').checked ? '--nospeedlimit' : [],
 verbose = id('verbose').checked ? '--verbose' : [],
 fullscreen = 'Video-General[Fullscreen]=' + id('fullscreen').checked,
@@ -1201,8 +1201,6 @@ else if(gfx.includes('rice')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=t
 if(gfx.includes('angrylion') && rsp.includes('rsp-hle')){rsp = 'mupen64plus-rsp-cxd4'}
 else if(gfx.includes('parallel') && rsp.includes('rsp-hle')){rsp = 'mupen64plus-rsp-parallel'}
 else if(gfx.includes('rice') && rsp.includes('rsp-parallel')){rsp = 'mupen64plus-rsp-hle'}
-
-if(!gfx.includes('rice'))osd = 'Core[OnScreenDisplay]=false' /* OSD */
 
 
 
