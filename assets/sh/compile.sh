@@ -4,7 +4,7 @@ set -ex
 
 
 # Variables
-tag="${1:-v0.9.3}"
+tag="${1:-v0.9.4}"
 electron="${2:-v22.0.1}"
 threads="${3:-$(nproc)}"
 
@@ -69,7 +69,7 @@ fi
 # Build
 pushd "$build_dir"
 
-cmake -S "$toplvl_dir" -B "$build_dir" -DCMAKE_BUILD_TYPE="Release" -G "$generator"
+cmake -S "$toplvl_dir" -B "$build_dir" -G "$generator"
 
 make install DESTDIR="$toplvl_dir" -j$threads
 
