@@ -36,8 +36,7 @@ fi
 
 # Help message
 
-if [ "$1" = "--help" ] || [ "$1" = "-h" ]
-then
+if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     echo "$0 [git tag] [electron version] [thread count]"
     exit
 fi
@@ -47,7 +46,7 @@ fi
 # Initial directories
 mkdir -p "$bin_dir" "$build_dir" 
 
-if [ ! -d "EMG" ] ; then
+if [ ! -d "EMG" ]; then
     git clone --depth 1 --branch $tag https://github.com/GhostlyDark/EMG EMG
 fi
 
@@ -80,11 +79,11 @@ fi
 
 
 # Download and copy additional sources
-if [ ! -d "mupen64plus-rom" ] ; then
+if [ ! -d "mupen64plus-rom" ]; then
     git clone --depth 1 https://github.com/GhostlyDark/mupen64plus-rom mupen64plus-rom
 fi
 
-if [ ! -d "SDL_GameControllerDB" ] ; then
+if [ ! -d "SDL_GameControllerDB" ]; then
     git clone --depth 1 https://github.com/GhostlyDark/SDL_GameControllerDB SDL_GameControllerDB
 fi
 
