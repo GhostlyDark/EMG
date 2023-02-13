@@ -4,8 +4,8 @@ set -ex
 
 
 # Variables
-tag="${1:-v0.9.4}"
-electron="${2:-v22.0.1}"
+tag="${1:-v0.9.5}"
+electron="${2:-v22.3.0}"
 threads="${3:-$(nproc)}"
 
 script_dir="$(dirname "$0")"

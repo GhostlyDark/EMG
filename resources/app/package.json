@@ -2,7 +2,7 @@
   "name": "emg",
   "productName": "EMG",
   "description": "Electron mupen64plus GUI",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "main": "main.js",
   "author": "GhostlyDark",
   "homepage": "https://evilgames.eu",
