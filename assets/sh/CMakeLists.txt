@@ -26,16 +26,19 @@ if(WIN32)
     set(GCA_LIB "mupen64plus_input_gca.dll")
     set(CORE_FILE "mupen64plus.dll")
     set(CORE_FILE_OLD "mupen64old.dll")
+    set(CORE_FILE_HACK "mupen64hack.dll")
 else()
     set(SO_EXT ".so")
     set(EXE_EXT "")
     set(GCA_LIB "libmupen64plus_input_gca.so")
     set(CORE_FILE "mupen64plus.so")
     set(CORE_FILE_OLD "mupen64old.so")
+    set(CORE_FILE_HACK "mupen64hack.so")
 endif()
 
 set(M64P_CORE_DIR ${CMAKE_BINARY_DIR}/mupen64plus-core)
 set(M64P_CORE_DIR_OLD ${CMAKE_BINARY_DIR}/mupen64plus-core-old)
+set(M64P_CORE_DIR_HACK ${CMAKE_BINARY_DIR}/mupen64plus-core-hack)
 set(APIDIR ${M64P_CORE_DIR}/src/api)
 set(RICE_DIR ${CMAKE_BINARY_DIR}/mupen64plus-video-rice)
 
@@ -100,6 +103,24 @@ ExternalProject_Add(mupen64plus-core-old
     BINARY_DIR ${M64P_CORE_DIR_OLD}/projects/unix
     
     BUILD_BYPRODUCTS ${M64P_CORE_DIR_OLD}/projects/unix/${CORE_FILE_OLD}
+)
+
+ExternalProject_Add(mupen64plus-core-hack
+    SOURCE_DIR mupen64plus-core-hack/
+
+    CONFIGURE_COMMAND ""
+    INSTALL_COMMAND ""
+
+    GIT_REPOSITORY ${MUPEN64PLUSCORE_URL}
+    GIT_TAG "origin/emg_pi-dma"
+    GIT_SHALLOW 1
+
+    BUILD_COMMAND $(MAKE) all OSD=0 TARGET=${CORE_FILE_HACK}
+    BUILD_IN_SOURCE False
+
+    BINARY_DIR ${M64P_CORE_DIR_HACK}/projects/unix
+    
+    BUILD_BYPRODUCTS ${M64P_CORE_DIR_HACK}/projects/unix/${CORE_FILE_HACK}
 )
 
 ExternalProject_Add(mupen64plus-ui-console
@@ -342,6 +363,9 @@ set(MUPEN64PLUSCORE_CHT ${M64P_CORE_DIR}/data/mupencheat.txt)
 ExternalProject_Get_property(mupen64plus-core-old BUILD_BYPRODUCTS)
 set(MUPEN64PLUSCORE_LIB_OLD ${BUILD_BYPRODUCTS})
 
+ExternalProject_Get_property(mupen64plus-core-hack BUILD_BYPRODUCTS)
+set(MUPEN64PLUSCORE_LIB_HACK ${BUILD_BYPRODUCTS})
+
 ExternalProject_Get_property(mupen64plus-ui-console BUILD_BYPRODUCTS)
 set(MUPEN64PLUS_UI ${BUILD_BYPRODUCTS})
 
@@ -392,6 +416,9 @@ install(FILES ${MUPEN64PLUSCORE_LIB}
     DESTINATION ${INSTALL_PATH}/core
 )
 install(FILES ${MUPEN64PLUSCORE_LIB_OLD}
+    DESTINATION ${INSTALL_PATH}/core
+)
+install(FILES ${MUPEN64PLUSCORE_LIB_HACK}
     DESTINATION ${INSTALL_PATH}/core
 )
 install(FILES ${MUPEN64PLUSCORE_INI} ${MUPEN64PLUSCORE_CHT} ${RICE_INI}
