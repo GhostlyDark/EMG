@@ -62,8 +62,21 @@ ipcMain.on('jsMapping', (e, padId) => {
 })
 
 ipcMain.on('writeGCA', (e, gcaSettings, configdir) => {
-	if(!existsSync(configdir)){mkdirSync(configdir,{recursive:true})}
-	e.returnValue = writeFileSync(path(configdir, 'mupen64plus-input-gca.toml'),gcaSettings)
+	let cache = path(configdir,'cache'),
+	hires_texture = path(configdir,'hires_texture'),
+	save = path(configdir,'save'),
+	screenshot = path(configdir,'screenshot'),
+	shaders = path(configdir,'shaders'),
+	texture_dump = path(configdir,'texture_dump');
+
+	if(!existsSync(cache)){mkdirSync(cache,{recursive:true})}
+	if(!existsSync(hires_texture)){mkdirSync(hires_texture,{recursive:true})}
+	if(!existsSync(save)){mkdirSync(save,{recursive:true})}
+	if(!existsSync(screenshot)){mkdirSync(screenshot,{recursive:true})}
+	if(!existsSync(shaders)){mkdirSync(shaders,{recursive:true})}
+	if(!existsSync(texture_dump)){mkdirSync(texture_dump,{recursive:true})}
+	
+	e.returnValue = writeFileSync(path(configdir,'mupen64plus-input-gca.toml'),gcaSettings)
 })
 
 ipcMain.on('cwd', (e) => {e.returnValue = cwd})
