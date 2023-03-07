@@ -88,12 +88,16 @@
 <option data-width="2560" data-height="1920" value="2560x1920">2560x1920</option>
 </select><label for="resolution">Windowed resolution</label>
 <p>&nbsp;</p>
-<div title="Dynamic Recompiler (New) offers the best performance. Change this upon encountering issues."><select name="emumode" id="emumode">
+<div title="Dynamic Recompiler offers the best performance. Change this upon encountering issues."><select class="width250m" name="emumode" id="emumode">
 <option value="0">Pure Interpreter</option>
 <option value="1">Cached Interpreter</option>
-<option value="3" selected>Dynamic Recompiler (Old)</option>
-<option value="2">Dynamic Recompiler (New)</option>
+<option value="2" selected>Dynamic Recompiler</option>
 </select><label for="emumode">R4300 emulator</label></div>
+<p>&nbsp;</p>
+<div title="Using the new dynamic recompiler improves performance but can cause stability issues."><select class="width250m" name="coreVersion" id="coreVersion">
+<option value="mupen64old" selected>Default</option>
+<option value="mupen64plus">New Dynamic Recompiler</option>
+</select><label for="coreVersion">Core version</label></div>
 </div>
 <div id="core_advanced" class="hide mt-10">
 <p title="Disable compiled jump commands in dynamic recompiler (not recommended)."><input id="NoCompiledJump" type="checkbox" data-store="NoCompiledJump"><label for="NoCompiledJump">Disable compiled jump</label></p>
