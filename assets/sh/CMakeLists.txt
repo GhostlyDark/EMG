@@ -50,6 +50,14 @@ else()
 	set(GLIDEN64_LIB "${GLIDEN64_BUILD_DIR}/plugin/Release/mupen64plus-video-GLideN64${SO_EXT}")
 endif()
 
+set(GLIDEN64_OCF_DIR "${CMAKE_BINARY_DIR}/mupen64plus-video-GLideN64-ocf")
+set(GLIDEN64_OCF_BUILD_DIR "${GLIDEN64_OCF_DIR}/projects/cmake")
+if(MSYS)
+	set(GLIDEN64_OCF_LIB "${GLIDEN64_OCF_BUILD_DIR}/mupen64plus-video-GLideN64_ocf${SO_EXT}")
+else()
+	set(GLIDEN64_OCF_LIB "${GLIDEN64_OCF_BUILD_DIR}/plugin/Release/mupen64plus-video-GLideN64_ocf${SO_EXT}")
+endif()
+
 set(MUPEN64PLUSCORE_URL "https://github.com/GhostlyDark/mupen64plus-core")
 set(MUPEN64PLUS_UI_URL "https://github.com/GhostlyDark/mupen64plus-ui-console")
 set(MUPEN64PLUS_AUDIO_SDL_URL "https://github.com/GhostlyDark/mupen64plus-audio-sdl")
@@ -286,6 +294,24 @@ ExternalProject_Add(mupen64plus-video-GLideN64
     BUILD_BYPRODUCTS ${GLIDEN64_DIR}/ini/GLideN64.custom.ini
 )
 
+ExternalProject_Add(mupen64plus-video-GLideN64-ocf
+    SOURCE_DIR mupen64plus-video-GLideN64-ocf
+
+    GIT_REPOSITORY ${MUPEN64PLUS_GFX_GLIDEN64_URL}
+    GIT_TAG "origin/emg_ocf"
+    GIT_SHALLOW 1
+
+    INSTALL_COMMAND ""
+
+    BUILD_IN_SOURCE False
+    CMAKE_ARGS -DMUPENPLUSAPI=ON -DUSE_SYSTEM_LIBS=ON
+
+    SOURCE_SUBDIR ./src/
+    BINARY_DIR ${GLIDEN64_OCF_BUILD_DIR}
+
+    BUILD_BYPRODUCTS ${GLIDEN64_OCF_LIB}
+)
+
 ExternalProject_Add(mupen64plus-video-parallel
     SOURCE_DIR mupen64plus-video-parallel
 
@@ -393,6 +419,9 @@ set(MUPEN64PLUS_PLUGIN_GFX_ANGRYLION ${BUILD_BYPRODUCTS})
 ExternalProject_Get_property(mupen64plus-video-GLideN64 BUILD_BYPRODUCTS)
 set(MUPEN64PLUS_PLUGIN_GFX_GLIDEN64 ${BUILD_BYPRODUCTS})
 
+ExternalProject_Get_property(mupen64plus-video-GLideN64-ocf BUILD_BYPRODUCTS)
+set(MUPEN64PLUS_PLUGIN_GFX_GLIDEN64_OCF ${BUILD_BYPRODUCTS})
+
 ExternalProject_Get_property(mupen64plus-video-parallel BUILD_BYPRODUCTS)
 set(MUPEN64PLUS_PLUGIN_GFX_PARALLEL ${BUILD_BYPRODUCTS})
 
@@ -446,6 +475,9 @@ install(FILES ${MUPEN64PLUS_PLUGIN_GFX_ANGRYLION}
     DESTINATION ${INSTALL_PATH}/plugin
 )
 install(FILES ${MUPEN64PLUS_PLUGIN_GFX_GLIDEN64}
+    DESTINATION ${INSTALL_PATH}/plugin
+)
+install(FILES ${MUPEN64PLUS_PLUGIN_GFX_GLIDEN64_OCF}
     DESTINATION ${INSTALL_PATH}/plugin
 )
 install(FILES ${MUPEN64PLUS_PLUGIN_GFX_PARALLEL}

@@ -53,7 +53,7 @@ dropdowns = [
 'plugin1','plugin2','plugin3','plugin4','c1','c2','c3','c4','mb1','mb2','mb3', /* mupen64plus-input */
 'PRIMARY_BUFFER_TARGET','RESAMPLE', /* mupen64plus-audio */
 'a','b','x','y','start','z','l','r','d_pad_left','d_pad_right','d_pad_down','d_pad_up','c_stick_left','c_stick_right','c_stick_down','c_stick_up', /* mupen64plus-input-gca */
-'msaa','aspectRatio','bufferSwapMode','CountersPos','useNativeResolutionFactor','anisotropy','cache','RDRAMImageDitheringMode','CorrectTexrectCoords','EnableNativeResTexrects','BackgroundsMode','EnableN64DepthCompare','EnableCopyColorToRDRAM','EnableCopyDepthToRDRAM','txFilterMode','txEnhancementMode', /* GLideN64 */
+'msaa','aspectRatio','bufferSwapMode','CountersPos','useNativeResolutionFactor','anisotropy','cache','RDRAMImageDitheringMode','CorrectTexrectCoords','EnableNativeResTexrects','BackgroundsMode','EnableN64DepthCompare','EnableCopyColorToRDRAM','EnableCopyDepthToRDRAM','txFilterMode','txEnhancementMode','gliden64Version', /* GLideN64 */
 'ViMode','ViInterpolation','DpCompat', /* Angrylion-Plus */
 'ParallelUpscaling','ParallelDeinterlaceMode','ParallelDownScale', /* Parallel */
 'FrameBufferWriteBackControl','RenderToTexture','ScreenUpdateSetting','Mipmapping','ForceTextureFilter','RiceMultiSampling','AnisotropicFiltering' /* Rice */];
@@ -1194,6 +1194,8 @@ corelib = 'core/' + id('coreVersion').value;
 if(isLinux){corelib += '.so';RspFallback += '.so'} /* Linux core file and RSP fallback extension */
 
 if(id('nospeedlimit').checked){audio = 'dummy';vsync = 'Video-General[VerticalSync]=false';ParallelVSync = 'Video-Parallel[Vsync]=false'} /* force muted audio and disabled V-Sync */
+
+if(id('gliden64Version').value != '_'){gfx += id('gliden64Version').value} /* GLideN64 version */
 
 if(gfx.includes('angrylion') || gfx.includes('parallel')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=false'} /* prevent crashes caused by wrong RSP settings */
 else if(gfx.includes('rice')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=true'}
