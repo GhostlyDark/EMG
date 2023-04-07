@@ -5,7 +5,7 @@ set -ex
 
 # Variables
 tag="${1:-v0.9.5}"
-electron="${2:-v22.3.0}"
+electron="${2:-v22.3.5}"
 threads="${3:-$(nproc)}"
 
 script_dir="$(dirname "$0")"
