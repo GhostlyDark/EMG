@@ -71,6 +71,8 @@
 <p>&nbsp;</p>
 <p title="Disable extra memory."><input id="exp" type="checkbox" data-store="exp"><label for="exp">Force 4 MB</label></p>
 <p>&nbsp;</p>
+<p title="Use unique SRAM saves per ROM."><input id="SaveFilenameFormat" type="checkbox" data-store="SaveFilenameFormat"><label for="SaveFilenameFormat">Unique game saves</label></p>
+<p>&nbsp;</p>
 <p title="Force number of cycles per emulated instruction (speed hack, not recommended). Leave at 0 to disable."><span class="numberDecrease" id="decreaseCountPerOp">-</span><input id="CountPerOp" min="0" max="6" step="1" value="0" type="number"><span class="numberIncrease" id="increaseCountPerOp">+</span><label for="CountPerOp">Counter factor</label><button class="floatright" data-value="0" id="resetCountPerOp">Reset</button></p>
 <p>&nbsp;</p>
 <p title="Reduce number of cycles per update by power of two."><span class="numberDecrease" id="decreaseCountPerOpDenomPot">-</span><input id="CountPerOpDenomPot" min="0" max="11" step="1" value="0" type="number"><span class="numberIncrease" id="increaseCountPerOpDenomPot">+</span><label for="CountPerOpDenomPot">Overclocking factor</label><button class="floatright" data-value="0" id="resetCountPerOpDenomPot">Reset</button></p>

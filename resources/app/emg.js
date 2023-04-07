@@ -774,6 +774,7 @@ id('launch').addEventListener('click', function(){
 var corelib = corefile,
 configdir = ConfigPath,
 exp = 'Core[DisableExtraMem]=' + id('exp').checked,
+SaveFilenameFormat = 'Core[SaveFilenameFormat]=' + (id('SaveFilenameFormat').checked ? '1' : '0'),
 osd = 'Core[OnScreenDisplay]=false',
 nospeedlimit = id('nospeedlimit').checked ? '--nospeedlimit' : [],
 verbose = id('verbose').checked ? '--verbose' : [],
@@ -1537,7 +1538,7 @@ var core = ['--corelib',corelib,'--configdir',configdir,'--datadir','data','--pl
 
 settings = [RspFallback,cxd4GFX,m64pGFX,cxd4Audio,m64pAudio,WaitForCPUHost,SupportCPUSemaphoreLock, /* RSP */
 
-exp,osd,emumode,NoCompiledJump,CountPerOp,CountPerOpDenomPot,SiDmaDuration,AutoStateSlotIncrement,CurrentStateSlot,SharedDataPath,ScreenshotPathSetting,SaveStatePathSetting,SaveSRAMPathSetting,RandomizeInterrupt,EnableDebugger,SaveDiskFormat, /* Core */
+exp,SaveFilenameFormat,osd,emumode,NoCompiledJump,CountPerOp,CountPerOpDenomPot,SiDmaDuration,AutoStateSlotIncrement,CurrentStateSlot,SharedDataPath,ScreenshotPathSetting,SaveStatePathSetting,SaveSRAMPathSetting,RandomizeInterrupt,EnableDebugger,SaveDiskFormat, /* Core */
 
 IPLROMSetting,DiskSetting, /* 64DD */
 
