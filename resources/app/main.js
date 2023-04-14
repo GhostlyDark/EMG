@@ -1,4 +1,4 @@
-let win, choice, whitelist;
+let win, jstestChild;
 const {app, BrowserWindow, dialog, ipcMain, Menu, nativeImage, session, shell} = require('electron'),
 childSpawn = require('child_process').spawn,
 childSpawnSync = require('child_process').spawnSync,
@@ -24,29 +24,30 @@ scale = {width:28},
 load = path(dir, 'index.htm'),
 name = ' ' + app.name + ' v' + app.getVersion(),
 preferences = {preload:path(dir, 'preload.js')},
-mainWindow = {backgroundColor:'#121212', width:1280, height:800, minWidth:923, minHeight:640, title:name, show:false, autoHideMenuBar:true, webPreferences:preferences};
-app.enableSandbox()
+mainWindow = {backgroundColor:'#121212', width:1280, height:800, minWidth:923, minHeight:640, title:name, show:false, autoHideMenuBar:true, webPreferences:preferences},
+deleteDialog = {defaultId:1, cancelId:1, icon:path(dir, 'img', 'delete.png'), buttons:['Confirm','Abort'], title:' Reset settings', message:'Reset all settings?'};
 
-var jstestChild, m64pCache = m64pConfig, m64pShare = m64pConfig;
+let m64pCache = m64pConfig, m64pShare = m64pConfig;
 if(isLinux){m64pCache = path(appData, '../', '.cache', 'mupen64plus');m64pShare = path(appData, '../', '.local', 'share', 'mupen64plus')};
 
-const menuQuit = 'Quit ' + app.name,menuWindow = 'Window',menuFunctions = 'Functions',menuReload = 'Reload window',menuDev = 'Developer tools',menuZoomIn = 'Increase zoom',menuZoomOut = 'Decrease zoom',menuZoomReset = 'Reset zoom',menuClear = 'Reset settings',menuEMG = 'Show EMG data',menuConfig = 'Show m64p data',menuCache = 'Show m64p cache',menuTex = 'Show m64p textures',menuGitHub = 'Visit GitHub repo',menuSite = 'Visit website',dialogDelete = ' Reset settings',dialogDeleteM = 'Reset all settings?',dialogNo = 'Abort',dialogYes = 'Confirm',deleteDialog = {defaultId:1, cancelId:1, icon:path(dir, 'img', 'delete.png'), buttons:[dialogYes,dialogNo], title:dialogDelete, message:dialogDeleteM},
-cache = path(m64pCache,'cache'),
+const cache = path(m64pCache,'cache'),
 hires_texture = path(m64pShare,'hires_texture'),
 save = path(m64pShare,'save'),
 screenshot = path(m64pShare,'screenshot'),
 shaders = path(m64pCache,'shaders'),
 texture_dump = path(m64pShare,'texture_dump');
 
+app.enableSandbox()
+
 ipcMain.on('emuLaunch', (e, parameters) => {
-	var stdout = '';
-	let child = childSpawn(executablePath, parameters, emuOptions);
+	let stdout = '';
+	const child = childSpawn(executablePath, parameters, emuOptions);
 	child.stdout.on('data', (data) => {stdout += data.toString()})
 	child.on('exit', () => {e.reply('m64pLog', child.spawnargs, stdout)})
 })
 
 ipcMain.on('showCheats', (e, parameters) => {
-	let child = childSpawnSync(executablePath, parameters, cheatOptions);
+	const child = childSpawnSync(executablePath, parameters, cheatOptions);
 	e.returnValue = child.stdout.toString()
 })
 
@@ -57,12 +58,12 @@ ipcMain.on('jstestChild', (e, jstestConfig) => {
 })
 
 ipcMain.on('jsRefresh', (e) => {
-	let child = childSpawnSync(jstestPath, ['-ls'], jsOptions);
+	const child = childSpawnSync(jstestPath, ['-ls'], jsOptions);
 	e.returnValue = child.stdout.toString()
 })
 
 ipcMain.on('jsMapping', (e, padId) => {
-	let child = childSpawnSync(jstestPath, ['-m', padId], jsOptions);
+	const child = childSpawnSync(jstestPath, ['-m', padId], jsOptions);
 	e.returnValue = child.stdout.toString()
 })
 
@@ -102,30 +103,35 @@ win.once('ready-to-show', () => {win.maximize();win.show()})
 win.on('page-title-updated', (e) => {e.preventDefault()})
 if(isLinux){win.setIcon(path(dir, 'img', 'emg.png'))}
 win.webContents.setWindowOpenHandler((details) => {return {action:'deny'}})
+
 win.webContents.on('will-navigate', (e, nav) => {const parsed = new url(nav)
 if(parsed.origin != load) {e.preventDefault()}})
 
-session.defaultSession.webRequest.onBeforeRequest(function(details, callback) {whitelist =/(^file:\/\/\/)|(^devtools:\/\/devtools\/bundled\/)/g;if(whitelist.test(details.url)){callback({cancel:false})}else{callback({cancel:true})}})
-session.defaultSession.webRequest.onHeadersReceived((details, callback) => {callback({responseHeaders: Object.assign({"Content-Security-Policy": ["frame-ancestors 'none'"]}, details.responseHeaders)})})
+session.defaultSession.webRequest.onBeforeRequest(
+function(details, callback){
+const whitelist = /(^file:\/\/\/)|(^devtools:\/\/devtools\/bundled\/)/g;
+if(whitelist.test(details.url)){callback({cancel:false})}
+else{callback({cancel:true})}})
 
 Menu.setApplicationMenu(Menu.buildFromTemplate([
-	{label: 'App', submenu: [{icon: nativeImage.createFromPath(path(dir, 'img', 'quit.png')).resize(scale), label: menuQuit, click () {win.close()}}]},
-	{label: menuWindow, submenu: [
-		{icon: nativeImage.createFromPath(path(dir, 'img', 'refresh.png')).resize(scale), label: menuReload, accelerator: 'CmdOrCtrl+R', role: 'reload'},
-		{icon: nativeImage.createFromPath(path(dir, 'img', 'inspector.png')).resize(scale), label: menuDev, accelerator: 'CmdOrCtrl+I', role: 'toggleDevTools'},
+	{label: 'App', submenu: [{icon: nativeImage.createFromPath(path(dir, 'img', 'quit.png')).resize(scale), label: 'Quit ' + app.name, click () {win.close()}}]},
+	{label: 'Window', submenu: [
+		{icon: nativeImage.createFromPath(path(dir, 'img', 'refresh.png')).resize(scale), label: 'Reload window', accelerator: 'CmdOrCtrl+R', role: 'reload'},
+		{icon: nativeImage.createFromPath(path(dir, 'img', 'inspector.png')).resize(scale), label: 'Developer tools', accelerator: 'CmdOrCtrl+I', role: 'toggleDevTools'},
 		{type: 'separator'},
-		{icon: nativeImage.createFromPath(path(dir, 'img', 'zoom-in.png')).resize(scale), label: menuZoomIn, accelerator: 'CmdOrCtrl+numadd', role: 'zoomin'},
-		{icon: nativeImage.createFromPath(path(dir, 'img', 'zoom-out.png')).resize(scale), label: menuZoomOut, accelerator: 'CmdOrCtrl+numsub', role: 'zoomout'},
-		{icon: nativeImage.createFromPath(path(dir, 'img', 'zoom-reset.png')).resize(scale), label: menuZoomReset, accelerator: 'CmdOrCtrl+num0', role: 'resetzoom'},
+		{icon: nativeImage.createFromPath(path(dir, 'img', 'zoom-in.png')).resize(scale), label: 'Increase zoom', accelerator: 'CmdOrCtrl+numadd', role: 'zoomin'},
+		{icon: nativeImage.createFromPath(path(dir, 'img', 'zoom-out.png')).resize(scale), label: 'Decrease zoom', accelerator: 'CmdOrCtrl+numsub', role: 'zoomout'},
+		{icon: nativeImage.createFromPath(path(dir, 'img', 'zoom-reset.png')).resize(scale), label: 'Reset zoom', accelerator: 'CmdOrCtrl+num0', role: 'resetzoom'},
 		]},
-	{label: menuFunctions, submenu: [
-		{icon: nativeImage.createFromPath(path(dir, 'img', 'delete.png')).resize(scale), label: menuClear, click () {choice = dialog.showMessageBoxSync(win,deleteDialog);if(choice !== 1){session.defaultSession.clearStorageData();session.defaultSession.clearCache()}}},
-		{icon: nativeImage.createFromPath(path(dir, 'img', 'emg.png')).resize(scale), label: menuEMG, click () {shell.openPath(emg)}},
-		{icon: nativeImage.createFromPath(path(dir, 'img', 'mupen64plus.png')).resize(scale), label: menuConfig, click () {shell.openPath(m64pConfig);if(isLinux){shell.openPath(m64pCache);shell.openPath(m64pShare)}}},
+	{label: 'Functions', submenu: [
+		{icon: nativeImage.createFromPath(path(dir, 'img', 'delete.png')).resize(scale), label: 'Reset settings', click () {const choice = dialog.showMessageBoxSync(win,deleteDialog);if(choice !== 1){session.defaultSession.clearStorageData();session.defaultSession.clearCache()}}},
+		{icon: nativeImage.createFromPath(path(dir, 'img', 'emg.png')).resize(scale), label: 'Show EMG data', click () {shell.openPath(emg)}},
+		{icon: nativeImage.createFromPath(path(dir, 'img', 'mupen64plus.png')).resize(scale), label: 'Show m64p data', click () {shell.openPath(m64pConfig);if(isLinux){shell.openPath(m64pCache);shell.openPath(m64pShare)}}},
 		{type: 'separator'},
-		{icon: nativeImage.createFromPath(path(dir, 'img', 'github.png')).resize(scale), label: menuGitHub, click () {shell.openExternal('https://github.com/GhostlyDark/EMG')}},
-		{icon: nativeImage.createFromPath(path(dir, 'img', 'icon-ghostly-nx.png')).resize(scale), label: menuSite, click () {shell.openExternal('https://evilgames.eu/')}}
+		{icon: nativeImage.createFromPath(path(dir, 'img', 'github.png')).resize(scale), label: 'Visit GitHub repo', click () {shell.openExternal('https://github.com/GhostlyDark/EMG')}},
+		{icon: nativeImage.createFromPath(path(dir, 'img', 'icon-ghostly-nx.png')).resize(scale), label: 'Visit website', click () {shell.openExternal('https://evilgames.eu/')}}
 		]}
 ]))
 
-win.on('closed', () => {app.exit()})})
+win.on('closed', () => {app.exit()})
+})
