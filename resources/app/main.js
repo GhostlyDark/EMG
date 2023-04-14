@@ -27,11 +27,16 @@ preferences = {preload:path(dir, 'preload.js')},
 mainWindow = {backgroundColor:'#121212', width:1280, height:800, minWidth:923, minHeight:640, title:name, show:false, autoHideMenuBar:true, webPreferences:preferences};
 app.enableSandbox()
 
-const menuQuit = 'Quit ' + app.name,menuWindow = 'Window',menuFunctions = 'Functions',menuReload = 'Reload window',menuDev = 'Developer tools',menuZoomIn = 'Increase zoom',menuZoomOut = 'Decrease zoom',menuZoomReset = 'Reset zoom',menuClear = 'Reset settings',menuEMG = 'Show EMG data',menuConfig = 'Show m64p data',menuCache = 'Show m64p cache',menuTex = 'Show m64p textures',menuGitHub = 'Visit GitHub repo',menuSite = 'Visit website',dialogDelete = ' Reset settings',dialogDeleteM = 'Reset all settings?',dialogNo = 'Abort',dialogYes = 'Confirm',
-deleteDialog = {defaultId:1, cancelId:1, icon:path(dir, 'img', 'delete.png'), buttons:[dialogYes,dialogNo], title:dialogDelete, message:dialogDeleteM}
-
 var jstestChild, m64pCache = m64pConfig, m64pShare = m64pConfig;
 if(isLinux){m64pCache = path(appData, '../', '.cache', 'mupen64plus');m64pShare = path(appData, '../', '.local', 'share', 'mupen64plus')};
+
+const menuQuit = 'Quit ' + app.name,menuWindow = 'Window',menuFunctions = 'Functions',menuReload = 'Reload window',menuDev = 'Developer tools',menuZoomIn = 'Increase zoom',menuZoomOut = 'Decrease zoom',menuZoomReset = 'Reset zoom',menuClear = 'Reset settings',menuEMG = 'Show EMG data',menuConfig = 'Show m64p data',menuCache = 'Show m64p cache',menuTex = 'Show m64p textures',menuGitHub = 'Visit GitHub repo',menuSite = 'Visit website',dialogDelete = ' Reset settings',dialogDeleteM = 'Reset all settings?',dialogNo = 'Abort',dialogYes = 'Confirm',deleteDialog = {defaultId:1, cancelId:1, icon:path(dir, 'img', 'delete.png'), buttons:[dialogYes,dialogNo], title:dialogDelete, message:dialogDeleteM},
+cache = path(m64pCache,'cache'),
+hires_texture = path(m64pShare,'hires_texture'),
+save = path(m64pShare,'save'),
+screenshot = path(m64pShare,'screenshot'),
+shaders = path(m64pCache,'shaders'),
+texture_dump = path(m64pShare,'texture_dump');
 
 ipcMain.on('emuLaunch', (e, parameters) => {
 	var stdout = '';
@@ -62,20 +67,13 @@ ipcMain.on('jsMapping', (e, padId) => {
 })
 
 ipcMain.on('writeGCA', (e, gcaSettings, configdir) => {
-	let cache = path(configdir,'cache'),
-	hires_texture = path(configdir,'hires_texture'),
-	save = path(configdir,'save'),
-	screenshot = path(configdir,'screenshot'),
-	shaders = path(configdir,'shaders'),
-	texture_dump = path(configdir,'texture_dump');
-
+	if(!existsSync(configdir)){mkdirSync(configdir,{recursive:true})}
 	if(!existsSync(cache)){mkdirSync(cache,{recursive:true})}
 	if(!existsSync(hires_texture)){mkdirSync(hires_texture,{recursive:true})}
 	if(!existsSync(save)){mkdirSync(save,{recursive:true})}
 	if(!existsSync(screenshot)){mkdirSync(screenshot,{recursive:true})}
 	if(!existsSync(shaders)){mkdirSync(shaders,{recursive:true})}
 	if(!existsSync(texture_dump)){mkdirSync(texture_dump,{recursive:true})}
-	
 	e.returnValue = writeFileSync(path(configdir,'mupen64plus-input-gca.toml'),gcaSettings)
 })
 
@@ -85,11 +83,11 @@ ipcMain.on('executablePath', (e) => {e.returnValue = executablePath})
 ipcMain.on('jstestPath', (e) => {e.returnValue = jstestPath})
 ipcMain.on('jstestKill', () => {if(jstestChild != undefined)jstestChild.kill('SIGTERM')})
 ipcMain.on('config', (e) => {e.returnValue = m64pConfig})
-ipcMain.on('screenshot', (e) => {e.returnValue = path(m64pShare, 'screenshot')})
-ipcMain.on('savePath', (e) => {e.returnValue = path(m64pShare, 'save')})
-ipcMain.on('hires_texture', (e) => {e.returnValue = path(m64pShare, 'hires_texture')})
-ipcMain.on('cache', (e) => {e.returnValue = path(m64pCache, 'cache')})
-ipcMain.on('texture_dump', (e) => {e.returnValue = path(m64pShare, 'texture_dump')})
+ipcMain.on('screenshot', (e) => {e.returnValue = screenshot})
+ipcMain.on('savePath', (e) => {e.returnValue = save})
+ipcMain.on('hires_texture', (e) => {e.returnValue = hires_texture})
+ipcMain.on('cache', (e) => {e.returnValue = cache})
+ipcMain.on('texture_dump', (e) => {e.returnValue = texture_dump})
 ipcMain.on('isLinux', (e) => {e.returnValue = isLinux})
 ipcMain.on('dialogDirectory', (e) => {e.returnValue = dialog.showOpenDialogSync({properties:['openDirectory']})})
 ipcMain.on('dialogFile', (e, data) => {e.returnValue = dialog.showOpenDialogSync({properties:['openFile'],filters:[data]})})
