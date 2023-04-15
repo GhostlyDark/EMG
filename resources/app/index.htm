@@ -1155,15 +1155,22 @@ Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
 <div id="gliden64_video" class="mt-10">
 <p title="Off: N64 3-point"><input id="bilinearMode" type="checkbox" data-store="bilinearMode"><label for="bilinearMode">Bilinear filtering</label></p>
 <p>&nbsp;</p>
-<p><input id="fxaa" type="checkbox" data-store="fxaa"><label for="fxaa">FXAA</label></p>
+<p><input id="fxaa" type="checkbox" data-store="fxaa"><label for="fxaa">Fast approximate anti-aliasing</label></p>
 <p>&nbsp;</p>
-<div title="Multisample anti-aliasing is incompatible with N64 Depth Compare."><select class="width125m" name="msaa" id="msaa">
-<option value="0" selected>0x</option>
+<select class="width125m" name="anisotropy" id="anisotropy">
+<option value="0" selected>Off</option>
 <option value="2">2x</option>
 <option value="4">4x</option>
 <option value="8">8x</option>
 <option value="16">16x</option>
-</select><label for="msaa">MSAA</label></div>
+</select><label for="anisotropy">Anisotropic filtering</label>
+<p>&nbsp;</p>
+<div title="MSAA is incompatible with N64 Depth Compare."><select class="width125m" name="msaa" id="msaa">
+<option value="0" selected>Off</option>
+<option value="2">2x</option>
+<option value="4">4x</option>
+<option value="8">8x</option>
+</select><label for="msaa">Multisample anti-aliasing</label></div>
 <p>&nbsp;</p>
 <div title="Choose adjust for using a generic Widescreen hack."><select class="width125m" name="aspectRatio" id="aspectRatio">
 <option value="1" selected>4:3</option>
@@ -1192,26 +1199,6 @@ If this option is turned off, the output resolution is the same as the rendering
 <option value="15">15</option>
 <option value="16">16</option>
 </select><label for="useNativeResolutionFactor">Native resolution factor</label></div>
-<p>&nbsp;</p>
-<select class="width125m" name="anisotropy" id="anisotropy">
-<option value="0" selected>Off</option>
-<option value="1">1x</option>
-<option value="2">2x</option>
-<option value="3">3x</option>
-<option value="4">4x</option>
-<option value="5">5x</option>
-<option value="6">6x</option>
-<option value="7">7x</option>
-<option value="8">8x</option>
-<option value="9">9x</option>
-<option value="10">10x</option>
-<option value="11">11x</option>
-<option value="12">12x</option>
-<option value="13">13x</option>
-<option value="14">14x</option>
-<option value="15">15x</option>
-<option value="16">16x</option>
-</select><label for="anisotropy">Anisotropic filtering</label>
 <p>&nbsp;</p>
 <p title="Override gamma correction specified by the game."><input id="ForceGammaCorrection" type="checkbox" data-store="ForceGammaCorrection"><label for="ForceGammaCorrection">Force gamma correction</label></p>
 <p>&nbsp;</p>
@@ -1528,31 +1515,18 @@ If this option is turned off, the output resolution is the same as the rendering
 <p>&nbsp;</p>
 <select class="width200m" name="AnisotropicFiltering" id="AnisotropicFiltering">
 <option value="0" selected>Off</option>
-<option value="1">1x</option>
 <option value="2">2x</option>
-<option value="3">3x</option>
 <option value="4">4x</option>
-<option value="5">5x</option>
-<option value="6">6x</option>
-<option value="7">7x</option>
 <option value="8">8x</option>
-<option value="9">9x</option>
-<option value="10">10x</option>
-<option value="11">11x</option>
-<option value="12">12x</option>
-<option value="13">13x</option>
-<option value="14">14x</option>
-<option value="15">15x</option>
 <option value="16">16x</option>
 </select><label for="AnisotropicFiltering">Anisotropic filtering</label>
 <p>&nbsp;</p>
 <select class="width200m" name="RiceMultiSampling" id="RiceMultiSampling">
-<option value="0" selected>0x</option>
+<option value="0" selected>Off</option>
 <option value="2">2x</option>
 <option value="4">4x</option>
 <option value="8">8x</option>
-<option value="16">16x</option>
-</select><label for="RiceMultiSampling">MSAA</label>
+</select><label for="RiceMultiSampling">Multisample anti-aliasing</label>
 <p>&nbsp;</p>
 <select class="width200m" name="Mipmapping" id="Mipmapping">
 <option value="0" selected>Disabled</option>
