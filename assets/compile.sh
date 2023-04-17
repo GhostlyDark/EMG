@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-
 set -ex
+
 
 
 # Variables
@@ -30,15 +30,6 @@ if [[ "$OSTYPE" == "msys"* ]]; then
     gca="mupen64plus_input_gca.dll"
     generator="MSYS Makefiles"
     platform="win32"
-fi
-
-
-
-# Help message
-
-if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
-    echo "$0 [git tag] [electron version] [thread count]"
-    exit
 fi
 
 
