@@ -48,7 +48,7 @@ fi
 pushd "$bin_dir"
 
 [ ! -f electron-$electron-$platform-x64.zip ] && wget https://github.com/electron/electron/releases/download/$electron/electron-$electron-$platform-x64.zip
-7z x electron-$electron-$platform-x64.zip -o../EMG '-x!LICENSE' -y
+7z x electron-$electron-$platform-x64.zip -o../EMG '-x!LICENSE' '-x!LICENSES.chromium.html' '-x!resources/default_app.asar' -y
 
 if [[ "$OSTYPE" == "msys"* ]]; then
     [ ! -f rcedit-x64.exe ] && wget https://github.com/electron/rcedit/releases/download/v1.1.1/rcedit-x64.exe
@@ -117,6 +117,13 @@ if [[ "$OSTYPE" == "msys"* ]]; then
 fi
 for f in $core_dir/*$ext; do strip -s $f; done
 for f in $plugin_dir/*$ext; do strip -s $f; done
+
+
+
+# Remove unused git files
+rm -rf $emg_dir/.git
+rm -f $emg_dir/.gitattributes
+rm -f $emg_dir/LICENSE
 
 
 
