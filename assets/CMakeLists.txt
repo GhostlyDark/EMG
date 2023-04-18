@@ -1,15 +1,8 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.9)
 
-project(m64p)
+project(EMG)
 
 find_package(Git REQUIRED)
-execute_process(
-    COMMAND ${GIT_EXECUTABLE} describe --tags --always
-    WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
-    OUTPUT_VARIABLE GIT_VERSION
-    ERROR_QUIET
-    OUTPUT_STRIP_TRAILING_WHITESPACE
-)
 
 set(CMAKE_INSTALL_PREFIX "")
 set(INSTALL_PATH "EMG/resources/app/m64p")
@@ -43,6 +36,7 @@ set(APIDIR ${M64P_CORE_DIR}/src/api)
 set(RICE_DIR ${CMAKE_BINARY_DIR}/mupen64plus-video-rice)
 
 set(GLIDEN64_DIR "${CMAKE_BINARY_DIR}/mupen64plus-video-GLideN64")
+
 set(GLIDEN64_BUILD_DIR "${GLIDEN64_DIR}/projects/cmake")
 if(MSYS)
 	set(GLIDEN64_LIB "${GLIDEN64_BUILD_DIR}/mupen64plus-video-GLideN64${SO_EXT}")

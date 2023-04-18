@@ -44,7 +44,7 @@ fi
 
 
 
-# Download binary files
+# Download executables
 pushd "$bin_dir"
 
 [ ! -f electron-$electron-$platform-x64.zip ] && wget https://github.com/electron/electron/releases/download/$electron/electron-$electron-$platform-x64.zip
@@ -56,20 +56,9 @@ fi
 
 
 
-# Build
+# Download additional files
 pushd "$build_dir"
 
-cmake -S "$toplvl_dir" -B "$build_dir" -G "$generator"
-
-make install DESTDIR="$toplvl_dir" -j$threads
-
-if [[ "$OSTYPE" == "msys"* ]]; then
-    make bundle_dependencies
-fi
-
-
-
-# Download and copy additional sources
 if [ ! -d "mupen64plus-rom" ]; then
     git clone --depth 1 https://github.com/GhostlyDark/mupen64plus-rom mupen64plus-rom
 fi
@@ -80,6 +69,19 @@ fi
 
 cp mupen64plus-rom/m64p_test_rom.v64 $install_dir
 cp SDL_GameControllerDB/gamecontrollerdb.txt $install_dir
+
+
+
+# Build
+pushd "$build_dir"
+
+cmake "$toplvl_dir" -G "$generator"
+
+make install DESTDIR="$toplvl_dir" -j$threads
+
+if [[ "$OSTYPE" == "msys"* ]]; then
+    make bundle_dependencies
+fi
 
 
 
