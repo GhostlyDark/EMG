@@ -56,9 +56,13 @@ The build script `compile.sh` can be run with additional parameters:
 ```
 ./compile.sh [git tag] [electron version] [thread count]
 ```
-Download the latest EMG source code with Electron v22.0.0 using 8 threads for the make building process:
+Download EMG source from master branch and Electron v22.0.0 using 8 threads for the make building process:
 ```
 ./compile.sh master v22.0.0 8
+```
+Build using source from an EMG release while keeping the rest automated:
+```
+./compile.sh v0.9.6
 ```
 
 
