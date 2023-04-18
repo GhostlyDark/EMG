@@ -67,7 +67,7 @@ if [ ! -d "SDL_GameControllerDB" ]; then
     git clone --depth 1 https://github.com/GhostlyDark/SDL_GameControllerDB SDL_GameControllerDB
 fi
 
-cp mupen64plus-rom/m64p_test_rom.v64 $install_dir
+cp mupen64plus-rom/mupen64plus.z64 $install_dir
 cp SDL_GameControllerDB/gamecontrollerdb.txt $install_dir
 
 
