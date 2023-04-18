@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-var cheatRadio,filePath,fileResult,txPath,txPathResult,txCachePath,txCachePathResult,txDumpPath,txDumpPathResult,IPLROM,IPLROMResult,Disk,DiskResult,ConfigPath,ConfigPathResult,ScreenshotPath,ScreenshotPathResult,SaveStatePath,SaveStatePathResult,SaveSRAMPath,SaveSRAMPathResult,gbROM1,gbROM1Result,gbROM2,gbROM2Result,gbROM3,gbROM3Result,gbROM4,gbROM4Result,gbRAM1,gbRAM1Result,gbRAM2,gbRAM2Result,gbRAM3,gbRAM3Result,gbRAM4,gbRAM4Result,
+var ext,cheatRadio,filePath,fileResult,txPath,txPathResult,txCachePath,txCachePathResult,txDumpPath,txDumpPathResult,IPLROM,IPLROMResult,Disk,DiskResult,ConfigPath,ConfigPathResult,ScreenshotPath,ScreenshotPathResult,SaveStatePath,SaveStatePathResult,SaveSRAMPath,SaveSRAMPathResult,gbROM1,gbROM1Result,gbROM2,gbROM2Result,gbROM3,gbROM3Result,gbROM4,gbROM4Result,gbRAM1,gbRAM1Result,gbRAM2,gbRAM2Result,gbRAM3,gbRAM3Result,gbRAM4,gbRAM4Result,
 
 recentFiles = [], corefile = 'core/mupen64plus';
 
@@ -59,8 +59,8 @@ dropdowns = [
 'FrameBufferWriteBackControl','RenderToTexture','ScreenUpdateSetting','Mipmapping','ForceTextureFilter','RiceMultiSampling','AnisotropicFiltering' /* Rice */];
 
 
-
-if(isLinux)corefile += '.so'; /* Linux core file extension */
+if(isLinux){ext = '.so'}else{ext = '.dll'}
+corefile += ext /* core file for cheats */
 if(!isLinux)id('master_volume').style.display = 'none'; /* hide platform specific settings */
 
 
@@ -887,11 +887,11 @@ ScreenWidth = 'Video-General[ScreenWidth]=' + id('resolution').options[id('resol
 ScreenHeight = 'Video-General[ScreenHeight]=' + id('resolution').options[id('resolution').selectedIndex].dataset.height,
 ParallelScreenWidth = 'Video-Parallel[ScreenWidth]=' + id('resolution').options[id('resolution').selectedIndex].dataset.width,
 ParallelScreenHeight = 'Video-Parallel[ScreenHeight]=' + id('resolution').options[id('resolution').selectedIndex].dataset.height,
-gfx = id('gfx').value,
-audio = id('audio').value,
-input = id('input').value,
-rsp = id('rsp').value,
-RspFallback = 'Rsp-HLE[RspFallback]=plugin/' + id('RspFallback').value,
+gfx = id('gfx').value + ext,
+audio = id('audio').value + ext,
+input = id('input').value + ext,
+rsp = id('rsp').value + ext,
+RspFallback = 'Rsp-HLE[RspFallback]=plugin/' + id('RspFallback').value + ext,
 emumode = 'Core[R4300Emulator]=' + id('emumode').value,
 plugin1 = 'Input-SDL-Control1[plugin]=' + id('plugin1').value,
 plugin2 = 'Input-SDL-Control2[plugin]=' + id('plugin2').value,
@@ -1190,17 +1190,14 @@ buttonType1 = '',buttonType1B = '',buttonType2 = '',buttonType2B = '',buttonType
 
 gcaSettings = 'control_stick_deadzone = ' +  id('control_stick_deadzone').value + '\n' + 'control_stick_sensitivity = ' + id('control_stick_sensitivity').value + '\n' + 'c_stick_deadzone = ' + id('c_stick_deadzone').value + '\n' + 'trigger_threshold = ' + id('trigger_threshold').value + '\n\n' + '[controller_mapping]' + '\n' + 'a = ' + id('a').value + '\n' + 'b = ' + id('b').value + '\n' + 'x = ' + id('x').value + '\n' + 'y = ' + id('y').value + '\n' + 'start = ' + id('start').value + '\n' + 'z = ' + id('z').value + '\n' + 'l = ' + id('l').value + '\n' + 'r = ' + id('r').value + '\n' + 'd_pad_left = ' + id('d_pad_left').value + '\n' + 'd_pad_right = ' + id('d_pad_right').value + '\n' + 'd_pad_down = ' + id('d_pad_down').value + '\n' + 'd_pad_up = ' + id('d_pad_up').value + '\n' + 'c_stick_left = ' + id('c_stick_left').value + '\n' + 'c_stick_right = ' + id('c_stick_right').value + '\n' + 'c_stick_down = ' + id('c_stick_down').value + '\n' + 'c_stick_up = ' + id('c_stick_up').value;
 
-corelib = 'core/' + id('coreVersion').value;
+corelib = 'core/' + id('coreVersion').value + ext;
 if(id('gliden64Version').value != '_'){gfx += id('gliden64Version').value}
 
 if(gfx.includes('angrylion') || gfx.includes('parallel')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=false'} /* prevent crashes caused by wrong RSP settings */
 else if(gfx.includes('rice')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=true'}
-if(gfx.includes('angrylion') && rsp.includes('rsp-hle')){rsp = 'mupen64plus-rsp-cxd4'}
-else if(gfx.includes('parallel') && rsp.includes('rsp-hle')){rsp = 'mupen64plus-rsp-parallel'}
-else if(gfx.includes('rice') && rsp.includes('rsp-parallel')){rsp = 'mupen64plus-rsp-hle'}
-
-if(isLinux){corelib += '.so'; gfx += '.so'; audio += '.so'; input += '.so'; rsp += '.so'; RspFallback += '.so'}
-else{corelib += '.dll'; gfx += '.dll'; audio += '.dll'; input += '.dll', rsp += '.dll'; RspFallback += '.dll'}
+if(gfx.includes('angrylion') && rsp.includes('rsp-hle')){rsp = 'mupen64plus-rsp-cxd4' + ext}
+else if(gfx.includes('parallel') && rsp.includes('rsp-hle')){rsp = 'mupen64plus-rsp-parallel' + ext}
+else if(gfx.includes('rice') && rsp.includes('rsp-parallel')){rsp = 'mupen64plus-rsp-hle' + ext}
 
 if(id('nospeedlimit').checked){audio = 'dummy';vsync = 'Video-General[VerticalSync]=false';ParallelVSync = 'Video-Parallel[Vsync]=false'} /* force muted audio and disabled V-Sync */
 
