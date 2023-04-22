@@ -2,13 +2,10 @@ cmake_minimum_required(VERSION 3.9)
 
 project(EMG)
 
-find_package(Git REQUIRED)
-
-set(CMAKE_INSTALL_PREFIX "")
-set(INSTALL_PATH "build/EMG/resources/app/m64p")
+set(INSTALL_PATH "/build/EMG/resources/app/m64p")
 
 add_custom_target(bundle_dependencies
-	COMMAND "${CMAKE_SOURCE_DIR}/dependencies.sh" "${CMAKE_SOURCE_DIR}/${INSTALL_PATH}/mupen64plus.exe" "${CMAKE_SOURCE_DIR}/${INSTALL_PATH}" "/mingw64/bin"
+	COMMAND "${CMAKE_SOURCE_DIR}/dependencies.sh" "${CMAKE_SOURCE_DIR}${INSTALL_PATH}/mupen64plus.exe" "${CMAKE_SOURCE_DIR}${INSTALL_PATH}" "/mingw64/bin"
 )
 
 include(ExternalProject)
