@@ -4,17 +4,17 @@ set -ex
 
 
 # Variables
-tag="${1:-master}"
-electron="${2:-v22.3.6}"
-threads="${3:-$(nproc)}"
+electron="${1:-v22.3.6}"
+threads="${2:-$(nproc)}"
 
 script_dir="$(dirname "$0")"
 toplvl_dir="$(realpath "$script_dir")"
-bin_dir="$toplvl_dir/Bin"
-build_dir="$toplvl_dir/Build"
-emg_dir="$toplvl_dir/EMG"
-ico_dir="$emg_dir/assets/ico"
-install_dir="$emg_dir/resources/app/m64p"
+build_dir="$toplvl_dir/build"
+cmake_dir="$build_dir/CMake"
+emg_dir="$build_dir/EMG"
+app_dir="$emg_dir/resources/app"
+ico_dir="$app_dir/ico"
+install_dir="$app_dir/m64p"
 core_dir="$install_dir/core"
 plugin_dir="$install_dir/plugin"
 
@@ -35,20 +35,18 @@ fi
 
 
 # Initial directories
-mkdir -p "$bin_dir" "$build_dir" 
+mkdir -p "$build_dir" "$cmake_dir" "$emg_dir"
 
-if [ ! -d "EMG" ]; then
-    git clone --depth 1 --branch $tag https://github.com/GhostlyDark/EMG EMG
-fi
+cp -R resources $emg_dir/resources
 
 
 
 
-# Download executables
-pushd "$bin_dir"
+# Download binary files
+pushd "$build_dir"
 
 [ ! -f electron-$electron-$platform-x64.zip ] && wget https://github.com/electron/electron/releases/download/$electron/electron-$electron-$platform-x64.zip
-7z x electron-$electron-$platform-x64.zip -o../EMG '-x!LICENSE' '-x!LICENSES.chromium.html' '-x!resources/default_app.asar' -y
+7z x electron-$electron-$platform-x64.zip -oEMG '-x!LICENSE' '-x!LICENSES.chromium.html' '-x!resources/default_app.asar' -y
 
 if [[ "$OSTYPE" == "msys"* ]]; then
     [ ! -f rcedit-x64.exe ] && wget https://github.com/electron/rcedit/releases/download/v1.1.1/rcedit-x64.exe
@@ -56,8 +54,8 @@ fi
 
 
 
-# Download additional files
-pushd "$build_dir"
+# Download additional repositories
+pushd "$cmake_dir"
 
 if [ ! -d "mupen64plus-rom" ]; then
     git clone --depth 1 https://github.com/GhostlyDark/mupen64plus-rom mupen64plus-rom
@@ -73,8 +71,6 @@ cp SDL_GameControllerDB/gamecontrollerdb.txt $install_dir
 
 
 # Build
-pushd "$build_dir"
-
 cmake "$toplvl_dir" -G "$generator"
 
 make install DESTDIR="$toplvl_dir" -j$threads
@@ -107,8 +103,8 @@ fi
 pushd "$toplvl_dir"
 
 if [[ "$OSTYPE" == "msys"* ]]; then
-    cmd //c $bin_dir/rcedit-x64 $install_dir/mupen64plus.exe --set-icon $ico_dir/mupen64plus.ico
-    cmd //c $bin_dir/rcedit-x64 $emg_dir/EMG.exe --set-icon $ico_dir/emg.ico --set-version-string LegalCopyright "(C) 2023 EvilGames.eu" --set-version-string OriginalFilename "electron.exe" --set-version-string FileDescription "EMG" --set-version-string ProductName "EMG" --set-version-string CompanyName "EvilGames.eu"
+    cmd //c $build_dir/rcedit-x64 $install_dir/mupen64plus.exe --set-icon $ico_dir/mupen64plus.ico
+    cmd //c $build_dir/rcedit-x64 $emg_dir/EMG.exe --set-icon $ico_dir/emg.ico --set-version-string LegalCopyright "(C) 2023 EvilGames.eu" --set-version-string OriginalFilename "electron.exe" --set-version-string FileDescription "EMG" --set-version-string ProductName "EMG" --set-version-string CompanyName "EvilGames.eu"
 fi
 
 
@@ -122,12 +118,5 @@ for f in $plugin_dir/*$ext; do strip -s $f; done
 
 
 
-# Remove unused git files
-rm -rf $emg_dir/.git
-rm -f $emg_dir/.gitattributes
-rm -f $emg_dir/LICENSE
-
-
-
 # Run
-EMG/EMG
+build/EMG/EMG
