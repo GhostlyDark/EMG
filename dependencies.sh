@@ -14,27 +14,19 @@ function copyForOBJ() {
 
 function findAndCopyDLL() {
     local file="$path/$1"
-    
 	if [ -f $file ] && [ ! -f "$bin_dir/$1" ]
 	then
 		cp "$file" "$bin_dir"
         copyForOBJ $file
 		return 0
 	fi
-
     return 0
 }
 
-
-for ext in dll exe
+for file in "$bin_dir"/*.exe "$bin_dir"/*/*.dll
 do
-	while read -r file_line
-	do
-		echo "=> Copying dependencies for $file_line"
-		copyForOBJ "$file_line"
-	done < <(find "$bin_dir" -name "*.$ext")
+	echo "=> Copying dependencies for $file"
+	copyForOBJ "$file"
 done
-
-windeployqt "$exe"
 
 exit 0
