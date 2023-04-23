@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-var ext,cheatRadio,filePath,fileResult,txPath,txPathResult,txCachePath,txCachePathResult,txDumpPath,txDumpPathResult,IPLROM,IPLROMResult,Disk,DiskResult,ConfigPath,ConfigPathResult,ScreenshotPath,ScreenshotPathResult,SaveStatePath,SaveStatePathResult,SaveSRAMPath,SaveSRAMPathResult,gbROM1,gbROM1Result,gbROM2,gbROM2Result,gbROM3,gbROM3Result,gbROM4,gbROM4Result,gbRAM1,gbRAM1Result,gbRAM2,gbRAM2Result,gbRAM3,gbRAM3Result,gbRAM4,gbRAM4Result,
+var cheatRadio,filePath,fileResult,txPath,txPathResult,txCachePath,txCachePathResult,txDumpPath,txDumpPathResult,IPLROM,IPLROMResult,Disk,DiskResult,ConfigPath,ConfigPathResult,ScreenshotPath,ScreenshotPathResult,SaveStatePath,SaveStatePathResult,SaveSRAMPath,SaveSRAMPathResult,gbROM1,gbROM1Result,gbROM2,gbROM2Result,gbROM3,gbROM3Result,gbROM4,gbROM4Result,gbRAM1,gbRAM1Result,gbRAM2,gbRAM2Result,gbRAM3,gbRAM3Result,gbRAM4,gbRAM4Result,
 
 recentFiles = [], corefile = 'core/mupen64plus';
 
@@ -59,8 +59,9 @@ dropdowns = [
 'FrameBufferWriteBackControl','RenderToTexture','ScreenUpdateSetting','Mipmapping','ForceTextureFilter','RiceMultiSampling','AnisotropicFiltering' /* Rice */];
 
 
-if(isLinux){ext = '.so'}else{ext = '.dll'}
-corefile += ext /* core file for cheats */
+
+var ext = isLinux ? '.so' : '.dll';
+corefile += ext; /* core file for cheats */
 if(!isLinux)id('master_volume').style.display = 'none'; /* hide platform specific settings */
 
 
