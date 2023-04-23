@@ -4,8 +4,9 @@ set -ex
 
 
 # Variables
-electron="${1:-v22.3.6}"
+gen="${1:-make}"
 threads="${2:-$(nproc)}"
+electron="${3:-v22.3.6}"
 
 script_dir="$(dirname "$0")"
 toplvl_dir="$(realpath "$script_dir")"
@@ -30,6 +31,10 @@ if [[ "$OSTYPE" == "msys"* ]]; then
     gca="mupen64plus_input_gca.dll"
     generator="MSYS Makefiles"
     platform="win32"
+fi
+
+if [[ "$gen" = "ninja" ]] || [[ "$gen" = "Ninja" ]]; then
+    generator="Ninja"
 fi
 
 
@@ -72,11 +77,11 @@ cp SDL_GameControllerDB/gamecontrollerdb.txt $install_dir
 
 # Build
 cmake "$toplvl_dir" -G "$generator"
-
-make install -j$threads
+cmake --build "$cmake_dir" --parallel "$threads"
+cmake --install "$cmake_dir"
 
 if [[ "$OSTYPE" == "msys"* ]]; then
-    make bundle_dependencies
+    cmake --build "$cmake_dir" --target=bundle_dependencies
 fi
 
 

@@ -1,11 +1,11 @@
-cmake_minimum_required(VERSION 3.9)
+cmake_minimum_required(VERSION 3.15)
 
 project(EMG)
 
 set(INSTALL_PATH "${CMAKE_SOURCE_DIR}/build/EMG/resources/app/m64p")
 
 add_custom_target(bundle_dependencies
-	COMMAND "${CMAKE_SOURCE_DIR}/dependencies.sh" "${INSTALL_PATH}/mupen64plus.exe" "${INSTALL_PATH}" "/mingw64/bin"
+	COMMAND bash "${CMAKE_SOURCE_DIR}/dependencies.sh" "${INSTALL_PATH}/mupen64plus.exe" "${INSTALL_PATH}" "/mingw64/bin"
 )
 
 include(ExternalProject)
@@ -35,7 +35,7 @@ set(RICE_DIR ${CMAKE_BINARY_DIR}/mupen64plus-video-rice)
 set(GLIDEN64_DIR "${CMAKE_BINARY_DIR}/mupen64plus-video-GLideN64")
 
 set(GLIDEN64_BUILD_DIR "${GLIDEN64_DIR}/projects/cmake")
-if(MSYS)
+if(WIN32)
 	set(GLIDEN64_LIB "${GLIDEN64_BUILD_DIR}/mupen64plus-video-GLideN64${SO_EXT}")
 else()
 	set(GLIDEN64_LIB "${GLIDEN64_BUILD_DIR}/plugin/Release/mupen64plus-video-GLideN64${SO_EXT}")
@@ -43,7 +43,7 @@ endif()
 
 set(GLIDEN64_OCF_DIR "${CMAKE_BINARY_DIR}/mupen64plus-video-GLideN64-ocf")
 set(GLIDEN64_OCF_BUILD_DIR "${GLIDEN64_OCF_DIR}/projects/cmake")
-if(MSYS)
+if(WIN32)
 	set(GLIDEN64_OCF_LIB "${GLIDEN64_OCF_BUILD_DIR}/mupen64plus-video-GLideN64_ocf${SO_EXT}")
 else()
 	set(GLIDEN64_OCF_LIB "${GLIDEN64_OCF_BUILD_DIR}/plugin/Release/mupen64plus-video-GLideN64_ocf${SO_EXT}")
@@ -78,7 +78,7 @@ ExternalProject_Add(mupen64plus-core
     GIT_TAG "origin/emg"
     GIT_SHALLOW 1
 
-    BUILD_COMMAND $(MAKE) all OSD=0 NEW_DYNAREC=1 TARGET=${CORE_FILE}
+    BUILD_COMMAND make all OSD=0 NEW_DYNAREC=1 TARGET=${CORE_FILE}
     BUILD_IN_SOURCE False
 
     BINARY_DIR ${M64P_CORE_DIR}/projects/unix
@@ -96,7 +96,7 @@ ExternalProject_Add(mupen64plus-core-old
     GIT_TAG "origin/emg"
     GIT_SHALLOW 1
 
-    BUILD_COMMAND $(MAKE) all OSD=0 TARGET=${CORE_FILE_OLD}
+    BUILD_COMMAND make all OSD=0 TARGET=${CORE_FILE_OLD}
     BUILD_IN_SOURCE False
 
     BINARY_DIR ${M64P_CORE_DIR_OLD}/projects/unix
@@ -114,7 +114,7 @@ ExternalProject_Add(mupen64plus-core-hack
     GIT_TAG "origin/emg_pi-dma"
     GIT_SHALLOW 1
 
-    BUILD_COMMAND $(MAKE) all OSD=0 TARGET=${CORE_FILE_HACK}
+    BUILD_COMMAND make all OSD=0 TARGET=${CORE_FILE_HACK}
     BUILD_IN_SOURCE False
 
     BINARY_DIR ${M64P_CORE_DIR_HACK}/projects/unix
@@ -132,7 +132,7 @@ ExternalProject_Add(mupen64plus-ui-console
     GIT_TAG "origin/emg"
     GIT_SHALLOW 1
 
-    BUILD_COMMAND $(MAKE) all APIDIR=${APIDIR}
+    BUILD_COMMAND make all APIDIR=${APIDIR}
     BUILD_IN_SOURCE False
 
     BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-ui-console/projects/unix
@@ -151,7 +151,7 @@ ExternalProject_Add(mupen64plus-rsp-cxd4
     GIT_TAG "origin/emg"
     GIT_SHALLOW 1
 
-    BUILD_COMMAND $(MAKE) all APIDIR=${APIDIR} POSTFIX=
+    BUILD_COMMAND make all APIDIR=${APIDIR} POSTFIX=
     BUILD_IN_SOURCE False
 
     BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-rsp-cxd4/projects/unix
@@ -170,7 +170,7 @@ ExternalProject_Add(mupen64plus-rsp-hle
     GIT_TAG "origin/emg"
     GIT_SHALLOW 1
 
-    BUILD_COMMAND $(MAKE) all APIDIR=${APIDIR}
+    BUILD_COMMAND make all APIDIR=${APIDIR}
     BUILD_IN_SOURCE False
 
     BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-rsp-hle/projects/unix
@@ -205,7 +205,7 @@ ExternalProject_Add(mupen64plus-input-sdl
     GIT_TAG "origin/emg"
     GIT_SHALLOW 1
 
-    BUILD_COMMAND $(MAKE) all APIDIR=${APIDIR}
+    BUILD_COMMAND make all APIDIR=${APIDIR}
     BUILD_IN_SOURCE False
 
     BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-input-sdl/projects/unix
@@ -224,7 +224,7 @@ ExternalProject_Add(mupen64plus-input-raphnetraw
     GIT_TAG "origin/emg"
     GIT_SHALLOW 1
 
-    BUILD_COMMAND $(MAKE) all APIDIR=${APIDIR}
+    BUILD_COMMAND make all APIDIR=${APIDIR}
     BUILD_IN_SOURCE False
 
     BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-input-raphnetraw/projects/unix
@@ -329,7 +329,7 @@ ExternalProject_Add(mupen64plus-video-rice
     GIT_TAG "origin/emg"
     GIT_SHALLOW 1
 
-    BUILD_COMMAND $(MAKE) all APIDIR=${APIDIR}
+    BUILD_COMMAND make all APIDIR=${APIDIR}
     BUILD_IN_SOURCE False
 
     BINARY_DIR ${RICE_DIR}/projects/unix
@@ -348,7 +348,7 @@ ExternalProject_Add(mupen64plus-audio-sdl
     GIT_TAG "origin/emg"
     GIT_SHALLOW 1
 
-    BUILD_COMMAND $(MAKE) all APIDIR=${APIDIR}
+    BUILD_COMMAND make all APIDIR=${APIDIR}
     BUILD_IN_SOURCE False
 
     BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-audio-sdl/projects/unix
