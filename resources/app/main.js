@@ -67,13 +67,13 @@ ipcMain.on('jsMapping', (e, padId) => {
 })
 
 ipcMain.on('writeGCA', (e, gcaSettings, configdir) => {
-	if(!existsSync(configdir)){mkdirSync(configdir,{recursive:true})}
-	if(!existsSync(cache)){mkdirSync(cache,{recursive:true})}
-	if(!existsSync(hires_texture)){mkdirSync(hires_texture,{recursive:true})}
-	if(!existsSync(save)){mkdirSync(save,{recursive:true})}
-	if(!existsSync(screenshot)){mkdirSync(screenshot,{recursive:true})}
-	if(!existsSync(shaders)){mkdirSync(shaders,{recursive:true})}
-	if(!existsSync(texture_dump)){mkdirSync(texture_dump,{recursive:true})}
+	if(!existsSync(configdir))mkdirSync(configdir,{recursive:true})
+	if(!existsSync(cache))mkdirSync(cache,{recursive:true})
+	if(!existsSync(hires_texture))mkdirSync(hires_texture,{recursive:true})
+	if(!existsSync(save))mkdirSync(save,{recursive:true})
+	if(!existsSync(screenshot))mkdirSync(screenshot,{recursive:true})
+	if(!existsSync(shaders))mkdirSync(shaders,{recursive:true})
+	if(!existsSync(texture_dump))mkdirSync(texture_dump,{recursive:true})
 	e.returnValue = writeFileSync(path(configdir,'mupen64plus-input-gca.toml'),gcaSettings)
 })
 
@@ -104,7 +104,7 @@ if(isLinux)win.setIcon(nativeImage.createFromPath(path(dir, 'img', 'emg.png')).r
 win.webContents.setWindowOpenHandler((details) => {return {action:'deny'}})
 
 win.webContents.on('will-navigate', (e, nav) => {const parsed = new url(nav)
-if(parsed.origin != load) {e.preventDefault()}})
+if(parsed.origin != load)e.preventDefault()})
 
 session.defaultSession.webRequest.onBeforeRequest(
 function(details, callback){

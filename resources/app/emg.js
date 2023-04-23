@@ -181,8 +181,8 @@ box_cb = id(n64_button_cb);
 
 box_c.addEventListener('click', function(){jstest(box_c)}) /* joystick input */
 box_cb.addEventListener('click', function(){jstest(box_cb)})
-if(localStorage.getItem(n64_button_c) != null){box_c.value = localStorage.getItem(n64_button_c)}
-if(localStorage.getItem(n64_button_cb) != null){box_cb.value = localStorage.getItem(n64_button_cb)}
+if(localStorage.getItem(n64_button_c) != null)box_c.value = localStorage.getItem(n64_button_c)
+if(localStorage.getItem(n64_button_cb) != null)box_cb.value = localStorage.getItem(n64_button_cb)
 
 if(localStorage.getItem(n64_button) != null){ /* keyboard input */
 box.value = keyCodes[localStorage.getItem(n64_button)];
@@ -225,12 +225,12 @@ localStorage.setItem(m64p_hotkey, e.keyCode)}})})
 m64p_joykeys.forEach(joykey => { /* mupen64plus joystick hotkeys */
 var box = id(joykey);
 box.addEventListener('click', function(){jstest(box)})
-if(localStorage.getItem(joykey) != null){box.value = localStorage.getItem(joykey)}
+if(localStorage.getItem(joykey) != null)box.value = localStorage.getItem(joykey)
 id('clear'+joykey).addEventListener('click', function(){box.value = '';localStorage.removeItem(joykey)})})
 
 dropdowns.forEach(dropdown => { /* dropdown inputs */
 var drop = id(dropdown);
-if(localStorage.getItem(dropdown) != null){drop.value = localStorage.getItem(dropdown)}
+if(localStorage.getItem(dropdown) != null)drop.value = localStorage.getItem(dropdown)
 if(drop.selectedIndex === -1){localStorage.removeItem(dropdown);drop.options[0].disabled === true ? drop.selectedIndex = 1 : drop.selectedIndex = 0}
 drop.addEventListener('change', function(){localStorage.setItem(dropdown, drop.value)})})
 
@@ -256,7 +256,7 @@ if(number_input.step.includes('.'))digits=2;
 
 number_reset.addEventListener('click', function(){number_input.value = number_value;localStorage.removeItem(number)})
 
-if(localStorage.getItem(number) != null){number_input.value = localStorage.getItem(number)}
+if(localStorage.getItem(number) != null)number_input.value = localStorage.getItem(number)
 number_input.addEventListener('change', function(){localStorage.setItem(number, number_input.value)})
 number_input.addEventListener('keydown', function(e){e.preventDefault()})
 
@@ -408,7 +408,7 @@ hideLog()
 
 
 
-if(localStorage.getItem('recentFiles') != null){recentFiles = JSON.parse(localStorage.getItem('recentFiles'))}
+if(localStorage.getItem('recentFiles') != null)recentFiles = JSON.parse(localStorage.getItem('recentFiles'))
 
 function recentFilesUpdate(){ /* recent N64 ROM files */
 id('optionDefault').selected = true;
@@ -443,13 +443,13 @@ datasplit = dataremove.split(regsplit);
 datasplit.forEach(e => cheat(e));
 function cheat(e){if(e != ''){
 var cheatCheckbox = e.replace(/\:.*/g,'');
-if(!e.match(regradio)){cheatRadio = cheatCheckbox}
-if(e.match(regradio)){cheatCheckbox = cheatCheckbox.replace(regradio,cheatRadio + '_')}
+if(!e.match(regradio))cheatRadio = cheatCheckbox
+if(e.match(regradio))cheatCheckbox = cheatCheckbox.replace(regradio,cheatRadio + '_')
 cheats += "<input id='" + cheatCheckbox + "' type='checkbox'><label for='" + cheatCheckbox + "'>" + e.replace(regradio,'') + "</label><br><br>"}}
 id('cheatList').innerHTML = cheats
 let radioBoxes = id('cheatList').querySelectorAll('input[id*=_]');
 for (var i = 0; i < radioBoxes.length; i++){var box = radioBoxes[i];if(box.id.includes('_')){id(box.id.replace(regbox,'')).disabled = true}}
-if(id('cheatList').innerHTML === ''){id('cheatList').innerHTML = 'No cheats for this ROM found.'}})
+if(id('cheatList').innerHTML === '')id('cheatList').innerHTML = 'No cheats for this ROM found.'})
 
 id('cheatList').addEventListener('change', function(e){
 if(e.target.id.includes('_')){
@@ -1191,7 +1191,7 @@ buttonType1 = '',buttonType1B = '',buttonType2 = '',buttonType2B = '',buttonType
 gcaSettings = 'control_stick_deadzone = ' +  id('control_stick_deadzone').value + '\n' + 'control_stick_sensitivity = ' + id('control_stick_sensitivity').value + '\n' + 'c_stick_deadzone = ' + id('c_stick_deadzone').value + '\n' + 'trigger_threshold = ' + id('trigger_threshold').value + '\n\n' + '[controller_mapping]' + '\n' + 'a = ' + id('a').value + '\n' + 'b = ' + id('b').value + '\n' + 'x = ' + id('x').value + '\n' + 'y = ' + id('y').value + '\n' + 'start = ' + id('start').value + '\n' + 'z = ' + id('z').value + '\n' + 'l = ' + id('l').value + '\n' + 'r = ' + id('r').value + '\n' + 'd_pad_left = ' + id('d_pad_left').value + '\n' + 'd_pad_right = ' + id('d_pad_right').value + '\n' + 'd_pad_down = ' + id('d_pad_down').value + '\n' + 'd_pad_up = ' + id('d_pad_up').value + '\n' + 'c_stick_left = ' + id('c_stick_left').value + '\n' + 'c_stick_right = ' + id('c_stick_right').value + '\n' + 'c_stick_down = ' + id('c_stick_down').value + '\n' + 'c_stick_up = ' + id('c_stick_up').value;
 
 corelib = 'core/' + id('coreVersion').value + ext;
-if(id('gliden64Version').value != '_'){gfx = 'mupen64plus-video-GLideN64' + id('gliden64Version').value + ext}
+if(id('gliden64Version').value != '_')gfx = 'mupen64plus-video-GLideN64' + id('gliden64Version').value + ext
 
 if(gfx.includes('angrylion') || gfx.includes('parallel')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=false'} /* prevent crashes caused by wrong RSP settings */
 else if(gfx.includes('rice')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=true'}
@@ -1203,13 +1203,13 @@ if(id('nospeedlimit').checked){audio = 'dummy';vsync = 'Video-General[VerticalSy
 
 
 
-if(name1.includes('Keyboard')){device1 = 'Input-SDL-Control1[device]=-1'} /* Controller 1 */
-if(id('StickU1c').value.includes('axis') || id('StickL1c').value.includes('axis') || id('StickR1c').value.includes('axis') || id('StickD1c').value.includes('axis')){buttonType1 = 'axis'}
-if(id('StickU1cb').value.includes('axis') || id('StickL1cb').value.includes('axis') || id('StickR1cb').value.includes('axis') || id('StickD1cb').value.includes('axis')){buttonType1B = 'axis'}
-if(id('StickU1c').value.includes('button') || id('StickL1c').value.includes('button') || id('StickR1c').value.includes('button') || id('StickD1c').value.includes('button')){buttonType1 = 'button'}
-if(id('StickU1cb').value.includes('button') || id('StickL1cb').value.includes('button') || id('StickR1cb').value.includes('button') || id('StickD1cb').value.includes('button')){buttonType1B = 'button'}
-if(id('StickU1c').value.includes('hat') || id('StickL1c').value.includes('hat') || id('StickR1c').value.includes('hat') || id('StickD1c').value.includes('hat')){buttonType1 = 'hat'}
-if(id('StickU1cb').value.includes('hat') || id('StickL1cb').value.includes('hat') || id('StickR1cb').value.includes('hat') || id('StickD1cb').value.includes('hat')){buttonType1B = 'hat'}
+if(name1.includes('Keyboard'))device1 = 'Input-SDL-Control1[device]=-1' /* controller 1 */
+if(id('StickU1c').value.includes('axis') || id('StickL1c').value.includes('axis') || id('StickR1c').value.includes('axis') || id('StickD1c').value.includes('axis'))buttonType1 = 'axis'
+if(id('StickU1cb').value.includes('axis') || id('StickL1cb').value.includes('axis') || id('StickR1cb').value.includes('axis') || id('StickD1cb').value.includes('axis'))buttonType1B = 'axis'
+if(id('StickU1c').value.includes('button') || id('StickL1c').value.includes('button') || id('StickR1c').value.includes('button') || id('StickD1c').value.includes('button'))buttonType1 = 'button'
+if(id('StickU1cb').value.includes('button') || id('StickL1cb').value.includes('button') || id('StickR1cb').value.includes('button') || id('StickD1cb').value.includes('button'))buttonType1B = 'button'
+if(id('StickU1c').value.includes('hat') || id('StickL1c').value.includes('hat') || id('StickR1c').value.includes('hat') || id('StickD1c').value.includes('hat'))buttonType1 = 'hat'
+if(id('StickU1cb').value.includes('hat') || id('StickL1cb').value.includes('hat') || id('StickR1cb').value.includes('hat') || id('StickD1cb').value.includes('hat'))buttonType1B = 'hat'
 AButton1 += 'key(' + id('AButton1').dataset.key + ') ' + id('AButton1c').value + ' ' + id('AButton1cb').value;
 BButton1 += 'key(' + id('BButton1').dataset.key + ') ' + id('BButton1c').value + ' ' + id('BButton1cb').value;
 LTrig1 += 'key(' + id('LTrig1').dataset.key + ') ' + id('LTrig1c').value + ' ' + id('LTrig1cb').value;
@@ -1231,13 +1231,13 @@ YAxis1 += 'key(' + id('StickU1').dataset.key + ',' + id('StickD1').dataset.key +
 
 
 
-if(name2.includes('Keyboard')){device2 = 'Input-SDL-Control2[device]=-1'} /* Controller 2 */
-if(id('StickU2c').value.includes('axis') || id('StickL2c').value.includes('axis') || id('StickR2c').value.includes('axis') || id('StickD2c').value.includes('axis')){buttonType2 = 'axis'}
-if(id('StickU2cb').value.includes('axis') || id('StickL2cb').value.includes('axis') || id('StickR2cb').value.includes('axis') || id('StickD2cb').value.includes('axis')){buttonType2B = 'axis'}
-if(id('StickU2c').value.includes('button') || id('StickL2c').value.includes('button') || id('StickR2c').value.includes('button') || id('StickD2c').value.includes('button')){buttonType2 = 'button'}
-if(id('StickU2cb').value.includes('button') || id('StickL2cb').value.includes('button') || id('StickR2cb').value.includes('button') || id('StickD2cb').value.includes('button')){buttonType2B = 'button'}
-if(id('StickU2c').value.includes('hat') || id('StickL2c').value.includes('hat') || id('StickR2c').value.includes('hat') || id('StickD2c').value.includes('hat')){buttonType2 = 'hat'}
-if(id('StickU2cb').value.includes('hat') || id('StickL2cb').value.includes('hat') || id('StickR2cb').value.includes('hat') || id('StickD2cb').value.includes('hat')){buttonType2B = 'hat'}
+if(name2.includes('Keyboard'))device2 = 'Input-SDL-Control2[device]=-1' /* controller 2 */
+if(id('StickU2c').value.includes('axis') || id('StickL2c').value.includes('axis') || id('StickR2c').value.includes('axis') || id('StickD2c').value.includes('axis'))buttonType2 = 'axis'
+if(id('StickU2cb').value.includes('axis') || id('StickL2cb').value.includes('axis') || id('StickR2cb').value.includes('axis') || id('StickD2cb').value.includes('axis'))buttonType2B = 'axis'
+if(id('StickU2c').value.includes('button') || id('StickL2c').value.includes('button') || id('StickR2c').value.includes('button') || id('StickD2c').value.includes('button'))buttonType2 = 'button'
+if(id('StickU2cb').value.includes('button') || id('StickL2cb').value.includes('button') || id('StickR2cb').value.includes('button') || id('StickD2cb').value.includes('button'))buttonType2B = 'button'
+if(id('StickU2c').value.includes('hat') || id('StickL2c').value.includes('hat') || id('StickR2c').value.includes('hat') || id('StickD2c').value.includes('hat'))buttonType2 = 'hat'
+if(id('StickU2cb').value.includes('hat') || id('StickL2cb').value.includes('hat') || id('StickR2cb').value.includes('hat') || id('StickD2cb').value.includes('hat'))buttonType2B = 'hat'
 AButton2 += 'key(' + id('AButton2').dataset.key + ') ' + id('AButton2c').value + ' ' + id('AButton2cb').value;
 BButton2 += 'key(' + id('BButton2').dataset.key + ') ' + id('BButton2c').value + ' ' + id('BButton2cb').value;
 LTrig2 += 'key(' + id('LTrig2').dataset.key + ') ' + id('LTrig2c').value + ' ' + id('LTrig2cb').value;
@@ -1259,13 +1259,13 @@ YAxis2 += 'key(' + id('StickU2').dataset.key + ',' + id('StickD2').dataset.key +
 
 
 
-if(name3.includes('Keyboard')){device3 = 'Input-SDL-Control3[device]=-1'} /* Controller 3 */
-if(id('StickU3c').value.includes('axis') || id('StickL3c').value.includes('axis') || id('StickR3c').value.includes('axis') || id('StickD3c').value.includes('axis')){buttonType3 = 'axis'}
-if(id('StickU3cb').value.includes('axis') || id('StickL3cb').value.includes('axis') || id('StickR3cb').value.includes('axis') || id('StickD3cb').value.includes('axis')){buttonType3B = 'axis'}
-if(id('StickU3c').value.includes('button') || id('StickL3c').value.includes('button') || id('StickR3c').value.includes('button') || id('StickD3c').value.includes('button')){buttonType3 = 'button'}
-if(id('StickU3cb').value.includes('button') || id('StickL3cb').value.includes('button') || id('StickR3cb').value.includes('button') || id('StickD3cb').value.includes('button')){buttonType3B = 'button'}
-if(id('StickU3c').value.includes('hat') || id('StickL3c').value.includes('hat') || id('StickR3c').value.includes('hat') || id('StickD3c').value.includes('hat')){buttonType3 = 'hat'}
-if(id('StickU3cb').value.includes('hat') || id('StickL3cb').value.includes('hat') || id('StickR3cb').value.includes('hat') || id('StickD3cb').value.includes('hat')){buttonType3B = 'hat'}
+if(name3.includes('Keyboard'))device3 = 'Input-SDL-Control3[device]=-1' /* controller 3 */
+if(id('StickU3c').value.includes('axis') || id('StickL3c').value.includes('axis') || id('StickR3c').value.includes('axis') || id('StickD3c').value.includes('axis'))buttonType3 = 'axis'
+if(id('StickU3cb').value.includes('axis') || id('StickL3cb').value.includes('axis') || id('StickR3cb').value.includes('axis') || id('StickD3cb').value.includes('axis'))buttonType3B = 'axis'
+if(id('StickU3c').value.includes('button') || id('StickL3c').value.includes('button') || id('StickR3c').value.includes('button') || id('StickD3c').value.includes('button'))buttonType3 = 'button'
+if(id('StickU3cb').value.includes('button') || id('StickL3cb').value.includes('button') || id('StickR3cb').value.includes('button') || id('StickD3cb').value.includes('button'))buttonType3B = 'button'
+if(id('StickU3c').value.includes('hat') || id('StickL3c').value.includes('hat') || id('StickR3c').value.includes('hat') || id('StickD3c').value.includes('hat'))buttonType3 = 'hat'
+if(id('StickU3cb').value.includes('hat') || id('StickL3cb').value.includes('hat') || id('StickR3cb').value.includes('hat') || id('StickD3cb').value.includes('hat'))buttonType3B = 'hat'
 AButton3 += 'key(' + id('AButton3').dataset.key + ') ' + id('AButton3c').value + ' ' + id('AButton3cb').value;
 BButton3 += 'key(' + id('BButton3').dataset.key + ') ' + id('BButton3c').value + ' ' + id('BButton3cb').value;
 LTrig3 += 'key(' + id('LTrig3').dataset.key + ') ' + id('LTrig3c').value + ' ' + id('LTrig3cb').value;
@@ -1287,13 +1287,13 @@ YAxis3 += 'key(' + id('StickU3').dataset.key + ',' + id('StickD3').dataset.key +
 
 
 
-if(name4.includes('Keyboard')){device4 = 'Input-SDL-Control4[device]=-1'} /* Controller 4 */
-if(id('StickU4c').value.includes('axis') || id('StickL4c').value.includes('axis') || id('StickR4c').value.includes('axis') || id('StickD4c').value.includes('axis')){buttonType4 = 'axis'}
-if(id('StickU4cb').value.includes('axis') || id('StickL4cb').value.includes('axis') || id('StickR4cb').value.includes('axis') || id('StickD4cb').value.includes('axis')){buttonType4B = 'axis'}
-if(id('StickU4c').value.includes('button') || id('StickL4c').value.includes('button') || id('StickR4c').value.includes('button') || id('StickD4c').value.includes('button')){buttonType4 = 'button'}
-if(id('StickU4cb').value.includes('button') || id('StickL4cb').value.includes('button') || id('StickR4cb').value.includes('button') || id('StickD4cb').value.includes('button')){buttonType4B = 'button'}
-if(id('StickU4c').value.includes('hat') || id('StickL4c').value.includes('hat') || id('StickR4c').value.includes('hat') || id('StickD4c').value.includes('hat')){buttonType4 = 'hat'}
-if(id('StickU4cb').value.includes('hat') || id('StickL4cb').value.includes('hat') || id('StickR4cb').value.includes('hat') || id('StickD4cb').value.includes('hat')){buttonType4B = 'hat'}
+if(name4.includes('Keyboard'))device4 = 'Input-SDL-Control4[device]=-1' /* controller 4 */
+if(id('StickU4c').value.includes('axis') || id('StickL4c').value.includes('axis') || id('StickR4c').value.includes('axis') || id('StickD4c').value.includes('axis'))buttonType4 = 'axis'
+if(id('StickU4cb').value.includes('axis') || id('StickL4cb').value.includes('axis') || id('StickR4cb').value.includes('axis') || id('StickD4cb').value.includes('axis'))buttonType4B = 'axis'
+if(id('StickU4c').value.includes('button') || id('StickL4c').value.includes('button') || id('StickR4c').value.includes('button') || id('StickD4c').value.includes('button'))buttonType4 = 'button'
+if(id('StickU4cb').value.includes('button') || id('StickL4cb').value.includes('button') || id('StickR4cb').value.includes('button') || id('StickD4cb').value.includes('button'))buttonType4B = 'button'
+if(id('StickU4c').value.includes('hat') || id('StickL4c').value.includes('hat') || id('StickR4c').value.includes('hat') || id('StickD4c').value.includes('hat'))buttonType4 = 'hat'
+if(id('StickU4cb').value.includes('hat') || id('StickL4cb').value.includes('hat') || id('StickR4cb').value.includes('hat') || id('StickD4cb').value.includes('hat'))buttonType4B = 'hat'
 AButton4 += 'key(' + id('AButton4').dataset.key + ') ' + id('AButton4c').value + ' ' + id('AButton4cb').value;
 BButton4 += 'key(' + id('BButton4').dataset.key + ') ' + id('BButton4c').value + ' ' + id('BButton4cb').value;
 LTrig4 += 'key(' + id('LTrig4').dataset.key + ') ' + id('LTrig4c').value + ' ' + id('LTrig4cb').value;
@@ -1315,219 +1315,219 @@ YAxis4 += 'key(' + id('StickU4').dataset.key + ',' + id('StickD4').dataset.key +
 
 
 
-if(id('m1_1').checked){ /* Mouse buttons 1 */
-if(mb1 === 'a'){AButton1 += ' mouse(1)'}
-if(mb1 === 'b'){BButton1 += ' mouse(1)'}
-if(mb1 === 'l'){LTrig1 += ' mouse(1)'}
-if(mb1 === 'r'){RTrig1 += ' mouse(1)'}
-if(mb1 === 'z'){ZTrig1 += ' mouse(1)'}
-if(mb1 === 'cr'){CButtonR1 += ' mouse(1)'}
-if(mb1 === 'cl'){CButtonL1 += ' mouse(1)'}
-if(mb1 === 'cd'){CButtonD1 += ' mouse(1)'}
-if(mb1 === 'cu'){CButtonU1 += ' mouse(1)'}
-if(mb1 === 'dpadr'){DPadR1 += ' mouse(1)'}
-if(mb1 === 'dpadl'){DPadL1 += ' mouse(1)'}
-if(mb1 === 'dpadd'){DPadD1 += ' mouse(1)'}
-if(mb1 === 'dpadu'){DPadU1 += ' mouse(1)'}
-if(mb1 === 'start'){Start1 += ' mouse(1)'}
-if(mb1 === 'ms'){MempakSwitch1 += ' mouse(1)'}
-if(mb1 === 'rs'){RumblepakSwitch1 += ' mouse(1)'}}
+if(id('m1_1').checked){ /* mouse buttons 1 */
+if(mb1 === 'a')AButton1 += ' mouse(1)'
+if(mb1 === 'b')BButton1 += ' mouse(1)'
+if(mb1 === 'l')LTrig1 += ' mouse(1)'
+if(mb1 === 'r')RTrig1 += ' mouse(1)'
+if(mb1 === 'z')ZTrig1 += ' mouse(1)'
+if(mb1 === 'cr')CButtonR1 += ' mouse(1)'
+if(mb1 === 'cl')CButtonL1 += ' mouse(1)'
+if(mb1 === 'cd')CButtonD1 += ' mouse(1)'
+if(mb1 === 'cu')CButtonU1 += ' mouse(1)'
+if(mb1 === 'dpadr')DPadR1 += ' mouse(1)'
+if(mb1 === 'dpadl')DPadL1 += ' mouse(1)'
+if(mb1 === 'dpadd')DPadD1 += ' mouse(1)'
+if(mb1 === 'dpadu')DPadU1 += ' mouse(1)'
+if(mb1 === 'start')Start1 += ' mouse(1)'
+if(mb1 === 'ms')MempakSwitch1 += ' mouse(1)'
+if(mb1 === 'rs')RumblepakSwitch1 += ' mouse(1)'}
 if(id('m2_1').checked){
-if(mb2 === 'a'){AButton1 += ' mouse(2)'}
-if(mb2 === 'b'){BButton1 += ' mouse(2)'}
-if(mb2 === 'l'){LTrig1 += ' mouse(2)'}
-if(mb2 === 'r'){RTrig1 += ' mouse(2)'}
-if(mb2 === 'z'){ZTrig1 += ' mouse(2)'}
-if(mb2 === 'cr'){CButtonR1 += ' mouse(2)'}
-if(mb2 === 'cl'){CButtonL1 += ' mouse(2)'}
-if(mb2 === 'cd'){CButtonD1 += ' mouse(2)'}
-if(mb2 === 'cu'){CButtonU1 += ' mouse(2)'}
-if(mb2 === 'dpadr'){DPadR1 += ' mouse(2)'}
-if(mb2 === 'dpadl'){DPadL1 += ' mouse(2)'}
-if(mb2 === 'dpadd'){DPadD1 += ' mouse(2)'}
-if(mb2 === 'dpadu'){DPadU1 += ' mouse(2)'}
-if(mb2 === 'start'){Start1 += ' mouse(2)'}
-if(mb2 === 'ms'){MempakSwitch1 += ' mouse(2)'}
-if(mb2 === 'rs'){RumblepakSwitch1 += ' mouse(2)'}}
+if(mb2 === 'a')AButton1 += ' mouse(2)'
+if(mb2 === 'b')BButton1 += ' mouse(2)'
+if(mb2 === 'l')LTrig1 += ' mouse(2)'
+if(mb2 === 'r')RTrig1 += ' mouse(2)'
+if(mb2 === 'z')ZTrig1 += ' mouse(2)'
+if(mb2 === 'cr')CButtonR1 += ' mouse(2)'
+if(mb2 === 'cl')CButtonL1 += ' mouse(2)'
+if(mb2 === 'cd')CButtonD1 += ' mouse(2)'
+if(mb2 === 'cu')CButtonU1 += ' mouse(2)'
+if(mb2 === 'dpadr')DPadR1 += ' mouse(2)'
+if(mb2 === 'dpadl')DPadL1 += ' mouse(2)'
+if(mb2 === 'dpadd')DPadD1 += ' mouse(2)'
+if(mb2 === 'dpadu')DPadU1 += ' mouse(2)'
+if(mb2 === 'start')Start1 += ' mouse(2)'
+if(mb2 === 'ms')MempakSwitch1 += ' mouse(2)'
+if(mb2 === 'rs')RumblepakSwitch1 += ' mouse(2)'}
 if(id('m3_1').checked){
-if(mb3 === 'a'){AButton1 += ' mouse(3)'}
-if(mb3 === 'b'){BButton1 += ' mouse(3)'}
-if(mb3 === 'l'){LTrig1 += ' mouse(3)'}
-if(mb3 === 'r'){RTrig1 += ' mouse(3)'}
-if(mb3 === 'z'){ZTrig1 += ' mouse(3)'}
-if(mb3 === 'cr'){CButtonR1 += ' mouse(3)'}
-if(mb3 === 'cl'){CButtonL1 += ' mouse(3)'}
-if(mb3 === 'cd'){CButtonD1 += ' mouse(3)'}
-if(mb3 === 'cu'){CButtonU1 += ' mouse(3)'}
-if(mb3 === 'dpadr'){DPadR1 += ' mouse(3)'}
-if(mb3 === 'dpadl'){DPadL1 += ' mouse(3)'}
-if(mb3 === 'dpadd'){DPadD1 += ' mouse(3)'}
-if(mb3 === 'dpadu'){DPadU1 += ' mouse(3)'}
-if(mb3 === 'start'){Start1 += ' mouse(3)'}
-if(mb3 === 'ms'){MempakSwitch1 += ' mouse(3)'}
-if(mb3 === 'rs'){RumblepakSwitch1 += ' mouse(3)'}}
+if(mb3 === 'a')AButton1 += ' mouse(3)'
+if(mb3 === 'b')BButton1 += ' mouse(3)'
+if(mb3 === 'l')LTrig1 += ' mouse(3)'
+if(mb3 === 'r')RTrig1 += ' mouse(3)'
+if(mb3 === 'z')ZTrig1 += ' mouse(3)'
+if(mb3 === 'cr')CButtonR1 += ' mouse(3)'
+if(mb3 === 'cl')CButtonL1 += ' mouse(3)'
+if(mb3 === 'cd')CButtonD1 += ' mouse(3)'
+if(mb3 === 'cu')CButtonU1 += ' mouse(3)'
+if(mb3 === 'dpadr')DPadR1 += ' mouse(3)'
+if(mb3 === 'dpadl')DPadL1 += ' mouse(3)'
+if(mb3 === 'dpadd')DPadD1 += ' mouse(3)'
+if(mb3 === 'dpadu')DPadU1 += ' mouse(3)'
+if(mb3 === 'start')Start1 += ' mouse(3)'
+if(mb3 === 'ms')MempakSwitch1 += ' mouse(3)'
+if(mb3 === 'rs')RumblepakSwitch1 += ' mouse(3)'}
 
 
 
-if(id('m1_2').checked){ /* Mouse buttons 2 */
-if(mb1 === 'a'){AButton2 += ' mouse(1)'}
-if(mb1 === 'b'){BButton2 += ' mouse(1)'}
-if(mb1 === 'l'){LTrig2 += ' mouse(1)'}
-if(mb1 === 'r'){RTrig2 += ' mouse(1)'}
-if(mb1 === 'z'){ZTrig2 += ' mouse(1)'}
-if(mb1 === 'cr'){CButtonR2 += ' mouse(1)'}
-if(mb1 === 'cl'){CButtonL2 += ' mouse(1)'}
-if(mb1 === 'cd'){CButtonD2 += ' mouse(1)'}
-if(mb1 === 'cu'){CButtonU2 += ' mouse(1)'}
-if(mb1 === 'dpadr'){DPadR2 += ' mouse(1)'}
-if(mb1 === 'dpadl'){DPadL2 += ' mouse(1)'}
-if(mb1 === 'dpadd'){DPadD2 += ' mouse(1)'}
-if(mb1 === 'dpadu'){DPadU2 += ' mouse(1)'}
-if(mb1 === 'start'){Start2 += ' mouse(1)'}
-if(mb1 === 'ms'){MempakSwitch2 += ' mouse(1)'}
-if(mb1 === 'rs'){RumblepakSwitch2 += ' mouse(1)'}}
+if(id('m1_2').checked){ /* mouse buttons 2 */
+if(mb1 === 'a')AButton2 += ' mouse(1)'
+if(mb1 === 'b')BButton2 += ' mouse(1)'
+if(mb1 === 'l')LTrig2 += ' mouse(1)'
+if(mb1 === 'r')RTrig2 += ' mouse(1)'
+if(mb1 === 'z')ZTrig2 += ' mouse(1)'
+if(mb1 === 'cr')CButtonR2 += ' mouse(1)'
+if(mb1 === 'cl')CButtonL2 += ' mouse(1)'
+if(mb1 === 'cd')CButtonD2 += ' mouse(1)'
+if(mb1 === 'cu')CButtonU2 += ' mouse(1)'
+if(mb1 === 'dpadr')DPadR2 += ' mouse(1)'
+if(mb1 === 'dpadl')DPadL2 += ' mouse(1)'
+if(mb1 === 'dpadd')DPadD2 += ' mouse(1)'
+if(mb1 === 'dpadu')DPadU2 += ' mouse(1)'
+if(mb1 === 'start')Start2 += ' mouse(1)'
+if(mb1 === 'ms')MempakSwitch2 += ' mouse(1)'
+if(mb1 === 'rs')RumblepakSwitch2 += ' mouse(1)'}
 if(id('m2_2').checked){
-if(mb2 === 'a'){AButton2 += ' mouse(2)'}
-if(mb2 === 'b'){BButton2 += ' mouse(2)'}
-if(mb2 === 'l'){LTrig2 += ' mouse(2)'}
-if(mb2 === 'r'){RTrig2 += ' mouse(2)'}
-if(mb2 === 'z'){ZTrig2 += ' mouse(2)'}
-if(mb2 === 'cr'){CButtonR2 += ' mouse(2)'}
-if(mb2 === 'cl'){CButtonL2 += ' mouse(2)'}
-if(mb2 === 'cd'){CButtonD2 += ' mouse(2)'}
-if(mb2 === 'cu'){CButtonU2 += ' mouse(2)'}
-if(mb2 === 'dpadr'){DPadR2 += ' mouse(2)'}
-if(mb2 === 'dpadl'){DPadL2 += ' mouse(2)'}
-if(mb2 === 'dpadd'){DPadD2 += ' mouse(2)'}
-if(mb2 === 'dpadu'){DPadU2 += ' mouse(2)'}
-if(mb2 === 'start'){Start2 += ' mouse(2)'}
-if(mb2 === 'ms'){MempakSwitch2 += ' mouse(2)'}
-if(mb2 === 'rs'){RumblepakSwitch2 += ' mouse(2)'}}
+if(mb2 === 'a')AButton2 += ' mouse(2)'
+if(mb2 === 'b')BButton2 += ' mouse(2)'
+if(mb2 === 'l')LTrig2 += ' mouse(2)'
+if(mb2 === 'r')RTrig2 += ' mouse(2)'
+if(mb2 === 'z')ZTrig2 += ' mouse(2)'
+if(mb2 === 'cr')CButtonR2 += ' mouse(2)'
+if(mb2 === 'cl')CButtonL2 += ' mouse(2)'
+if(mb2 === 'cd')CButtonD2 += ' mouse(2)'
+if(mb2 === 'cu')CButtonU2 += ' mouse(2)'
+if(mb2 === 'dpadr')DPadR2 += ' mouse(2)'
+if(mb2 === 'dpadl')DPadL2 += ' mouse(2)'
+if(mb2 === 'dpadd')DPadD2 += ' mouse(2)'
+if(mb2 === 'dpadu')DPadU2 += ' mouse(2)'
+if(mb2 === 'start')Start2 += ' mouse(2)'
+if(mb2 === 'ms')MempakSwitch2 += ' mouse(2)'
+if(mb2 === 'rs')RumblepakSwitch2 += ' mouse(2)'}
 if(id('m3_2').checked){
-if(mb3 === 'a'){AButton2 += ' mouse(3)'}
-if(mb3 === 'b'){BButton2 += ' mouse(3)'}
-if(mb3 === 'l'){LTrig2 += ' mouse(3)'}
-if(mb3 === 'r'){RTrig2 += ' mouse(3)'}
-if(mb3 === 'z'){ZTrig2 += ' mouse(3)'}
-if(mb3 === 'cr'){CButtonR2 += ' mouse(3)'}
-if(mb3 === 'cl'){CButtonL2 += ' mouse(3)'}
-if(mb3 === 'cd'){CButtonD2 += ' mouse(3)'}
-if(mb3 === 'cu'){CButtonU2 += ' mouse(3)'}
-if(mb3 === 'dpadr'){DPadR2 += ' mouse(3)'}
-if(mb3 === 'dpadl'){DPadL2 += ' mouse(3)'}
-if(mb3 === 'dpadd'){DPadD2 += ' mouse(3)'}
-if(mb3 === 'dpadu'){DPadU2 += ' mouse(3)'}
-if(mb3 === 'start'){Start2 += ' mouse(3)'}
-if(mb3 === 'ms'){MempakSwitch2 += ' mouse(3)'}
-if(mb3 === 'rs'){RumblepakSwitch2 += ' mouse(3)'}}
+if(mb3 === 'a')AButton2 += ' mouse(3)'
+if(mb3 === 'b')BButton2 += ' mouse(3)'
+if(mb3 === 'l')LTrig2 += ' mouse(3)'
+if(mb3 === 'r')RTrig2 += ' mouse(3)'
+if(mb3 === 'z')ZTrig2 += ' mouse(3)'
+if(mb3 === 'cr')CButtonR2 += ' mouse(3)'
+if(mb3 === 'cl')CButtonL2 += ' mouse(3)'
+if(mb3 === 'cd')CButtonD2 += ' mouse(3)'
+if(mb3 === 'cu')CButtonU2 += ' mouse(3)'
+if(mb3 === 'dpadr')DPadR2 += ' mouse(3)'
+if(mb3 === 'dpadl')DPadL2 += ' mouse(3)'
+if(mb3 === 'dpadd')DPadD2 += ' mouse(3)'
+if(mb3 === 'dpadu')DPadU2 += ' mouse(3)'
+if(mb3 === 'start')Start2 += ' mouse(3)'
+if(mb3 === 'ms')MempakSwitch2 += ' mouse(3)'
+if(mb3 === 'rs')RumblepakSwitch2 += ' mouse(3)'}
 
 
 
-if(id('m1_3').checked){ /* Mouse buttons 3 */
-if(mb1 === 'a'){AButton3 += ' mouse(1)'}
-if(mb1 === 'b'){BButton3 += ' mouse(1)'}
-if(mb1 === 'l'){LTrig3 += ' mouse(1)'}
-if(mb1 === 'r'){RTrig3 += ' mouse(1)'}
-if(mb1 === 'z'){ZTrig3 += ' mouse(1)'}
-if(mb1 === 'cr'){CButtonR3 += ' mouse(1)'}
-if(mb1 === 'cl'){CButtonL3 += ' mouse(1)'}
-if(mb1 === 'cd'){CButtonD3 += ' mouse(1)'}
-if(mb1 === 'cu'){CButtonU3 += ' mouse(1)'}
-if(mb1 === 'dpadr'){DPadR3 += ' mouse(1)'}
-if(mb1 === 'dpadl'){DPadL3 += ' mouse(1)'}
-if(mb1 === 'dpadd'){DPadD3 += ' mouse(1)'}
-if(mb1 === 'dpadu'){DPadU3 += ' mouse(1)'}
-if(mb1 === 'start'){Start3 += ' mouse(1)'}
-if(mb1 === 'ms'){MempakSwitch3 += ' mouse(1)'}
-if(mb1 === 'rs'){RumblepakSwitch3 += ' mouse(1)'}}
+if(id('m1_3').checked){ /* mouse buttons 3 */
+if(mb1 === 'a')AButton3 += ' mouse(1)'
+if(mb1 === 'b')BButton3 += ' mouse(1)'
+if(mb1 === 'l')LTrig3 += ' mouse(1)'
+if(mb1 === 'r')RTrig3 += ' mouse(1)'
+if(mb1 === 'z')ZTrig3 += ' mouse(1)'
+if(mb1 === 'cr')CButtonR3 += ' mouse(1)'
+if(mb1 === 'cl')CButtonL3 += ' mouse(1)'
+if(mb1 === 'cd')CButtonD3 += ' mouse(1)'
+if(mb1 === 'cu')CButtonU3 += ' mouse(1)'
+if(mb1 === 'dpadr')DPadR3 += ' mouse(1)'
+if(mb1 === 'dpadl')DPadL3 += ' mouse(1)'
+if(mb1 === 'dpadd')DPadD3 += ' mouse(1)'
+if(mb1 === 'dpadu')DPadU3 += ' mouse(1)'
+if(mb1 === 'start')Start3 += ' mouse(1)'
+if(mb1 === 'ms')MempakSwitch3 += ' mouse(1)'
+if(mb1 === 'rs')RumblepakSwitch3 += ' mouse(1)'}
 if(id('m2_3').checked){
-if(mb2 === 'a'){AButton3 += ' mouse(2)'}
-if(mb2 === 'b'){BButton3 += ' mouse(2)'}
-if(mb2 === 'l'){LTrig3 += ' mouse(2)'}
-if(mb2 === 'r'){RTrig3 += ' mouse(2)'}
-if(mb2 === 'z'){ZTrig3 += ' mouse(2)'}
-if(mb2 === 'cr'){CButtonR3 += ' mouse(2)'}
-if(mb2 === 'cl'){CButtonL3 += ' mouse(2)'}
-if(mb2 === 'cd'){CButtonD3 += ' mouse(2)'}
-if(mb2 === 'cu'){CButtonU3 += ' mouse(2)'}
-if(mb2 === 'dpadr'){DPadR3 += ' mouse(2)'}
-if(mb2 === 'dpadl'){DPadL3 += ' mouse(2)'}
-if(mb2 === 'dpadd'){DPadD3 += ' mouse(2)'}
-if(mb2 === 'dpadu'){DPadU3 += ' mouse(2)'}
-if(mb2 === 'start'){Start3 += ' mouse(2)'}
-if(mb2 === 'ms'){MempakSwitch3 += ' mouse(2)'}
-if(mb2 === 'rs'){RumblepakSwitch3 += ' mouse(2)'}}
+if(mb2 === 'a')AButton3 += ' mouse(2)'
+if(mb2 === 'b')BButton3 += ' mouse(2)'
+if(mb2 === 'l')LTrig3 += ' mouse(2)'
+if(mb2 === 'r')RTrig3 += ' mouse(2)'
+if(mb2 === 'z')ZTrig3 += ' mouse(2)'
+if(mb2 === 'cr')CButtonR3 += ' mouse(2)'
+if(mb2 === 'cl')CButtonL3 += ' mouse(2)'
+if(mb2 === 'cd')CButtonD3 += ' mouse(2)'
+if(mb2 === 'cu')CButtonU3 += ' mouse(2)'
+if(mb2 === 'dpadr')DPadR3 += ' mouse(2)'
+if(mb2 === 'dpadl')DPadL3 += ' mouse(2)'
+if(mb2 === 'dpadd')DPadD3 += ' mouse(2)'
+if(mb2 === 'dpadu')DPadU3 += ' mouse(2)'
+if(mb2 === 'start')Start3 += ' mouse(2)'
+if(mb2 === 'ms')MempakSwitch3 += ' mouse(2)'
+if(mb2 === 'rs')RumblepakSwitch3 += ' mouse(2)'}
 if(id('m3_3').checked){
-if(mb3 === 'a'){AButton3 += ' mouse(3)'}
-if(mb3 === 'b'){BButton3 += ' mouse(3)'}
-if(mb3 === 'l'){LTrig3 += ' mouse(3)'}
-if(mb3 === 'r'){RTrig3 += ' mouse(3)'}
-if(mb3 === 'z'){ZTrig3 += ' mouse(3)'}
-if(mb3 === 'cr'){CButtonR3 += ' mouse(3)'}
-if(mb3 === 'cl'){CButtonL3 += ' mouse(3)'}
-if(mb3 === 'cd'){CButtonD3 += ' mouse(3)'}
-if(mb3 === 'cu'){CButtonU3 += ' mouse(3)'}
-if(mb3 === 'dpadr'){DPadR3 += ' mouse(3)'}
-if(mb3 === 'dpadl'){DPadL3 += ' mouse(3)'}
-if(mb3 === 'dpadd'){DPadD3 += ' mouse(3)'}
-if(mb3 === 'dpadu'){DPadU3 += ' mouse(3)'}
-if(mb3 === 'start'){Start3 += ' mouse(3)'}
-if(mb3 === 'ms'){MempakSwitch3 += ' mouse(3)'}
-if(mb3 === 'rs'){RumblepakSwitch3 += ' mouse(3)'}}
+if(mb3 === 'a')AButton3 += ' mouse(3)'
+if(mb3 === 'b')BButton3 += ' mouse(3)'
+if(mb3 === 'l')LTrig3 += ' mouse(3)'
+if(mb3 === 'r')RTrig3 += ' mouse(3)'
+if(mb3 === 'z')ZTrig3 += ' mouse(3)'
+if(mb3 === 'cr')CButtonR3 += ' mouse(3)'
+if(mb3 === 'cl')CButtonL3 += ' mouse(3)'
+if(mb3 === 'cd')CButtonD3 += ' mouse(3)'
+if(mb3 === 'cu')CButtonU3 += ' mouse(3)'
+if(mb3 === 'dpadr')DPadR3 += ' mouse(3)'
+if(mb3 === 'dpadl')DPadL3 += ' mouse(3)'
+if(mb3 === 'dpadd')DPadD3 += ' mouse(3)'
+if(mb3 === 'dpadu')DPadU3 += ' mouse(3)'
+if(mb3 === 'start')Start3 += ' mouse(3)'
+if(mb3 === 'ms')MempakSwitch3 += ' mouse(3)'
+if(mb3 === 'rs')RumblepakSwitch3 += ' mouse(3)'}
 
 
 
-if(id('m1_4').checked){ /* Mouse buttons 4 */
-if(mb1 === 'a'){AButton4 += ' mouse(1)'}
-if(mb1 === 'b'){BButton4 += ' mouse(1)'}
-if(mb1 === 'l'){LTrig4 += ' mouse(1)'}
-if(mb1 === 'r'){RTrig4 += ' mouse(1)'}
-if(mb1 === 'z'){ZTrig4 += ' mouse(1)'}
-if(mb1 === 'cr'){CButtonR4 += ' mouse(1)'}
-if(mb1 === 'cl'){CButtonL4 += ' mouse(1)'}
-if(mb1 === 'cd'){CButtonD4 += ' mouse(1)'}
-if(mb1 === 'cu'){CButtonU4 += ' mouse(1)'}
-if(mb1 === 'dpadr'){DPadR4 += ' mouse(1)'}
-if(mb1 === 'dpadl'){DPadL4 += ' mouse(1)'}
-if(mb1 === 'dpadd'){DPadD4 += ' mouse(1)'}
-if(mb1 === 'dpadu'){DPadU4 += ' mouse(1)'}
-if(mb1 === 'start'){Start4 += ' mouse(1)'}
-if(mb1 === 'ms'){MempakSwitch4 += ' mouse(1)'}
-if(mb1 === 'rs'){RumblepakSwitch4 += ' mouse(1)'}}
+if(id('m1_4').checked){ /* mouse buttons 4 */
+if(mb1 === 'a')AButton4 += ' mouse(1)'
+if(mb1 === 'b')BButton4 += ' mouse(1)'
+if(mb1 === 'l')LTrig4 += ' mouse(1)'
+if(mb1 === 'r')RTrig4 += ' mouse(1)'
+if(mb1 === 'z')ZTrig4 += ' mouse(1)'
+if(mb1 === 'cr')CButtonR4 += ' mouse(1)'
+if(mb1 === 'cl')CButtonL4 += ' mouse(1)'
+if(mb1 === 'cd')CButtonD4 += ' mouse(1)'
+if(mb1 === 'cu')CButtonU4 += ' mouse(1)'
+if(mb1 === 'dpadr')DPadR4 += ' mouse(1)'
+if(mb1 === 'dpadl')DPadL4 += ' mouse(1)'
+if(mb1 === 'dpadd')DPadD4 += ' mouse(1)'
+if(mb1 === 'dpadu')DPadU4 += ' mouse(1)'
+if(mb1 === 'start')Start4 += ' mouse(1)'
+if(mb1 === 'ms')MempakSwitch4 += ' mouse(1)'
+if(mb1 === 'rs')RumblepakSwitch4 += ' mouse(1)'}
 if(id('m2_4').checked){
-if(mb2 === 'a'){AButton4 += ' mouse(2)'}
-if(mb2 === 'b'){BButton4 += ' mouse(2)'}
-if(mb2 === 'l'){LTrig4 += ' mouse(2)'}
-if(mb2 === 'r'){RTrig4 += ' mouse(2)'}
-if(mb2 === 'z'){ZTrig4 += ' mouse(2)'}
-if(mb2 === 'cr'){CButtonR4 += ' mouse(2)'}
-if(mb2 === 'cl'){CButtonL4 += ' mouse(2)'}
-if(mb2 === 'cd'){CButtonD4 += ' mouse(2)'}
-if(mb2 === 'cu'){CButtonU4 += ' mouse(2)'}
-if(mb2 === 'dpadr'){DPadR4 += ' mouse(2)'}
-if(mb2 === 'dpadl'){DPadL4 += ' mouse(2)'}
-if(mb2 === 'dpadd'){DPadD4 += ' mouse(2)'}
-if(mb2 === 'dpadu'){DPadU4 += ' mouse(2)'}
-if(mb2 === 'start'){Start4 += ' mouse(2)'}
-if(mb2 === 'ms'){MempakSwitch4 += ' mouse(2)'}
-if(mb2 === 'rs'){RumblepakSwitch4 += ' mouse(2)'}}
+if(mb2 === 'a')AButton4 += ' mouse(2)'
+if(mb2 === 'b')BButton4 += ' mouse(2)'
+if(mb2 === 'l')LTrig4 += ' mouse(2)'
+if(mb2 === 'r')RTrig4 += ' mouse(2)'
+if(mb2 === 'z')ZTrig4 += ' mouse(2)'
+if(mb2 === 'cr')CButtonR4 += ' mouse(2)'
+if(mb2 === 'cl')CButtonL4 += ' mouse(2)'
+if(mb2 === 'cd')CButtonD4 += ' mouse(2)'
+if(mb2 === 'cu')CButtonU4 += ' mouse(2)'
+if(mb2 === 'dpadr')DPadR4 += ' mouse(2)'
+if(mb2 === 'dpadl')DPadL4 += ' mouse(2)'
+if(mb2 === 'dpadd')DPadD4 += ' mouse(2)'
+if(mb2 === 'dpadu')DPadU4 += ' mouse(2)'
+if(mb2 === 'start')Start4 += ' mouse(2)'
+if(mb2 === 'ms')MempakSwitch4 += ' mouse(2)'
+if(mb2 === 'rs')RumblepakSwitch4 += ' mouse(2)'}
 if(id('m3_4').checked){
-if(mb3 === 'a'){AButton4 += ' mouse(3)'}
-if(mb3 === 'b'){BButton4 += ' mouse(3)'}
-if(mb3 === 'l'){LTrig4 += ' mouse(3)'}
-if(mb3 === 'r'){RTrig4 += ' mouse(3)'}
-if(mb3 === 'z'){ZTrig4 += ' mouse(3)'}
-if(mb3 === 'cr'){CButtonR4 += ' mouse(3)'}
-if(mb3 === 'cl'){CButtonL4 += ' mouse(3)'}
-if(mb3 === 'cd'){CButtonD4 += ' mouse(3)'}
-if(mb3 === 'cu'){CButtonU4 += ' mouse(3)'}
-if(mb3 === 'dpadr'){DPadR4 += ' mouse(3)'}
-if(mb3 === 'dpadl'){DPadL4 += ' mouse(3)'}
-if(mb3 === 'dpadd'){DPadD4 += ' mouse(3)'}
-if(mb3 === 'dpadu'){DPadU4 += ' mouse(3)'}
-if(mb3 === 'start'){Start4 += ' mouse(3)'}
-if(mb3 === 'ms'){MempakSwitch4 += ' mouse(3)'}
-if(mb3 === 'rs'){RumblepakSwitch4 += ' mouse(3)'}}
+if(mb3 === 'a')AButton4 += ' mouse(3)'
+if(mb3 === 'b')BButton4 += ' mouse(3)'
+if(mb3 === 'l')LTrig4 += ' mouse(3)'
+if(mb3 === 'r')RTrig4 += ' mouse(3)'
+if(mb3 === 'z')ZTrig4 += ' mouse(3)'
+if(mb3 === 'cr')CButtonR4 += ' mouse(3)'
+if(mb3 === 'cl')CButtonL4 += ' mouse(3)'
+if(mb3 === 'cd')CButtonD4 += ' mouse(3)'
+if(mb3 === 'cu')CButtonU4 += ' mouse(3)'
+if(mb3 === 'dpadr')DPadR4 += ' mouse(3)'
+if(mb3 === 'dpadl')DPadL4 += ' mouse(3)'
+if(mb3 === 'dpadd')DPadD4 += ' mouse(3)'
+if(mb3 === 'dpadu')DPadU4 += ' mouse(3)'
+if(mb3 === 'start')Start4 += ' mouse(3)'
+if(mb3 === 'ms')MempakSwitch4 += ' mouse(3)'
+if(mb3 === 'rs')RumblepakSwitch4 += ' mouse(3)'}
 
 
 
@@ -1575,7 +1575,7 @@ cheats = ['--cheats',activeCheats]}
 
 settings = settings.flatMap((w,i) => (i+1) % 1 === 0 ? ['--set', w] : w) /* insert '--set' */
 
-try {writeGCA(configdir,gcaSettings)} /* write GameCube Adapter settings to file */
+try {writeGCA(configdir,gcaSettings)} /* write GameCube adapter settings to file */
 catch (e) {console.warn(e)}
 
 const parameters = core.concat(settings,nospeedlimit,verbose,cheats,filePath), /* launch parameters */
