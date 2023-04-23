@@ -73,7 +73,7 @@ cp SDL_GameControllerDB/gamecontrollerdb.txt $install_dir
 # Build
 cmake "$toplvl_dir" -G "$generator"
 
-make install DESTDIR="$toplvl_dir" -j$threads
+make install -j$threads
 
 if [[ "$OSTYPE" == "msys"* ]]; then
     make bundle_dependencies
