@@ -70,12 +70,6 @@ The build script `compile.sh` can be run with additional parameters:
 ./compile.sh [generator] [threads] [electron]
 ```
 
-Defaults are:
-
-```
-./compile.sh "make" "logical cores" "see compile.sh"
-```
-
 Use make, download Electron v22.3.6 and use 8 threads for the building process:
 
 ```
@@ -87,8 +81,6 @@ Use ninja for building instead:
 ```
 ./compile.sh ninja
 ```
-
-Other generators are not supported. Latter parameters may be omitted.
 
 
 ## Troubleshooting

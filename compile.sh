@@ -3,11 +3,14 @@ set -ex
 
 
 
-# Variables
-gen="${1:-make}"
+# Parameters
+generator="${1:-make}"
 threads="${2:-$(nproc)}"
 electron="${3:-v22.3.6}"
 
+
+
+# Paths
 script_dir="$(dirname "$0")"
 toplvl_dir="$(realpath "$script_dir")"
 build_dir="$toplvl_dir/build"
@@ -19,22 +22,35 @@ install_dir="$app_dir/m64p"
 core_dir="$install_dir/core"
 plugin_dir="$install_dir/plugin"
 
+
+
+# Platform specific settings
 exe=""
 ext=".so"
 gca="libmupen64plus_input_gca.so"
-generator="Unix Makefiles"
 platform="linux"
 
 if [[ "$OSTYPE" == "msys"* ]]; then
     exe=".exe"
     ext=".dll"
     gca="mupen64plus_input_gca.dll"
-    generator="MSYS Makefiles"
     platform="win32"
 fi
 
-if [[ "$gen" = "ninja" ]] || [[ "$gen" = "Ninja" ]]; then
+
+
+# Generator check
+if [[ "$generator" = "ninja" ]]; then
     generator="Ninja"
+
+elif [[ "$generator" = "make" ]] && [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    generator="Unix Makefiles"
+
+elif [[ "$generator" = "make" ]] && [[ "$OSTYPE" == "msys"* ]]; then
+    generator="MSYS Makefiles"
+
+else
+    generator="$generator"
 fi
 
 
