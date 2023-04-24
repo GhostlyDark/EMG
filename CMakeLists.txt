@@ -15,20 +15,14 @@ if(WIN32)
     set(EXE_EXT ".exe")
     set(GCA_LIB "mupen64plus_input_gca.dll")
     set(CORE_FILE "mupen64plus.dll")
-    set(CORE_FILE_OLD "mupen64old.dll")
-    set(CORE_FILE_HACK "mupen64hack.dll")
 else()
     set(SO_EXT ".so")
     set(EXE_EXT "")
     set(GCA_LIB "libmupen64plus_input_gca.so")
     set(CORE_FILE "mupen64plus.so")
-    set(CORE_FILE_OLD "mupen64old.so")
-    set(CORE_FILE_HACK "mupen64hack.so")
 endif()
 
 set(M64P_CORE_DIR ${CMAKE_BINARY_DIR}/mupen64plus-core)
-set(M64P_CORE_DIR_OLD ${CMAKE_BINARY_DIR}/mupen64plus-core-old)
-set(M64P_CORE_DIR_HACK ${CMAKE_BINARY_DIR}/mupen64plus-core-hack)
 set(APIDIR ${M64P_CORE_DIR}/src/api)
 set(RICE_DIR ${CMAKE_BINARY_DIR}/mupen64plus-video-rice)
 
@@ -39,14 +33,6 @@ if(WIN32)
 	set(GLIDEN64_LIB "${GLIDEN64_BUILD_DIR}/mupen64plus-video-GLideN64${SO_EXT}")
 else()
 	set(GLIDEN64_LIB "${GLIDEN64_BUILD_DIR}/plugin/Release/mupen64plus-video-GLideN64${SO_EXT}")
-endif()
-
-set(GLIDEN64_OCF_DIR "${CMAKE_BINARY_DIR}/mupen64plus-video-GLideN64-ocf")
-set(GLIDEN64_OCF_BUILD_DIR "${GLIDEN64_OCF_DIR}/projects/cmake")
-if(WIN32)
-	set(GLIDEN64_OCF_LIB "${GLIDEN64_OCF_BUILD_DIR}/mupen64plus-video-GLideN64_ocf${SO_EXT}")
-else()
-	set(GLIDEN64_OCF_LIB "${GLIDEN64_OCF_BUILD_DIR}/plugin/Release/mupen64plus-video-GLideN64_ocf${SO_EXT}")
 endif()
 
 set(MUPEN64PLUSCORE_URL "https://github.com/GhostlyDark/mupen64plus-core")
@@ -78,48 +64,12 @@ ExternalProject_Add(mupen64plus-core
     GIT_TAG "origin/emg"
     GIT_SHALLOW 1
 
-    BUILD_COMMAND make all OSD=0 NEW_DYNAREC=1 TARGET=${CORE_FILE}
+    BUILD_COMMAND make all OSD=0 TARGET=${CORE_FILE}
     BUILD_IN_SOURCE False
 
     BINARY_DIR ${M64P_CORE_DIR}/projects/unix
     
     BUILD_BYPRODUCTS ${M64P_CORE_DIR}/projects/unix/${CORE_FILE}
-)
-
-ExternalProject_Add(mupen64plus-core-old
-    SOURCE_DIR mupen64plus-core-old/
-
-    CONFIGURE_COMMAND ""
-    INSTALL_COMMAND ""
-
-    GIT_REPOSITORY ${MUPEN64PLUSCORE_URL}
-    GIT_TAG "origin/emg"
-    GIT_SHALLOW 1
-
-    BUILD_COMMAND make all OSD=0 TARGET=${CORE_FILE_OLD}
-    BUILD_IN_SOURCE False
-
-    BINARY_DIR ${M64P_CORE_DIR_OLD}/projects/unix
-    
-    BUILD_BYPRODUCTS ${M64P_CORE_DIR_OLD}/projects/unix/${CORE_FILE_OLD}
-)
-
-ExternalProject_Add(mupen64plus-core-hack
-    SOURCE_DIR mupen64plus-core-hack/
-
-    CONFIGURE_COMMAND ""
-    INSTALL_COMMAND ""
-
-    GIT_REPOSITORY ${MUPEN64PLUSCORE_URL}
-    GIT_TAG "origin/emg_pi-dma"
-    GIT_SHALLOW 1
-
-    BUILD_COMMAND make all OSD=0 TARGET=${CORE_FILE_HACK}
-    BUILD_IN_SOURCE False
-
-    BINARY_DIR ${M64P_CORE_DIR_HACK}/projects/unix
-    
-    BUILD_BYPRODUCTS ${M64P_CORE_DIR_HACK}/projects/unix/${CORE_FILE_HACK}
 )
 
 ExternalProject_Add(mupen64plus-ui-console
@@ -285,24 +235,6 @@ ExternalProject_Add(mupen64plus-video-GLideN64
     BUILD_BYPRODUCTS ${GLIDEN64_DIR}/ini/GLideN64.custom.ini
 )
 
-ExternalProject_Add(mupen64plus-video-GLideN64-ocf
-    SOURCE_DIR mupen64plus-video-GLideN64-ocf
-
-    GIT_REPOSITORY ${MUPEN64PLUS_GFX_GLIDEN64_URL}
-    GIT_TAG "origin/emg_ocf"
-    GIT_SHALLOW 1
-
-    INSTALL_COMMAND ""
-
-    BUILD_IN_SOURCE False
-    CMAKE_ARGS -DMUPENPLUSAPI=ON -DUSE_SYSTEM_LIBS=ON
-
-    SOURCE_SUBDIR ./src/
-    BINARY_DIR ${GLIDEN64_OCF_BUILD_DIR}
-
-    BUILD_BYPRODUCTS ${GLIDEN64_OCF_LIB}
-)
-
 ExternalProject_Add(mupen64plus-video-parallel
     SOURCE_DIR mupen64plus-video-parallel
 
@@ -377,12 +309,6 @@ set(MUPEN64PLUSCORE_LIB ${BUILD_BYPRODUCTS})
 set(MUPEN64PLUSCORE_INI ${M64P_CORE_DIR}/data/mupen64plus.ini)
 set(MUPEN64PLUSCORE_CHT ${M64P_CORE_DIR}/data/mupencheat.txt)
 
-ExternalProject_Get_property(mupen64plus-core-old BUILD_BYPRODUCTS)
-set(MUPEN64PLUSCORE_LIB_OLD ${BUILD_BYPRODUCTS})
-
-ExternalProject_Get_property(mupen64plus-core-hack BUILD_BYPRODUCTS)
-set(MUPEN64PLUSCORE_LIB_HACK ${BUILD_BYPRODUCTS})
-
 ExternalProject_Get_property(mupen64plus-ui-console BUILD_BYPRODUCTS)
 set(MUPEN64PLUS_UI ${BUILD_BYPRODUCTS})
 
@@ -410,9 +336,6 @@ set(MUPEN64PLUS_PLUGIN_GFX_ANGRYLION ${BUILD_BYPRODUCTS})
 ExternalProject_Get_property(mupen64plus-video-GLideN64 BUILD_BYPRODUCTS)
 set(MUPEN64PLUS_PLUGIN_GFX_GLIDEN64 ${BUILD_BYPRODUCTS})
 
-ExternalProject_Get_property(mupen64plus-video-GLideN64-ocf BUILD_BYPRODUCTS)
-set(MUPEN64PLUS_PLUGIN_GFX_GLIDEN64_OCF ${BUILD_BYPRODUCTS})
-
 ExternalProject_Get_property(mupen64plus-video-parallel BUILD_BYPRODUCTS)
 set(MUPEN64PLUS_PLUGIN_GFX_PARALLEL ${BUILD_BYPRODUCTS})
 
@@ -433,13 +356,7 @@ install(FILES ${SDL_JSTEST}
     DESTINATION ${INSTALL_PATH}
 )
 install(FILES ${MUPEN64PLUSCORE_LIB}
-    DESTINATION ${INSTALL_PATH}/core
-)
-install(FILES ${MUPEN64PLUSCORE_LIB_OLD}
-    DESTINATION ${INSTALL_PATH}/core
-)
-install(FILES ${MUPEN64PLUSCORE_LIB_HACK}
-    DESTINATION ${INSTALL_PATH}/core
+    DESTINATION ${INSTALL_PATH}
 )
 install(FILES ${MUPEN64PLUSCORE_INI} ${MUPEN64PLUSCORE_CHT} ${RICE_INI}
     DESTINATION ${INSTALL_PATH}/data
@@ -466,9 +383,6 @@ install(FILES ${MUPEN64PLUS_PLUGIN_GFX_ANGRYLION}
     DESTINATION ${INSTALL_PATH}/plugin
 )
 install(FILES ${MUPEN64PLUS_PLUGIN_GFX_GLIDEN64}
-    DESTINATION ${INSTALL_PATH}/plugin
-)
-install(FILES ${MUPEN64PLUS_PLUGIN_GFX_GLIDEN64_OCF}
     DESTINATION ${INSTALL_PATH}/plugin
 )
 install(FILES ${MUPEN64PLUS_PLUGIN_GFX_PARALLEL}

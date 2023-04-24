@@ -19,7 +19,6 @@ emg_dir="$build_dir/EMG"
 app_dir="$emg_dir/resources/app"
 ico_dir="$app_dir/ico"
 install_dir="$app_dir/m64p"
-core_dir="$install_dir/core"
 plugin_dir="$install_dir/plugin"
 
 
@@ -131,10 +130,7 @@ fi
 
 
 # Strip binaries
-if [[ "$OSTYPE" == "msys"* ]]; then
-    for f in $install_dir/*$ext; do strip --strip-unneeded $f; done
-fi
-for f in $core_dir/*$ext; do strip --strip-unneeded $f; done
+for f in $install_dir/*$ext; do strip --strip-unneeded $f; done
 for f in $plugin_dir/*$ext; do strip --strip-unneeded $f; done
 
 

@@ -88,14 +88,7 @@
 <option data-width="2560" data-height="1920" value="2560x1920">2560x1920</option>
 </select><label for="resolution">Windowed resolution</label>
 <p>&nbsp;</p>
-<div title="Using the new dynamic recompiler improves performance but can cause stability issues.
-Use the core with improved ROM hack compatibility for ROM hacks that won't work on real hardware."><select class="width250m" name="coreVersion" id="coreVersion">
-<option value="mupen64old" selected>Default</option>
-<option value="mupen64plus">New Dynamic Recompiler</option>
-<option value="mupen64hack">ROM Hack Compatibility</option>
-</select><label for="coreVersion">Core version</label></div>
-<p>&nbsp;</p>
-<div title="Dynamic Recompiler offers the best performance. Change this upon encountering issues."><select class="width250m" name="emumode" id="emumode">
+<div title="Dynamic Recompiler offers the best performance. Change this upon encountering issues."><select name="emumode" id="emumode">
 <option value="0">Pure Interpreter</option>
 <option value="1">Cached Interpreter</option>
 <option value="2" selected>Dynamic Recompiler</option>
@@ -1354,11 +1347,6 @@ If this option is turned off, the output resolution is the same as the rendering
 <p>&nbsp;</p>
 <p title="Don't filter background textures."><input id="txFilterIgnoreBG" type="checkbox" data-store="txFilterIgnoreBG"><label for="txFilterIgnoreBG">Disable background filtering</label></p>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
-<div title="The old cache format ignores the texture size and format information, which is useful for textures extracted from cache files with the old format."><select class="width200m" name="gliden64Version" id="gliden64Version">
-<option value="_" selected>Default</option>
-<option value="_ocf">Old Cache Format</option>
-</select><label for="gliden64Version">GLideN64 version</label></div>
-<p>&nbsp;</p>
 <p><input id="txHiresEnable" type="checkbox" data-store="txHiresEnable" checked><label for="txHiresEnable">Enable HD textures</label></p>
 <p>&nbsp;</p>
 <p title="Use alternative method for paletted textures CRC calculation. Activate for old Rice packs."><input id="txHresAltCRC" type="checkbox" data-store="txHresAltCRC"><label for="txHresAltCRC">Alternative CRC calculation</label></p>

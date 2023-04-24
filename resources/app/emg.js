@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 var cheatRadio,filePath,fileResult,txPath,txPathResult,txCachePath,txCachePathResult,txDumpPath,txDumpPathResult,IPLROM,IPLROMResult,Disk,DiskResult,ConfigPath,ConfigPathResult,ScreenshotPath,ScreenshotPathResult,SaveStatePath,SaveStatePathResult,SaveSRAMPath,SaveSRAMPathResult,gbROM1,gbROM1Result,gbROM2,gbROM2Result,gbROM3,gbROM3Result,gbROM4,gbROM4Result,gbRAM1,gbRAM1Result,gbRAM2,gbRAM2Result,gbRAM3,gbRAM3Result,gbRAM4,gbRAM4Result,
 
-recentFiles = [], corefile = 'core/mupen64plus';
+recentFiles = [];
 
 const textInputs = document.querySelectorAll("input[type='text']"),
 
@@ -48,20 +48,20 @@ overscan = ['OverscanNtscTop','OverscanNtscLeft','OverscanNtscRight','OverscanNt
 numbers = [...overscan,'NumWorkers','ParallelCropOverscan','ParallelVerticalStretch','txCacheSize','txHiresVramLimit','GammaCorrectionLevel','fontSize','CountPerOp','CountPerOpDenomPot','SiDmaDuration','CurrentStateSlot','VOLUME_ADJUST','VOLUME_DEFAULT','PolygonOffsetFactor','PolygonOffsetUnits'],
 
 dropdowns = [
-'emumode','coreVersion','resolution','SaveDiskFormat', /* mupen64plus */
+'emumode','resolution','SaveDiskFormat', /* mupen64plus */
 'gfx','audio','input','rsp','RspFallback', /* mupen64plus plugins */
 'plugin1','plugin2','plugin3','plugin4','c1','c2','c3','c4','mb1','mb2','mb3', /* mupen64plus-input */
 'PRIMARY_BUFFER_TARGET','RESAMPLE', /* mupen64plus-audio */
 'a','b','x','y','start','z','l','r','d_pad_left','d_pad_right','d_pad_down','d_pad_up','c_stick_left','c_stick_right','c_stick_down','c_stick_up', /* mupen64plus-input-gca */
-'msaa','aspectRatio','bufferSwapMode','CountersPos','useNativeResolutionFactor','anisotropy','cache','RDRAMImageDitheringMode','CorrectTexrectCoords','EnableNativeResTexrects','BackgroundsMode','EnableN64DepthCompare','EnableCopyColorToRDRAM','EnableCopyDepthToRDRAM','txFilterMode','txEnhancementMode','gliden64Version', /* GLideN64 */
+'msaa','aspectRatio','bufferSwapMode','CountersPos','useNativeResolutionFactor','anisotropy','cache','RDRAMImageDitheringMode','CorrectTexrectCoords','EnableNativeResTexrects','BackgroundsMode','EnableN64DepthCompare','EnableCopyColorToRDRAM','EnableCopyDepthToRDRAM','txFilterMode','txEnhancementMode', /* GLideN64 */
 'ViMode','ViInterpolation','DpCompat', /* Angrylion-Plus */
 'ParallelUpscaling','ParallelDeinterlaceMode','ParallelDownScale', /* Parallel */
 'FrameBufferWriteBackControl','RenderToTexture','ScreenUpdateSetting','Mipmapping','ForceTextureFilter','RiceMultiSampling','AnisotropicFiltering' /* Rice */];
 
 
 
-var ext = isLinux ? '.so' : '.dll';
-corefile += ext; /* core file for cheats */
+var ext = isLinux ? '.so' : '.dll',
+corelib = 'mupen64plus' + ext;
 if(!isLinux)id('master_volume').style.display = 'none'; /* hide platform specific settings */
 
 
@@ -433,7 +433,7 @@ Array.from(id('recent').getElementsByTagName('option')).forEach(opt => {if(opt.i
 id('listCheats').addEventListener('click', function(){ /* generate cheat list */
 var cheats = '';
 id('cheatList').innerHTML = '';
-const parameters = ['--corelib',corefile,'--datadir','data','--cheats','list',filePath],
+const parameters = ['--corelib',corelib,'--datadir','data','--cheats','list',filePath],
 child = showCheats(parameters);
 if(child.includes('AttachCoreLib() Error:') || child === ''){id('cheatList').innerHTML = 'Failed to open Mupen64Plus.';return}
 if(child.includes("couldn't open ROM file")){id('cheatList').innerHTML = 'Unable to open ROM file.';return}
@@ -772,8 +772,7 @@ id('fontColor').addEventListener('change', function(){localStorage.setItem('font
 
 
 id('launch').addEventListener('click', function(){
-var corelib = corefile,
-configdir = ConfigPath,
+var configdir = ConfigPath,
 exp = 'Core[DisableExtraMem]=' + id('exp').checked,
 SaveFilenameFormat = 'Core[SaveFilenameFormat]=' + (id('SaveFilenameFormat').checked ? '1' : '0'),
 osd = 'Core[OnScreenDisplay]=false',
@@ -1190,9 +1189,6 @@ StickD4bvalue = id('StickD4cb').value.replace(regjoy,''),
 buttonType1 = '',buttonType1B = '',buttonType2 = '',buttonType2B = '',buttonType3 = '',buttonType3B = '',buttonType4 = '',buttonType4B = '',
 
 gcaSettings = 'control_stick_deadzone = ' +  id('control_stick_deadzone').value + '\n' + 'control_stick_sensitivity = ' + id('control_stick_sensitivity').value + '\n' + 'c_stick_deadzone = ' + id('c_stick_deadzone').value + '\n' + 'trigger_threshold = ' + id('trigger_threshold').value + '\n\n' + '[controller_mapping]' + '\n' + 'a = ' + id('a').value + '\n' + 'b = ' + id('b').value + '\n' + 'x = ' + id('x').value + '\n' + 'y = ' + id('y').value + '\n' + 'start = ' + id('start').value + '\n' + 'z = ' + id('z').value + '\n' + 'l = ' + id('l').value + '\n' + 'r = ' + id('r').value + '\n' + 'd_pad_left = ' + id('d_pad_left').value + '\n' + 'd_pad_right = ' + id('d_pad_right').value + '\n' + 'd_pad_down = ' + id('d_pad_down').value + '\n' + 'd_pad_up = ' + id('d_pad_up').value + '\n' + 'c_stick_left = ' + id('c_stick_left').value + '\n' + 'c_stick_right = ' + id('c_stick_right').value + '\n' + 'c_stick_down = ' + id('c_stick_down').value + '\n' + 'c_stick_up = ' + id('c_stick_up').value;
-
-corelib = 'core/' + id('coreVersion').value + ext;
-if(id('gliden64Version').value != '_')gfx = 'mupen64plus-video-GLideN64' + id('gliden64Version').value + ext
 
 if(gfx.includes('angrylion') || gfx.includes('parallel')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=false'} /* prevent crashes caused by wrong RSP settings */
 else if(gfx.includes('rice')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=true'}

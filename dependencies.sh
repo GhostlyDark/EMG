@@ -23,7 +23,7 @@ function findAndCopyDLL() {
     return 0
 }
 
-for file in "$bin_dir"/*.exe "$bin_dir"/*/*.dll
+for file in "$bin_dir"/*.exe "$bin_dir"/*.dll "$bin_dir"/*/*.dll
 do
 	echo "=> Copying dependencies for $file"
 	copyForOBJ "$file"
