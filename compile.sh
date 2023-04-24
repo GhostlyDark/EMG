@@ -132,10 +132,10 @@ fi
 
 # Strip binaries
 if [[ "$OSTYPE" == "msys"* ]]; then
-    for f in $install_dir/*$ext; do strip -s $f; done
+    for f in $install_dir/*$ext; do strip --strip-unneeded $f; done
 fi
-for f in $core_dir/*$ext; do strip -s $f; done
-for f in $plugin_dir/*$ext; do strip -s $f; done
+for f in $core_dir/*$ext; do strip --strip-unneeded $f; done
+for f in $plugin_dir/*$ext; do strip --strip-unneeded $f; done
 
 
 
