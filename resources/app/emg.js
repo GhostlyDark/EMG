@@ -6,6 +6,10 @@ recentFiles = [];
 
 const textInputs = document.querySelectorAll("input[type='text']"),
 
+ext = isLinux ? '.so' : '.dll',
+
+corelib = 'mupen64plus' + ext,
+
 regjoy = /axis|button|hat|\(|\)/g, regsplit = /\s*\n/, regradio = /^\s\s\s/g, regbox = /_.*/g, regc = /\:/g, regid = /^\d: |^\d\d: /,
 
 keyScroll = {32:1,33:1,34:1,35:1,36:1,37:1,38:1,39:1,40:1}, /* spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36, left: 37, up: 38, right: 39, down: 40 */
@@ -41,6 +45,8 @@ m64p_joykeys = [
 'JoyMappingStop3','JoyMappingFullscreen3','JoyMappingSaveState3','JoyMappingLoadState3','JoyMappingIncrementSlot3','JoyMappingReset3','JoyMappingSpeedDown3','JoyMappingSpeedUp3','JoyMappingScreenshot3','JoyMappingPause3','JoyMappingMute3','JoyMappingIncreaseVolume3','JoyMappingDecreaseVolume3','JoyMappingFastForward3','JoyMappingFrameAdvance3','JoyMappingGameshark3',
 'JoyMappingStop4','JoyMappingFullscreen4','JoyMappingSaveState4','JoyMappingLoadState4','JoyMappingIncrementSlot4','JoyMappingReset4','JoyMappingSpeedDown4','JoyMappingSpeedUp4','JoyMappingScreenshot4','JoyMappingPause4','JoyMappingMute4','JoyMappingIncreaseVolume4','JoyMappingDecreaseVolume4','JoyMappingFastForward4','JoyMappingFrameAdvance4','JoyMappingGameshark4'],
 
+defaultPlugins = ['mupen64plus-audio-sdl','mupen64plus-input-gca','mupen64plus-input-raphnetraw','mupen64plus-input-sdl','mupen64plus-rsp-cxd4','mupen64plus-rsp-hle','mupen64plus-rsp-parallel','mupen64plus-video-angrylion-plus','mupen64plus-video-GLideN64','mupen64plus-video-parallel','mupen64plus-video-rice'],
+
 sliders = ['AnalogDeadzone1','AnalogDeadzone2','AnalogDeadzone3','AnalogDeadzone4','AnalogPeak1','AnalogPeak2','AnalogPeak3','AnalogPeak4','control_stick_deadzone','control_stick_sensitivity','c_stick_deadzone','trigger_threshold','MouseSensitivityX','MouseSensitivityY'],
 
 overscan = ['OverscanNtscTop','OverscanNtscLeft','OverscanNtscRight','OverscanNtscBottom','OverscanPalTop','OverscanPalLeft','OverscanPalRight','OverscanPalBottom'],
@@ -60,9 +66,54 @@ dropdowns = [
 
 
 
-var ext = isLinux ? '.so' : '.dll',
-corelib = 'mupen64plus' + ext;
 if(!isLinux)id('master_volume').style.display = 'none'; /* hide platform specific settings */
+
+
+
+const pluginFiles = pluginDir.filter(name => name.includes(ext)), pluginNames = []; /* add unknown plugins */
+pluginFiles.forEach(name => pluginNames.push(name.replace(/\..*/,'')));
+
+const [dirSet,defaultSet] = [new Set(pluginNames), new Set(defaultPlugins)],
+newPlugins = [...dirSet].filter(name => !defaultSet.has(name)),
+audioPlugins = newPlugins.filter(name => name.includes('mupen64plus-audio-')),
+inputPlugins = newPlugins.filter(name => name.includes('mupen64plus-input-')),
+rspPlugins = newPlugins.filter(name => name.includes('mupen64plus-rsp-')),
+videoPlugins = newPlugins.filter(name => name.includes('mupen64plus-video-'));
+
+audioPlugins.forEach(name => addAudioPlugin(name));
+inputPlugins.forEach(name => addInputPlugin(name));
+rspPlugins.forEach(name => {addRspPlugin(name);addRspFallbackPlugin(name)});
+videoPlugins.forEach(name => addVideoPlugin(name));
+
+function addAudioPlugin(name){
+var newPlugin = document.createElement('option');
+newPlugin.value = name;
+newPlugin.innerHTML = name.replace('mupen64plus-audio-','');
+if(name != '')id('audio').appendChild(newPlugin)}
+
+function addInputPlugin(name){
+var newPlugin = document.createElement('option');
+newPlugin.value = name;
+newPlugin.innerHTML = name.replace('mupen64plus-input-','');
+if(name != '')id('input').appendChild(newPlugin)}
+
+function addRspPlugin(name){
+var newPlugin = document.createElement('option');
+newPlugin.value = name;
+newPlugin.innerHTML = name.replace('mupen64plus-rsp-','');
+if(name != '')id('rsp').appendChild(newPlugin)}
+
+function addRspFallbackPlugin(name){
+var newPlugin = document.createElement('option');
+newPlugin.value = name;
+newPlugin.innerHTML = name.replace('mupen64plus-rsp-','');
+if(name != '')id('RspFallback').appendChild(newPlugin)}
+
+function addVideoPlugin(name){
+var newPlugin = document.createElement('option');
+newPlugin.value = name;
+newPlugin.innerHTML = name.replace('mupen64plus-video-','');
+if(name != '')id('gfx').appendChild(newPlugin)}
 
 
 
@@ -280,7 +331,8 @@ localStorage.setItem(number, number_input.value)}})})
 function rspDropdownDisable(){ /* disable or hide inputs */
 if(id('rsp').value.includes('rsp-hle')){id('RspFallback').disabled = false;id('rspGFX').disabled = true}
 else if(id('rsp').value.includes('rsp-cxd4')){id('RspFallback').disabled = true;id('rspGFX').disabled = false}
-else if(id('rsp').value.includes('rsp-parallel')){id('RspFallback').disabled = true;id('rspGFX').disabled = true}}
+else if(id('rsp').value.includes('rsp-parallel')){id('RspFallback').disabled = true;id('rspGFX').disabled = true}
+else{id('RspFallback').disabled = true}}
 id('rsp').addEventListener('change', rspDropdownDisable)
 rspDropdownDisable()
 

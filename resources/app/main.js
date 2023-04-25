@@ -4,6 +4,7 @@ childSpawn = require('child_process').spawn,
 childSpawnSync = require('child_process').spawnSync,
 existsSync = require('fs').existsSync,
 mkdirSync = require('fs').mkdirSync,
+readdirSync = require('fs').readdirSync,
 writeFileSync = require('fs').writeFileSync,
 url = require('url').URL,
 path = require('path').join,
@@ -12,6 +13,7 @@ appData = app.getPath('appData'),
 m64pConfig = path(appData, 'mupen64plus'),
 emg = path(appData, 'EMG'),
 cwd = path(dir, 'm64p'),
+pluginDir = path(cwd, 'plugin'),
 testROM = path(cwd, 'mupen64plus.z64'),
 executablePath = path(cwd, 'mupen64plus'),
 jstestPath = path(cwd, 'sdl2-jstest'),
@@ -80,6 +82,7 @@ ipcMain.on('writeGCA', (e, gcaSettings, configdir) => {
 ipcMain.on('cwd', (e) => {e.returnValue = cwd})
 ipcMain.on('testROM', (e) => {e.returnValue = testROM})
 ipcMain.on('executablePath', (e) => {e.returnValue = executablePath})
+ipcMain.on('pluginDir', (e) => {e.returnValue = readdirSync(pluginDir)})
 ipcMain.on('jstestPath', (e) => {e.returnValue = jstestPath})
 ipcMain.on('jstestKill', () => {if(jstestChild != undefined)jstestChild.kill('SIGTERM')})
 ipcMain.on('config', (e) => {e.returnValue = m64pConfig})
