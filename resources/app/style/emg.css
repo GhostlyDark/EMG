@@ -68,8 +68,8 @@ header{padding:0;max-width:730px}
 header ul{list-style-type:none;margin:0;padding:0;overflow:hidden}
 header li{float:left;margin:0}
 header li a{color:#fff!important;display:block;text-align:center;padding:19px 15px 16px 15px;border:0;transition:background-color .2s cubic-bezier(.4,0,.22,1)}
-header li a:hover,header li a.active{background-color:rgba(0,0,0,.5)}
-header li:last-child{float:right;background-color:rgba(0,0,0,.25);padding-right:0!important}
+header li a:hover,header li a.active{background-color:rgba(0,0,0,.3)}
+header li:last-child{float:right;padding-right:0!important}
 
 #launch{margin-bottom:-14.5px;position:relative;top:-4px}
 #launch img{width:32px;margin-bottom:0;filter:grayscale(100%);transition:filter .2s cubic-bezier(.4,0,.22,1)}
@@ -78,11 +78,11 @@ header li:last-child{float:right;background-color:rgba(0,0,0,.25);padding-right:
 
 .dropdown{background:rgba(100,100,200,.98)}
 .dark .dropdown{background:rgba(75,75,175,.98)}
-.palette-red .dropdown{background:rgba(188,53,70,.98)}.dark.palette-red .dropdown{background:rgba(158,33,50,.98)}
-.palette-green .dropdown{background:rgba(45,135,85,.98)}.dark.palette-green .dropdown{background:rgba(30,115,70,.98)}
-.palette-purple .dropdown{background:rgba(115,80,200,.98)}.dark.palette-purple .dropdown{background:rgba(100,65,195,.98)}
-.palette-ice .dropdown{background:rgba(30,135,200,.98)}.dark.palette-ice .dropdown{background:rgba(10,115,180,.98)}
-.palette-ocean .dropdown{background:rgba(65,105,225,.98)}.dark.palette-ocean .dropdown{background:rgba(45,85,205,.98)}
+.palette-red .dropdown{background:rgba(218,83,100,.98)}.dark.palette-red .dropdown{background:rgba(188,63,80,.98)}
+.palette-green .dropdown{background:rgba(75,165,115,.98)}.dark.palette-green .dropdown{background:rgba(60,145,100,.98)}
+.palette-purple .dropdown{background:rgba(145,110,230,.98)}.dark.palette-purple .dropdown{background:rgba(130,95,225,.98)}
+.palette-ice .dropdown{background:rgba(60,165,230,.98)}.dark.palette-ice .dropdown{background:rgba(40,145,210,.98)}
+.palette-ocean .dropdown{background:rgba(95,135,255,.98)}.dark.palette-ocean .dropdown{background:rgba(75,115,235,.98)}
 
 .ul-buttons{list-style-type:none;margin:5px auto -5px auto;padding:0;overflow:hidden}
 .ul-buttons li{cursor:pointer;float:left;margin:0 3px;display:block;padding:9px 15px;border:0;transition:background-color .2s cubic-bezier(.4,0,.22,1),color .2s cubic-bezier(.4,0,.22,1);border-radius:25px;color:#666}
