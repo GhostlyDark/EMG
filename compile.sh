@@ -132,8 +132,3 @@ fi
 # Strip binaries
 for f in $install_dir/*$ext; do strip --strip-unneeded $f; done
 for f in $plugin_dir/*$ext; do strip --strip-unneeded $f; done
-
-
-
-# Run
-build/EMG/EMG
