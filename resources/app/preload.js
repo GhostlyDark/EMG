@@ -1,7 +1,5 @@
 const {contextBridge,ipcRenderer} = require('electron'),
-cwd = ipcRenderer.sendSync('cwd'),
 testROM = ipcRenderer.sendSync('testROM'),
-executablePath = ipcRenderer.sendSync('executablePath'),
 pluginDir = ipcRenderer.sendSync('pluginDir'),
 config = ipcRenderer.sendSync('config'),
 screenshot = ipcRenderer.sendSync('screenshot'),

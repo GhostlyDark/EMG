@@ -79,9 +79,7 @@ ipcMain.on('writeGCA', (e, gcaSettings, configdir) => {
 	e.returnValue = writeFileSync(path(configdir,'mupen64plus-input-gca.toml'),gcaSettings)
 })
 
-ipcMain.on('cwd', (e) => {e.returnValue = cwd})
 ipcMain.on('testROM', (e) => {e.returnValue = testROM})
-ipcMain.on('executablePath', (e) => {e.returnValue = executablePath})
 ipcMain.on('pluginDir', (e) => {e.returnValue = readdirSync(pluginDir)})
 ipcMain.on('jstestPath', (e) => {e.returnValue = jstestPath})
 ipcMain.on('jstestKill', () => {if(jstestChild != undefined)jstestChild.kill('SIGTERM')})
