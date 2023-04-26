@@ -71,6 +71,11 @@ header li a{color:#fff!important;display:block;text-align:center;padding:19px 15
 header li a:hover,header li a.active{background-color:rgba(0,0,0,.5)}
 header li:last-child{float:right;background-color:rgba(0,0,0,.25);padding-right:0!important}
 
+#launch{margin-bottom:-14.5px;position:relative;top:-4px}
+#launch img{width:32px;margin-bottom:0;filter:grayscale(100%);transition:filter .2s cubic-bezier(.4,0,.22,1)}
+#launch:hover img{filter:grayscale(0)}
+#launch span{position:relative;top:-10px}
+
 .dropdown{background:rgba(100,100,200,.98)}
 .dark .dropdown{background:rgba(75,75,175,.98)}
 .palette-red .dropdown{background:rgba(188,53,70,.98)}.dark.palette-red .dropdown{background:rgba(158,33,50,.98)}
