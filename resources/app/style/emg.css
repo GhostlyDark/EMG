@@ -67,11 +67,13 @@ input.left{text-align:left}
 header{padding:0;max-width:730px}
 header ul{list-style-type:none;margin:0;padding:0;overflow:hidden}
 header li{float:left;margin:0}
-header li a{color:#fff!important;display:block;text-align:center;padding:19px 15px 16px 15px;border:0;transition:background-color .2s cubic-bezier(.4,0,.22,1)}
+header li a{color:#fff!important;display:block;text-align:center;padding:14px 15px 6.5px 15px;border:0;transition:background-color .2s cubic-bezier(.4,0,.22,1)}
 header li a:hover,header li a.active{background-color:rgba(0,0,0,.3)}
 header li:last-child{float:right;padding-right:0!important}
+header img{width:32px;pointer-events:none}
+header .headerText{position:relative;top:-10px;pointer-events:none}
 
-#launch{margin-bottom:-14.5px;position:relative;top:-4px}
+#launch{margin-bottom:-14.5px}
 #launch img{width:32px;margin-bottom:0;filter:grayscale(100%);transition:filter .2s cubic-bezier(.4,0,.22,1)}
 #launch:hover img{filter:grayscale(0)}
 #launch span{position:relative;top:-10px}
@@ -101,6 +103,9 @@ header li:last-child{float:right;padding-right:0!important}
 .ml-33{margin-left:33px}
 .ml-42{margin-left:42px}
 .ml-105{margin-left:105px}
+.pl-2{padding-left:2px}
+.pl-4{padding-left:4px}
+.pl-6{padding-left:6px}
 #cheatList input[id*=_]{margin-left:40px}
 #recent{width:620px}
 #c1,#c2,#c3,#c4{width:600px}
