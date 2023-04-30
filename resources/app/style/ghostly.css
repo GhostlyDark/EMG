@@ -368,6 +368,37 @@ li a:hover,.link a:hover,p a:hover{color:rgb(100,100,200);border-bottom-color:rg
 .dark li a:hover,.dark .link a:hover,.dark p a:hover{color:rgb(125,125,225);border-bottom-color:rgb(125,125,225)}
 td a,.youtube a{border:0!important}
 
+.tabbed{overflow:hidden}
+.tabbed [type='radio'],.tab-content{display:none}
+.tabs{list-style-type:none;text-align:center;margin:-5px auto 20px auto;padding:0}
+.tab{display:inline-block;padding:3px;-webkit-tap-highlight-color:rgba(255,255,255,0);-webkit-focus-ring-color:rgba(0,0,0,0)}
+.tab > label{cursor:pointer;line-height:40px;padding:13px;border:0;transition:background-color .2s cubic-bezier(.4,0,.22,1),color .2s cubic-bezier(.4,0,.22,1);border-radius:25px;color:#666}
+.dark .tab > label{color:#aaa}
+.tab:hover label{background-color:rgb(225,225,225)}
+.dark .tab:hover label{background-color:rgb(35,35,35)}
+
+.tabbed [type='radio']:nth-of-type(1):checked ~ .tabs .tab:nth-of-type(1) label,
+.tabbed [type='radio']:nth-of-type(2):checked ~ .tabs .tab:nth-of-type(2) label,
+.tabbed [type='radio']:nth-of-type(3):checked ~ .tabs .tab:nth-of-type(3) label{background-color:rgb(225,225,225);color:#000}
+
+.dark .tabbed [type='radio']:nth-of-type(1):checked ~ .tabs .tab:nth-of-type(1) label,
+.dark .tabbed [type='radio']:nth-of-type(2):checked ~ .tabs .tab:nth-of-type(2) label,
+.dark .tabbed [type='radio']:nth-of-type(3):checked ~ .tabs .tab:nth-of-type(3) label{background-color:rgb(35,35,35);color:#eee}
+
+.custom .tab:hover label,
+.custom .tabbed [type='radio']:nth-of-type(1):checked ~ .tabs .tab:nth-of-type(1) label,
+.custom .tabbed [type='radio']:nth-of-type(2):checked ~ .tabs .tab:nth-of-type(2) label,
+.custom .tabbed [type='radio']:nth-of-type(3):checked ~ .tabs .tab:nth-of-type(3) label{background-color:rgba(200,200,200,.7)}
+
+.dark.custom .tab:hover label,
+.dark.custom .tabbed [type='radio']:nth-of-type(1):checked ~ .tabs .tab:nth-of-type(1) label,
+.dark.custom .tabbed [type='radio']:nth-of-type(2):checked ~ .tabs .tab:nth-of-type(2) label,
+.dark.custom .tabbed [type='radio']:nth-of-type(3):checked ~ .tabs .tab:nth-of-type(3) label{background-color:rgba(35,35,35,.7)}
+
+.tabbed [type='radio']:nth-of-type(1):checked ~ .tab-content:nth-of-type(1),
+.tabbed [type='radio']:nth-of-type(2):checked ~ .tab-content:nth-of-type(2),
+.tabbed [type='radio']:nth-of-type(3):checked ~ .tab-content:nth-of-type(3){display:block}
+
 .lazyloading{opacity:.001}
 .lazyloaded{opacity:1;transition:opacity .2s cubic-bezier(.4,0,.22,1)}
 .picture:after{content:'';display:block;height:0;width:100%;padding-bottom:56.25%}
