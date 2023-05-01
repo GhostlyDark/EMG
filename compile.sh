@@ -66,7 +66,7 @@ cp -R resources $emg_dir/resources
 pushd "$build_dir"
 
 [ ! -f electron-$electron-$platform-x64.zip ] && wget https://github.com/electron/electron/releases/download/$electron/electron-$electron-$platform-x64.zip
-7z x electron-$electron-$platform-x64.zip -oEMG '-x!LICENSE' '-x!LICENSES.chromium.html' '-x!resources/default_app.asar' -y
+7z x electron-$electron-$platform-x64.zip -oEMG '-x!LICENSE' '-x!LICENSES.chromium.html' '-x!version' '-x!resources/default_app.asar' -y
 
 if [[ "$OSTYPE" == "msys"* ]]; then
     [ ! -f rcedit-x64.exe ] && wget https://github.com/electron/rcedit/releases/download/v1.1.1/rcedit-x64.exe
