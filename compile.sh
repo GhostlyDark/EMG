@@ -6,7 +6,7 @@ set -ex
 # Parameters
 generator="${1:-make}"
 threads="${2:-$(nproc)}"
-electron="${3:-v22.3.7}"
+electron="${3:-v22.3.8}"
 
 
 
