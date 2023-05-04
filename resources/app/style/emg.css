@@ -87,7 +87,7 @@ header .headerText{position:relative;top:-10px;pointer-events:none}
 .palette-ocean .dropdown{background:rgba(95,135,255,.98)}.dark.palette-ocean .dropdown{background:rgba(75,115,235,.98)}
 
 .ul-buttons{list-style-type:none;margin:5px auto -5px auto;padding:0;overflow:hidden;text-align:center}
-.ul-buttons li{cursor:pointer;margin:0 3px;display:inline-block;padding:9px 13px;border:0;transition:background-color .2s cubic-bezier(.4,0,.22,1),color .2s cubic-bezier(.4,0,.22,1);border-radius:25px;color:#666}
+.ul-buttons li{cursor:pointer;margin:0 3px;display:inline-block;padding:6px 13px;border:0;transition:background-color .2s cubic-bezier(.4,0,.22,1),color .2s cubic-bezier(.4,0,.22,1);border-radius:25px;color:#666}
 .dark .ul-button li{color:#aaa}
 .ul-buttons li.active{color:#000}
 .dark .ul-buttons li.active{color:#eee}
