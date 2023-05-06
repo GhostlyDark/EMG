@@ -8,7 +8,7 @@ const textInputs = document.querySelectorAll("input[type='text']"),
 
 ext = isLinux ? '.so' : '.dll',
 
-corelib = 'mupen64plus' + ext,
+corelib = './mupen64plus' + ext,
 
 regjoy = /axis|button|hat|\(|\)/g, regsplit = /\s*\n/, regradio = /^\s\s\s/g, regbox = /_.*/g, regc = /\:/g, regid = /^\d: |^\d\d: /,
 
