@@ -44,6 +44,7 @@ set(MUPEN64PLUS_RSP_HLE_URL "https://github.com/GhostlyDark/mupen64plus-rsp-hle"
 set(MUPEN64PLUS_RSP_PARALLEL_URL "https://github.com/GhostlyDark/parallel-rsp")
 
 set(MUPEN64PLUS_INPUT_GCA_URL "https://github.com/GhostlyDark/mupen64plus-input-gca")
+set(MUPEN64PLUS_INPUT_GCN_URL "https://github.com/GhostlyDark/mupen64plus-input-gcn")
 set(MUPEN64PLUS_INPUT_RAPHNET_URL "https://github.com/GhostlyDark/mupen64plus-input-raphnetraw")
 set(MUPEN64PLUS_INPUT_SDL_URL "https://github.com/GhostlyDark/mupen64plus-input-sdl")
 
@@ -197,6 +198,21 @@ ExternalProject_Add(mupen64plus-input-gca
     BUILD_IN_SOURCE True
 
     BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-input-gca/target/release/${GCA_LIB}
+    DEPENDS mupen64plus-core
+)
+
+ExternalProject_Add(mupen64plus-input-gcn
+    SOURCE_DIR mupen64plus-input-gcn
+
+    GIT_REPOSITORY ${MUPEN64PLUS_INPUT_GCN_URL}
+    GIT_TAG "origin/emg"
+
+    INSTALL_COMMAND ""
+
+    BUILD_IN_SOURCE True
+    CMAKE_ARGS
+
+    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-input-gcn/mupen64plus-input-gcn${SO_EXT}
     DEPENDS mupen64plus-core
 )
 
@@ -377,6 +393,9 @@ install(FILES ${MUPEN64PLUS_PLUGIN_INPUT_RAPHNET}
     DESTINATION ${INSTALL_PATH}/plugin
 )
 install(FILES ${MUPEN64PLUS_PLUGIN_INPUT_GCA}
+    DESTINATION ${INSTALL_PATH}/plugin
+)
+install(FILES ${MUPEN64PLUS_PLUGIN_INPUT_GCN}
     DESTINATION ${INSTALL_PATH}/plugin
 )
 install(FILES ${MUPEN64PLUS_PLUGIN_GFX_ANGRYLION}

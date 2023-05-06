@@ -45,7 +45,7 @@ m64p_joykeys = [
 'JoyMappingStop3','JoyMappingFullscreen3','JoyMappingSaveState3','JoyMappingLoadState3','JoyMappingIncrementSlot3','JoyMappingReset3','JoyMappingSpeedDown3','JoyMappingSpeedUp3','JoyMappingScreenshot3','JoyMappingPause3','JoyMappingMute3','JoyMappingIncreaseVolume3','JoyMappingDecreaseVolume3','JoyMappingFastForward3','JoyMappingFrameAdvance3','JoyMappingGameshark3',
 'JoyMappingStop4','JoyMappingFullscreen4','JoyMappingSaveState4','JoyMappingLoadState4','JoyMappingIncrementSlot4','JoyMappingReset4','JoyMappingSpeedDown4','JoyMappingSpeedUp4','JoyMappingScreenshot4','JoyMappingPause4','JoyMappingMute4','JoyMappingIncreaseVolume4','JoyMappingDecreaseVolume4','JoyMappingFastForward4','JoyMappingFrameAdvance4','JoyMappingGameshark4'],
 
-defaultPlugins = ['mupen64plus-audio-sdl','mupen64plus-input-gca','mupen64plus-input-raphnetraw','mupen64plus-input-sdl','mupen64plus-rsp-cxd4','mupen64plus-rsp-hle','mupen64plus-rsp-parallel','mupen64plus-video-angrylion-plus','mupen64plus-video-GLideN64','mupen64plus-video-parallel','mupen64plus-video-rice'],
+defaultPlugins = ['mupen64plus-audio-sdl','mupen64plus-input-gca','mupen64plus-input-gcn','mupen64plus-input-raphnetraw','mupen64plus-input-sdl','mupen64plus-rsp-cxd4','mupen64plus-rsp-hle','mupen64plus-rsp-parallel','mupen64plus-video-angrylion-plus','mupen64plus-video-GLideN64','mupen64plus-video-parallel','mupen64plus-video-rice'],
 
 sliders = ['AnalogDeadzone1','AnalogDeadzone2','AnalogDeadzone3','AnalogDeadzone4','AnalogPeak1','AnalogPeak2','AnalogPeak3','AnalogPeak4','control_stick_deadzone','control_stick_sensitivity','c_stick_deadzone','trigger_threshold','MouseSensitivityX','MouseSensitivityY'],
 

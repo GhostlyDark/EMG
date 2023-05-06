@@ -165,35 +165,36 @@ Parallel: LLE,
 Rice: HLE"><select class="width250m" name="gfx" id="gfx">
 <option value="mupen64plus-video-angrylion-plus">Angrylion Plus</option>
 <option value="mupen64plus-video-GLideN64" selected>GLideN64</option>
-<option value="mupen64plus-video-parallel">Parallel</option>
+<option value="mupen64plus-video-parallel">Parallel RDP</option>
 <option value="mupen64plus-video-rice">Rice</option>
 </select><label for="gfx">Graphics Plugin</label></div>
 <p>&nbsp;</p>
 <select class="width250m" name="audio" id="audio">
 <option value="dummy">Disable</option>
-<option value="mupen64plus-audio-sdl" selected>Mupen64Plus Audio SDL</option>
+<option value="mupen64plus-audio-sdl" selected>SDL Audio</option>
 </select><label for="audio">Audio Plugin</label>
 <p>&nbsp;</p>
 <div title="GameCube Adapter: Only works with official Wii U GameCube Adapter,
 Raphnetraw: Only works with Raphnetraw adapters"><select class="width250m" name="input" id="input">
 <option value="dummy">Disable</option>
-<option value="mupen64plus-input-gca">GameCube Adapter</option>
-<option value="mupen64plus-input-sdl" selected>Mupen64Plus Input SDL</option>
+<option value="mupen64plus-input-gca">GameCube Adapter (GCA)</option>
+<option value="mupen64plus-input-gcn">GameCube Adapter (GCN)</option>
 <option value="mupen64plus-input-raphnetraw">Raphnetraw</option>
+<option value="mupen64plus-input-sdl" selected>SDL Input</option>
 </select><label for="input">Input Plugin</label></div>
 <p>&nbsp;</p>
 <div title="Mupen64Plus HLE: HLE only,
 Static Interpreter: HLE and LLE,
 Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
-<option value="mupen64plus-rsp-hle" selected>Mupen64Plus HLE</option>
-<option value="mupen64plus-rsp-cxd4">Static Interpreter</option>
+<option value="mupen64plus-rsp-hle" selected>HLE RSP</option>
 <option value="mupen64plus-rsp-parallel">Parallel RSP</option>
+<option value="mupen64plus-rsp-cxd4">Static Interpreter</option>
 </select><label for="rsp">RSP Plugin</label></div>
 <p>&nbsp;</p>
 <div title="RSP plugin used when encountering an unknown ucode. HLE RSP only."><select class="width250m" name="RspFallback" id="RspFallback">
 <option value="">Disable</option>
-<option value="mupen64plus-rsp-cxd4" selected>Static Interpreter</option>
 <option value="mupen64plus-rsp-parallel">Parallel RSP</option>
+<option value="mupen64plus-rsp-cxd4" selected>Static Interpreter</option>
 </select><label for="RspFallback">RSP Fallback</label></div>
 <p>&nbsp;</p>
 <p title="Use High Level Emulation for graphics if RSP plugin is Static Interpreter."><input id="rspGFX" type="checkbox" data-store="rspGFX" checked><label for="rspGFX">Use HLE for graphics</label></p>
@@ -217,7 +218,7 @@ Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
 <li id="ul_input_controller2">Port 2</li>
 <li id="ul_input_controller3">Port 3</li>
 <li id="ul_input_controller4">Port 4</li>
-<li id="ul_input_gca">GameCube Adapter</li>
+<li id="ul_input_gca">GameCube Adapter (GCA)</li>
 <li id="ul_input_mouse">Mouse</li>
 </ul>
 <p>&nbsp;</p>
