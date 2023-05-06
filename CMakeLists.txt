@@ -1,11 +1,11 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.9)
 
 project(EMG)
 
 set(INSTALL_PATH "${CMAKE_SOURCE_DIR}/build/EMG/resources/app/m64p")
 
 add_custom_target(bundle_dependencies
-	COMMAND bash "${CMAKE_SOURCE_DIR}/dependencies.sh" "${INSTALL_PATH}/mupen64plus.exe" "${INSTALL_PATH}" "/mingw64/bin"
+	COMMAND "${CMAKE_SOURCE_DIR}/dependencies.sh" "${INSTALL_PATH}/mupen64plus.exe" "${INSTALL_PATH}" "/mingw64/bin"
 )
 
 include(ExternalProject)
@@ -64,7 +64,7 @@ ExternalProject_Add(mupen64plus-core
     GIT_TAG "origin/emg"
     GIT_SHALLOW 1
 
-    BUILD_COMMAND make all OSD=0 TARGET=${CORE_FILE}
+    BUILD_COMMAND $(MAKE) all OSD=0 TARGET=${CORE_FILE}
     BUILD_IN_SOURCE False
 
     BINARY_DIR ${M64P_CORE_DIR}/projects/unix
@@ -82,7 +82,7 @@ ExternalProject_Add(mupen64plus-ui-console
     GIT_TAG "origin/emg"
     GIT_SHALLOW 1
 
-    BUILD_COMMAND make all APIDIR=${APIDIR}
+    BUILD_COMMAND $(MAKE) all APIDIR=${APIDIR}
     BUILD_IN_SOURCE False
 
     BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-ui-console/projects/unix
@@ -101,7 +101,7 @@ ExternalProject_Add(mupen64plus-rsp-cxd4
     GIT_TAG "origin/emg"
     GIT_SHALLOW 1
 
-    BUILD_COMMAND make all APIDIR=${APIDIR} POSTFIX=
+    BUILD_COMMAND $(MAKE) all APIDIR=${APIDIR} POSTFIX=
     BUILD_IN_SOURCE False
 
     BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-rsp-cxd4/projects/unix
@@ -120,7 +120,7 @@ ExternalProject_Add(mupen64plus-rsp-hle
     GIT_TAG "origin/emg"
     GIT_SHALLOW 1
 
-    BUILD_COMMAND make all APIDIR=${APIDIR}
+    BUILD_COMMAND $(MAKE) all APIDIR=${APIDIR}
     BUILD_IN_SOURCE False
 
     BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-rsp-hle/projects/unix
@@ -155,7 +155,7 @@ ExternalProject_Add(mupen64plus-input-sdl
     GIT_TAG "origin/emg"
     GIT_SHALLOW 1
 
-    BUILD_COMMAND make all APIDIR=${APIDIR}
+    BUILD_COMMAND $(MAKE) all APIDIR=${APIDIR}
     BUILD_IN_SOURCE False
 
     BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-input-sdl/projects/unix
@@ -174,7 +174,7 @@ ExternalProject_Add(mupen64plus-input-raphnetraw
     GIT_TAG "origin/emg"
     GIT_SHALLOW 1
 
-    BUILD_COMMAND make all APIDIR=${APIDIR}
+    BUILD_COMMAND $(MAKE) all APIDIR=${APIDIR}
     BUILD_IN_SOURCE False
 
     BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-input-raphnetraw/projects/unix
@@ -261,7 +261,7 @@ ExternalProject_Add(mupen64plus-video-rice
     GIT_TAG "origin/emg"
     GIT_SHALLOW 1
 
-    BUILD_COMMAND make all APIDIR=${APIDIR}
+    BUILD_COMMAND $(MAKE) all APIDIR=${APIDIR}
     BUILD_IN_SOURCE False
 
     BINARY_DIR ${RICE_DIR}/projects/unix
@@ -280,7 +280,7 @@ ExternalProject_Add(mupen64plus-audio-sdl
     GIT_TAG "origin/emg"
     GIT_SHALLOW 1
 
-    BUILD_COMMAND make all APIDIR=${APIDIR}
+    BUILD_COMMAND $(MAKE) all APIDIR=${APIDIR}
     BUILD_IN_SOURCE False
 
     BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-audio-sdl/projects/unix

@@ -4,9 +4,8 @@ set -ex
 
 
 # Parameters
-generator="${1:-make}"
-threads="${2:-$(nproc)}"
-electron="${3:-v22.3.8}"
+threads="${1:-$(nproc)}"
+electron="${2:-v22.3.8}"
 
 
 
@@ -28,28 +27,14 @@ exe=""
 ext=".so"
 gca="libmupen64plus_input_gca.so"
 platform="linux"
+generator="Unix Makefiles"
 
 if [[ "$OSTYPE" == "msys"* ]]; then
     exe=".exe"
     ext=".dll"
     gca="mupen64plus_input_gca.dll"
     platform="win32"
-fi
-
-
-
-# Generator check
-if [[ "$generator" = "ninja" ]]; then
-    generator="Ninja"
-
-elif [[ "$generator" = "make" ]] && [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    generator="Unix Makefiles"
-
-elif [[ "$generator" = "make" ]] && [[ "$OSTYPE" == "msys"* ]]; then
     generator="MSYS Makefiles"
-
-else
-    generator="$generator"
 fi
 
 
@@ -58,7 +43,6 @@ fi
 mkdir -p "$build_dir" "$cmake_dir" "$emg_dir"
 
 cp -R resources $emg_dir/resources
-
 
 
 
@@ -92,11 +76,10 @@ cp SDL_GameControllerDB/gamecontrollerdb.txt $install_dir
 
 # Build
 cmake "$toplvl_dir" -G "$generator"
-cmake --build "$cmake_dir" --parallel "$threads"
-cmake --install "$cmake_dir"
+make install -j$threads
 
 if [[ "$OSTYPE" == "msys"* ]]; then
-    cmake --build "$cmake_dir" --target=bundle_dependencies
+    make bundle_dependencies
 fi
 
 
