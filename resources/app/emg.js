@@ -87,32 +87,27 @@ videoPlugins.forEach(name => addVideoPlugin(name));
 
 function addAudioPlugin(name){
 var newPlugin = document.createElement('option');
-newPlugin.value = name;
-newPlugin.innerHTML = name.replace('mupen64plus-audio-','');
+newPlugin.value = newPlugin.innerHTML = name;
 if(name != '')id('audio').appendChild(newPlugin)}
 
 function addInputPlugin(name){
 var newPlugin = document.createElement('option');
-newPlugin.value = name;
-newPlugin.innerHTML = name.replace('mupen64plus-input-','');
+newPlugin.value = newPlugin.innerHTML = name;
 if(name != '')id('input').appendChild(newPlugin)}
 
 function addRspPlugin(name){
 var newPlugin = document.createElement('option');
-newPlugin.value = name;
-newPlugin.innerHTML = name.replace('mupen64plus-rsp-','');
+newPlugin.value = newPlugin.innerHTML = name;
 if(name != '')id('rsp').appendChild(newPlugin)}
 
 function addRspFallbackPlugin(name){
 var newPlugin = document.createElement('option');
-newPlugin.value = name;
-newPlugin.innerHTML = name.replace('mupen64plus-rsp-','');
+newPlugin.value = newPlugin.innerHTML = name;
 if(name != '')id('RspFallback').appendChild(newPlugin)}
 
 function addVideoPlugin(name){
 var newPlugin = document.createElement('option');
-newPlugin.value = name;
-newPlugin.innerHTML = name.replace('mupen64plus-video-','');
+newPlugin.value = newPlugin.innerHTML = name = name;
 if(name != '')id('gfx').appendChild(newPlugin)}
 
 
