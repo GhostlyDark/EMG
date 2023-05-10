@@ -66,7 +66,7 @@ default: id('background').style.backgroundImage = 'url(' + defaultBackground + '
 case true: id('background').style.backgroundImage = 'none';id('background').style.display = 'none';id('overlay').style.display = 'none';localStorage.background = '';html.classList.remove('custom');id('filter').style.display = 'none'}})
 
 id('filter').addEventListener('click', function(f){
-switch(id('background').style.filter){
+switch(localStorage.filter){
 default: f = 'blur(10px)'; break;
 case 'blur(10px)': f = 'blur(20px)'; break;
 case 'blur(20px)': f = 'none'}
