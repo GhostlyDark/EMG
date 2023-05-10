@@ -1,7 +1,7 @@
 let win, jstestChild;
 const {app, BrowserWindow, dialog, ipcMain, Menu, nativeImage, session, shell} = require('electron'),
-childSpawn = require('child_process').spawn,
-childSpawnSync = require('child_process').spawnSync,
+spawn = require('child_process').spawn,
+spawnSync = require('child_process').spawnSync,
 existsSync = require('fs').existsSync,
 mkdirSync = require('fs').mkdirSync,
 readdirSync = require('fs').readdirSync,
@@ -42,29 +42,29 @@ app.enableSandbox()
 
 ipcMain.on('emuLaunch', (e, parameters) => {
 	let stdout = '';
-	const child = childSpawn(executablePath, parameters, emuOptions);
+	const child = spawn(executablePath, parameters, emuOptions);
 	child.stdout.on('data', (data) => {stdout += data.toString()})
 	child.on('exit', () => {e.reply('m64pLog', child.spawnargs, stdout)})
 })
 
 ipcMain.on('showCheats', (e, parameters) => {
-	const child = childSpawnSync(executablePath, parameters, cheatOptions);
+	const child = spawnSync(executablePath, parameters, cheatOptions);
 	e.returnValue = child.stdout.toString()
 })
 
 ipcMain.on('jstestChild', (e, jstestConfig) => {
-	jstestChild = childSpawn(jstestPath, jstestConfig, jsOptions);
+	jstestChild = spawn(jstestPath, jstestConfig, jsOptions);
 	jstestChild.stdout.on('data', (data) => {e.reply('jsLog', data.toString())})
 	jstestChild.on('close', () => {e.reply('jsClosed')})
 })
 
 ipcMain.on('jsRefresh', (e) => {
-	const child = childSpawnSync(jstestPath, ['-ls'], jsOptions);
+	const child = spawnSync(jstestPath, ['-ls'], jsOptions);
 	e.returnValue = child.stdout.toString()
 })
 
 ipcMain.on('jsMapping', (e, padId) => {
-	const child = childSpawnSync(jstestPath, ['-m', padId], jsOptions);
+	const child = spawnSync(jstestPath, ['-m', padId], jsOptions);
 	e.returnValue = child.stdout.toString()
 })
 
