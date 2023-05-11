@@ -1,11 +1,7 @@
 let win, jstestChild;
 const {app, BrowserWindow, dialog, ipcMain, Menu, nativeImage, session, shell} = require('electron'),
-spawn = require('child_process').spawn,
-spawnSync = require('child_process').spawnSync,
-existsSync = require('fs').existsSync,
-mkdirSync = require('fs').mkdirSync,
-readdirSync = require('fs').readdirSync,
-writeFileSync = require('fs').writeFileSync,
+{existsSync, mkdirSync, readdirSync, writeFileSync} = require('fs'),
+{spawn, spawnSync} = require('child_process'),
 url = require('url').URL,
 path = require('path').join,
 dir = __dirname,
