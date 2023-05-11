@@ -92,6 +92,7 @@ ipcMain.on('texture_dump', (e) => {e.returnValue = texture_dump})
 ipcMain.on('isLinux', (e) => {e.returnValue = isLinux})
 ipcMain.on('dialogDirectory', (e) => {e.returnValue = dialog.showOpenDialogSync({properties:['openDirectory']})})
 ipcMain.on('dialogFile', (e, data) => {e.returnValue = dialog.showOpenDialogSync({properties:['openFile'],filters:[data]})})
+ipcMain.on('dialogError', (e, title, data) => {e.returnValue = dialog.showErrorBox(title,data)})
 
 app.on('second-instance', (e) => {if(win.isMinimized()){win.restore()}else{win.focus()}})
 if(!app.requestSingleInstanceLock()){return app.quit()}

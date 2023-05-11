@@ -10,6 +10,7 @@ texture_dump = ipcRenderer.sendSync('texture_dump'),
 isLinux = ipcRenderer.sendSync('isLinux'),
 dialogDirectory = () => {return ipcRenderer.sendSync('dialogDirectory')},
 dialogFile = (data) => {return ipcRenderer.sendSync('dialogFile', data)},
+dialogError = (title, data) => {return ipcRenderer.sendSync('dialogError', title, data)},
 writeGCA = (gcaSettings, configdir) => {ipcRenderer.sendSync('writeGCA', configdir, gcaSettings)},
 emuLaunch = (parameters) => {ipcRenderer.send('emuLaunch', parameters)},
 showCheats = (parameters) => {return ipcRenderer.sendSync('showCheats', parameters)},
@@ -69,10 +70,10 @@ line.forEach(line => {
 if(line.includes('RSP Error: RSP: unknown opcode'))line = 'RSP: unknown opcode'
 if(line.includes('RSP Error: unknown task type:'))line = 'RSP: unknown task type'
 if(line.includes('Error:') && !data.includes(line))data += '<p>' + line + '</p>'})
-if(data.includes("couldn't open ROM file") || data.includes('failed to open ROM image file')){alert('ROM failed to load')}
-else if(data.includes('plugin not found')){alert('Plugin failed to load')}
-else if(data.includes('AttachCoreLib() Error:')){alert('Core failed to load')}
-else if(stdout === ''){data = 'Emulator crashed';alert(data)}
+if(data.includes("couldn't open ROM file") || data.includes('failed to open ROM image file')){dialogError('ROM failure','ROM file failed to load')}
+else if(data.includes('plugin not found')){dialogError('Plugin failure','Plugin failed to load')}
+else if(data.includes('AttachCoreLib() Error:')){dialogError('Core failure','Core failed to load')}
+else if(stdout === ''){data = 'Emulator crashed';dialogError(data)}
 log.innerHTML = data})
 
 contextBridge.exposeInMainWorld('testROM',testROM)
