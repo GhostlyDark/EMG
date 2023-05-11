@@ -69,9 +69,9 @@ line.forEach(line => {
 if(line.includes('RSP Error: RSP: unknown opcode'))line = 'RSP: unknown opcode'
 if(line.includes('RSP Error: unknown task type:'))line = 'RSP: unknown task type'
 if(line.includes('Error:') && !data.includes(line))data += '<p>' + line + '</p>'})
-if(data.includes("couldn't open ROM file") || data.includes('failed to open ROM image file'))alert('ROM failed to load')
-else if(data.includes('plugin not found'))alert('Plugin failed to load')
-else if(data.includes('AttachCoreLib() Error:'))alert('Core failed to load')
+if(data.includes("couldn't open ROM file") || data.includes('failed to open ROM image file')){alert('ROM failed to load')}
+else if(data.includes('plugin not found')){alert('Plugin failed to load')}
+else if(data.includes('AttachCoreLib() Error:')){alert('Core failed to load')}
 else if(stdout === ''){data = 'Emulator crashed';alert(data)}
 log.innerHTML = data})
 
