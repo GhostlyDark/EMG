@@ -89,7 +89,7 @@ ipcMain.on('isLinux', (e) => {e.returnValue = isLinux})
 ipcMain.on('dialogDirectory', (e) => {e.returnValue = dialog.showOpenDialogSync({properties:['openDirectory']})})
 ipcMain.on('dialogFile', (e, data) => {e.returnValue = dialog.showOpenDialogSync({properties:['openFile'],filters:[data]})})
 ipcMain.on('dialogError', (e, title, data) => {e.returnValue = dialog.showErrorBox(title,data)})
-ipcMain.on('openPath', (e, data) => {e.returnValue = shell.openPath(data).toString()})
+ipcMain.on('openPath', (e, data) => {if(existsSync(data)){e.returnValue = shell.openPath(data).toString()}else{e.returnValue = ''}})
 ipcMain.on('showInFolder', (e, data) => {e.returnValue = shell.showItemInFolder(data)})
 
 app.on('second-instance', (e) => {if(win.isMinimized()){win.restore()}else{win.focus()}})
