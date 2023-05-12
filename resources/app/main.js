@@ -34,6 +34,7 @@ screenshot = path(m64pShare,'screenshot'),
 shaders = path(m64pCache,'shaders'),
 texture_dump = path(m64pShare,'texture_dump');
 
+app.commandLine.appendSwitch('disable-http-cache')
 app.enableSandbox()
 
 ipcMain.on('emuLaunch', (e, parameters) => {
