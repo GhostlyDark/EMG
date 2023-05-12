@@ -31,9 +31,9 @@
 <div id="mainAnchor" class="anchor"></div>
 <p class="headline">Main</p>
 <p>&nbsp;</p>
-<p title="Click the box below or drag and drop an .n64, .v64 or .z64 ROM into the box." class="mt--5">Input ROM</p>
+<p title="Click the box below or drag and drop an .n64, .v64 or .z64 ROM into the box." class="mt--5">Input ROM<button class="floatright" id="showFilePath">Show</button></p>
 <p>&nbsp;</p>
-<div id="fileInput" class="box mt--5"><span id="fileText"></span></div>
+<div id="fileInput" class="box"><span id="fileText"></span></div>
 <p>&nbsp;</p>
 <select name="recent" id="recent">
 <option id="optionDefault" disabled selected>Recent Files</option>
@@ -204,9 +204,9 @@ Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
 <option value="1" selected>RAM Area Only</option>
 </select><label for="SaveDiskFormat">64DD save format</label>
 <p>&nbsp;</p><p>&nbsp;</p>
-<p title="Path to 64DD BIOS file. Click the box or drag and drop the file into the box below.">64DD IPL ROM&nbsp;&nbsp;<button class="floatright" id="clearIPLROM">Clear</button><br><br><div id="IPLROM" class="box"><span id="IPLROMText"></span></div></p>
+<p title="Path to 64DD BIOS file. Click the box or drag and drop the file into the box below.">64DD IPL ROM&nbsp;&nbsp;<button class="floatright ml-13" id="clearIPLROM">Clear</button><button class="floatright" id="showIPLROM">Show</button><br><br><div id="IPLROM" class="box"><span id="IPLROMText"></span></div></p>
 <p>&nbsp;</p><p>&nbsp;</p>
-<p title="Path to 64DD ROM file. Click the box or drag and drop a .64d or .ndd file into the box below.">64DD Disk&nbsp;&nbsp;<button class="floatright" id="clearDisk">Clear</button><br><br><div id="Disk" class="box"><span id="DiskText"></span></div></p>
+<p title="Path to 64DD ROM file. Click the box or drag and drop a .64d or .ndd file into the box below.">64DD Disk&nbsp;&nbsp;<button class="floatright ml-13" id="clearDisk">Clear</button><button class="floatright" id="showDisk">Show</button><br><br><div id="Disk" class="box"><span id="DiskText"></span></div></p>
 </div>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
 <div id="inputAnchor" class="anchor"></div>
@@ -238,9 +238,9 @@ Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
 <p>&nbsp;</p>
 <div id="transferPak1" class="hide">
 <p>&nbsp;</p>
-<p title="Path to GB(C) ROM file. Click the box or drag and drop the .gb or .gbc file into the box below.">GB(C) ROM for Transfer Pak 1<button class="floatright" id="cleargbROM1">Clear</button><br><br><div id="gbROM1" class="box"><span id="gbROM1Text"></span></div></p>
+<p title="Path to GB(C) ROM file. Click the box or drag and drop the .gb or .gbc file into the box below.">GB(C) ROM for Transfer Pak 1<button class="floatright ml-13" id="cleargbROM1">Clear</button><button class="floatright" id="showgbROM1">Show</button><br><br><div id="gbROM1" class="box"><span id="gbROM1Text"></span></div></p>
 <p>&nbsp;</p><p>&nbsp;</p>
-<p title="Path to GB(C) save file. Click the box or drag and drop the .sav file into the box below.">GB(C) Save for Transfer Pak 1<button class="floatright" id="cleargbRAM1">Clear</button><br><br><div id="gbRAM1" class="box"><span id="gbRAM1Text"></span></div></p>
+<p title="Path to GB(C) save file. Click the box or drag and drop the .sav file into the box below.">GB(C) Save for Transfer Pak 1<button class="floatright ml-13" id="cleargbRAM1">Clear</button><button class="floatright" id="showgbRAM1">Show</button><br><br><div id="gbRAM1" class="box"><span id="gbRAM1Text"></span></div></p>
 <p>&nbsp;</p><p>&nbsp;</p>
 </div>
 <p>&nbsp;</p>
@@ -312,9 +312,9 @@ Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
 <p>&nbsp;</p>
 <div id="transferPak2" class="hide">
 <p>&nbsp;</p>
-<p title="Path to GB(C) ROM file. Click the box or drag and drop the .gb or .gbc file into the box below.">GB(C) ROM for Transfer Pak 2<button class="floatright" id="cleargbROM2">Clear</button><br><br><div id="gbROM2" class="box"><span id="gbROM2Text"></span></div></p>
+<p title="Path to GB(C) ROM file. Click the box or drag and drop the .gb or .gbc file into the box below.">GB(C) ROM for Transfer Pak 2<button class="floatright ml-13" id="cleargbROM2">Clear</button><button class="floatright" id="showgbROM2">Show</button><br><br><div id="gbROM2" class="box"><span id="gbROM2Text"></span></div></p>
 <p>&nbsp;</p><p>&nbsp;</p>
-<p title="Path to GB(C) save file. Click the box or drag and drop the .sav file into the box below.">GB(C) Save for Transfer Pak 2<button class="floatright" id="cleargbRAM2">Clear</button><br><br><div id="gbRAM2" class="box"><span id="gbRAM2Text"></span></div></p>
+<p title="Path to GB(C) save file. Click the box or drag and drop the .sav file into the box below.">GB(C) Save for Transfer Pak 2<button class="floatright ml-13" id="cleargbRAM2">Clear</button><button class="floatright" id="showgbRAM2">Show</button><br><br><div id="gbRAM2" class="box"><span id="gbRAM2Text"></span></div></p>
 <p>&nbsp;</p><p>&nbsp;</p>
 </div>
 <p>&nbsp;</p>
@@ -386,9 +386,9 @@ Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
 <p>&nbsp;</p>
 <div id="transferPak3" class="hide">
 <p>&nbsp;</p>
-<p title="Path to GB(C) ROM file. Click the box or drag and drop the .gb or .gbc file into the box below.">GB(C) ROM for Transfer Pak 3<button class="floatright" id="cleargbROM3">Clear</button><br><br><div id="gbROM3" class="box"><span id="gbROM3Text"></span></div></p>
+<p title="Path to GB(C) ROM file. Click the box or drag and drop the .gb or .gbc file into the box below.">GB(C) ROM for Transfer Pak 3<button class="floatright ml-13" id="cleargbROM3">Clear</button><button class="floatright" id="showgbROM3">Show</button><br><br><div id="gbROM3" class="box"><span id="gbROM3Text"></span></div></p>
 <p>&nbsp;</p><p>&nbsp;</p>
-<p title="Path to GB(C) save file. Click the box or drag and drop the .sav file into the box below.">GB(C) Save for Transfer Pak 3<button class="floatright" id="cleargbRAM3">Clear</button><br><br><div id="gbRAM3" class="box"><span id="gbRAM3Text"></span></div></p>
+<p title="Path to GB(C) save file. Click the box or drag and drop the .sav file into the box below.">GB(C) Save for Transfer Pak 3<button class="floatright ml-13" id="cleargbRAM3">Clear</button><button class="floatright" id="showgbRAM3">Show</button><br><br><div id="gbRAM3" class="box"><span id="gbRAM3Text"></span></div></p>
 <p>&nbsp;</p><p>&nbsp;</p>
 </div>
 <p>&nbsp;</p>
@@ -460,9 +460,9 @@ Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
 <p>&nbsp;</p>
 <div id="transferPak4" class="hide">
 <p>&nbsp;</p>
-<p title="Path to GB(C) ROM file. Click the box or drag and drop the .gb or .gbc file into the box below.">GB(C) ROM for Transfer Pak 4<button class="floatright" id="cleargbROM4">Clear</button><br><br><div id="gbROM4" class="box"><span id="gbROM4Text"></span></div></p>
+<p title="Path to GB(C) ROM file. Click the box or drag and drop the .gb or .gbc file into the box below.">GB(C) ROM for Transfer Pak 4<button class="floatright ml-13" id="cleargbROM4">Clear</button><button class="floatright" id="showgbROM4">Show</button><br><br><div id="gbROM4" class="box"><span id="gbROM4Text"></span></div></p>
 <p>&nbsp;</p><p>&nbsp;</p>
-<p title="Path to GB(C) save file. Click the box or drag and drop the .sav file into the box below.">GB(C) Save for Transfer Pak 4<button class="floatright" id="cleargbRAM4">Clear</button><br><br><div id="gbRAM4" class="box"><span id="gbRAM4Text"></span></div></p>
+<p title="Path to GB(C) save file. Click the box or drag and drop the .sav file into the box below.">GB(C) Save for Transfer Pak 4<button class="floatright ml-13" id="cleargbRAM4">Clear</button><button class="floatright" id="showgbRAM4">Show</button><br><br><div id="gbRAM4" class="box"><span id="gbRAM4Text"></span></div></p>
 <p>&nbsp;</p><p>&nbsp;</p>
 </div>
 <p>&nbsp;</p>

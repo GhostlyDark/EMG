@@ -90,6 +90,7 @@ ipcMain.on('dialogDirectory', (e) => {e.returnValue = dialog.showOpenDialogSync(
 ipcMain.on('dialogFile', (e, data) => {e.returnValue = dialog.showOpenDialogSync({properties:['openFile'],filters:[data]})})
 ipcMain.on('dialogError', (e, title, data) => {e.returnValue = dialog.showErrorBox(title,data)})
 ipcMain.on('openPath', (e, data) => {e.returnValue = shell.openPath(data).toString()})
+ipcMain.on('showInFolder', (e, data) => {e.returnValue = shell.showItemInFolder(data)})
 
 app.on('second-instance', (e) => {if(win.isMinimized()){win.restore()}else{win.focus()}})
 if(!app.requestSingleInstanceLock()){return app.quit()}

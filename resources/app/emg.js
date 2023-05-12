@@ -825,6 +825,18 @@ id('openTxPath').addEventListener('click', function(){openPath(txPath)})
 id('openTxCachePath').addEventListener('click', function(){openPath(txCachePath)})
 id('openTxDumpPath').addEventListener('click', function(){openPath(txDumpPath)})
 
+id('showFilePath').addEventListener('click', function(){showInFolder(filePath.toString())})
+id('showIPLROM').addEventListener('click', function(){showInFolder(IPLROM.toString())})
+id('showDisk').addEventListener('click', function(){showInFolder(Disk.toString())})
+id('showgbROM1').addEventListener('click', function(){showInFolder(gbROM1.toString())})
+id('showgbRAM1').addEventListener('click', function(){showInFolder(gbRAM1.toString())})
+id('showgbROM2').addEventListener('click', function(){showInFolder(gbROM2.toString())})
+id('showgbRAM2').addEventListener('click', function(){showInFolder(gbRAM2.toString())})
+id('showgbROM3').addEventListener('click', function(){showInFolder(gbROM3.toString())})
+id('showgbRAM3').addEventListener('click', function(){showInFolder(gbRAM3.toString())})
+id('showgbROM4').addEventListener('click', function(){showInFolder(gbROM4.toString())})
+id('showgbRAM4').addEventListener('click', function(){showInFolder(gbRAM4.toString())})
+
 
 
 id('launch').addEventListener('click', function(){
