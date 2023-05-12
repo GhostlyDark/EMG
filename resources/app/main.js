@@ -7,7 +7,6 @@ path = require('path').join,
 dir = __dirname,
 appData = app.getPath('appData'),
 m64pConfig = path(appData, 'mupen64plus'),
-emg = path(appData, 'EMG'),
 cwd = path(dir, 'm64p'),
 pluginDir = path(cwd, 'plugin'),
 testROM = path(cwd, 'mupen64plus.z64'),
@@ -125,7 +124,6 @@ Menu.setApplicationMenu(Menu.buildFromTemplate([
 		]},
 	{label: 'Functions', submenu: [
 		{icon: nativeImage.createFromPath(path(dir, 'img', 'delete.png')).resize({width:28}), label: 'Reset settings', click () {const choice = dialog.showMessageBoxSync(win,deleteDialog);if(choice !== 1){session.defaultSession.clearStorageData();session.defaultSession.clearCache()}}},
-		{icon: nativeImage.createFromPath(path(dir, 'img', 'emg.png')).resize({width:28}), label: 'Show EMG data', click () {shell.openPath(emg)}},
 		{type: 'separator'},
 		{icon: nativeImage.createFromPath(path(dir, 'img', 'github.png')).resize({width:28}), label: 'Visit GitHub repo', click () {shell.openExternal('https://github.com/GhostlyDark/EMG')}},
 		{icon: nativeImage.createFromPath(path(dir, 'img', 'icon-ghostly-nx.png')).resize({width:28}), label: 'Visit website', click () {shell.openExternal('https://evilgames.eu/')}}
