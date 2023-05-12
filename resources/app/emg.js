@@ -817,6 +817,16 @@ id('fontColor').addEventListener('change', function(){localStorage.setItem('font
 
 
 
+id('openConfigPath').addEventListener('click', function(){openPath(ConfigPath)})
+id('openScreenshotPath').addEventListener('click', function(){openPath(ScreenshotPath)})
+id('openSaveStatePath').addEventListener('click', function(){openPath(SaveStatePath)})
+id('openSaveSRAMPath').addEventListener('click', function(){openPath(SaveSRAMPath)})
+id('openTxPath').addEventListener('click', function(){openPath(txPath)})
+id('openTxCachePath').addEventListener('click', function(){openPath(txCachePath)})
+id('openTxDumpPath').addEventListener('click', function(){openPath(txDumpPath)})
+
+
+
 id('launch').addEventListener('click', function(){
 var configdir = ConfigPath,
 exp = 'Core[DisableExtraMem]=' + id('exp').checked,

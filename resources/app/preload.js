@@ -11,6 +11,7 @@ isLinux = ipcRenderer.sendSync('isLinux'),
 dialogDirectory = () => {return ipcRenderer.sendSync('dialogDirectory')},
 dialogFile = (data) => {return ipcRenderer.sendSync('dialogFile', data)},
 dialogError = (title, data) => {return ipcRenderer.sendSync('dialogError', title, data)},
+openPath = (data) => {return ipcRenderer.sendSync('openPath', data)},
 writeGCA = (gcaSettings, configdir) => {ipcRenderer.sendSync('writeGCA', configdir, gcaSettings)},
 emuLaunch = (parameters) => {ipcRenderer.send('emuLaunch', parameters)},
 showCheats = (parameters) => {return ipcRenderer.sendSync('showCheats', parameters)},
@@ -87,6 +88,7 @@ contextBridge.exposeInMainWorld('texture_dump',texture_dump)
 contextBridge.exposeInMainWorld('isLinux',isLinux)
 contextBridge.exposeInMainWorld('dialogDirectory',dialogDirectory)
 contextBridge.exposeInMainWorld('dialogFile',dialogFile)
+contextBridge.exposeInMainWorld('openPath',openPath)
 contextBridge.exposeInMainWorld('emuLaunch',emuLaunch)
 contextBridge.exposeInMainWorld('jstest',jstest)
 contextBridge.exposeInMainWorld('jsRefresh',jsRefresh)

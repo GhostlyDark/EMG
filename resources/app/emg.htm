@@ -150,13 +150,13 @@ Higher values increase audio latency but reduce the chance of audio drop-outs.">
 </select><label for="RESAMPLE">Resampling algorithm</label></div>
 </div>
 <div id="core_directories" class="hide mt-15">
-<p title="Path to directory where setting files are stored. Click the box below to change it.">Config&nbsp;&nbsp;<button class="floatright" id="resetConfigPath">Reset</button><br><br><div id="ConfigPath" class="box"><span id="ConfigPathText"></span></div></p>
+<p title="Path to directory where setting files are stored. Click the box below to change it.">Config&nbsp;&nbsp;<button class="floatright ml-13" id="resetConfigPath">Reset</button><button class="floatright" id="openConfigPath">Open</button><br><br><div id="ConfigPath" class="box"><span id="ConfigPathText"></span></div></p>
 <p>&nbsp;</p><p>&nbsp;</p>
-<p title="Path to directory where screenshots are saved. Click the box below to change it.">Screenshots&nbsp;&nbsp;<button class="floatright" id="resetScreenshotPath">Reset</button><br><br><div id="ScreenshotPath" class="box"><span id="ScreenshotPathText"></span></div></p>
+<p title="Path to directory where screenshots are saved. Click the box below to change it.">Screenshots&nbsp;&nbsp;<button class="floatright ml-13" id="resetScreenshotPath">Reset</button><button class="floatright" id="openScreenshotPath">Open</button><br><br><div id="ScreenshotPath" class="box"><span id="ScreenshotPathText"></span></div></p>
 <p>&nbsp;</p><p>&nbsp;</p>
-<p title="Path to directory where emulator savestates are saved. Click the box below to change it.">Savestates&nbsp;&nbsp;<button class="floatright" id="resetSaveStatePath">Reset</button><br><br><div id="SaveStatePath" class="box"><span id="SaveStatePathText"></span></div></p>
+<p title="Path to directory where emulator savestates are saved. Click the box below to change it.">Savestates&nbsp;&nbsp;<button class="floatright ml-13" id="resetSaveStatePath">Reset</button><button class="floatright" id="openSaveStatePath">Open</button><br><br><div id="SaveStatePath" class="box"><span id="SaveStatePathText"></span></div></p>
 <p>&nbsp;</p><p>&nbsp;</p>
-<p title="Path to directory where SRAM/EEPROM data (in-game saves) are stored. Click the box below to change it.">Save Files&nbsp;&nbsp;<button class="floatright" id="resetSaveSRAMPath">Reset</button><br><br><div id="SaveSRAMPath" class="box"><span id="SaveSRAMPathText"></span></div></p>
+<p title="Path to directory where SRAM/EEPROM data (in-game saves) are stored. Click the box below to change it.">Save Files&nbsp;&nbsp;<button class="floatright ml-13" id="resetSaveSRAMPath">Reset</button><button class="floatright" id="openSaveSRAMPath">Open</button><br><br><div id="SaveSRAMPath" class="box"><span id="SaveSRAMPathText"></span></div></p>
 </div>
 <div id="core_plugins" class="hide mt-15">
 <div title="Angrylion Plus: LLE,
@@ -1368,11 +1368,11 @@ If this option is turned off, the output resolution is the same as the rendering
 <p>&nbsp;</p>
 <p><span class="numberDecrease" id="decreasetxHiresVramLimit">-</span><input id="txHiresVramLimit" min="0" max="102400" step="512" value="0" type="number"><span class="numberIncrease" id="increasetxHiresVramLimit">+</span><label title="Limit hi-res textures size in VRAM." for="txHiresVramLimit">VRAM limit (in MB)</label><button class="floatright" data-value="0" id="resettxHiresVramLimit">Reset</button></p>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
-<p title="Path to folder with hi-res texture packs (PNG format). Click the box below to change it.">hires_texture<button class="floatright" id="resetTxPath">Reset</button><br><br><div class="box" id="txPath"><span id="txPathText"></span></div></p>
+<p title="Path to folder with hi-res texture packs (PNG format). Click the box below to change it.">hires_texture<button class="floatright ml-13" id="resetTxPath">Reset</button><button class="floatright" id="openTxPath">Open</button><br><br><div class="box" id="txPath"><span id="txPathText"></span></div></p>
 <p>&nbsp;</p><p>&nbsp;</p>
-<p title="Path to folder where plugin saves texture cache files (HTC/HTS). Click the box below to change it.">cache<button class="floatright" id="resetTxCachePath">Reset</button><br><br><div class="box" id="txCachePath"><span id="txCachePathText"></span></div></p>
+<p title="Path to folder where plugin saves texture cache files (HTC/HTS). Click the box below to change it.">cache<button class="floatright ml-13" id="resetTxCachePath">Reset</button><button class="floatright" id="openTxCachePath">Open</button><br><br><div class="box" id="txCachePath"><span id="txCachePathText"></span></div></p>
 <p>&nbsp;</p><p>&nbsp;</p>
-<p title="Path to folder where plugin saves dumped textures. Click the box below to change it.">texture_dump<button class="floatright" id="resetTxDumpPath">Reset</button><br><br><div class="box" id="txDumpPath"><span id="txDumpPathText"></span></div></p>
+<p title="Path to folder where plugin saves dumped textures. Click the box below to change it.">texture_dump<button class="floatright ml-13" id="resetTxDumpPath">Reset</button><button class="floatright" id="openTxDumpPath">Open</button><br><br><div class="box" id="txDumpPath"><span id="txDumpPathText"></span></div></p>
 </div>
 <div id="gliden64_osd" class="hide mt-10">
 <p><span class="numberDecrease" id="decreasefontSize">-</span><input id="fontSize" min="6" max="99" step="1" value="18" type="number"><span class="numberIncrease" id="increasefontSize">+</span><label for="fontSize">Font size (in px)</label><button class="floatright" data-value="18" id="resetfontSize">Reset</button></p>

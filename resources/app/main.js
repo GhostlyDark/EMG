@@ -24,7 +24,7 @@ preferences = {preload:path(dir, 'preload.js')},
 mainWindow = {backgroundColor:'#121212', width:1280, height:800, minWidth:923, minHeight:640, title:name, show:false, autoHideMenuBar:true, webPreferences:preferences},
 deleteDialog = {defaultId:1, cancelId:1, icon:path(dir, 'img', 'delete.png'), buttons:['Confirm','Abort'], title:' Reset settings', message:'Reset all settings?'};
 
-let m64pCache = m64pConfig, m64pShare = m64pConfig;
+let m64pCache = m64pShare = m64pConfig;
 if(isLinux){m64pCache = path(appData, '../', '.cache', 'mupen64plus');m64pShare = path(appData, '../', '.local', 'share', 'mupen64plus')};
 
 const cache = path(m64pCache,'cache'),
@@ -89,6 +89,7 @@ ipcMain.on('isLinux', (e) => {e.returnValue = isLinux})
 ipcMain.on('dialogDirectory', (e) => {e.returnValue = dialog.showOpenDialogSync({properties:['openDirectory']})})
 ipcMain.on('dialogFile', (e, data) => {e.returnValue = dialog.showOpenDialogSync({properties:['openFile'],filters:[data]})})
 ipcMain.on('dialogError', (e, title, data) => {e.returnValue = dialog.showErrorBox(title,data)})
+ipcMain.on('openPath', (e, data) => {e.returnValue = shell.openPath(data).toString()})
 
 app.on('second-instance', (e) => {if(win.isMinimized()){win.restore()}else{win.focus()}})
 if(!app.requestSingleInstanceLock()){return app.quit()}
@@ -123,7 +124,6 @@ Menu.setApplicationMenu(Menu.buildFromTemplate([
 	{label: 'Functions', submenu: [
 		{icon: nativeImage.createFromPath(path(dir, 'img', 'delete.png')).resize({width:28}), label: 'Reset settings', click () {const choice = dialog.showMessageBoxSync(win,deleteDialog);if(choice !== 1){session.defaultSession.clearStorageData();session.defaultSession.clearCache()}}},
 		{icon: nativeImage.createFromPath(path(dir, 'img', 'emg.png')).resize({width:28}), label: 'Show EMG data', click () {shell.openPath(emg)}},
-		{icon: nativeImage.createFromPath(path(dir, 'img', 'mupen64plus.png')).resize({width:28}), label: 'Show m64p data', click () {shell.openPath(m64pConfig);if(isLinux){shell.openPath(m64pCache);shell.openPath(m64pShare)}}},
 		{type: 'separator'},
 		{icon: nativeImage.createFromPath(path(dir, 'img', 'github.png')).resize({width:28}), label: 'Visit GitHub repo', click () {shell.openExternal('https://github.com/GhostlyDark/EMG')}},
 		{icon: nativeImage.createFromPath(path(dir, 'img', 'icon-ghostly-nx.png')).resize({width:28}), label: 'Visit website', click () {shell.openExternal('https://evilgames.eu/')}}
