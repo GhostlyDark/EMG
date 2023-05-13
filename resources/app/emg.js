@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-var cheatRadio,filePath,fileResult,txPath,txPathResult,txCachePath,txCachePathResult,txDumpPath,txDumpPathResult,IPLROM,IPLROMResult,Disk,DiskResult,ConfigPath,ConfigPathResult,ScreenshotPath,ScreenshotPathResult,SaveStatePath,SaveStatePathResult,SaveSRAMPath,SaveSRAMPathResult,gbROM1,gbROM1Result,gbROM2,gbROM2Result,gbROM3,gbROM3Result,gbROM4,gbROM4Result,gbRAM1,gbRAM1Result,gbRAM2,gbRAM2Result,gbRAM3,gbRAM3Result,gbRAM4,gbRAM4Result,
+var cheatRadio,filePath,fileResult,RomPath,RomPathResult,txPath,txPathResult,txCachePath,txCachePathResult,txDumpPath,txDumpPathResult,IPLROM,IPLROMResult,Disk,DiskResult,ConfigPath,ConfigPathResult,ScreenshotPath,ScreenshotPathResult,SaveStatePath,SaveStatePathResult,SaveSRAMPath,SaveSRAMPathResult,gbROM1,gbROM1Result,gbROM2,gbROM2Result,gbROM3,gbROM3Result,gbROM4,gbROM4Result,gbRAM1,gbRAM1Result,gbRAM2,gbRAM2Result,gbRAM3,gbRAM3Result,gbRAM4,gbRAM4Result,
 
 recentFiles = [];
 
@@ -817,6 +817,33 @@ id('fontColor').addEventListener('change', function(){localStorage.setItem('font
 
 
 
+id('resetRomPath').addEventListener('click', function(){RomPath = id('RomPathText').innerHTML = id('romBrowser').innerHTML = '';localStorage.removeItem('RomPath');id('romBrowser').classList.add('hide')})
+if(localStorage.getItem('RomPath') === null){RomPath = id('RomPathText').innerHTML = ''}
+if(localStorage.getItem('RomPath') != null){RomPath = localStorage.getItem('RomPath');id('RomPathText').innerHTML = RomPath}
+id('RomPath').addEventListener('click', function(){
+RomPathResult = dialogDirectory()
+if(RomPathResult != undefined){RomPath = RomPathResult.toString();id('RomPathText').innerHTML = RomPath;localStorage.setItem('RomPath', RomPath);id('loadRomPath').click()}})
+
+function romUpdate(rom){ /* ROM browser */
+if(rom === '' || rom === null || rom === undefined)return
+var newROM = document.createElement('p');
+newROM.dataset.value = newROM.innerHTML = rom;
+id('romBrowser').appendChild(newROM)}
+
+id('loadRomPath').addEventListener('click', function(){
+if(RomPath === '' || RomPath === null || RomPath === undefined)return
+id('romBrowser').innerHTML = '';
+const romFiles = romDir(RomPath).filter(name => name.match(/\.n64$|\.v64$|\.z64$/));
+romFiles.forEach(rom => romUpdate(rom))
+const romFile = id('romBrowser').children;
+for(var i = 0; i < romFile.length; i++){romFile[i].onclick = function(){filePath = romDirFile(RomPath,this.dataset.value);id('fileText').innerHTML = filePath;localStorage.setItem('filePath', filePath)}}
+id('romBrowser').classList.remove('hide')})
+
+id('loadRomPath').click()
+
+
+
+id('openRomPath').addEventListener('click', function(){openPath(RomPath)})
 id('openConfigPath').addEventListener('click', function(){openPath(ConfigPath)})
 id('openScreenshotPath').addEventListener('click', function(){openPath(ScreenshotPath)})
 id('openSaveStatePath').addEventListener('click', function(){openPath(SaveStatePath)})

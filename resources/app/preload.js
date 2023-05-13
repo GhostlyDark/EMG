@@ -13,6 +13,8 @@ dialogFile = (data) => {return ipcRenderer.sendSync('dialogFile', data)},
 dialogError = (title, data) => {return ipcRenderer.sendSync('dialogError', title, data)},
 openPath = (data) => {return ipcRenderer.sendSync('openPath', data)},
 showInFolder = (data) => {return ipcRenderer.sendSync('showInFolder', data)},
+romDir = (data) => {return ipcRenderer.sendSync('romDir', data)},
+romDirFile = (dir, data) => {return ipcRenderer.sendSync('romDirFile', dir, data)},
 writeGCA = (gcaSettings, configdir) => {ipcRenderer.sendSync('writeGCA', configdir, gcaSettings)},
 emuLaunch = (parameters) => {ipcRenderer.send('emuLaunch', parameters)},
 showCheats = (parameters) => {return ipcRenderer.sendSync('showCheats', parameters)},
@@ -91,6 +93,8 @@ contextBridge.exposeInMainWorld('dialogDirectory',dialogDirectory)
 contextBridge.exposeInMainWorld('dialogFile',dialogFile)
 contextBridge.exposeInMainWorld('openPath',openPath)
 contextBridge.exposeInMainWorld('showInFolder',showInFolder)
+contextBridge.exposeInMainWorld('romDir',romDir)
+contextBridge.exposeInMainWorld('romDirFile',romDirFile)
 contextBridge.exposeInMainWorld('emuLaunch',emuLaunch)
 contextBridge.exposeInMainWorld('jstest',jstest)
 contextBridge.exposeInMainWorld('jsRefresh',jsRefresh)
