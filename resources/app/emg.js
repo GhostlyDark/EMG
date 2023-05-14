@@ -497,8 +497,8 @@ if(localStorage.getItem('coreULActive') != null && localStorage.getItem('coreDIV
 currentCore(id(localStorage.getItem('coreULActive')),id(localStorage.getItem('coreDIVActive')))}
 
 function currentCore(currentUL,currentDIV){core_main.forEach(core_main => {
-if(id('ul_'+core_main).classList.contains('active'))id('ul_'+core_main).classList.remove('active')
-if(!id(core_main).classList.contains('hide'))id(core_main).classList.add('hide')})
+id('ul_'+core_main).classList.remove('active')
+id(core_main).classList.add('hide')})
 currentUL.classList.add('active');localStorage.setItem('coreULActive',currentUL.id);
 currentDIV.classList.remove('hide');localStorage.setItem('coreDIVActive',currentDIV.id)}
 
@@ -510,8 +510,8 @@ if(localStorage.getItem('inputULActive') != null && localStorage.getItem('inputD
 currentInput(id(localStorage.getItem('inputULActive')),id(localStorage.getItem('inputDIVActive')))}
 
 function currentInput(currentUL,currentDIV){input_controller.forEach(input_controller => {
-if(id('ul_'+input_controller).classList.contains('active'))id('ul_'+input_controller).classList.remove('active')
-if(!id(input_controller).classList.contains('hide'))id(input_controller).classList.add('hide')})
+id('ul_'+input_controller).classList.remove('active')
+id(input_controller).classList.add('hide')})
 currentUL.classList.add('active');localStorage.setItem('inputULActive',currentUL.id);
 currentDIV.classList.remove('hide');localStorage.setItem('inputDIVActive',currentDIV.id)}
 
@@ -523,8 +523,8 @@ if(localStorage.getItem('hkULActive') != null && localStorage.getItem('hkDIVActi
 currentHK(id(localStorage.getItem('hkULActive')),id(localStorage.getItem('hkDIVActive')))}
 
 function currentHK(currentUL,currentDIV){hk.forEach(hk => {
-if(id('ul_'+hk).classList.contains('active'))id('ul_'+hk).classList.remove('active')
-if(!id(hk).classList.contains('hide'))id(hk).classList.add('hide')})
+id('ul_'+hk).classList.remove('active')
+id(hk).classList.add('hide')})
 currentUL.classList.add('active');localStorage.setItem('hkULActive',currentUL.id);
 currentDIV.classList.remove('hide');localStorage.setItem('hkDIVActive',currentDIV.id)}
 
@@ -536,8 +536,8 @@ if(localStorage.getItem('GLideN64ULActive') != null && localStorage.getItem('GLi
 currentGLideN64(id(localStorage.getItem('GLideN64ULActive')),id(localStorage.getItem('GLideN64DIVActive')))}
 
 function currentGLideN64(currentUL,currentDIV){gliden64_setting.forEach(gliden64_setting => {
-if(id('ul_'+gliden64_setting).classList.contains('active'))id('ul_'+gliden64_setting).classList.remove('active')
-if(!id(gliden64_setting).classList.contains('hide'))id(gliden64_setting).classList.add('hide')})
+id('ul_'+gliden64_setting).classList.remove('active')
+id(gliden64_setting).classList.add('hide')})
 currentUL.classList.add('active');localStorage.setItem('GLideN64ULActive',currentUL.id);
 currentDIV.classList.remove('hide');localStorage.setItem('GLideN64DIVActive',currentDIV.id)}
 
@@ -549,8 +549,8 @@ if(localStorage.getItem('RiceULActive') != null && localStorage.getItem('RiceDIV
 currentRice(id(localStorage.getItem('RiceULActive')),id(localStorage.getItem('RiceDIVActive')))}
 
 function currentRice(currentUL,currentDIV){rice_setting.forEach(rice_setting => {
-if(id('ul_'+rice_setting).classList.contains('active'))id('ul_'+rice_setting).classList.remove('active')
-if(!id(rice_setting).classList.contains('hide'))id(rice_setting).classList.add('hide')})
+id('ul_'+rice_setting).classList.remove('active')
+id(rice_setting).classList.add('hide')})
 currentUL.classList.add('active');localStorage.setItem('RiceULActive',currentUL.id);
 currentDIV.classList.remove('hide');localStorage.setItem('RiceDIVActive',currentDIV.id)}
 
