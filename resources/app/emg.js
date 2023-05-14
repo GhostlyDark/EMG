@@ -494,7 +494,8 @@ for (var i = 0; i < radioBoxes.length; i++){var box = radioBoxes[i];if(box.id.in
 
 
 if(localStorage.getItem('coreULActive') != null && localStorage.getItem('coreDIVActive') != null){ /* Core settings tabs */
-currentCore(id(localStorage.getItem('coreULActive')),id(localStorage.getItem('coreDIVActive')))}
+if(id(localStorage.getItem('coreULActive')) != null && id(localStorage.getItem('coreDIVActive')) != null){
+currentCore(id(localStorage.getItem('coreULActive')),id(localStorage.getItem('coreDIVActive')))}}
 
 function currentCore(currentUL,currentDIV){core_main.forEach(core_main => {
 id('ul_'+core_main).classList.remove('active')
@@ -507,7 +508,8 @@ core_main.forEach(core_main => {id('ul_'+core_main).addEventListener('click', fu
 
 
 if(localStorage.getItem('inputULActive') != null && localStorage.getItem('inputDIVActive') != null){ /* Controller settings tabs */
-currentInput(id(localStorage.getItem('inputULActive')),id(localStorage.getItem('inputDIVActive')))}
+if(id(localStorage.getItem('inputULActive')) != null && id(localStorage.getItem('inputDIVActive')) != null){
+currentInput(id(localStorage.getItem('inputULActive')),id(localStorage.getItem('inputDIVActive')))}}
 
 function currentInput(currentUL,currentDIV){input_controller.forEach(input_controller => {
 id('ul_'+input_controller).classList.remove('active')
@@ -520,7 +522,8 @@ input_controller.forEach(input_controller => {id('ul_'+input_controller).addEven
 
 
 if(localStorage.getItem('hkULActive') != null && localStorage.getItem('hkDIVActive') != null){ /* mupen64plus hotkey tabs */
-currentHK(id(localStorage.getItem('hkULActive')),id(localStorage.getItem('hkDIVActive')))}
+if(id(localStorage.getItem('hkULActive')) != null && id(localStorage.getItem('hkDIVActive')) != null){
+currentHK(id(localStorage.getItem('hkULActive')),id(localStorage.getItem('hkDIVActive')))}}
 
 function currentHK(currentUL,currentDIV){hk.forEach(hk => {
 id('ul_'+hk).classList.remove('active')
@@ -533,7 +536,8 @@ hk.forEach(hk => {id('ul_'+hk).addEventListener('click', function(){currentHK(id
 
 
 if(localStorage.getItem('GLideN64ULActive') != null && localStorage.getItem('GLideN64DIVActive') != null){ /* GLideN64 settings tabs */
-currentGLideN64(id(localStorage.getItem('GLideN64ULActive')),id(localStorage.getItem('GLideN64DIVActive')))}
+if(id(localStorage.getItem('GLideN64ULActive')) != null && id(localStorage.getItem('GLideN64DIVActive')) != null){
+currentGLideN64(id(localStorage.getItem('GLideN64ULActive')),id(localStorage.getItem('GLideN64DIVActive')))}}
 
 function currentGLideN64(currentUL,currentDIV){gliden64_setting.forEach(gliden64_setting => {
 id('ul_'+gliden64_setting).classList.remove('active')
@@ -546,7 +550,8 @@ gliden64_setting.forEach(gliden64_setting => {id('ul_'+gliden64_setting).addEven
 
 
 if(localStorage.getItem('RiceULActive') != null && localStorage.getItem('RiceDIVActive') != null){ /* Rice settings tabs */
-currentRice(id(localStorage.getItem('RiceULActive')),id(localStorage.getItem('RiceDIVActive')))}
+if(id(localStorage.getItem('RiceULActive')) != null && id(localStorage.getItem('RiceDIVActive')) != null){
+currentRice(id(localStorage.getItem('RiceULActive')),id(localStorage.getItem('RiceDIVActive')))}}
 
 function currentRice(currentUL,currentDIV){rice_setting.forEach(rice_setting => {
 id('ul_'+rice_setting).classList.remove('active')
