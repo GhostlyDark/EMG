@@ -27,7 +27,9 @@ dragDrop = ['fileInput','IPLROM','Disk','gbROM1','gbROM2','gbROM3','gbROM4','gbR
 core_main = ['core_rom','core_plugins','core_core','core_advanced','core_audio','core_directories','core_64dd'],
 input_controller = ['input_controller1','input_controller2','input_controller3','input_controller4','input_gca','input_mouse'],
 hk = ['hk_keyboard','hk_controller1','hk_controller2','hk_controller3','hk_controller4'],
+angrylion_setting = ['angrylion_video','angrylion_emulation'],
 gliden64_setting = ['gliden64_video','gliden64_overscan','gliden64_emulation','gliden64_framebuffer','gliden64_textures','gliden64_osd','gliden64_hotkeys'],
+parallel_setting = ['parallel_video','parallel_emulation'],
 rice_setting = ['rice_video','rice_emulation','rice_textures'],
 menu = ['video'],
 
@@ -552,6 +554,20 @@ hk.forEach(hk => {id('ul_'+hk).addEventListener('click', function(){currentHK(id
 
 
 
+if(localStorage.getItem('AngrylionULActive') != null && localStorage.getItem('AngrylionDIVActive') != null){ /* Angrylion-Plus settings tabs */
+if(id(localStorage.getItem('AngrylionULActive')) != null && id(localStorage.getItem('AngrylionDIVActive')) != null){
+currentAngrylion(id(localStorage.getItem('AngrylionULActive')),id(localStorage.getItem('AngrylionDIVActive')))}}
+
+function currentAngrylion(currentUL,currentDIV){angrylion_setting.forEach(angrylion_setting => {
+id('ul_'+angrylion_setting).classList.remove('active')
+id(angrylion_setting).classList.add('hide')})
+currentUL.classList.add('active');localStorage.setItem('AngrylionULActive',currentUL.id);
+currentDIV.classList.remove('hide');localStorage.setItem('AngrylionDIVActive',currentDIV.id)}
+
+angrylion_setting.forEach(angrylion_setting => {id('ul_'+angrylion_setting).addEventListener('click', function(){currentAngrylion(id('ul_'+angrylion_setting),id(angrylion_setting))})})
+
+
+
 if(localStorage.getItem('GLideN64ULActive') != null && localStorage.getItem('GLideN64DIVActive') != null){ /* GLideN64 settings tabs */
 if(id(localStorage.getItem('GLideN64ULActive')) != null && id(localStorage.getItem('GLideN64DIVActive')) != null){
 currentGLideN64(id(localStorage.getItem('GLideN64ULActive')),id(localStorage.getItem('GLideN64DIVActive')))}}
@@ -563,6 +579,20 @@ currentUL.classList.add('active');localStorage.setItem('GLideN64ULActive',curren
 currentDIV.classList.remove('hide');localStorage.setItem('GLideN64DIVActive',currentDIV.id)}
 
 gliden64_setting.forEach(gliden64_setting => {id('ul_'+gliden64_setting).addEventListener('click', function(){currentGLideN64(id('ul_'+gliden64_setting),id(gliden64_setting))})})
+
+
+
+if(localStorage.getItem('ParallelULActive') != null && localStorage.getItem('ParallelDIVActive') != null){ /* Parallel settings tabs */
+if(id(localStorage.getItem('ParallelULActive')) != null && id(localStorage.getItem('ParallelDIVActive')) != null){
+currentParallel(id(localStorage.getItem('ParallelULActive')),id(localStorage.getItem('ParallelDIVActive')))}}
+
+function currentParallel(currentUL,currentDIV){parallel_setting.forEach(parallel_setting => {
+id('ul_'+parallel_setting).classList.remove('active')
+id(parallel_setting).classList.add('hide')})
+currentUL.classList.add('active');localStorage.setItem('ParallelULActive',currentUL.id);
+currentDIV.classList.remove('hide');localStorage.setItem('ParallelDIVActive',currentDIV.id)}
+
+parallel_setting.forEach(parallel_setting => {id('ul_'+parallel_setting).addEventListener('click', function(){currentParallel(id('ul_'+parallel_setting),id(parallel_setting))})})
 
 
 
