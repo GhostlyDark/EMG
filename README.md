@@ -80,6 +80,7 @@ Use 8 threads for the building process and grab Electron v22.3.9:
 ## Shortcuts
 
 - `Ctrl` + `I`: Toggle Developer Tools
+- `Ctrl` + `L`: Launch mupen64plus
 - `Ctrl` + `O`: Open ROM
 - `Ctrl` + `R`: Reload
 - `Ctrl` + `Numpad+`: Zoom In
