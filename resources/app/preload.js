@@ -20,6 +20,11 @@ emuLaunch = (parameters) => {ipcRenderer.send('emuLaunch', parameters)},
 showCheats = (parameters) => {return ipcRenderer.sendSync('showCheats', parameters)},
 jsRefresh = () => {return ipcRenderer.sendSync('jsRefresh')},
 jsMapping = (padId) => {return ipcRenderer.sendSync('jsMapping', padId)},
+changeZoom = (data) => {return ipcRenderer.sendSync('changeZoom', data)},
+devTools = () => {return ipcRenderer.sendSync('devTools')},
+appReload = () => {return ipcRenderer.sendSync('appReload')},
+deleteSettings = () => {return ipcRenderer.sendSync('deleteSettings')},
+goToGitHub = () => {return ipcRenderer.sendSync('goToGitHub')},
 
 jstest = (joyinput) => {
 var id = function(id){return document.getElementById(id)},joyvalue,joydata,jstestConfig,config;
@@ -101,3 +106,8 @@ contextBridge.exposeInMainWorld('jsRefresh',jsRefresh)
 contextBridge.exposeInMainWorld('jsMapping',jsMapping)
 contextBridge.exposeInMainWorld('showCheats',showCheats)
 contextBridge.exposeInMainWorld('writeGCA',writeGCA)
+contextBridge.exposeInMainWorld('changeZoom',changeZoom)
+contextBridge.exposeInMainWorld('devTools',devTools)
+contextBridge.exposeInMainWorld('appReload',appReload)
+contextBridge.exposeInMainWorld('deleteSettings',deleteSettings)
+contextBridge.exposeInMainWorld('goToGitHub',goToGitHub)

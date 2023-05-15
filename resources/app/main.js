@@ -20,7 +20,7 @@ jsOptions = {cwd: cwd, stdio: stdio, timeout: 5000, windowsHide: true},
 load = path(dir, 'emg.htm'),
 name = ' ' + app.name + ' v' + app.getVersion(),
 preferences = {preload:path(dir, 'preload.js')},
-mainWindow = {backgroundColor:'#121212', width:1280, height:800, minWidth:923, minHeight:640, title:name, show:false, autoHideMenuBar:true, webPreferences:preferences},
+mainWindow = {backgroundColor:'#121212', width:1280, height:800, minWidth:923, minHeight:640, title:name, show:false, webPreferences:preferences},
 deleteDialog = {defaultId:1, cancelId:1, icon:path(dir, 'img', 'delete.png'), buttons:['Confirm','Abort'], title:' Reset settings', message:'Reset all settings?'};
 
 let m64pCache = m64pShare = m64pConfig;
@@ -75,6 +75,11 @@ ipcMain.on('writeGCA', (e, gcaSettings, configdir) => {
 	e.returnValue = writeFileSync(path(configdir,'mupen64plus-input-gca.toml'),gcaSettings)
 })
 
+ipcMain.on('deleteSettings', (e) => {
+const choice = dialog.showMessageBoxSync(win,deleteDialog);
+if(choice !== 1){session.defaultSession.clearStorageData();session.defaultSession.clearCache()}
+e.returnValue = ''})
+
 ipcMain.on('testROM', (e) => {e.returnValue = testROM})
 ipcMain.on('pluginDir', (e) => {e.returnValue = readdirSync(pluginDir)})
 ipcMain.on('jstestPath', (e) => {e.returnValue = jstestPath})
@@ -93,6 +98,12 @@ ipcMain.on('romDir', (e, data) => {if(existsSync(data)){e.returnValue = readdirS
 ipcMain.on('romDirFile', (e, dir, data) => {e.returnValue = path(dir,data)})
 ipcMain.on('openPath', (e, data) => {if(existsSync(data)){e.returnValue = shell.openPath(data).toString()}else{e.returnValue = ''}})
 ipcMain.on('showInFolder', (e, data) => {e.returnValue = shell.showItemInFolder(data)})
+ipcMain.on('changeZoom', (e, data) => {e.returnValue = win.webContents.setZoomFactor(data)})
+ipcMain.on('devTools', (e) => {e.returnValue = win.webContents.toggleDevTools()})
+ipcMain.on('appReload', (e) => {e.returnValue = win.webContents.reload()})
+ipcMain.on('goToGitHub', (e) => {shell.openExternal('https://github.com/GhostlyDark/EMG'); e.returnValue = ''})
+
+Menu.setApplicationMenu(null)
 
 app.on('second-instance', (e) => {if(win.isMinimized()){win.restore()}else{win.focus()}})
 if(!app.requestSingleInstanceLock()){return app.quit()}
@@ -113,24 +124,6 @@ function(details, callback){
 const whitelist = /(^file:\/\/\/)|(^devtools:\/\/devtools\/bundled\/)/g;
 if(whitelist.test(details.url)){callback({cancel:false})}
 else{callback({cancel:true})}})
-
-Menu.setApplicationMenu(Menu.buildFromTemplate([
-	{label: 'App', submenu: [{icon: nativeImage.createFromPath(path(dir, 'img', 'quit.png')).resize({width:28}), label: 'Quit ' + app.name, click () {win.close()}}]},
-	{label: 'Window', submenu: [
-		{icon: nativeImage.createFromPath(path(dir, 'img', 'refresh.png')).resize({width:28}), label: 'Reload window', accelerator: 'CmdOrCtrl+R', role: 'reload'},
-		{icon: nativeImage.createFromPath(path(dir, 'img', 'inspector.png')).resize({width:28}), label: 'Developer tools', accelerator: 'CmdOrCtrl+I', role: 'toggleDevTools'},
-		{type: 'separator'},
-		{icon: nativeImage.createFromPath(path(dir, 'img', 'zoom-in.png')).resize({width:28}), label: 'Increase zoom', accelerator: 'CmdOrCtrl+numadd', role: 'zoomin'},
-		{icon: nativeImage.createFromPath(path(dir, 'img', 'zoom-out.png')).resize({width:28}), label: 'Decrease zoom', accelerator: 'CmdOrCtrl+numsub', role: 'zoomout'},
-		{icon: nativeImage.createFromPath(path(dir, 'img', 'zoom-reset.png')).resize({width:28}), label: 'Reset zoom', accelerator: 'CmdOrCtrl+num0', role: 'resetzoom'},
-		]},
-	{label: 'Functions', submenu: [
-		{icon: nativeImage.createFromPath(path(dir, 'img', 'delete.png')).resize({width:28}), label: 'Reset settings', click () {const choice = dialog.showMessageBoxSync(win,deleteDialog);if(choice !== 1){session.defaultSession.clearStorageData();session.defaultSession.clearCache()}}},
-		{type: 'separator'},
-		{icon: nativeImage.createFromPath(path(dir, 'img', 'github.png')).resize({width:28}), label: 'Visit GitHub repo', click () {shell.openExternal('https://github.com/GhostlyDark/EMG')}},
-		{icon: nativeImage.createFromPath(path(dir, 'img', 'icon-ghostly-nx.png')).resize({width:28}), label: 'Visit website', click () {shell.openExternal('https://evilgames.eu/')}}
-		]}
-]))
 
 win.on('closed', () => {app.exit()})
 })

@@ -62,7 +62,7 @@ cd EMG
 ```
 
 
-## Developers
+## Building options
 
 The build script `compile.sh` can be run with additional parameters:
 
@@ -70,13 +70,23 @@ The build script `compile.sh` can be run with additional parameters:
 ./compile.sh [threads] [electron]
 ```
 
-Use 8 threads for the building process and grab Electron v22.3.8:
+Use 8 threads for the building process and grab Electron v22.3.9:
 
 ```
-./compile.sh 8 v22.3.8
+./compile.sh 8 v22.3.9
 ```
+
+
+## Shortcuts
+
+- `Ctrl` + `I`: Toggle Developer Tools
+- `Ctrl` + `O`: Open ROM
+- `Ctrl` + `R`: Reload
+- `Ctrl` + `Numpad+`: Zoom In
+- `Ctrl` + `Numpad-`: Zoom Out
+- `Ctrl` + `Numpad0`: Zoom Reset
 
 
 ## Troubleshooting
 
-Logging happens once mupen64plus closes after pressing `Launch`. Open developer tools by pressing `CTRL + I` or by activating it via the menubar (unhide with `ALT`). To save a log file, click the `Console` tab, right click on the relevant log -> `Save as...` to save it as text file. Post the log file as part of an issue if applicable.
+Logging happens once mupen64plus closes after pressing `Launch`. To view the log, open developer tools and switch to the `Console` tab. Right click on the relevant log -> `Save as...` to save it as text file.

@@ -12,6 +12,7 @@
 <main>
 <header>
 <ul>
+<li><a id="github"><img src="style/github.svg"></a></li>
 <li><a href="#mainAnchor"><img src="style/main.svg"><span class="headerText pl-2">Main</span></a></li>
 <li><a href="#inputAnchor"><img src="style/input.svg"><span class="headerText pl-6">Input</span></a></li>
 <li><a href="#hotkeysAnchor"><img src="style/hotkeys.svg"><span class="headerText pl-4">Hotkeys</span></a></li>
@@ -138,6 +139,8 @@ Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
 </select><label for="emumode">R4300 emulator</label></div>
 </div>
 <div id="core_advanced" class="hide mt-10">
+<p><button class="floatright mt-5" id="delete">Reset settings</button></p>
+<p>&nbsp;</p><p>&nbsp;</p>
 <p title="Disable compiled jump commands in dynamic recompiler (not recommended)."><input id="NoCompiledJump" type="checkbox" data-store="NoCompiledJump"><label for="NoCompiledJump">Disable compiled jump</label></p>
 <p>&nbsp;</p>
 <p title="Disables speed limit, V-Sync and mutes audio. Useful for performance testing."><input id="nospeedlimit" type="checkbox" data-store="nospeedlimit"><label for="nospeedlimit">Disable speed limit</label></p>
@@ -1591,6 +1594,7 @@ If this option is turned off, the output resolution is the same as the rendering
 <button title="Change colors" id="palettes"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M12 22C6.49 22 2 17.51 2 12S6.49 2 12 2s10 4.04 10 9c0 3.31-2.69 6-6 6h-1.77c-.28 0-.5.22-.5.5 0 .12.05.23.13.33.41.47.64 1.06.64 1.67 0 1.38-1.12 2.5-2.5 2.5zm0-18c-4.41 0-8 3.59-8 8s3.59 8 8 8c.28 0 .5-.22.5-.5 0-.16-.08-.28-.14-.35-.41-.46-.63-1.05-.63-1.65 0-1.38 1.12-2.5 2.5-2.5H16c2.21 0 4-1.79 4-4 0-3.86-3.59-7-8-7z"/><circle cx="6.5" cy="11.5" r="1.5"/><circle cx="9.5" cy="7.5" r="1.5"/><circle cx="14.5" cy="7.5" r="1.5"/><circle cx="17.5" cy="11.5" r="1.5"/></svg></button>
 <input id="background_input" type="file" accept="image/*"><button title="Set background image" id="fancy"><svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h7V2H4c-1.1 0-2 .9-2 2v7h2V4zm6 9l-4 5h12l-3-4-2.03 2.71L10 13zm7-4.5c0-.83-.67-1.5-1.5-1.5S14 7.67 14 8.5s.67 1.5 1.5 1.5S17 9.33 17 8.5zM20 2h-7v2h7v7h2V4c0-1.1-.9-2-2-2zm0 18h-7v2h7c1.1 0 2-.9 2-2v-7h-2v7zM4 13H2v7c0 1.1.9 2 2 2h7v-2H4v-7z"/></svg></button>
 <button title="Set filter" id="filter"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M19 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 16l-7-8v8H5l7-8V5h7v14z"/></svg></button><button title="Remove and reset background" id="reset"><svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M21.9 21.9l-6.1-6.1-2.69-2.69L5 5 3.59 3.59 2.1 2.1.69 3.51 3 5.83V19c0 1.1.9 2 2 2h13.17l2.31 2.31 1.42-1.41zM5 19V7.83l6.84 6.84-.84 1.05L9 13l-3 4h8.17l2 2H5zM7.83 5l-2-2H19a2 2 0 012 2v13.17l-2-2V5H7.83z"/></svg></button>
+<button class="hide" title="Adjust zoom" id="zoomButton"><span class="numberDecrease" id="decreaseZoom">-</span><br><input class="hide" id="Zoom" min="10" max="500" step="10" value="100" type="number"><span data-value="100" id="resetZoom">1.0</span><br><span class="numberIncrease" id="increaseZoom">+</span></button>
 </footer>
 </main>
 </body>
