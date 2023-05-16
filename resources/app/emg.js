@@ -76,41 +76,18 @@ const pluginFiles = pluginDir.filter(name => name.includes(ext)), pluginNames = 
 pluginFiles.forEach(name => pluginNames.push(name.replace(/\..*/,'')));
 
 const [dirSet,defaultSet] = [new Set(pluginNames), new Set(defaultPlugins)],
-newPlugins = [...dirSet].filter(name => !defaultSet.has(name)),
-audioPlugins = newPlugins.filter(name => name.includes('mupen64plus-audio-')),
-inputPlugins = newPlugins.filter(name => name.includes('mupen64plus-input-')),
-rspPlugins = newPlugins.filter(name => name.includes('mupen64plus-rsp-')),
-videoPlugins = newPlugins.filter(name => name.includes('mupen64plus-video-'));
+newPlugins = [...dirSet].filter(name => !defaultSet.has(name));
 
-audioPlugins.forEach(name => addAudioPlugin(name));
-inputPlugins.forEach(name => addInputPlugin(name));
-rspPlugins.forEach(name => {addRspPlugin(name);addRspFallbackPlugin(name)});
-videoPlugins.forEach(name => addVideoPlugin(name));
+newPlugins.forEach(name => addPlugin(name));
 
-function addAudioPlugin(name){
+function addPlugin(name){
 var newPlugin = document.createElement('option');
 newPlugin.value = newPlugin.innerHTML = name;
-if(name != '')id('audio').appendChild(newPlugin)}
-
-function addInputPlugin(name){
-var newPlugin = document.createElement('option');
-newPlugin.value = newPlugin.innerHTML = name;
-if(name != '')id('input').appendChild(newPlugin)}
-
-function addRspPlugin(name){
-var newPlugin = document.createElement('option');
-newPlugin.value = newPlugin.innerHTML = name;
-if(name != '')id('rsp').appendChild(newPlugin)}
-
-function addRspFallbackPlugin(name){
-var newPlugin = document.createElement('option');
-newPlugin.value = newPlugin.innerHTML = name;
-if(name != '')id('RspFallback').appendChild(newPlugin)}
-
-function addVideoPlugin(name){
-var newPlugin = document.createElement('option');
-newPlugin.value = newPlugin.innerHTML = name = name;
-if(name != '')id('gfx').appendChild(newPlugin)}
+if(name != ''){
+if(name.includes('mupen64plus-audio-')){id('audio').appendChild(newPlugin)}
+else if(name.includes('mupen64plus-input-')){id('input').appendChild(newPlugin)}
+else if(name.includes('mupen64plus-rsp-')){id('rsp').appendChild(newPlugin);id('RspFallback').appendChild(newPlugin.cloneNode(true))}
+else if(name.includes('mupen64plus-video-')){id('gfx').appendChild(newPlugin)}}}
 
 
 
