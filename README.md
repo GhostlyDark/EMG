@@ -77,6 +77,11 @@ Use 8 threads for the building process and grab Electron v22.3.9:
 ```
 
 
+## Adding plugins
+
+Plugin files are stored in `resources/app/m64p/plugin`. EMG does allow for plugins to be added, as long as they follow the `mupen64plus-[type]-[name].[extension]` naming scheme. Accepted plugin types are `audio`, `input`, `rsp` and `video`.
+
+
 ## Shortcuts
 
 - `Ctrl` + `I`: Toggle Developer Tools
