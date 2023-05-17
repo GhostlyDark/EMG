@@ -309,8 +309,6 @@ localStorage.setItem(number, number_input.value)}})})
 document.addEventListener('keydown', function(e){if(e.ctrlKey && e.which == 96){id('resetZoom').click()}})
 document.addEventListener('keydown', function(e){if(e.ctrlKey && e.which == 109){id('decreaseZoom').click()}})
 document.addEventListener('keydown', function(e){if(e.ctrlKey && e.which == 107){id('increaseZoom').click()}})
-document.addEventListener('keydown', function(e){if(e.ctrlKey && e.which == 73){devTools()}})
-document.addEventListener('keydown', function(e){if(e.ctrlKey && e.which == 82){appReload()}})
 document.addEventListener('keyup', function(e){if(e.ctrlKey && e.which == 79){id('fileInput').click()}})
 document.addEventListener('keyup', function(e){if(e.ctrlKey && e.which == 76){id('launch').click()}})
 
