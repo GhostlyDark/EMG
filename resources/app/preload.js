@@ -109,8 +109,11 @@ contextBridge.exposeInMainWorld('jsMapping',jsMapping)
 contextBridge.exposeInMainWorld('showCheats',showCheats)
 contextBridge.exposeInMainWorld('writeGCA',writeGCA)
 contextBridge.exposeInMainWorld('changeZoom',changeZoom)
-contextBridge.exposeInMainWorld('deleteSettings',deleteSettings)
-contextBridge.exposeInMainWorld('goToGitHub',goToGitHub)
 
 document.addEventListener('keydown', function(e){if(e.ctrlKey && e.which == 73){devTools()}})
 document.addEventListener('keydown', function(e){if(e.ctrlKey && e.which == 82){appReload()}})
+
+document.addEventListener('DOMContentLoaded', function() {
+id('delete').addEventListener('click', function(){deleteSettings()})
+id('github').addEventListener('click', function(){goToGitHub()})
+})
