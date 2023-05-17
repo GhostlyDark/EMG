@@ -12,7 +12,7 @@ texture_dump = ipcRenderer.sendSync('texture_dump'),
 isLinux = ipcRenderer.sendSync('isLinux'),
 dialogDirectory = () => {return ipcRenderer.sendSync('dialogDirectory')},
 dialogFile = (data) => {return ipcRenderer.sendSync('dialogFile', data)},
-dialogError = (title, data) => {return ipcRenderer.sendSync('dialogError', title, data)},
+dialogError = (title, data) => {ipcRenderer.send('dialogError', title, data)},
 openPath = (data) => {return ipcRenderer.sendSync('openPath', data)},
 showInFolder = (data) => {return ipcRenderer.sendSync('showInFolder', data.toString())},
 romDir = (data) => {return ipcRenderer.sendSync('romDir', data)},
@@ -23,10 +23,10 @@ showCheats = (parameters) => {return ipcRenderer.sendSync('showCheats', paramete
 jsRefresh = () => {return ipcRenderer.sendSync('jsRefresh')},
 jsMapping = (padId) => {return ipcRenderer.sendSync('jsMapping', padId)},
 changeZoom = (data) => {return ipcRenderer.sendSync('changeZoom', data)},
-devTools = () => {return ipcRenderer.sendSync('devTools')},
-appReload = () => {return ipcRenderer.sendSync('appReload')},
-deleteSettings = () => {return ipcRenderer.sendSync('deleteSettings')},
-goToGitHub = () => {return ipcRenderer.sendSync('goToGitHub')},
+devTools = () => {ipcRenderer.send('devTools')},
+appReload = () => {ipcRenderer.send('appReload')},
+deleteSettings = () => {ipcRenderer.send('deleteSettings')},
+goToGitHub = () => {ipcRenderer.send('goToGitHub')},
 
 jstest = (joyinput) => {
 var joyID = function(joyID){return id(joyID)},joyvalue,joydata,jstestConfig,config;

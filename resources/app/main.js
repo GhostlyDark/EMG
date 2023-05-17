@@ -75,10 +75,9 @@ ipcMain.on('writeGCA', (e, gcaSettings, configdir) => {
 	e.returnValue = writeFileSync(path(configdir,'mupen64plus-input-gca.toml'),gcaSettings)
 })
 
-ipcMain.on('deleteSettings', (e) => {
+ipcMain.on('deleteSettings', () => {
 const choice = dialog.showMessageBoxSync(win,deleteDialog);
-if(choice !== 1){session.defaultSession.clearStorageData();session.defaultSession.clearCache()}
-e.returnValue = ''})
+if(choice !== 1){session.defaultSession.clearStorageData();session.defaultSession.clearCache()}})
 
 ipcMain.on('testROM', (e) => {e.returnValue = testROM})
 ipcMain.on('pluginDir', (e) => {e.returnValue = readdirSync(pluginDir)})
@@ -93,15 +92,15 @@ ipcMain.on('texture_dump', (e) => {e.returnValue = texture_dump})
 ipcMain.on('isLinux', (e) => {e.returnValue = isLinux})
 ipcMain.on('dialogDirectory', (e) => {e.returnValue = dialog.showOpenDialogSync({properties:['openDirectory']})})
 ipcMain.on('dialogFile', (e, data) => {e.returnValue = dialog.showOpenDialogSync({properties:['openFile'],filters:[data]})})
-ipcMain.on('dialogError', (e, title, data) => {e.returnValue = dialog.showErrorBox(title,data)})
+ipcMain.on('dialogError', (e, title, data) => {dialog.showErrorBox(title,data)})
 ipcMain.on('romDir', (e, data) => {if(existsSync(data)){e.returnValue = readdirSync(data)}else{e.returnValue = ''}})
 ipcMain.on('romDirFile', (e, dir, data) => {e.returnValue = path(dir,data)})
 ipcMain.on('openPath', (e, data) => {if(existsSync(data)){e.returnValue = shell.openPath(data).toString()}else{e.returnValue = ''}})
 ipcMain.on('showInFolder', (e, data) => {e.returnValue = shell.showItemInFolder(data)})
 ipcMain.on('changeZoom', (e, data) => {e.returnValue = win.webContents.setZoomFactor(data)})
-ipcMain.on('devTools', (e) => {e.returnValue = win.webContents.toggleDevTools()})
-ipcMain.on('appReload', (e) => {e.returnValue = win.webContents.reload()})
-ipcMain.on('goToGitHub', (e) => {shell.openExternal('https://github.com/GhostlyDark/EMG'); e.returnValue = ''})
+ipcMain.on('devTools', () => {win.webContents.toggleDevTools()})
+ipcMain.on('appReload', () => {win.webContents.reload()})
+ipcMain.on('goToGitHub', () => {shell.openExternal('https://github.com/GhostlyDark/EMG')})
 
 Menu.setApplicationMenu(null)
 
