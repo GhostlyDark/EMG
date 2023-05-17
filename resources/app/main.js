@@ -76,8 +76,9 @@ ipcMain.on('writeGCA', (e, gcaSettings, configdir) => {
 })
 
 ipcMain.on('deleteSettings', () => {
-const choice = dialog.showMessageBoxSync(win,deleteDialog);
-if(choice !== 1){session.defaultSession.clearStorageData();session.defaultSession.clearCache()}})
+	const choice = dialog.showMessageBoxSync(win,deleteDialog);
+	if(choice !== 1){session.defaultSession.clearStorageData();session.defaultSession.clearCache()}
+})
 
 ipcMain.on('testROM', (e) => {e.returnValue = testROM})
 ipcMain.on('pluginDir', (e) => {e.returnValue = readdirSync(pluginDir)})
