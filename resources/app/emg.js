@@ -306,12 +306,6 @@ else{number_input.value = (parseFloat(number_input.value) + number_input.step*1)
 if(number_input.id === 'Zoom'){number_reset.innerHTML = (number_input.value/100).toFixed(1);changeZoom(number_input.value/100)}
 localStorage.setItem(number, number_input.value)}})})
 
-document.addEventListener('keydown', function(e){if(e.ctrlKey && e.which == 96){id('resetZoom').click()}})
-document.addEventListener('keydown', function(e){if(e.ctrlKey && e.which == 109){id('decreaseZoom').click()}})
-document.addEventListener('keydown', function(e){if(e.ctrlKey && e.which == 107){id('increaseZoom').click()}})
-document.addEventListener('keyup', function(e){if(e.ctrlKey && e.which == 79){id('fileInput').click()}})
-document.addEventListener('keyup', function(e){if(e.ctrlKey && e.which == 76){id('launch').click()}})
-
 
 
 function rspDropdownDisable(){ /* disable or hide inputs */

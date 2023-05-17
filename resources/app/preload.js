@@ -116,4 +116,10 @@ document.addEventListener('keydown', function(e){if(e.ctrlKey && e.which == 82){
 document.addEventListener('DOMContentLoaded', function() {
 id('delete').addEventListener('click', function(){deleteSettings()})
 id('github').addEventListener('click', function(){goToGitHub()})
+
+document.addEventListener('keydown', function(e){if(e.ctrlKey && e.which == 96){id('resetZoom').click()}})
+document.addEventListener('keydown', function(e){if(e.ctrlKey && e.which == 109){id('decreaseZoom').click()}})
+document.addEventListener('keydown', function(e){if(e.ctrlKey && e.which == 107){id('increaseZoom').click()}})
+document.addEventListener('keyup', function(e){if(e.ctrlKey && e.which == 79){id('fileInput').click()}})
+document.addEventListener('keyup', function(e){if(e.ctrlKey && e.which == 76){id('launch').click()}})
 })
