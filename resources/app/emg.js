@@ -53,7 +53,7 @@ sliders = ['AnalogDeadzone1','AnalogDeadzone2','AnalogDeadzone3','AnalogDeadzone
 
 overscan = ['OverscanNtscTop','OverscanNtscLeft','OverscanNtscRight','OverscanNtscBottom','OverscanPalTop','OverscanPalLeft','OverscanPalRight','OverscanPalBottom'],
 
-numbers = [...overscan,'Zoom','NumWorkers','ParallelCropOverscan','ParallelVerticalStretch','txCacheSize','txHiresVramLimit','GammaCorrectionLevel','fontSize','CountPerOp','CountPerOpDenomPot','SiDmaDuration','CurrentStateSlot','VOLUME_ADJUST','VOLUME_DEFAULT','PolygonOffsetFactor','PolygonOffsetUnits'],
+numbers = [...overscan,'NumWorkers','ParallelCropOverscan','ParallelVerticalStretch','txCacheSize','txHiresVramLimit','GammaCorrectionLevel','fontSize','CountPerOp','CountPerOpDenomPot','SiDmaDuration','CurrentStateSlot','VOLUME_ADJUST','VOLUME_DEFAULT','PolygonOffsetFactor','PolygonOffsetUnits'],
 
 dropdowns = [
 'emumode','resolution','SaveDiskFormat', /* mupen64plus */
@@ -279,13 +279,8 @@ number_increase = id('increase'+number),
 digits = 0;
 if(number_input.step.includes('.'))digits=2;
 
-number_reset.addEventListener('click', function(){
-number_input.value = number_value; localStorage.removeItem(number);
-if(number_input.id === 'Zoom'){number_reset.innerHTML = (number_input.value/100).toFixed(1);changeZoom(number_input.value/100)}})
-
-if(localStorage.getItem(number) != null){
-number_input.value = localStorage.getItem(number)
-if(number_input.id === 'Zoom')number_reset.innerHTML = (number_input.value/100).toFixed(1)}
+number_reset.addEventListener('click', function(){number_input.value = number_value; localStorage.removeItem(number)})
+if(localStorage.getItem(number) != null)number_input.value = localStorage.getItem(number)
 
 number_input.addEventListener('change', function(){localStorage.setItem(number, number_input.value)})
 number_input.addEventListener('keydown', function(e){e.preventDefault()})
@@ -295,7 +290,6 @@ if(number_input.disabled)return
 if(number_input.value != number_input.min){
 if(number_input.id === 'SiDmaDuration' && number_input.value === '0'){number_input.value = '-1'}
 else{number_input.value = (parseFloat(number_input.value) - number_input.step*1).toFixed(digits)}
-if(number_input.id === 'Zoom'){number_reset.innerHTML = (number_input.value/100).toFixed(1);changeZoom(number_input.value/100)}
 localStorage.setItem(number, number_input.value)}})
 
 number_increase.addEventListener('click', function(){
@@ -303,7 +297,6 @@ if(number_input.disabled)return
 if(number_input.value != number_input.max){
 if(number_input.id === 'SiDmaDuration' && number_input.value === '-1'){number_input.value = '0'}
 else{number_input.value = (parseFloat(number_input.value) + number_input.step*1).toFixed(digits)}
-if(number_input.id === 'Zoom'){number_reset.innerHTML = (number_input.value/100).toFixed(1);changeZoom(number_input.value/100)}
 localStorage.setItem(number, number_input.value)}})})
 
 

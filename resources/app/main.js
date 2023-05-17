@@ -1,5 +1,5 @@
 let win, jstestChild;
-const {app, BrowserWindow, dialog, ipcMain, Menu, nativeImage, session, shell} = require('electron'),
+const {app, BrowserWindow, dialog, globalShortcut, ipcMain, Menu, nativeImage, session, shell} = require('electron'),
 {existsSync, mkdirSync, readdirSync, writeFileSync} = require('fs'),
 {spawn, spawnSync} = require('child_process'),
 url = require('url').URL,
@@ -97,12 +97,18 @@ ipcMain.on('romDir', (e, data) => {if(existsSync(data)){e.returnValue = readdirS
 ipcMain.on('romDirFile', (e, dir, data) => {e.returnValue = path(dir,data)})
 ipcMain.on('openPath', (e, data) => {if(existsSync(data)){e.returnValue = shell.openPath(data).toString()}else{e.returnValue = ''}})
 ipcMain.on('showInFolder', (e, data) => {e.returnValue = shell.showItemInFolder(data)})
-ipcMain.on('changeZoom', (e, data) => {e.returnValue = win.webContents.setZoomFactor(data)})
-ipcMain.on('devTools', () => {win.webContents.toggleDevTools()})
-ipcMain.on('appReload', () => {win.webContents.reload()})
 ipcMain.on('goToGitHub', () => {shell.openExternal('https://github.com/GhostlyDark/EMG')})
 
 Menu.setApplicationMenu(null)
+
+app.on('browser-window-focus', () => {
+globalShortcut.register('CmdOrCtrl+I', () => {win.webContents.toggleDevTools()})
+globalShortcut.register('CmdOrCtrl+R', () => {win.reload()})
+globalShortcut.register('CmdOrCtrl+num0', () => {win.webContents.setZoomFactor(1.0)})
+globalShortcut.register('CmdOrCtrl+numsub', () => {if(win.webContents.getZoomFactor().toFixed(1) != 0.1)win.webContents.setZoomFactor(win.webContents.getZoomFactor()-0.1)})
+globalShortcut.register('CmdOrCtrl+numadd', () => {if(win.webContents.getZoomFactor().toFixed(1) != 5.0)win.webContents.setZoomFactor(win.webContents.getZoomFactor()+0.1)})})
+
+app.on('browser-window-blur', () => {globalShortcut.unregisterAll()})
 
 app.on('second-instance', (e) => {if(win.isMinimized()){win.restore()}else{win.focus()}})
 if(!app.requestSingleInstanceLock()){return app.quit()}

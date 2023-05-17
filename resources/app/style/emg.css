@@ -112,7 +112,3 @@ header .headerText{position:relative;top:-10px;pointer-events:none}
 .dark #romBrowser p:hover{background-color:rgba(255,255,255,.2)}
 .dark #cheatList,.dark #log,.dark #romBrowser{border-color:#ccc;background-color:rgba(0,0,0,.2)}
 .dark.custom #cheatList,.dark.custom #log,.dark.custom #romBrowser{background-color:rgba(50,50,50,.1)}
-
-#zoomButton{transition:visibility 0s .2s,opacity .2s cubic-bezier(.4,0,.22,1),background .2s cubic-bezier(.4,0,.22,1);visibility:hidden;opacity:.001;position:absolute;left:15px;bottom:75px;padding-top:1px;width:44px}
-#zoomButton .numberDecrease{left:2px}
-@media (min-width:906px){#zoomButton{margin-left:-75px}}

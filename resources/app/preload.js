@@ -22,9 +22,6 @@ emuLaunch = (parameters) => {ipcRenderer.send('emuLaunch', parameters)},
 showCheats = (parameters) => {return ipcRenderer.sendSync('showCheats', parameters)},
 jsRefresh = () => {return ipcRenderer.sendSync('jsRefresh')},
 jsMapping = (padId) => {return ipcRenderer.sendSync('jsMapping', padId)},
-changeZoom = (data) => {return ipcRenderer.sendSync('changeZoom', data)},
-devTools = () => {ipcRenderer.send('devTools')},
-appReload = () => {ipcRenderer.send('appReload')},
 deleteSettings = () => {ipcRenderer.send('deleteSettings')},
 goToGitHub = () => {ipcRenderer.send('goToGitHub')},
 
@@ -108,18 +105,11 @@ contextBridge.exposeInMainWorld('jsRefresh',jsRefresh)
 contextBridge.exposeInMainWorld('jsMapping',jsMapping)
 contextBridge.exposeInMainWorld('showCheats',showCheats)
 contextBridge.exposeInMainWorld('writeGCA',writeGCA)
-contextBridge.exposeInMainWorld('changeZoom',changeZoom)
-
-document.addEventListener('keydown', function(e){if(e.ctrlKey && e.which == 73){devTools()}})
-document.addEventListener('keydown', function(e){if(e.ctrlKey && e.which == 82){appReload()}})
 
 document.addEventListener('DOMContentLoaded', function() {
 id('delete').addEventListener('click', function(){deleteSettings()})
 id('github').addEventListener('click', function(){goToGitHub()})
 
-document.addEventListener('keydown', function(e){if(e.ctrlKey && e.which == 96){id('resetZoom').click()}})
-document.addEventListener('keydown', function(e){if(e.ctrlKey && e.which == 109){id('decreaseZoom').click()}})
-document.addEventListener('keydown', function(e){if(e.ctrlKey && e.which == 107){id('increaseZoom').click()}})
 document.addEventListener('keyup', function(e){if(e.ctrlKey && e.which == 79){id('fileInput').click()}})
 document.addEventListener('keyup', function(e){if(e.ctrlKey && e.which == 76){id('launch').click()}})
 })
