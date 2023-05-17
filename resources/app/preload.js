@@ -22,6 +22,11 @@ emuLaunch = (parameters) => {ipcRenderer.send('emuLaunch', parameters)},
 showCheats = (parameters) => {return ipcRenderer.sendSync('showCheats', parameters)},
 jsRefresh = () => {return ipcRenderer.sendSync('jsRefresh')},
 jsMapping = (padId) => {return ipcRenderer.sendSync('jsMapping', padId)},
+resetZoom = () => {ipcRenderer.send('resetZoom')},
+decreaseZoom = () => {ipcRenderer.send('decreaseZoom')},
+increaseZoom = () => {ipcRenderer.send('increaseZoom')},
+devTools = () => {ipcRenderer.send('devTools')},
+appReload = () => {ipcRenderer.send('appReload')},
 deleteSettings = () => {ipcRenderer.send('deleteSettings')},
 goToGitHub = () => {ipcRenderer.send('goToGitHub')},
 
@@ -105,6 +110,12 @@ contextBridge.exposeInMainWorld('jsRefresh',jsRefresh)
 contextBridge.exposeInMainWorld('jsMapping',jsMapping)
 contextBridge.exposeInMainWorld('showCheats',showCheats)
 contextBridge.exposeInMainWorld('writeGCA',writeGCA)
+
+document.addEventListener('keydown', function(e){if(e.ctrlKey && e.which == 73){devTools()}})
+document.addEventListener('keydown', function(e){if(e.ctrlKey && e.which == 82){appReload()}})
+document.addEventListener('keydown', function(e){if(e.ctrlKey && e.which == 96){resetZoom()}})
+document.addEventListener('keydown', function(e){if(e.ctrlKey && e.which == 109){decreaseZoom()}})
+document.addEventListener('keydown', function(e){if(e.ctrlKey && e.which == 107){increaseZoom()}})
 
 document.addEventListener('DOMContentLoaded', function() {
 id('delete').addEventListener('click', function(){deleteSettings()})
