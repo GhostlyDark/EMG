@@ -1,3 +1,5 @@
+var id = function(id){return document.getElementById(id)};
+
 const {contextBridge,ipcRenderer} = require('electron'),
 testROM = ipcRenderer.sendSync('testROM'),
 pluginDir = ipcRenderer.sendSync('pluginDir'),
@@ -27,7 +29,7 @@ deleteSettings = () => {return ipcRenderer.sendSync('deleteSettings')},
 goToGitHub = () => {return ipcRenderer.sendSync('goToGitHub')},
 
 jstest = (joyinput) => {
-var id = function(id){return document.getElementById(id)},joyvalue,joydata,jstestConfig,config;
+var joyID = function(joyID){return id(joyID)},joyvalue,joydata,jstestConfig,config;
 if(joyinput.id.includes('1'))config = c1
 if(joyinput.id.includes('2'))config = c2
 if(joyinput.id.includes('3'))config = c3
@@ -59,14 +61,14 @@ if(joydata.includes('hat')){joyvalue = joydata.replace('1)','Up)').replace('2)',
 if(joyvalue != undefined){
 if(!joyinput.id.includes('JoyMapping') && joyinput.id.includes('c') && !joyinput.id.includes('cb')){ /* disallow same input type for secondary bindings, slot 1 */
 const secondary = joyinput.id + 'b';
-if(id(secondary).value.includes('axis') && joyvalue.includes('axis')){id(secondary).value = '';localStorage.removeItem(secondary)}
-if(id(secondary).value.includes('button') && joyvalue.includes('button')){id(secondary).value = '';localStorage.removeItem(secondary)}
-if(id(secondary).value.includes('hat') && joyvalue.includes('hat')){id(secondary).value = '';localStorage.removeItem(secondary)}}
+if(joyID(secondary).value.includes('axis') && joyvalue.includes('axis')){joyID(secondary).value = '';localStorage.removeItem(secondary)}
+if(joyID(secondary).value.includes('button') && joyvalue.includes('button')){joyID(secondary).value = '';localStorage.removeItem(secondary)}
+if(joyID(secondary).value.includes('hat') && joyvalue.includes('hat')){joyID(secondary).value = '';localStorage.removeItem(secondary)}}
 if(!joyinput.id.includes('JoyMapping') && joyinput.id.includes('cb')){ /* disallow same input type for secondary bindings, slot 2 */
 const primary = joyinput.id.replace('cb','c');
-if(id(primary).value.includes('axis') && joyvalue.includes('axis')){id(primary).value = joyvalue;localStorage.setItem(primary,joyvalue);return}
-if(id(primary).value.includes('button') && joyvalue.includes('button')){id(primary).value = joyvalue;localStorage.setItem(primary,joyvalue);return}
-if(id(primary).value.includes('hat') && joyvalue.includes('hat')){id(primary).value = joyvalue;localStorage.setItem(primary,joyvalue);return}}
+if(joyID(primary).value.includes('axis') && joyvalue.includes('axis')){joyID(primary).value = joyvalue;localStorage.setItem(primary,joyvalue);return}
+if(joyID(primary).value.includes('button') && joyvalue.includes('button')){joyID(primary).value = joyvalue;localStorage.setItem(primary,joyvalue);return}
+if(joyID(primary).value.includes('hat') && joyvalue.includes('hat')){joyID(primary).value = joyvalue;localStorage.setItem(primary,joyvalue);return}}
 joyinput.value = joyvalue;localStorage.setItem(joyinput.id,joyvalue)}}) /* finalize */
 joyinput.addEventListener('blur', function(){ipcRenderer.send('jstestKill')})
 ipcRenderer.once('jsClosed', () => {joyinput.blur()})}
