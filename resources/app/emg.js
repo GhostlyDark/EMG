@@ -263,11 +263,13 @@ sliders.forEach(slider => { /* slider inputs */
 var slider_input = id(slider),
 slider_reset = id('reset'+slider),
 slider_text = id(slider+'Text'),
-slider_value = slider_reset.dataset.value;
+slider_value = slider_reset.dataset.value,
+digits = 0;
+if(slider_input.step.includes('.'))digits=2;
 
-slider_reset.addEventListener('click', function(){slider_input.value = slider_value;localStorage.removeItem(slider);slider_text.innerHTML = slider_input.value})
-if(localStorage.getItem(slider) != null){slider_input.value = localStorage.getItem(slider);slider_text.innerHTML = slider_input.value}
-slider_input.addEventListener('input', function(){localStorage.setItem(slider, slider_input.value);slider_text.innerHTML = slider_input.value})})
+slider_reset.addEventListener('click', function(){slider_input.value = slider_value;localStorage.removeItem(slider);slider_text.innerHTML = parseFloat(slider_input.value).toFixed(digits)})
+if(localStorage.getItem(slider) != null){slider_input.value = localStorage.getItem(slider);slider_text.innerHTML = parseFloat(slider_input.value).toFixed(digits)}
+slider_input.addEventListener('input', function(){localStorage.setItem(slider, slider_input.value);slider_text.innerHTML = parseFloat(slider_input.value).toFixed(digits)})})
 
 id('NumWorkers').max = navigator.hardwareConcurrency;
 numbers.forEach(number => { /* number inputs */
