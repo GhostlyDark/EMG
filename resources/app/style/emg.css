@@ -68,19 +68,19 @@ button:active{background-color:#ccc}
 
 select{border:0;outline:0;padding:5px 35px 5px 8px;transition:background-color .2s cubic-bezier(.4,0,.22,1);margin:0;background:url(arrow-down.svg) no-repeat 99% #eee;appearance:none;height:29px}
 select:hover{background-color:#ddd}
-select:active{background-color:#ccc}
+select:active,select:focus{background-color:#ccc}
 
 .dark select{background:url(arrow-down-dark.svg) no-repeat 99% #222}
 .dark button,.dark select,.dark [type='number'],.dark [type='text']{background-color:#222;color:#fff}
 .dark button:hover,.dark select:hover,.dark [type='number']:hover,.dark [type='text']:hover{background-color:#333}
-.dark button:active,.dark select:active,.dark [type='number']:active,.dark [type='text']:active,.dark [type='number']:focus,.dark [type='text']:focus{background-color:#444}
+.dark button:active,.dark select:active,.dark select:focus,.dark [type='number']:active,.dark [type='text']:active,.dark [type='number']:focus,.dark [type='text']:focus{background-color:#444}
 
 .custom select,.custom button,.custom [type='number'],.custom [type='text']{background-color:rgba(200,200,200,.5)}
 .dark.custom select,.dark.custom button,.dark.custom [type='number'],.dark.custom [type='text']{background-color:rgba(40,40,40,.5)}
 .custom select:hover,.custom button:hover,.custom [type='number']:hover,.custom [type='text']:hover{background-color:rgba(200,200,200,.75)}
 .dark.custom select:hover,.dark.custom button:hover,.dark.custom [type='number']:hover,.dark.custom [type='text']:hover{background-color:rgba(40,40,40,.75)}
-.custom select:active,.custom button:active,.custom [type='number']:active,.custom [type='text']:active,.custom [type='text']:focus{background-color:rgba(200,200,200,1)}
-.dark.custom select:active,.dark.custom button:active,.dark.custom [type='number']:active,.dark.custom [type='text']:active,.dark.custom [type='text']:focus{background-color:rgba(40,40,40,1)}
+.custom select:active,.custom select:focus,.custom button:active,.custom [type='number']:active,.custom [type='text']:active,.custom [type='text']:focus{background-color:rgba(200,200,200,1)}
+.dark.custom select:active,.dark.custom select:focus,.dark.custom button:active,.dark.custom [type='number']:active,.dark.custom [type='text']:active,.dark.custom [type='text']:focus{background-color:rgba(40,40,40,1)}
 
 .dropdown{position:absolute;top:60px;z-index:1;opacity:.001;transition:visibility 0s .2s,opacity .2s cubic-bezier(.4,0,.22,1);transition-delay:0s;pointer-events:none}
 .dropdown a{padding:12px;text-decoration:none;display:block;text-align:left;background-color:rgba(0,0,0,.3)}
