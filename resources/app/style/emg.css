@@ -63,12 +63,10 @@ button,select,input,.box,.pointer,.hotkeys label,[type='color'] + label,[type='r
 [type='number']:active,[type='number']:focus,[type='text']:active,[type='text']:focus{background-color:#ccc}
 
 button{border:0;outline:0!important;background:#e9e9e9;padding:3px 10px;transition:background-color .2s cubic-bezier(.4,0,.22,1);font-size:17px}
-button:hover{background-color:#ddd}
-button:active{background-color:#ccc}
+button:hover,select:hover{background-color:#ddd}
+button:active,select:active,select:focus{background-color:#ccc}
 
 select{border:0;outline:0;padding:5px 35px 5px 8px;transition:background-color .2s cubic-bezier(.4,0,.22,1);margin:0;background:url(arrow-down.svg) no-repeat 99% #eee;appearance:none;height:29px}
-select:hover{background-color:#ddd}
-select:active,select:focus{background-color:#ccc}
 
 .dark select{background:url(arrow-down-dark.svg) no-repeat 99% #222}
 .dark button,.dark select,.dark [type='number'],.dark [type='text']{background-color:#222;color:#fff}
@@ -89,6 +87,7 @@ select:active,select:focus{background-color:#ccc}
 
 option{background:#efefef}
 .dark option{background:#222}
+
 .box{padding:20px;border:2px dotted #111;word-wrap:break-word}
 .dark .box{border:2px dotted #eee}
 
