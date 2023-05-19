@@ -1,6 +1,6 @@
 html{user-select:none}
 input[type=text]{text-transform:capitalize}
-button,select,input,.box,.pointer,.hotkeys label,[type='color'] + label,[type='range']{cursor:pointer}
+button,select,input,.box,.pointer,.hotkeys label,[type='checkbox'] + label,[type='color'] + label,[type='range']{cursor:pointer}
 
 [type='color']{border:0;outline:0;background:none;position:relative;top:2px}
 [type='color'] + label{padding-left:5px}
@@ -95,7 +95,7 @@ option{background:#efefef}
 .floatright{float:right}
 input.floatright,select.floatright{top:-5px}
 input:disabled,select:disabled,input:disabled + label,input:disabled + span + label,select:disabled + label{opacity:.5}
-[type='checkbox'] + label{position:relative;top:-2px;cursor:pointer;padding-left:5px}
+[type='checkbox'] + label{position:relative;top:-2px;left:-6px;padding-left:11px}
 [type='number'] + label,select + label,[type='text'] + label{padding-left:10px}
 .hotkeys{text-align:center;display:inline-block;width:660px;outline:2px dashed #111;padding:20px;margin-top:10px}
 .dark .hotkeys{outline-color:#eee}
