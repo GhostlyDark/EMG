@@ -285,7 +285,7 @@ number_reset.addEventListener('click', function(){number_input.value = number_va
 if(localStorage.getItem(number) != null)number_input.value = localStorage.getItem(number)
 
 number_input.addEventListener('change', function(){localStorage.setItem(number, number_input.value)})
-number_input.addEventListener('keydown', function(e){e.preventDefault()})
+number_input.addEventListener('focus', function(){number_input.blur()})
 
 number_decrease.addEventListener('click', function(){
 if(number_input.disabled)return
