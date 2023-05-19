@@ -452,6 +452,9 @@ else{id('VOLUME_DEFAULT').disabled = false}}
 id('VOLUME_CONTROL_TYPE').addEventListener('change', disableVolumeDefault)
 disableVolumeDefault()
 
+function hideCheats(){if(id('cheatList').innerHTML!=''){id('cheatList').innerHTML='';id('cheatList').classList.add('hide')}}
+id('hideCheats').addEventListener('click', function(){hideCheats()})
+
 
 
 if(localStorage.getItem('recentFiles') != null)recentFiles = JSON.parse(localStorage.getItem('recentFiles'))
@@ -462,9 +465,10 @@ recentFiles.forEach(rf => {var i = recentFiles.indexOf(rf);if(recentFiles[i] != 
 recentFilesUpdate()
 
 id('recent').addEventListener('change', function(){
-if(id('recent').value != null && id('recent').value != ''){filePath = id('recent').value;id('fileText').innerHTML = filePath;localStorage.setItem('filePath', filePath);if(!recentFiles.includes(filePath))recentFiles.unshift(filePath);recentFiles.splice(10);localStorage.setItem('recentFiles',JSON.stringify(recentFiles));if(id('cheatList').innerHTML!='')id('cheatList').innerHTML=''}})
+if(id('recent').value != null && id('recent').value != ''){filePath = id('recent').value;id('fileText').innerHTML = filePath;localStorage.setItem('filePath', filePath);if(!recentFiles.includes(filePath))recentFiles.unshift(filePath);recentFiles.splice(10);localStorage.setItem('recentFiles',JSON.stringify(recentFiles));hideCheats()}})
 
 id('clearRecent').addEventListener('click', function(){
+hideCheats();
 filePath = testROM;
 localStorage.removeItem('filePath');
 id('fileText').innerHTML = filePath;
@@ -478,6 +482,7 @@ Array.from(id('recent').getElementsByTagName('option')).forEach(opt => {if(opt.i
 id('listCheats').addEventListener('click', function(){ /* generate cheat list */
 var cheats = '';
 id('cheatList').innerHTML = '';
+id('cheatList').classList.remove('hide');
 const parameters = ['--corelib',corelib,'--datadir','data','--cheats','list',filePath],
 child = showCheats(parameters);
 if(child.includes('AttachCoreLib() Error:') || child === ''){id('cheatList').innerHTML = 'Failed to open Mupen64Plus.';return}
@@ -698,7 +703,7 @@ if(localStorage.getItem('filePath') != null){filePath = localStorage.getItem('fi
 id('fileInput').addEventListener('click', function(){ /* click event for file inputs */
 fileResult = dialogFile({name:'N64 ROM',extensions:n64});
 if(fileResult != undefined){filePath = fileResult;
-if(filePath != undefined){id('fileText').innerHTML = filePath;localStorage.setItem('filePath', filePath);if(!recentFiles.includes(filePath.toString()))recentFiles.unshift(filePath.toString());recentFiles.splice(10);recentFilesUpdate();localStorage.setItem('recentFiles',JSON.stringify(recentFiles));if(id('cheatList').innerHTML!='')id('cheatList').innerHTML=''}}})
+if(filePath != undefined){id('fileText').innerHTML = filePath;localStorage.setItem('filePath', filePath);if(!recentFiles.includes(filePath.toString()))recentFiles.unshift(filePath.toString());recentFiles.splice(10);recentFilesUpdate();localStorage.setItem('recentFiles',JSON.stringify(recentFiles));hideCheats()}}})
 
 id('clearIPLROM').addEventListener('click', function(){IPLROM = id('IPLROMText').innerHTML = '';localStorage.removeItem('IPLROM')})
 if(localStorage.getItem('IPLROM') === null){IPLROM = id('IPLROMText').innerHTML = ''}
@@ -856,7 +861,7 @@ id('romBrowser').innerHTML = '';
 const romFiles = romDir(RomPath).filter(name => name.match(/\.n64$|\.v64$|\.z64$/));
 romFiles.forEach(rom => romUpdate(rom))
 const romFile = id('romBrowser').children;
-for(var i = 0; i < romFile.length; i++){romFile[i].onclick = function(){filePath = romDirFile(RomPath,this.dataset.value);id('fileText').innerHTML = filePath;localStorage.setItem('filePath', filePath)}}
+for(var i = 0; i < romFile.length; i++){romFile[i].onclick = function(){filePath = romDirFile(RomPath,this.dataset.value);id('fileText').innerHTML = filePath;localStorage.setItem('filePath', filePath);hideCheats()}}
 id('romBrowser').classList.remove('hide')})
 
 id('loadRomPath').click()
