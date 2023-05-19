@@ -318,64 +318,82 @@ localStorage.setItem(number, number_input.value)}})})
 function rspDropdownDisable(){ /* disable or hide inputs */
 if(id('rsp').value.includes('rsp-hle')){id('RspFallback').disabled = false;id('rspGFX').disabled = true}
 else if(id('rsp').value.includes('rsp-cxd4')){id('RspFallback').disabled = true;id('rspGFX').disabled = false}
-else if(id('rsp').value.includes('rsp-parallel')){id('RspFallback').disabled = true;id('rspGFX').disabled = true}
+else if(id('rsp').value.includes('rsp-parallel')){id('RspFallback').disabled = id('rspGFX').disabled = true}
 else{id('RspFallback').disabled = true}}
 id('rsp').addEventListener('change', rspDropdownDisable)
 rspDropdownDisable()
 
-function EnableFBEmulationDisable(){if(id('EnableFBEmulation').checked){id('EnableCopyColorFromRDRAM').disabled = false;id('EnableCopyDepthToMainDepthBuffer').disabled = false;id('EnableCopyAuxiliaryToRDRAM').disabled = false;id('ForceDepthBufferClear').disabled = false;id('FBInfoReadColorChunk').disabled = false;id('FBInfoReadDepthChunk').disabled = false}else{id('EnableCopyColorFromRDRAM').disabled = true;id('EnableCopyDepthToMainDepthBuffer').disabled = true;id('EnableCopyAuxiliaryToRDRAM').disabled = true;id('ForceDepthBufferClear').disabled = true;id('FBInfoReadColorChunk').disabled = true;id('FBInfoReadDepthChunk').disabled = true}}
+function EnableFBEmulationDisable(){
+if(id('EnableFBEmulation').checked){id('EnableCopyColorFromRDRAM').disabled = id('EnableCopyDepthToMainDepthBuffer').disabled = id('EnableCopyAuxiliaryToRDRAM').disabled = id('ForceDepthBufferClear').disabled = id('FBInfoReadColorChunk').disabled = id('FBInfoReadDepthChunk').disabled = false}
+else{id('EnableCopyColorFromRDRAM').disabled = id('EnableCopyDepthToMainDepthBuffer').disabled = id('EnableCopyAuxiliaryToRDRAM').disabled = id('ForceDepthBufferClear').disabled = id('FBInfoReadColorChunk').disabled = id('FBInfoReadDepthChunk').disabled = true}}
 id('EnableFBEmulation').addEventListener('change', EnableFBEmulationDisable)
 EnableFBEmulationDisable()
 
-function msaaDisable(){if(id('fxaa').checked || id('EnableN64DepthCompare').selectedIndex != '0'){id('msaa').disabled = true}else{id('msaa').disabled = false}}
+function msaaDisable(){
+if(id('fxaa').checked || id('EnableN64DepthCompare').selectedIndex != '0'){id('msaa').disabled = true}
+else{id('msaa').disabled = false}}
 id('fxaa').addEventListener('change', msaaDisable)
 id('EnableN64DepthCompare').addEventListener('change', msaaDisable)
 msaaDisable()
 
-function ForceGammaCorrectionDisable(){if(id('ForceGammaCorrection').checked){id('GammaCorrectionLevel').disabled = false}else{id('GammaCorrectionLevel').disabled = true}}
+function ForceGammaCorrectionDisable(){
+if(id('ForceGammaCorrection').checked){id('GammaCorrectionLevel').disabled = false}
+else{id('GammaCorrectionLevel').disabled = true}}
 id('ForceGammaCorrection').addEventListener('change', ForceGammaCorrectionDisable)
 ForceGammaCorrectionDisable()
 
-function EnableOverscanDisable(){if(id('EnableOverscan').checked){id('OverscanNtscTop').disabled = false;id('OverscanNtscLeft').disabled = false;id('OverscanNtscRight').disabled = false;id('OverscanNtscBottom').disabled = false;id('OverscanPalTop').disabled = false;id('OverscanPalLeft').disabled = false;id('OverscanPalRight').disabled = false;id('OverscanPalBottom').disabled = false}else{id('OverscanNtscTop').disabled = true;id('OverscanNtscLeft').disabled = true;id('OverscanNtscRight').disabled = true;id('OverscanNtscBottom').disabled = true;id('OverscanPalTop').disabled = true;id('OverscanPalLeft').disabled = true;id('OverscanPalRight').disabled = true;id('OverscanPalBottom').disabled = true}}
+function EnableOverscanDisable(){
+if(id('EnableOverscan').checked){id('OverscanNtscTop').disabled = id('OverscanNtscLeft').disabled = id('OverscanNtscRight').disabled = id('OverscanNtscBottom').disabled = id('OverscanPalTop').disabled = id('OverscanPalLeft').disabled = id('OverscanPalRight').disabled = id('OverscanPalBottom').disabled = false}
+else{id('OverscanNtscTop').disabled = id('OverscanNtscLeft').disabled = id('OverscanNtscRight').disabled = id('OverscanNtscBottom').disabled = id('OverscanPalTop').disabled = id('OverscanPalLeft').disabled = id('OverscanPalRight').disabled = id('OverscanPalBottom').disabled = true}}
 id('EnableOverscan').addEventListener('change', EnableOverscanDisable)
 EnableOverscanDisable()
 
-function txNoTextureFileStorageDisable(){if(id('txNoTextureFileStorage').checked){id('cache').disabled = true}else{id('cache').disabled = false}}
+function txNoTextureFileStorageDisable(){
+if(id('txNoTextureFileStorage').checked){id('cache').disabled = true}
+else{id('cache').disabled = false}}
 id('txNoTextureFileStorage').addEventListener('change', txNoTextureFileStorageDisable)
 txNoTextureFileStorageDisable()
 
-function txHiresEnableDisable(){if(id('txHiresEnable').checked){id('txFilterMode').disabled = true;id('txEnhancementMode').disabled = true;id('txCacheSize').disabled = true;id('txDeposterize').disabled = true;id('txFilterIgnoreBG').disabled = true;id('txDump').disabled = false;id('txHiresFullAlphaChannel').disabled = false;id('txHresAltCRC').disabled = false;id('txCacheCompression').disabled = false;id('txSaveCache').disabled = false;id('txNoTextureFileStorage').disabled = false}else{id('txFilterMode').disabled = false;id('txEnhancementMode').disabled = false;id('txCacheSize').disabled = false;id('txDeposterize').disabled = false;id('txFilterIgnoreBG').disabled = false;id('txDump').disabled = true;id('txHiresFullAlphaChannel').disabled = true;id('txHresAltCRC').disabled = true;id('txCacheCompression').disabled = true;id('txSaveCache').disabled = true;id('txNoTextureFileStorage').disabled = true}}
+function txHiresEnableDisable(){
+if(id('txHiresEnable').checked){id('txFilterMode').disabled = id('txEnhancementMode').disabled = id('txCacheSize').disabled = id('txDeposterize').disabled = id('txFilterIgnoreBG').disabled = true;
+id('txDump').disabled = id('txHiresFullAlphaChannel').disabled = id('txHresAltCRC').disabled = id('txCacheCompression').disabled = id('txSaveCache').disabled = id('txNoTextureFileStorage').disabled = false}
+else{id('txFilterMode').disabled = id('txEnhancementMode').disabled = id('txCacheSize').disabled = id('txDeposterize').disabled = id('txFilterIgnoreBG').disabled = false;
+id('txDump').disabled = id('txHiresFullAlphaChannel').disabled = id('txHresAltCRC').disabled = id('txCacheCompression').disabled = id('txSaveCache').disabled = id('txNoTextureFileStorage').disabled = true}}
 id('txHiresEnable').addEventListener('change', txHiresEnableDisable)
 txHiresEnableDisable()
 
-function NumWorkersDisable(){if(id('Parallel').checked){id('NumWorkers').disabled = false}else{id('NumWorkers').disabled = true}}
+function NumWorkersDisable(){
+if(id('Parallel').checked){id('NumWorkers').disabled = false}
+else{id('NumWorkers').disabled = true}}
 id('Parallel').addEventListener('change', NumWorkersDisable)
 NumWorkersDisable()
 
-function ForcePolygonOffsetDisable(){if(id('ForcePolygonOffset').checked){id('PolygonOffsetFactor').disabled = false;id('PolygonOffsetUnits').disabled = false}else{id('PolygonOffsetFactor').disabled = true;id('PolygonOffsetUnits').disabled = true}}
+function ForcePolygonOffsetDisable(){
+if(id('ForcePolygonOffset').checked){id('PolygonOffsetFactor').disabled = id('PolygonOffsetUnits').disabled = false}
+else{id('PolygonOffsetFactor').disabled = id('PolygonOffsetUnits').disabled = true}}
 id('ForcePolygonOffset').addEventListener('change', ForcePolygonOffsetDisable)
 ForcePolygonOffsetDisable()
 
 function c1Disable(){
-if(id('c1').value === 'Keyboard'){id('AnalogDeadzone1').disabled = true;id('AnalogPeak1').disabled = true}
+if(id('c1').value === 'Keyboard'){id('AnalogDeadzone1').disabled = id('AnalogPeak1').disabled = true}
 else{id('AnalogDeadzone1').disabled = false;id('AnalogPeak1').disabled = false}}
 id('c1').addEventListener('change', c1Disable)
 c1Disable()
 
 function c2Disable(){
-if(id('c2').value === 'Keyboard'){id('AnalogDeadzone2').disabled = true;id('AnalogPeak2').disabled = true}
+if(id('c2').value === 'Keyboard'){id('AnalogDeadzone2').disabled = id('AnalogPeak2').disabled = true}
 else{id('AnalogDeadzone2').disabled = false;id('AnalogPeak2').disabled = false}}
 id('c2').addEventListener('change', c2Disable)
 c2Disable()
 
 function c3Disable(){
-if(id('c3').value === 'Keyboard'){id('AnalogDeadzone3').disabled = true;id('AnalogPeak3').disabled = true}
+if(id('c3').value === 'Keyboard'){id('AnalogDeadzone3').disabled = id('AnalogPeak3').disabled = true}
 else{id('AnalogDeadzone3').disabled = false;id('AnalogPeak3').disabled = false}}
 id('c3').addEventListener('change', c3Disable)
 c3Disable()
 
 function c4Disable(){
-if(id('c4').value === 'Keyboard'){id('AnalogDeadzone4').disabled = true;id('AnalogPeak4').disabled = true}
+if(id('c4').value === 'Keyboard'){id('AnalogDeadzone4').disabled = id('AnalogPeak4').disabled = true}
 else{id('AnalogDeadzone4').disabled = false;id('AnalogPeak4').disabled = false}}
 id('c4').addEventListener('change', c4Disable)
 c4Disable()
