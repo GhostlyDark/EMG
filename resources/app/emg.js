@@ -8,6 +8,8 @@ const buttons = document.querySelectorAll('button'),
 
 inputs = document.querySelectorAll('input'),
 
+links = document.querySelectorAll('a'),
+
 textInputs = document.querySelectorAll("input[type='text']"),
 
 ext = isLinux ? '.so' : '.dll',
@@ -74,9 +76,12 @@ dropdowns = [
 
 if(!isLinux)id('master_volume').style.display = 'none'; /* hide platform specific settings */
 
-for(var i = 0; i < buttons.length; i++){var el = buttons[i];tabindex(el)} /* prevent tab focus */
-for(var i = 0; i < inputs.length; i++){var el = inputs[i];tabindex(el)}
-function tabindex(el){el.tabIndex = -1}
+
+
+function tabindex(el){el.tabIndex = -1} /* prevent tab focus */
+buttons.forEach(el => {tabindex(el);el.addEventListener('focus', function(){el.blur()})})
+inputs.forEach(el => {tabindex(el)})
+links.forEach(el => {tabindex(el)})
 
 
 
