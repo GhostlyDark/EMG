@@ -381,50 +381,50 @@ id('c4').addEventListener('change', c4Disable)
 c4Disable()
 
 function c1_controlsDisable(){
-if(!id('plugged1').checked){id('c1_controls').classList.replace('show','hide')}
-else{id('c1_controls').classList.replace('hide','show')}}
+if(!id('plugged1').checked){id('c1_controls').classList.add('hide')}
+else{id('c1_controls').classList.remove('hide')}}
 id('plugged1').addEventListener('change', c1_controlsDisable)
 c1_controlsDisable()
 
 function c2_controlsDisable(){
-if(!id('plugged2').checked){id('c2_controls').classList.replace('show','hide')}
-else{id('c2_controls').classList.replace('hide','show')}}
+if(!id('plugged2').checked){id('c2_controls').classList.add('hide')}
+else{id('c2_controls').classList.remove('hide')}}
 id('plugged2').addEventListener('change', c2_controlsDisable)
 c2_controlsDisable()
 
 function c3_controlsDisable(){
-if(!id('plugged3').checked){id('c3_controls').classList.replace('show','hide')}
-else{id('c3_controls').classList.replace('hide','show')}}
+if(!id('plugged3').checked){id('c3_controls').classList.add('hide')}
+else{id('c3_controls').classList.remove('hide')}}
 id('plugged3').addEventListener('change', c3_controlsDisable)
 c3_controlsDisable()
 
 function c4_controlsDisable(){
-if(!id('plugged4').checked){id('c4_controls').classList.replace('show','hide')}
-else{id('c4_controls').classList.replace('hide','show')}}
+if(!id('plugged4').checked){id('c4_controls').classList.add('hide')}
+else{id('c4_controls').classList.remove('hide')}}
 id('plugged4').addEventListener('change', c4_controlsDisable)
 c4_controlsDisable()
 
 function transferPak1Disable(){
-if(id('plugin1').value === '4'){id('transferPak1').classList.replace('hide','show')}
-else{id('transferPak1').classList.replace('show','hide')}}
+if(id('plugin1').value === '4'){id('transferPak1').classList.remove('hide')}
+else{id('transferPak1').classList.add('hide')}}
 id('plugin1').addEventListener('change', transferPak1Disable)
 transferPak1Disable()
 
 function transferPak2Disable(){
-if(id('plugin2').value === '4'){id('transferPak2').classList.replace('hide','show')}
-else{id('transferPak2').classList.replace('show','hide')}}
+if(id('plugin2').value === '4'){id('transferPak2').classList.remove('hide')}
+else{id('transferPak2').classList.add('hide')}}
 id('plugin2').addEventListener('change', transferPak2Disable)
 transferPak2Disable()
 
 function transferPak3Disable(){
-if(id('plugin3').value === '4'){id('transferPak3').classList.replace('hide','show')}
-else{id('transferPak3').classList.replace('show','hide')}}
+if(id('plugin3').value === '4'){id('transferPak3').classList.remove('hide')}
+else{id('transferPak3').classList.add('hide')}}
 id('plugin3').addEventListener('change', transferPak3Disable)
 transferPak3Disable()
 
 function transferPak4Disable(){
-if(id('plugin4').value === '4'){id('transferPak4').classList.replace('hide','show')}
-else{id('transferPak4').classList.replace('show','hide')}}
+if(id('plugin4').value === '4'){id('transferPak4').classList.remove('hide')}
+else{id('transferPak4').classList.add('hide')}}
 id('plugin4').addEventListener('change', transferPak4Disable)
 transferPak4Disable()
 
