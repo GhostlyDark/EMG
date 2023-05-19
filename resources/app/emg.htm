@@ -116,9 +116,9 @@ Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
 <p>&nbsp;</p>
 <p title="Use unique SRAM saves per ROM."><input id="SaveFilenameFormat" type="checkbox" data-store="SaveFilenameFormat"><label for="SaveFilenameFormat">Unique game saves</label></p>
 <p>&nbsp;</p>
-<p title="Force number of cycles per emulated instruction (speed hack, not recommended). Leave at 0 to disable."><span class="numberDecrease" id="decreaseCountPerOp">-</span><input id="CountPerOp" min="0" max="6" step="1" value="0" type="number" tabindex="-1"><span class="numberIncrease" id="increaseCountPerOp">+</span><label for="CountPerOp">Counter factor</label><button class="floatright" data-value="0" id="resetCountPerOp">Reset</button></p>
+<p title="Force number of cycles per emulated instruction (speed hack, not recommended). Leave at 0 to disable."><span class="numberDecrease" id="decreaseCountPerOp">-</span><input id="CountPerOp" min="0" max="6" step="1" value="0" type="number"><span class="numberIncrease" id="increaseCountPerOp">+</span><label for="CountPerOp">Counter factor</label><button class="floatright" data-value="0" id="resetCountPerOp">Reset</button></p>
 <p>&nbsp;</p>
-<p title="Reduce number of cycles per update by power of two."><span class="numberDecrease" id="decreaseCountPerOpDenomPot">-</span><input id="CountPerOpDenomPot" min="0" max="11" step="1" value="0" type="number" tabindex="-1"><span class="numberIncrease" id="increaseCountPerOpDenomPot">+</span><label for="CountPerOpDenomPot">Overclocking factor</label><button class="floatright" data-value="0" id="resetCountPerOpDenomPot">Reset</button></p>
+<p title="Reduce number of cycles per update by power of two."><span class="numberDecrease" id="decreaseCountPerOpDenomPot">-</span><input id="CountPerOpDenomPot" min="0" max="11" step="1" value="0" type="number"><span class="numberIncrease" id="increaseCountPerOpDenomPot">+</span><label for="CountPerOpDenomPot">Overclocking factor</label><button class="floatright" data-value="0" id="resetCountPerOpDenomPot">Reset</button></p>
 <p>&nbsp;</p>
 <select name="resolution" id="resolution">
 <option data-width="320" data-height="240" value="320x240">320x240</option>
@@ -150,9 +150,9 @@ Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
 <p>&nbsp;</p>
 <p title="Increment the save state slot after each save operation."><input id="AutoStateSlotIncrement" type="checkbox" data-store="AutoStateSlotIncrement"><label for="AutoStateSlotIncrement">Auto increment state slot</label></p>
 <p>&nbsp;</p>
-<p title="Save state slot (0-9) to use when starting emulation."><span class="numberDecrease" id="decreaseCurrentStateSlot">-</span><input id="CurrentStateSlot" min="0" max="9" step="1" value="0" type="number" tabindex="-1"><span class="numberIncrease" id="increaseCurrentStateSlot">+</span><label for="CurrentStateSlot">Default state slot</label><button class="floatright" data-value="0" id="resetCurrentStateSlot">Reset</button></p>
+<p title="Save state slot (0-9) to use when starting emulation."><span class="numberDecrease" id="decreaseCurrentStateSlot">-</span><input id="CurrentStateSlot" min="0" max="9" step="1" value="0" type="number"><span class="numberIncrease" id="increaseCurrentStateSlot">+</span><label for="CurrentStateSlot">Default state slot</label><button class="floatright" data-value="0" id="resetCurrentStateSlot">Reset</button></p>
 <p>&nbsp;</p>
-<p title="Duration of SI DMA. Use -1 for default (per-game settings)."><span class="numberDecrease" id="decreaseSiDmaDuration">-</span><input id="SiDmaDuration" min="-1" max="1000" step="10" value="-1" type="number" tabindex="-1"><span class="numberIncrease" id="increaseSiDmaDuration">+</span><label for="SiDmaDuration">SI DMA duration</label><button class="floatright" data-value="-1" id="resetSiDmaDuration">Reset</button></p>
+<p title="Duration of SI DMA. Use -1 for default (per-game settings)."><span class="numberDecrease" id="decreaseSiDmaDuration">-</span><input id="SiDmaDuration" min="-1" max="1000" step="10" value="-1" type="number"><span class="numberIncrease" id="increaseSiDmaDuration">+</span><label for="SiDmaDuration">SI DMA duration</label><button class="floatright" data-value="-1" id="resetSiDmaDuration">Reset</button></p>
 <p>&nbsp;</p><p>&nbsp;</p>
 <p>mupen64plus error log</p>
 <div class="mt-15" id="log"></div>
@@ -166,9 +166,9 @@ Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
 <p>&nbsp;</p>
 <p><input id="SWAP_CHANNELS" type="checkbox" data-store="SWAP_CHANNELS"><label for="SWAP_CHANNELS">Swap left and right channels</label></p>
 <p>&nbsp;</p>
-<p title="Percentage change each time the volume is increased or decreased."><span class="numberDecrease" id="decreaseVOLUME_ADJUST">-</span><input id="VOLUME_ADJUST" min="1" max="100" step="1" value="5" type="number" tabindex="-1"><span class="numberIncrease" id="increaseVOLUME_ADJUST">+</span><label for="VOLUME_ADJUST">Volume step (in %)</label><button class="floatright" data-value="5" id="resetVOLUME_ADJUST">Reset</button></p>
+<p title="Percentage change each time the volume is increased or decreased."><span class="numberDecrease" id="decreaseVOLUME_ADJUST">-</span><input id="VOLUME_ADJUST" min="1" max="100" step="1" value="5" type="number"><span class="numberIncrease" id="increaseVOLUME_ADJUST">+</span><label for="VOLUME_ADJUST">Volume step (in %)</label><button class="floatright" data-value="5" id="resetVOLUME_ADJUST">Reset</button></p>
 <p>&nbsp;</p>
-<p title="Default volume when a game is started."><span class="numberDecrease" id="decreaseVOLUME_DEFAULT">-</span><input id="VOLUME_DEFAULT" min="0" max="100" step="1" value="80" type="number" tabindex="-1"><span class="numberIncrease" id="increaseVOLUME_DEFAULT">+</span><label for="VOLUME_DEFAULT">Default volume (in %)</label><button class="floatright" data-value="80" id="resetVOLUME_DEFAULT">Reset</button></p>
+<p title="Default volume when a game is started."><span class="numberDecrease" id="decreaseVOLUME_DEFAULT">-</span><input id="VOLUME_DEFAULT" min="0" max="100" step="1" value="80" type="number"><span class="numberIncrease" id="increaseVOLUME_DEFAULT">+</span><label for="VOLUME_DEFAULT">Default volume (in %)</label><button class="floatright" data-value="80" id="resetVOLUME_DEFAULT">Reset</button></p>
 <p>&nbsp;</p>
 <div title="Lower values reduce audio latency but require faster hardware to avoid choppiness.
 Higher values increase audio latency but reduce the chance of audio drop-outs."><select class="width225m" name="PRIMARY_BUFFER_TARGET" id="PRIMARY_BUFFER_TARGET">
@@ -1138,7 +1138,7 @@ For gamepad hotkey combos, press another button by focusing the box a second tim
 <p>&nbsp;</p>
 <p><input id="Parallel" type="checkbox" data-store="Parallel" checked><label for="Parallel">Multi-core rendering</label></p>
 <p>&nbsp;</p>
-<p title="Number of logical processors to use. 0 uses all."><span class="numberDecrease" id="decreaseNumWorkers">-</span><input id="NumWorkers" min="0" step="1" value="0" type="number" tabindex="-1"><span class="numberIncrease" id="increaseNumWorkers">+</span><label for="NumWorkers">Rendering threads</label><button class="floatright" data-value="0" id="resetNumWorkers">Reset</button></p>
+<p title="Number of logical processors to use. 0 uses all."><span class="numberDecrease" id="decreaseNumWorkers">-</span><input id="NumWorkers" min="0" step="1" value="0" type="number"><span class="numberIncrease" id="increaseNumWorkers">+</span><label for="NumWorkers">Rendering threads</label><button class="floatright" data-value="0" id="resetNumWorkers">Reset</button></p>
 <p>&nbsp;</p>
 <select class="width200m" name="DpCompat" id="DpCompat">
 <option value="0" selected>Fast</option>
@@ -1210,26 +1210,26 @@ If this option is turned off, the output resolution is the same as the rendering
 <p>&nbsp;</p>
 <p title="Override gamma correction specified by the game."><input id="ForceGammaCorrection" type="checkbox" data-store="ForceGammaCorrection"><label for="ForceGammaCorrection">Force gamma correction</label></p>
 <p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreaseGammaCorrectionLevel">-</span><input id="GammaCorrectionLevel" min="1.00" max="4.00" step="0.1" value="1.00" type="number" tabindex="-1"><span class="numberIncrease" id="increaseGammaCorrectionLevel">+</span><label for="GammaCorrectionLevel">Gamma correction level</label><button class="floatright" data-value="1.00" id="resetGammaCorrectionLevel">Reset</button></p>
+<p><span class="numberDecrease" id="decreaseGammaCorrectionLevel">-</span><input id="GammaCorrectionLevel" min="1.00" max="4.00" step="0.1" value="1.00" type="number"><span class="numberIncrease" id="increaseGammaCorrectionLevel">+</span><label for="GammaCorrectionLevel">Gamma correction level</label><button class="floatright" data-value="1.00" id="resetGammaCorrectionLevel">Reset</button></p>
 </div>
 <div id="gliden64_overscan" class="hide mt-10">
 <p title="Crop image to remove black bars."><input id="EnableOverscan" type="checkbox" data-store="EnableOverscan"><label for="EnableOverscan">Use overscan</label><button class="floatright" id="reset_overscan">Reset all</button></p>
 <p>&nbsp;</p><p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreaseOverscanNtscTop">-</span><input id="OverscanNtscTop" min="0" max="99" step="1" value="0" type="number" tabindex="-1"><span class="numberIncrease" id="increaseOverscanNtscTop">+</span><label for="OverscanNtscTop">NTSC Top</label><button class="floatright" data-value="0" id="resetOverscanNtscTop">Reset</button></p>
+<p><span class="numberDecrease" id="decreaseOverscanNtscTop">-</span><input id="OverscanNtscTop" min="0" max="99" step="1" value="0" type="number"><span class="numberIncrease" id="increaseOverscanNtscTop">+</span><label for="OverscanNtscTop">NTSC Top</label><button class="floatright" data-value="0" id="resetOverscanNtscTop">Reset</button></p>
 <p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreaseOverscanNtscLeft">-</span><input id="OverscanNtscLeft" min="0" max="99" step="1" value="0" type="number" tabindex="-1"><span class="numberIncrease" id="increaseOverscanNtscLeft">+</span><label for="OverscanNtscLeft">NTSC Left</label><button class="floatright" data-value="0" id="resetOverscanNtscLeft">Reset</button></p>
+<p><span class="numberDecrease" id="decreaseOverscanNtscLeft">-</span><input id="OverscanNtscLeft" min="0" max="99" step="1" value="0" type="number"><span class="numberIncrease" id="increaseOverscanNtscLeft">+</span><label for="OverscanNtscLeft">NTSC Left</label><button class="floatright" data-value="0" id="resetOverscanNtscLeft">Reset</button></p>
 <p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreaseOverscanNtscRight">-</span><input id="OverscanNtscRight" min="0" max="99" step="1" value="0" type="number" tabindex="-1"><span class="numberIncrease" id="increaseOverscanNtscRight">+</span><label for="OverscanNtscRight">NTSC Right</label><button class="floatright" data-value="0" id="resetOverscanNtscRight">Reset</button></p>
+<p><span class="numberDecrease" id="decreaseOverscanNtscRight">-</span><input id="OverscanNtscRight" min="0" max="99" step="1" value="0" type="number"><span class="numberIncrease" id="increaseOverscanNtscRight">+</span><label for="OverscanNtscRight">NTSC Right</label><button class="floatright" data-value="0" id="resetOverscanNtscRight">Reset</button></p>
 <p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreaseOverscanNtscBottom">-</span><input id="OverscanNtscBottom" min="0" max="99" step="1" value="0" type="number" tabindex="-1"><span class="numberIncrease" id="increaseOverscanNtscBottom">+</span><label for="OverscanNtscBottom">NTSC Bottom</label><button class="floatright" data-value="0" id="resetOverscanNtscBottom">Reset</button></p>
+<p><span class="numberDecrease" id="decreaseOverscanNtscBottom">-</span><input id="OverscanNtscBottom" min="0" max="99" step="1" value="0" type="number"><span class="numberIncrease" id="increaseOverscanNtscBottom">+</span><label for="OverscanNtscBottom">NTSC Bottom</label><button class="floatright" data-value="0" id="resetOverscanNtscBottom">Reset</button></p>
 <p>&nbsp;</p><p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreaseOverscanPalTop">-</span><input id="OverscanPalTop" min="0" max="99" value="0" step="1" type="number" tabindex="-1"><span class="numberIncrease" id="increaseOverscanPalTop">+</span><label for="OverscanPalTop">PAL Top</label><button class="floatright" data-value="0" id="resetOverscanPalTop">Reset</button></p>
+<p><span class="numberDecrease" id="decreaseOverscanPalTop">-</span><input id="OverscanPalTop" min="0" max="99" value="0" step="1" type="number"><span class="numberIncrease" id="increaseOverscanPalTop">+</span><label for="OverscanPalTop">PAL Top</label><button class="floatright" data-value="0" id="resetOverscanPalTop">Reset</button></p>
 <p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreaseOverscanPalLeft">-</span><input id="OverscanPalLeft" min="0" max="99" value="0" step="1" type="number" tabindex="-1"><span class="numberIncrease" id="increaseOverscanPalLeft">+</span><label for="OverscanPalLeft">PAL Left</label><button class="floatright" data-value="0" id="resetOverscanPalLeft">Reset</button></p>
+<p><span class="numberDecrease" id="decreaseOverscanPalLeft">-</span><input id="OverscanPalLeft" min="0" max="99" value="0" step="1" type="number"><span class="numberIncrease" id="increaseOverscanPalLeft">+</span><label for="OverscanPalLeft">PAL Left</label><button class="floatright" data-value="0" id="resetOverscanPalLeft">Reset</button></p>
 <p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreaseOverscanPalRight">-</span><input id="OverscanPalRight" min="0" max="99" value="0" step="1" type="number" tabindex="-1"><span class="numberIncrease" id="increaseOverscanPalRight">+</span><label for="OverscanPalRight">PAL Right</label><button class="floatright" data-value="0" id="resetOverscanPalRight">Reset</button></p>
+<p><span class="numberDecrease" id="decreaseOverscanPalRight">-</span><input id="OverscanPalRight" min="0" max="99" value="0" step="1" type="number"><span class="numberIncrease" id="increaseOverscanPalRight">+</span><label for="OverscanPalRight">PAL Right</label><button class="floatright" data-value="0" id="resetOverscanPalRight">Reset</button></p>
 <p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreaseOverscanPalBottom">-</span><input id="OverscanPalBottom" min="0" max="99" value="0" step="1" type="number" tabindex="-1"><span class="numberIncrease" id="increaseOverscanPalBottom">+</span><label for="OverscanPalBottom">PAL Bottom</label><button class="floatright" data-value="0" id="resetOverscanPalBottom">Reset</button></p>
+<p><span class="numberDecrease" id="decreaseOverscanPalBottom">-</span><input id="OverscanPalBottom" min="0" max="99" value="0" step="1" type="number"><span class="numberIncrease" id="increaseOverscanPalBottom">+</span><label for="OverscanPalBottom">PAL Bottom</label><button class="floatright" data-value="0" id="resetOverscanPalBottom">Reset</button></p>
 </div>
 <div id="gliden64_emulation" class="hide mt-10">
 <p title="Use GLideN64 per-game settings."><input id="EnableCustomSettings" type="checkbox" data-store="EnableCustomSettings" checked><label for="EnableCustomSettings">Per-game settings</label></p>
@@ -1356,7 +1356,7 @@ If this option is turned off, the output resolution is the same as the rendering
 <option value="13">6xBRZ</option>
 </select><label for="txEnhancementMode">Texture enhancement</label>
 <p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreasetxCacheSize">-</span><input id="txCacheSize" min="0" max="1024" step="128" value="1024" type="number" tabindex="-1"><span class="numberIncrease" id="increasetxCacheSize">+</span><label title="Size of memory cache for enhanced textures in megabytes." for="txCacheSize">Memory cache size (in MB)</label><button class="floatright" data-value="1024" id="resettxCacheSize">Reset</button></p>
+<p><span class="numberDecrease" id="decreasetxCacheSize">-</span><input id="txCacheSize" min="0" max="1024" step="128" value="1024" type="number"><span class="numberIncrease" id="increasetxCacheSize">+</span><label title="Size of memory cache for enhanced textures in megabytes." for="txCacheSize">Memory cache size (in MB)</label><button class="floatright" data-value="1024" id="resettxCacheSize">Reset</button></p>
 <p>&nbsp;</p>
 <p title="Deposterize texture before enhancement."><input id="txDeposterize" type="checkbox" data-store="txDeposterize"><label for="txDeposterize">Deposterize texture</label></p>
 <p>&nbsp;</p>
@@ -1381,7 +1381,7 @@ If this option is turned off, the output resolution is the same as the rendering
 <option value="true" selected>HTS</option>
 </select><label for="cache">Cache type</label></div>
 <p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreasetxHiresVramLimit">-</span><input id="txHiresVramLimit" min="0" max="102400" step="512" value="0" type="number" tabindex="-1"><span class="numberIncrease" id="increasetxHiresVramLimit">+</span><label title="Limit hi-res textures size in VRAM." for="txHiresVramLimit">VRAM limit (in MB)</label><button class="floatright" data-value="0" id="resettxHiresVramLimit">Reset</button></p>
+<p><span class="numberDecrease" id="decreasetxHiresVramLimit">-</span><input id="txHiresVramLimit" min="0" max="102400" step="512" value="0" type="number"><span class="numberIncrease" id="increasetxHiresVramLimit">+</span><label title="Limit hi-res textures size in VRAM." for="txHiresVramLimit">VRAM limit (in MB)</label><button class="floatright" data-value="0" id="resettxHiresVramLimit">Reset</button></p>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
 <p title="Path to folder with hi-res texture packs (PNG format). Click the box below to change it.">hires_texture<button class="floatright ml-13" id="resetTxPath">Reset</button><button class="floatright" id="openTxPath">Open</button><br><br><div class="box" id="txPath"><span id="txPathText"></span></div></p>
 <p>&nbsp;</p><p>&nbsp;</p>
@@ -1390,7 +1390,7 @@ If this option is turned off, the output resolution is the same as the rendering
 <p title="Path to folder where plugin saves dumped textures. Click the box below to change it.">texture_dump<button class="floatright ml-13" id="resetTxDumpPath">Reset</button><button class="floatright" id="openTxDumpPath">Open</button><br><br><div class="box" id="txDumpPath"><span id="txDumpPathText"></span></div></p>
 </div>
 <div id="gliden64_osd" class="hide mt-10">
-<p><span class="numberDecrease" id="decreasefontSize">-</span><input id="fontSize" min="6" max="99" step="1" value="18" type="number" tabindex="-1"><span class="numberIncrease" id="increasefontSize">+</span><label for="fontSize">Font size (in px)</label><button class="floatright" data-value="18" id="resetfontSize">Reset</button></p>
+<p><span class="numberDecrease" id="decreasefontSize">-</span><input id="fontSize" min="6" max="99" step="1" value="18" type="number"><span class="numberIncrease" id="increasefontSize">+</span><label for="fontSize">Font size (in px)</label><button class="floatright" data-value="18" id="resetfontSize">Reset</button></p>
 <p>&nbsp;</p>
 <p><input id="fontColor" value="#B5E61D" type="color" data-store="fontColor"><label for="fontColor">Font color</label><button class="floatright" data-value="#B5E61D" id="resetfontColor">Reset</button></p>
 <p>&nbsp;</p>
@@ -1461,9 +1461,9 @@ If this option is turned off, the output resolution is the same as the rendering
 <div id="parallel_video" class="mt-10">
 <p><input id="ParallelWidescreenStretch" type="checkbox" data-store="ParallelWidescreenStretch"><label for="ParallelWidescreenStretch">Widescreen (stretch)</label></p>
 <p>&nbsp;</p>
-<p title="Amount of overscan pixels to crop."><span class="numberDecrease" id="decreaseParallelCropOverscan">-</span><input id="ParallelCropOverscan" min="0" max="99" step="1" value="0" type="number" tabindex="-1"><span class="numberIncrease" id="increaseParallelCropOverscan">+</span><label for="ParallelCropOverscan">Crop overscan</label><button class="floatright" data-value="0" id="resetParallelCropOverscan">Reset</button></p>
+<p title="Amount of overscan pixels to crop."><span class="numberDecrease" id="decreaseParallelCropOverscan">-</span><input id="ParallelCropOverscan" min="0" max="99" step="1" value="0" type="number"><span class="numberIncrease" id="increaseParallelCropOverscan">+</span><label for="ParallelCropOverscan">Crop overscan</label><button class="floatright" data-value="0" id="resetParallelCropOverscan">Reset</button></p>
 <p>&nbsp;</p>
-<p title="Amount of pixels to stretch by vertically. Can fix PAL ports that didn't fill the PAL resolution of 288p (use value of 24 in that case)."><span class="numberDecrease" id="decreaseParallelVerticalStretch">-</span><input id="ParallelVerticalStretch" min="0" max="99" step="1" value="0" type="number" tabindex="-1"><span class="numberIncrease" id="increaseParallelVerticalStretch">+</span><label for="ParallelVerticalStretch">Vertical stretch</label><button class="floatright" data-value="0" id="resetParallelVerticalStretch">Reset</button></p>
+<p title="Amount of pixels to stretch by vertically. Can fix PAL ports that didn't fill the PAL resolution of 288p (use value of 24 in that case)."><span class="numberDecrease" id="decreaseParallelVerticalStretch">-</span><input id="ParallelVerticalStretch" min="0" max="99" step="1" value="0" type="number"><span class="numberIncrease" id="increaseParallelVerticalStretch">+</span><label for="ParallelVerticalStretch">Vertical stretch</label><button class="floatright" data-value="0" id="resetParallelVerticalStretch">Reset</button></p>
 <p>&nbsp;</p>
 <select class="width125m" name="ParallelUpscaling" id="ParallelUpscaling">
 <option value="1" selected>1x</option>
@@ -1520,9 +1520,9 @@ If this option is turned off, the output resolution is the same as the rendering
 <p>&nbsp;</p>
 <p><input id="ForcePolygonOffset" type="checkbox" data-store="ForcePolygonOffset"><label for="ForcePolygonOffset">Use polygon offset</label></p>
 <p>&nbsp;</p>
-<p title="Specifies a scale factor that is used to create a variable depth offset for each polygon."><span class="numberDecrease" id="decreasePolygonOffsetFactor">-</span><input id="PolygonOffsetFactor" min="0.00" max="10.00" step="0.1" value="0.00" type="number" tabindex="-1"><span class="numberIncrease" id="increasePolygonOffsetFactor">+</span><label for="PolygonOffsetFactor">Polygon offset factor</label><button class="floatright" data-value="0.00" id="resetPolygonOffsetFactor">Reset</button></p>
+<p title="Specifies a scale factor that is used to create a variable depth offset for each polygon."><span class="numberDecrease" id="decreasePolygonOffsetFactor">-</span><input id="PolygonOffsetFactor" min="0.00" max="10.00" step="0.1" value="0.00" type="number"><span class="numberIncrease" id="increasePolygonOffsetFactor">+</span><label for="PolygonOffsetFactor">Polygon offset factor</label><button class="floatright" data-value="0.00" id="resetPolygonOffsetFactor">Reset</button></p>
 <p>&nbsp;</p>
-<p title="Is multiplied by an implementation-specific value to create a constant depth offset."><span class="numberDecrease" id="decreasePolygonOffsetUnits">-</span><input id="PolygonOffsetUnits" min="0.00" max="10.00" step="0.1" value="0.00" type="number" tabindex="-1"><span class="numberIncrease" id="increasePolygonOffsetUnits">+</span><label for="PolygonOffsetUnits">Polygon offset units</label><button class="floatright" data-value="0.00" id="resetPolygonOffsetUnits">Reset</button></p>
+<p title="Is multiplied by an implementation-specific value to create a constant depth offset."><span class="numberDecrease" id="decreasePolygonOffsetUnits">-</span><input id="PolygonOffsetUnits" min="0.00" max="10.00" step="0.1" value="0.00" type="number"><span class="numberIncrease" id="increasePolygonOffsetUnits">+</span><label for="PolygonOffsetUnits">Polygon offset units</label><button class="floatright" data-value="0.00" id="resetPolygonOffsetUnits">Reset</button></p>
 <p>&nbsp;</p>
 <select class="width200m" name="AnisotropicFiltering" id="AnisotropicFiltering">
 <option value="0" selected>Off</option>

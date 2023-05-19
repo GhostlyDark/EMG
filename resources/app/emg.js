@@ -4,7 +4,11 @@ var cheatRadio,filePath,fileResult,RomPath,RomPathResult,txPath,txPathResult,txC
 
 recentFiles = [];
 
-const textInputs = document.querySelectorAll("input[type='text']"),
+const buttons = document.querySelectorAll('button'),
+
+inputs = document.querySelectorAll('input'),
+
+textInputs = document.querySelectorAll("input[type='text']"),
 
 ext = isLinux ? '.so' : '.dll',
 
@@ -69,6 +73,10 @@ dropdowns = [
 
 
 if(!isLinux)id('master_volume').style.display = 'none'; /* hide platform specific settings */
+
+for(var i = 0; i < buttons.length; i++){var el = buttons[i];tabindex(el)} /* prevent tab focus */
+for(var i = 0; i < inputs.length; i++){var el = inputs[i];tabindex(el)}
+function tabindex(el){el.tabIndex = -1}
 
 
 
