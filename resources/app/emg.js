@@ -861,7 +861,9 @@ id('romBrowser').innerHTML = '';
 const romFiles = romDir(RomPath).filter(name => name.match(/\.n64$|\.v64$|\.z64$/));
 romFiles.forEach(rom => romUpdate(rom))
 const romFile = id('romBrowser').children;
-for(var i = 0; i < romFile.length; i++){romFile[i].onclick = function(){filePath = romDirFile(RomPath,this.dataset.value);id('fileText').innerHTML = filePath;localStorage.setItem('filePath', filePath);hideCheats()}}
+for(var i = 0; i < romFile.length; i++){
+romFile[i].onclick = function(){filePath = romDirFile(RomPath,this.dataset.value);id('fileText').innerHTML = filePath;localStorage.setItem('filePath', filePath);hideCheats()}
+romFile[i].ondblclick = function(){id('launch').click()}}
 id('romBrowser').classList.remove('hide')})
 
 id('loadRomPath').click()
