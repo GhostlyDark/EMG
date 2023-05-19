@@ -141,10 +141,13 @@ header .headerText{position:relative;top:-10px;pointer-events:none}
 .pl-2{padding-left:2px}
 .pl-4{padding-left:4px}
 .pl-6{padding-left:6px}
-#cheatList input[id*=_]{margin-left:40px}
 #recent{width:620px}
 #c1,#c2,#c3,#c4{width:600px}
 #cheatList,#log,#romBrowser{height:400px;overflow-y:scroll;border:2px solid #444;padding:15px 15px 0 15px;background-color:rgba(150,150,150,.1)}
+#cheatList{padding-left:25px}
+#cheatList input[id*=_]{margin-left:40px}
+#cheatList input{left:-12px}
+#cheatList label{padding-left:0;left:-7px}
 #log{height:340px;user-select:text}
 #log p{padding-bottom:20px}
 #romBrowser{height:310px;padding-bottom:15px}
