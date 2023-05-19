@@ -62,7 +62,7 @@ button,select,input,.box,.pointer,.hotkeys label,[type=checkbox] + label,[type=c
 [type=text]:hover{background-color:#ddd}
 [type=text]:active,[type=text]:focus{background-color:#ccc}
 
-button{border:0;outline:0!important;background:#e9e9e9;padding:3px 10px;transition:background-color .2s cubic-bezier(.4,0,.22,1);font-size:17px}
+button{border:0;outline:0!important;background:#eee;padding:3px 10px;transition:background-color .2s cubic-bezier(.4,0,.22,1);font-size:17px}
 button:hover,select:hover{background-color:#ddd}
 button:active,select:active,select:focus{background-color:#ccc}
 
@@ -92,8 +92,10 @@ input.floatright,select.floatright{top:-5px}
 input:disabled,select:disabled,input:disabled + label,input:disabled + span + label,select:disabled + label{opacity:.5}
 [type=checkbox] + label{position:relative;top:-2px;left:-6px;padding-left:11px}
 [type=number] + label,select + label,[type=text] + label{padding-left:10px}
-.hotkeys{text-align:center;display:inline-block;width:660px;outline:2px solid #111;padding:20px;margin-top:10px}
-.dark .hotkeys{outline-color:#eee}
+.hotkeys{text-align:center;display:inline-block;width:660px;padding:20px;margin-top:10px;background-color:rgba(0,0,0,.1)}
+.custom .hotkeys{background-color:rgba(0,0,0,.02)}
+.dark .hotkeys{background-color:rgba(0,0,0,.2)}
+.dark.custom .hotkeys{background-color:rgba(255,255,255,.02)}
 .hotkeys label{float:left;text-align:left;min-width:150px}
 .hotkeys input{position:relative;left:-45px}
 .hotkeys button{float:right}
