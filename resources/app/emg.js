@@ -329,20 +329,13 @@ var changeHandler = (function initChangeHandler() {
 var result = function(e){
 if(e.target.type !== 'radio')return;
 id(e.target.id).parentNode.firstChild.nextElementSibling.innerHTML = id(e.target.id).label.innerHTML;
-localStorage.setItem(id(e.target.id).parentNode.id,id(e.target.id).value);
-localStorage.setItem(id(e.target.id).parentNode.id+'RadioName',id(e.target.id).name);
-localStorage.setItem(id(e.target.id).parentNode.id+'RadioID',e.target.id)};
-return result;})();
+localStorage.setItem(id(e.target.id).parentNode.id,e.target.id)};
+return result})();
 document.addEventListener('change', changeHandler, false);
 
 customDropdowns.forEach(opt => {
-if(localStorage.getItem(opt) != null && localStorage.getItem(opt+'RadioName') != null && localStorage.getItem(opt+'RadioID') != null){
-id(localStorage.getItem(opt+'RadioID')).parentNode.firstChild.nextElementSibling.innerHTML = id(localStorage.getItem(opt+'RadioID')).label.innerHTML;
-var radios = document.getElementsByName(opt+'RadioName');
-var val = localStorage.getItem(opt);
-for(var i=0;i<radios.length;i++){if(radios[i].value == val){radios[i].checked = true}}
-id(localStorage.getItem(opt+'RadioID')).setAttribute('checked','checked')}
-else{id(opt).firstChild.nextElementSibling.innerHTML = document.querySelector('input[name=' + id(opt).id + ']:checked').label.innerHTML}
+if(localStorage.getItem(opt) != null){if(id(localStorage.getItem(opt)) != null)id(localStorage.getItem(opt)).setAttribute('checked','checked')}
+id(opt).firstChild.nextElementSibling.innerHTML = document.querySelector('input[name=' + id(opt).id + ']:checked').label.innerHTML;
 id(opt).firstChild.nextElementSibling.onclick = function(){document.activeElement.blur()}});
 
 
