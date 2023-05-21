@@ -21,42 +21,6 @@
 </ul>
 </header>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
-
-
-<div class="select width250" data-name="Graphics plugin" id="video" tabindex="-1">
-<label></label>
-<input name="video" type="radio" id="opt1" value="mupen64plus-video-angrylion-plus"><label for="opt1">Angrylion Plus</label>
-<input name="video" type="radio" id="opt2" value="mupen64plus-video-GLideN64" checked><label for="opt2">GLideN64</label>
-<input name="video" type="radio" id="opt3" value="mupen64plus-video-parallel"><label for="opt3">Parallel</label>
-<input name="video" type="radio" id="opt4" value="mupen64plus-video-rice"><label for="opt4">Rice</label>
-</div>
-
-<p>&nbsp;</p><p>&nbsp;</p>
-
-<div title="Trivial for fastest, lowest-quality algorithm." class="select width225" data-name="Resampling algorithm" id="ra" tabindex="-1">
-<label></label>
-<input name="ra" type="radio" id="ra_trivial" value="trivial" checked><label for="ra_trivial">Trivial</label>
-<input name="ra" type="radio" id="ra_speex-fixed-0" value="speex-fixed-0"><label for="ra_speex-fixed-0">SPEEX Fixed 0</label>
-<input name="ra" type="radio" id="ra_speex-fixed-1" value="speex-fixed-1"><label for="ra_speex-fixed-1">SPEEX Fixed 1</label>
-<input name="ra" type="radio" id="ra_speex-fixed-2" value="speex-fixed-2"><label for="ra_speex-fixed-2">SPEEX Fixed 2</label>
-<input name="ra" type="radio" id="ra_speex-fixed-3" value="speex-fixed-3"><label for="ra_speex-fixed-3">SPEEX Fixed 3</label>
-<input name="ra" type="radio" id="ra_speex-fixed-4" value="speex-fixed-4"><label for="ra_speex-fixed-4">SPEEX Fixed 4</label>
-<input name="ra" type="radio" id="ra_speex-fixed-5" value="speex-fixed-5"><label for="ra_speex-fixed-5">SPEEX Fixed 5</label>
-<input name="ra" type="radio" id="ra_speex-fixed-6" value="speex-fixed-6"><label for="ra_speex-fixed-6">SPEEX Fixed 6</label>
-<input name="ra" type="radio" id="ra_speex-fixed-7" value="speex-fixed-7"><label for="ra_speex-fixed-7">SPEEX Fixed 7</label>
-<input name="ra" type="radio" id="ra_speex-fixed-8" value="speex-fixed-8"><label for="ra_speex-fixed-8">SPEEX Fixed 8</label>
-<input name="ra" type="radio" id="ra_speex-fixed-9" value="speex-fixed-9"><label for="ra_speex-fixed-9">SPEEX Fixed 9</label>
-<input name="ra" type="radio" id="ra_speex-fixed-10" value="speex-fixed-10"><label for="ra_speex-fixed-10">SPEEX Fixed 10</label>
-<input name="ra" type="radio" id="ra_src-linear" value="src-linear"><label for="ra_src-linear">SRC Linear</label>
-<input name="ra" type="radio" id="ra_src-zero-order-hold" value="src-zero-order-hold"><label for="ra_src-zero-order-hold">SRC Zero-Order Hold</label>
-<input name="ra" type="radio" id="ra_src-sinc-fastest" value="src-sinc-fastest"><label for="ra_src-sinc-fastest">SRC Sinc Fastest</label>
-<input name="ra" type="radio" id="ra_src-medium-quality" value="src-medium-quality"><label for="ra_src-medium-quality">SRC Sinc Medium</label>
-<input name="ra" type="radio" id="ra_src-sinc-best-quality" value="src-sinc-best-quality"><label for="ra_src-sinc-best-quality">SRC Sinc Best</label>
-</div>
-
-<p>&nbsp;</p><p>&nbsp;</p>
-
-
 <div id="mainAnchor" class="anchor"></div>
 <p class="headline">Main</p>
 <p>&nbsp;</p>
@@ -1152,18 +1116,20 @@ For gamepad hotkey combos, press another button by focusing the box a second tim
 <p>&nbsp;</p>
 <p title="Display upscaled pixels as groups of 1x1, 2x2, 3x3, etc."><input id="ViIntegerScaling" type="checkbox" data-store="ViIntegerScaling"><label for="ViIntegerScaling">Integer pixel scaling</label></p>
 <p>&nbsp;</p>
-<select class="width200m" name="ViMode" id="ViMode">
-<option value="0" selected>Filtered</option>
-<option value="1">Unfiltered</option>
-<option value="2">Depth</option>
-<option value="3">Coverage</option>
-</select><label for="ViMode">Output mode</label>
+<div class="select width200" data-name="Output mode" id="ViMode">
+<label></label>
+<input name="ViMode" type="radio" id="ViMode_0" value="0" checked><label for="ViMode_0">Filtered</label>
+<input name="ViMode" type="radio" id="ViMode_1" value="1"><label for="ViMode_1">Unfiltered</label>
+<input name="ViMode" type="radio" id="ViMode_2" value="2"><label for="ViMode_2">Depth</label>
+<input name="ViMode" type="radio" id="ViMode_3" value="3"><label for="ViMode_3">Coverage</label>
+</div>
 <p>&nbsp;</p>
-<div title="Scaling interpolation type."><select class="width200m" name="ViInterpolation" id="ViInterpolation">
-<option value="0">Nearest-neighbor</option>
-<option value="1">Bilinear</option>
-<option value="2" selected>Hybrid</option>
-</select><label for="ViInterpolation">Interpolation</label></div>
+<div title="Scaling interpolation type." class="select width200" data-name="Interpolation" id="ViInterpolation">
+<label></label>
+<input name="ViInterpolation" type="radio" id="ViInterpolation_0" value="0"><label for="ViInterpolation_0">Nearest-neighbor</label>
+<input name="ViInterpolation" type="radio" id="ViInterpolation_1" value="1"><label for="ViInterpolation_1">Bilinear</label>
+<input name="ViInterpolation" type="radio" id="ViInterpolation_2" value="2" checked><label for="ViInterpolation_2">Hybrid</label>
+</div>
 </div>
 <div id="angrylion_emulation" class="hide mt-10">
 <p title="Use a busyloop while waiting for work."><input id="BusyLoop" type="checkbox" data-store="BusyLoop"><label for="BusyLoop">Use busyloop</label></p>
@@ -1172,11 +1138,12 @@ For gamepad hotkey combos, press another button by focusing the box a second tim
 <p>&nbsp;</p>
 <p title="Number of logical processors to use. 0 uses all."><span class="numberDecrease" id="decreaseNumWorkers">-</span><input id="NumWorkers" min="0" step="1" value="0" type="number"><span class="numberIncrease" id="increaseNumWorkers">+</span><label for="NumWorkers">Rendering threads</label><button class="floatright" data-value="0" id="resetNumWorkers">Reset</button></p>
 <p>&nbsp;</p>
-<select class="width200m" name="DpCompat" id="DpCompat">
-<option value="0" selected>Fast</option>
-<option value="1">Moderate</option>
-<option value="2">Slow</option>
-</select><label for="DpCompat">Compatibility mode</label>
+<div class="select width200" data-name="Compatibility mode" id="DpCompat">
+<label></label>
+<input name="DpCompat" type="radio" id="DpCompat_0" value="0" checked><label for="DpCompat_0">Fast</label>
+<input name="DpCompat" type="radio" id="DpCompat_1" value="1"><label for="DpCompat_1">Moderate</label>
+<input name="DpCompat" type="radio" id="DpCompat_2" value="2"><label for="DpCompat_2">Slow</label>
+</div>
 </div>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
 <div id="gliden64Anchor" class="anchor"></div>

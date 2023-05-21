@@ -104,6 +104,7 @@ option{background:#efefef}
 .select input:checked + label:before{position:absolute;right:0;height:40px;width:40px;content:''}
 .select:after{content:attr(data-name);position:absolute;top:3px;width:100%;display:inline;pointer-events:none}
 
+.select.width200:after{left:210px}
 .select.width225:after{left:235px}
 .select.width250:after{left:260px}
 

@@ -2,15 +2,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
 var cheatRadio,filePath,fileResult,RomPath,RomPathResult,txPath,txPathResult,txCachePath,txCachePathResult,txDumpPath,txDumpPathResult,IPLROM,IPLROMResult,Disk,DiskResult,ConfigPath,ConfigPathResult,ScreenshotPath,ScreenshotPathResult,SaveStatePath,SaveStatePathResult,SaveSRAMPath,SaveSRAMPathResult,gbROM1,gbROM1Result,gbROM2,gbROM2Result,gbROM3,gbROM3Result,gbROM4,gbROM4Result,gbRAM1,gbRAM1Result,gbRAM2,gbRAM2Result,gbRAM3,gbRAM3Result,gbRAM4,gbRAM4Result,
 
-recentFiles = [];
+recentFiles = [],
+
+dropValue = function(name){return document.querySelector('input[name='+name+']:checked').value};
 
 const buttons = document.querySelectorAll('button'),
+
+customDrop = document.querySelectorAll('.select'),
 
 inputs = document.querySelectorAll('input'),
 
 links = document.querySelectorAll('a'),
 
-textInputs = document.querySelectorAll("input[type='text']"),
+textInputs = document.querySelectorAll('input[type=text]'),
 
 ext = isLinux ? '.so' : '.dll',
 
@@ -67,9 +71,11 @@ dropdowns = [
 'PRIMARY_BUFFER_TARGET','RESAMPLE', /* mupen64plus-audio */
 'a','b','x','y','start','z','l','r','d_pad_left','d_pad_right','d_pad_down','d_pad_up','c_stick_left','c_stick_right','c_stick_down','c_stick_up', /* mupen64plus-input-gca */
 'msaa','aspectRatio','bufferSwapMode','CountersPos','useNativeResolutionFactor','anisotropy','cache','RDRAMImageDitheringMode','CorrectTexrectCoords','EnableNativeResTexrects','BackgroundsMode','EnableN64DepthCompare','EnableCopyColorToRDRAM','EnableCopyDepthToRDRAM','txFilterMode','txEnhancementMode', /* GLideN64 */
-'ViMode','ViInterpolation','DpCompat', /* Angrylion-Plus */
 'ParallelUpscaling','ParallelDeinterlaceMode','ParallelDownScale', /* Parallel */
-'FrameBufferWriteBackControl','RenderToTexture','ScreenUpdateSetting','Mipmapping','ForceTextureFilter','RiceMultiSampling','AnisotropicFiltering' /* Rice */];
+'FrameBufferWriteBackControl','RenderToTexture','ScreenUpdateSetting','Mipmapping','ForceTextureFilter','RiceMultiSampling','AnisotropicFiltering' /* Rice */],
+
+customDropdowns = [
+'ViMode','ViInterpolation','DpCompat' /* Angrylion-Plus */];
 
 
 
@@ -79,6 +85,7 @@ if(!isLinux)id('master_volume').style.display = 'none'; /* hide platform specifi
 
 function tabindex(el){el.tabIndex = -1} /* prevent tab focus */
 buttons.forEach(el => {tabindex(el);el.addEventListener('focus', function(){el.blur()})})
+customDrop.forEach(el => {tabindex(el)})
 inputs.forEach(el => {tabindex(el)})
 links.forEach(el => {tabindex(el)})
 
@@ -328,7 +335,7 @@ localStorage.setItem(id(e.target.id).parentNode.id+'RadioID',e.target.id)};
 return result;})();
 document.addEventListener('change', changeHandler, false);
 
-['video','ra'].forEach(opt => {
+customDropdowns.forEach(opt => {
 if(localStorage.getItem(opt) != null && localStorage.getItem(opt+'RadioName') != null && localStorage.getItem(opt+'RadioID') != null){
 id(localStorage.getItem(opt+'RadioID')).parentNode.firstChild.nextElementSibling.innerHTML = id(localStorage.getItem(opt+'RadioID')).label.innerHTML;
 var radios = document.getElementsByName(opt+'RadioName');
@@ -1066,9 +1073,9 @@ EnableCopyColorToRDRAM = 'Video-GLideN64[EnableCopyColorToRDRAM]=' + id('EnableC
 EnableCopyDepthToRDRAM = 'Video-GLideN64[EnableCopyDepthToRDRAM]=' + id('EnableCopyDepthToRDRAM').value,
 txFilterMode = 'Video-GLideN64[txFilterMode]=' + id('txFilterMode').value,
 txEnhancementMode = 'Video-GLideN64[txEnhancementMode]=' + id('txEnhancementMode').value,
-ViMode = 'Video-AngrylionPlus[ViMode]=' + id('ViMode').value,
-ViInterpolation = 'Video-AngrylionPlus[ViInterpolation]=' + id('ViInterpolation').value,
-DpCompat = 'Video-AngrylionPlus[DpCompat]=' + id('DpCompat').value,
+ViMode = 'Video-AngrylionPlus[ViMode]=' + dropValue('ViMode'),
+ViInterpolation = 'Video-AngrylionPlus[ViInterpolation]=' + dropValue('ViInterpolation'),
+DpCompat = 'Video-AngrylionPlus[DpCompat]=' + dropValue('DpCompat'),
 ParallelUpscaling = 'Video-Parallel[Upscaling]=' + id('ParallelUpscaling').value,
 ParallelDeinterlaceMode = 'Video-Parallel[DeinterlaceMode]=' + id('ParallelDeinterlaceMode').value,
 ParallelDownScale = 'Video-Parallel[DownScale]=' + id('ParallelDownScale').value,
@@ -1715,7 +1722,7 @@ FrameBufferSetting,FrameBufferWriteBackControl,RenderToTexture,ScreenUpdateSetti
 cheats = [], activeCheats = '';
 
 if(id('cheatList').innerHTML != ''){ /* activate cheats  */
-var cheatInputs = id('cheatList').querySelectorAll("input[type='checkbox']");
+var cheatInputs = id('cheatList').querySelectorAll('input[type=checkbox]');
 for (var i = 0; i < cheatInputs.length; i++){var cheatInput = cheatInputs[i];checkCheats(cheatInput)}
 function checkCheats(cheatInput){if(cheatInput.checked){var id = cheatInput.id.replace('_','-');activeCheats += id + ','}}
 cheats = ['--cheats',activeCheats]}
