@@ -315,6 +315,31 @@ localStorage.setItem(number, number_input.value)}})})
 
 
 
+var labels = document.getElementsByTagName('label'); /* custom dropdowns */
+for(var i = 0; i < labels.length; i++){if(labels[i].htmlFor != ''){var elem = document.getElementById(labels[i].htmlFor);if(elem)elem.label = labels[i]}}
+
+var changeHandler = (function initChangeHandler() {
+var result = function(e){
+if(e.target.type !== 'radio')return;
+id(e.target.id).parentNode.firstChild.nextElementSibling.innerHTML = id(e.target.id).label.innerHTML;
+localStorage.setItem(id(e.target.id).parentNode.id,id(e.target.id).value);
+localStorage.setItem(id(e.target.id).parentNode.id+'RadioName',id(e.target.id).name);
+localStorage.setItem(id(e.target.id).parentNode.id+'RadioID',e.target.id)};
+return result;})();
+document.addEventListener('change', changeHandler, false);
+
+['video','ra'].forEach(opt => {
+if(localStorage.getItem(opt) != null && localStorage.getItem(opt+'RadioName') != null && localStorage.getItem(opt+'RadioID') != null){
+id(localStorage.getItem(opt+'RadioID')).parentNode.firstChild.nextElementSibling.innerHTML = id(localStorage.getItem(opt+'RadioID')).label.innerHTML;
+var radios = document.getElementsByName(opt+'RadioName');
+var val = localStorage.getItem(opt);
+for(var i=0;i<radios.length;i++){if(radios[i].value == val){radios[i].checked = true}}
+id(localStorage.getItem(opt+'RadioID')).setAttribute('checked','checked')}
+else{id(opt).firstChild.nextElementSibling.innerHTML = document.querySelector('input[name=' + id(opt).id + ']:checked').label.innerHTML}
+id(opt).firstChild.nextElementSibling.onclick = function(){document.activeElement.blur()}});
+
+
+
 function rspDropdownDisable(){ /* disable or hide inputs */
 if(id('rsp').value.includes('rsp-hle')){id('RspFallback').disabled = false;id('rspGFX').disabled = true}
 else if(id('rsp').value.includes('rsp-cxd4')){id('RspFallback').disabled = true;id('rspGFX').disabled = false}

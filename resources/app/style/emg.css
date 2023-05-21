@@ -83,6 +83,30 @@ select{border:0;outline:0;padding:5px 35px 5px 8px;transition:background-color .
 option{background:#efefef}
 .dark option{background:#222}
 
+.select{outline:0;display:flex;flex-direction:column;position:relative;height:29px;cursor:pointer}
+.select label{padding:0 30px 0 10px;min-height:29px;display:none;align-items:center;background:#eee;position:absolute;top:0;width:100%;pointer-events:none;transition:background-color .2s cubic-bezier(.4,0,.22,1);box-sizing:border-box;overflow:hidden;white-space:nowrap;cursor:pointer}
+.dark .select label{background:#222}
+
+.custom .select label:first-child{background:rgba(200,200,200,.5)}
+.dark.custom .select label:first-child{background:rgba(40,40,40,.5)}
+
+.select label:hover,.select:hover label:first-child,.select:focus label:first-child,.select input:checked + label,.select input:checked + label:before{background:#ddd}
+.dark .select label:hover,.dark .select:hover label:first-child,.dark .select:focus label:first-child,.dark .select input:checked + label,.dark .select input:checked + label:before{background:#333}
+.custom .select label:hover,.custom .select:hover label:first-child,.custom .select:focus label:first-child,.custom .select input:checked + label,.custom .select input:checked + label:before{background:#ddd}
+.dark.custom .select label:hover,.dark.custom .select:hover label:first-child,.dark.custom .select:focus label:first-child,.dark.custom .select input:checked + label,.dark.custom .select input:checked + label:before{background:#333}
+
+.select label:first-child{z-index:2;display:flex}
+.select label:first-child:after{content:'';width:0;height:0;border:solid #000;border-width:0 2.5px 2.5px 0;padding:4px;transform:rotate(45deg);position:absolute;right:12px;top:calc(50% - 7.5px);pointer-events:none}
+.dark .select label:first-child:after{border-color:#fff}
+
+.select:focus label{position:relative;pointer-events:all;z-index:3;display:flex}
+.select input{opacity:0;position:absolute;left:-99999px}
+.select input:checked + label:before{position:absolute;right:0;height:40px;width:40px;content:''}
+.select:after{content:attr(data-name);position:absolute;top:3px;width:100%;display:inline;pointer-events:none}
+
+.select.width225:after{left:235px}
+.select.width250:after{left:260px}
+
 .box{padding:20px;border:2px dotted #111;word-wrap:break-word}
 .dark .box{border:2px dotted #eee}
 
