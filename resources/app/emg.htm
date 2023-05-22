@@ -1169,14 +1169,14 @@ For gamepad hotkey combos, press another button by focusing the box a second tim
 <option value="16">16x</option>
 </select><label for="anisotropy">Anisotropic filtering</label>
 <p>&nbsp;</p>
-<div title="MSAA is incompatible with N64 Depth Compare."><select class="width125m" name="msaa" id="msaa">
+<div title="MSAA is incompatible with N64 depth compare."><select class="width125m" name="msaa" id="msaa">
 <option value="0" selected>Off</option>
 <option value="2">2x</option>
 <option value="4">4x</option>
 <option value="8">8x</option>
 </select><label for="msaa">Multisample anti-aliasing</label></div>
 <p>&nbsp;</p>
-<div title="Choose adjust for using a generic Widescreen hack."><select class="width125m" name="aspectRatio" id="aspectRatio">
+<div title="Choose adjust to use a generic widescreen hack."><select class="width125m" name="aspectRatio" id="aspectRatio">
 <option value="1" selected>4:3</option>
 <option value="2">16:9</option>
 <option value="3">Adjust</option>
@@ -1318,7 +1318,7 @@ If this option is turned off, the output resolution is the same as the rendering
 <option value="2" selected>Use software render</option>
 </select><label for="EnableCopyDepthToRDRAM">Copy depth buffer to RDRAM</label></div>
 <p>&nbsp;</p>
-<div title="Enable N64 depth compare instead of OpenGL standard one."><select class="width250m" name="EnableN64DepthCompare" id="EnableN64DepthCompare">
+<div title="Enable N64 depth compare instead of OpenGL standard one. Fast setting may cause graphical issues on RTX cards."><select class="width250m" name="EnableN64DepthCompare" id="EnableN64DepthCompare">
 <option value="0" selected>Off</option>
 <option value="1">Fast</option>
 <option value="2">Compatible</option>
@@ -1372,7 +1372,8 @@ If this option is turned off, the output resolution is the same as the rendering
 <p>&nbsp;</p>
 <p title="Disables HTC/HTS cache. Not recommended for casual play."><input id="txNoTextureFileStorage" type="checkbox" data-store="txNoTextureFileStorage"><label for="txNoTextureFileStorage">Don't use cache</label></p>
 <p>&nbsp;</p>
-<div title="HTC: Prefetch all textures at boot into RAM. HTS: Read textures as they are needed from hard disk."><select name="cache" id="cache">
+<div title="HTC: Prefetch all textures at boot into RAM.
+HTS: Read textures as they are needed from hard disk."><select name="cache" id="cache">
 <option value="false">HTC</option>
 <option value="true" selected>HTS</option>
 </select><label for="cache">Cache type</label></div>
@@ -1405,7 +1406,7 @@ If this option is turned off, the output resolution is the same as the rendering
 <select name="CountersPos" id="CountersPos">
 <option value="1">Top Left</option>
 <option value="2">Top Center</option>
-<option value="4">Top Center</option>
+<option value="4">Top Right</option>
 <option value="8" selected>Bottom Left</option>
 <option value="16">Bottom Center</option>
 <option value="32">Bottom Right</option>
@@ -1582,7 +1583,7 @@ If this option is turned off, the output resolution is the same as the rendering
 <option value="2">Normal</option>
 <option value="3">Write Back</option>
 <option value="4">Write Back and Reload</option>
-</select><label for="RenderToTexture">Render-to-texture Emulation</label>
+</select><label for="RenderToTexture">Render-to-texture emulation</label>
 <p>&nbsp;</p>
 <div title="Control when the screen will be updated."><select class="width225m" name="ScreenUpdateSetting" id="ScreenUpdateSetting">
 <option value="4" selected>First CI Change</option>
