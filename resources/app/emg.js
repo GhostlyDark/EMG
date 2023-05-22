@@ -6,11 +6,15 @@ recentFiles = [];
 
 const buttons = document.querySelectorAll('button'),
 
-inputs = document.querySelectorAll('input'),
+boxes = document.querySelectorAll('input[type=checkbox]'),
+
+colorInputs = document.querySelectorAll('input[type=color]'),
+
+numberInputs = document.querySelectorAll('input[type=number]'),
+
+textInputs = document.querySelectorAll('input[type=text]'),
 
 links = document.querySelectorAll('a'),
-
-textInputs = document.querySelectorAll("input[type='text']"),
 
 ext = isLinux ? '.so' : '.dll',
 
@@ -79,7 +83,10 @@ if(!isLinux)id('master_volume').style.display = 'none'; /* hide platform specifi
 
 function tabindex(el){el.tabIndex = -1} /* prevent tab focus */
 buttons.forEach(el => {tabindex(el);el.addEventListener('focus', function(){el.blur()})})
-inputs.forEach(el => {tabindex(el)})
+boxes.forEach(el => {tabindex(el)})
+colorInputs.forEach(el => {tabindex(el)})
+numberInputs.forEach(el => {tabindex(el)})
+textInputs.forEach(el => {tabindex(el)})
 links.forEach(el => {tabindex(el)})
 
 
@@ -1691,7 +1698,7 @@ FrameBufferSetting,FrameBufferWriteBackControl,RenderToTexture,ScreenUpdateSetti
 cheats = [], activeCheats = '';
 
 if(id('cheatList').innerHTML != ''){ /* activate cheats  */
-var cheatInputs = id('cheatList').querySelectorAll("input[type='checkbox']");
+var cheatInputs = id('cheatList').querySelectorAll('input[type=checkbox]');
 for (var i = 0; i < cheatInputs.length; i++){var cheatInput = cheatInputs[i];checkCheats(cheatInput)}
 function checkCheats(cheatInput){if(cheatInput.checked){var id = cheatInput.id.replace('_','-');activeCheats += id + ','}}
 cheats = ['--cheats',activeCheats]}

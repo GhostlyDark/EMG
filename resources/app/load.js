@@ -90,7 +90,7 @@ body.addEventListener('dragover', prevent, false)
 function prevent(e){e.preventDefault();e.stopPropagation()}
 function handleDrop(e) {prevent(e);file = e.dataTransfer.files[0];bgChange(file)}
 
-var boxes = document.querySelectorAll("input[type='checkbox']");
+var boxes = document.querySelectorAll('input[type=checkbox]');
 for (var i = 0; i < boxes.length; i++){var box = boxes[i];if (box.hasAttribute('data-store')){setupBox(box)}}
 function setupBox(box){
 var storageId = box.getAttribute('data-store'),oldVal = localStorage[storageId];
