@@ -1164,48 +1164,52 @@ For gamepad hotkey combos, press another button by focusing the box a second tim
 <p>&nbsp;</p>
 <p><input id="fxaa" type="checkbox" data-store="fxaa"><label for="fxaa">Fast approximate anti-aliasing</label></p>
 <p>&nbsp;</p>
-<select class="width125m" name="anisotropy" id="anisotropy">
-<option value="0" selected>Off</option>
-<option value="2">2x</option>
-<option value="4">4x</option>
-<option value="8">8x</option>
-<option value="16">16x</option>
-</select><label for="anisotropy">Anisotropic filtering</label>
+<div class="select width125" data-name="Anisotropic filtering" id="anisotropy">
+<label></label>
+<input name="anisotropy" type="radio" id="anisotropy_0" value="0" checked><label for="anisotropy_0">Off</label>
+<input name="anisotropy" type="radio" id="anisotropy_2" value="2"><label for="anisotropy_2">2x</label>
+<input name="anisotropy" type="radio" id="anisotropy_4" value="4"><label for="anisotropy_4">4x</label>
+<input name="anisotropy" type="radio" id="anisotropy_8" value="8"><label for="anisotropy_8">8x</label>
+<input name="anisotropy" type="radio" id="anisotropy_16" value="16"><label for="anisotropy_16">16x</label>
+</div>
 <p>&nbsp;</p>
-<div title="MSAA is incompatible with N64 Depth Compare."><select class="width125m" name="msaa" id="msaa">
-<option value="0" selected>Off</option>
-<option value="2">2x</option>
-<option value="4">4x</option>
-<option value="8">8x</option>
-</select><label for="msaa">Multisample anti-aliasing</label></div>
+<div title="MSAA is incompatible with N64 depth compare." class="select width125" data-name="Multisample anti-aliasing" id="msaa">
+<label></label>
+<input name="msaa" type="radio" id="msaa_0" value="0" checked><label for="msaa_0">Off</label>
+<input name="msaa" type="radio" id="msaa_2" value="2"><label for="msaa_2">2x</label>
+<input name="msaa" type="radio" id="msaa_4" value="4"><label for="msaa_4">4x</label>
+<input name="msaa" type="radio" id="msaa_8" value="8"><label for="msaa_8">8x</label>
+</div>
 <p>&nbsp;</p>
-<div title="Choose adjust for using a generic Widescreen hack."><select class="width125m" name="aspectRatio" id="aspectRatio">
-<option value="1" selected>4:3</option>
-<option value="2">16:9</option>
-<option value="3">Adjust</option>
-<option value="0">Stretch</option>
-</select><label for="aspectRatio">Aspect ratio</label></div>
+<div title="Choose adjust to use a generic widescreen hack." class="select width125" data-name="Aspect ratio" id="aspectRatio">
+<label></label>
+<input name="aspectRatio" type="radio" id="aspectRatio_1" value="1" checked><label for="aspectRatio_1">4:3</label>
+<input name="aspectRatio" type="radio" id="aspectRatio_2" value="2"><label for="aspectRatio_2">16:9</label>
+<input name="aspectRatio" type="radio" id="aspectRatio_3" value="3"><label for="aspectRatio_3">Adjust</label>
+<input name="aspectRatio" type="radio" id="aspectRatio_0" value="0"><label for="aspectRatio_0">Stretch</label>
+</div>
 <p>&nbsp;</p>
 <div title="Frame buffer size (rendering resolution) is the factor of N64 native resolution.
-If this option is turned off, the output resolution is the same as the rendering resolution."><select class="width125m" name="useNativeResolutionFactor" id="useNativeResolutionFactor">
-<option value="0" selected>Off</option>
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-<option value="6">6</option>
-<option value="7">7</option>
-<option value="8">8</option>
-<option value="9">9</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>
-<option value="13">13</option>
-<option value="14">14</option>
-<option value="15">15</option>
-<option value="16">16</option>
-</select><label for="useNativeResolutionFactor">Native resolution factor</label></div>
+If this option is turned off, the output resolution is the same as the rendering resolution." class="select width125" data-name="Native resolution factor" id="useNativeResolutionFactor">
+<label></label>
+<input name="useNativeResolutionFactor" type="radio" id="useNativeResolutionFactor_0" value="0" checked><label for="useNativeResolutionFactor_0">Off</label>
+<input name="useNativeResolutionFactor" type="radio" id="useNativeResolutionFactor_1" value="1"><label for="useNativeResolutionFactor_1">1</label>
+<input name="useNativeResolutionFactor" type="radio" id="useNativeResolutionFactor_2" value="2"><label for="useNativeResolutionFactor_2">2</label>
+<input name="useNativeResolutionFactor" type="radio" id="useNativeResolutionFactor_3" value="3"><label for="useNativeResolutionFactor_3">3</label>
+<input name="useNativeResolutionFactor" type="radio" id="useNativeResolutionFactor_4" value="4"><label for="useNativeResolutionFactor_4">4</label>
+<input name="useNativeResolutionFactor" type="radio" id="useNativeResolutionFactor_5" value="5"><label for="useNativeResolutionFactor_5">5</label>
+<input name="useNativeResolutionFactor" type="radio" id="useNativeResolutionFactor_6" value="6"><label for="useNativeResolutionFactor_6">6</label>
+<input name="useNativeResolutionFactor" type="radio" id="useNativeResolutionFactor_7" value="7"><label for="useNativeResolutionFactor_7">7</label>
+<input name="useNativeResolutionFactor" type="radio" id="useNativeResolutionFactor_8" value="8"><label for="useNativeResolutionFactor_8">8</label>
+<input name="useNativeResolutionFactor" type="radio" id="useNativeResolutionFactor_9" value="9"><label for="useNativeResolutionFactor_9">9</label>
+<input name="useNativeResolutionFactor" type="radio" id="useNativeResolutionFactor_10" value="10"><label for="useNativeResolutionFactor_10">10</label>
+<input name="useNativeResolutionFactor" type="radio" id="useNativeResolutionFactor_11" value="11"><label for="useNativeResolutionFactor_11">11</label>
+<input name="useNativeResolutionFactor" type="radio" id="useNativeResolutionFactor_12" value="12"><label for="useNativeResolutionFactor_12">12</label>
+<input name="useNativeResolutionFactor" type="radio" id="useNativeResolutionFactor_13" value="13"><label for="useNativeResolutionFactor_13">13</label>
+<input name="useNativeResolutionFactor" type="radio" id="useNativeResolutionFactor_14" value="14"><label for="useNativeResolutionFactor_14">14</label>
+<input name="useNativeResolutionFactor" type="radio" id="useNativeResolutionFactor_15" value="15"><label for="useNativeResolutionFactor_15">15</label>
+<input name="useNativeResolutionFactor" type="radio" id="useNativeResolutionFactor_16" value="16"><label for="useNativeResolutionFactor_16">16</label>
+</div>
 <p>&nbsp;</p>
 <p title="Override gamma correction specified by the game."><input id="ForceGammaCorrection" type="checkbox" data-store="ForceGammaCorrection"><label for="ForceGammaCorrection">Force gamma correction</label></p>
 <p>&nbsp;</p>
@@ -1261,29 +1265,33 @@ If this option is turned off, the output resolution is the same as the rendering
 <p>&nbsp;</p>
 <p title="Dither with color quantization."><input id="DitheringQuantization" type="checkbox" data-store="DitheringQuantization" checked><label for="DitheringQuantization">Dithering quantization</label></p>
 <p>&nbsp;</p>
-<div title="Dithering mode for image in RDRAM."><select class="width150m" name="RDRAMImageDitheringMode" id="RDRAMImageDitheringMode">
-<option value="0">Disable</option>
-<option value="1">Bayer</option>
-<option value="2">Magic Square</option>
-<option value="3" selected>Blue Noise</option>
-</select><label for="RDRAMImageDitheringMode">Dithering mode</label></div>
+<div title="Dithering mode for image in RDRAM." class="select width175" data-name="Dithering mode" id="RDRAMImageDitheringMode">
+<label></label>
+<input name="RDRAMImageDitheringMode" type="radio" id="RDRAMImageDitheringMode_0" value="0"><label for="RDRAMImageDitheringMode_0">Disable</label>
+<input name="RDRAMImageDitheringMode" type="radio" id="RDRAMImageDitheringMode_1" value="1"><label for="RDRAMImageDitheringMode_1">Bayer</label>
+<input name="RDRAMImageDitheringMode" type="radio" id="RDRAMImageDitheringMode_2" value="2"><label for="RDRAMImageDitheringMode_2">Magic Square</label>
+<input name="RDRAMImageDitheringMode" type="radio" id="RDRAMImageDitheringMode_3" value="3" checked><label for="RDRAMImageDitheringMode_3">Blue Noise</label>
+</div>
 <p>&nbsp;</p>
-<div title="Render backgrounds mode (HLE only)."><select class="width150m" name="BackgroundsMode" id="BackgroundsMode">
-<option value="0" selected>One Piece</option>
-<option value="1">Stripped</option>
-</select><label for="BackgroundsMode">Backgrounds mode</label></div>
+<div title="Render backgrounds mode (HLE only)." class="select width175" data-name="Backgrounds mode" id="BackgroundsMode">
+<label></label>
+<input name="BackgroundsMode" type="radio" id="BackgroundsMode_0" value="0" checked><label for="BackgroundsMode_0">One Piece</label>
+<input name="BackgroundsMode" type="radio" id="BackgroundsMode_1" value="1"><label for="BackgroundsMode_1">Stripped</label>
+</div>
 <p>&nbsp;</p>
-<div title="Make texrect coordinates continuous to avoid black lines between them."><select class="width150m" name="CorrectTexrectCoords" id="CorrectTexrectCoords">
-<option value="0">Off</option>
-<option value="1" selected>Auto</option>
-<option value="2">Force</option>
-</select><label for="CorrectTexrectCoords">Correct texrect coordinates</label></div>
+<div title="Make texrect coordinates continuous to avoid black lines between them." class="select width175" data-name="Correct texrect coordinates" id="CorrectTexrectCoords">
+<label></label>
+<input name="CorrectTexrectCoords" type="radio" id="CorrectTexrectCoords_0" value="0"><label for="CorrectTexrectCoords_0">Off</label>
+<input name="CorrectTexrectCoords" type="radio" id="CorrectTexrectCoords_1" value="1" checked><label for="CorrectTexrectCoords_1">Auto</label>
+<input name="CorrectTexrectCoords" type="radio" id="CorrectTexrectCoords_2" value="2"><label for="CorrectTexrectCoords_2">Force</label>
+</div>
 <p>&nbsp;</p>
-<div title="Render 2D texrects in native resolution to fix misalignment between parts of 2D image."><select class="width150m" name="EnableNativeResTexrects" id="EnableNativeResTexrects">
-<option value="0" selected>Off</option>
-<option value="1">Optimized</option>
-<option value="2">Unoptimized</option>
-</select><label for="EnableNativeResTexrects">Enable native resolution texrects</label></div>
+<div title="Render 2D texrects in native resolution to fix misalignment between parts of 2D image." class="select width175" data-name="Native resolution texrects" id="EnableNativeResTexrects">
+<label></label>
+<input name="EnableNativeResTexrects" type="radio" id="EnableNativeResTexrects_0" value="0" checked><label for="EnableNativeResTexrects_0">Off</label>
+<input name="EnableNativeResTexrects" type="radio" id="EnableNativeResTexrects_1" value="1"><label for="EnableNativeResTexrects_1">Optimized</label>
+<input name="EnableNativeResTexrects" type="radio" id="EnableNativeResTexrects_2" value="2"><label for="EnableNativeResTexrects_2">Unoptimized</label>
+</div>
 </div>
 <div id="gliden64_framebuffer" class="hide mt-10">
 <p title="Disable buffers read/write with FBInfo. Use for games which do not work with FBInfo. Only takes effect with cached or pure interpreter."><input id="DisableFBInfo" type="checkbox" data-store="DisableFBInfo"><label for="DisableFBInfo">Disable FBInfo</label></p>
@@ -1302,58 +1310,64 @@ If this option is turned off, the output resolution is the same as the rendering
 <p>&nbsp;</p>
 <p title="Read depth buffer by 4kb chunks."><input id="FBInfoReadDepthChunk" type="checkbox" data-store="FBInfoReadDepthChunk" checked><label for="FBInfoReadDepthChunk">Read depth buffer in chunks</label></p>
 <p>&nbsp;</p>
-<div title="On buffer update offers the best performance but causes the most issues."><select class="width250m" name="bufferSwapMode" id="bufferSwapMode">
-<option value="0" selected>On VI update call</option>
-<option value="1">On VI origin change</option>
-<option value="2">On buffer update</option>
-</select><label for="bufferSwapMode">Buffer swap mode</label></div>
+<div title="On buffer update offers the best performance but causes most issues." class="select width250" data-name="Buffer swap mode" id="bufferSwapMode">
+<label></label>
+<input name="bufferSwapMode" type="radio" id="bufferSwapMode_0" value="0" checked><label for="bufferSwapMode_0">On VI update call</label>
+<input name="bufferSwapMode" type="radio" id="bufferSwapMode_1" value="1"><label for="bufferSwapMode_1">On VI origin change</label>
+<input name="bufferSwapMode" type="radio" id="bufferSwapMode_2" value="2"><label for="bufferSwapMode_2">On buffer update</label>
+</div>
 <p>&nbsp;</p>
-<div title="Enable color buffer copy to RDRAM."><select class="width250m" name="EnableCopyColorToRDRAM" id="EnableCopyColorToRDRAM">
-<option value="0">Do not copy</option>
-<option value="1">Copy in sync mode</option>
-<option value="2" selected>Double Buffer</option>
-<option value="3">Triple Buffer</option>
-</select><label for="EnableCopyColorToRDRAM">Copy color buffer to RDRAM</label></div>
+<div title="Enable color buffer copy to RDRAM." class="select width250" data-name="Copy color buffer to RDRAM" id="EnableCopyColorToRDRAM">
+<label></label>
+<input name="EnableCopyColorToRDRAM" type="radio" id="EnableCopyColorToRDRAM_0" value="0"><label for="EnableCopyColorToRDRAM_0">Do not copy</label>
+<input name="EnableCopyColorToRDRAM" type="radio" id="EnableCopyColorToRDRAM_1" value="1" checked><label for="EnableCopyColorToRDRAM_1">Copy in sync mode</label>
+<input name="EnableCopyColorToRDRAM" type="radio" id="EnableCopyColorToRDRAM_2" value="2"><label for="EnableCopyColorToRDRAM_2">Double Buffer</label>
+<input name="EnableCopyColorToRDRAM" type="radio" id="EnableCopyColorToRDRAM_3" value="3"><label for="EnableCopyColorToRDRAM_3">Triple Buffer</label>
+</div>
 <p>&nbsp;</p>
-<div title="Enable depth buffer copy to RDRAM."><select class="width250m" name="EnableCopyDepthToRDRAM" id="EnableCopyDepthToRDRAM">
-<option value="0">Do not copy</option>
-<option value="1">Copy from video memory</option>
-<option value="2" selected>Use software render</option>
-</select><label for="EnableCopyDepthToRDRAM">Copy depth buffer to RDRAM</label></div>
+<div title="Enable depth buffer copy to RDRAM." class="select width250" data-name="Copy depth buffer to RDRAM" id="EnableCopyDepthToRDRAM">
+<label></label>
+<input name="EnableCopyDepthToRDRAM" type="radio" id="EnableCopyDepthToRDRAM_0" value="0"><label for="EnableCopyDepthToRDRAM_0">Do not copy</label>
+<input name="EnableCopyDepthToRDRAM" type="radio" id="EnableCopyDepthToRDRAM_1" value="1"><label for="EnableCopyDepthToRDRAM_1">Copy from video memory</label>
+<input name="EnableCopyDepthToRDRAM" type="radio" id="EnableCopyDepthToRDRAM_2" value="2" checked><label for="EnableCopyDepthToRDRAM_2">Use software render</label>
+</div>
 <p>&nbsp;</p>
-<div title="Enable N64 depth compare instead of OpenGL standard one."><select class="width250m" name="EnableN64DepthCompare" id="EnableN64DepthCompare">
-<option value="0" selected>Off</option>
-<option value="1">Fast</option>
-<option value="2">Compatible</option>
-</select><label for="EnableN64DepthCompare">N64 depth compare</label></div>
+<div title="Enable N64 depth compare instead of OpenGL standard one. Fast setting may cause graphical issues on RTX cards." class="select width250" data-name="N64 depth compare" id="EnableN64DepthCompare">
+<label></label>
+<input name="EnableN64DepthCompare" type="radio" id="EnableN64DepthCompare_0" value="0" checked><label for="EnableN64DepthCompare_0">Off</label>
+<input name="EnableN64DepthCompare" type="radio" id="EnableN64DepthCompare_1" value="1"><label for="EnableN64DepthCompare_1">Fast</label>
+<input name="EnableN64DepthCompare" type="radio" id="EnableN64DepthCompare_2" value="2"><label for="EnableN64DepthCompare_2">Compatible</label>
+</div>
 </div>
 <div id="gliden64_textures" class="hide mt-10">
-<select class="width200m" name="txFilterMode" id="txFilterMode">
-<option value="0" selected>None</option>
-<option value="1">Smooth Filtering 1</option>
-<option value="2">Smooth Filtering 2</option>
-<option value="3">Smooth Filtering 3</option>
-<option value="4">Smooth Filtering 4</option>
-<option value="5">Sharp Filtering 1</option>
-<option value="6">Sharp Filtering 2</option>
-</select><label for="txFilterMode">Texture filter</label>
+<div class="select width200" data-name="Texture filter" id="txFilterMode">
+<label></label>
+<input name="txFilterMode" type="radio" id="txFilterMode_0" value="0" checked><label for="txFilterMode_0">None</label>
+<input name="txFilterMode" type="radio" id="txFilterMode_1" value="1"><label for="txFilterMode_1">Smooth Filtering 1</label>
+<input name="txFilterMode" type="radio" id="txFilterMode_2" value="2"><label for="txFilterMode_2">Smooth Filtering 2</label>
+<input name="txFilterMode" type="radio" id="txFilterMode_3" value="3"><label for="txFilterMode_3">Smooth Filtering 3</label>
+<input name="txFilterMode" type="radio" id="txFilterMode_4" value="4"><label for="txFilterMode_4">Smooth Filtering 4</label>
+<input name="txFilterMode" type="radio" id="txFilterMode_5" value="5"><label for="txFilterMode_5">Sharp Filtering 1</label>
+<input name="txFilterMode" type="radio" id="txFilterMode_6" value="6"><label for="txFilterMode_6">Sharp Filtering 2</label>
+</div>
 <p>&nbsp;</p>
-<select class="width200m" name="txEnhancementMode" id="txEnhancementMode">
-<option value="0" selected>None</option>
-<option value="1">Store as is</option>
-<option value="2">X2</option>
-<option value="3">X2SAI</option>
-<option value="4">HQ2X</option>
-<option value="5">HQ2XS</option>
-<option value="6">LQ2X</option>
-<option value="7">LQ2XS</option>
-<option value="8">HQ4X</option>
-<option value="9">2xBRZ</option>
-<option value="10">3xBRZ</option>
-<option value="11">4xBRZ</option>
-<option value="12">5xBRZ</option>
-<option value="13">6xBRZ</option>
-</select><label for="txEnhancementMode">Texture enhancement</label>
+<div class="select width200" data-name="Texture filter" id="txEnhancementMode">
+<label></label>
+<input name="txEnhancementMode" type="radio" id="txEnhancementMode_0" value="0" checked><label for="txEnhancementMode_0">None</label>
+<input name="txEnhancementMode" type="radio" id="txEnhancementMode_1" value="1"><label for="txEnhancementMode_1">Store as is</label>
+<input name="txEnhancementMode" type="radio" id="txEnhancementMode_2" value="2"><label for="txEnhancementMode_2">X2</label>
+<input name="txEnhancementMode" type="radio" id="txEnhancementMode_3" value="3"><label for="txEnhancementMode_3">X2SAI</label>
+<input name="txEnhancementMode" type="radio" id="txEnhancementMode_4" value="4"><label for="txEnhancementMode_4">HQ2X</label>
+<input name="txEnhancementMode" type="radio" id="txEnhancementMode_5" value="5"><label for="txEnhancementMode_5">HQ2XS</label>
+<input name="txEnhancementMode" type="radio" id="txEnhancementMode_6" value="6"><label for="txEnhancementMode_6">LQ2X</label>
+<input name="txEnhancementMode" type="radio" id="txEnhancementMode_7" value="7"><label for="txEnhancementMode_7">LQ2XS</label>
+<input name="txEnhancementMode" type="radio" id="txEnhancementMode_8" value="8"><label for="txEnhancementMode_8">HQ4X</label>
+<input name="txEnhancementMode" type="radio" id="txEnhancementMode_9" value="9"><label for="txEnhancementMode_9">2xBRZ</label>
+<input name="txEnhancementMode" type="radio" id="txEnhancementMode_10" value="10"><label for="txEnhancementMode_10">3xBRZ</label>
+<input name="txEnhancementMode" type="radio" id="txEnhancementMode_11" value="11"><label for="txEnhancementMode_11">4xBRZ</label>
+<input name="txEnhancementMode" type="radio" id="txEnhancementMode_12" value="12"><label for="txEnhancementMode_12">5xBRZ</label>
+<input name="txEnhancementMode" type="radio" id="txEnhancementMode_13" value="13"><label for="txEnhancementMode_13">6xBRZ</label>
+</div>
 <p>&nbsp;</p>
 <p><span class="numberDecrease" id="decreasetxCacheSize">-</span><input id="txCacheSize" min="0" max="1024" step="128" value="1024" type="number"><span class="numberIncrease" id="increasetxCacheSize">+</span><label title="Size of memory cache for enhanced textures in megabytes." for="txCacheSize">Memory cache size (in MB)</label><button class="floatright" data-value="1024" id="resettxCacheSize">Reset</button></p>
 <p>&nbsp;</p>
@@ -1375,10 +1389,12 @@ If this option is turned off, the output resolution is the same as the rendering
 <p>&nbsp;</p>
 <p title="Disables HTC/HTS cache. Not recommended for casual play."><input id="txNoTextureFileStorage" type="checkbox" data-store="txNoTextureFileStorage"><label for="txNoTextureFileStorage">Don't use cache</label></p>
 <p>&nbsp;</p>
-<div title="HTC: Prefetch all textures at boot into RAM. HTS: Read textures as they are needed from hard disk."><select name="cache" id="cache">
-<option value="false">HTC</option>
-<option value="true" selected>HTS</option>
-</select><label for="cache">Cache type</label></div>
+<div title="HTC: Prefetch all textures at boot into RAM.
+HTS: Read textures as they are needed from hard disk." class="select width100" data-name="Cache type" id="cache">
+<label></label>
+<input name="cache" type="radio" id="cache_false" value="false"><label for="cache_false">HTC</label>
+<input name="cache" type="radio" id="cache_true" value="true" checked><label for="cache_true">HTS</label>
+</div>
 <p>&nbsp;</p>
 <p><span class="numberDecrease" id="decreasetxHiresVramLimit">-</span><input id="txHiresVramLimit" min="0" max="102400" step="512" value="0" type="number"><span class="numberIncrease" id="increasetxHiresVramLimit">+</span><label title="Limit hi-res textures size in VRAM." for="txHiresVramLimit">VRAM limit (in MB)</label><button class="floatright" data-value="0" id="resettxHiresVramLimit">Reset</button></p>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
@@ -1405,14 +1421,15 @@ If this option is turned off, the output resolution is the same as the rendering
 <p>&nbsp;</p>
 <p><input id="ShowStatistics" type="checkbox" data-store="ShowStatistics"><label for="ShowStatistics">Show statistics</label></p>
 <p>&nbsp;</p>
-<select name="CountersPos" id="CountersPos">
-<option value="1">Top Left</option>
-<option value="2">Top Center</option>
-<option value="4">Top Center</option>
-<option value="8" selected>Bottom Left</option>
-<option value="16">Bottom Center</option>
-<option value="32">Bottom Right</option>
-</select><label for="CountersPos">Counters position</label>
+<div class="select width175" data-name="Counters position" id="CountersPos">
+<label></label>
+<input name="CountersPos" type="radio" id="CountersPos_1" value="1"><label for="CountersPos_1">Top Left</label>
+<input name="CountersPos" type="radio" id="CountersPos_2" value="2"><label for="CountersPos_2">Top Center</label>
+<input name="CountersPos" type="radio" id="CountersPos_4" value="4"><label for="CountersPos_4">Top Right</label>
+<input name="CountersPos" type="radio" id="CountersPos_8" value="8" checked><label for="CountersPos_8">Bottom Left</label>
+<input name="CountersPos" type="radio" id="CountersPos_16" value="16"><label for="CountersPos_16">Bottom Center</label>
+<input name="CountersPos" type="radio" id="CountersPos_32" value="32"><label for="CountersPos_32">Bottom Right</label>
+</div>
 </div>
 <div id="gliden64_hotkeys" class="hide mt-10">
 <p class="mb-20 mt-20">Supported keys are 0-9 and A-Z.<button class="floatright" id="clear_hk_gliden64">Clear all</button></p>
@@ -1464,24 +1481,27 @@ If this option is turned off, the output resolution is the same as the rendering
 <p>&nbsp;</p>
 <p title="Amount of pixels to stretch by vertically. Can fix PAL ports that didn't fill the PAL resolution of 288p (use value of 24 in that case)."><span class="numberDecrease" id="decreaseParallelVerticalStretch">-</span><input id="ParallelVerticalStretch" min="0" max="99" step="1" value="0" type="number"><span class="numberIncrease" id="increaseParallelVerticalStretch">+</span><label for="ParallelVerticalStretch">Vertical stretch</label><button class="floatright" data-value="0" id="resetParallelVerticalStretch">Reset</button></p>
 <p>&nbsp;</p>
-<select class="width125m" name="ParallelUpscaling" id="ParallelUpscaling">
-<option value="1" selected>1x</option>
-<option value="2">2x</option>
-<option value="4">4x</option>
-<option value="8">8x</option>
-</select><label for="ParallelUpscaling">Upscaling</label>
+<div class="select width125" data-name="Upscaling" id="ParallelUpscaling">
+<label></label>
+<input name="ParallelUpscaling" type="radio" id="ParallelUpscaling_1" value="1" checked><label for="ParallelUpscaling_1">1x</label>
+<input name="ParallelUpscaling" type="radio" id="ParallelUpscaling_2" value="2"><label for="ParallelUpscaling_2">2x</label>
+<input name="ParallelUpscaling" type="radio" id="ParallelUpscaling_4" value="4"><label for="ParallelUpscaling_4">4x</label>
+<input name="ParallelUpscaling" type="radio" id="ParallelUpscaling_8" value="8"><label for="ParallelUpscaling_8">8x</label>
+</div>
 <p>&nbsp;</p>
-<div title="Downscales output after VI, equivalent to SSAA."><select class="width125m" name="ParallelDownScale" id="ParallelDownScale">
-<option value="0" selected>Disabled</option>
-<option value="1">1/2</option>
-<option value="2">1/4</option>
-<option value="3">1/8</option>
-</select><label for="ParallelDownScale">Downsampling</label></div>
+<div title="Downscales output after VI, equivalent to SSAA." class="select width125" data-name="Downsampling" id="ParallelDownScale">
+<label></label>
+<input name="ParallelDownScale" type="radio" id="ParallelDownScale_0" value="false" checked><label for="ParallelDownScale_0">Disabled</label>
+<input name="ParallelDownScale" type="radio" id="ParallelDownScale_1" value="true"><label for="ParallelDownScale_1">1/2</label>
+<input name="ParallelDownScale" type="radio" id="ParallelDownScale_2" value="true"><label for="ParallelDownScale_2">1/4</label>
+<input name="ParallelDownScale" type="radio" id="ParallelDownScale_3" value="true"><label for="ParallelDownScale_3">1/8</label>
+</div>
 <p>&nbsp;</p>
-<div title="Weave should only be used with 1x scaling factor."><select class="width125m" name="ParallelDeinterlaceMode" id="ParallelDeinterlaceMode">
-<option value="false" selected>Bob</option>
-<option value="true">Weave</option>
-</select><label for="ParallelDeinterlaceMode">Deinterlacing method</label></div>
+<div title="Weave should only be used with 1x scaling factor." class="select width125" data-name="Deinterlacing method" id="ParallelDeinterlaceMode">
+<label></label>
+<input name="ParallelDeinterlaceMode" type="radio" id="ParallelDeinterlaceMode_false" value="false" checked><label for="ParallelDeinterlaceMode_false">Bob</label>
+<input name="ParallelDeinterlaceMode" type="radio" id="ParallelDeinterlaceMode_true" value="true"><label for="ParallelDeinterlaceMode_true">Weave</label>
+</div>
 </div>
 <div id="parallel_emulation" class="hide mt-10">
 <p title="Smooths polygon edges."><input id="ParallelVIAA" type="checkbox" data-store="ParallelVIAA" checked><label for="ParallelVIAA">Anti-aliasing</label></p>
@@ -1523,33 +1543,37 @@ If this option is turned off, the output resolution is the same as the rendering
 <p>&nbsp;</p>
 <p title="Is multiplied by an implementation-specific value to create a constant depth offset."><span class="numberDecrease" id="decreasePolygonOffsetUnits">-</span><input id="PolygonOffsetUnits" min="0.00" max="10.00" step="0.1" value="0.00" type="number"><span class="numberIncrease" id="increasePolygonOffsetUnits">+</span><label for="PolygonOffsetUnits">Polygon offset units</label><button class="floatright" data-value="0.00" id="resetPolygonOffsetUnits">Reset</button></p>
 <p>&nbsp;</p>
-<select class="width200m" name="AnisotropicFiltering" id="AnisotropicFiltering">
-<option value="0" selected>Off</option>
-<option value="2">2x</option>
-<option value="4">4x</option>
-<option value="8">8x</option>
-<option value="16">16x</option>
-</select><label for="AnisotropicFiltering">Anisotropic filtering</label>
+<div class="select width200" data-name="Anisotropic filtering" id="AnisotropicFiltering">
+<label></label>
+<input name="AnisotropicFiltering" type="radio" id="AnisotropicFiltering_0" value="0" checked><label for="AnisotropicFiltering_0">Off</label>
+<input name="AnisotropicFiltering" type="radio" id="AnisotropicFiltering_2" value="2"><label for="AnisotropicFiltering_2">2x</label>
+<input name="AnisotropicFiltering" type="radio" id="AnisotropicFiltering_4" value="4"><label for="AnisotropicFiltering_4">4x</label>
+<input name="AnisotropicFiltering" type="radio" id="AnisotropicFiltering_8" value="8"><label for="AnisotropicFiltering_8">8x</label>
+<input name="AnisotropicFiltering" type="radio" id="AnisotropicFiltering_16" value="16"><label for="AnisotropicFiltering_16">16x</label>
+</div>
 <p>&nbsp;</p>
-<select class="width200m" name="RiceMultiSampling" id="RiceMultiSampling">
-<option value="0" selected>Off</option>
-<option value="2">2x</option>
-<option value="4">4x</option>
-<option value="8">8x</option>
-</select><label for="RiceMultiSampling">Multisample anti-aliasing</label>
+<div class="select width200" data-name="Multisample anti-aliasing" id="RiceMultiSampling">
+<label></label>
+<input name="RiceMultiSampling" type="radio" id="RiceMultiSampling_0" value="0" checked><label for="RiceMultiSampling_0">Off</label>
+<input name="RiceMultiSampling" type="radio" id="RiceMultiSampling_2" value="2"><label for="RiceMultiSampling_2">2x</label>
+<input name="RiceMultiSampling" type="radio" id="RiceMultiSampling_4" value="4"><label for="RiceMultiSampling_4">4x</label>
+<input name="RiceMultiSampling" type="radio" id="RiceMultiSampling_8" value="8"><label for="RiceMultiSampling_8">8x</label>
+</div>
 <p>&nbsp;</p>
-<select class="width200m" name="Mipmapping" id="Mipmapping">
-<option value="0" selected>Disabled</option>
-<option value="1">Nearest-neighbor</option>
-<option value="2">Bilinear</option>
-<option value="3">Trilinear</option>
-</select><label for="Mipmapping">Mipmapping</label>
+<div class="select width200" data-name="Mipmapping" id="Mipmapping">
+<label></label>
+<input name="Mipmapping" type="radio" id="Mipmapping_0" value="0" checked><label for="Mipmapping_0">Disabled</label>
+<input name="Mipmapping" type="radio" id="Mipmapping_1" value="1"><label for="Mipmapping_1">Nearest-neighbor</label>
+<input name="Mipmapping" type="radio" id="Mipmapping_2" value="2"><label for="Mipmapping_2">Bilinear</label>
+<input name="Mipmapping" type="radio" id="Mipmapping_3" value="3"><label for="Mipmapping_3">Trilinear</label>
+</div>
 <p>&nbsp;</p>
-<select class="width200m" name="ForceTextureFilter" id="ForceTextureFilter">
-<option value="0" selected>Auto</option>
-<option value="1">No Filtering</option>
-<option value="2">Filtering</option>
-</select><label for="ForceTextureFilter">Texture filtering</label>
+<div class="select width200" data-name="Texture filtering" id="ForceTextureFilter">
+<label></label>
+<input name="ForceTextureFilter" type="radio" id="ForceTextureFilter_0" value="0" checked><label for="ForceTextureFilter_0">Auto</label>
+<input name="ForceTextureFilter" type="radio" id="ForceTextureFilter_1" value="1"><label for="ForceTextureFilter_1">No Filtering</label>
+<input name="ForceTextureFilter" type="radio" id="ForceTextureFilter_2" value="2"><label for="ForceTextureFilter_2">Filtering</label>
+</div>
 </div>
 <div id="rice_emulation" class="hide mt-10">
 <p><input id="EnableHacks" type="checkbox" data-store="EnableHacks" checked><label for="EnableHacks">Game-specific settings</label></p>
@@ -1568,30 +1592,33 @@ If this option is turned off, the output resolution is the same as the rendering
 <p>&nbsp;</p>
 <p title="Enable vertex clipper for fog operations."><input id="OpenGLVertexClipper" type="checkbox" data-store="OpenGLVertexClipper"><label for="OpenGLVertexClipper">Vertex clipper</label></p>
 <p>&nbsp;</p>
-<div title="Frequency to write back the frame buffer."><select class="width225m" name="FrameBufferWriteBackControl" id="FrameBufferWriteBackControl">
-<option value="0" selected>Every Frame</option>
-<option value="1">Every 2 Frames</option>
-<option value="2">Every 3 Frames</option>
-<option value="3">Every 4 Frames</option>
-<option value="4">Every 5 Frames</option>
-<option value="5">Every 6 Frames</option>
-<option value="6">Every 7 Frames</option>
-<option value="7">Every 8 Frames</option>
-</select><label for="FrameBufferWriteBackControl">Framebuffer write back</label></div>
+<div title="Frequency to write back the frame buffer." class="select width200" data-name="Framebuffer write back" id="FrameBufferWriteBackControl">
+<label></label>
+<input name="FrameBufferWriteBackControl" type="radio" id="FrameBufferWriteBackControl_0" value="0" checked><label for="FrameBufferWriteBackControl_0">Every Frame</label>
+<input name="FrameBufferWriteBackControl" type="radio" id="FrameBufferWriteBackControl_1" value="1"><label for="FrameBufferWriteBackControl_1">Every 2 Frames</label>
+<input name="FrameBufferWriteBackControl" type="radio" id="FrameBufferWriteBackControl_2" value="2"><label for="FrameBufferWriteBackControl_2">Every 3 Frames</label>
+<input name="FrameBufferWriteBackControl" type="radio" id="FrameBufferWriteBackControl_3" value="3"><label for="FrameBufferWriteBackControl_3">Every 4 Frames</label>
+<input name="FrameBufferWriteBackControl" type="radio" id="FrameBufferWriteBackControl_4" value="4"><label for="FrameBufferWriteBackControl_4">Every 5 Frames</label>
+<input name="FrameBufferWriteBackControl" type="radio" id="FrameBufferWriteBackControl_5" value="5"><label for="FrameBufferWriteBackControl_5">Every 6 Frames</label>
+<input name="FrameBufferWriteBackControl" type="radio" id="FrameBufferWriteBackControl_6" value="6"><label for="FrameBufferWriteBackControl_6">Every 7 Frames</label>
+<input name="FrameBufferWriteBackControl" type="radio" id="FrameBufferWriteBackControl_7" value="7"><label for="FrameBufferWriteBackControl_7">Every 8 Frames</label>
+</div>
 <p>&nbsp;</p>
-<select class="width225m" name="RenderToTexture" id="RenderToTexture">
-<option value="0" selected>None</option>
-<option value="1">Ignore</option>
-<option value="2">Normal</option>
-<option value="3">Write Back</option>
-<option value="4">Write Back and Reload</option>
-</select><label for="RenderToTexture">Render-to-texture Emulation</label>
+<div class="select width200" data-name="Render-to-texture emulation" id="RenderToTexture">
+<label></label>
+<input name="RenderToTexture" type="radio" id="RenderToTexture_0" value="0" checked><label for="RenderToTexture_0">None</label>
+<input name="RenderToTexture" type="radio" id="RenderToTexture_1" value="1"><label for="RenderToTexture_1">Ignore</label>
+<input name="RenderToTexture" type="radio" id="RenderToTexture_2" value="2"><label for="RenderToTexture_2">Normal</label>
+<input name="RenderToTexture" type="radio" id="RenderToTexture_3" value="3"><label for="RenderToTexture_3">Write Back</label>
+<input name="RenderToTexture" type="radio" id="RenderToTexture_4" value="4"><label for="RenderToTexture_4">Write Back and Reload</label>
+</div>
 <p>&nbsp;</p>
-<div title="Control when the screen will be updated."><select class="width225m" name="ScreenUpdateSetting" id="ScreenUpdateSetting">
-<option value="4" selected>First CI Change</option>
-<option value="5">First Primitive Draw</option>
-<option value="7">After Screen Drawn</option>
-</select><label for="ScreenUpdateSetting">Screen update</label></div>
+<div title="Control when the screen will be updated." class="select width200" data-name="Screen update" id="ScreenUpdateSetting">
+<label></label>
+<input name="ScreenUpdateSetting" type="radio" id="ScreenUpdateSetting_4" value="4" checked><label for="ScreenUpdateSetting_4">First CI Change</label>
+<input name="ScreenUpdateSetting" type="radio" id="ScreenUpdateSetting_5" value="5"><label for="ScreenUpdateSetting_5">First Primitive Draw</label>
+<input name="ScreenUpdateSetting" type="radio" id="ScreenUpdateSetting_7" value="7"><label for="ScreenUpdateSetting_7">After Screen Drawn</label>
+</div>
 </div>
 <div id="rice_textures" class="hide mt-10">
 <p title="Select hi-resolution textures based only on the CRC and ignore format and size information (Glide64 compatibility)."><input id="LoadHiResCRCOnly" type="checkbox" data-store="LoadHiResCRCOnly" checked><label for="LoadHiResCRCOnly">Hi-res CRC only</label></p>

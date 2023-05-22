@@ -69,13 +69,13 @@ dropdowns = [
 'gfx','audio','input','rsp','RspFallback', /* mupen64plus plugins */
 'plugin1','plugin2','plugin3','plugin4','c1','c2','c3','c4','mb1','mb2','mb3', /* mupen64plus-input */
 'PRIMARY_BUFFER_TARGET','RESAMPLE', /* mupen64plus-audio */
-'a','b','x','y','start','z','l','r','d_pad_left','d_pad_right','d_pad_down','d_pad_up','c_stick_left','c_stick_right','c_stick_down','c_stick_up', /* mupen64plus-input-gca */
-'msaa','aspectRatio','bufferSwapMode','CountersPos','useNativeResolutionFactor','anisotropy','cache','RDRAMImageDitheringMode','CorrectTexrectCoords','EnableNativeResTexrects','BackgroundsMode','EnableN64DepthCompare','EnableCopyColorToRDRAM','EnableCopyDepthToRDRAM','txFilterMode','txEnhancementMode', /* GLideN64 */
-'ParallelUpscaling','ParallelDeinterlaceMode','ParallelDownScale', /* Parallel */
-'FrameBufferWriteBackControl','RenderToTexture','ScreenUpdateSetting','Mipmapping','ForceTextureFilter','RiceMultiSampling','AnisotropicFiltering' /* Rice */],
+'a','b','x','y','start','z','l','r','d_pad_left','d_pad_right','d_pad_down','d_pad_up','c_stick_left','c_stick_right','c_stick_down','c_stick_up' /* mupen64plus-input-gca */],
 
 customDropdowns = [
-'ViMode','ViInterpolation','DpCompat' /* Angrylion-Plus */];
+'ViMode','ViInterpolation','DpCompat', /* Angrylion-Plus */
+'msaa','aspectRatio','bufferSwapMode','CountersPos','useNativeResolutionFactor','anisotropy','cache','RDRAMImageDitheringMode','CorrectTexrectCoords','EnableNativeResTexrects','BackgroundsMode','EnableN64DepthCompare','EnableCopyColorToRDRAM','EnableCopyDepthToRDRAM','txFilterMode','txEnhancementMode', /* GLideN64 */
+'ParallelUpscaling','ParallelDeinterlaceMode','ParallelDownScale', /* Parallel */
+'FrameBufferWriteBackControl','RenderToTexture','ScreenUpdateSetting','Mipmapping','ForceTextureFilter','RiceMultiSampling','AnisotropicFiltering' /* Rice */];
 
 
 
@@ -1051,27 +1051,27 @@ mode1 = 'Input-SDL-Control1[mode]=0',
 mode2 = 'Input-SDL-Control2[mode]=0',
 mode3 = 'Input-SDL-Control3[mode]=0',
 mode4 = 'Input-SDL-Control4[mode]=0',
-msaa = 'Video-GLideN64[MultiSampling]=' + id('msaa').value,
-aspectRatio = 'Video-GLideN64[AspectRatio]=' + id('aspectRatio').value,
-bufferSwapMode = 'Video-GLideN64[BufferSwapMode]=' + id('bufferSwapMode').value,
-useNativeResolutionFactor = 'Video-GLideN64[UseNativeResolutionFactor]=' + id('useNativeResolutionFactor').value,
-anisotropy = 'Video-GLideN64[anisotropy]=' + id('anisotropy').value,
-cache = 'Video-GLideN64[txHiresTextureFileStorage]=' + id('cache').value,
-RDRAMImageDitheringMode = 'Video-GLideN64[RDRAMImageDitheringMode]=' + id('RDRAMImageDitheringMode').value,
-CorrectTexrectCoords = 'Video-GLideN64[CorrectTexrectCoords]=' + id('CorrectTexrectCoords').value,
-EnableNativeResTexrects = 'Video-GLideN64[EnableNativeResTexrects]=' + id('EnableNativeResTexrects').value,
-BackgroundsMode = 'Video-GLideN64[BackgroundsMode]=' + id('BackgroundsMode').value,
-EnableN64DepthCompare = 'Video-GLideN64[EnableN64DepthCompare]=' + id('EnableN64DepthCompare').value,
-EnableCopyColorToRDRAM = 'Video-GLideN64[EnableCopyColorToRDRAM]=' + id('EnableCopyColorToRDRAM').value,
-EnableCopyDepthToRDRAM = 'Video-GLideN64[EnableCopyDepthToRDRAM]=' + id('EnableCopyDepthToRDRAM').value,
-txFilterMode = 'Video-GLideN64[txFilterMode]=' + id('txFilterMode').value,
-txEnhancementMode = 'Video-GLideN64[txEnhancementMode]=' + id('txEnhancementMode').value,
+msaa = 'Video-GLideN64[MultiSampling]=' + dropValue('msaa'),
+aspectRatio = 'Video-GLideN64[AspectRatio]=' + dropValue('aspectRatio'),
+bufferSwapMode = 'Video-GLideN64[BufferSwapMode]=' + dropValue('bufferSwapMode'),
+useNativeResolutionFactor = 'Video-GLideN64[UseNativeResolutionFactor]=' + dropValue('useNativeResolutionFactor'),
+anisotropy = 'Video-GLideN64[anisotropy]=' + dropValue('anisotropy'),
+cache = 'Video-GLideN64[txHiresTextureFileStorage]=' + dropValue('cache'),
+RDRAMImageDitheringMode = 'Video-GLideN64[RDRAMImageDitheringMode]=' + dropValue('RDRAMImageDitheringMode'),
+CorrectTexrectCoords = 'Video-GLideN64[CorrectTexrectCoords]=' + dropValue('CorrectTexrectCoords'),
+EnableNativeResTexrects = 'Video-GLideN64[EnableNativeResTexrects]=' + dropValue('EnableNativeResTexrects'),
+BackgroundsMode = 'Video-GLideN64[BackgroundsMode]=' + dropValue('BackgroundsMode'),
+EnableN64DepthCompare = 'Video-GLideN64[EnableN64DepthCompare]=' + dropValue('EnableN64DepthCompare'),
+EnableCopyColorToRDRAM = 'Video-GLideN64[EnableCopyColorToRDRAM]=' + dropValue('EnableCopyColorToRDRAM'),
+EnableCopyDepthToRDRAM = 'Video-GLideN64[EnableCopyDepthToRDRAM]=' + dropValue('EnableCopyDepthToRDRAM'),
+txFilterMode = 'Video-GLideN64[txFilterMode]=' + dropValue('txFilterMode'),
+txEnhancementMode = 'Video-GLideN64[txEnhancementMode]=' + dropValue('txEnhancementMode'),
 ViMode = 'Video-AngrylionPlus[ViMode]=' + dropValue('ViMode'),
 ViInterpolation = 'Video-AngrylionPlus[ViInterpolation]=' + dropValue('ViInterpolation'),
 DpCompat = 'Video-AngrylionPlus[DpCompat]=' + dropValue('DpCompat'),
-ParallelUpscaling = 'Video-Parallel[Upscaling]=' + id('ParallelUpscaling').value,
-ParallelDeinterlaceMode = 'Video-Parallel[DeinterlaceMode]=' + id('ParallelDeinterlaceMode').value,
-ParallelDownScale = 'Video-Parallel[DownScale]=' + id('ParallelDownScale').value,
+ParallelUpscaling = 'Video-Parallel[Upscaling]=' + dropValue('ParallelUpscaling'),
+ParallelDeinterlaceMode = 'Video-Parallel[DeinterlaceMode]=' + dropValue('ParallelDeinterlaceMode'),
+ParallelDownScale = 'Video-Parallel[DownScale]=' + dropValue('ParallelDownScale'),
 CountersPos = 'Video-GLideN64[CountersPos]=' + id('CountersPos').value,
 SaveDiskFormat = 'Core[SaveDiskFormat]=' + id('SaveDiskFormat').value,
 DEFAULT_FREQUENCY = 'Audio-SDL[DEFAULT_FREQUENCY]=33600',
@@ -1080,18 +1080,18 @@ PRIMARY_BUFFER_TARGET = 'Audio-SDL[PRIMARY_BUFFER_TARGET]=' + id('PRIMARY_BUFFER
 SECONDARY_BUFFER_SIZE = 'Audio-SDL[SECONDARY_BUFFER_SIZE]=1024',
 RESAMPLE = 'Audio-SDL[RESAMPLE]=' + id('RESAMPLE').value,
 
-FrameBufferWriteBackControl = 'Video-Rice[FrameBufferWriteBackControl]=' + id('FrameBufferWriteBackControl').value,
-RenderToTexture = 'Video-Rice[RenderToTexture]=' + id('RenderToTexture').value,
-ScreenUpdateSetting = 'Video-Rice[ScreenUpdateSetting]=' + id('ScreenUpdateSetting').value,
-Mipmapping = 'Video-Rice[Mipmapping]=' + id('Mipmapping').value,
-ForceTextureFilter = 'Video-Rice[ForceTextureFilter]=' + id('ForceTextureFilter').value,
+FrameBufferWriteBackControl = 'Video-Rice[FrameBufferWriteBackControl]=' + dropValue('FrameBufferWriteBackControl'),
+RenderToTexture = 'Video-Rice[RenderToTexture]=' + dropValue('RenderToTexture'),
+ScreenUpdateSetting = 'Video-Rice[ScreenUpdateSetting]=' + dropValue('ScreenUpdateSetting'),
+Mipmapping = 'Video-Rice[Mipmapping]=' + dropValue('Mipmapping'),
+ForceTextureFilter = 'Video-Rice[ForceTextureFilter]=' + dropValue('ForceTextureFilter'),
 TextureEnhancement = 'Video-Rice[TextureEnhancement]=0',
 TextureEnhancementControl = 'Video-Rice[TextureEnhancementControl]=0',
 TextureQuality = 'Video-Rice[TextureQuality]=0',
 OpenGLDepthBufferSetting = 'Video-Rice[OpenGLDepthBufferSetting]=24',
-RiceMultiSampling = 'Video-Rice[MultiSampling]=' + id('RiceMultiSampling').value,
+RiceMultiSampling = 'Video-Rice[MultiSampling]=' + dropValue('RiceMultiSampling'),
 ColorQuality = 'Video-Rice[ColorQuality]=0',
-AnisotropicFiltering = 'Video-Rice[AnisotropicFiltering]=' + id('AnisotropicFiltering').value,
+AnisotropicFiltering = 'Video-Rice[AnisotropicFiltering]=' + dropValue('AnisotropicFiltering'),
 
 OverscanNtscTop = 'Video-GLideN64[OverscanNtscTop]=' + id('OverscanNtscTop').value,
 OverscanNtscLeft = 'Video-GLideN64[OverscanNtscLeft]=' + id('OverscanNtscLeft').value,
