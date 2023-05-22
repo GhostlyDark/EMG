@@ -110,9 +110,9 @@ input.left{text-align:left}
 header{padding:0;max-width:730px}
 header ul{list-style-type:none;margin:0;padding:0;overflow:hidden}
 header li{float:left;margin:0}
-header li a{color:#fff!important;display:block;text-align:center;padding:14px 15px 6.5px 15px;border:0;transition:background-color .2s cubic-bezier(.4,0,.22,1)}
+header li a{color:#fff!important;cursor:pointer;display:block;text-align:center;padding:14px 15px 6.5px 15px;border:0;transition:background-color .2s cubic-bezier(.4,0,.22,1)}
 header li a:hover,header li a.active{background-color:rgba(0,0,0,.3)}
-header li:first-child{margin-right:35px;cursor:pointer;padding-top:1px}
+header li:first-child{margin-right:35px;padding-top:1px}
 header li:last-child{float:right;padding-right:0!important}
 header img{width:32px;pointer-events:none;opacity:.6;transition:opacity .2s cubic-bezier(.4,0,.22,1)}
 header li a:hover img,header li a.active img{opacity:1}
