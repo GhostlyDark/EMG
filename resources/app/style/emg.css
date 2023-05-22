@@ -99,7 +99,7 @@ input:disabled,select:disabled,input:disabled + label,input:disabled + span + la
 .hotkeys label{float:left;text-align:left;min-width:150px}
 .hotkeys input{position:relative;left:-45px}
 .hotkeys button{float:right}
-.hotkeys2 label{min-width:375px}
+.hotkeys2 label{min-width:315px}
 input.left{text-align:left}
 
 .numberIncrease{font-size:27px;padding-left:5px;padding-right:10px;position:relative;top:3px}
