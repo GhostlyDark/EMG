@@ -84,13 +84,14 @@ Plugin files are stored in `resources/app/m64p/plugin`. EMG does allow for plugi
 
 ## Shortcuts
 
-- `Ctrl` + `I`: Toggle Developer Tools
+- `Ctrl` + `I`: Toggle developer tools
 - `Ctrl` + `L`: Launch mupen64plus
+- `Ctrl` + `N`: Reset all settings
 - `Ctrl` + `O`: Open ROM
 - `Ctrl` + `R`: Reload
-- `Ctrl` + `Numpad+`: Zoom In
-- `Ctrl` + `Numpad-`: Zoom Out
-- `Ctrl` + `Numpad0`: Zoom Reset
+- `Ctrl` + `Numpad+`: Zoom in
+- `Ctrl` + `Numpad-`: Zoom out
+- `Ctrl` + `Numpad0`: Zoom reset
 
 
 ## Troubleshooting

@@ -75,11 +75,6 @@ ipcMain.on('writeGCA', (e, gcaSettings, configdir) => {
 	e.returnValue = writeFileSync(path(configdir,'mupen64plus-input-gca.toml'),gcaSettings)
 })
 
-ipcMain.on('deleteSettings', () => {
-	const choice = dialog.showMessageBoxSync(win,deleteDialog);
-	if(choice !== 1){session.defaultSession.clearStorageData();session.defaultSession.clearCache()}
-})
-
 ipcMain.on('testROM', (e) => {e.returnValue = testROM})
 ipcMain.on('pluginDir', (e) => {e.returnValue = readdirSync(pluginDir)})
 ipcMain.on('jstestPath', (e) => {e.returnValue = jstestPath})
@@ -104,6 +99,7 @@ Menu.setApplicationMenu(null)
 
 app.on('browser-window-focus', () => {
 globalShortcut.register('CmdOrCtrl+I', () => {win.webContents.toggleDevTools()})
+globalShortcut.register('CmdOrCtrl+N', () => {const choice = dialog.showMessageBoxSync(win,deleteDialog);if(choice !== 1){session.defaultSession.clearStorageData();session.defaultSession.clearCache()}})
 globalShortcut.register('CmdOrCtrl+R', () => {win.reload()})
 globalShortcut.register('CmdOrCtrl+num0', () => {win.webContents.setZoomFactor(1.0)})
 globalShortcut.register('CmdOrCtrl+numsub', () => {if(win.webContents.getZoomFactor().toFixed(1) != 0.1)win.webContents.setZoomFactor(win.webContents.getZoomFactor()-0.1)})

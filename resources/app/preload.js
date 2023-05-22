@@ -22,7 +22,6 @@ emuLaunch = (parameters) => {ipcRenderer.send('emuLaunch', parameters)},
 showCheats = (parameters) => {return ipcRenderer.sendSync('showCheats', parameters)},
 jsRefresh = () => {return ipcRenderer.sendSync('jsRefresh')},
 jsMapping = (padId) => {return ipcRenderer.sendSync('jsMapping', padId)},
-deleteSettings = () => {ipcRenderer.send('deleteSettings')},
 goToGitHub = () => {ipcRenderer.send('goToGitHub')},
 
 jstest = (joyinput) => {
@@ -106,6 +105,4 @@ contextBridge.exposeInMainWorld('jsMapping',jsMapping)
 contextBridge.exposeInMainWorld('showCheats',showCheats)
 contextBridge.exposeInMainWorld('writeGCA',writeGCA)
 
-document.addEventListener('DOMContentLoaded', function() {
-id('delete').addEventListener('click', function(){deleteSettings()})
-id('github').addEventListener('click', function(){goToGitHub()})})
+document.addEventListener('DOMContentLoaded', function() {id('github').addEventListener('click', function(){goToGitHub()})})
