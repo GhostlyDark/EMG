@@ -39,7 +39,7 @@
 <p>&nbsp;</p>
 <div id="fileInput" class="box"><span id="fileText"></span></div>
 <p>&nbsp;</p>
-<select name="recent" id="recent">
+<select id="recent">
 <option id="optionDefault" disabled selected>Recent Files</option>
 <option id="option0"></option>
 <option id="option1"></option>
@@ -64,20 +64,20 @@ Double click launches a ROM instantly.">ROM browser&nbsp;&nbsp;<button class="fl
 <div title="Angrylion Plus: LLE,
 GLideN64: HLE (recommended) and LLE,
 Parallel: LLE,
-Rice: HLE"><select class="width250m" name="gfx" id="gfx">
+Rice: HLE"><select class="width250m" id="gfx">
 <option value="mupen64plus-video-angrylion-plus">Angrylion Plus</option>
 <option value="mupen64plus-video-GLideN64" selected>GLideN64</option>
 <option value="mupen64plus-video-parallel">Parallel</option>
 <option value="mupen64plus-video-rice">Rice</option>
 </select><label for="gfx">Graphics Plugin</label></div>
 <p>&nbsp;</p>
-<select class="width250m" name="audio" id="audio">
+<select class="width250m" id="audio">
 <option value="dummy">Disable</option>
 <option value="mupen64plus-audio-sdl" selected>Mupen64Plus Audio SDL</option>
 </select><label for="audio">Audio Plugin</label>
 <p>&nbsp;</p>
 <div title="GameCube Adapter: Only works with official Wii U GameCube Adapter,
-Raphnetraw: Only works with Raphnetraw adapters"><select class="width250m" name="input" id="input">
+Raphnetraw: Only works with Raphnetraw adapters"><select class="width250m" id="input">
 <option value="dummy">Disable</option>
 <option value="mupen64plus-input-gca">GameCube Adapter</option>
 <option value="mupen64plus-input-sdl" selected>Mupen64Plus Input SDL</option>
@@ -86,13 +86,13 @@ Raphnetraw: Only works with Raphnetraw adapters"><select class="width250m" name=
 <p>&nbsp;</p>
 <div title="Mupen64Plus HLE: HLE only,
 Static Interpreter: HLE and LLE,
-Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
+Parallel: LLE only"><select class="width250m" id="rsp">
 <option value="mupen64plus-rsp-hle" selected>Mupen64Plus HLE</option>
 <option value="mupen64plus-rsp-cxd4">Static Interpreter</option>
 <option value="mupen64plus-rsp-parallel">Parallel RSP</option>
 </select><label for="rsp">RSP Plugin</label></div>
 <p>&nbsp;</p>
-<div title="RSP plugin used when encountering an unknown ucode. HLE RSP only."><select class="width250m" name="RspFallback" id="RspFallback">
+<div title="RSP plugin used when encountering an unknown ucode. HLE RSP only."><select class="width250m" id="RspFallback">
 <option value="">Disable</option>
 <option value="mupen64plus-rsp-cxd4" selected>Static Interpreter</option>
 <option value="mupen64plus-rsp-parallel">Parallel RSP</option>
@@ -113,7 +113,7 @@ Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
 <p>&nbsp;</p>
 <p title="Reduce number of cycles per update by power of two."><span class="numberDecrease" id="decreaseCountPerOpDenomPot">-</span><input id="CountPerOpDenomPot" min="0" max="11" step="1" value="0" type="number"><span class="numberIncrease" id="increaseCountPerOpDenomPot">+</span><label for="CountPerOpDenomPot">Overclocking factor</label><button class="floatright" data-value="0" id="resetCountPerOpDenomPot">Reset</button></p>
 <p>&nbsp;</p>
-<select name="resolution" id="resolution">
+<select id="resolution">
 <option value="320">320x240</option>
 <option value="640">640x480</option>
 <option value="960">960x720</option>
@@ -124,7 +124,7 @@ Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
 <option value="2560">2560x1920</option>
 </select><label for="resolution">Windowed resolution</label>
 <p>&nbsp;</p>
-<div title="Dynamic Recompiler offers the best performance. Change this upon encountering issues."><select name="emumode" id="emumode">
+<div title="Dynamic Recompiler offers the best performance. Change this upon encountering issues."><select id="emumode">
 <option value="0">Pure Interpreter</option>
 <option value="1">Cached Interpreter</option>
 <option value="2" selected>Dynamic Recompiler</option>
@@ -162,13 +162,13 @@ Parallel: LLE only"><select class="width250m" name="rsp" id="rsp">
 <p title="Default volume when a game is started."><span class="numberDecrease" id="decreaseVOLUME_DEFAULT">-</span><input id="VOLUME_DEFAULT" min="0" max="100" step="1" value="80" type="number"><span class="numberIncrease" id="increaseVOLUME_DEFAULT">+</span><label for="VOLUME_DEFAULT">Default volume (in %)</label><button class="floatright" data-value="80" id="resetVOLUME_DEFAULT">Reset</button></p>
 <p>&nbsp;</p>
 <div title="Lower values reduce audio latency but require faster hardware to avoid choppiness.
-Higher values increase audio latency but reduce the chance of audio drop-outs."><select class="width225m" name="PRIMARY_BUFFER_TARGET" id="PRIMARY_BUFFER_TARGET">
+Higher values increase audio latency but reduce the chance of audio drop-outs."><select class="width225m" id="PRIMARY_BUFFER_TARGET">
 <option value="2048" selected>2048</option>
 <option value="4096">4096</option>
 <option value="8192">8192</option>
 </select><label for="PRIMARY_BUFFER_TARGET">Primary buffer target</label></div>
 <p>&nbsp;</p>
-<div title="Trivial for fastest, lowest-quality algorithm."><select class="width225m" name="RESAMPLE" id="RESAMPLE">
+<div title="Trivial for fastest, lowest-quality algorithm."><select class="width225m" id="RESAMPLE">
 <option value="trivial" selected>Trivial</option>
 <option value="speex-fixed-0">SPEEX Fixed 0</option>
 <option value="speex-fixed-1">SPEEX Fixed 1</option>
@@ -198,7 +198,7 @@ Higher values increase audio latency but reduce the chance of audio drop-outs.">
 <p title="Path to directory where SRAM/EEPROM data (in-game saves) are stored. Click the box below to change it.">Save Files&nbsp;&nbsp;<button class="floatright ml-13" id="resetSaveSRAMPath">Reset</button><button class="floatright" id="openSaveSRAMPath">Open</button><br><br><div id="SaveSRAMPath" class="box"><span id="SaveSRAMPathText"></span></div></p>
 </div>
 <div id="core_64dd" class="hide mt-15">
-<select name="SaveDiskFormat" id="SaveDiskFormat">
+<select id="SaveDiskFormat">
 <option value="0">Full Disk Copy</option>
 <option value="1" selected>RAM Area Only</option>
 </select><label for="SaveDiskFormat">64DD save format</label>
@@ -223,12 +223,12 @@ Higher values increase audio latency but reduce the chance of audio drop-outs.">
 <div id="input_controller1">
 <p class="mt-10" title="Specifies whether this controller is connected to the simulated N64."><input id="plugged1" type="checkbox" data-store="plugged1" checked><label for="plugged1">Plugged</label></p>
 <p>&nbsp;</p>
-<div title="Select SDL device to be used for this controller port and for hotkey settings."><select class="width85p" name="c1" id="c1">
+<div title="Select SDL device to be used for this controller port and for hotkey settings."><select class="width85p" id="c1">
 <option value="Keyboard" selected>Keyboard</option>
 </select><button class="floatright" id="refreshc1">Refresh</button></div>
 <p>&nbsp;</p>
 <div id="c1_controls" class="hide">
-<select class="width175m" name="plugin1" id="plugin1">
+<select class="width175m" id="plugin1">
 <option value="1" selected>None</option>
 <option value="2">Memory Pak</option>
 <option value="4">Transfer Pak</option>
@@ -243,9 +243,9 @@ Higher values increase audio latency but reduce the chance of audio drop-outs.">
 <p>&nbsp;</p><p>&nbsp;</p>
 </div>
 <p>&nbsp;</p>
-<p><input id="AnalogDeadzone1" name="AnalogDeadzone1" type="range" min="0" max="32768" step="512" value="4096"><label for="AnalogDeadzone1">Analog deadzone</label><button class="floatright" data-value="4096" id="resetAnalogDeadzone1">Reset</button><span class="gc" id="AnalogDeadzone1Text">4096</span></p>
+<p><input id="AnalogDeadzone1" type="range" min="0" max="32768" step="512" value="4096"><label for="AnalogDeadzone1">Analog deadzone</label><button class="floatright" data-value="4096" id="resetAnalogDeadzone1">Reset</button><span class="gc" id="AnalogDeadzone1Text">4096</span></p>
 <p>&nbsp;</p>
-<p><input id="AnalogPeak1" name="AnalogPeak1" type="range" min="0" max="32768" step="512" value="32768"><label for="AnalogPeak1">Analog peak</label><button class="floatright" data-value="32768" id="resetAnalogPeak1">Reset</button><span class="gc" id="AnalogPeak1Text">32768</span></p>
+<p><input id="AnalogPeak1" type="range" min="0" max="32768" step="512" value="32768"><label for="AnalogPeak1">Analog peak</label><button class="floatright" data-value="32768" id="resetAnalogPeak1">Reset</button><span class="gc" id="AnalogPeak1Text">32768</span></p>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
 <p><button title="Attempt to automatically configure controller buttons using SDL_GameControllerDB. Clears existing button values if a mapping was found." class="floatleft" id="auto1">Auto-configuration</button><button class="floatright" id="clear_controls1">Clear all</button></p>
 <p>&nbsp;</p><p>&nbsp;</p>
@@ -297,12 +297,12 @@ Higher values increase audio latency but reduce the chance of audio drop-outs.">
 <div id="input_controller2" class="hide mt-10">
 <p class="mt-10" title="Specifies whether this controller is connected to the simulated N64."><input id="plugged2" type="checkbox" data-store="plugged2" checked><label for="plugged2">Plugged</label></p>
 <p>&nbsp;</p>
-<div title="Select SDL device to be used for this controller port and for hotkey settings."><select class="width85p" name="c2" id="c2">
+<div title="Select SDL device to be used for this controller port and for hotkey settings."><select class="width85p" id="c2">
 <option value="Keyboard" selected>Keyboard</option>
 </select><button class="floatright" id="refreshc2">Refresh</button></div>
 <p>&nbsp;</p>
 <div id="c2_controls" class="hide">
-<select class="width175m" name="plugin2" id="plugin2">
+<select class="width175m" id="plugin2">
 <option value="1" selected>None</option>
 <option value="2">Memory Pak</option>
 <option value="4">Transfer Pak</option>
@@ -317,9 +317,9 @@ Higher values increase audio latency but reduce the chance of audio drop-outs.">
 <p>&nbsp;</p><p>&nbsp;</p>
 </div>
 <p>&nbsp;</p>
-<p><input id="AnalogDeadzone2" name="AnalogDeadzone2" type="range" min="0" max="32768" step="512" value="4096"><label for="AnalogDeadzone2">Analog deadzone</label><button class="floatright" data-value="4096" id="resetAnalogDeadzone2">Reset</button><span class="gc" id="AnalogDeadzone2Text">4096</span></p>
+<p><input id="AnalogDeadzone2" type="range" min="0" max="32768" step="512" value="4096"><label for="AnalogDeadzone2">Analog deadzone</label><button class="floatright" data-value="4096" id="resetAnalogDeadzone2">Reset</button><span class="gc" id="AnalogDeadzone2Text">4096</span></p>
 <p>&nbsp;</p>
-<p><input id="AnalogPeak2" name="AnalogPeak2" type="range" min="0" max="32768" step="512" value="32768"><label for="AnalogPeak2">Analog peak</label><button class="floatright" data-value="32768" id="resetAnalogPeak2">Reset</button><span class="gc" id="AnalogPeak2Text">32768</span></p>
+<p><input id="AnalogPeak2" type="range" min="0" max="32768" step="512" value="32768"><label for="AnalogPeak2">Analog peak</label><button class="floatright" data-value="32768" id="resetAnalogPeak2">Reset</button><span class="gc" id="AnalogPeak2Text">32768</span></p>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
 <p><button title="Attempt to automatically configure controller buttons using SDL_GameControllerDB. Clears existing button values if a mapping was found." class="floatleft" id="auto2">Auto-configuration</button><button class="floatright" id="clear_controls2">Clear all</button></p>
 <p>&nbsp;</p><p>&nbsp;</p>
@@ -371,12 +371,12 @@ Higher values increase audio latency but reduce the chance of audio drop-outs.">
 <div id="input_controller3" class="hide mt-10">
 <p class="mt-10" title="Specifies whether this controller is connected to the simulated N64."><input id="plugged3" type="checkbox" data-store="plugged3" checked><label for="plugged3">Plugged</label></p>
 <p>&nbsp;</p>
-<div title="Select SDL device to be used for this controller port and for hotkey settings."><select class="width85p" name="c3" id="c3">
+<div title="Select SDL device to be used for this controller port and for hotkey settings."><select class="width85p" id="c3">
 <option value="Keyboard" selected>Keyboard</option>
 </select><button class="floatright" id="refreshc3">Refresh</button></div>
 <p>&nbsp;</p>
 <div id="c3_controls" class="hide">
-<select class="width175m" name="plugin3" id="plugin3">
+<select class="width175m" id="plugin3">
 <option value="1" selected>None</option>
 <option value="2">Memory Pak</option>
 <option value="4">Transfer Pak</option>
@@ -391,9 +391,9 @@ Higher values increase audio latency but reduce the chance of audio drop-outs.">
 <p>&nbsp;</p><p>&nbsp;</p>
 </div>
 <p>&nbsp;</p>
-<p><input id="AnalogDeadzone3" name="AnalogDeadzone3" type="range" min="0" max="32768" step="512" value="4096"><label for="AnalogDeadzone3">Analog deadzone</label><button class="floatright" data-value="4096" id="resetAnalogDeadzone3">Reset</button><span class="gc" id="AnalogDeadzone3Text">4096</span></p>
+<p><input id="AnalogDeadzone3" type="range" min="0" max="32768" step="512" value="4096"><label for="AnalogDeadzone3">Analog deadzone</label><button class="floatright" data-value="4096" id="resetAnalogDeadzone3">Reset</button><span class="gc" id="AnalogDeadzone3Text">4096</span></p>
 <p>&nbsp;</p>
-<p><input id="AnalogPeak3" name="AnalogPeak3" type="range" min="0" max="32768" step="512" value="32768"><label for="AnalogPeak3">Analog peak</label><button class="floatright" data-value="32768" id="resetAnalogPeak3">Reset</button><span class="gc" id="AnalogPeak3Text">32768</span></p>
+<p><input id="AnalogPeak3" type="range" min="0" max="32768" step="512" value="32768"><label for="AnalogPeak3">Analog peak</label><button class="floatright" data-value="32768" id="resetAnalogPeak3">Reset</button><span class="gc" id="AnalogPeak3Text">32768</span></p>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
 <p><button title="Attempt to automatically configure controller buttons using SDL_GameControllerDB. Clears existing button values if a mapping was found." class="floatleft" id="auto3">Auto-configuration</button><button class="floatright" id="clear_controls3">Clear all</button></p>
 <p>&nbsp;</p><p>&nbsp;</p>
@@ -445,12 +445,12 @@ Higher values increase audio latency but reduce the chance of audio drop-outs.">
 <div id="input_controller4" class="hide mt-10">
 <p class="mt-10" title="Specifies whether this controller is connected to the simulated N64."><input id="plugged4" type="checkbox" data-store="plugged4" checked><label for="plugged4">Plugged</label></p>
 <p>&nbsp;</p>
-<div title="Select SDL device to be used for this controller port and for hotkey settings."><select class="width85p" name="c4" id="c4">
+<div title="Select SDL device to be used for this controller port and for hotkey settings."><select class="width85p" id="c4">
 <option value="Keyboard" selected>Keyboard</option>
 </select><button class="floatright" id="refreshc4">Refresh</button></div>
 <p>&nbsp;</p>
 <div id="c4_controls" class="hide">
-<select class="width175m" name="plugin4" id="plugin4">
+<select class="width175m" id="plugin4">
 <option value="1" selected>None</option>
 <option value="2">Memory Pak</option>
 <option value="4">Transfer Pak</option>
@@ -465,9 +465,9 @@ Higher values increase audio latency but reduce the chance of audio drop-outs.">
 <p>&nbsp;</p><p>&nbsp;</p>
 </div>
 <p>&nbsp;</p>
-<p><input id="AnalogDeadzone4" name="AnalogDeadzone4" type="range" min="0" max="32768" step="512" value="4096"><label for="AnalogDeadzone4">Analog deadzone</label><button class="floatright" data-value="4096" id="resetAnalogDeadzone4">Reset</button><span class="gc" id="AnalogDeadzone4Text">4096</span></p>
+<p><input id="AnalogDeadzone4" type="range" min="0" max="32768" step="512" value="4096"><label for="AnalogDeadzone4">Analog deadzone</label><button class="floatright" data-value="4096" id="resetAnalogDeadzone4">Reset</button><span class="gc" id="AnalogDeadzone4Text">4096</span></p>
 <p>&nbsp;</p>
-<p><input id="AnalogPeak4" name="AnalogPeak4" type="range" min="0" max="32768" step="512" value="32768"><label for="AnalogPeak4">Analog peak</label><button class="floatright" data-value="32768" id="resetAnalogPeak4">Reset</button><span class="gc" id="AnalogPeak4Text">32768</span></p>
+<p><input id="AnalogPeak4" type="range" min="0" max="32768" step="512" value="32768"><label for="AnalogPeak4">Analog peak</label><button class="floatright" data-value="32768" id="resetAnalogPeak4">Reset</button><span class="gc" id="AnalogPeak4Text">32768</span></p>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
 <p><button title="Attempt to automatically configure controller buttons using SDL_GameControllerDB. Clears existing button values if a mapping was found." class="floatleft" id="auto4">Auto-configuration</button><button class="floatright" id="clear_controls4">Clear all</button></p>
 <p>&nbsp;</p><p>&nbsp;</p>
@@ -517,15 +517,15 @@ Higher values increase audio latency but reduce the chance of audio drop-outs.">
 </div>
 </div>
 <div id="input_gca" class="hide mt-20">
-<p><input id="control_stick_deadzone" name="control_stick_deadzone" type="range" min="0" max="255" value="20"><label for="control_stick_deadzone">Control Stick deadzone</label><button class="floatright" data-value="20" id="resetcontrol_stick_deadzone">Reset</button><span class="gc" id="control_stick_deadzoneText">20</span></p>
+<p><input id="control_stick_deadzone" type="range" min="0" max="255" value="20"><label for="control_stick_deadzone">Control Stick deadzone</label><button class="floatright" data-value="20" id="resetcontrol_stick_deadzone">Reset</button><span class="gc" id="control_stick_deadzoneText">20</span></p>
 <p>&nbsp;</p>
-<p title="This controls how far you have to move the stick in order to reach max input."><input id="control_stick_sensitivity" name="control_stick_sensitivity" type="range" min="0" max="255" value="180"><label for="control_stick_sensitivity">Control Stick sensitivity</label><button class="floatright" data-value="180" id="resetcontrol_stick_sensitivity">Reset</button><span class="gc" id="control_stick_sensitivityText">180</span></p>
+<p title="This controls how far you have to move the stick in order to reach max input."><input id="control_stick_sensitivity" type="range" min="0" max="255" value="180"><label for="control_stick_sensitivity">Control Stick sensitivity</label><button class="floatright" data-value="180" id="resetcontrol_stick_sensitivity">Reset</button><span class="gc" id="control_stick_sensitivityText">180</span></p>
 <p>&nbsp;</p>
-<p><input id="c_stick_deadzone" name="c_stick_deadzone" type="range" min="0" max="255" value="40"><label for="c_stick_deadzone">C-Stick deadzone</label><button class="floatright" data-value="40" id="resetc_stick_deadzone">Reset</button><span class="gc" id="c_stick_deadzoneText">40</span></p>
+<p><input id="c_stick_deadzone" type="range" min="0" max="255" value="40"><label for="c_stick_deadzone">C-Stick deadzone</label><button class="floatright" data-value="40" id="resetc_stick_deadzone">Reset</button><span class="gc" id="c_stick_deadzoneText">40</span></p>
 <p>&nbsp;</p>
-<p title="Threshold for the trigger buttons (L and R). Set to max to only detect input when fully pressed."><input id="trigger_threshold" name="trigger_threshold" type="range" min="0" max="255" value="168"><label for="trigger_threshold">Trigger threshold</label><button class="floatright" data-value="168" id="resettrigger_threshold">Reset</button><span class="gc" id="trigger_thresholdText">168</span></p>
+<p title="Threshold for the trigger buttons (L and R). Set to max to only detect input when fully pressed."><input id="trigger_threshold" type="range" min="0" max="255" value="168"><label for="trigger_threshold">Trigger threshold</label><button class="floatright" data-value="168" id="resettrigger_threshold">Reset</button><span class="gc" id="trigger_thresholdText">168</span></p>
 <p>&nbsp;</p><p>&nbsp;</p>
-<select class="width175m" name="a" id="a">
+<select class="width175m" id="a">
 <option value="'A'" selected>A</option>
 <option value="'B'">B</option>
 <option value="'Start'">Start</option>
@@ -542,7 +542,7 @@ Higher values increase audio latency but reduce the chance of audio drop-outs.">
 <option value="'CUp'">C-Button Up</option>
 </select><label for="a">A Button</label>
 <p>&nbsp;</p>
-<select class="width175m" name="b" id="b">
+<select class="width175m" id="b">
 <option value="'A'">A</option>
 <option value="'B'" selected>B</option>
 <option value="'Start'">Start</option>
@@ -559,7 +559,7 @@ Higher values increase audio latency but reduce the chance of audio drop-outs.">
 <option value="'CUp'">C-Button Up</option>
 </select><label for="b">B Button</label>
 <p>&nbsp;</p>
-<select class="width175m" name="x" id="x">
+<select class="width175m" id="x">
 <option value="'A'">A</option>
 <option value="'B'">B</option>
 <option value="'Start'">Start</option>
@@ -576,7 +576,7 @@ Higher values increase audio latency but reduce the chance of audio drop-outs.">
 <option value="'CUp'">C-Button Up</option>
 </select><label for="x">X Button</label>
 <p>&nbsp;</p>
-<select class="width175m" name="y" id="y">
+<select class="width175m" id="y">
 <option value="'A'">A</option>
 <option value="'B'">B</option>
 <option value="'Start'">Start</option>
@@ -593,7 +593,7 @@ Higher values increase audio latency but reduce the chance of audio drop-outs.">
 <option value="'CUp'">C-Button Up</option>
 </select><label for="y">Y Button</label>
 <p>&nbsp;</p>
-<select class="width175m" name="start" id="start">
+<select class="width175m" id="start">
 <option value="'A'">A</option>
 <option value="'B'">B</option>
 <option value="'Start'" selected>Start</option>
@@ -610,7 +610,7 @@ Higher values increase audio latency but reduce the chance of audio drop-outs.">
 <option value="'CUp'">C-Button Up</option>
 </select><label for="start">Start Button</label>
 <p>&nbsp;</p>
-<select class="width175m" name="l" id="l">
+<select class="width175m" id="l">
 <option value="'A'">A</option>
 <option value="'B'">B</option>
 <option value="'Start'">Start</option>
@@ -627,7 +627,7 @@ Higher values increase audio latency but reduce the chance of audio drop-outs.">
 <option value="'CUp'">C-Button Up</option>
 </select><label for="l">L-Trigger</label>
 <p>&nbsp;</p>
-<select class="width175m" name="z" id="z">
+<select class="width175m" id="z">
 <option value="'A'">A</option>
 <option value="'B'">B</option>
 <option value="'Start'">Start</option>
@@ -644,7 +644,7 @@ Higher values increase audio latency but reduce the chance of audio drop-outs.">
 <option value="'CUp'">C-Button Up</option>
 </select><label for="z">Z Button</label>
 <p>&nbsp;</p>
-<select class="width175m" name="r" id="r">
+<select class="width175m" id="r">
 <option value="'A'">A</option>
 <option value="'B'">B</option>
 <option value="'Start'">Start</option>
@@ -661,7 +661,7 @@ Higher values increase audio latency but reduce the chance of audio drop-outs.">
 <option value="'CUp'">C-Button Up</option>
 </select><label for="r">R-Trigger</label>
 <p>&nbsp;</p>
-<select class="width175m" name="d_pad_left" id="d_pad_left">
+<select class="width175m" id="d_pad_left">
 <option value="'A'">A</option>
 <option value="'B'">B</option>
 <option value="'Start'">Start</option>
@@ -678,7 +678,7 @@ Higher values increase audio latency but reduce the chance of audio drop-outs.">
 <option value="'CUp'">C-Button Up</option>
 </select><label for="d_pad_left">D-Pad Left</label>
 <p>&nbsp;</p>
-<select class="width175m" name="d_pad_right" id="d_pad_right">
+<select class="width175m" id="d_pad_right">
 <option value="'A'">A</option>
 <option value="'B'">B</option>
 <option value="'Start'">Start</option>
@@ -695,7 +695,7 @@ Higher values increase audio latency but reduce the chance of audio drop-outs.">
 <option value="'CUp'">C-Button Up</option>
 </select><label for="d_pad_right">D-Pad Right</label>
 <p>&nbsp;</p>
-<select class="width175m" name="d_pad_down" id="d_pad_down">
+<select class="width175m" id="d_pad_down">
 <option value="'A'">A</option>
 <option value="'B'">B</option>
 <option value="'Start'">Start</option>
@@ -712,7 +712,7 @@ Higher values increase audio latency but reduce the chance of audio drop-outs.">
 <option value="'CUp'">C-Button Up</option>
 </select><label for="d_pad_down">D-Pad Down</label>
 <p>&nbsp;</p>
-<select class="width175m" name="d_pad_up" id="d_pad_up">
+<select class="width175m" id="d_pad_up">
 <option value="'A'">A</option>
 <option value="'B'">B</option>
 <option value="'Start'">Start</option>
@@ -729,7 +729,7 @@ Higher values increase audio latency but reduce the chance of audio drop-outs.">
 <option value="'CUp'">C-Button Up</option>
 </select><label for="d_pad_up">D-Pad Up</label>
 <p>&nbsp;</p>
-<select class="width175m" name="c_stick_left" id="c_stick_left">
+<select class="width175m" id="c_stick_left">
 <option value="'A'">A</option>
 <option value="'B'">B</option>
 <option value="'Start'">Start</option>
@@ -746,7 +746,7 @@ Higher values increase audio latency but reduce the chance of audio drop-outs.">
 <option value="'CUp'">C-Button Up</option>
 </select><label for="c_stick_left">C-Stick Left</label>
 <p>&nbsp;</p>
-<select class="width175m" name="c_stick_right" id="c_stick_right">
+<select class="width175m" id="c_stick_right">
 <option value="'A'">A</option>
 <option value="'B'">B</option>
 <option value="'Start'">Start</option>
@@ -763,7 +763,7 @@ Higher values increase audio latency but reduce the chance of audio drop-outs.">
 <option value="'CUp'">C-Button Up</option>
 </select><label for="c_stick_right">C-Stick Right</label>
 <p>&nbsp;</p>
-<select class="width175m" name="c_stick_down" id="c_stick_down">
+<select class="width175m" id="c_stick_down">
 <option value="'A'">A</option>
 <option value="'B'">B</option>
 <option value="'Start'">Start</option>
@@ -780,7 +780,7 @@ Higher values increase audio latency but reduce the chance of audio drop-outs.">
 <option value="'CUp'">C-Button Up</option>
 </select><label for="c_stick_down">C-Stick Down</label>
 <p>&nbsp;</p>
-<select class="width175m" name="c_stick_up" id="c_stick_up">
+<select class="width175m" id="c_stick_up">
 <option value="'A'">A</option>
 <option value="'B'">B</option>
 <option value="'Start'">Start</option>
@@ -802,7 +802,7 @@ Higher values increase audio latency but reduce the chance of audio drop-outs.">
 <p title="Mouse controls analog stick movement. To toggle the mouse grab while playing a game, press the Left Control and Left Alt keys together.">Mouse movement:<br><input class="mt-10" id="mouse1" type="checkbox" data-store="mouse1"><label for="mouse1">Port 1</label><input class="ml-20" id="mouse2" type="checkbox" data-store="mouse2"><label for="mouse2">Port 2</label><input class="ml-20" id="mouse3" type="checkbox" data-store="mouse3"><label for="mouse3">Port 3</label><input class="ml-20" id="mouse4" type="checkbox" data-store="mouse4"><label for="mouse4">Port 4</label></p>
 <p>&nbsp;</p><p>&nbsp;</p>
 <div title="Bind to left mouse button.">
-<select class="width175m" name="mb1" id="mb1">
+<select class="width175m" id="mb1">
 <option value="" selected>None</option>
 <option value="a">A Button</option>
 <option value="b">B Button</option>
@@ -826,7 +826,7 @@ Higher values increase audio latency but reduce the chance of audio drop-outs.">
 </div>
 <p>&nbsp;</p><p>&nbsp;</p>
 <div title="Bind to middle mouse button.">
-<select class="width175m" name="mb2" id="mb2">
+<select class="width175m" id="mb2">
 <option value="" selected>None</option>
 <option value="a">A Button</option>
 <option value="b">B Button</option>
@@ -850,7 +850,7 @@ Higher values increase audio latency but reduce the chance of audio drop-outs.">
 </div>
 <p>&nbsp;</p><p>&nbsp;</p>
 <div title="Bind to right mouse button.">
-<select class="width175m" name="mb3" id="mb3">
+<select class="width175m" id="mb3">
 <option value="" selected>None</option>
 <option value="a">A Button</option>
 <option value="b">B Button</option>
@@ -873,9 +873,9 @@ Higher values increase audio latency but reduce the chance of audio drop-outs.">
 <input class="mt-15" id="m3_1" type="checkbox" data-store="m3_1"><label for="m3_1">Port 1</label><input class="ml-20" id="m3_2" type="checkbox" data-store="m3_2"><label for="m3_2">Port 2</label><input class="ml-20" id="m3_3" type="checkbox" data-store="m3_3"><label for="m3_3">Port 3</label><input class="ml-20" id="m3_4" type="checkbox" data-store="m3_4"><label for="m3_4">Port 4</label>
 </div>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
-<p><input id="MouseSensitivityX" name="MouseSensitivityX" type="range" min="0.25" max="10.00" step="0.25" value="2.00"><label for="MouseSensitivityX">Mouse sensitivity X</label><button class="floatright" data-value="2.00" id="resetMouseSensitivityX">Reset</button><span class="gc" id="MouseSensitivityXText">2.00</span></p>
+<p><input id="MouseSensitivityX" type="range" min="0.25" max="10.00" step="0.25" value="2.00"><label for="MouseSensitivityX">Mouse sensitivity X</label><button class="floatright" data-value="2.00" id="resetMouseSensitivityX">Reset</button><span class="gc" id="MouseSensitivityXText">2.00</span></p>
 <p>&nbsp;</p>
-<p><input id="MouseSensitivityY" name="MouseSensitivityY" type="range" min="0.25" max="10.00" step="0.25" value="2.00"><label for="MouseSensitivityY">Mouse sensitivity Y</label><button class="floatright" data-value="2.00" id="resetMouseSensitivityY">Reset</button><span class="gc" id="MouseSensitivityYText">2.00</span></p>
+<p><input id="MouseSensitivityY" type="range" min="0.25" max="10.00" step="0.25" value="2.00"><label for="MouseSensitivityY">Mouse sensitivity Y</label><button class="floatright" data-value="2.00" id="resetMouseSensitivityY">Reset</button><span class="gc" id="MouseSensitivityYText">2.00</span></p>
 <p>&nbsp;</p>
 </div>
 <p>&nbsp;</p><p>&nbsp;</p>
@@ -1114,14 +1114,14 @@ For gamepad hotkey combos, press another button by focusing the box a second tim
 <p>&nbsp;</p>
 <p title="Display upscaled pixels as groups of 1x1, 2x2, 3x3, etc."><input id="ViIntegerScaling" type="checkbox" data-store="ViIntegerScaling"><label for="ViIntegerScaling">Integer pixel scaling</label></p>
 <p>&nbsp;</p>
-<select class="width200m" name="ViMode" id="ViMode">
+<select class="width200m" id="ViMode">
 <option value="0" selected>Filtered</option>
 <option value="1">Unfiltered</option>
 <option value="2">Depth</option>
 <option value="3">Coverage</option>
 </select><label for="ViMode">Output mode</label>
 <p>&nbsp;</p>
-<div title="Scaling interpolation type."><select class="width200m" name="ViInterpolation" id="ViInterpolation">
+<div title="Scaling interpolation type."><select class="width200m" id="ViInterpolation">
 <option value="0">Nearest-neighbor</option>
 <option value="1">Bilinear</option>
 <option value="2" selected>Hybrid</option>
@@ -1134,7 +1134,7 @@ For gamepad hotkey combos, press another button by focusing the box a second tim
 <p>&nbsp;</p>
 <p title="Number of logical processors to use. 0 uses all."><span class="numberDecrease" id="decreaseNumWorkers">-</span><input id="NumWorkers" min="0" step="1" value="0" type="number"><span class="numberIncrease" id="increaseNumWorkers">+</span><label for="NumWorkers">Rendering threads</label><button class="floatright" data-value="0" id="resetNumWorkers">Reset</button></p>
 <p>&nbsp;</p>
-<select class="width200m" name="DpCompat" id="DpCompat">
+<select class="width200m" id="DpCompat">
 <option value="0" selected>Fast</option>
 <option value="1">Moderate</option>
 <option value="2">Slow</option>
@@ -1159,7 +1159,7 @@ For gamepad hotkey combos, press another button by focusing the box a second tim
 <p>&nbsp;</p>
 <p><input id="fxaa" type="checkbox" data-store="fxaa"><label for="fxaa">Fast approximate anti-aliasing</label></p>
 <p>&nbsp;</p>
-<select class="width125m" name="anisotropy" id="anisotropy">
+<select class="width125m" id="anisotropy">
 <option value="0" selected>Off</option>
 <option value="2">2x</option>
 <option value="4">4x</option>
@@ -1167,14 +1167,14 @@ For gamepad hotkey combos, press another button by focusing the box a second tim
 <option value="16">16x</option>
 </select><label for="anisotropy">Anisotropic filtering</label>
 <p>&nbsp;</p>
-<div title="MSAA is incompatible with N64 depth compare."><select class="width125m" name="msaa" id="msaa">
+<div title="MSAA is incompatible with N64 depth compare."><select class="width125m" id="msaa">
 <option value="0" selected>Off</option>
 <option value="2">2x</option>
 <option value="4">4x</option>
 <option value="8">8x</option>
 </select><label for="msaa">Multisample anti-aliasing</label></div>
 <p>&nbsp;</p>
-<div title="Choose adjust to use a generic widescreen hack."><select class="width125m" name="aspectRatio" id="aspectRatio">
+<div title="Choose adjust to use a generic widescreen hack."><select class="width125m" id="aspectRatio">
 <option value="1" selected>4:3</option>
 <option value="2">16:9</option>
 <option value="3">Adjust</option>
@@ -1182,7 +1182,7 @@ For gamepad hotkey combos, press another button by focusing the box a second tim
 </select><label for="aspectRatio">Aspect ratio</label></div>
 <p>&nbsp;</p>
 <div title="Frame buffer size (rendering resolution) is the factor of N64 native resolution.
-If this option is turned off, the output resolution is the same as the rendering resolution."><select class="width125m" name="useNativeResolutionFactor" id="useNativeResolutionFactor">
+If this option is turned off, the output resolution is the same as the rendering resolution."><select class="width125m" id="useNativeResolutionFactor">
 <option value="0" selected>Off</option>
 <option value="1">1</option>
 <option value="2">2</option>
@@ -1256,25 +1256,25 @@ If this option is turned off, the output resolution is the same as the rendering
 <p>&nbsp;</p>
 <p title="Dither with color quantization."><input id="DitheringQuantization" type="checkbox" data-store="DitheringQuantization" checked><label for="DitheringQuantization">Dithering quantization</label></p>
 <p>&nbsp;</p>
-<div title="Dithering mode for image in RDRAM."><select class="width150m" name="RDRAMImageDitheringMode" id="RDRAMImageDitheringMode">
+<div title="Dithering mode for image in RDRAM."><select class="width150m" id="RDRAMImageDitheringMode">
 <option value="0">Disable</option>
 <option value="1">Bayer</option>
 <option value="2">Magic Square</option>
 <option value="3" selected>Blue Noise</option>
 </select><label for="RDRAMImageDitheringMode">Dithering mode</label></div>
 <p>&nbsp;</p>
-<div title="Render backgrounds mode (HLE only)."><select class="width150m" name="BackgroundsMode" id="BackgroundsMode">
+<div title="Render backgrounds mode (HLE only)."><select class="width150m" id="BackgroundsMode">
 <option value="0" selected>One Piece</option>
 <option value="1">Stripped</option>
 </select><label for="BackgroundsMode">Backgrounds mode</label></div>
 <p>&nbsp;</p>
-<div title="Make texrect coordinates continuous to avoid black lines between them."><select class="width150m" name="CorrectTexrectCoords" id="CorrectTexrectCoords">
+<div title="Make texrect coordinates continuous to avoid black lines between them."><select class="width150m" id="CorrectTexrectCoords">
 <option value="0">Off</option>
 <option value="1" selected>Auto</option>
 <option value="2">Force</option>
 </select><label for="CorrectTexrectCoords">Correct texrect coordinates</label></div>
 <p>&nbsp;</p>
-<div title="Render 2D texrects in native resolution to fix misalignment between parts of 2D image."><select class="width150m" name="EnableNativeResTexrects" id="EnableNativeResTexrects">
+<div title="Render 2D texrects in native resolution to fix misalignment between parts of 2D image."><select class="width150m" id="EnableNativeResTexrects">
 <option value="0" selected>Off</option>
 <option value="1">Optimized</option>
 <option value="2">Unoptimized</option>
@@ -1297,33 +1297,33 @@ If this option is turned off, the output resolution is the same as the rendering
 <p>&nbsp;</p>
 <p title="Read depth buffer by 4kb chunks."><input id="FBInfoReadDepthChunk" type="checkbox" data-store="FBInfoReadDepthChunk" checked><label for="FBInfoReadDepthChunk">Read depth buffer in chunks</label></p>
 <p>&nbsp;</p>
-<div title="On buffer update offers the best performance but causes the most issues."><select class="width250m" name="bufferSwapMode" id="bufferSwapMode">
+<div title="On buffer update offers the best performance but causes the most issues."><select class="width250m" id="bufferSwapMode">
 <option value="0" selected>On VI update call</option>
 <option value="1">On VI origin change</option>
 <option value="2">On buffer update</option>
 </select><label for="bufferSwapMode">Buffer swap mode</label></div>
 <p>&nbsp;</p>
-<div title="Enable color buffer copy to RDRAM."><select class="width250m" name="EnableCopyColorToRDRAM" id="EnableCopyColorToRDRAM">
+<div title="Enable color buffer copy to RDRAM."><select class="width250m" id="EnableCopyColorToRDRAM">
 <option value="0">Do not copy</option>
 <option value="1" selected>Copy in sync mode</option>
 <option value="2">Double Buffer</option>
 <option value="3">Triple Buffer</option>
 </select><label for="EnableCopyColorToRDRAM">Color buffer to RDRAM</label></div>
 <p>&nbsp;</p>
-<div title="Enable depth buffer copy to RDRAM."><select class="width250m" name="EnableCopyDepthToRDRAM" id="EnableCopyDepthToRDRAM">
+<div title="Enable depth buffer copy to RDRAM."><select class="width250m" id="EnableCopyDepthToRDRAM">
 <option value="0">Do not copy</option>
 <option value="1">Copy from video memory</option>
 <option value="2" selected>Use software render</option>
 </select><label for="EnableCopyDepthToRDRAM">Depth buffer to RDRAM</label></div>
 <p>&nbsp;</p>
-<div title="Enable N64 depth compare instead of OpenGL standard one. Fast setting may cause graphical issues on RTX cards."><select class="width250m" name="EnableN64DepthCompare" id="EnableN64DepthCompare">
+<div title="Enable N64 depth compare instead of OpenGL standard one. Fast setting may cause graphical issues on RTX cards."><select class="width250m" id="EnableN64DepthCompare">
 <option value="0" selected>Off</option>
 <option value="1">Fast</option>
 <option value="2">Compatible</option>
 </select><label for="EnableN64DepthCompare">N64 depth compare</label></div>
 </div>
 <div id="gliden64_textures" class="hide mt-10">
-<select class="width200m" name="txFilterMode" id="txFilterMode">
+<select class="width200m" id="txFilterMode">
 <option value="0" selected>None</option>
 <option value="1">Smooth Filtering 1</option>
 <option value="2">Smooth Filtering 2</option>
@@ -1333,7 +1333,7 @@ If this option is turned off, the output resolution is the same as the rendering
 <option value="6">Sharp Filtering 2</option>
 </select><label for="txFilterMode">Texture filter</label>
 <p>&nbsp;</p>
-<select class="width200m" name="txEnhancementMode" id="txEnhancementMode">
+<select class="width200m" id="txEnhancementMode">
 <option value="0" selected>None</option>
 <option value="1">Store as is</option>
 <option value="2">X2</option>
@@ -1371,7 +1371,7 @@ If this option is turned off, the output resolution is the same as the rendering
 <p title="Disables HTC/HTS cache. Not recommended for casual play."><input id="txNoTextureFileStorage" type="checkbox" data-store="txNoTextureFileStorage"><label for="txNoTextureFileStorage">Don't use cache</label></p>
 <p>&nbsp;</p>
 <div title="HTC: Prefetch all textures at boot into RAM.
-HTS: Read textures as they are needed from hard disk."><select name="cache" id="cache">
+HTS: Read textures as they are needed from hard disk."><select id="cache">
 <option value="false">HTC</option>
 <option value="true" selected>HTS</option>
 </select><label for="cache">Cache type</label></div>
@@ -1401,7 +1401,7 @@ HTS: Read textures as they are needed from hard disk."><select name="cache" id="
 <p>&nbsp;</p>
 <p><input id="ShowStatistics" type="checkbox" data-store="ShowStatistics"><label for="ShowStatistics">Show statistics</label></p>
 <p>&nbsp;</p>
-<select name="CountersPos" id="CountersPos">
+<select id="CountersPos">
 <option value="1">Top Left</option>
 <option value="2">Top Center</option>
 <option value="4">Top Right</option>
@@ -1460,21 +1460,21 @@ HTS: Read textures as they are needed from hard disk."><select name="cache" id="
 <p>&nbsp;</p>
 <p title="Amount of pixels to stretch by vertically. Can fix PAL ports that didn't fill the PAL resolution of 288p (use value of 24 in that case)."><span class="numberDecrease" id="decreaseParallelVerticalStretch">-</span><input id="ParallelVerticalStretch" min="0" max="99" step="1" value="0" type="number"><span class="numberIncrease" id="increaseParallelVerticalStretch">+</span><label for="ParallelVerticalStretch">Vertical stretch</label><button class="floatright" data-value="0" id="resetParallelVerticalStretch">Reset</button></p>
 <p>&nbsp;</p>
-<select class="width125m" name="ParallelUpscaling" id="ParallelUpscaling">
+<select class="width125m" id="ParallelUpscaling">
 <option value="1" selected>1x</option>
 <option value="2">2x</option>
 <option value="4">4x</option>
 <option value="8">8x</option>
 </select><label for="ParallelUpscaling">Upscaling</label>
 <p>&nbsp;</p>
-<div title="Downscales output after VI, equivalent to SSAA."><select class="width125m" name="ParallelDownScale" id="ParallelDownScale">
+<div title="Downscales output after VI, equivalent to SSAA."><select class="width125m" id="ParallelDownScale">
 <option value="0" selected>Disabled</option>
 <option value="1">1/2</option>
 <option value="2">1/4</option>
 <option value="3">1/8</option>
 </select><label for="ParallelDownScale">Downsampling</label></div>
 <p>&nbsp;</p>
-<div title="Weave should only be used with 1x scaling factor."><select class="width125m" name="ParallelDeinterlaceMode" id="ParallelDeinterlaceMode">
+<div title="Weave should only be used with 1x scaling factor."><select class="width125m" id="ParallelDeinterlaceMode">
 <option value="false" selected>Bob</option>
 <option value="true">Weave</option>
 </select><label for="ParallelDeinterlaceMode">Deinterlacing method</label></div>
@@ -1519,7 +1519,7 @@ HTS: Read textures as they are needed from hard disk."><select name="cache" id="
 <p>&nbsp;</p>
 <p title="Is multiplied by an implementation-specific value to create a constant depth offset."><span class="numberDecrease" id="decreasePolygonOffsetUnits">-</span><input id="PolygonOffsetUnits" min="0.00" max="10.00" step="0.1" value="0.00" type="number"><span class="numberIncrease" id="increasePolygonOffsetUnits">+</span><label for="PolygonOffsetUnits">Polygon offset units</label><button class="floatright" data-value="0.00" id="resetPolygonOffsetUnits">Reset</button></p>
 <p>&nbsp;</p>
-<select class="width200m" name="AnisotropicFiltering" id="AnisotropicFiltering">
+<select class="width200m" id="AnisotropicFiltering">
 <option value="0" selected>Off</option>
 <option value="2">2x</option>
 <option value="4">4x</option>
@@ -1527,21 +1527,21 @@ HTS: Read textures as they are needed from hard disk."><select name="cache" id="
 <option value="16">16x</option>
 </select><label for="AnisotropicFiltering">Anisotropic filtering</label>
 <p>&nbsp;</p>
-<select class="width200m" name="RiceMultiSampling" id="RiceMultiSampling">
+<select class="width200m" id="RiceMultiSampling">
 <option value="0" selected>Off</option>
 <option value="2">2x</option>
 <option value="4">4x</option>
 <option value="8">8x</option>
 </select><label for="RiceMultiSampling">Multisample anti-aliasing</label>
 <p>&nbsp;</p>
-<select class="width200m" name="Mipmapping" id="Mipmapping">
+<select class="width200m" id="Mipmapping">
 <option value="0" selected>Disabled</option>
 <option value="1">Nearest-neighbor</option>
 <option value="2">Bilinear</option>
 <option value="3">Trilinear</option>
 </select><label for="Mipmapping">Mipmapping</label>
 <p>&nbsp;</p>
-<select class="width200m" name="ForceTextureFilter" id="ForceTextureFilter">
+<select class="width200m" id="ForceTextureFilter">
 <option value="0" selected>Auto</option>
 <option value="1">No Filtering</option>
 <option value="2">Filtering</option>
@@ -1564,7 +1564,7 @@ HTS: Read textures as they are needed from hard disk."><select name="cache" id="
 <p>&nbsp;</p>
 <p title="Enable vertex clipper for fog operations."><input id="OpenGLVertexClipper" type="checkbox" data-store="OpenGLVertexClipper"><label for="OpenGLVertexClipper">Vertex clipper</label></p>
 <p>&nbsp;</p>
-<div title="Frequency to write back the frame buffer."><select class="width225m" name="FrameBufferWriteBackControl" id="FrameBufferWriteBackControl">
+<div title="Frequency to write back the frame buffer."><select class="width225m" id="FrameBufferWriteBackControl">
 <option value="0" selected>Every Frame</option>
 <option value="1">Every 2 Frames</option>
 <option value="2">Every 3 Frames</option>
@@ -1575,7 +1575,7 @@ HTS: Read textures as they are needed from hard disk."><select name="cache" id="
 <option value="7">Every 8 Frames</option>
 </select><label for="FrameBufferWriteBackControl">Framebuffer write back</label></div>
 <p>&nbsp;</p>
-<select class="width225m" name="RenderToTexture" id="RenderToTexture">
+<select class="width225m" id="RenderToTexture">
 <option value="0" selected>None</option>
 <option value="1">Ignore</option>
 <option value="2">Normal</option>
@@ -1583,7 +1583,7 @@ HTS: Read textures as they are needed from hard disk."><select name="cache" id="
 <option value="4">Write Back and Reload</option>
 </select><label for="RenderToTexture">Render-to-texture emulation</label>
 <p>&nbsp;</p>
-<div title="Control when the screen will be updated."><select class="width225m" name="ScreenUpdateSetting" id="ScreenUpdateSetting">
+<div title="Control when the screen will be updated."><select class="width225m" id="ScreenUpdateSetting">
 <option value="4" selected>First CI Change</option>
 <option value="5">First Primitive Draw</option>
 <option value="7">After Screen Drawn</option>
