@@ -1331,6 +1331,9 @@ else if(gfx.includes('rice') && rsp.includes('rsp-parallel')){rsp = 'mupen64plus
 
 if(id('nospeedlimit').checked){audio = 'dummy';vsync = 'Video-General[VerticalSync]=false';ParallelVSync = 'Video-Parallel[Vsync]=false'} /* force muted audio and disabled V-Sync */
 
+if(id('audio').value === 'dummy')audio = 'dummy'
+if(id('input').value === 'dummy')input = 'dummy'
+
 
 
 if(name1.includes('Keyboard'))device1 = 'Input-SDL-Control1[device]=-1' /* controller 1 */
