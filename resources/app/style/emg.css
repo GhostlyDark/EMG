@@ -62,6 +62,9 @@ button,select,input,.box,.pointer,.hotkeys label,[type=checkbox] + label,[type=c
 [type=text]:hover{background-color:#ddd}
 [type=text]:active,[type=text]:focus{background-color:#ccc}
 
+[type=checkbox]:disabled:checked:before,[type=checkbox]:disabled:hover:before,[type=checkbox]:disabled:checked:before{border-color:#444}
+.dark [type=checkbox]:disabled:checked:before,.dark [type=checkbox]:disabled:hover:before,.dark [type=checkbox]:disabled:checked:before{border-color:#ccc}
+
 button{border:0;outline:0!important;background:#eee;padding:3px 10px;transition:background-color .2s cubic-bezier(.4,0,.22,1);font-size:17px}
 button:hover,select:hover{background-color:#ddd}
 button:active,select:active,select:focus{background-color:#ccc}
