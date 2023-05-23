@@ -69,12 +69,12 @@ Rice: HLE"><select class="width250m" id="gfx">
 <option value="mupen64plus-video-GLideN64" selected>GLideN64</option>
 <option value="mupen64plus-video-parallel">Parallel</option>
 <option value="mupen64plus-video-rice">Rice</option>
-</select><label for="gfx">Graphics Plugin</label></div>
+</select><label for="gfx">Graphics plugin</label></div>
 <p>&nbsp;</p>
 <select class="width250m" id="audio">
 <option value="dummy">Disable</option>
 <option value="mupen64plus-audio-sdl" selected>Mupen64Plus Audio SDL</option>
-</select><label for="audio">Audio Plugin</label>
+</select><label for="audio">Audio plugin</label>
 <p>&nbsp;</p>
 <div title="GameCube Adapter: Only works with official Wii U GameCube Adapter,
 Raphnetraw: Only works with Raphnetraw adapters"><select class="width250m" id="input">
@@ -82,7 +82,7 @@ Raphnetraw: Only works with Raphnetraw adapters"><select class="width250m" id="i
 <option value="mupen64plus-input-gca">GameCube Adapter</option>
 <option value="mupen64plus-input-sdl" selected>Mupen64Plus Input SDL</option>
 <option value="mupen64plus-input-raphnetraw">Raphnetraw</option>
-</select><label for="input">Input Plugin</label></div>
+</select><label for="input">Input plugin</label></div>
 <p>&nbsp;</p>
 <div title="Mupen64Plus HLE: HLE only,
 Static Interpreter: HLE and LLE,
@@ -90,7 +90,7 @@ Parallel: LLE only"><select class="width250m" id="rsp">
 <option value="mupen64plus-rsp-hle" selected>Mupen64Plus HLE</option>
 <option value="mupen64plus-rsp-cxd4">Static Interpreter</option>
 <option value="mupen64plus-rsp-parallel">Parallel RSP</option>
-</select><label for="rsp">RSP Plugin</label></div>
+</select><label for="rsp">RSP plugin</label></div>
 <p>&nbsp;</p>
 <div title="RSP plugin used when encountering an unknown ucode. HLE RSP only."><select class="width250m" id="RspFallback">
 <option value="">Disable</option>
@@ -105,7 +105,7 @@ Parallel: LLE only"><select class="width250m" id="rsp">
 <p>&nbsp;</p>
 <p title="Start emulation in fullscreen."><input id="fullscreen" type="checkbox" data-store="fullscreen"><label for="fullscreen">Fullscreen</label></p>
 <p>&nbsp;</p>
-<p title="Disable extra memory."><input id="exp" type="checkbox" data-store="exp"><label for="exp">Force 4 MB</label></p>
+<p title="Disable extra memory (4 MB Expansion Pak)."><input id="exp" type="checkbox" data-store="exp"><label for="exp">Force 4 MB</label></p>
 <p>&nbsp;</p>
 <p title="Use unique SRAM saves per ROM."><input id="SaveFilenameFormat" type="checkbox" data-store="SaveFilenameFormat"><label for="SaveFilenameFormat">Unique game saves</label></p>
 <p>&nbsp;</p>
@@ -199,8 +199,8 @@ Higher values increase audio latency but reduce the chance of audio drop-outs.">
 </div>
 <div id="core_64dd" class="hide mt-15">
 <select id="SaveDiskFormat">
-<option value="0">Full Disk Copy</option>
-<option value="1" selected>RAM Area Only</option>
+<option value="0">Full disk copy</option>
+<option value="1" selected>RAM area only</option>
 </select><label for="SaveDiskFormat">64DD save format</label>
 <p>&nbsp;</p><p>&nbsp;</p>
 <p title="Path to 64DD BIOS file. Click the box or drag and drop the file into the box below.">64DD IPL ROM&nbsp;&nbsp;<button class="floatright ml-13" id="clearIPLROM">Clear</button><button class="floatright" id="showIPLROM">Show</button><br><br><div id="IPLROM" class="box"><span id="IPLROMText"></span></div></p>
@@ -1209,21 +1209,21 @@ If this option is turned off, the output resolution is the same as the rendering
 <div id="gliden64_overscan" class="hide mt-10">
 <p title="Crop image to remove black bars."><input id="EnableOverscan" type="checkbox" data-store="EnableOverscan"><label for="EnableOverscan">Use overscan</label><button class="floatright" id="reset_overscan">Reset all</button></p>
 <p>&nbsp;</p><p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreaseOverscanNtscTop">-</span><input id="OverscanNtscTop" min="0" max="99" step="1" value="0" type="number"><span class="numberIncrease" id="increaseOverscanNtscTop">+</span><label for="OverscanNtscTop">NTSC Top</label><button class="floatright" data-value="0" id="resetOverscanNtscTop">Reset</button></p>
+<p><span class="numberDecrease" id="decreaseOverscanNtscTop">-</span><input id="OverscanNtscTop" min="0" max="99" step="1" value="0" type="number"><span class="numberIncrease" id="increaseOverscanNtscTop">+</span><label for="OverscanNtscTop">NTSC top</label><button class="floatright" data-value="0" id="resetOverscanNtscTop">Reset</button></p>
 <p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreaseOverscanNtscLeft">-</span><input id="OverscanNtscLeft" min="0" max="99" step="1" value="0" type="number"><span class="numberIncrease" id="increaseOverscanNtscLeft">+</span><label for="OverscanNtscLeft">NTSC Left</label><button class="floatright" data-value="0" id="resetOverscanNtscLeft">Reset</button></p>
+<p><span class="numberDecrease" id="decreaseOverscanNtscLeft">-</span><input id="OverscanNtscLeft" min="0" max="99" step="1" value="0" type="number"><span class="numberIncrease" id="increaseOverscanNtscLeft">+</span><label for="OverscanNtscLeft">NTSC left</label><button class="floatright" data-value="0" id="resetOverscanNtscLeft">Reset</button></p>
 <p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreaseOverscanNtscRight">-</span><input id="OverscanNtscRight" min="0" max="99" step="1" value="0" type="number"><span class="numberIncrease" id="increaseOverscanNtscRight">+</span><label for="OverscanNtscRight">NTSC Right</label><button class="floatright" data-value="0" id="resetOverscanNtscRight">Reset</button></p>
+<p><span class="numberDecrease" id="decreaseOverscanNtscRight">-</span><input id="OverscanNtscRight" min="0" max="99" step="1" value="0" type="number"><span class="numberIncrease" id="increaseOverscanNtscRight">+</span><label for="OverscanNtscRight">NTSC right</label><button class="floatright" data-value="0" id="resetOverscanNtscRight">Reset</button></p>
 <p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreaseOverscanNtscBottom">-</span><input id="OverscanNtscBottom" min="0" max="99" step="1" value="0" type="number"><span class="numberIncrease" id="increaseOverscanNtscBottom">+</span><label for="OverscanNtscBottom">NTSC Bottom</label><button class="floatright" data-value="0" id="resetOverscanNtscBottom">Reset</button></p>
+<p><span class="numberDecrease" id="decreaseOverscanNtscBottom">-</span><input id="OverscanNtscBottom" min="0" max="99" step="1" value="0" type="number"><span class="numberIncrease" id="increaseOverscanNtscBottom">+</span><label for="OverscanNtscBottom">NTSC bottom</label><button class="floatright" data-value="0" id="resetOverscanNtscBottom">Reset</button></p>
 <p>&nbsp;</p><p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreaseOverscanPalTop">-</span><input id="OverscanPalTop" min="0" max="99" value="0" step="1" type="number"><span class="numberIncrease" id="increaseOverscanPalTop">+</span><label for="OverscanPalTop">PAL Top</label><button class="floatright" data-value="0" id="resetOverscanPalTop">Reset</button></p>
+<p><span class="numberDecrease" id="decreaseOverscanPalTop">-</span><input id="OverscanPalTop" min="0" max="99" value="0" step="1" type="number"><span class="numberIncrease" id="increaseOverscanPalTop">+</span><label for="OverscanPalTop">PAL top</label><button class="floatright" data-value="0" id="resetOverscanPalTop">Reset</button></p>
 <p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreaseOverscanPalLeft">-</span><input id="OverscanPalLeft" min="0" max="99" value="0" step="1" type="number"><span class="numberIncrease" id="increaseOverscanPalLeft">+</span><label for="OverscanPalLeft">PAL Left</label><button class="floatright" data-value="0" id="resetOverscanPalLeft">Reset</button></p>
+<p><span class="numberDecrease" id="decreaseOverscanPalLeft">-</span><input id="OverscanPalLeft" min="0" max="99" value="0" step="1" type="number"><span class="numberIncrease" id="increaseOverscanPalLeft">+</span><label for="OverscanPalLeft">PAL left</label><button class="floatright" data-value="0" id="resetOverscanPalLeft">Reset</button></p>
 <p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreaseOverscanPalRight">-</span><input id="OverscanPalRight" min="0" max="99" value="0" step="1" type="number"><span class="numberIncrease" id="increaseOverscanPalRight">+</span><label for="OverscanPalRight">PAL Right</label><button class="floatright" data-value="0" id="resetOverscanPalRight">Reset</button></p>
+<p><span class="numberDecrease" id="decreaseOverscanPalRight">-</span><input id="OverscanPalRight" min="0" max="99" value="0" step="1" type="number"><span class="numberIncrease" id="increaseOverscanPalRight">+</span><label for="OverscanPalRight">PAL right</label><button class="floatright" data-value="0" id="resetOverscanPalRight">Reset</button></p>
 <p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreaseOverscanPalBottom">-</span><input id="OverscanPalBottom" min="0" max="99" value="0" step="1" type="number"><span class="numberIncrease" id="increaseOverscanPalBottom">+</span><label for="OverscanPalBottom">PAL Bottom</label><button class="floatright" data-value="0" id="resetOverscanPalBottom">Reset</button></p>
+<p><span class="numberDecrease" id="decreaseOverscanPalBottom">-</span><input id="OverscanPalBottom" min="0" max="99" value="0" step="1" type="number"><span class="numberIncrease" id="increaseOverscanPalBottom">+</span><label for="OverscanPalBottom">PAL bottom</label><button class="floatright" data-value="0" id="resetOverscanPalBottom">Reset</button></p>
 </div>
 <div id="gliden64_emulation" class="hide mt-10">
 <p title="Use GLideN64 per-game settings."><input id="EnableCustomSettings" type="checkbox" data-store="EnableCustomSettings" checked><label for="EnableCustomSettings">Per-game settings</label></p>
@@ -1259,12 +1259,12 @@ If this option is turned off, the output resolution is the same as the rendering
 <div title="Dithering mode for image in RDRAM."><select class="width150m" id="RDRAMImageDitheringMode">
 <option value="0">Disable</option>
 <option value="1">Bayer</option>
-<option value="2">Magic Square</option>
-<option value="3" selected>Blue Noise</option>
+<option value="2">Magic square</option>
+<option value="3" selected>Blue noise</option>
 </select><label for="RDRAMImageDitheringMode">Dithering mode</label></div>
 <p>&nbsp;</p>
 <div title="Render backgrounds mode (HLE only)."><select class="width150m" id="BackgroundsMode">
-<option value="0" selected>One Piece</option>
+<option value="0" selected>One piece</option>
 <option value="1">Stripped</option>
 </select><label for="BackgroundsMode">Backgrounds mode</label></div>
 <p>&nbsp;</p>
@@ -1306,8 +1306,8 @@ If this option is turned off, the output resolution is the same as the rendering
 <div title="Enable color buffer copy to RDRAM."><select class="width250m" id="EnableCopyColorToRDRAM">
 <option value="0">Do not copy</option>
 <option value="1" selected>Copy in sync mode</option>
-<option value="2">Double Buffer</option>
-<option value="3">Triple Buffer</option>
+<option value="2">Double buffer</option>
+<option value="3">Triple buffer</option>
 </select><label for="EnableCopyColorToRDRAM">Color buffer to RDRAM</label></div>
 <p>&nbsp;</p>
 <div title="Enable depth buffer copy to RDRAM."><select class="width250m" id="EnableCopyDepthToRDRAM">
@@ -1325,12 +1325,12 @@ If this option is turned off, the output resolution is the same as the rendering
 <div id="gliden64_textures" class="hide mt-10">
 <select class="width200m" id="txFilterMode">
 <option value="0" selected>None</option>
-<option value="1">Smooth Filtering 1</option>
-<option value="2">Smooth Filtering 2</option>
-<option value="3">Smooth Filtering 3</option>
-<option value="4">Smooth Filtering 4</option>
-<option value="5">Sharp Filtering 1</option>
-<option value="6">Sharp Filtering 2</option>
+<option value="1">Smooth filtering 1</option>
+<option value="2">Smooth filtering 2</option>
+<option value="3">Smooth filtering 3</option>
+<option value="4">Smooth filtering 4</option>
+<option value="5">Sharp filtering 1</option>
+<option value="6">Sharp filtering 2</option>
 </select><label for="txFilterMode">Texture filter</label>
 <p>&nbsp;</p>
 <select class="width200m" id="txEnhancementMode">
@@ -1402,12 +1402,12 @@ HTS: Read textures as they are needed from hard disk."><select id="cache">
 <p><input id="ShowStatistics" type="checkbox" data-store="ShowStatistics"><label for="ShowStatistics">Show statistics</label></p>
 <p>&nbsp;</p>
 <select id="CountersPos">
-<option value="1">Top Left</option>
-<option value="2">Top Center</option>
-<option value="4">Top Right</option>
-<option value="8" selected>Bottom Left</option>
-<option value="16">Bottom Center</option>
-<option value="32">Bottom Right</option>
+<option value="1">Top left</option>
+<option value="2">Top center</option>
+<option value="4">Top right</option>
+<option value="8" selected>Bottom left</option>
+<option value="16">Bottom center</option>
+<option value="32">Bottom right</option>
 </select><label for="CountersPos">Counters position</label>
 </div>
 <div id="gliden64_hotkeys" class="hide mt-10">
@@ -1543,7 +1543,7 @@ HTS: Read textures as they are needed from hard disk."><select id="cache">
 <p>&nbsp;</p>
 <select class="width200m" id="ForceTextureFilter">
 <option value="0" selected>Auto</option>
-<option value="1">No Filtering</option>
+<option value="1">No filtering</option>
 <option value="2">Filtering</option>
 </select><label for="ForceTextureFilter">Texture filtering</label>
 </div>
@@ -1565,28 +1565,28 @@ HTS: Read textures as they are needed from hard disk."><select id="cache">
 <p title="Enable vertex clipper for fog operations."><input id="OpenGLVertexClipper" type="checkbox" data-store="OpenGLVertexClipper"><label for="OpenGLVertexClipper">Vertex clipper</label></p>
 <p>&nbsp;</p>
 <div title="Frequency to write back the frame buffer."><select class="width225m" id="FrameBufferWriteBackControl">
-<option value="0" selected>Every Frame</option>
-<option value="1">Every 2 Frames</option>
-<option value="2">Every 3 Frames</option>
-<option value="3">Every 4 Frames</option>
-<option value="4">Every 5 Frames</option>
-<option value="5">Every 6 Frames</option>
-<option value="6">Every 7 Frames</option>
-<option value="7">Every 8 Frames</option>
+<option value="0" selected>Every frame</option>
+<option value="1">Every 2 frames</option>
+<option value="2">Every 3 frames</option>
+<option value="3">Every 4 frames</option>
+<option value="4">Every 5 frames</option>
+<option value="5">Every 6 frames</option>
+<option value="6">Every 7 frames</option>
+<option value="7">Every 8 frames</option>
 </select><label for="FrameBufferWriteBackControl">Framebuffer write back</label></div>
 <p>&nbsp;</p>
 <select class="width225m" id="RenderToTexture">
 <option value="0" selected>None</option>
 <option value="1">Ignore</option>
 <option value="2">Normal</option>
-<option value="3">Write Back</option>
-<option value="4">Write Back and Reload</option>
+<option value="3">Write back</option>
+<option value="4">Write back and reload</option>
 </select><label for="RenderToTexture">Render-to-texture emulation</label>
 <p>&nbsp;</p>
 <div title="Control when the screen will be updated."><select class="width225m" id="ScreenUpdateSetting">
-<option value="4" selected>First CI Change</option>
-<option value="5">First Primitive Draw</option>
-<option value="7">After Screen Drawn</option>
+<option value="4" selected>First CI change</option>
+<option value="5">First primitive draw</option>
+<option value="7">After screen drawn</option>
 </select><label for="ScreenUpdateSetting">Screen update</label></div>
 </div>
 <div id="rice_textures" class="hide mt-10">
