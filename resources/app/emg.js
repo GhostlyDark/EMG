@@ -58,11 +58,11 @@ m64p_joykeys = [
 
 defaultPlugins = ['mupen64plus-audio-sdl','mupen64plus-input-gca','mupen64plus-input-raphnetraw','mupen64plus-input-sdl','mupen64plus-rsp-cxd4','mupen64plus-rsp-hle','mupen64plus-rsp-parallel','mupen64plus-video-angrylion-plus','mupen64plus-video-GLideN64','mupen64plus-video-parallel','mupen64plus-video-rice'],
 
-sliders = ['VOLUME_ADJUST','VOLUME_DEFAULT','AnalogDeadzone1','AnalogDeadzone2','AnalogDeadzone3','AnalogDeadzone4','AnalogPeak1','AnalogPeak2','AnalogPeak3','AnalogPeak4','control_stick_deadzone','control_stick_sensitivity','c_stick_deadzone','trigger_threshold','MouseSensitivityX','MouseSensitivityY'],
+sliders = ['VOLUME_ADJUST','VOLUME_DEFAULT','AnalogDeadzone1','AnalogDeadzone2','AnalogDeadzone3','AnalogDeadzone4','AnalogPeak1','AnalogPeak2','AnalogPeak3','AnalogPeak4','control_stick_deadzone','control_stick_sensitivity','c_stick_deadzone','trigger_threshold','MouseSensitivityX','MouseSensitivityY','txCacheSize','txHiresVramLimit'],
 
 overscan = ['OverscanNtscTop','OverscanNtscLeft','OverscanNtscRight','OverscanNtscBottom','OverscanPalTop','OverscanPalLeft','OverscanPalRight','OverscanPalBottom'],
 
-numbers = [...overscan,'NumWorkers','ParallelCropOverscan','ParallelVerticalStretch','txCacheSize','txHiresVramLimit','GammaCorrectionLevel','fontSize','SiDmaDuration','PolygonOffsetFactor','PolygonOffsetUnits'],
+numbers = [...overscan,'NumWorkers','ParallelCropOverscan','ParallelVerticalStretch','GammaCorrectionLevel','fontSize','SiDmaDuration','PolygonOffsetFactor','PolygonOffsetUnits'],
 
 dropdowns = [
 'emumode','resolution','CountPerOp','CountPerOpDenomPot','CurrentStateSlot','SaveDiskFormat', /* mupen64plus */

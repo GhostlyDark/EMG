@@ -1382,7 +1382,7 @@ If this option is turned off, the output resolution is the same as the rendering
 <option value="13">6xBRZ</option>
 </select><label for="txEnhancementMode">Texture enhancement</label>
 <p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreasetxCacheSize">-</span><input id="txCacheSize" min="0" max="1024" step="128" value="1024" type="number"><span class="numberIncrease" id="increasetxCacheSize">+</span><label title="Size of memory cache for enhanced textures in megabytes." for="txCacheSize">Memory cache size (in MB)</label><button class="floatright" data-value="1024" id="resettxCacheSize">Reset</button></p>
+<p title="Size of memory cache for enhanced textures in megabytes."><input id="txCacheSize" type="range" min="0" max="1024" step="1" value="1024"><label for="txCacheSize"><span id="txCacheSizeText">1024</span> MB: Memory cache size</label><button class="floatright" data-value="1024" id="resettxCacheSize">Reset</button></p>
 <p>&nbsp;</p>
 <p title="Deposterize texture before enhancement."><input id="txDeposterize" type="checkbox" data-store="txDeposterize"><label for="txDeposterize">Deposterize texture</label></p>
 <p>&nbsp;</p>
@@ -1408,7 +1408,7 @@ HTS: Read textures as they are needed from hard disk."><select id="cache">
 <option value="true" selected>HTS</option>
 </select><label for="cache">Cache type</label></div>
 <p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreasetxHiresVramLimit">-</span><input id="txHiresVramLimit" min="0" max="102400" step="512" value="0" type="number"><span class="numberIncrease" id="increasetxHiresVramLimit">+</span><label title="Limit hi-res textures size in VRAM." for="txHiresVramLimit">VRAM limit (in MB)</label><button class="floatright" data-value="0" id="resettxHiresVramLimit">Reset</button></p>
+<p><input id="txHiresVramLimit" type="range" min="0" max="102400" step="1" value="0"><label for="txHiresVramLimit"><span id="txHiresVramLimitText">0</span> MB: VRAM limit</label><button class="floatright" data-value="0" id="resettxHiresVramLimit">Reset</button></p>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
 <p title="Path to folder with hi-res texture packs (PNG format). Click the box below to change it.">hires_texture<button class="floatright ml-13" id="resetTxPath">Reset</button><button class="floatright" id="openTxPath">Open</button><br><br><div class="box" id="txPath"><span id="txPathText"></span></div></p>
 <p>&nbsp;</p><p>&nbsp;</p>
