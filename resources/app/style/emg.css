@@ -18,7 +18,6 @@ button,select,input,.box,.pointer,.hotkeys label,[type=checkbox] + label,[type=c
 [type=range]:hover::-webkit-slider-runnable-track{background-color:rgba(125,125,225,.5)}
 
 [type=range] + label{padding-left:10px;position:relative;top:3px}
-.gc{padding-right:10px;float:right;position:relative;top:3px}
 
 .palette-red [type=range]::-webkit-slider-thumb{background-color:rgb(225,78,90)}
 .palette-red [type=range]::-webkit-slider-runnable-track{background-color:rgba(200,53,65,.5)}
