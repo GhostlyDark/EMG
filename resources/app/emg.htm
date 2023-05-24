@@ -72,13 +72,13 @@ Rice: HLE"><select class="width250m" id="gfx">
 </select><label for="gfx">Graphics plugin</label></div>
 <p>&nbsp;</p>
 <select class="width250m" id="audio">
-<option value="dummy">Disable</option>
+<option value="dummy">Disabled</option>
 <option value="mupen64plus-audio-sdl" selected>Mupen64Plus Audio SDL</option>
 </select><label for="audio">Audio plugin</label>
 <p>&nbsp;</p>
 <div title="GameCube Adapter: Only works with official Wii U GameCube Adapter,
 Raphnetraw: Only works with Raphnetraw adapters"><select class="width250m" id="input">
-<option value="dummy">Disable</option>
+<option value="dummy">Disabled</option>
 <option value="mupen64plus-input-gca">GameCube Adapter</option>
 <option value="mupen64plus-input-sdl" selected>Mupen64Plus Input SDL</option>
 <option value="mupen64plus-input-raphnetraw">Raphnetraw</option>
@@ -93,7 +93,7 @@ Parallel: LLE only"><select class="width250m" id="rsp">
 </select><label for="rsp">RSP plugin</label></div>
 <p>&nbsp;</p>
 <div title="RSP plugin used when encountering an unknown ucode. HLE RSP only."><select class="width250m" id="RspFallback">
-<option value="">Disable</option>
+<option value="">Disabled</option>
 <option value="mupen64plus-rsp-cxd4" selected>Static Interpreter</option>
 <option value="mupen64plus-rsp-parallel">Parallel RSP</option>
 </select><label for="RspFallback">RSP Fallback</label></div>
@@ -109,11 +109,38 @@ Parallel: LLE only"><select class="width250m" id="rsp">
 <p>&nbsp;</p>
 <p title="Use unique SRAM saves per ROM."><input id="SaveFilenameFormat" type="checkbox" data-store="SaveFilenameFormat"><label for="SaveFilenameFormat">Unique game saves</label></p>
 <p>&nbsp;</p>
-<p title="Force number of cycles per emulated instruction (speed hack, not recommended). Leave at 0 to disable."><span class="numberDecrease" id="decreaseCountPerOp">-</span><input id="CountPerOp" min="0" max="6" step="1" value="0" type="number"><span class="numberIncrease" id="increaseCountPerOp">+</span><label for="CountPerOp">Counter factor</label><button class="floatright" data-value="0" id="resetCountPerOp">Reset</button></p>
+<div title="Force number of cycles per emulated instruction."><select class="width225m" id="CountPerOp">
+<option value="0" selected>Automatic</option>
+<option value="1">1: Highest speed</option>
+<option value="2">2: Default</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6: Lowest speed</option>
+</select><label for="CountPerOp">Counter factor</label></div>
 <p>&nbsp;</p>
-<p title="Reduce number of cycles per update by power of two."><span class="numberDecrease" id="decreaseCountPerOpDenomPot">-</span><input id="CountPerOpDenomPot" min="0" max="11" step="1" value="0" type="number"><span class="numberIncrease" id="increaseCountPerOpDenomPot">+</span><label for="CountPerOpDenomPot">Overclocking factor</label><button class="floatright" data-value="0" id="resetCountPerOpDenomPot">Reset</button></p>
+<div title="Reduce number of cycles per update by power of two."><select class="width225m" id="CountPerOpDenomPot">
+<option value="0" selected>Disabled</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+</select><label for="CountPerOpDenomPot">Overclocking factor</label></div>
 <p>&nbsp;</p>
-<select id="resolution">
+<div title="Dynamic Recompiler offers the best performance. Change this upon encountering issues."><select class="width225m" id="emumode">
+<option value="0">Pure Interpreter</option>
+<option value="1">Cached Interpreter</option>
+<option value="2" selected>Dynamic Recompiler</option>
+</select><label for="emumode">R4300 emulator</label></div>
+<p>&nbsp;</p>
+<select class="width225m" id="resolution">
 <option value="320">320x240</option>
 <option value="640">640x480</option>
 <option value="960">960x720</option>
@@ -123,12 +150,6 @@ Parallel: LLE only"><select class="width250m" id="rsp">
 <option value="2240">2240x1680</option>
 <option value="2560">2560x1920</option>
 </select><label for="resolution">Windowed resolution</label>
-<p>&nbsp;</p>
-<div title="Dynamic Recompiler offers the best performance. Change this upon encountering issues."><select id="emumode">
-<option value="0">Pure Interpreter</option>
-<option value="1">Cached Interpreter</option>
-<option value="2" selected>Dynamic Recompiler</option>
-</select><label for="emumode">R4300 emulator</label></div>
 </div>
 <div id="core_advanced" class="hide mt-10">
 <p title="Disable compiled jump commands in dynamic recompiler (not recommended)."><input id="NoCompiledJump" type="checkbox" data-store="NoCompiledJump"><label for="NoCompiledJump">Disable compiled jump</label></p>
@@ -141,7 +162,18 @@ Parallel: LLE only"><select class="width250m" id="rsp">
 <p>&nbsp;</p>
 <p title="Increment the save state slot after each save operation."><input id="AutoStateSlotIncrement" type="checkbox" data-store="AutoStateSlotIncrement"><label for="AutoStateSlotIncrement">Auto increment state slot</label></p>
 <p>&nbsp;</p>
-<p title="Save state slot (0-9) to use when starting emulation."><span class="numberDecrease" id="decreaseCurrentStateSlot">-</span><input id="CurrentStateSlot" min="0" max="9" step="1" value="0" type="number"><span class="numberIncrease" id="increaseCurrentStateSlot">+</span><label for="CurrentStateSlot">Default state slot</label><button class="floatright" data-value="0" id="resetCurrentStateSlot">Reset</button></p>
+<select id="CurrentStateSlot">
+<option value="0" selected>0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+</select><label for="CurrentStateSlot">Default save state slot</label>
 <p>&nbsp;</p>
 <p title="Duration of SI DMA. Use -1 for default (per-game settings)."><span class="numberDecrease" id="decreaseSiDmaDuration">-</span><input id="SiDmaDuration" min="-1" max="1000" step="10" value="-1" type="number"><span class="numberIncrease" id="increaseSiDmaDuration">+</span><label for="SiDmaDuration">SI DMA duration</label><button class="floatright" data-value="-1" id="resetSiDmaDuration">Reset</button></p>
 <p>&nbsp;</p><p>&nbsp;</p>
@@ -1257,7 +1289,7 @@ If this option is turned off, the output resolution is the same as the rendering
 <p title="Dither with color quantization."><input id="DitheringQuantization" type="checkbox" data-store="DitheringQuantization" checked><label for="DitheringQuantization">Dithering quantization</label></p>
 <p>&nbsp;</p>
 <div title="Dithering mode for image in RDRAM."><select class="width150m" id="RDRAMImageDitheringMode">
-<option value="0">Disable</option>
+<option value="0">Disabled</option>
 <option value="1">Bayer</option>
 <option value="2">Magic square</option>
 <option value="3" selected>Blue noise</option>

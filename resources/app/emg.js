@@ -62,10 +62,10 @@ sliders = ['AnalogDeadzone1','AnalogDeadzone2','AnalogDeadzone3','AnalogDeadzone
 
 overscan = ['OverscanNtscTop','OverscanNtscLeft','OverscanNtscRight','OverscanNtscBottom','OverscanPalTop','OverscanPalLeft','OverscanPalRight','OverscanPalBottom'],
 
-numbers = [...overscan,'NumWorkers','ParallelCropOverscan','ParallelVerticalStretch','txCacheSize','txHiresVramLimit','GammaCorrectionLevel','fontSize','CountPerOp','CountPerOpDenomPot','SiDmaDuration','CurrentStateSlot','VOLUME_ADJUST','VOLUME_DEFAULT','PolygonOffsetFactor','PolygonOffsetUnits'],
+numbers = [...overscan,'NumWorkers','ParallelCropOverscan','ParallelVerticalStretch','txCacheSize','txHiresVramLimit','GammaCorrectionLevel','fontSize','SiDmaDuration','VOLUME_ADJUST','VOLUME_DEFAULT','PolygonOffsetFactor','PolygonOffsetUnits'],
 
 dropdowns = [
-'emumode','resolution','SaveDiskFormat', /* mupen64plus */
+'emumode','resolution','CountPerOp','CountPerOpDenomPot','CurrentStateSlot','SaveDiskFormat', /* mupen64plus */
 'gfx','audio','input','rsp','RspFallback', /* mupen64plus plugins */
 'plugin1','plugin2','plugin3','plugin4','c1','c2','c3','c4','mb1','mb2','mb3', /* mupen64plus-input */
 'PRIMARY_BUFFER_TARGET','RESAMPLE', /* mupen64plus-audio */
