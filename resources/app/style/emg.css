@@ -99,8 +99,7 @@ select + label,[type=text] + label{padding-left:10px}
 .hotkeys label{float:left;text-align:left;min-width:150px}
 .hotkeys input{position:relative;left:-45px}
 .hotkeys button{float:right}
-.hotkeys2 label{min-width:315px}
-input.left{text-align:left}
+#gliden64_hotkeys .hotkeys label{min-width:315px}
 
 header{padding:0;max-width:730px}
 header ul{list-style-type:none;margin:0;padding:0;overflow:hidden}
