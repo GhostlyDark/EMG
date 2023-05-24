@@ -551,7 +551,7 @@ Higher values increase audio latency but reduce the chance of audio drop-outs.">
 <div id="input_gca" class="hide mt-20">
 <p><input id="control_stick_deadzone" type="range" min="0" max="255" value="20"><label for="control_stick_deadzone"><span id="control_stick_deadzoneText">20</span>: Control Stick deadzone</label><button class="floatright" data-value="20" id="resetcontrol_stick_deadzone">Reset</button></p>
 <p>&nbsp;</p>
-<p title="This controls how far you have to move the stick in order to reach max input."><input id="control_stick_sensitivity" type="range" min="0" max="255" value="180"><label for="control_stick_sensitivity"><span id="control_stick_sensitivityText">180</span>: Control Stick sensitivity</label><button class="floatright" data-value="180" id="resetcontrol_stick_sensitivity">Reset</button></p>
+<p title="This controls how far one has to move the stick in order to reach max input."><input id="control_stick_sensitivity" type="range" min="0" max="255" value="180"><label for="control_stick_sensitivity"><span id="control_stick_sensitivityText">180</span>: Control Stick sensitivity</label><button class="floatright" data-value="180" id="resetcontrol_stick_sensitivity">Reset</button></p>
 <p>&nbsp;</p>
 <p><input id="c_stick_deadzone" type="range" min="0" max="255" value="40"><label for="c_stick_deadzone"><span id="c_stick_deadzoneText">40</span>: C-Stick deadzone</label><button class="floatright" data-value="40" id="resetc_stick_deadzone">Reset</button></p>
 <p>&nbsp;</p>
@@ -1233,29 +1233,29 @@ If this option is turned off, the output resolution is the same as the rendering
 <option value="15">15</option>
 <option value="16">16</option>
 </select><label for="useNativeResolutionFactor">Native resolution factor</label></div>
-<p>&nbsp;</p>
+<p>&nbsp;</p><p>&nbsp;</p>
 <p title="Override gamma correction specified by the game."><input id="ForceGammaCorrection" type="checkbox" data-store="ForceGammaCorrection"><label for="ForceGammaCorrection">Force gamma correction</label></p>
 <p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreaseGammaCorrectionLevel">-</span><input id="GammaCorrectionLevel" min="1.00" max="4.00" step="0.1" value="1.00" type="number"><span class="numberIncrease" id="increaseGammaCorrectionLevel">+</span><label for="GammaCorrectionLevel">Gamma correction level</label><button class="floatright" data-value="1.00" id="resetGammaCorrectionLevel">Reset</button></p>
+<p><input id="GammaCorrectionLevel" type="range" min="1" max="4" step="0.1" value="1"><label for="GammaCorrectionLevel"><span id="GammaCorrectionLevelText">1.00</span>: Gamma correction level</label><button class="floatright" data-value="1" id="resetGammaCorrectionLevel">Reset</button></p>
 </div>
 <div id="gliden64_overscan" class="hide mt-10">
 <p title="Crop image to remove black bars."><input id="EnableOverscan" type="checkbox" data-store="EnableOverscan"><label for="EnableOverscan">Use overscan</label><button class="floatright" id="reset_overscan">Reset all</button></p>
 <p>&nbsp;</p><p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreaseOverscanNtscTop">-</span><input id="OverscanNtscTop" min="0" max="99" step="1" value="0" type="number"><span class="numberIncrease" id="increaseOverscanNtscTop">+</span><label for="OverscanNtscTop">NTSC top</label><button class="floatright" data-value="0" id="resetOverscanNtscTop">Reset</button></p>
+<p><input id="OverscanNtscTop" type="range" min="0" max="99" step="1" value="0"><label for="OverscanNtscTop"><span id="OverscanNtscTopText">0</span>: NTSC top</label><button class="floatright" data-value="0" id="resetOverscanNtscTop">Reset</button></p>
 <p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreaseOverscanNtscLeft">-</span><input id="OverscanNtscLeft" min="0" max="99" step="1" value="0" type="number"><span class="numberIncrease" id="increaseOverscanNtscLeft">+</span><label for="OverscanNtscLeft">NTSC left</label><button class="floatright" data-value="0" id="resetOverscanNtscLeft">Reset</button></p>
+<p><input id="OverscanNtscLeft" type="range" min="0" max="99" step="1" value="0"><label for="OverscanNtscLeft"><span id="OverscanNtscLeftText">0</span>: NTSC left</label><button class="floatright" data-value="0" id="resetOverscanNtscLeft">Reset</button></p>
 <p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreaseOverscanNtscRight">-</span><input id="OverscanNtscRight" min="0" max="99" step="1" value="0" type="number"><span class="numberIncrease" id="increaseOverscanNtscRight">+</span><label for="OverscanNtscRight">NTSC right</label><button class="floatright" data-value="0" id="resetOverscanNtscRight">Reset</button></p>
+<p><input id="OverscanNtscRight" type="range" min="0" max="99" step="1" value="0"><label for="OverscanNtscRight"><span id="OverscanNtscRightText">0</span>: NTSC right</label><button class="floatright" data-value="0" id="resetOverscanNtscRight">Reset</button></p>
 <p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreaseOverscanNtscBottom">-</span><input id="OverscanNtscBottom" min="0" max="99" step="1" value="0" type="number"><span class="numberIncrease" id="increaseOverscanNtscBottom">+</span><label for="OverscanNtscBottom">NTSC bottom</label><button class="floatright" data-value="0" id="resetOverscanNtscBottom">Reset</button></p>
+<p><input id="OverscanNtscBottom" type="range" min="0" max="99" step="1" value="0"><label for="OverscanNtscBottom"><span id="OverscanNtscBottomText">0</span>: NTSC bottom</label><button class="floatright" data-value="0" id="resetOverscanNtscBottom">Reset</button></p>
 <p>&nbsp;</p><p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreaseOverscanPalTop">-</span><input id="OverscanPalTop" min="0" max="99" value="0" step="1" type="number"><span class="numberIncrease" id="increaseOverscanPalTop">+</span><label for="OverscanPalTop">PAL top</label><button class="floatright" data-value="0" id="resetOverscanPalTop">Reset</button></p>
+<p><input id="OverscanPalTop" type="range" min="0" max="99" step="1" value="0"><label for="OverscanPalTop"><span id="OverscanPalTopText">0</span>: PAL top</label><button class="floatright" data-value="0" id="resetOverscanPalTop">Reset</button></p>
 <p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreaseOverscanPalLeft">-</span><input id="OverscanPalLeft" min="0" max="99" value="0" step="1" type="number"><span class="numberIncrease" id="increaseOverscanPalLeft">+</span><label for="OverscanPalLeft">PAL left</label><button class="floatright" data-value="0" id="resetOverscanPalLeft">Reset</button></p>
+<p><input id="OverscanPalLeft" type="range" min="0" max="99" step="1" value="0"><label for="OverscanPalLeft"><span id="OverscanPalLeftText">0</span>: PAL left</label><button class="floatright" data-value="0" id="resetOverscanPalLeft">Reset</button></p>
 <p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreaseOverscanPalRight">-</span><input id="OverscanPalRight" min="0" max="99" value="0" step="1" type="number"><span class="numberIncrease" id="increaseOverscanPalRight">+</span><label for="OverscanPalRight">PAL right</label><button class="floatright" data-value="0" id="resetOverscanPalRight">Reset</button></p>
+<p><input id="OverscanPalRight" type="range" min="0" max="99" step="1" value="0"><label for="OverscanPalRight"><span id="OverscanPalRightText">0</span>: PAL right</label><button class="floatright" data-value="0" id="resetOverscanPalRight">Reset</button></p>
 <p>&nbsp;</p>
-<p><span class="numberDecrease" id="decreaseOverscanPalBottom">-</span><input id="OverscanPalBottom" min="0" max="99" value="0" step="1" type="number"><span class="numberIncrease" id="increaseOverscanPalBottom">+</span><label for="OverscanPalBottom">PAL bottom</label><button class="floatright" data-value="0" id="resetOverscanPalBottom">Reset</button></p>
+<p><input id="OverscanPalBottom" type="range" min="0" max="99" step="1" value="0"><label for="OverscanPalBottom"><span id="OverscanPalBottomText">0</span>: PAL bottom</label><button class="floatright" data-value="0" id="resetOverscanPalBottom">Reset</button></p>
 </div>
 <div id="gliden64_emulation" class="hide mt-10">
 <p title="Use GLideN64 per-game settings."><input id="EnableCustomSettings" type="checkbox" data-store="EnableCustomSettings" checked><label for="EnableCustomSettings">Per-game settings</label></p>
@@ -1417,10 +1417,10 @@ HTS: Read textures as they are needed from hard disk."><select id="cache">
 <p title="Path to folder where plugin saves dumped textures. Click the box below to change it.">texture_dump<button class="floatright ml-13" id="resetTxDumpPath">Reset</button><button class="floatright" id="openTxDumpPath">Open</button><br><br><div class="box" id="txDumpPath"><span id="txDumpPathText"></span></div></p>
 </div>
 <div id="gliden64_osd" class="hide mt-10">
-<p><span class="numberDecrease" id="decreasefontSize">-</span><input id="fontSize" min="6" max="99" step="1" value="18" type="number"><span class="numberIncrease" id="increasefontSize">+</span><label for="fontSize">Font size (in px)</label><button class="floatright" data-value="18" id="resetfontSize">Reset</button></p>
+<p><input id="fontSize" type="range" min="6" max="99" step="1" value="18"><label for="fontSize"><span id="fontSizeText">18</span>: Font size</label><button class="floatright" data-value="18" id="resetfontSize">Reset</button></p>
 <p>&nbsp;</p>
 <p><input id="fontColor" value="#B5E61D" type="color" data-store="fontColor"><label for="fontColor">Font color</label><button class="floatright" data-value="#B5E61D" id="resetfontColor">Reset</button></p>
-<p>&nbsp;</p>
+<p>&nbsp;</p><p>&nbsp;</p>
 <p><input id="ShowFPS" type="checkbox" data-store="ShowFPS"><label for="ShowFPS">Show FPS</label></p>
 <p>&nbsp;</p>
 <p><input id="ShowVIS" type="checkbox" data-store="ShowVIS"><label for="ShowVIS">Show VI/s</label></p>
@@ -1487,11 +1487,11 @@ HTS: Read textures as they are needed from hard disk."><select id="cache">
 <p>&nbsp;</p>
 <div id="parallel_video" class="mt-10">
 <p><input id="ParallelWidescreenStretch" type="checkbox" data-store="ParallelWidescreenStretch"><label for="ParallelWidescreenStretch">Widescreen (stretch)</label></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p title="Amount of overscan pixels to crop."><input id="ParallelCropOverscan" type="range" min="0" max="99" step="1" value="0"><label for="ParallelCropOverscan"><span id="ParallelCropOverscanText">0</span>: Crop overscan</label><button class="floatright" data-value="0" id="resetParallelCropOverscan">Reset</button></p>
 <p>&nbsp;</p>
-<p title="Amount of overscan pixels to crop."><span class="numberDecrease" id="decreaseParallelCropOverscan">-</span><input id="ParallelCropOverscan" min="0" max="99" step="1" value="0" type="number"><span class="numberIncrease" id="increaseParallelCropOverscan">+</span><label for="ParallelCropOverscan">Crop overscan</label><button class="floatright" data-value="0" id="resetParallelCropOverscan">Reset</button></p>
-<p>&nbsp;</p>
-<p title="Amount of pixels to stretch by vertically. Can fix PAL ports that didn't fill the PAL resolution of 288p (use value of 24 in that case)."><span class="numberDecrease" id="decreaseParallelVerticalStretch">-</span><input id="ParallelVerticalStretch" min="0" max="99" step="1" value="0" type="number"><span class="numberIncrease" id="increaseParallelVerticalStretch">+</span><label for="ParallelVerticalStretch">Vertical stretch</label><button class="floatright" data-value="0" id="resetParallelVerticalStretch">Reset</button></p>
-<p>&nbsp;</p>
+<p title="Amount of pixels to stretch by vertically. Can fix PAL ports that didn't fill the PAL resolution of 288p (use value of 24 in that case)."><input id="ParallelVerticalStretch" type="range" min="0" max="99" step="1" value="0"><label for="ParallelVerticalStretch"><span id="ParallelVerticalStretchText">0</span>: Vertical stretch</label><button class="floatright" data-value="0" id="resetParallelVerticalStretch">Reset</button></p>
+<p>&nbsp;</p><p>&nbsp;</p>
 <select class="width125m" id="ParallelUpscaling">
 <option value="1" selected>1x</option>
 <option value="2">2x</option>
@@ -1547,10 +1547,10 @@ HTS: Read textures as they are needed from hard disk."><select id="cache">
 <p>&nbsp;</p>
 <p><input id="ForcePolygonOffset" type="checkbox" data-store="ForcePolygonOffset"><label for="ForcePolygonOffset">Use polygon offset</label></p>
 <p>&nbsp;</p>
-<p title="Specifies a scale factor that is used to create a variable depth offset for each polygon."><span class="numberDecrease" id="decreasePolygonOffsetFactor">-</span><input id="PolygonOffsetFactor" min="0.00" max="10.00" step="0.1" value="0.00" type="number"><span class="numberIncrease" id="increasePolygonOffsetFactor">+</span><label for="PolygonOffsetFactor">Polygon offset factor</label><button class="floatright" data-value="0.00" id="resetPolygonOffsetFactor">Reset</button></p>
+<p title="Specifies a scale factor that is used to create a variable depth offset for each polygon."><input id="PolygonOffsetFactor" type="range" min="0" max="10" step="0.1" value="0"><label for="PolygonOffsetFactor"><span id="PolygonOffsetFactorText">0.00</span>: Polygon offset factor</label><button class="floatright" data-value="0" id="resetPolygonOffsetFactor">Reset</button></p>
 <p>&nbsp;</p>
-<p title="Is multiplied by an implementation-specific value to create a constant depth offset."><span class="numberDecrease" id="decreasePolygonOffsetUnits">-</span><input id="PolygonOffsetUnits" min="0.00" max="10.00" step="0.1" value="0.00" type="number"><span class="numberIncrease" id="increasePolygonOffsetUnits">+</span><label for="PolygonOffsetUnits">Polygon offset units</label><button class="floatright" data-value="0.00" id="resetPolygonOffsetUnits">Reset</button></p>
-<p>&nbsp;</p>
+<p title="Is multiplied by an implementation-specific value to create a constant depth offset."><input id="PolygonOffsetUnits" type="range" min="0" max="10" step="0.1" value="0"><label for="PolygonOffsetUnits"><span id="PolygonOffsetUnitsText">0.00</span>: Polygon offset units</label><button class="floatright" data-value="0" id="resetPolygonOffsetUnits">Reset</button></p>
+<p>&nbsp;</p><p>&nbsp;</p>
 <select class="width200m" id="AnisotropicFiltering">
 <option value="0" selected>Off</option>
 <option value="2">2x</option>

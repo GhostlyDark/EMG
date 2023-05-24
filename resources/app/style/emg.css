@@ -5,7 +5,7 @@ button,select,input,.box,.pointer,.hotkeys label,[type=checkbox] + label,[type=c
 [type=color]{border:0;outline:0;background:none;position:relative;top:2px}
 [type=color] + label{padding-left:5px}
 
-[type=range]{-webkit-appearance:none;background:transparent;width:200px;position:relative;top:3px;outline:0}
+[type=range]{-webkit-appearance:none;background:transparent;width:195px;position:relative;top:3px;outline:0}
 [type=range]::-webkit-slider-thumb{-webkit-appearance:none;margin-top:-5px;background-color:rgb(125,125,225);height:20px;width:20px;border-radius:25px;transition:background-color .2s cubic-bezier(.4,0,.22,1)}
 [type=range]::-webkit-slider-runnable-track{background-color:rgba(100,100,200,.5);border-radius:25px;height:10px;transition:background-color .2s cubic-bezier(.4,0,.22,1)}
 
