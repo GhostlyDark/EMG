@@ -314,8 +314,8 @@ id('ForceGammaCorrection').addEventListener('change', ForceGammaCorrectionDisabl
 ForceGammaCorrectionDisable()
 
 function EnableOverscanDisable(){
-if(id('EnableOverscan').checked){id('OverscanNtscTop').disabled = id('OverscanNtscLeft').disabled = id('OverscanNtscRight').disabled = id('OverscanNtscBottom').disabled = id('OverscanPalTop').disabled = id('OverscanPalLeft').disabled = id('OverscanPalRight').disabled = id('OverscanPalBottom').disabled = false}
-else{id('OverscanNtscTop').disabled = id('OverscanNtscLeft').disabled = id('OverscanNtscRight').disabled = id('OverscanNtscBottom').disabled = id('OverscanPalTop').disabled = id('OverscanPalLeft').disabled = id('OverscanPalRight').disabled = id('OverscanPalBottom').disabled = true}}
+if(id('EnableOverscan').checked){overscan.forEach(os => {id(os).disabled = false})}
+else{overscan.forEach(os => {id(os).disabled = true})}}
 id('EnableOverscan').addEventListener('change', EnableOverscanDisable)
 EnableOverscanDisable()
 
