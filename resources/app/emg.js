@@ -1333,6 +1333,7 @@ if(id('nospeedlimit').checked){audio = 'dummy';vsync = 'Video-General[VerticalSy
 
 if(id('audio').value === 'dummy')audio = 'dummy'
 if(id('input').value === 'dummy')input = 'dummy'
+if(id('RspFallback').value === '')RspFallback = 'Rsp-HLE[RspFallback]='
 
 
 
