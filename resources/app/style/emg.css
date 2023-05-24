@@ -55,9 +55,7 @@ button,select,input,.box,.pointer,.hotkeys label,[type=checkbox] + label,[type=c
 .palette-ocean [type=range]:hover::-webkit-slider-runnable-track{background-color:rgba(33,125,255,.5)}
 
 [type=text]{max-width:100px;text-align:center;height:19px}
-[type=number]{text-align:center;pointer-events:none}
-[type=number]::-webkit-inner-spin-button{-webkit-appearance:none}
-[type=number],[type=text]{border:0;outline:0;padding:5px;transition:background-color .2s cubic-bezier(.4,0,.22,1);margin:0;background-color:#eee;appearance:none}
+[type=text]{border:0;outline:0;padding:5px;transition:background-color .2s cubic-bezier(.4,0,.22,1);margin:0;background-color:#eee;appearance:none}
 [type=text]:hover{background-color:#ddd}
 [type=text]:active,[type=text]:focus{background-color:#ccc}
 
@@ -71,12 +69,12 @@ button:active,select:active,select:focus{background-color:#ccc}
 select{border:0;outline:0;padding:5px 35px 5px 8px;transition:background-color .2s cubic-bezier(.4,0,.22,1);margin:0;background:url(arrow-down.svg) no-repeat 99% #eee;appearance:none;height:29px}
 
 .dark select{background:url(arrow-down-dark.svg) no-repeat 99% #222}
-.dark button,.dark select,.dark [type=number],.dark [type=text]{background-color:#222;color:#fff}
+.dark button,.dark select,.dark [type=text]{background-color:#222;color:#fff}
 .dark button:hover,.dark select:hover,.dark [type=text]:hover{background-color:#333}
 .dark button:active,.dark select:active,.dark select:focus,.dark [type=text]:active,.dark [type=text]:focus{background-color:#444}
 
-.custom select,.custom button,.custom [type=number],.custom [type=text]{background-color:rgba(200,200,200,.5)}
-.dark.custom select,.dark.custom button,.dark.custom [type=number],.dark.custom [type=text]{background-color:rgba(40,40,40,.5)}
+.custom select,.custom button,.custom [type=text]{background-color:rgba(200,200,200,.5)}
+.dark.custom select,.dark.custom button,.dark.custom [type=text]{background-color:rgba(40,40,40,.5)}
 .custom select:hover,.custom button:hover,.custom [type=text]:hover{background-color:rgba(200,200,200,.75)}
 .dark.custom select:hover,.dark.custom button:hover,.dark.custom [type=text]:hover{background-color:rgba(40,40,40,.75)}
 .custom select:active,.custom select:focus,.custom button:active,.custom [type=text]:active,.custom [type=text]:focus{background-color:rgba(200,200,200,1)}
@@ -93,7 +91,7 @@ option{background:#efefef}
 input.floatright,select.floatright{top:-5px}
 input:disabled,select:disabled,input:disabled + label,input:disabled + span + label,select:disabled + label{opacity:.5}
 [type=checkbox] + label{position:relative;top:-2px;left:-6px;padding-left:11px}
-[type=number] + label,select + label,[type=text] + label{padding-left:10px}
+select + label,[type=text] + label{padding-left:10px}
 .hotkeys{text-align:center;display:inline-block;width:660px;padding:20px;margin-top:10px;background-color:rgba(0,0,0,.1)}
 .custom .hotkeys{background-color:rgba(0,0,0,.02)}
 .dark .hotkeys{background-color:rgba(0,0,0,.2)}
@@ -103,11 +101,6 @@ input:disabled,select:disabled,input:disabled + label,input:disabled + span + la
 .hotkeys button{float:right}
 .hotkeys2 label{min-width:315px}
 input.left{text-align:left}
-
-.numberIncrease{font-size:27px;padding-left:5px;padding-right:10px;position:relative;top:3px}
-.numberDecrease{font-size:35px;padding-right:5px;position:relative;top:3px}
-.numberIncrease,.numberDecrease{cursor:pointer;transition:opacity .2s cubic-bezier(.4,0,.22,1)}
-.numberIncrease:hover,.numberDecrease:hover{opacity:.7}
 
 header{padding:0;max-width:730px}
 header ul{list-style-type:none;margin:0;padding:0;overflow:hidden}

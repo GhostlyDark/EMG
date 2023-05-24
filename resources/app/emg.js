@@ -60,9 +60,7 @@ defaultPlugins = ['mupen64plus-audio-sdl','mupen64plus-input-gca','mupen64plus-i
 
 overscan = ['OverscanNtscTop','OverscanNtscLeft','OverscanNtscRight','OverscanNtscBottom','OverscanPalTop','OverscanPalLeft','OverscanPalRight','OverscanPalBottom'],
 
-sliders = [...overscan,'VOLUME_ADJUST','VOLUME_DEFAULT','AnalogDeadzone1','AnalogDeadzone2','AnalogDeadzone3','AnalogDeadzone4','AnalogPeak1','AnalogPeak2','AnalogPeak3','AnalogPeak4','control_stick_deadzone','control_stick_sensitivity','c_stick_deadzone','trigger_threshold','MouseSensitivityX','MouseSensitivityY','GammaCorrectionLevel','txCacheSize','txHiresVramLimit','fontSize','ParallelCropOverscan','ParallelVerticalStretch','PolygonOffsetFactor','PolygonOffsetUnits'],
-
-numbers = ['NumWorkers','SiDmaDuration'],
+sliders = [...overscan,'SiDmaDuration','VOLUME_ADJUST','VOLUME_DEFAULT','AnalogDeadzone1','AnalogDeadzone2','AnalogDeadzone3','AnalogDeadzone4','AnalogPeak1','AnalogPeak2','AnalogPeak3','AnalogPeak4','control_stick_deadzone','control_stick_sensitivity','c_stick_deadzone','trigger_threshold','MouseSensitivityX','MouseSensitivityY','NumWorkers','GammaCorrectionLevel','txCacheSize','txHiresVramLimit','fontSize','ParallelCropOverscan','ParallelVerticalStretch','PolygonOffsetFactor','PolygonOffsetUnits'],
 
 dropdowns = [
 'emumode','resolution','CountPerOp','CountPerOpDenomPot','CurrentStateSlot','SaveDiskFormat', /* mupen64plus */
@@ -278,6 +276,7 @@ if(localStorage.getItem(dropdown) != null)drop.value = localStorage.getItem(drop
 if(drop.selectedIndex === -1){localStorage.removeItem(dropdown);drop.options[0].disabled === true ? drop.selectedIndex = 1 : drop.selectedIndex = 0}
 drop.addEventListener('change', function(){localStorage.setItem(dropdown, drop.value)})})
 
+id('NumWorkers').max = navigator.hardwareConcurrency;
 sliders.forEach(slider => { /* slider inputs */
 var slider_input = id(slider),
 slider_reset = id('reset'+slider),
@@ -289,36 +288,6 @@ if(slider_input.step.includes('.'))digits=2;
 slider_reset.addEventListener('click', function(){slider_input.value = slider_value;localStorage.removeItem(slider);slider_text.innerHTML = parseFloat(slider_input.value).toFixed(digits)})
 if(localStorage.getItem(slider) != null){slider_input.value = localStorage.getItem(slider);slider_text.innerHTML = parseFloat(slider_input.value).toFixed(digits)}
 slider_input.addEventListener('input', function(){localStorage.setItem(slider, slider_input.value);slider_text.innerHTML = parseFloat(slider_input.value).toFixed(digits)})})
-
-id('NumWorkers').max = navigator.hardwareConcurrency;
-numbers.forEach(number => { /* number inputs */
-var number_input = id(number),
-number_reset = id('reset'+number),
-number_value = number_reset.dataset.value,
-number_decrease = id('decrease'+number),
-number_increase = id('increase'+number),
-digits = 0;
-if(number_input.step.includes('.'))digits=2;
-
-number_reset.addEventListener('click', function(){number_input.value = number_value; localStorage.removeItem(number)})
-if(localStorage.getItem(number) != null)number_input.value = localStorage.getItem(number)
-
-number_input.addEventListener('change', function(){localStorage.setItem(number, number_input.value)})
-number_input.addEventListener('focus', function(){number_input.blur()})
-
-number_decrease.addEventListener('click', function(){
-if(number_input.disabled)return
-if(number_input.value != number_input.min){
-if(number_input.id === 'SiDmaDuration' && number_input.value === '0'){number_input.value = '-1'}
-else{number_input.value = (parseFloat(number_input.value) - number_input.step*1).toFixed(digits)}
-localStorage.setItem(number, number_input.value)}})
-
-number_increase.addEventListener('click', function(){
-if(number_input.disabled)return
-if(number_input.value != number_input.max){
-if(number_input.id === 'SiDmaDuration' && number_input.value === '-1'){number_input.value = '0'}
-else{number_input.value = (parseFloat(number_input.value) + number_input.step*1).toFixed(digits)}
-localStorage.setItem(number, number_input.value)}})})
 
 
 

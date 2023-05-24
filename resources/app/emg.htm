@@ -175,7 +175,7 @@ Parallel: LLE only"><select class="width250m" id="rsp">
 <option value="9">9</option>
 </select><label for="CurrentStateSlot">Default save state slot</label>
 <p>&nbsp;</p>
-<p title="Duration of SI DMA. Use -1 for default (per-game settings)."><span class="numberDecrease" id="decreaseSiDmaDuration">-</span><input id="SiDmaDuration" min="-1" max="1000" step="10" value="-1" type="number"><span class="numberIncrease" id="increaseSiDmaDuration">+</span><label for="SiDmaDuration">SI DMA duration</label><button class="floatright" data-value="-1" id="resetSiDmaDuration">Reset</button></p>
+<p title="Duration of SI DMA. Use -1 for per-game settings."><input id="SiDmaDuration" type="range" min="-1" max="1000" step="1" value="-1"><label for="SiDmaDuration"><span id="SiDmaDurationText">-1</span>: SI DMA duration</label><button class="floatright" data-value="-1" id="resetSiDmaDuration">Reset</button></p>
 <p>&nbsp;</p><p>&nbsp;</p>
 <p>mupen64plus error log</p>
 <div class="mt-15" id="log"></div>
@@ -1162,15 +1162,15 @@ For gamepad hotkey combos, press another button by focusing the box a second tim
 <div id="angrylion_emulation" class="hide mt-10">
 <p title="Use a busyloop while waiting for work."><input id="BusyLoop" type="checkbox" data-store="BusyLoop"><label for="BusyLoop">Use busyloop</label></p>
 <p>&nbsp;</p>
-<p><input id="Parallel" type="checkbox" data-store="Parallel" checked><label for="Parallel">Multi-core rendering</label></p>
-<p>&nbsp;</p>
-<p title="Number of logical processors to use. 0 uses all."><span class="numberDecrease" id="decreaseNumWorkers">-</span><input id="NumWorkers" min="0" step="1" value="0" type="number"><span class="numberIncrease" id="increaseNumWorkers">+</span><label for="NumWorkers">Rendering threads</label><button class="floatright" data-value="0" id="resetNumWorkers">Reset</button></p>
-<p>&nbsp;</p>
 <select class="width200m" id="DpCompat">
 <option value="0" selected>Fast</option>
 <option value="1">Moderate</option>
 <option value="2">Slow</option>
 </select><label for="DpCompat">Compatibility mode</label>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p><input id="Parallel" type="checkbox" data-store="Parallel" checked><label for="Parallel">Multi-core rendering</label></p>
+<p>&nbsp;</p>
+<p title="Number of logical processors to use. 0 uses all."><input id="NumWorkers" type="range" min="0" step="1" value="0"><label for="NumWorkers"><span id="NumWorkersText">0</span>: Rendering threads</label><button class="floatright" data-value="0" id="resetNumWorkers">Reset</button></p>
 </div>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
 <div id="gliden64Anchor" class="anchor"></div>
