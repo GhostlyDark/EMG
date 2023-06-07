@@ -108,7 +108,7 @@ if(localStorage.getItem(c+'Element') != null)id(c).innerHTML = localStorage.getI
 id('refresh'+c).addEventListener('click', function(){refresh(id(c))})})
 
 function refresh(drop){ /* update SDL device dropdown */
-Array.from(drop.querySelectorAll('.generated')).forEach(generated => generated.remove());
+Array.from(drop.getElementsByTagName('option')).forEach(opt => {if(opt.textContent != 'Keyboard')opt.remove()})
 let list = jsRefresh();
 var datasplit = list.split(regsplit);
 datasplit.forEach(device => update(device));
@@ -118,7 +118,6 @@ if(device === '' || device === 'No joysticks were found' || device === null || d
 localStorage.removeItem(drop.id)
 var newDevice = document.createElement('option');
 newDevice.value = newDevice.textContent = device;
-newDevice.className = 'generated';
 drop.appendChild(newDevice)}
 
 localStorage.setItem(drop.id+'Element',(drop.innerHTML))}
