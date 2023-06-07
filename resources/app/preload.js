@@ -71,7 +71,7 @@ ipcRenderer.once('jsClosed', () => {joyinput.blur()})}
 
 ipcRenderer.on('m64pLog', (e, spawnargs, stdout) => {
 console.dir(JSON.stringify(spawnargs, null, 1) + '\n' + stdout)
-if(log.innerHTML != '')log.innerHTML = ''
+if(log.textContent != '')log.textContent = ''
 var data = '', line = stdout.replace(/\r/gm,'').split(/\s*\n/);
 line.forEach(line => {
 if(line.includes('RSP Error: RSP: unknown opcode'))line = 'RSP: unknown opcode'
