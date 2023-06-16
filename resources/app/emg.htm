@@ -1494,8 +1494,8 @@ HTS: Read textures as they are needed from hard disk."><select id="cache">
 <p title="Amount of pixels to stretch by vertically. Can fix PAL ports that didn't fill the PAL resolution of 288p (use value of 24 in that case)."><input id="ParallelVerticalStretch" type="range" min="0" max="99" step="1" value="0"><label for="ParallelVerticalStretch"><span id="ParallelVerticalStretchText">0</span>: Vertical stretch</label><button class="floatright" data-value="0" id="resetParallelVerticalStretch">Reset</button></p>
 <p>&nbsp;</p><p>&nbsp;</p>
 <select class="width125m" id="ParallelUpscaling">
-<option value="1" selected>1x</option>
-<option value="2">2x</option>
+<option value="1">1x</option>
+<option value="2" selected>2x</option>
 <option value="4">4x</option>
 <option value="8">8x</option>
 </select><label for="ParallelUpscaling">Upscaling</label>
@@ -1523,11 +1523,11 @@ HTS: Read textures as they are needed from hard disk."><select id="cache">
 <p>&nbsp;</p>
 <p title="Native resolution TEX_RECT. TEX_RECT primitives should generally be rendered at native resolution to avoid seams."><input id="ParallelNativeTextRECT" type="checkbox" data-store="ParallelNativeTextRECT" checked><label for="ParallelNativeTextRECT">Native texrect</label></p>
 <p>&nbsp;</p>
-<p title="Use native texture LOD computation when upscaling, effectively a LOD bias."><input id="ParallelNativeTextLOD" type="checkbox" data-store="ParallelNativeTextLOD"><label for="ParallelNativeTextLOD">Native texture LOD</label></p>
+<p title="Use native texture LOD computation when upscaling, effectively a LOD bias."><input id="ParallelNativeTextLOD" type="checkbox" data-store="ParallelNativeTextLOD" checked><label for="ParallelNativeTextLOD">Native texture LOD</label></p>
 <p>&nbsp;</p>
-<p title="Enable superscaling of dithering when upsampling."><input id="ParallelSuperscaledDither" type="checkbox" data-store="ParallelSuperscaledDither"><label for="ParallelSuperscaledDither">Superscaled dither</label></p>
+<p title="Enable superscaling of dithering when upsampling."><input id="ParallelSuperscaledDither" type="checkbox" data-store="ParallelSuperscaledDither" checked><label for="ParallelSuperscaledDither">Superscaled dither</label></p>
 <p>&nbsp;</p>
-<p title="Enable superscaling of readbacks when upsampling."><input id="ParallelSuperscaledReads" type="checkbox" data-store="ParallelSuperscaledReads"><label for="ParallelSuperscaledReads">Superscaled reads</label></p>
+<p title="Enable superscaling of readbacks when upsampling."><input id="ParallelSuperscaledReads" type="checkbox" data-store="ParallelSuperscaledReads" checked><label for="ParallelSuperscaledReads">Superscaled reads</label></p>
 <p>&nbsp;</p>
 <p title="Enable synchronizing of RDP and CPU."><input id="ParallelSynchronousRDP" type="checkbox" data-store="ParallelSynchronousRDP" checked><label for="ParallelSynchronousRDP">Synchronize RDP and CPU</label></p>
 <p>&nbsp;</p>
