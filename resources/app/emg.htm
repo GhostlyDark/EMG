@@ -102,14 +102,20 @@ Parallel: LLE only"><select class="width250m" id="rsp">
 <p title="Use High Level Emulation for graphics if RSP plugin is Static Interpreter."><input id="rspGFX" type="checkbox" data-store="rspGFX" checked><label for="rspGFX">Use HLE for graphics</label></p>
 </div>
 <div id="core_core" class="hide mt-10">
-<p><input id="vsync" type="checkbox" data-store="vsync"><label for="vsync">V-Sync</label></p>
+<p><input id="vsync" type="checkbox" data-store="vsync"><label for="vsync">Enable V-Sync</label></p>
 <p>&nbsp;</p>
-<p title="Start emulation in fullscreen."><input id="fullscreen" type="checkbox" data-store="fullscreen"><label for="fullscreen">Fullscreen</label></p>
+<p><input id="fullscreen" type="checkbox" data-store="fullscreen"><label for="fullscreen">Launch in fullscreen</label></p>
 <p>&nbsp;</p>
-<p title="Disable extra memory (4 MB Expansion Pak)."><input id="exp" type="checkbox" data-store="exp"><label for="exp">Force 4 MB</label></p>
+<p title="Disable extra memory (4 MB Expansion Pak)."><input id="exp" type="checkbox" data-store="exp"><label for="exp">Use 4 MB</label></p>
 <p>&nbsp;</p>
 <p title="Use unique SRAM saves per ROM."><input id="SaveFilenameFormat" type="checkbox" data-store="SaveFilenameFormat"><label for="SaveFilenameFormat">Unique game saves</label></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p title="Disable compiled jump commands in dynamic recompiler (not recommended)."><input id="NoCompiledJump" type="checkbox" data-store="NoCompiledJump"><label for="NoCompiledJump">Disable compiled jump</label></p>
 <p>&nbsp;</p>
+<p title="Randomize PI/SI interrupt timing."><input id="RandomizeInterrupt" type="checkbox" data-store="RandomizeInterrupt" checked><label for="RandomizeInterrupt">Randomize interrupt</label></p>
+<p>&nbsp;</p>
+<p title="Duration of SI DMA. Use -1 for per-game settings."><input id="SiDmaDuration" type="range" min="-1" max="1000" step="1" value="-1"><label for="SiDmaDuration"><span id="SiDmaDurationText">-1</span>: SI DMA duration</label><button class="floatright" data-value="-1" id="resetSiDmaDuration">Reset</button></p>
+<p>&nbsp;</p><p>&nbsp;</p>
 <div title="Force number of cycles per emulated instruction."><select class="width225m" id="CountPerOp">
 <option value="0" selected>Automatic</option>
 <option value="1">1: Highest speed</option>
@@ -153,14 +159,10 @@ Parallel: LLE only"><select class="width250m" id="rsp">
 </select><label for="resolution">Windowed resolution</label>
 </div>
 <div id="core_advanced" class="hide mt-10">
-<p title="Disable compiled jump commands in dynamic recompiler (not recommended)."><input id="NoCompiledJump" type="checkbox" data-store="NoCompiledJump"><label for="NoCompiledJump">Disable compiled jump</label></p>
-<p>&nbsp;</p>
 <p title="Disables speed limit, V-Sync and mutes audio. Useful for performance testing."><input id="nospeedlimit" type="checkbox" data-store="nospeedlimit"><label for="nospeedlimit">Disable speed limit</label></p>
 <p>&nbsp;</p>
-<p title="Randomize PI/SI interrupt timing."><input id="RandomizeInterrupt" type="checkbox" data-store="RandomizeInterrupt" checked><label for="RandomizeInterrupt">Randomize interrupt</label></p>
-<p>&nbsp;</p>
-<p title="Print more information on logging."><input id="verbose" type="checkbox" data-store="verbose"><label for="verbose">Verbose logging</label></p>
-<p>&nbsp;</p>
+<p title="Print more information on logging."><input id="verbose" type="checkbox" data-store="verbose"><label for="verbose">Enable verbose logging</label></p>
+<p>&nbsp;</p><p>&nbsp;</p>
 <p title="Increment the save state slot after each save operation."><input id="AutoStateSlotIncrement" type="checkbox" data-store="AutoStateSlotIncrement"><label for="AutoStateSlotIncrement">Auto increment state slot</label></p>
 <p>&nbsp;</p>
 <select id="CurrentStateSlot">
@@ -175,8 +177,6 @@ Parallel: LLE only"><select class="width250m" id="rsp">
 <option value="8">8</option>
 <option value="9">9</option>
 </select><label for="CurrentStateSlot">Default save state slot</label>
-<p>&nbsp;</p>
-<p title="Duration of SI DMA. Use -1 for per-game settings."><input id="SiDmaDuration" type="range" min="-1" max="1000" step="1" value="-1"><label for="SiDmaDuration"><span id="SiDmaDurationText">-1</span>: SI DMA duration</label><button class="floatright" data-value="-1" id="resetSiDmaDuration">Reset</button></p>
 <p>&nbsp;</p><p>&nbsp;</p>
 <p>mupen64plus error log</p>
 <div class="mt-15" id="log"></div>
@@ -189,7 +189,7 @@ Parallel: LLE only"><select class="width250m" id="rsp">
 </div>
 <p>&nbsp;</p>
 <p><input id="SWAP_CHANNELS" type="checkbox" data-store="SWAP_CHANNELS"><label for="SWAP_CHANNELS">Swap left and right channels</label></p>
-<p>&nbsp;</p><p>&nbsp;</p>
+<p>&nbsp;</p>
 <p><input id="VOLUME_ADJUST" type="range" min="1" max="100" step="1" value="5"><label for="VOLUME_ADJUST"><span id="VOLUME_ADJUSTText">5</span>%: Volume step</label><button class="floatright" data-value="5" id="resetVOLUME_ADJUST">Reset</button></p>
 <p>&nbsp;</p>
 <p><input id="VOLUME_DEFAULT" type="range" min="1" max="100" step="1" value="80"><label for="VOLUME_DEFAULT"><span id="VOLUME_DEFAULTText">80</span>%: Default volume</label><button class="floatright" data-value="80" id="resetVOLUME_DEFAULT">Reset</button></p>
@@ -625,7 +625,7 @@ Higher values increase audio latency but reduce the chance of audio drop-outs.">
 <option value="CDown">C-Button Down</option>
 <option value="CUp">C-Button Up</option>
 </select><label for="y">Y Button</label>
-<p>&nbsp;</p>
+<p>&nbsp;</p><p>&nbsp;</p>
 <select class="width175m" id="start">
 <option value="A">A</option>
 <option value="B">B</option>
@@ -693,7 +693,7 @@ Higher values increase audio latency but reduce the chance of audio drop-outs.">
 <option value="CDown">C-Button Down</option>
 <option value="CUp">C-Button Up</option>
 </select><label for="r">R-Trigger</label>
-<p>&nbsp;</p>
+<p>&nbsp;</p><p>&nbsp;</p>
 <select class="width175m" id="d_pad_left">
 <option value="A">A</option>
 <option value="B">B</option>
@@ -761,7 +761,7 @@ Higher values increase audio latency but reduce the chance of audio drop-outs.">
 <option value="CDown">C-Button Down</option>
 <option value="CUp">C-Button Up</option>
 </select><label for="d_pad_up">D-Pad Up</label>
-<p>&nbsp;</p>
+<p>&nbsp;</p><p>&nbsp;</p>
 <select class="width175m" id="c_stick_left">
 <option value="A">A</option>
 <option value="B">B</option>
@@ -1146,7 +1146,7 @@ For gamepad hotkey combos, press another button by focusing the box a second tim
 <p title="Hide overscan area in filtered mode."><input id="ViHideOverscan" type="checkbox" data-store="ViHideOverscan"><label for="ViHideOverscan">Hide overscan</label></p>
 <p>&nbsp;</p>
 <p title="Display upscaled pixels as groups of 1x1, 2x2, 3x3, etc."><input id="ViIntegerScaling" type="checkbox" data-store="ViIntegerScaling"><label for="ViIntegerScaling">Integer pixel scaling</label></p>
-<p>&nbsp;</p>
+<p>&nbsp;</p><p>&nbsp;</p>
 <select class="width200m" id="ViMode">
 <option value="0" selected>Filtered</option>
 <option value="1">Unfiltered</option>
@@ -1191,7 +1191,7 @@ For gamepad hotkey combos, press another button by focusing the box a second tim
 <p title="Off: N64 3-point"><input id="bilinearMode" type="checkbox" data-store="bilinearMode"><label for="bilinearMode">Bilinear filtering</label></p>
 <p>&nbsp;</p>
 <p><input id="fxaa" type="checkbox" data-store="fxaa"><label for="fxaa">Fast approximate anti-aliasing</label></p>
-<p>&nbsp;</p>
+<p>&nbsp;</p><p>&nbsp;</p>
 <select class="width125m" id="anisotropy">
 <option value="0" selected>Off</option>
 <option value="2">2x</option>
@@ -1268,7 +1268,7 @@ If this option is turned off, the output resolution is the same as the rendering
 <p><input id="EnableLOD" type="checkbox" data-store="EnableLOD" checked><label for="EnableLOD">Mipmapping (LOD emulation)</label></p>
 <p>&nbsp;</p>
 <p title="Use persistent storage for compiled shaders."><input id="EnableShadersStorage" type="checkbox" data-store="EnableShadersStorage" checked><label for="EnableShadersStorage">Shader storage</label></p>
-<p>&nbsp;</p>
+<p>&nbsp;</p><p>&nbsp;</p>
 <p title="Enable software vertices clipping. Brings various benefits."><input id="EnableClipping" type="checkbox" data-store="EnableClipping" checked><label for="EnableClipping">Clipping</label></p>
 <p>&nbsp;</p>
 <p title="Enable writing of fragment depth. Some mobile GPUs do not support it. Leave enabled."><input id="EnableFragmentDepthWrite" type="checkbox" data-store="EnableFragmentDepthWrite" checked><label for="EnableFragmentDepthWrite">Fragment depth write</label></p>
@@ -1278,7 +1278,7 @@ If this option is turned off, the output resolution is the same as the rendering
 <p title="Enable hybrid integer scaling filter, this can be slow with low-end GPUs."><input id="EnableHybridFilter" type="checkbox" data-store="EnableHybridFilter" checked><label for="EnableHybridFilter">Hybrid filter</label></p>
 <p>&nbsp;</p>
 <p title="Increases performance at the expense of accuracy. May help with texture pack compatibility."><input id="EnableInaccurateTextureCoordinates" type="checkbox" data-store="EnableInaccurateTextureCoordinates"><label for="EnableInaccurateTextureCoordinates">Inaccurate texture coordinates</label></p>
-<p>&nbsp;</p>
+<p>&nbsp;</p><p>&nbsp;</p>
 <p title="Do not use shaders to emulate N64 blending modes. Works faster on slow GPU. Can cause glitches."><input id="EnableLegacyBlending" type="checkbox" data-store="EnableLegacyBlending"><label for="EnableLegacyBlending">Legacy blending</label></p>
 <p>&nbsp;</p>
 <p title="Bind texture rectangle texture coordinates to the values they take in native resolutions. It prevents garbage due to fetching out of texture bounds, but can result in hard edges."><input id="EnableTexCoordBounds" type="checkbox" data-store="EnableTexCoordBounds"><label for="EnableTexCoordBounds">Texture coordinate bounds</label></p>
@@ -1288,7 +1288,7 @@ If this option is turned off, the output resolution is the same as the rendering
 <p title="Enable hi-res noise dithering."><input id="EnableHiresNoiseDithering" type="checkbox" data-store="EnableHiresNoiseDithering" checked><label for="EnableHiresNoiseDithering">Hi-res noise dithering</label></p>
 <p>&nbsp;</p>
 <p title="Dither with color quantization."><input id="DitheringQuantization" type="checkbox" data-store="DitheringQuantization" checked><label for="DitheringQuantization">Dithering quantization</label></p>
-<p>&nbsp;</p>
+<p>&nbsp;</p><p>&nbsp;</p>
 <div title="Dithering mode for image in RDRAM."><select class="width150m" id="RDRAMImageDitheringMode">
 <option value="0">Disabled</option>
 <option value="1">Bayer</option>
@@ -1315,7 +1315,7 @@ If this option is turned off, the output resolution is the same as the rendering
 </div>
 <div id="gliden64_framebuffer" class="hide mt-10">
 <p title="Disable buffers read/write with FBInfo. Use for games which do not work with FBInfo. Only takes effect with cached or pure interpreter."><input id="DisableFBInfo" type="checkbox" data-store="DisableFBInfo"><label for="DisableFBInfo">Disable FBInfo</label></p>
-<p>&nbsp;</p>
+<p>&nbsp;</p><p>&nbsp;</p>
 <p title="Disabling framebuffer emulation breaks game effects and disables overscan, aspect ratio, N64 resolution factor, N64-style depth compare and more."><input id="EnableFBEmulation" type="checkbox" data-store="EnableFBEmulation" checked><label for="EnableFBEmulation">Framebuffer emulation</label></p>
 <p>&nbsp;</p>
 <p title="Enable color buffer copy from RDRAM."><input id="EnableCopyColorFromRDRAM" type="checkbox" data-store="EnableCopyColorFromRDRAM"><label for="EnableCopyColorFromRDRAM">Color buffer copy from RDRAM</label></p>
@@ -1329,7 +1329,7 @@ If this option is turned off, the output resolution is the same as the rendering
 <p title="Read color buffer by 4kb chunks."><input id="FBInfoReadColorChunk" type="checkbox" data-store="FBInfoReadColorChunk"><label for="FBInfoReadColorChunk">Read color buffer in chunks</label></p>
 <p>&nbsp;</p>
 <p title="Read depth buffer by 4kb chunks."><input id="FBInfoReadDepthChunk" type="checkbox" data-store="FBInfoReadDepthChunk" checked><label for="FBInfoReadDepthChunk">Read depth buffer in chunks</label></p>
-<p>&nbsp;</p>
+<p>&nbsp;</p><p>&nbsp;</p>
 <div title="On buffer update offers the best performance but causes the most issues."><select class="width250m" id="bufferSwapMode">
 <option value="0" selected>On VI update call</option>
 <option value="1">On VI origin change</option>
@@ -1388,7 +1388,7 @@ If this option is turned off, the output resolution is the same as the rendering
 <p title="Deposterize texture before enhancement."><input id="txDeposterize" type="checkbox" data-store="txDeposterize"><label for="txDeposterize">Deposterize texture</label></p>
 <p>&nbsp;</p>
 <p title="Don't filter background textures."><input id="txFilterIgnoreBG" type="checkbox" data-store="txFilterIgnoreBG"><label for="txFilterIgnoreBG">Disable background filtering</label></p>
-<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<p>&nbsp;</p><p>&nbsp;</p>
 <p><input id="txHiresEnable" type="checkbox" data-store="txHiresEnable" checked><label for="txHiresEnable">Enable HD textures</label></p>
 <p>&nbsp;</p>
 <p title="Use alternative method for paletted textures CRC calculation. Activate for old Rice packs."><input id="txHresAltCRC" type="checkbox" data-store="txHresAltCRC"><label for="txHresAltCRC">Alternative CRC calculation</label></p>
@@ -1408,7 +1408,7 @@ HTS: Read textures as they are needed from hard disk."><select id="cache">
 <option value="false">HTC</option>
 <option value="true" selected>HTS</option>
 </select><label for="cache">Cache type</label></div>
-<p>&nbsp;</p>
+<p>&nbsp;</p><p>&nbsp;</p>
 <p><input id="txHiresVramLimit" type="range" min="0" max="102400" step="1" value="0"><label for="txHiresVramLimit"><span id="txHiresVramLimitText">0</span> MB: VRAM limit</label><button class="floatright" data-value="0" id="resettxHiresVramLimit">Reset</button></p>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
 <p title="Path to folder with hi-res texture packs (PNG format). Click the box below to change it.">hires_texture<button class="floatright ml-13" id="resetTxPath">Reset</button><button class="floatright" id="openTxPath">Open</button><br><br><div class="box" id="txPath"><span id="txPathText"></span></div></p>
@@ -1488,7 +1488,7 @@ HTS: Read textures as they are needed from hard disk."><select id="cache">
 <p>&nbsp;</p>
 <div id="parallel_video" class="mt-10">
 <p><input id="ParallelWidescreenStretch" type="checkbox" data-store="ParallelWidescreenStretch"><label for="ParallelWidescreenStretch">Widescreen (stretch)</label></p>
-<p>&nbsp;</p><p>&nbsp;</p>
+<p>&nbsp;</p>
 <p title="Amount of overscan pixels to crop."><input id="ParallelCropOverscan" type="range" min="0" max="99" step="1" value="0"><label for="ParallelCropOverscan"><span id="ParallelCropOverscanText">0</span>: Crop overscan</label><button class="floatright" data-value="0" id="resetParallelCropOverscan">Reset</button></p>
 <p>&nbsp;</p>
 <p title="Amount of pixels to stretch by vertically. Can fix PAL ports that didn't fill the PAL resolution of 288p (use value of 24 in that case)."><input id="ParallelVerticalStretch" type="range" min="0" max="99" step="1" value="0"><label for="ParallelVerticalStretch"><span id="ParallelVerticalStretchText">0</span>: Vertical stretch</label><button class="floatright" data-value="0" id="resetParallelVerticalStretch">Reset</button></p>
@@ -1596,7 +1596,7 @@ HTS: Read textures as they are needed from hard disk."><select id="cache">
 <p title="Force emulated frame buffers to be in N64 native resolution."><input id="InN64Resolution" type="checkbox" data-store="InN64Resolution"><label for="InN64Resolution">Native resolution framebuffers</label></p>
 <p>&nbsp;</p>
 <p title="Enable vertex clipper for fog operations."><input id="OpenGLVertexClipper" type="checkbox" data-store="OpenGLVertexClipper"><label for="OpenGLVertexClipper">Vertex clipper</label></p>
-<p>&nbsp;</p>
+<p>&nbsp;</p><p>&nbsp;</p>
 <div title="Frequency to write back the frame buffer."><select class="width225m" id="FrameBufferWriteBackControl">
 <option value="0" selected>Every frame</option>
 <option value="1">Every 2 frames</option>
