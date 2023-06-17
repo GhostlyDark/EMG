@@ -17,11 +17,13 @@ stdio = ['ignore', 'pipe', 'ignore'],
 emuOptions = {cwd: cwd, detached: true, stdio: stdio},
 cheatOptions = {cwd: cwd, stdio: stdio, windowsHide: true},
 jsOptions = {cwd: cwd, stdio: stdio, timeout: 5000, windowsHide: true},
-load = path(dir, 'emg.htm'),
+load = 'http://localhost:64064',
 name = ' ' + app.name + ' v' + app.getVersion(),
 preferences = {preload:path(dir, 'preload.js'), disableDialogs:true},
 mainWindow = {backgroundColor:'#121212', width:1280, height:800, minWidth:923, minHeight:640, title:name, show:false, webPreferences:preferences},
-deleteDialog = {defaultId:1, cancelId:1, icon:path(dir, 'img', 'delete.png'), buttons:['Confirm','Abort'], title:' Reset settings', message:'Reset all settings?'};
+deleteDialog = {defaultId:1, cancelId:1, icon:path(dir, 'img', 'delete.png'), buttons:['Confirm','Abort'], title:' Reset settings', message:'Reset all settings?'},
+server = require(path(dir,'server.js'));
+if(app.requestSingleInstanceLock())server.deploy();
 
 let m64pCache = m64pShare = m64pConfig;
 if(isLinux){m64pCache = path(appData, '../', '.cache', 'mupen64plus');m64pShare = path(appData, '../', '.local', 'share', 'mupen64plus')};
@@ -34,6 +36,8 @@ shaders = path(m64pCache,'shaders'),
 texture_dump = path(m64pShare,'texture_dump');
 
 app.commandLine.appendSwitch('disable-http-cache')
+app.commandLine.appendSwitch('no-proxy-server')
+app.commandLine.appendSwitch('ignore-connections-limit', 'localhost:64064')
 app.enableSandbox()
 
 ipcMain.on('emuLaunch', (e, parameters) => {
@@ -112,7 +116,7 @@ if(!app.requestSingleInstanceLock()){return app.quit()}
 
 app.on('ready', () => {
 win = new BrowserWindow(mainWindow)
-win.loadFile(load)
+win.loadURL(load)
 win.once('ready-to-show', () => {win.maximize();win.show()})
 win.on('page-title-updated', (e) => {e.preventDefault()})
 if(isLinux)win.setIcon(nativeImage.createFromPath(path(dir, 'img', 'emg.png')).resize({width:48}))
@@ -121,9 +125,10 @@ win.webContents.setWindowOpenHandler((details) => {return {action:'deny'}})
 win.webContents.on('will-navigate', (e, nav) => {const parsed = new url(nav)
 if(parsed.origin != load)e.preventDefault()})
 
+session.defaultSession.webRequest.onHeadersReceived((details, callback) => {callback({responseHeaders: Object.assign({"Content-Security-Policy": ["frame-ancestors 'none',sandbox allow-same-origin allow-scripts"]}, details.responseHeaders)})})
 session.defaultSession.webRequest.onBeforeRequest(
 function(details, callback){
-const whitelist = /(^file:\/\/\/)|(^devtools:\/\/devtools\/bundled\/)/g;
+const whitelist = /(^http:\/\/localhost:64064)|(^devtools:\/\/devtools\/bundled\/)/g;
 if(whitelist.test(details.url)){callback({cancel:false})}
 else{callback({cancel:true})}})
 
