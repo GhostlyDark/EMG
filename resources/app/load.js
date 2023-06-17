@@ -81,7 +81,7 @@ if(ev === undefined){return false}
 if(file === undefined || file === ''){file = ev.target.files[0]}
 if(!file.type.match('image.*')) {id('background_input').value = file = ''; return}
 else if(typeof FileReader !== 'undefined' && file.size > 3.65*1024*1024){
-if(!(location.href.indexOf('localhost') > 0 || location.protocol === 'file:')){if(body.classList.contains('de')){alert('Bild zu groß (max. 3,6 MB).')}else{alert('Image too large (3.6 MB max).')}}
+if(body.classList.contains('de')){alert('Bild zu groß (max. 3,6 MB).')}else{alert('Image too large (3.6 MB max).')}
 id('background_input').value = file = '';return}
 var reader = new FileReader();
 reader.addEventListener('load', (function(){return function(e) {
