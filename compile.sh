@@ -15,10 +15,10 @@ toplvl_dir="$(realpath "$script_dir")"
 build_dir="$toplvl_dir/build"
 cmake_dir="$build_dir/CMake"
 emg_dir="$build_dir/EMG"
-app_dir="$emg_dir/resources/app"
-ico_dir="$app_dir/ico"
-install_dir="$app_dir/m64p"
-plugin_dir="$install_dir/plugin"
+rsc_dir="$emg_dir/resources"
+ico_dir="$rsc_dir/icon"
+m64p_dir="$rsc_dir/m64p"
+plugin_dir="$m64p_dir/plugin"
 
 
 
@@ -69,8 +69,8 @@ if [ ! -d "SDL_GameControllerDB" ]; then
     git clone --depth 1 https://github.com/GhostlyDark/SDL_GameControllerDB SDL_GameControllerDB
 fi
 
-cp mupen64plus-rom/mupen64plus.z64 $install_dir
-cp SDL_GameControllerDB/gamecontrollerdb.txt $install_dir
+cp mupen64plus-rom/mupen64plus.z64 $m64p_dir
+cp SDL_GameControllerDB/gamecontrollerdb.txt $m64p_dir
 
 
 
@@ -95,7 +95,7 @@ mv $gca mupen64plus-input-gca$ext
 
 # Fix file permissions
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    pushd "$install_dir"
+    pushd "$m64p_dir"
     chmod u+x mupen64plus
     chmod u+x sdl2-jstest
 fi
@@ -106,12 +106,12 @@ fi
 pushd "$toplvl_dir"
 
 if [[ "$OSTYPE" == "msys"* ]]; then
-    cmd //c $build_dir/rcedit-x64 $install_dir/mupen64plus.exe --set-icon $ico_dir/mupen64plus.ico
+    cmd //c $build_dir/rcedit-x64 $m64p_dir/mupen64plus.exe --set-icon $ico_dir/mupen64plus.ico
     cmd //c $build_dir/rcedit-x64 $emg_dir/EMG.exe --set-icon $ico_dir/emg.ico --set-version-string LegalCopyright "(C) 2023 EvilGames.eu" --set-version-string OriginalFilename "electron.exe" --set-version-string FileDescription "EMG" --set-version-string ProductName "EMG" --set-version-string CompanyName "EvilGames.eu"
 fi
 
 
 
 # Strip binaries
-for f in $install_dir/*$ext; do strip --strip-unneeded $f; done
+for f in $m64p_dir/*$ext; do strip --strip-unneeded $f; done
 for f in $plugin_dir/*$ext; do strip --strip-unneeded $f; done

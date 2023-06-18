@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.9)
 
 project(EMG)
 
-set(INSTALL_PATH "${CMAKE_SOURCE_DIR}/build/EMG/resources/app/m64p")
+set(INSTALL_PATH "${CMAKE_SOURCE_DIR}/build/EMG/resources/m64p")
 
 add_custom_target(bundle_dependencies
 	COMMAND "${CMAKE_SOURCE_DIR}/dependencies.sh" "${INSTALL_PATH}/mupen64plus.exe" "${INSTALL_PATH}" "/mingw64/bin"

@@ -70,16 +70,16 @@ The build script `compile.sh` can be run with additional parameters:
 ./compile.sh [threads] [electron]
 ```
 
-Use 8 threads for the building process and grab Electron v22.3.9:
+Use 8 threads for the building process and grab Electron v22.3.13:
 
 ```
-./compile.sh 8 v22.3.9
+./compile.sh 8 v22.3.13
 ```
 
 
 ## Adding plugins
 
-Plugin files are stored in `resources/app/m64p/plugin`. EMG does allow for plugins to be added, as long as they follow the `mupen64plus-[type]-[name].[extension]` naming scheme. Accepted plugin types are `audio`, `input`, `rsp` and `video`.
+Plugin files are stored in `resources/m64p/plugin`. EMG does allow for plugins to be added, as long as they follow the `mupen64plus-[type]-[name].[extension]` naming scheme. Accepted plugin types are `audio`, `input`, `rsp` and `video`.
 
 
 ## Shortcuts
