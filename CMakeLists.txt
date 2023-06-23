@@ -64,7 +64,7 @@ ExternalProject_Add(mupen64plus-core
     GIT_TAG "origin/emg"
     GIT_SHALLOW 1
 
-    BUILD_COMMAND $(MAKE) all OSD=0 TARGET=${CORE_FILE}
+    BUILD_COMMAND $(MAKE) all ACCURATE_FPU=1 OSD=0 TARGET=${CORE_FILE}
     BUILD_IN_SOURCE False
 
     BINARY_DIR ${M64P_CORE_DIR}/projects/unix
