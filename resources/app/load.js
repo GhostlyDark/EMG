@@ -88,11 +88,6 @@ reader.addEventListener('load', (function(){return function(e) {
 localStorage.background = e.target.result;id('background').style.backgroundImage = 'url(' + e.target.result + ')';id('background').style.display = 'block';id('overlay').style.display = 'block';html.classList.add('custom');id('filter').style.display = ''}})(file), false);
 reader.readAsDataURL(file);id('background_input').value = file = ''}
 
-body.addEventListener('drop', handleDrop, false)
-body.addEventListener('dragover', prevent, false)
-function prevent(e){e.preventDefault();e.stopPropagation()}
-function handleDrop(e) {prevent(e);file = e.dataTransfer.files[0];bgChange(file)}
-
 var boxes = document.querySelectorAll('input[type=checkbox]');
 for (var i = 0; i < boxes.length; i++){var box = boxes[i];if (box.hasAttribute('data-store')){setupBox(box)}}
 function setupBox(box){
