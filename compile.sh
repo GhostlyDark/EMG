@@ -5,7 +5,7 @@ set -ex
 
 # Parameters
 threads="${1:-$(nproc)}"
-electron="${2:-v22.3.17}"
+electron="${2:-v22.3.18}"
 
 
 
