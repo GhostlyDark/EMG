@@ -27,14 +27,12 @@ exe=""
 ext=".so"
 gca="libmupen64plus_input_gca.so"
 platform="linux"
-generator="Unix Makefiles"
 
 if [[ "$OSTYPE" == "msys"* ]]; then
     exe=".exe"
     ext=".dll"
     gca="mupen64plus_input_gca.dll"
     platform="win32"
-    generator="MSYS Makefiles"
 fi
 
 
@@ -75,11 +73,12 @@ cp SDL_GameControllerDB/gamecontrollerdb.txt $m64p_dir
 
 
 # Build
-cmake "$toplvl_dir" -G "$generator"
-make install -j$threads
+cmake "$toplvl_dir" -G "Ninja"
+cmake --build "$cmake_dir" --parallel "$threads"
+cmake --install "$cmake_dir"
 
 if [[ "$OSTYPE" == "msys"* ]]; then
-    make bundle_dependencies
+    cmake --build "$cmake_dir" --target=bundle_dependencies
 fi
 
 
