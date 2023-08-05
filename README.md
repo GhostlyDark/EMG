@@ -72,10 +72,10 @@ The build script `compile.sh` can be run with additional parameters:
 ./compile.sh [threads] [electron]
 ```
 
-Use 8 threads for the building process and grab Electron v22.3.13:
+Limit the building process to one thread and grab Electron v22.3.18:
 
 ```
-./compile.sh 8 v22.3.13
+./compile.sh 1 v22.3.18
 ```
 
 
