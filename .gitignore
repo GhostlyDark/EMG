@@ -1,1 +1,2 @@
 build/**
+!build/rcedit-x64.exe
