@@ -41,6 +41,7 @@ fi
 mkdir -p "$build_dir" "$cmake_dir" "$emg_dir"
 
 cp -R resources $emg_dir/resources
+cp -R source/* $cmake_dir
 
 
 

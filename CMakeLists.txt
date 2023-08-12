@@ -35,34 +35,11 @@ else()
 	set(GLIDEN64_LIB "${GLIDEN64_BUILD_DIR}/plugin/Release/mupen64plus-video-GLideN64${SO_EXT}")
 endif()
 
-set(MUPEN64PLUSCORE_URL "https://github.com/GhostlyDark/mupen64plus-core")
-set(MUPEN64PLUS_UI_URL "https://github.com/GhostlyDark/mupen64plus-ui-console")
-set(MUPEN64PLUS_AUDIO_SDL_URL "https://github.com/GhostlyDark/mupen64plus-audio-sdl")
-
-set(MUPEN64PLUS_RSP_CXD4_URL "https://github.com/GhostlyDark/rsp")
-set(MUPEN64PLUS_RSP_HLE_URL "https://github.com/GhostlyDark/mupen64plus-rsp-hle")
-set(MUPEN64PLUS_RSP_PARALLEL_URL "https://github.com/GhostlyDark/parallel-rsp")
-
-set(MUPEN64PLUS_INPUT_GCA_URL "https://github.com/GhostlyDark/mupen64plus-input-gca")
-set(MUPEN64PLUS_INPUT_RAPHNET_URL "https://github.com/GhostlyDark/mupen64plus-input-raphnetraw")
-set(MUPEN64PLUS_INPUT_SDL_URL "https://github.com/GhostlyDark/mupen64plus-input-sdl")
-
-set(MUPEN64PLUS_GFX_ANGRYLION_URL "https://github.com/GhostlyDark/angrylion-rdp-plus")
-set(MUPEN64PLUS_GFX_GLIDEN64_URL "https://github.com/GhostlyDark/GLideN64")
-set(MUPEN64PLUS_GFX_PARALLEL_URL "https://github.com/GhostlyDark/parallel-rdp-standalone")
-set(MUPEN64PLUS_GFX_RICE_URL "https://github.com/GhostlyDark/mupen64plus-video-rice")
-
-set(SDL_JSTEST_URL "https://github.com/GhostlyDark/sdl-jstest")
-
 ExternalProject_Add(mupen64plus-core
     SOURCE_DIR mupen64plus-core/
 
     CONFIGURE_COMMAND ""
     INSTALL_COMMAND ""
-
-    GIT_REPOSITORY ${MUPEN64PLUSCORE_URL}
-    GIT_TAG "origin/emg"
-    GIT_SHALLOW 1
 
     BUILD_COMMAND make all ACCURATE_FPU=1 OSD=0 TARGET=${CORE_FILE}
     BUILD_IN_SOURCE False
@@ -77,10 +54,6 @@ ExternalProject_Add(mupen64plus-ui-console
 
     CONFIGURE_COMMAND ""
     INSTALL_COMMAND ""
-
-    GIT_REPOSITORY ${MUPEN64PLUS_UI_URL}
-    GIT_TAG "origin/emg"
-    GIT_SHALLOW 1
 
     BUILD_COMMAND make all APIDIR=${APIDIR}
     BUILD_IN_SOURCE False
@@ -97,10 +70,6 @@ ExternalProject_Add(mupen64plus-rsp-cxd4
     CONFIGURE_COMMAND ""
     INSTALL_COMMAND ""
 
-    GIT_REPOSITORY ${MUPEN64PLUS_RSP_CXD4_URL}
-    GIT_TAG "origin/emg"
-    GIT_SHALLOW 1
-
     BUILD_COMMAND make all APIDIR=${APIDIR} POSTFIX=
     BUILD_IN_SOURCE False
 
@@ -116,10 +85,6 @@ ExternalProject_Add(mupen64plus-rsp-hle
     CONFIGURE_COMMAND ""
     INSTALL_COMMAND ""
 
-    GIT_REPOSITORY ${MUPEN64PLUS_RSP_HLE_URL}
-    GIT_TAG "origin/emg"
-    GIT_SHALLOW 1
-
     BUILD_COMMAND make all APIDIR=${APIDIR}
     BUILD_IN_SOURCE False
 
@@ -131,10 +96,6 @@ ExternalProject_Add(mupen64plus-rsp-hle
 
 ExternalProject_Add(mupen64plus-rsp-parallel
     SOURCE_DIR mupen64plus-rsp-parallel
-
-    GIT_REPOSITORY ${MUPEN64PLUS_RSP_PARALLEL_URL}
-    GIT_TAG "origin/emg"
-    GIT_SHALLOW 1
 
     INSTALL_COMMAND ""
 
@@ -151,10 +112,6 @@ ExternalProject_Add(mupen64plus-input-sdl
     CONFIGURE_COMMAND ""
     INSTALL_COMMAND ""
 
-    GIT_REPOSITORY ${MUPEN64PLUS_INPUT_SDL_URL}
-    GIT_TAG "origin/emg"
-    GIT_SHALLOW 1
-
     BUILD_COMMAND make all APIDIR=${APIDIR}
     BUILD_IN_SOURCE False
 
@@ -169,10 +126,6 @@ ExternalProject_Add(mupen64plus-input-raphnetraw
 
     CONFIGURE_COMMAND ""
     INSTALL_COMMAND ""
-
-    GIT_REPOSITORY ${MUPEN64PLUS_INPUT_RAPHNET_URL}
-    GIT_TAG "origin/emg"
-    GIT_SHALLOW 1
 
     BUILD_COMMAND make all APIDIR=${APIDIR}
     BUILD_IN_SOURCE False
@@ -189,10 +142,6 @@ ExternalProject_Add(mupen64plus-input-gca
     CONFIGURE_COMMAND ""
     INSTALL_COMMAND ""
 
-    GIT_REPOSITORY ${MUPEN64PLUS_INPUT_GCA_URL}
-    GIT_TAG "origin/emg"
-    GIT_SHALLOW 1
-
     BUILD_COMMAND cargo build --release --features "m64p_compat"
     BUILD_IN_SOURCE True
 
@@ -202,10 +151,6 @@ ExternalProject_Add(mupen64plus-input-gca
 
 ExternalProject_Add(mupen64plus-video-angrylion-plus
     SOURCE_DIR mupen64plus-video-angrylion-plus
-
-    GIT_REPOSITORY ${MUPEN64PLUS_GFX_ANGRYLION_URL}
-    GIT_TAG "origin/emg"
-    GIT_SHALLOW 1
 
     INSTALL_COMMAND ""
 
@@ -218,10 +163,6 @@ ExternalProject_Add(mupen64plus-video-angrylion-plus
 
 ExternalProject_Add(mupen64plus-video-GLideN64
     SOURCE_DIR mupen64plus-video-GLideN64
-
-    GIT_REPOSITORY ${MUPEN64PLUS_GFX_GLIDEN64_URL}
-    GIT_TAG "origin/emg"
-    GIT_SHALLOW 1
 
     INSTALL_COMMAND ""
 
@@ -238,10 +179,6 @@ ExternalProject_Add(mupen64plus-video-GLideN64
 ExternalProject_Add(mupen64plus-video-parallel
     SOURCE_DIR mupen64plus-video-parallel
 
-    GIT_REPOSITORY ${MUPEN64PLUS_GFX_PARALLEL_URL}
-    GIT_TAG "origin/emg"
-    GIT_SHALLOW 1
-
     INSTALL_COMMAND ""
 
     BUILD_IN_SOURCE True
@@ -256,10 +193,6 @@ ExternalProject_Add(mupen64plus-video-rice
 
     CONFIGURE_COMMAND ""
     INSTALL_COMMAND ""
-
-    GIT_REPOSITORY ${MUPEN64PLUS_GFX_RICE_URL}
-    GIT_TAG "origin/emg"
-    GIT_SHALLOW 1
 
     BUILD_COMMAND make all APIDIR=${APIDIR}
     BUILD_IN_SOURCE False
@@ -276,10 +209,6 @@ ExternalProject_Add(mupen64plus-audio-sdl
     CONFIGURE_COMMAND ""
     INSTALL_COMMAND ""
 
-    GIT_REPOSITORY ${MUPEN64PLUS_AUDIO_SDL_URL}
-    GIT_TAG "origin/emg"
-    GIT_SHALLOW 1
-
     BUILD_COMMAND make all APIDIR=${APIDIR}
     BUILD_IN_SOURCE False
 
@@ -293,10 +222,6 @@ ExternalProject_Add(sdl-jstest
     SOURCE_DIR sdl-jstest/
 
     INSTALL_COMMAND ""
-
-    GIT_REPOSITORY ${SDL_JSTEST_URL}
-    GIT_TAG "origin/emg"
-    GIT_SHALLOW 1
 
     BUILD_IN_SOURCE True
     CMAKE_ARGS
