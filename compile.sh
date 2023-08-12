@@ -56,18 +56,9 @@ fi
 
 
 
-# Download additional repositories
+# Build
 pushd "$cmake_dir"
 
-if [ ! -d "SDL_GameControllerDB" ]; then
-    git clone --depth 1 https://github.com/GhostlyDark/SDL_GameControllerDB SDL_GameControllerDB
-fi
-
-cp SDL_GameControllerDB/gamecontrollerdb.txt $m64p_dir
-
-
-
-# Build
 cmake "$toplvl_dir" -G "Ninja"
 cmake --build "$cmake_dir" --parallel "$threads"
 cmake --install "$cmake_dir"
