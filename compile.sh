@@ -59,15 +59,10 @@ fi
 # Download additional repositories
 pushd "$cmake_dir"
 
-if [ ! -d "mupen64plus-rom" ]; then
-    git clone --depth 1 https://github.com/GhostlyDark/mupen64plus-rom mupen64plus-rom
-fi
-
 if [ ! -d "SDL_GameControllerDB" ]; then
     git clone --depth 1 https://github.com/GhostlyDark/SDL_GameControllerDB SDL_GameControllerDB
 fi
 
-cp mupen64plus-rom/mupen64plus.z64 $m64p_dir
 cp SDL_GameControllerDB/gamecontrollerdb.txt $m64p_dir
 
 
