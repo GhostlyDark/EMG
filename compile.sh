@@ -37,6 +37,19 @@ fi
 
 
 
+# Remove previous build files
+if [ -d "$cmake_dir" ] || [ -d "$emg_dir" ] ; then
+    echo "Build directories (CMake, EMG) already exist. Delete folders to proceed?"
+    select yn in "Continue" "Exit"; do
+        case $yn in
+            Continue ) rm -rf $cmake_dir $emg_dir; break;;
+            Exit ) exit;;
+        esac
+    done
+fi
+
+
+
 # Initial directories
 mkdir -p "$build_dir" "$cmake_dir" "$emg_dir"
 
