@@ -1,7 +1,7 @@
-set(GIT_BRANCH "unknown")
-set(GIT_COMMIT_DATE "unknown")
-set(GIT_COMMIT_HASH "unknown")
-set(GIT_TAG "unknown")
+set(GIT_BRANCH "")
+set(GIT_COMMIT_DATE "")
+set(GIT_COMMIT_HASH "")
+set(GIT_TAG "")
 
 find_package(Git)
 if(GIT_FOUND AND EXISTS "${SOURCE_DIR}/.git/")
