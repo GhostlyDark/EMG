@@ -560,6 +560,9 @@ static void main_set_speedlimiter(int enable)
 
 void main_speedlimiter_toggle(void)
 {
+    if (netplay_is_init())
+        return;
+
     l_MainSpeedLimit = !l_MainSpeedLimit;
     main_set_speedlimiter(l_MainSpeedLimit);
 
@@ -1649,9 +1652,6 @@ m64p_error main_run(void)
     else
         disable_extra_mem = ConfigGetParamInt(g_CoreConfig, "DisableExtraMem");
 
-
-    rdram_size = (disable_extra_mem == 0) ? 0x800000 : 0x400000;
-
     if (count_per_op <= 0)
         count_per_op = ROM_SETTINGS.countperop;
 
@@ -1664,6 +1664,8 @@ m64p_error main_run(void)
 
     //During netplay, player 1 is the source of truth for these settings
     netplay_sync_settings(&count_per_op, &count_per_op_denom_pot, &disable_extra_mem, &si_dma_duration, &emumode, &no_compiled_jump);
+
+    rdram_size = (disable_extra_mem == 0) ? 0x800000 : 0x400000;
 
     cheat_add_hacks(&g_cheat_ctx, ROM_PARAMS.cheats);
 
