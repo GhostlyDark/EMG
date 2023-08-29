@@ -15,7 +15,7 @@ EMG is a launcher for [mupen64plus](https://github.com/GhostlyDark/mupen64plus-c
 
 - **CPU:** SSE3 capable (Electron)
 - **GPU:** OpenGL 3.3 (Angrylion Plus, GLideN64), Vulkan 1.1 (Parallel)
-- **OS:** Linux (64-bit) or Windows 7+ (64-bit)
+- **OS:** Linux (64-bit) or Windows 10+ (64-bit)
 
 **GameCube adapter:**
 
