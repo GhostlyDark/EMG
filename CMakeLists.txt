@@ -24,7 +24,6 @@ endif()
 
 set(M64P_CORE_DIR ${CMAKE_BINARY_DIR}/mupen64plus-core)
 set(APIDIR ${M64P_CORE_DIR}/src/api)
-set(RICE_DIR ${CMAKE_BINARY_DIR}/mupen64plus-video-rice)
 
 set(GLIDEN64_DIR "${CMAKE_BINARY_DIR}/mupen64plus-video-GLideN64")
 
@@ -188,21 +187,6 @@ ExternalProject_Add(mupen64plus-video-parallel
     DEPENDS mupen64plus-core
 )
 
-ExternalProject_Add(mupen64plus-video-rice
-    SOURCE_DIR mupen64plus-video-rice/
-
-    CONFIGURE_COMMAND ""
-    INSTALL_COMMAND ""
-
-    BUILD_COMMAND make all APIDIR=${APIDIR}
-    BUILD_IN_SOURCE False
-
-    BINARY_DIR ${RICE_DIR}/projects/unix
-    
-    BUILD_BYPRODUCTS ${RICE_DIR}/projects/unix/mupen64plus-video-rice${SO_EXT}
-    DEPENDS mupen64plus-core
-)
-
 ExternalProject_Add(mupen64plus-audio-sdl
     SOURCE_DIR mupen64plus-audio-sdl/
 
@@ -264,10 +248,6 @@ set(MUPEN64PLUS_PLUGIN_GFX_GLIDEN64 ${BUILD_BYPRODUCTS})
 ExternalProject_Get_property(mupen64plus-video-parallel BUILD_BYPRODUCTS)
 set(MUPEN64PLUS_PLUGIN_GFX_PARALLEL ${BUILD_BYPRODUCTS})
 
-ExternalProject_Get_property(mupen64plus-video-rice BUILD_BYPRODUCTS)
-set(MUPEN64PLUS_PLUGIN_GFX_RICE ${BUILD_BYPRODUCTS})
-set(RICE_INI ${RICE_DIR}/data/RiceVideoLinux.ini)
-
 ExternalProject_Get_property(mupen64plus-audio-sdl BUILD_BYPRODUCTS)
 set(MUPEN64PLUS_PLUGIN_AUDIO_SDL ${BUILD_BYPRODUCTS})
 
@@ -282,9 +262,6 @@ install(FILES ${SDL_JSTEST}
 )
 install(FILES ${MUPEN64PLUSCORE_LIB}
     DESTINATION ${INSTALL_PATH}
-)
-install(FILES ${MUPEN64PLUSCORE_INI} ${MUPEN64PLUSCORE_CHT} ${RICE_INI}
-    DESTINATION ${INSTALL_PATH}/data
 )
 install(FILES ${MUPEN64PLUS_PLUGIN_RSP_CXD4}
     DESTINATION ${INSTALL_PATH}/plugin
@@ -311,9 +288,6 @@ install(FILES ${MUPEN64PLUS_PLUGIN_GFX_GLIDEN64}
     DESTINATION ${INSTALL_PATH}/plugin
 )
 install(FILES ${MUPEN64PLUS_PLUGIN_GFX_PARALLEL}
-    DESTINATION ${INSTALL_PATH}/plugin
-)
-install(FILES ${MUPEN64PLUS_PLUGIN_GFX_RICE}
     DESTINATION ${INSTALL_PATH}/plugin
 )
 install(FILES ${MUPEN64PLUS_PLUGIN_AUDIO_SDL}
