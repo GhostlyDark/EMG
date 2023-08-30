@@ -1131,48 +1131,6 @@ For gamepad hotkey combos, press another button by focusing the box a second tim
 </div>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
 <div id="videoAnchor" class="anchor"></div>
-<p class="headline">Angrylion Plus</p>
-<p>&nbsp;</p>
-<ul class="ul-buttons">
-<li id="ul_angrylion_video" class="active">Video</li>
-<li id="ul_angrylion_emulation">Emulation</li>
-</ul>
-<p>&nbsp;</p>
-<div id="angrylion_video" class="mt-10">
-<p title="Use anamorphic 16:9 output mode." ><input id="ViWidescreen" type="checkbox" data-store="ViWidescreen"><label for="ViWidescreen">16:9 widescreen</label></p>
-<p>&nbsp;</p>
-<p title="Hide overscan area in filtered mode."><input id="ViHideOverscan" type="checkbox" data-store="ViHideOverscan"><label for="ViHideOverscan">Hide overscan</label></p>
-<p>&nbsp;</p>
-<p title="Display upscaled pixels as groups of 1x1, 2x2, 3x3, etc."><input id="ViIntegerScaling" type="checkbox" data-store="ViIntegerScaling"><label for="ViIntegerScaling">Integer pixel scaling</label></p>
-<p>&nbsp;</p><p>&nbsp;</p>
-<select class="width200m" id="ViMode">
-<option value="0" selected>Filtered</option>
-<option value="1">Unfiltered</option>
-<option value="2">Depth</option>
-<option value="3">Coverage</option>
-</select><label for="ViMode">Output mode</label>
-<p>&nbsp;</p>
-<div title="Scaling interpolation type."><select class="width200m" id="ViInterpolation">
-<option value="0">Nearest-neighbor</option>
-<option value="1">Bilinear</option>
-<option value="2" selected>Hybrid</option>
-</select><label for="ViInterpolation">Interpolation</label></div>
-</div>
-<div id="angrylion_emulation" class="hide mt-10">
-<p title="Use a busyloop while waiting for work."><input id="BusyLoop" type="checkbox" data-store="BusyLoop"><label for="BusyLoop">Use busyloop</label></p>
-<p>&nbsp;</p>
-<select class="width200m" id="DpCompat">
-<option value="0" selected>Fast</option>
-<option value="1">Moderate</option>
-<option value="2">Slow</option>
-</select><label for="DpCompat">Compatibility mode</label>
-<p>&nbsp;</p><p>&nbsp;</p>
-<p><input id="Parallel" type="checkbox" data-store="Parallel" checked><label for="Parallel">Multi-core rendering</label></p>
-<p>&nbsp;</p>
-<p title="Number of logical processors to use. 0 uses all."><input id="NumWorkers" type="range" min="0" step="1" value="0"><label for="NumWorkers"><span id="NumWorkersText">0</span>: Rendering threads</label><button class="floatright" data-value="0" id="resetNumWorkers">Reset</button></p>
-</div>
-<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
-<div id="gliden64Anchor" class="anchor"></div>
 <p class="headline">GLideN64</p>
 <p>&nbsp;</p>
 <ul class="ul-buttons">
@@ -1476,15 +1434,43 @@ HTS: Read textures as they are needed from hard disk."><select id="cache">
 </div>
 </div>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
-<div id="parallelAnchor" class="anchor"></div>
+<p class="headline">Angrylion Plus</p>
+<p>&nbsp;</p>
+<p title="Use anamorphic 16:9 output mode." ><input id="ViWidescreen" type="checkbox" data-store="ViWidescreen"><label for="ViWidescreen">16:9 widescreen</label></p>
+<p>&nbsp;</p>
+<p title="Hide overscan area in filtered mode."><input id="ViHideOverscan" type="checkbox" data-store="ViHideOverscan"><label for="ViHideOverscan">Hide overscan</label></p>
+<p>&nbsp;</p>
+<p title="Display upscaled pixels as groups of 1x1, 2x2, 3x3, etc."><input id="ViIntegerScaling" type="checkbox" data-store="ViIntegerScaling"><label for="ViIntegerScaling">Integer pixel scaling</label></p>
+<p>&nbsp;</p>
+<p title="Use a busyloop while waiting for work."><input id="BusyLoop" type="checkbox" data-store="BusyLoop"><label for="BusyLoop">Use busyloop</label></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<select class="width200m" id="DpCompat">
+<option value="0" selected>Fast</option>
+<option value="1">Moderate</option>
+<option value="2">Slow</option>
+</select><label for="DpCompat">Compatibility mode</label>
+<p>&nbsp;</p>
+<select class="width200m" id="ViMode">
+<option value="0" selected>Filtered</option>
+<option value="1">Unfiltered</option>
+<option value="2">Depth</option>
+<option value="3">Coverage</option>
+</select><label for="ViMode">Output mode</label>
+<p>&nbsp;</p>
+<div title="Scaling interpolation type."><select class="width200m" id="ViInterpolation">
+<option value="0">Nearest-neighbor</option>
+<option value="1">Bilinear</option>
+<option value="2" selected>Hybrid</option>
+</select><label for="ViInterpolation">Interpolation</label></div>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p><input id="Parallel" type="checkbox" data-store="Parallel" checked><label for="Parallel">Multi-core rendering</label></p>
+<p>&nbsp;</p>
+<p title="Number of logical processors to use. 0 uses all."><input id="NumWorkers" type="range" min="0" step="1" value="0"><label for="NumWorkers"><span id="NumWorkersText">0</span>: Rendering threads</label><button class="floatright" data-value="0" id="resetNumWorkers">Reset</button></p>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
 <p class="headline">Parallel</p>
 <p>&nbsp;</p>
-<ul class="ul-buttons">
-<li id="ul_parallel_video" class="active">Video</li>
-<li id="ul_parallel_emulation">Emulation</li>
-</ul>
+<p class="sub">Video</p>
 <p>&nbsp;</p>
-<div id="parallel_video" class="mt-10">
 <p><input id="ParallelWidescreenStretch" type="checkbox" data-store="ParallelWidescreenStretch"><label for="ParallelWidescreenStretch">Widescreen (stretch)</label></p>
 <p>&nbsp;</p>
 <p title="Amount of overscan pixels to crop."><input id="ParallelCropOverscan" type="range" min="0" max="99" step="1" value="0"><label for="ParallelCropOverscan"><span id="ParallelCropOverscanText">0</span>: Crop overscan</label><button class="floatright" data-value="0" id="resetParallelCropOverscan">Reset</button></p>
@@ -1509,8 +1495,9 @@ HTS: Read textures as they are needed from hard disk."><select id="cache">
 <option value="false" selected>Bob</option>
 <option value="true">Weave</option>
 </select><label for="ParallelDeinterlaceMode">Deinterlacing method</label></div>
-</div>
-<div id="parallel_emulation" class="hide mt-10">
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<p class="sub">Emulation</p>
+<p>&nbsp;</p>
 <p title="Smooths polygon edges."><input id="ParallelVIAA" type="checkbox" data-store="ParallelVIAA" checked><label for="ParallelVIAA">Anti-aliasing</label></p>
 <p>&nbsp;</p>
 <p><input id="ParallelVIBilerp" type="checkbox" data-store="ParallelVIBilerp" checked><label for="ParallelVIBilerp">Bilinear scaling</label></p>
@@ -1530,7 +1517,6 @@ HTS: Read textures as they are needed from hard disk."><select id="cache">
 <p title="Enable synchronizing of RDP and CPU."><input id="ParallelSynchronousRDP" type="checkbox" data-store="ParallelSynchronousRDP" checked><label for="ParallelSynchronousRDP">Synchronize RDP and CPU</label></p>
 <p>&nbsp;</p>
 <p><input id="ParallelVIDither" type="checkbox" data-store="ParallelVIDither" checked><label for="ParallelVIDither">VI dither</label></p>
-</div>
 <p>&nbsp;</p><p>&nbsp;</p>
 <footer id="footer">
 <button title="Settings" id="settings"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M19.43 12.98a7.8 7.8 0 0 0 0-1.96l2.11-1.65a.5.5 0 0 0 .12-.64l-2-3.46a.5.5 0 0 0-.61-.22l-2.49 1a7.3 7.3 0 0 0-1.69-.98l-.38-2.65A.49.49 0 0 0 14 2h-4a.49.49 0 0 0-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1a.57.57 0 0 0-.18-.03.5.5 0 0 0-.43.25l-2 3.46a.5.5 0 0 0 .12.64l2.11 1.65a7.93 7.93 0 0 0 0 1.96l-2.11 1.65a.5.5 0 0 0-.12.64l2 3.46a.5.5 0 0 0 .61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65a7.68 7.68 0 0 0 1.69-.98l2.49 1 .18.03a.5.5 0 0 0 .43-.25l2-3.46a.5.5 0 0 0-.12-.64l-2.11-1.65zm-1.98-1.71a5.34 5.34 0 0 1 0 1.46l-.14 1.13.89.7 1.08.84-.7 1.21-1.27-.51-1.04-.42-.9.68c-.43.32-.84.56-1.25.73l-1.06.43-.16 1.13-.2 1.35h-1.4l-.19-1.35-.16-1.13-1.06-.43a5.67 5.67 0 0 1-1.23-.71l-.91-.7-1.06.43-1.27.51-.7-1.21 1.08-.84.89-.7-.14-1.13c-.03-.31-.05-.54-.05-.74s.02-.43.05-.73l.14-1.13-.89-.7-1.08-.84.7-1.21 1.27.51 1.04.42.9-.68c.43-.32.84-.56 1.25-.73l1.06-.43.16-1.13.2-1.35h1.39l.19 1.35.16 1.13 1.06.43c.43.18.83.41 1.23.71l.91.7 1.06-.43 1.27-.51.7 1.21-1.07.85-.89.7.14 1.13zM12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg></button>
