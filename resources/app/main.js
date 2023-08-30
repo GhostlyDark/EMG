@@ -97,7 +97,6 @@ ipcMain.on('romDir', (e, data) => {if(existsSync(data)){e.returnValue = readdirS
 ipcMain.on('romDirFile', (e, dir, data) => {e.returnValue = path(dir,data)})
 ipcMain.on('openPath', (e, data) => {if(existsSync(data)){e.returnValue = shell.openPath(data).toString()}else{e.returnValue = ''}})
 ipcMain.on('showInFolder', (e, data) => {e.returnValue = shell.showItemInFolder(data)})
-ipcMain.on('goToGitHub', () => {shell.openExternal('https://github.com/GhostlyDark/EMG')})
 
 Menu.setApplicationMenu(null)
 

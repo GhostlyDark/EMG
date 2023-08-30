@@ -809,6 +809,7 @@ id('showgbRAM3').addEventListener('click', function(){showInFolder(gbRAM3)})
 id('showgbROM4').addEventListener('click', function(){showInFolder(gbROM4)})
 id('showgbRAM4').addEventListener('click', function(){showInFolder(gbRAM4)})
 
+id('openFile').addEventListener('click', function(){id('fileInput').click()})
 document.addEventListener('keyup', function(e){if(e.ctrlKey && e.which == 79){id('fileInput').click()}})
 document.addEventListener('keyup', function(e){if(e.ctrlKey && e.which == 76){id('launch').click()}})
 

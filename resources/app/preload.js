@@ -22,7 +22,6 @@ emuLaunch = (parameters) => {ipcRenderer.send('emuLaunch', parameters)},
 showCheats = (parameters) => {return ipcRenderer.sendSync('showCheats', parameters)},
 jsRefresh = () => {return ipcRenderer.sendSync('jsRefresh')},
 jsMapping = (padId) => {return ipcRenderer.sendSync('jsMapping', padId)},
-goToGitHub = () => {ipcRenderer.send('goToGitHub')},
 
 jstest = (joyinput) => {
 var joyID = function(joyID){return id(joyID)},joyvalue,joydata,jstestConfig,config;
@@ -104,5 +103,3 @@ contextBridge.exposeInMainWorld('jsRefresh',jsRefresh)
 contextBridge.exposeInMainWorld('jsMapping',jsMapping)
 contextBridge.exposeInMainWorld('showCheats',showCheats)
 contextBridge.exposeInMainWorld('writeGCA',writeGCA)
-
-document.addEventListener('DOMContentLoaded', function() {id('github').addEventListener('click', function(){goToGitHub()})})
