@@ -11,11 +11,17 @@ EMG is a launcher for [mupen64plus](https://github.com/GhostlyDark/mupen64plus-c
 - **Input:** [GameCube Adapter](https://github.com/GhostlyDark/mupen64plus-input-gca), [Mupen64Plus Input SDL](https://github.com/GhostlyDark/mupen64plus-input-sdl), [Raphnetraw](https://github.com/GhostlyDark/mupen64plus-input-raphnetraw)
 - **RSP:** [Mupen64Plus HLE](https://github.com/GhostlyDark/mupen64plus-rsp-hle), [Static Interpreter](https://github.com/GhostlyDark/rsp), [Parallel RSP](https://github.com/GhostlyDark/parallel-rsp)
 
-**System requirements:**
+**Hardware requirements:**
 
 - **CPU:** SSE3 capable (Electron)
 - **GPU:** OpenGL 3.3 (Angrylion Plus, GLideN64), Vulkan 1.1 (Parallel)
-- **OS:** Linux (64-bit) or Windows 10+ (64-bit)
+
+**Operating system requirements:**
+
+- **build:** CMake v3.15 or newer (Ubuntu 20.04, Debian 11 or similar)
+- **run:** Linux or Windows (64-bit)
+- **win7:** Release requires Windows 7 or newer
+- **win10:** Release requires Windows 10 or newer
 
 **GameCube adapter:**
 
