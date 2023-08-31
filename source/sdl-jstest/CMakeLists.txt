@@ -17,8 +17,6 @@
 cmake_minimum_required(VERSION 3.9)
 project(sdl-jstest)
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99")
-
 find_package(PkgConfig REQUIRED)
 pkg_search_module(SDL2 REQUIRED sdl2)
 

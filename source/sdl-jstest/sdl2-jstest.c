@@ -21,27 +21,32 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int str2int(const char* str, int* val)
+static int str2int(const char* str, int* val)
 {
   char* endptr;
-  errno = 0;    /* To distinguish success/failure after call */
+  errno = 0;
+  long tmp = strtol(str, &endptr, 10);
 
-  *val = strtol(str, &endptr, 10);
-
-  /* Check for various possible errors */
-  if ((errno == ERANGE && (*val == LONG_MAX || *val == LONG_MIN))
-      || (errno != 0 && *val == 0)) {
+  // error
+  if (errno != 0) {
     return 0;
   }
 
-  if (endptr == str) {
+  // garbage at the end
+  if (*endptr != '\0') {
     return 0;
   }
 
+  // out of range of int
+  if (tmp < INT_MIN || tmp > INT_MAX) {
+    return 0;
+  }
+
+  *val = (int)tmp;
   return 1;
 }
 
-void print_joystick_info(int joy_idx, SDL_Joystick* joy, SDL_GameController* gamepad)
+static void print_joystick_info(int joy_idx, SDL_Joystick* joy, SDL_GameController* gamepad)
 {
   SDL_JoystickGUID guid = SDL_JoystickGetGUID(joy);
   char guid_str[1024];
@@ -67,7 +72,7 @@ void print_joystick_info(int joy_idx, SDL_Joystick* joy, SDL_GameController* gam
   printf("\n");
 }
 
-void print_help(const char* prg)
+static void print_help(const char* prg)
 {
   printf("Usage: %s [OPTION]\n", prg);
   printf("List available joysticks or test a joystick.\n");
@@ -91,7 +96,7 @@ void print_help(const char* prg)
   printf("  %s --event 0\n", prg);
 }
 
-void list_joysticks()
+static void list_joysticks(void)
 {
   int num_joysticks = SDL_NumJoysticks();
   if (num_joysticks == 0)
@@ -122,7 +127,7 @@ void list_joysticks()
   }
 }
 
-void listsimple_joysticks()
+static void listsimple_joysticks()
 {
   int num_joysticks = SDL_NumJoysticks();
   if (num_joysticks == 0)
@@ -132,7 +137,8 @@ void listsimple_joysticks()
     printf("%d: %s\n", i, SDL_JoystickNameForIndex(i));
 }
 
-void test_gamecontroller_events(SDL_GameController* gamepad)
+#if 0
+static void test_gamecontroller_events(SDL_GameController* gamepad)
 {
   assert(gamepad);
 
@@ -215,14 +221,18 @@ void test_gamecontroller_events(SDL_GameController* gamepad)
         printf("Recieved interrupt, exiting\n");
         break;
 
+      case SDL_KEYMAPCHANGED:
+        break;
+
       default:
         fprintf(stderr, "Error: Unhandled event type: %#x\n", event.type);
         break;
     }
   }
 }
+#endif
 
-void test_gamecontroller_state(SDL_GameController* gamepad)
+static void test_gamecontroller_state(SDL_GameController* gamepad)
 {
   assert(gamepad);
 
@@ -258,7 +268,7 @@ void test_gamecontroller_state(SDL_GameController* gamepad)
   }
 }
 
-void test_gamecontroller(int gamecontroller_idx)
+static void test_gamecontroller(int gamecontroller_idx)
 {
   SDL_GameController* gamepad = SDL_GameControllerOpen(gamecontroller_idx);
   if (!gamepad)
@@ -274,7 +284,7 @@ void test_gamecontroller(int gamecontroller_idx)
   }
 }
 
-void event_joystick(int joy_idx)
+static void event_joystick(int joy_idx)
 {
   SDL_Joystick* joy = SDL_JoystickOpen(joy_idx);
   if (!joy)
@@ -360,7 +370,7 @@ void event_joystick(int joy_idx)
   }
 }
 
-void eventsimple_joystick(int joy_idx)
+static void eventsimple_joystick(int joy_idx)
 {
   SDL_Joystick* joy = SDL_JoystickOpen(joy_idx);
   if (!joy)
@@ -427,7 +437,7 @@ void eventsimple_joystick(int joy_idx)
   }
 }
 
-void guid_joystick(int joy_idx)
+static void guid_joystick(int joy_idx)
 {
   SDL_Joystick* joy = SDL_JoystickOpen(joy_idx);
   SDL_JoystickGUID guid = SDL_JoystickGetGUID(joy);
@@ -443,7 +453,7 @@ void guid_joystick(int joy_idx)
   }
 }
 
-void mapping_joystick(int joy_idx)
+static void mapping_joystick(int joy_idx)
 {
   SDL_Joystick* joy = SDL_JoystickOpen(joy_idx);
   SDL_JoystickGUID guid = SDL_JoystickGetGUID(joy);
@@ -459,7 +469,7 @@ void mapping_joystick(int joy_idx)
   }
 }
 
-void test_rumble(int joy_idx)
+static void test_rumble(int joy_idx)
 {
   SDL_Joystick* joy = SDL_JoystickOpen(joy_idx);
   if (!joy)
@@ -519,14 +529,8 @@ int main(int argc, char** argv)
   else
   {
     atexit(SDL_Quit);
-	
-    {
-      int ret = SDL_GameControllerAddMappingsFromFile("gamecontrollerdb.txt");
-//      if (ret < 0)
-//      {
-//        fprintf(stderr, "error: failed to read gamecontrollerdb.txt: %s\n", SDL_GetError());
-//      }
-    }
+
+    SDL_GameControllerAddMappingsFromFile("gamecontrollerdb.txt");
 
     if (argc == 2 && (strcmp(argv[1], "--help") == 0 ||
                       strcmp(argv[1], "-h") == 0))
@@ -536,7 +540,7 @@ int main(int argc, char** argv)
     else if (argc == 2 && (strcmp(argv[1], "--version") == 0 ||
 	                       (strcmp(argv[1], "-v") == 0)))
     {
-      printf("2022-11-07\n");
+      printf("2023-08-31\n");
       exit(EXIT_SUCCESS);
     }
     else if (argc == 2 && (strcmp(argv[1], "--list") == 0 ||
@@ -633,6 +637,8 @@ int main(int argc, char** argv)
       fprintf(stderr, "Try '%s --help' for more information\n", argv[0]);
     }
   }
+
+  return EXIT_SUCCESS;
 }
 
 /* EOF */
