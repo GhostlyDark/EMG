@@ -85,6 +85,7 @@ option{background:#efefef}
 
 .box{padding:20px;border:2px dotted #111;word-wrap:break-word}
 .dark .box{border:2px dotted #eee}
+#fileInput{min-height:50px}
 
 .floatleft{float:left}
 .floatright{float:right}
