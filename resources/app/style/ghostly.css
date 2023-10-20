@@ -364,10 +364,11 @@ td a,.youtube a{border:0!important}
 .tabbed [type=radio],.tab-content{display:none}
 .tabs{list-style-type:none;text-align:center;margin:-5px auto 20px auto;padding:0}
 .tab{display:inline-block;padding:3px;-webkit-tap-highlight-color:rgba(255,255,255,0);-webkit-focus-ring-color:rgba(0,0,0,0)}
-.tab > label{cursor:pointer;line-height:40px;padding:11px 13px 9px 13px;border:0;transition:background-color .2s cubic-bezier(.4,0,.22,1),color .2s cubic-bezier(.4,0,.22,1);border-radius:25px;color:#666}
+.tab > label{cursor:pointer;line-height:40px;padding:11px 13px 9px 13px;border:0;transition:background-color .2s cubic-bezier(.4,0,.22,1),color .2s cubic-bezier(.4,0,.22,1);border-radius:5px;color:#666}
 .dark .tab > label{color:#aaa}
 .tab:hover label{background-color:rgb(225,225,225)}
 .dark .tab:hover label{background-color:rgb(35,35,35)}
+.tab img{max-width:30px;padding-bottom:5px}
 
 .tabbed [type=radio]:nth-of-type(1):checked ~ .tabs .tab:nth-of-type(1) label,
 .tabbed [type=radio]:nth-of-type(2):checked ~ .tabs .tab:nth-of-type(2) label,
