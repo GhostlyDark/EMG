@@ -167,7 +167,12 @@ p.img-x2 > img:nth-child(2),p.img-x2 picture:nth-child(2) > img{margin:20px 0 0 
 
 .center,.src,.dl-link,.img-x2{text-align:center}
 .line-through{text-decoration:line-through}
+
 .dl-link{margin-top:5px}
+.dl-link img{max-width:26px;margin-left:5px;position:relative;top:8px;opacity:.9}
+.dark .dl-link img{filter:invert(1)}
+.dl-link.dl-img{margin-top:-2px}
+
 .src,.sub3{font-size:18px}
 .sub2,.indent,.faq,.c1 u{font-size:19px}
 sup{font-size:12px}
