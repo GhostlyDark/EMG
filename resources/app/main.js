@@ -117,6 +117,7 @@ app.on('ready', () => {
 win = new BrowserWindow(mainWindow)
 if(process.versions.electron.substring(0,2) > '23')win.setBackgroundMaterial('acrylic')
 win.loadURL(load)
+win.minimize()
 win.once('ready-to-show', () => {win.maximize();win.show()})
 win.on('page-title-updated', (e) => {e.preventDefault()})
 if(isLinux)win.setIcon(nativeImage.createFromPath(path(dir, 'img', 'emg.png')).resize({width:48}))
