@@ -131,6 +131,7 @@ session.defaultSession.webRequest.onBeforeRequest(
 function(details, callback){
 const whitelist = /(^http:\/\/localhost:64064)|(^devtools:\/\/devtools\/bundled\/)/g;
 if(whitelist.test(details.url)){callback({cancel:false})}
+else if(details.url.includes('%20')){callback({redirectURL: details.url.replace('%20','')})}
 else{callback({cancel:true})}})
 
 win.on('closed', () => {app.exit()})
