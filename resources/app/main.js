@@ -1,9 +1,9 @@
 let win, jstestChild;
 const {app, BrowserWindow, dialog, globalShortcut, ipcMain, Menu, nativeImage, session, shell} = require('electron'),
-{existsSync, mkdirSync, readdirSync, writeFileSync} = require('fs'),
-{spawn, spawnSync} = require('child_process'),
-url = require('url').URL,
-path = require('path').join,
+{existsSync, mkdirSync, readdirSync, writeFileSync} = require('node:fs'),
+{spawn, spawnSync} = require('node:child_process'),
+url = require('node:url').URL,
+path = require('node:path').join,
 dir = __dirname,
 appData = app.getPath('appData'),
 m64pConfig = path(appData, 'mupen64plus'),
