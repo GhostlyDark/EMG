@@ -62,7 +62,8 @@ cp -R source/* $cmake_dir
 pushd "$build_dir"
 
 [ ! -f electron-$electron-$platform-x64.zip ] && wget https://github.com/electron/electron/releases/download/$electron/electron-$electron-$platform-x64.zip
-7z x electron-$electron-$platform-x64.zip -oEMG '-x!LICENSE' '-x!LICENSES.chromium.html' '-x!version' '-x!resources/default_app.asar' -y
+7z x electron-$electron-$platform-x64.zip -oEMG '-x!LICENSE' '-x!LICENSES.chromium.html' '-x!version' '-x!resources/default_app.asar' '-x!locales/*.pak' -y
+7z x electron-$electron-$platform-x64.zip -oEMG '-i!locales/en-US.pak' -y
 
 if [[ "$OSTYPE" == "msys"* ]]; then
     [ ! -f rcedit-x64.exe ] && wget https://github.com/electron/rcedit/releases/download/v1.1.1/rcedit-x64.exe

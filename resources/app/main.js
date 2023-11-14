@@ -39,6 +39,7 @@ texture_dump = path(m64pShare,'texture_dump');
 app.commandLine.appendSwitch('disable-http-cache')
 app.commandLine.appendSwitch('no-proxy-server')
 app.commandLine.appendSwitch('ignore-connections-limit', 'localhost:64064')
+app.commandLine.appendSwitch('lang','en-US')
 app.enableSandbox()
 
 ipcMain.on('emuLaunch', (e, parameters) => {
