@@ -23,10 +23,11 @@ preferences = {preload:path(dir, 'preload.js'), disableDialogs:true},
 mainWindow = {backgroundColor:'#121212', width:1280, height:800, minWidth:923, minHeight:640, title:name, show:false, webPreferences:preferences},
 deleteDialog = {defaultId:1, cancelId:1, icon:path(dir, 'img', 'delete.png'), buttons:['Confirm','Abort'], title:' Reset settings', message:'Reset all settings?'},
 server = require(path(dir,'server.js'));
-if(app.requestSingleInstanceLock())server.deploy();
-
 let m64pCache = m64pShare = m64pConfig;
-if(isLinux){m64pCache = path(appData, '../', '.cache', 'mupen64plus');m64pShare = path(appData, '../', '.local', 'share', 'mupen64plus')};
+
+if(app.requestSingleInstanceLock())server.deploy()
+if(process.versions.electron.substring(0,2) > '26')mainWindow.height=0
+if(isLinux){m64pCache = path(appData, '../', '.cache', 'mupen64plus');m64pShare = path(appData, '../', '.local', 'share', 'mupen64plus')}
 
 const cache = path(m64pCache,'cache'),
 hires_texture = path(m64pShare,'hires_texture'),
