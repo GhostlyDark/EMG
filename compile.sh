@@ -5,7 +5,7 @@ set -ex
 
 # Parameters
 threads="${1:-$(nproc)}"
-electron="${2:-v26.5.0}"
+electron="${2:-v26.6.4}"
 
 
 
@@ -107,7 +107,7 @@ pushd "$toplvl_dir"
 
 if [[ "$OSTYPE" == "msys"* ]]; then
     cmd //c $build_dir/rcedit-x64 $m64p_dir/mupen64plus.exe --set-icon $ico_dir/mupen64plus.ico
-    cmd //c $build_dir/rcedit-x64 $emg_dir/EMG.exe --set-icon $ico_dir/emg.ico --set-version-string LegalCopyright "(C) 2023 EvilGames.eu" --set-version-string OriginalFilename "electron.exe" --set-version-string FileDescription "EMG" --set-version-string ProductName "EMG" --set-version-string CompanyName "EvilGames.eu"
+    cmd //c $build_dir/rcedit-x64 $emg_dir/EMG.exe --set-icon $ico_dir/emg.ico --set-version-string LegalCopyright "(C) 2024 EvilGames.eu" --set-version-string OriginalFilename "electron.exe" --set-version-string FileDescription "EMG" --set-version-string ProductName "EMG" --set-version-string CompanyName "EvilGames.eu"
 fi
 
 
