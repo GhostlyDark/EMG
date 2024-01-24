@@ -445,6 +445,8 @@ table .picture:after{padding-bottom:100%}
 a[download] img,.youtube img,figure img,.screenshots img,.yt img{transition:opacity .2s cubic-bezier(.4,0,.22,1)}
 a[download] img:hover,.youtube:hover img,figure img:hover,.screenshots img:hover,.yt img:hover{opacity:.75}
 
+b.m i{display:none}
+
 @media (min-width:906px){
 html{scrollbar-color:#bbb #fafafa}
 .dark{scrollbar-color:#777 #0f0f0f}
