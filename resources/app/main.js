@@ -26,7 +26,7 @@ server = require(path(dir,'server.js'));
 let m64pCache = m64pShare = m64pConfig;
 
 if(app.requestSingleInstanceLock())server.deploy()
-if(process.versions.electron.substring(0,2) > '26')mainWindow.height=0
+if(process.versions.electron.substring(0,2) > '26'){mainWindow.height=0;mainWindow.width=923}
 if(isLinux){m64pCache = path(appData, '../', '.cache', 'mupen64plus');m64pShare = path(appData, '../', '.local', 'share', 'mupen64plus')}
 
 const cache = path(m64pCache,'cache'),
