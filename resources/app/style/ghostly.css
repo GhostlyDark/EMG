@@ -1,10 +1,10 @@
 img{max-width:700px;width:100%;height:auto}
 html{height:100%;width:100%}
 body,html{min-height:100%}
-main,button,input,select{font-family:hinde,sans-serif;font-size:17px;letter-spacing:.5px}
+main,button,input,select{font-family:hind,sans-serif;font-size:17px;letter-spacing:.5px}
 
-@font-face {font-family:'hinde';src: url('hinde.woff2') format('woff2');font-display:swap}
-@font-face {font-family:'hinde';src: url('hinde-bold.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face {font-family:'hind';src: url('hind.woff2') format('woff2');font-display:swap}
+@font-face {font-family:'hind';src: url('hind-bold.woff2') format('woff2');font-weight:700;font-display:swap}
 
 @keyframes fadeIn{from{opacity:.001}to{opacity:1}}
 main{opacity:.001;animation:fadeIn .2s cubic-bezier(.4,0,.22,1) 1 forwards;display:block;width:auto;max-width:700px;margin:auto;padding:15px;line-height:25px}
