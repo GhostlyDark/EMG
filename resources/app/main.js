@@ -1,5 +1,5 @@
 let win, jstestChild;
-const {app, BrowserWindow, dialog, globalShortcut, ipcMain, Menu, nativeImage, session, shell} = require('electron'),
+const {app, BrowserWindow, dialog, globalShortcut, ipcMain, nativeImage, session, shell} = require('electron'),
 {existsSync, mkdirSync, readdirSync, writeFileSync} = require('node:fs'),
 {spawn, spawnSync} = require('node:child_process'),
 url = require('node:url').URL,
@@ -100,8 +100,6 @@ ipcMain.on('romDirFile', (e, dir, data) => {e.returnValue = path(dir,data)})
 ipcMain.on('openPath', (e, data) => {if(existsSync(data)){e.returnValue = shell.openPath(data).toString()}else{e.returnValue = ''}})
 ipcMain.on('showInFolder', (e, data) => {e.returnValue = shell.showItemInFolder(data)})
 
-Menu.setApplicationMenu(null)
-
 app.on('browser-window-focus', () => {
 globalShortcut.register('CmdOrCtrl+I', () => {win.webContents.toggleDevTools()})
 globalShortcut.register('CmdOrCtrl+N', () => {const choice = dialog.showMessageBoxSync(win,deleteDialog);if(choice !== 1){session.defaultSession.clearStorageData();session.defaultSession.clearCache()}})
@@ -118,6 +116,7 @@ if(!app.requestSingleInstanceLock()){return app.quit()}
 app.on('ready', () => {
 win = new BrowserWindow(mainWindow)
 if(process.versions.electron.substring(0,2) > '23')win.setBackgroundMaterial('acrylic')
+win.removeMenu()
 win.loadURL(load)
 win.minimize()
 win.once('ready-to-show', () => {win.maximize()})
