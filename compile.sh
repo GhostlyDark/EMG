@@ -58,6 +58,14 @@ cp -R source/* $cmake_dir
 
 
 
+# Fix script file permissions
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    pushd "$cmake_dir"
+    chmod u+x mupen64plus-video-GLideN64/src/getRevision.sh
+fi
+
+
+
 # Download binary files
 pushd "$build_dir"
 
@@ -93,7 +101,7 @@ mv $gca mupen64plus-input-gca$ext
 
 
 
-# Fix file permissions
+# Fix executable file permissions
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     pushd "$m64p_dir"
     chmod u+x mupen64plus
