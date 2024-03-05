@@ -15,13 +15,7 @@ EMG is a launcher for [mupen64plus](https://github.com/GhostlyDark/mupen64plus-c
 
 - **CPU:** SSE3 capable (Electron)
 - **GPU:** OpenGL 3.3 (Angrylion Plus, GLideN64), Vulkan 1.1 (Parallel)
-
-**Operating system requirements:**
-
-- **build:** CMake v3.15 or newer (Ubuntu 20.04, Debian 11 or similar)
-- **run:** Linux or Windows 7+ (64-bit)
-- **win7:** Release requires Windows 7 or newer (uses Electron v22.3.27)
-- **win10:** Release requires Windows 10 or newer (uses up-to-date Electron)
+- **OS:** Linux or Windows 7+ (64-bit), CMake v3.15 or newer (Ubuntu 20.04, Debian 11 or similar) for compiliation
 
 **GameCube adapter:**
 
@@ -78,10 +72,10 @@ The build script `compile.sh` can be run with additional parameters:
 ./compile.sh [threads] [electron]
 ```
 
-Limit the building process to one thread and grab Electron v26.4.2:
+Limit the building process to one thread and grab Electron v26.6.9:
 
 ```
-./compile.sh 1 v26.4.2
+./compile.sh 1 v26.6.9
 ```
 
 
