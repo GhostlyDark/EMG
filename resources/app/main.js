@@ -114,7 +114,6 @@ if(!app.requestSingleInstanceLock()){return app.quit()}
 
 app.on('ready', () => {
 win = new BrowserWindow(mainWindow)
-if(process.versions.electron.substring(0,2) >= '24')win.setBackgroundMaterial('acrylic')
 win.removeMenu()
 win.minimize()
 win.maximize()
