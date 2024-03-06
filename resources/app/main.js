@@ -1,5 +1,5 @@
 let win, jstestChild;
-const {app, BrowserWindow, dialog, globalShortcut, ipcMain, nativeImage, session, shell} = require('electron'),
+const {app, BrowserWindow, dialog, globalShortcut, ipcMain, session, shell} = require('electron'),
 {existsSync, mkdirSync, readdirSync, writeFileSync} = require('node:fs'),
 {spawn, spawnSync} = require('node:child_process'),
 url = require('node:url').URL,
@@ -119,7 +119,7 @@ win.minimize()
 win.maximize()
 win.loadURL(load)
 win.on('page-title-updated', (e) => {e.preventDefault()})
-if(isLinux)win.setIcon(nativeImage.createFromPath(path(dir, 'img', 'emg.png')).resize({width:48}))
+if(isLinux)win.setIcon(path(dir, 'img', 'emg-48.png'))
 win.webContents.setWindowOpenHandler((details) => {return {action:'deny'}})
 
 win.webContents.on('will-navigate', (e, nav) => {const parsed = new url(nav)
