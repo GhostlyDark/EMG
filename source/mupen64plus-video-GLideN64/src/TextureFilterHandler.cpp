@@ -57,8 +57,6 @@ u32 TextureFilterHandler::_getConfigOptions() const
 		options |= LET_TEXARTISTS_FLY;
 	if (config.hotkeys.enabledKeys[Config::HotKey::hkTexDump] != 0 || config.textureFilter.txDump)
 		options |= DUMP_TEX;
-	if (config.textureFilter.txStrongCRC)
-		options |= DUMP_STRONG_CRC;
 	if (config.textureFilter.txDeposterize)
 		options |= DEPOSTERIZE;
 	if (config.textureFilter.txEnhancedTextureFileStorage)
