@@ -39,7 +39,7 @@ n64_buttons = ['AButton1','AButton2','AButton3','AButton4','BButton1','BButton2'
 
 mappingArray = ['a','b','dpdown','dpleft','dpright','dpup','leftshoulder','lefttrigger','leftx','lefty','rightshoulder','righttrigger','rightx','righty','start','x','y'],
 
-gliden64_hotkeys = ['hkTexDump','hkStrongCRC','hkHdTexReload','hkHdTexToggle','hkInaccurateTexCords','hkVsync','hkFBEmulation','hkN64DepthCompare','hkOsdVis','hkOsdFps','hkOsdPercent','hkOsdInternalResolution','hkOsdRenderingResolution','hkTexCoordBounds','hkNativeResTexrects','hkForceGammaCorrection'],
+gliden64_hotkeys = ['hkTexDump','hkHdTexReload','hkHdTexToggle','hkInaccurateTexCords','hkVsync','hkFBEmulation','hkN64DepthCompare','hkOsdVis','hkOsdFps','hkOsdPercent','hkOsdInternalResolution','hkOsdRenderingResolution','hkTexCoordBounds','hkNativeResTexrects','hkForceGammaCorrection'],
 
 m64p_hotkeys = ['KbdMappingStop','KbdMappingSlot0','KbdMappingSlot1','KbdMappingSlot2','KbdMappingSlot3','KbdMappingSlot4','KbdMappingSlot5','KbdMappingSlot6','KbdMappingSlot7','KbdMappingSlot8','KbdMappingSlot9','KbdMappingFullscreen','KbdMappingSaveState','KbdMappingLoadState','KbdMappingIncrementSlot','KbdMappingReset','KbdMappingSpeedDown','KbdMappingSpeedUp','KbdMappingScreenshot','KbdMappingPause','KbdMappingMute','KbdMappingIncreaseVolume','KbdMappingDecreaseVolume','KbdMappingFastForward','KbdMappingSpeedLimiterToggle','KbdMappingFrameAdvance','KbdMappingGameshark'],
 
@@ -322,9 +322,9 @@ txNoTextureFileStorageDisable()
 
 function txHiresEnableDisable(){
 if(id('txHiresEnable').checked){id('txFilterMode').disabled = id('txEnhancementMode').disabled = id('txCacheSize').disabled = id('txDeposterize').disabled = id('txFilterIgnoreBG').disabled = true;
-id('txDump').disabled = id('txStrongCRC').disabled = id('txHiresFullAlphaChannel').disabled = id('txHresAltCRC').disabled = id('txCacheCompression').disabled = id('txSaveCache').disabled = id('txNoTextureFileStorage').disabled = false}
+id('txDump').disabled = id('txHiresFullAlphaChannel').disabled = id('txHresAltCRC').disabled = id('txCacheCompression').disabled = id('txSaveCache').disabled = id('txNoTextureFileStorage').disabled = false}
 else{id('txFilterMode').disabled = id('txEnhancementMode').disabled = id('txCacheSize').disabled = id('txDeposterize').disabled = id('txFilterIgnoreBG').disabled = false;
-id('txDump').disabled = id('txStrongCRC').disabled = id('txHiresFullAlphaChannel').disabled = id('txHresAltCRC').disabled = id('txCacheCompression').disabled = id('txSaveCache').disabled = id('txNoTextureFileStorage').disabled = true}}
+id('txDump').disabled = id('txHiresFullAlphaChannel').disabled = id('txHresAltCRC').disabled = id('txCacheCompression').disabled = id('txSaveCache').disabled = id('txNoTextureFileStorage').disabled = true}}
 id('txHiresEnable').addEventListener('change', txHiresEnableDisable)
 txHiresEnableDisable()
 
@@ -837,7 +837,6 @@ bilinearMode = 'Video-GLideN64[bilinearMode]=' + id('bilinearMode').checked,
 fxaa = 'Video-GLideN64[fxaa]=' + id('fxaa').checked,
 enableHalosRemoval = 'Video-GLideN64[enableHalosRemoval]=' + id('enableHalosRemoval').checked,
 txDump = 'Video-GLideN64[txDump]=' + id('txDump').checked,
-txStrongCRC = 'Video-GLideN64[txStrongCRC]=' + id('txStrongCRC').checked,
 txHiresEnable = 'Video-GLideN64[txHiresEnable]=' + id('txHiresEnable').checked,
 txNoTextureFileStorage = 'Video-GLideN64[txNoTextureFileStorage]=' + id('txNoTextureFileStorage').checked,
 EnableInaccurateTextureCoordinates = 'Video-GLideN64[EnableInaccurateTextureCoordinates]=' + id('EnableInaccurateTextureCoordinates').checked,
@@ -1048,7 +1047,6 @@ JoyMappingFrameAdvance = 'CoreEvents[Joy Mapping Frame Advance]=J0' + id('JoyMap
 JoyMappingGameshark = 'CoreEvents[Joy Mapping Gameshark]=J0' + id('JoyMappingGameshark1').value + ',J1' + id('JoyMappingGameshark2').value + ',J2' + id('JoyMappingGameshark3').value + ',J3' + id('JoyMappingGameshark4').value,
 
 hkTexDump = 'Video-GLideN64[hkTexDump]=' + id('hkTexDump').value,
-hkStrongCRC = 'Video-GLideN64[hkStrongCRC]=' + id('hkStrongCRC').value,
 hkHdTexReload = 'Video-GLideN64[hkHdTexReload]=' + id('hkHdTexReload').value,
 hkHdTexToggle = 'Video-GLideN64[hkHdTexToggle]=' + id('hkHdTexToggle').value,
 hkInaccurateTexCords = 'Video-GLideN64[hkInaccurateTexCords]=' + id('hkInaccurateTexCords').value,
@@ -1566,7 +1564,7 @@ AButton4,BButton4,LTrig4,RTrig4,ZTrig4,Start4,DPadU4,DPadL4,DPadR4,DPadD4,CButto
 
 Parallel,NumWorkers,BusyLoop,ViMode,ViInterpolation,ViWidescreen,ViHideOverscan,ViIntegerScaling,DpCompat, /* Angrylion Plus */
 
-threadedVideo,msaa,fxaa,aspectRatio,bufferSwapMode,useNativeResolutionFactor,bilinearMode,enableHalosRemoval,anisotropy,cache,txDump,txStrongCRC,txHiresEnable,txNoTextureFileStorage,EnableInaccurateTextureCoordinates,EnableDitheringPattern,EnableHiresNoiseDithering,DitheringQuantization,RDRAMImageDitheringMode,EnableLOD,EnableHWLighting,EnableCoverage,EnableClipping,EnableShadersStorage,EnableLegacyBlending,EnableHybridFilter,EnableCustomSettings,CorrectTexrectCoords,EnableNativeResTexrects,BackgroundsMode,EnableTexCoordBounds,EnableFBEmulation,EnableCopyAuxiliaryToRDRAM,EnableN64DepthCompare,ForceDepthBufferClear,DisableFBInfo,FBInfoReadColorChunk,FBInfoReadDepthChunk,EnableCopyColorToRDRAM,EnableCopyDepthToRDRAM,EnableCopyColorFromRDRAM,EnableCopyDepthToMainDepthBuffer,EnableOverscan,OverscanNtscTop,OverscanNtscLeft,OverscanNtscRight,OverscanNtscBottom,OverscanPalTop,OverscanPalLeft,OverscanPalRight,OverscanPalBottom,txFilterMode,txEnhancementMode,txDeposterize,txFilterIgnoreBG,txCacheSize,txHiresVramLimit,txHiresFullAlphaChannel,txHresAltCRC,txCacheCompression, txForce16bpp, txSaveCache,txPathSetting,txCachePathSetting,txDumpPathSetting,hkTexDump,hkStrongCRC,hkHdTexReload,hkHdTexToggle,hkInaccurateTexCords,hkVsync,hkFBEmulation,hkN64DepthCompare,hkOsdVis,hkOsdFps,hkOsdPercent,hkOsdInternalResolution,hkOsdRenderingResolution,hkTexCoordBounds,hkNativeResTexrects,hkForceGammaCorrection,ForceGammaCorrection,GammaCorrectionLevel,fontName,fontSize,fontColor,ShowFPS,ShowVIS,ShowPercent,ShowInternalResolution,ShowRenderingResolution,ShowStatistics,CountersPos, /* GLideN64 */
+threadedVideo,msaa,fxaa,aspectRatio,bufferSwapMode,useNativeResolutionFactor,bilinearMode,enableHalosRemoval,anisotropy,cache,txDump,txHiresEnable,txNoTextureFileStorage,EnableInaccurateTextureCoordinates,EnableDitheringPattern,EnableHiresNoiseDithering,DitheringQuantization,RDRAMImageDitheringMode,EnableLOD,EnableHWLighting,EnableCoverage,EnableClipping,EnableShadersStorage,EnableLegacyBlending,EnableHybridFilter,EnableCustomSettings,CorrectTexrectCoords,EnableNativeResTexrects,BackgroundsMode,EnableTexCoordBounds,EnableFBEmulation,EnableCopyAuxiliaryToRDRAM,EnableN64DepthCompare,ForceDepthBufferClear,DisableFBInfo,FBInfoReadColorChunk,FBInfoReadDepthChunk,EnableCopyColorToRDRAM,EnableCopyDepthToRDRAM,EnableCopyColorFromRDRAM,EnableCopyDepthToMainDepthBuffer,EnableOverscan,OverscanNtscTop,OverscanNtscLeft,OverscanNtscRight,OverscanNtscBottom,OverscanPalTop,OverscanPalLeft,OverscanPalRight,OverscanPalBottom,txFilterMode,txEnhancementMode,txDeposterize,txFilterIgnoreBG,txCacheSize,txHiresVramLimit,txHiresFullAlphaChannel,txHresAltCRC,txCacheCompression, txForce16bpp, txSaveCache,txPathSetting,txCachePathSetting,txDumpPathSetting,hkTexDump,hkHdTexReload,hkHdTexToggle,hkInaccurateTexCords,hkVsync,hkFBEmulation,hkN64DepthCompare,hkOsdVis,hkOsdFps,hkOsdPercent,hkOsdInternalResolution,hkOsdRenderingResolution,hkTexCoordBounds,hkNativeResTexrects,hkForceGammaCorrection,ForceGammaCorrection,GammaCorrectionLevel,fontName,fontSize,fontColor,ShowFPS,ShowVIS,ShowPercent,ShowInternalResolution,ShowRenderingResolution,ShowStatistics,CountersPos, /* GLideN64 */
 
 ParallelFullscreen,ParallelUpscaling,ParallelScreenWidth,ParallelScreenHeight,ParallelSuperscaledReads,ParallelSuperscaledDither,ParallelDeinterlaceMode,ParallelCropOverscan,ParallelVerticalStretch,ParallelVIAA,ParallelDivot,ParallelGammaDither,ParallelVIBilerp,ParallelVIDither,ParallelDownScale,ParallelNativeTextLOD,ParallelNativeTextRECT,ParallelSynchronousRDP,ParallelWidescreenStretch,ParallelVSync], /* Parallel */
 

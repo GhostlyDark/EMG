@@ -1361,9 +1361,6 @@ If this option is turned off, the output resolution is the same as the rendering
 <p>&nbsp;</p>
 <p title="Dump textures without the need to press a hotkey."><input id="txDump" type="checkbox" data-store="txDump"><label for="txDump">Dump textures</label></p>
 <p>&nbsp;</p>
-<p title="Use stronger CRC for texture dumps. Can be used to possibly work around bad RiceCRC dumps.
-Avoid using this for most textures to preserve backwards compatibility."><input id="txStrongCRC" type="checkbox" data-store="txStrongCRC"><label for="txStrongCRC">Strong CRC for dump</label></p>
-<p>&nbsp;</p>
 <p title="Allow to fully use the alpha channel for high resolution textures."><input id="txHiresFullAlphaChannel" type="checkbox" data-store="txHiresFullAlphaChannel" checked><label for="txHiresFullAlphaChannel">Full alpha channel</label></p>
 <p>&nbsp;</p>
 <p title="Compress texture cache."><input id="txCacheCompression" type="checkbox" data-store="txCacheCompression"><label for="txCacheCompression">Compress cache</label></p>
@@ -1416,8 +1413,6 @@ HTS: Read textures as they are needed from hard disk."><select id="cache">
 <p class="mb-20 mt-20">Supported keys are 0-9 and A-Z.<button class="floatright" id="clear_hk_gliden64">Clear all</button></p>
 <div class="hotkeys">
 <p><label for="hkTexDump">Textures dump</label><input value="" type="text" id="hkTexDump" readonly><button id="clearhkTexDump">Clear</button></p>
-<p>&nbsp;</p>
-<p><label for="hkStrongCRC">Strong CRC for dump</label><input value="" type="text" id="hkStrongCRC" readonly><button id="clearhkStrongCRC">Clear</button></p>
 <p>&nbsp;</p>
 <p><label for="hkHdTexReload">Reload HD textures</label><input value="" type="text" id="hkHdTexReload" readonly><button id="clearhkHdTexReload">Clear</button></p>
 <p>&nbsp;</p>
