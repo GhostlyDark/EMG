@@ -6,7 +6,9 @@ url = require('node:url').URL,
 path = require('node:path').join,
 dir = __dirname,
 appData = app.getPath('appData'),
-m64pConfig = path(appData, 'mupen64plus'),
+dataDir = path(dir, '../', 'data'),
+userDataDir = path(dataDir, 'user'),
+n64DataDir = path(dataDir, 'n64'),
 cwd = path(dir, '../', 'm64p'),
 pluginDir = path(cwd, 'plugin'),
 testROM = path(cwd, 'mupen64plus.z64'),
@@ -23,10 +25,16 @@ preferences = {preload:path(dir, 'preload.js'), disableDialogs:true},
 mainWindow = {backgroundColor:'#0f0f0f', minWidth:923, minHeight:640, title:name, webPreferences:preferences},
 deleteDialog = {defaultId:1, cancelId:1, icon:path(dir, 'img', 'delete.png'), buttons:['Confirm','Abort'], title:' Reset settings', message:'Reset all settings?'},
 server = require(path(dir,'server.js'));
-let m64pCache = m64pShare = m64pConfig;
+let m64pCache = m64pShare = m64pConfig = path(appData, 'mupen64plus');
 
 if(app.requestSingleInstanceLock())server.deploy()
 if(isLinux){m64pCache = path(appData, '../', '.cache', 'mupen64plus');m64pShare = path(appData, '../', '.local', 'share', 'mupen64plus')}
+if(existsSync(dataDir)){
+	if(!existsSync(userDataDir))mkdirSync(userDataDir,{recursive:true})
+	if(!existsSync(n64DataDir))mkdirSync(n64DataDir,{recursive:true})
+	app.setPath('userData', userDataDir);
+	m64pCache = m64pShare = m64pConfig = n64DataDir;
+}
 
 const cache = path(m64pCache,'cache'),
 hires_texture = path(m64pShare,'hires_texture'),
