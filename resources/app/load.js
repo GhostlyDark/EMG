@@ -60,7 +60,7 @@ id('fancy').addEventListener('click', function(){id('background_input').click()}
 id('reset').addEventListener('click', function(){
 switch(html.classList.contains('custom')){
 default: id('background').style.backgroundImage = 'url(' + defaultBackground + ')';id('background').style.display = 'block';id('overlay').style.display = 'block';localStorage.background = defaultBackground;html.classList.add('custom'); break;
-case true: id('background').style.backgroundImage = 'none';id('background').style.display = 'none';id('overlay').style.display = 'none';localStorage.background = '';html.classList.remove('custom')}})
+case true: id('background').style.backgroundImage = '';id('background').style.display = '';id('overlay').style.display = '';localStorage.background = '';html.classList.remove('custom')}})
 
 id('background_input').addEventListener('change', bgChange, false)
 function bgChange(ev){
