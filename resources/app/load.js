@@ -7,7 +7,7 @@ if(localStorage.getItem('palette') === null){localStorage.palette = 'ocean'}
 if(localStorage.getItem('background') === null && matchMedia('(min-width:906px)').matches === true){localStorage.background = defaultBackground}
 if(localStorage.theme != null){themeColor.setAttribute('content',localStorage.theme)}
 if(localStorage.dark != null && localStorage.dark === ''){html.classList.toggle('dark')}
-if(localStorage.palette != null){html.classList.replace('palette-ocean','palette-' + localStorage.palette)}
+if(localStorage.palette != null){html.classList.remove('palette-ocean');html.classList.toggle('palette-' + localStorage.palette)}
 if(localStorage.background != null && localStorage.background != ''){html.classList.add('custom');id('background').style.backgroundImage = 'url(' + localStorage.background + ')';id('background').style.display = 'block';id('overlay').style.display = 'block'}
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -33,6 +33,7 @@ html.classList.toggle('dark');themeColor.setAttribute('content',color);localStor
 
 id('palettes').addEventListener('click', function(){
 var palcol = 'palette-' + localStorage.palette;
+html.classList.remove(palcol);
 if(html.classList.contains('dark')){switch(localStorage.palette){
 default: color = 'rgb(15,55,175)'; break;
 case 'ocean': color = 'rgb(50,50,150)'; break;
@@ -48,12 +49,12 @@ case 'red': color = 'rgb(28,110,69)'; break;
 case 'green': color = 'rgb(85,50,170)'; break;
 case 'purple': color = 'rgb(0,105,170)'}}
 switch(localStorage.palette){
-default: html.classList.replace(palcol,'palette-ocean');localStorage.palette = 'ocean'; break;
-case 'ocean': html.classList.replace(palcol,'palette-blue');localStorage.palette = 'blue'; break;
-case 'blue': html.classList.replace(palcol,'palette-red');localStorage.palette = 'red'; break;
-case 'red': html.classList.replace(palcol,'palette-green');localStorage.palette = 'green'; break;
-case 'green': html.classList.replace(palcol,'palette-purple');localStorage.palette = 'purple'; break;
-case 'purple': html.classList.replace(palcol,'palette-ice');localStorage.palette = 'ice'}
+default: html.classList.toggle('palette-ocean');localStorage.palette = 'ocean'; break;
+case 'ocean': html.classList.toggle('palette-blue');localStorage.palette = 'blue'; break;
+case 'blue': html.classList.toggle('palette-red');localStorage.palette = 'red'; break;
+case 'red': html.classList.toggle('palette-green');localStorage.palette = 'green'; break;
+case 'green': html.classList.toggle('palette-purple');localStorage.palette = 'purple'; break;
+case 'purple': html.classList.toggle('palette-ice');localStorage.palette = 'ice'}
 themeColor.setAttribute('content',color);localStorage.theme = color})
 
 id('fancy').addEventListener('click', function(){id('background_input').click()})

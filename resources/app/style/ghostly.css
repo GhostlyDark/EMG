@@ -5,7 +5,7 @@ body,button,input,select{font-family:hind,sans-serif;font-size:17px;letter-spaci
 
 @keyframes fadeIn{from{opacity:.001}to{opacity:1}}
 header,main,footer{opacity:.001;animation:fadeIn .25s cubic-bezier(.4,0,.22,1) 1 forwards}
-main{display:block;width:auto;max-width:700px;margin:auto;padding:15px;line-height:25px}
+main{display:block;max-width:700px;margin:auto;padding:15px;line-height:25px}
 
 img,#flash-options,.accordion label{user-select:none}
 ::selection {background:rgba(200,200,200,.8);color:#000}
@@ -167,8 +167,8 @@ p.img-x2 > img:nth-child(2),p.img-x2 picture:nth-child(2) > img{margin:20px 0 0 
 .line-through{text-decoration:line-through}
 
 .dl-link{margin-top:5px}
-.dl-link img{max-width:26px;margin-left:5px;position:relative;top:8px;opacity:.9}
-.dark .dl-link img{filter:invert(1)}
+.dl-link img{max-width:26px;margin-left:5px;position:relative;top:8px;opacity:.9;filter:invert(1)}
+.dark .dl-link img{filter:invert(0)}
 .dl-link.dl-img{margin-top:-2px}
 
 .src,.sub3{font-size:18px}
@@ -426,7 +426,7 @@ td a,.youtube a{border:0!important}
 .overview p svg{fill:#111}
 .dark .overview p svg{fill:#eee}
 .overview a span,.greyed span{color:grey}
-.overview .table-sub{width:initial;height:initial}
+.overview .table-sub{width:auto;height:auto}
 .svg-table p a{position:relative;left:-10px;top:-75px}
 .svg-table p{height:48px;width:48px}
 .svg-table .table-sub{padding-top:20px;padding-bottom:20px}
