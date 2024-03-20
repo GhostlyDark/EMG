@@ -3,13 +3,12 @@
 <head>
 <title>EMG</title>
 <meta name="viewport" content="width=device-width,initial-scale=1"><meta charset="utf-8"><meta name="theme-color" content="rgb(15,55,175)"><link rel="icon" href="img/emg.png">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none';form-action 'none';base-uri 'none';img-src 'self' data:;script-src 'self';style-src 'self';font-src 'self' data:;block-all-mixed-content">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none';form-action 'none';base-uri 'none';img-src 'self' data:;script-src 'self';style-src 'self';font-src data:;block-all-mixed-content">
 <link rel="stylesheet" href="style/ghostly.css"><link rel="stylesheet" href="style/emg.css">
 </head>
 <body>
 <div id="background"></div><div id="overlay"></div>
 <script src="load.js"></script><script src="emg.js"></script>
-<main>
 <header>
 <ul>
 <li><a title="Choose input ROM" id="openFile"><img src="style/file.svg"></a></li>
@@ -20,6 +19,7 @@
 <li><a title="Launch mupen64plus" id="launch"><img src="img/mupen64plus.png"></a></li>
 </ul>
 </header>
+<main>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
 <div id="mainAnchor" class="anchor"></div>
 <p class="headline">Main</p>
@@ -1527,6 +1527,7 @@ HTS: Read textures as they are needed from hard disk."><select id="cache">
 <p>&nbsp;</p>
 <p><input id="ParallelVIDither" type="checkbox" data-store="ParallelVIDither" checked><label for="ParallelVIDither">VI dither</label></p>
 <p>&nbsp;</p><p>&nbsp;</p>
+</main>
 <footer id="footer">
 <button title="Settings" id="settings"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M19.43 12.98a7.8 7.8 0 0 0 0-1.96l2.11-1.65a.5.5 0 0 0 .12-.64l-2-3.46a.5.5 0 0 0-.61-.22l-2.49 1a7.3 7.3 0 0 0-1.69-.98l-.38-2.65A.49.49 0 0 0 14 2h-4a.49.49 0 0 0-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1a.57.57 0 0 0-.18-.03.5.5 0 0 0-.43.25l-2 3.46a.5.5 0 0 0 .12.64l2.11 1.65a7.93 7.93 0 0 0 0 1.96l-2.11 1.65a.5.5 0 0 0-.12.64l2 3.46a.5.5 0 0 0 .61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65a7.68 7.68 0 0 0 1.69-.98l2.49 1 .18.03a.5.5 0 0 0 .43-.25l2-3.46a.5.5 0 0 0-.12-.64l-2.11-1.65zm-1.98-1.71a5.34 5.34 0 0 1 0 1.46l-.14 1.13.89.7 1.08.84-.7 1.21-1.27-.51-1.04-.42-.9.68c-.43.32-.84.56-1.25.73l-1.06.43-.16 1.13-.2 1.35h-1.4l-.19-1.35-.16-1.13-1.06-.43a5.67 5.67 0 0 1-1.23-.71l-.91-.7-1.06.43-1.27.51-.7-1.21 1.08-.84.89-.7-.14-1.13c-.03-.31-.05-.54-.05-.74s.02-.43.05-.73l.14-1.13-.89-.7-1.08-.84.7-1.21 1.27.51 1.04.42.9-.68c.43-.32.84-.56 1.25-.73l1.06-.43.16-1.13.2-1.35h1.39l.19 1.35.16 1.13 1.06.43c.43.18.83.41 1.23.71l.91.7 1.06-.43 1.27-.51.7 1.21-1.07.85-.89.7.14 1.13zM12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg></button>
 <button title="Change brightness" id="moon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0V0z"/><g><path d="M10 4c4.41 0 8 3.59 8 8s-3.59 8-8 8c-.34 0-.68-.02-1.01-.07C10.9 17.77 12 14.95 12 12s-1.1-5.77-3.01-7.93C9.32 4.02 9.66 4 10 4m0-2c-1.82 0-3.53.5-5 1.35C7.99 5.08 10 8.3 10 12s-2.01 6.92-5 8.65C6.47 21.5 8.18 22 10 22c5.52 0 10-4.48 10-10S15.52 2 10 2z"/></g></svg></button>
@@ -1534,6 +1535,5 @@ HTS: Read textures as they are needed from hard disk."><select id="cache">
 <input id="background_input" type="file" accept="image/*"><button title="Set background image" id="fancy"><svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h7V2H4c-1.1 0-2 .9-2 2v7h2V4zm6 9l-4 5h12l-3-4-2.03 2.71L10 13zm7-4.5c0-.83-.67-1.5-1.5-1.5S14 7.67 14 8.5s.67 1.5 1.5 1.5S17 9.33 17 8.5zM20 2h-7v2h7v7h2V4c0-1.1-.9-2-2-2zm0 18h-7v2h7c1.1 0 2-.9 2-2v-7h-2v7zM4 13H2v7c0 1.1.9 2 2 2h7v-2H4v-7z"/></svg></button>
 <button title="Remove and reset background" id="reset"><svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M21.9 21.9l-6.1-6.1-2.69-2.69L5 5 3.59 3.59 2.1 2.1.69 3.51 3 5.83V19c0 1.1.9 2 2 2h13.17l2.31 2.31 1.42-1.41zM5 19V7.83l6.84 6.84-.84 1.05L9 13l-3 4h8.17l2 2H5zM7.83 5l-2-2H19a2 2 0 012 2v13.17l-2-2V5H7.83z"/></svg></button>
 </footer>
-</main>
 </body>
 </html>

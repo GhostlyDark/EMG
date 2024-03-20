@@ -11,7 +11,7 @@ if(localStorage.palette != null){html.classList.replace('palette-ocean','palette
 if(localStorage.background != null && localStorage.background != ''){html.classList.add('custom');id('background').style.backgroundImage = 'url(' + localStorage.background + ')';id('background').style.display = 'block';id('overlay').style.display = 'block'}
 
 document.addEventListener('DOMContentLoaded', function() {
-id('settings').style.display = 'block';id('settings').addEventListener('click', function(){id('footer').classList.toggle('footer')})
+id('settings').addEventListener('click', function(){id('footer').classList.toggle('footer')})
 
 id('moon').addEventListener('click', function(){
 if(html.classList.contains('dark')){switch(localStorage.palette){
