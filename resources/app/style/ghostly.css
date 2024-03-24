@@ -38,13 +38,13 @@ nav button{cursor:pointer}
 .headline button,.sub button{cursor:default}
 .headline button,.sub button,nav button,table button{background-color:rgba(0,0,0,0);background-repeat:no-repeat;border:0!important;outline:0!important;vertical-align:middle}
 header{padding:1px;text-align:center;position:fixed;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:728px;height:60px;z-index:11}
-.open-menu{visibility:visible;opacity:1}
-.close-menu{visibility:hidden;opacity:.001}
+#open-menu{visibility:visible;opacity:1}
+#close-menu{visibility:hidden;opacity:.001}
 #nav-close{display:none;position:fixed;top:0;left:0;width:100%;height:100%;cursor:default}
 
 nav:target{width:100%;display:block;visibility:visible;opacity:1;transition-delay:0s}
-nav:target ~ header .close-menu{visibility:visible;opacity:1}
-nav:target ~ header .open-menu{visibility:hidden;opacity:.001}
+nav:target ~ header #close-menu{visibility:visible;opacity:1}
+nav:target ~ header #open-menu{visibility:hidden;opacity:.001}
 nav:target + #nav-close{display:block}
 
 .nav-button{width:50px;height:30px;position:absolute;right:12px;top:8px;transition:background-color .2s cubic-bezier(.4,0,.22,1),opacity .2s cubic-bezier(.4,0,.22,1)}
@@ -62,8 +62,8 @@ nav:target + #nav-close{display:block}
 @media (max-width:400px){.text400{display:inline}.text401{display:none}}
 @media (max-width:500px){.text500{display:inline}.text501{display:none}}
 #thumb{height:50px;width:50px;position:relative;top:13px;right:9px;border-radius:50%;margin-right:3px}
-nav{transition:visibility 0s .2s,opacity .2s cubic-bezier(.4,0,.22,1),background .2s cubic-bezier(.4,0,.22,1);position:fixed;top:0;left:50%;transform:translateX(-50%);height:100%;width:100%;max-width:730px;visibility:hidden;overflow-y:auto;opacity:.001;z-index:10;background:rgba(50,50,100,.98)}
-nav div:first-child{color:#fff;margin-top:75px;margin-bottom:5px}
+nav{transition:visibility 0s .2s,opacity .2s cubic-bezier(.4,0,.22,1),background .2s cubic-bezier(.4,0,.22,1);position:fixed;bottom:0;left:50%;transform:translateX(-50%);height:calc(100% - 60px);width:100%;max-width:730px;visibility:hidden;overflow-y:auto;opacity:.001;z-index:10;background:rgba(50,50,100,.98)}
+nav div:first-child{color:#fff;margin-top:20px;margin-bottom:9px}
 nav a,nav div{transition:background-color .2s cubic-bezier(.4,0,.22,1);display:block;height:55px;line-height:55px;margin:0;text-align:center;font-size:18px}
 nav a:hover,nav a.active{background:rgba(0,0,0,.35)}
 nav a.active.nav-sub{background:rgba(0,0,0,.35)!important}
