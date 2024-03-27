@@ -1,11 +1,11 @@
 img{max-width:700px;width:100%;height:auto}
 html{height:100%;width:100%}
+body{padding-top:9px}
 body,html{min-height:100%}
 body,button,input,select{font-family:hind,sans-serif;font-size:17px;letter-spacing:.5px}
 
 @keyframes fadeIn{from{opacity:.001}to{opacity:1}}
-header,main,footer{opacity:.001;animation:fadeIn .25s cubic-bezier(.4,0,.22,1) 1 forwards}
-main{display:block;max-width:700px;margin:auto;padding:15px;line-height:25px}
+main{display:block;max-width:700px;margin:auto;padding:15px;line-height:25px;opacity:.001;animation:fadeIn .25s cubic-bezier(.4,0,.22,1) 1 forwards}
 
 img,#flash-options,.accordion label{user-select:none}
 ::selection {background:rgba(200,200,200,.8);color:#000}
@@ -62,8 +62,8 @@ nav:target + #nav-close{display:block}
 @media (max-width:400px){.text400{display:inline}.text401{display:none}}
 @media (max-width:500px){.text500{display:inline}.text501{display:none}}
 #thumb{height:50px;width:50px;position:relative;top:13px;right:9px;border-radius:50%;margin-right:3px}
-nav{transition:visibility 0s .2s,opacity .2s cubic-bezier(.4,0,.22,1),background .2s cubic-bezier(.4,0,.22,1);position:fixed;bottom:0;left:50%;transform:translateX(-50%);height:calc(100% - 60px);width:100%;max-width:730px;visibility:hidden;overflow-y:auto;opacity:.001;z-index:10;background:rgba(50,50,100,.98)}
-nav div:first-child{color:#fff;margin-top:20px;margin-bottom:9px}
+nav{transition:visibility 0s .2s,opacity .2s cubic-bezier(.4,0,.22,1),background .2s cubic-bezier(.4,0,.22,1);position:fixed;bottom:0;left:50%;transform:translateX(-50%);height:calc(100% - 62px);width:100%;max-width:730px;visibility:hidden;overflow-y:auto;opacity:.001;z-index:10;background:rgba(50,50,100,.98)}
+nav div:first-child{color:#fff;margin-top:20px;margin-bottom:10px}
 nav a,nav div{transition:background-color .2s cubic-bezier(.4,0,.22,1);display:block;height:55px;line-height:55px;margin:0;text-align:center;font-size:18px}
 nav a:hover,nav a.active{background:rgba(0,0,0,.35)}
 nav a.active.nav-sub{background:rgba(0,0,0,.35)!important}
