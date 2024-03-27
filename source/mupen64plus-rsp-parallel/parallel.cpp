@@ -4,12 +4,36 @@
 #include "rsp_jit.hpp"
 #endif
 #include <stdint.h>
+#include <cstdarg>
 
 #include "m64p_plugin.h"
 #include "rsp_1.1.h"
 
 #define RSP_PARALLEL_VERSION 0x0101
 #define RSP_PLUGIN_API_VERSION 0x020000
+
+static void (*l_DebugCallback)(void *, int, const char *) = NULL;
+static void *l_DebugCallContext = NULL;
+
+
+#define ATTR_FMT(fmtpos, attrpos) __attribute__ ((format (printf, fmtpos, attrpos)))
+static void DebugMessage(int level, const char *message, ...) ATTR_FMT(2, 3);
+
+void DebugMessage(int level, const char *message, ...)
+{
+    char msgbuf[1024];
+    va_list args;
+
+    if (l_DebugCallback == NULL)
+        return;
+
+    va_start(args, message);
+    vsprintf(msgbuf, message, args);
+
+    (*l_DebugCallback)(l_DebugCallContext, level, msgbuf);
+
+    va_end(args);
+}
 
 namespace RSP
 {
@@ -50,7 +74,7 @@ extern "C"
 	}
 #endif
 
-	EXPORT unsigned int CALL parallelRSPDoRspCycles(unsigned int cycles)
+	EXPORT unsigned int CALL DoRspCycles(unsigned int cycles)
 	{
 		if (*RSP::rsp.SP_STATUS_REG & SP_STATUS_HALT)
 			return 0;
@@ -97,7 +121,7 @@ extern "C"
 		return cycles;
 	}
 
-	EXPORT m64p_error CALL parallelRSPPluginGetVersion(m64p_plugin_type *PluginType, int *PluginVersion,
+	EXPORT m64p_error CALL PluginGetVersion(m64p_plugin_type *PluginType, int *PluginVersion,
 	                                                   int *APIVersion, const char **PluginNamePtr, int *Capabilities)
 	{
 		/* set version info */
@@ -110,18 +134,21 @@ extern "C"
 		if (APIVersion != NULL)
 			*APIVersion = RSP_PLUGIN_API_VERSION;
 
+		if (PluginNamePtr != NULL)
+			*PluginNamePtr = "ParaLLEl RSP";
+
 		if (Capabilities != NULL)
 			*Capabilities = 0;
 
 		return M64ERR_SUCCESS;
 	}
 
-	EXPORT void CALL parallelRSPRomClosed(void)
+	EXPORT void CALL RomClosed(void)
 	{
 		*RSP::rsp.SP_PC_REG = 0x00000000;
 	}
 
-	EXPORT void CALL parallelRSPInitiateRSP(RSP_INFO Rsp_Info, unsigned int *CycleCount)
+	EXPORT void CALL InitiateRSP(RSP_INFO Rsp_Info, unsigned int *CycleCount)
 	{
 		if (CycleCount)
 			*CycleCount = 0;
@@ -159,5 +186,24 @@ extern "C"
 		RSP::cpu.set_dmem(reinterpret_cast<uint32_t *>(Rsp_Info.DMEM));
 		RSP::cpu.set_imem(reinterpret_cast<uint32_t *>(Rsp_Info.IMEM));
 		RSP::cpu.set_rdram(reinterpret_cast<uint32_t *>(Rsp_Info.RDRAM));
+	}
+
+	EXPORT m64p_error CALL PluginStartup(m64p_dynlib_handle CoreLibHandle, void *Context,
+									 void (*DebugCallback)(void *, int, const char *))
+	{
+		/* first thing is to set the callback function for debug info */
+		l_DebugCallback = DebugCallback;
+		l_DebugCallContext = Context;
+		return M64ERR_SUCCESS;
+	}
+
+	EXPORT m64p_error CALL PluginShutdown(void)
+	{
+		return M64ERR_SUCCESS;
+	}
+
+	EXPORT int CALL RomOpen(void)
+	{
+		return 1;
 	}
 }
