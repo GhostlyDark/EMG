@@ -478,6 +478,18 @@ static void test_rumble(int joy_idx)
   }
   else
   {
+#if SDL_VERSION_ATLEAST(2,0,18)
+    if (SDL_JoystickHasRumble(joy) == SDL_FALSE)
+    {
+      fprintf(stderr, "rumble not supported on joystick %d\n", joy_idx);
+    }
+    else
+    {
+      SDL_GameControllerUpdate();
+      SDL_JoystickRumble(joy, 0xFFFF, 0xFFFF, 3000);
+      SDL_Delay(3000);
+    }
+#else /* SDL_VERSION_ATLEAST(2,0,18) */
     SDL_Haptic* haptic = SDL_HapticOpenFromJoystick(joy);
     if (!haptic)
     {
@@ -504,6 +516,7 @@ static void test_rumble(int joy_idx)
       }
       SDL_HapticClose(haptic);
     }
+#endif /* SDL_VERSION_ATLEAST(2,0,18) */
     SDL_JoystickClose(joy);
   }
 }
@@ -540,7 +553,7 @@ int main(int argc, char** argv)
     else if (argc == 2 && (strcmp(argv[1], "--version") == 0 ||
 	                       (strcmp(argv[1], "-v") == 0)))
     {
-      printf("2023-08-31\n");
+      printf("2024-03-28\n");
       exit(EXIT_SUCCESS);
     }
     else if (argc == 2 && (strcmp(argv[1], "--list") == 0 ||
