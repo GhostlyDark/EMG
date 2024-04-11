@@ -19,7 +19,7 @@ img,#flash-options,.accordion label{user-select:none}
 @media (max-width:605px){.table{overflow-x:scroll}}
 @media (min-width:606px){.sticky th{position:sticky;top:62px;z-index:2}}
 a,u{text-decoration:none}
-u,.underline{border-bottom:1px solid #000}
+u,.underline{border-bottom:1px solid #000;transition:border-color .2s cubic-bezier(.4,0,.22,1)}
 .underline{display:inline}
 .dark u,.dark .underline{border-bottom-color:#fff}
 .anchor,.anchor2{display:block;visibility:hidden;position:relative}
@@ -325,12 +325,13 @@ ul li,ol li{line-height:25px;margin-top:8px;margin-bottom:8px}
 .accordion input:checked ~ .inner{visibility:visible;opacity:1;height:auto;padding:20px 10px;margin-top:30px}
 
 footer button{background:rgba(200,200,200,.5);border:0;outline:0!important;padding:5px 10px;cursor:pointer;transition:background-color .2s cubic-bezier(.4,0,.22,1);z-index:4;pointer-events:auto;-webkit-backdrop-filter:blur(1px);backdrop-filter:blur(1px)}
+footer button span{transition:color .2s cubic-bezier(.4,0,.22,1)}
 footer button svg{position:relative;top:3px}
 #fancy,#moon,#palettes,#reset,#language{transition:visibility 0s .2s,opacity .2s cubic-bezier(.4,0,.22,1),background .2s cubic-bezier(.4,0,.22,1);visibility:hidden;opacity:.001;position:absolute}
 #fancy,#moon,#palettes,#reset{right:15px}
 #language{left:15px}
 footer button:hover{background:rgba(190,190,190,.8)}
-#moon svg g path, #fancy svg path,#palettes svg path:nth-child(2),#palettes svg circle,#settings svg,#language svg,#reset svg{fill:#000}
+#moon svg g path, #fancy svg path,#palettes svg path:nth-child(2),#palettes svg circle,#settings svg,#language svg,#reset svg{fill:#000;transition:fill .2s cubic-bezier(.4,0,.22,1)}
 .dark footer button{background:rgba(50,50,50,.5)}
 .dark footer button:hover{background:rgba(70,70,70,.8)}
 .dark #moon svg g path,.dark #fancy svg path,.dark #palettes svg path:nth-child(2),.dark #palettes svg circle,.dark #settings svg,.dark #language svg,.dark #reset svg{fill:#fff}
@@ -474,7 +475,7 @@ html{scrollbar-color:#bbb #fafafa}
 #background{z-index:-2;background-size:cover;background-repeat:no-repeat;background-position:center center;background-attachment:fixed}
 #overlay{z-index:-1}
 #background,#overlay{position:fixed;left:0;top:0;display:none;width:100%;height:100%}
-body,#overlay,.headline,th,.sub,.big-box,.inner,header,.sub-text{transition:background-color .2s cubic-bezier(.4,0,.22,1)}
+body,main,#overlay,.headline,th,.sub,.big-box,.inner,header,.sub-text{transition:background-color .2s cubic-bezier(.4,0,.22,1),color .2s cubic-bezier(.4,0,.22,1)}
 .custom body{transition:none}
 .custom #background{filter:blur(1vh)}
 .footer #moon,.footer #palettes,.footer #fancy,.footer #language,.footer #reset{visibility:visible;opacity:1;transition-delay:0s}
