@@ -17,13 +17,11 @@ id('moon').addEventListener('click', function(){
 if(html.classList.contains('dark')){switch(localStorage.palette){
 default: color = 'rgb(35,75,195)'; break;
 case 'red': color = 'rgb(163,28,45)'; break;
-case 'green': color = 'rgb(28,110,69)'; break;
 case 'purple': color = 'rgb(85,50,170)'; break;
 case 'ice': color = 'rgb(0,105,170)'}}
 else{switch(localStorage.palette){
 default: color = 'rgb(15,55,175)'; break;
 case 'red': color = 'rgb(138,3,20)'; break;
-case 'green': color = 'rgb(3,85,44)'; break;
 case 'purple': color = 'rgb(70,35,165)'; break;
 case 'ice': color = 'rgb(0,85,150)'}}
 if(html.classList.contains('dark')){localStorage.dark = ''}else{localStorage.dark = 'dark'}
@@ -35,20 +33,17 @@ html.classList.remove(palcol);
 if(html.classList.contains('dark')){switch(localStorage.palette){
 default: color = 'rgb(15,55,175)'; break;
 case 'ocean': color = 'rgb(138,3,20)'; break;
-case 'red': color = 'rgb(3,85,44)'; break;
-case 'green': color = 'rgb(70,35,165)'; break;
+case 'red': color = 'rgb(70,35,165)'; break;
 case 'purple': color = 'rgb(0,85,150)'}}
 else{switch(localStorage.palette){
 default: color = 'rgb(35,75,195)'; break;
 case 'ocean': color = 'rgb(163,28,45)'; break;
-case 'red': color = 'rgb(28,110,69)'; break;
-case 'green': color = 'rgb(85,50,170)'; break;
+case 'red': color = 'rgb(85,50,170)'; break;
 case 'purple': color = 'rgb(0,105,170)'}}
 switch(localStorage.palette){
 default: html.classList.toggle('palette-ocean');localStorage.palette = 'ocean'; break;
 case 'ocean': html.classList.toggle('palette-red');localStorage.palette = 'red'; break;
-case 'red': html.classList.toggle('palette-green');localStorage.palette = 'green'; break;
-case 'green': html.classList.toggle('palette-purple');localStorage.palette = 'purple'; break;
+case 'red': html.classList.toggle('palette-purple');localStorage.palette = 'purple'; break;
 case 'purple': html.classList.toggle('palette-ice');localStorage.palette = 'ice'}
 themeColor.setAttribute('content',color);localStorage.theme = color})
 

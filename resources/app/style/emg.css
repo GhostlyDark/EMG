@@ -28,13 +28,6 @@ button,select,input,.box,.pointer,.hotkeys label,[type=checkbox] + label,[type=c
 .palette-red [type=range]:focus::-webkit-slider-runnable-track{background-color:rgba(225,78,90,.5)}
 .palette-red [type=range]:hover::-webkit-slider-runnable-track{background-color:rgba(225,78,90,.5)}
 
-.palette-green [type=range]::-webkit-slider-thumb{background-color:rgb(63,170,104)}
-.palette-green [type=range]::-webkit-slider-runnable-track{background-color:rgba(38,145,79,.5)}
-.palette-green [type=range]:focus::-webkit-slider-thumb{background-color:rgb(88,195,129)}
-.palette-green [type=range]:hover::-webkit-slider-thumb{background-color:rgb(88,195,129)}
-.palette-green [type=range]:focus::-webkit-slider-runnable-track{background-color:rgba(63,170,104,.5)}
-.palette-green [type=range]:hover::-webkit-slider-runnable-track{background-color:rgba(63,170,104,.5)}
-
 .palette-purple [type=range]::-webkit-slider-thumb{background-color:rgb(180,130,230)}
 .palette-purple [type=range]::-webkit-slider-runnable-track{background-color:rgba(155,105,205,.5)}
 .palette-purple [type=range]:focus::-webkit-slider-thumb{background-color:rgb(205,155,255)}
