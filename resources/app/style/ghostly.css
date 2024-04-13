@@ -446,19 +446,19 @@ html{scrollbar-color:#bbb #eaeaea}
 .dark ::-webkit-scrollbar-thumb{background-color:#777}
 .dark ::-webkit-scrollbar-thumb:hover{background-color:#555}
 
-#main-nav::-webkit-scrollbar-track{background-color:rgb(5,25,115)}
+#main-nav::-webkit-scrollbar-track{background-color:rgb(25,45,135)}
 #main-nav::-webkit-scrollbar-thumb{background-color:rgb(65,85,175)}
 #main-nav::-webkit-scrollbar-thumb:hover{background-color:rgb(85,105,195)}
 
-.palette-red #main-nav::-webkit-scrollbar-track{background-color:rgb(64,0,6)}
+.palette-red #main-nav::-webkit-scrollbar-track{background-color:rgb(84,20,26)}
 .palette-red #main-nav::-webkit-scrollbar-thumb{background-color:rgb(124,60,66)}
 .palette-red #main-nav::-webkit-scrollbar-thumb:hover{background-color:rgb(144,80,86)}
 
-.palette-purple #main-nav::-webkit-scrollbar-track{background-color:rgb(40,25,115)}
+.palette-purple #main-nav::-webkit-scrollbar-track{background-color:rgb(60,45,135)}
 .palette-purple #main-nav::-webkit-scrollbar-thumb{background-color:rgb(100,85,175)}
 .palette-purple #main-nav::-webkit-scrollbar-thumb:hover{background-color:rgb(120,105,195)}
 
-.palette-ice #main-nav::-webkit-scrollbar-track{background-color:rgb(0,40,110)}
+.palette-ice #main-nav::-webkit-scrollbar-track{background-color:rgb(10,60,130)}
 .palette-ice #main-nav::-webkit-scrollbar-thumb{background-color:rgb(50,100,170)}
 .palette-ice #main-nav::-webkit-scrollbar-thumb:hover{background-color:rgb(70,120,190)}
 }
