@@ -473,6 +473,13 @@ html{scrollbar-color:#bbb #eaeaea}
 .custom #overlay{background:rgba(255,255,255,.85)}
 .dark.custom #overlay{background:rgba(0,0,0,.85)}
 
+.transition u,.transition .underline,.transition .heading{transition:border-color .2s cubic-bezier(.4,0,.22,1)}
+.transition footer button span{transition:color .2s cubic-bezier(.4,0,.22,1)}
+.transition #moon svg g path,.transition #fancy svg path,.transition #palettes svg path:nth-child(2),.transition #palettes svg circle,.transition #settings svg,.transition #language svg,.transition #reset svg{transition:fill .2s cubic-bezier(.4,0,.22,1)}
+.transition .dl-link img{transition:filter .2s cubic-bezier(.4,0,.22,1)}
+.transition body,.transition #overlay{transition:background-color .2s cubic-bezier(.4,0,.22,1),color .2s cubic-bezier(.4,0,.22,1)}
+.transition .sub,.transition .big-box,.transition .inner{transition:background-color .2s cubic-bezier(.4,0,.22,1)}
+
 .headline,header,table th,.dropdown,.sub-text{background:rgb(65,105,225)}.dark .headline,.dark header,.dark table th,.dark .dropdown,.dark .sub-text{background:rgb(45,85,205)}nav{background:rgb(25,45,135)}nav .nav-sub{color:#80a0ff}.search:focus{border:2px solid rgb(80,120,255)}.table-sub{color:#2a6bc1}.dark .table-sub{color:#80a0ff}li a:hover,.link a:hover,p a:hover{color:#2a6bc1;border-bottom-color:#2a6bc1}.dark li a:hover,.dark .link a:hover,.dark p a:hover{color:#80a0ff;border-bottom-color:#80a0ff}[type=checkbox]:hover:before,[type=checkbox]:checked:before{border-color:#217dff}.div-color i{color:#2a6bc1}.dark .div-color i{color:#80a0ff}
 
 .palette-red .headline,.palette-red header,.palette-red table th,.palette-red .dropdown,.palette-red .sub-text{background:rgb(188,53,70)}.dark.palette-red .headline,.dark.palette-red header,.dark.palette-red table th,.dark.palette-red .dropdown,.dark.palette-red .sub-text{background:rgb(158,33,50)}.palette-red nav{background:rgb(84,20,26)}.palette-red nav .nav-sub{color:rgb(224,100,106)}.palette-red .search:focus{border:2px solid rgb(200,50,50)}.palette-red .table-sub{color:rgb(224,51,79)}.dark.palette-red .table-sub{color:rgb(255,73,90)}.palette-red li a:hover,.palette-red .link a:hover,.palette-red p a:hover{color:#e00b27;border-bottom-color:#e00b27}.dark.palette-red li a:hover,.dark.palette-red .link a:hover,.dark.palette-red p a:hover{color:#ff495a;border-bottom-color:#ff495a}.palette-red [type=checkbox]:hover:before,.palette-red [type=checkbox]:checked:before{border-color:rgb(225,78,90)}.palette-red .div-color i{color:#e00b27}.dark.palette-red .div-color i{color:#e34358}

@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
 id('settings').addEventListener('click', function(){id('footer').classList.toggle('footer')})
 
 id('moon').addEventListener('click', function(){
+if(!html.classList.contains('transition'))html.classList.toggle('transition')
+
 if(html.classList.contains('dark')){switch(localStorage.palette){
 default: color = 'rgb(35,75,195)'; break;
 case 'red': color = 'rgb(163,28,45)'; break;
