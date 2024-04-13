@@ -61,7 +61,7 @@ nav:target + #nav-close{display:block}
 @media (max-width:400px){.text400{display:inline}.text401{display:none}}
 @media (max-width:500px){.text500{display:inline}.text501{display:none}}
 #thumb{height:50px;width:50px;position:relative;top:13px;right:9px;border-radius:50%;margin-right:3px}
-nav{transition:visibility 0s .2s,opacity .2s cubic-bezier(.4,0,.22,1),background .2s cubic-bezier(.4,0,.22,1);position:fixed;bottom:0;left:50%;transform:translateX(-50%);height:calc(100% - 62px);width:100%;max-width:730px;visibility:hidden;overflow-y:auto;opacity:.001;z-index:10;overscroll-behavior:contain}
+nav{transition:visibility 0s .2s,opacity .2s cubic-bezier(.4,0,.22,1),background .2s cubic-bezier(.4,0,.22,1);position:fixed;bottom:0;left:50%;transform:translateX(-50%);height:calc(100% - 62px);width:100%;max-width:730px;visibility:hidden;overflow-y:auto;opacity:.001;z-index:10;overscroll-behavior:contain;border:0;outline:0}
 nav div:first-child{color:#fff;margin-top:20px;margin-bottom:10px}
 nav a,nav div{transition:background-color .2s cubic-bezier(.4,0,.22,1);display:block;height:55px;line-height:55px;margin:0;text-align:center;font-size:18px}
 nav a:hover,nav a.active{background:rgba(0,0,0,.35)}
@@ -110,16 +110,16 @@ a{color:#000;outline:0}
 .dark.custom body{color:#fff}
 .dark.custom .sub{background:rgba(255,255,255,.1)}
 
-.blue,.blue th{background:rgb(100,100,200)!important}
-.dark .blue,.dark .blue th{background:rgb(75,75,175)!important}
-.red,.red th{background:rgb(188,53,70)!important}
-.dark .red,.dark .red th{background:rgb(158,33,50)!important}
-.ice,.ice th{background:rgb(30,135,200)!important}
-.dark .ice,.dark .ice th{background:rgb(10,115,180)!important}
-.purple,.purple th{background:rgb(115,80,200)!important}
-.dark .purple,.dark .purple th{background:rgb(100,65,185)!important}
-.ocean,.ocean th{background:rgb(65,105,225)!important}
-.dark .ocean,.dark .ocean th{background:rgb(45,85,205)!important}
+main .headline.blue,table thead.blue th{background:rgb(100,100,200)}
+.dark main .headline.blue,.dark table thead.blue th{background:rgb(75,75,175)}
+main .headline.red,table thead.red th{background:rgb(188,53,70)}
+.dark main .headline.red,.dark table thead.red th{background:rgb(158,33,50)}
+main .headline.ice,table thead.ice th{background:rgb(30,135,200)}
+.dark main .headline.ice,.dark table thead.ice th{background:rgb(10,115,180)}
+main .headline.purple,table thead.purple th{background:rgb(115,80,200)}
+.dark main .headline.purple,.dark table thead.purple th{background:rgb(100,65,185)}
+main .headline.ocean,table thead.ocean th{background:rgb(65,105,225)}
+.dark main .headline.ocean,.dark table thead.ocean th{background:rgb(45,85,205)}
 
 .big-box{padding:20px;background:rgba(0,0,0,.1)}
 .dark .big-box{background:rgba(150,150,150,.1)}
@@ -254,7 +254,7 @@ sup{font-size:12px}
 .pl-20{padding-left:20px}
 .pt-20{padding-top:20px}
 .pt-60{padding-top:60px}
-.radius0{border-radius:0!important}
+.radius0,.overview img.radius0,#thumb.radius0{border-radius:0}
 .radius15{border-radius:15px}
 .ul-box{display:inline-block;padding-top:40px}
 .dl-svg{position:relative;top:10px;margin-right:6px;fill:#000}
@@ -392,11 +392,11 @@ td a,.youtube a{border:0}
 .accordion input:checked + a label svg{transform:scaleY(-1)}
 
 .overview td,.overview th{padding:0 11px}
-.overview tbody tr{background:none!important}
-.overview tbody tr:hover{background:rgba(0,0,0,.1)!important}
-.dark .overview tbody tr:hover{background:rgba(125,125,125,.1)!important}
-.custom .overview tbody tr:hover{background:rgba(50,50,50,.1)!important}
-.dark.custom .overview tbody tr:hover{background:rgba(255,255,255,.1)!important}
+.overview tbody tr:nth-child(even),.custom .overview tbody tr:nth-child(even){background-color:rgba(0,0,0,0)}
+.overview tbody tr:hover{background:rgba(0,0,0,.1)}
+.dark .overview tbody tr:hover{background:rgba(125,125,125,.1)}
+.custom .overview tbody tr:hover{background:rgba(50,50,50,.1)}
+.dark.custom .overview tbody tr:hover{background:rgba(255,255,255,.1)}
 .overview td:nth-child(2){text-align:left}
 .overview td:first-child{width:10%}
 .overview td a{display:block;color:#000;padding:35px 0;position:relative;left:-10px;outline:0}
@@ -419,8 +419,8 @@ td a,.youtube a{border:0}
 table .picture,.dark table .picture,.custom table .picture,.dark.custom table .picture{background:none;margin-bottom:58px;margin-right:55px}
 .overview .picture a{position:relative;left:-10px;top:-100px;padding:65px}
 table .picture:after{padding-bottom:100%}
-.bg0,.overview tbody tr.bg0:hover,.custom .overview tbody tr.bg0:hover{background:none!important}
-.pd0{padding:0!important}
+.bg0,div.left.inner.bg0,.overview tbody tr.bg0:hover,.custom .overview tbody tr.bg0:hover{background:none}
+.pd0,div.left.inner.pd0{padding:0}
 .tools img{max-width:46px;border-radius:0}
 
 #language span{color:#000}
