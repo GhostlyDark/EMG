@@ -161,15 +161,11 @@ p.img-x2 > img:nth-child(2),p.img-x2 picture:nth-child(2) > img{margin:20px 0 0 
 
 .center,.src,.dl-link,.img-x2{text-align:center}
 .line-through{text-decoration:line-through}
-
 .dl-link{margin-top:5px}
-.dl-link img{max-width:26px;margin-left:5px;position:relative;top:8px;opacity:.9;filter:invert(1)}
-.dark .dl-link img{filter:invert(0)}
-.dl-link.dl-img{margin-top:-2px}
 
-.button{transition:border-color .1s ease-in-out,box-shadow .1s ease-in-out;display:inline-block;border-radius:5px;margin-top:7px}
+.button{transition:border-color .1s ease-in-out,box-shadow .1s ease-in-out;display:inline-block;border-radius:5px;margin-top:7px;transform:perspective(0)}
 .button a{border:0;cursor:pointer;padding:10px 15px;display:inline-block;text-shadow:rgba(0,0,0,.25) 0 2px 2px}
-.button a,div.center p.button a:hover{color:#fff}
+.button a,div.center p.button a:hover,div.left p.button a:hover{color:#fff}
 p.button:hover{background:linear-gradient(-135deg,rgb(26,184,93) 25%,rgb(6,168,136) 100%);box-shadow:rgba(46,204,113,.4) 0 10px 32px 0;border-color:#57e694}
 .button svg{margin-bottom:-10px;position:relative;top:-1px;opacity:.8;transition:opacity .2s cubic-bezier(.4,0,.22,1)}
 .button:hover svg{opacity:1}
@@ -238,6 +234,7 @@ sup{font-size:12px}
 #thumb.mr--3,.mr--3{margin-right:-3px}
 #thumb.mr--5,.mr--5{margin-right:-5px}
 .mr-10{margin-right:10px}
+.mr-25{margin-right:25px}
 .mt-0{margin-top:0}
 .mt-5{margin-top:5px}
 .mt-10{margin-top:10px}
@@ -251,6 +248,7 @@ sup{font-size:12px}
 .mb-10{margin-bottom:10px}
 .mb-15{margin-bottom:15px}
 .mb-20{margin-bottom:20px}
+.mt--3{margin-top:-3px}
 .mt--5{margin-top:-5px}
 .mt--15{margin-top:-15px}
 .mb--10{margin-bottom:-10px}
@@ -482,11 +480,10 @@ html{scrollbar-color:#bbb #eaeaea}
 .transition u,.transition .underline,.transition .heading{transition:border-color .2s cubic-bezier(.4,0,.22,1)}
 .transition footer button span{transition:color .2s cubic-bezier(.4,0,.22,1)}
 .transition #moon svg g path,.transition #fancy svg path,.transition #palettes svg path:nth-child(2),.transition #palettes svg circle,.transition #settings svg,.transition #language svg,.transition #reset svg{transition:fill .2s cubic-bezier(.4,0,.22,1)}
-.transition .dl-link img{transition:filter .2s cubic-bezier(.4,0,.22,1)}
 .transition body,.transition #overlay{transition:background-color .2s cubic-bezier(.4,0,.22,1),color .2s cubic-bezier(.4,0,.22,1)}
 .transition .sub,.transition .big-box,.transition .inner{transition:background-color .2s cubic-bezier(.4,0,.22,1)}
 
-.button{background:linear-gradient(-135deg,rgb(53,114,255) 25%,rgb(10,76,200) 100%);box-shadow:rgba(10,96,241,.4) 0 10px 32px 0;border:2px solid #0030ff}
+.button{background:linear-gradient(-135deg,rgb(53,114,255) 25%,rgb(10,76,200) 100%);box-shadow:rgba(10,96,241,.4) 0 10px 32px 0;border:2px solid rgb(0,112,255)}
 .headline,header,table th,.dropdown,.sub-text{background:rgb(65,105,225)}
 .dark .headline,.dark header,.dark table th,.dark .dropdown,.dark .sub-text{background:rgb(45,85,205)}
 nav{background:rgb(25,45,135)}
@@ -500,7 +497,7 @@ li a:hover,.link a:hover,p a:hover{color:#2a6bc1;border-bottom-color:#2a6bc1}
 .div-color i{color:#2a6bc1}
 .dark .div-color i{color:#80a0ff}
 
-.palette-red .button{background:linear-gradient(-135deg,rgb(225,40,84) 25%,rgb(171,40,46) 100%);box-shadow:rgba(251,20,106,.4) 0 10px 32px 0;border:2px solid #aa0030}
+.palette-red .button{background:linear-gradient(-135deg,rgb(215,40,84) 25%,rgb(161,40,46) 100%);box-shadow:rgba(251,20,106,.4) 0 10px 32px 0;border:2px solid rgb(225,50,94)}
 .palette-red .headline,.palette-red header,.palette-red table th,.palette-red .dropdown,.palette-red .sub-text{background:rgb(188,53,70)}
 .dark.palette-red .headline,.dark.palette-red header,.dark.palette-red table th,.dark.palette-red .dropdown,.dark.palette-red .sub-text{background:rgb(158,33,50)}
 .palette-red nav{background:rgb(84,20,26)}
@@ -514,7 +511,7 @@ li a:hover,.link a:hover,p a:hover{color:#2a6bc1;border-bottom-color:#2a6bc1}
 .palette-red .div-color i{color:#e00b27}
 .dark.palette-red .div-color i{color:#e34358}
 
-.palette-purple .button{background:linear-gradient(-135deg,rgb(174,54,245) 25%,rgb(96,20,231) 100%);box-shadow:rgba(116,0,231,.4) 0 10px 32px 0;border:2px solid #a000ff}
+.palette-purple .button{background:linear-gradient(-135deg,rgb(174,54,245) 25%,rgb(126,50,231) 100%);box-shadow:rgba(116,0,231,.4) 0 10px 32px 0;border:2px solid rgb(184,64,255)}
 .palette-purple .headline,.palette-purple header,.palette-purple table th,.palette-purple .dropdown,.palette-purple .sub-text{background:rgb(115,80,200)}
 .dark.palette-purple .headline,.dark.palette-purple header,.dark.palette-purple table th,.dark.palette-purple .dropdown,.dark.palette-purple .sub-text{background:rgb(100,65,195)}
 .palette-purple nav{background:rgb(60,45,135)}
@@ -528,7 +525,7 @@ li a:hover,.link a:hover,p a:hover{color:#2a6bc1;border-bottom-color:#2a6bc1}
 .palette-purple .div-color i{color:#7a27d1}
 .dark.palette-purple .div-color i{color:#b596d6}
 
-.palette-ice .button{background:linear-gradient(-135deg,rgb(43,134,225) 25%,rgb(0,96,211) 100%);box-shadow:rgba(0,116,231,.4) 0 10px 32px 0;border:2px solid #0080ff}
+.palette-ice .button{background:linear-gradient(-135deg,rgb(43,134,225) 25%,rgb(0,96,211) 100%);box-shadow:rgba(0,116,231,.4) 0 10px 32px 0;border:2px solid rgb(0,128,255)}
 .palette-ice .headline,.palette-ice header,.palette-ice table th,.palette-ice .dropdown,.palette-ice .sub-text{background:rgb(30,135,200)}
 .dark.palette-ice .headline,.dark.palette-ice header,.dark.palette-ice table th,.dark.palette-ice .dropdown,.dark.palette-ice .sub-text{background:rgb(10,115,180)}
 .palette-ice nav{background:rgb(10,60,130)}
