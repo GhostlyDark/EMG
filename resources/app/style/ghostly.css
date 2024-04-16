@@ -360,7 +360,7 @@ td a,.youtube a{border:0}
 .dark .tab > label{color:#aaa}
 .tab label:hover{background-color:rgb(225,225,225)}
 .dark .tab label:hover{background-color:rgb(35,35,35)}
-.tab img{max-width:30px;padding-bottom:5px}
+.tab img{width:30px;height:30px;padding-bottom:5px}
 
 .tabbed [type=radio]:nth-of-type(1):checked ~ .tabs .tab:nth-of-type(1) label,
 .tabbed [type=radio]:nth-of-type(2):checked ~ .tabs .tab:nth-of-type(2) label,
@@ -395,37 +395,34 @@ td a,.youtube a{border:0}
 .dark .accordion label svg{fill:#fff}
 .accordion input:checked + a label svg{transform:scaleY(-1)}
 
-.overview td,.overview th{padding:0 11px}
 .overview tbody tr:nth-child(even),.custom .overview tbody tr:nth-child(even){background-color:rgba(0,0,0,0)}
 .overview tbody tr:hover{background:rgba(0,0,0,.1)}
 .dark .overview tbody tr:hover{background:rgba(125,125,125,.1)}
 .custom .overview tbody tr:hover{background:rgba(50,50,50,.1)}
 .dark.custom .overview tbody tr:hover{background:rgba(255,255,255,.1)}
+.overview td{padding:0}
 .overview td:nth-child(2){text-align:left}
-.overview td:first-child{width:10%}
-.overview td a{display:block;color:#000;padding:35px 0;position:relative;left:-10px;outline:0}
+.overview td a{display:block;color:#000;padding:32px 9px;outline:0}
 .overview td a:active{-webkit-tap-highlight-color:rgba(255,255,255,0);-webkit-focus-ring-color:rgba(0,0,0,0)}
+.overview td:first-child a{padding:32px 9px}
+.overview td:nth-child(2) a{padding:36px 9px}
 .overview a span:lang(de),.overview a span:lang(en){color:#000}
 .dark .overview td a,.dark .overview a span:lang(de),.dark .overview a span:lang(en){color:#fff}
 #search-table a span:lang(de),#search-table a span:lang(en){color:grey}
-.overview p{height:50px;width:50px}
-.overview td p a{position:relative;left:-10px;padding:40px}
-.overview p svg{fill:#111}
-.dark .overview p svg{fill:#eee}
+#search-table td:first-child{width:50px}
+.overview svg{fill:#111}
+.dark .overview svg{fill:#eee}
 .overview a span,.greyed span{color:grey}
 .overview .table-sub{width:auto;height:auto}
-.svg-table p a{position:relative;left:-10px;top:-75px}
-.svg-table p{height:48px;width:48px}
-.svg-table .table-sub{padding-top:20px;padding-bottom:20px}
-.overview td:first-child p{margin-right:5px}
-.svg-table td:first-child p{margin-right:0}
-.overview img{border-radius:50%}
-table .picture,.dark table .picture,.custom table .picture,.dark.custom table .picture{background:none;margin-bottom:58px;margin-right:55px}
-.overview .picture a{position:relative;left:-10px;top:-100px;padding:65px}
-table .picture:after{padding-bottom:100%}
+.overview img{width:50px;height:50px;border-radius:50%}
+
+.app-table td:first-child a{padding:28px 0}
+.app-table td:nth-child(2) a{padding:32px 5px}
+.svg-table td:first-child a{padding:22px 0 17px 0}
+.svg-table td:nth-child(2) a{padding:35px 5px}
+.app-table .table-sub,.svg-table .table-sub{padding-top:20px;padding-bottom:20px}
 .bg0,div.left.inner.bg0,.overview tbody tr.bg0:hover,.custom .overview tbody tr.bg0:hover{background:none}
 .pd0,div.left.inner.pd0{padding:0}
-.tools img{max-width:46px;border-radius:0}
 
 #language span{color:#000}
 .dark #language span{color:#fff}
