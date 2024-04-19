@@ -204,6 +204,7 @@ sup{font-size:12px}
 .width256{max-width:256px}
 .width275{max-width:275px}
 .width300{max-width:300px}
+.width320{max-width:320px}
 .width325{max-width:325px}
 .width350{max-width:350px}
 .width360{max-width:360px}
@@ -402,25 +403,28 @@ td a,.youtube a{border:0}
 .dark.custom .overview tbody tr:hover{background:rgba(255,255,255,.1)}
 .overview td{padding:0}
 .overview td:nth-child(2){text-align:left}
-.overview td a{display:block;color:#000;padding:32px 9px;outline:0}
+.overview td a{display:block;color:#000;outline:0}
 .overview td a:active{-webkit-tap-highlight-color:rgba(255,255,255,0);-webkit-focus-ring-color:rgba(0,0,0,0)}
 .overview td:first-child a{padding:32px 9px}
 .overview td:nth-child(2) a{padding:36px 9px}
 .overview a span:lang(de),.overview a span:lang(en){color:#000}
 .dark .overview td a,.dark .overview a span:lang(de),.dark .overview a span:lang(en){color:#fff}
-#search-table a span:lang(de),#search-table a span:lang(en){color:grey}
-#search-table td:first-child{width:50px}
 .overview svg{fill:#111}
 .dark .overview svg{fill:#eee}
 .overview a span,.greyed span{color:grey}
 .overview .table-sub{width:auto;height:auto}
 .overview img{width:50px;height:50px;border-radius:50%}
-
-.app-table td:first-child a{padding:28px 0}
-.app-table td:nth-child(2) a{padding:32px 5px}
-.svg-table td:first-child a{padding:22px 0 17px 0}
-.svg-table td:nth-child(2) a{padding:35px 5px}
-.app-table .table-sub,.svg-table .table-sub{padding-top:20px;padding-bottom:20px}
+#search-table a span:lang(de),#search-table a span:lang(en){color:grey}
+#search-table td:first-child{width:68px}
+#app-table td:first-child{width:74px}
+#app-table td:first-child a{padding:28px 0}
+#app-table td:nth-child(2) a{padding:32px 5px}
+#svg-table td:first-child{width:68px}
+#svg-table td:first-child a{padding:22px 0 17px 0}
+#svg-table td:nth-child(2) a{padding:35px 5px}
+#bt-table td:first-child{width:70px}
+#bt-table td:first-child a{padding:48px 30px 49px 48px;position:relative;top:-23.5px;left:-10px}
+#bt-table td:nth-child(2) a{padding:36px 5px}
 .bg0,div.left.inner.bg0,.overview tbody tr.bg0:hover,.custom .overview tbody tr.bg0:hover{background:none}
 .pd0,div.left.inner.pd0{padding:0}
 
@@ -499,7 +503,7 @@ li a:hover,.link a:hover,p a:hover{color:#2a6bc1;border-bottom-color:#2a6bc1}
 .dark.palette-red .headline,.dark.palette-red header,.dark.palette-red table th,.dark.palette-red .dropdown,.dark.palette-red .sub-text{background:rgb(158,33,50)}
 .palette-red nav{background:rgb(84,20,26)}
 .palette-red nav .nav-sub{color:rgb(224,100,106)}
-.palette-red .search:focus{border:2px solid rgb(200,50,50)}
+.palette-red .search:focus{border:2px solid rgb(255,70,70)}
 .palette-red .table-sub{color:rgb(224,51,79)}
 .dark.palette-red .table-sub{color:rgb(255,73,90)}
 .palette-red li a:hover,.palette-red .link a:hover,.palette-red p a:hover{color:#e00b27;border-bottom-color:#e00b27}
@@ -513,7 +517,7 @@ li a:hover,.link a:hover,p a:hover{color:#2a6bc1;border-bottom-color:#2a6bc1}
 .dark.palette-purple .headline,.dark.palette-purple header,.dark.palette-purple table th,.dark.palette-purple .dropdown,.dark.palette-purple .sub-text{background:rgb(100,65,195)}
 .palette-purple nav{background:rgb(60,45,135)}
 .palette-purple nav .nav-sub{color:#bea0dc}
-.palette-purple .search:focus{border:2px solid rgb(125,125,255)}
+.palette-purple .search:focus{border:2px solid rgb(180,130,255)}
 .palette-purple .table-sub{color:#7a27d1}
 .dark.palette-purple .table-sub{color:#b596d6}
 .palette-purple li a:hover,.palette-purple .link a:hover,.palette-purple p a:hover{color:#7a27d1;border-bottom-color:#7a27d1}
@@ -527,7 +531,7 @@ li a:hover,.link a:hover,p a:hover{color:#2a6bc1;border-bottom-color:#2a6bc1}
 .dark.palette-ice .headline,.dark.palette-ice header,.dark.palette-ice table th,.dark.palette-ice .dropdown,.dark.palette-ice .sub-text{background:rgb(10,115,180)}
 .palette-ice nav{background:rgb(10,60,130)}
 .palette-ice nav .nav-sub{color:#80d5ff}
-.palette-ice .search:focus{border:2px solid rgb(80,130,220)}
+.palette-ice .search:focus{border:2px solid rgb(100,200,235)}
 .palette-ice .table-sub{color:#2a9cc1}
 .dark.palette-ice .table-sub{color:#80d5ff}
 .palette-ice li a:hover,.palette-ice .link a:hover,.palette-ice p a:hover{color:#2a9cc1;border-bottom-color:#2a9cc1}
