@@ -135,10 +135,10 @@ header .headerText{position:relative;top:-10px;pointer-events:none}
 .dark .ul-button li{color:#aaa}
 .ul-buttons li.active{color:#000}
 .dark .ul-buttons li.active{color:#eee}
-.ul-buttons li:hover,.ul-buttons li.active{background-color:rgb(225,225,225)}
-.dark .ul-buttons li:hover,.dark .ul-buttons li.active{background-color:rgb(35,35,35)}
-.custom .ul-buttons li:hover,.custom .ul-buttons li.active{background-color:rgba(200,200,200,.7)}
-.dark.custom .ul-buttons li:hover,.dark.custom .ul-buttons li.active{background-color:rgba(35,35,35,.7)}
+.ul-buttons li:hover,.ul-buttons li.active{background-color:rgba(0,0,0,.1)}
+.dark .ul-buttons li:hover,.dark .ul-buttons li.active{background-color:rgba(150,150,150,.1)}
+.custom .ul-buttons li:hover,.custom .ul-buttons li.active{background-color:rgba(50,50,50,.1)}
+.dark.custom .ul-buttons li:hover,.dark.custom .ul-buttons li.active{background-color:rgba(255,255,255,.1)}
 
 .hide{display:none}
 .ml--50{margin-left:-50px}
