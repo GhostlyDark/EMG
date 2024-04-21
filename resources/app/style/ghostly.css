@@ -268,17 +268,13 @@ i.coin{color:#2a9cc1}
 i.s{color:#7a27d1}
 .dark i.s{color:#b596d6}
 
-[type=checkbox]{position:relative;width:19px;height:19px;margin-left:5px;margin-right:7px;cursor:pointer;-moz-appearance:none;-webkit-appearance:none;appearance:none;outline:0}
-[type=checkbox]:before{content:'';position:absolute;left:2px;top:4px;z-index:1;width:100%;height:100%;border:2px solid #444;border-radius:3px;transition:border-color .2s cubic-bezier(.4,0,.22,1),opacity .2s cubic-bezier(.4,0,.22,1);opacity:.001}
-[type=checkbox]:after{content:'';position:absolute;left:2px;top:4px;width:19px;height:19px;border:2px solid #444;border-radius:3px;transition:border-color .2s cubic-bezier(.4,0,.22,1)}
-[type=checkbox]:checked:before{height:50%;border-width:4px;transform:scale(.5) translateY(4px) rotate(-45deg);border-top-style:none;border-right-style:none;border-radius:0;position:absolute;left:2px;top:5px;opacity:1}
-.dark [type=checkbox]:before,.dark [type=checkbox]:after{border-color:#ccc}
-table [type=checkbox]:before{left:-2.5px;top:3px}
-table [type=checkbox]:after{left:-2.5px;top:3px}
-table [type=checkbox]:checked:before{left:-2.5px;top:5px;transform:scale(.5) translateY(2px) rotate(-45deg)}
+[type=checkbox]{position:relative;top:4px;left:2px;width:23px;height:23px;margin:0 5px;cursor:pointer;-moz-appearance:none;-webkit-appearance:none;appearance:none;outline:0;border:2px solid #444;border-radius:3px;transition:border-color .2s cubic-bezier(.4,0,.22,1)}
+[type=checkbox]:before{content:'';position:absolute;left:-2px;top:-2px;width:100%;height:100%;border:2px solid #444;border-radius:3px;transition:border-color .2s cubic-bezier(.4,0,.22,1),opacity .2s cubic-bezier(.4,0,.22,1);opacity:.001}
+[type=checkbox]:checked:before{height:50%;transform:scale(.5) rotate(-45deg);border-radius:0;border-top-style:none;border-right-style:none;border-width:4px;position:absolute;left:-2px;top:1px;opacity:1}
+.dark [type=checkbox],.dark [type=checkbox]:before{border-color:#ccc}
 .check{position:relative;display:inline-block;width:22px;height:22px}
-.check:before{position:absolute;left:0;top:50%;height:50%;width:2px;content:'';transform:translate(4px,2px) rotate(-45deg);transform-origin:left bottom}
-.check:after{position:absolute;left:0;bottom:0;height:2px;width:100%;content:'';transform:translate(4px,2px) rotate(-45deg);transform-origin:left bottom}
+.check:before{content:'';position:absolute;left:0;top:50%;height:50%;width:2px;transform:translate(4px,2px) rotate(-45deg);transform-origin:left bottom}
+.check:after{content:'';position:absolute;left:0;bottom:0;height:2px;width:100%;transform:translate(4px,2px) rotate(-45deg);transform-origin:left bottom}
 
 .en :lang(de),.de :lang(en),#background_input,.invisible,b.m i{display:none}
 .li-inv{list-style:none}
@@ -486,9 +482,9 @@ nav .nav-sub{color:#80a0ff}
 .dark .table-sub{color:#80a0ff}
 li a:hover,.link a:hover,p a:hover{color:#2a6bc1;border-color:#2a6bc1}
 .dark li a:hover,.dark .link a:hover,.dark p a:hover{color:#80a0ff;border-color:#80a0ff}
-[type=checkbox]:hover:before,[type=checkbox]:checked:before,[type=checkbox]:hover:after,[type=checkbox]:checked:after{border-color:rgb(13,105,235)}
+[type=checkbox]:hover,[type=checkbox]:checked,[type=checkbox]:hover:before,[type=checkbox]:checked:before{border-color:rgb(13,105,235)}
 .check:before,.check:after{background:rgb(13,105,235)}
-.dark [type=checkbox]:hover:before,.dark [type=checkbox]:checked:before,.dark [type=checkbox]:hover:after,.dark [type=checkbox]:checked:after{border-color:#217dff}
+.dark [type=checkbox]:hover,.dark [type=checkbox]:checked,.dark [type=checkbox]:hover:before,.dark [type=checkbox]:checked:before{border-color:#217dff}
 .dark .check:before,.dark .check:after{background:#217dff}
 .div-color i{color:#2a6bc1}
 .dark .div-color i{color:#80a0ff}
@@ -503,9 +499,9 @@ li a:hover,.link a:hover,p a:hover{color:#2a6bc1;border-color:#2a6bc1}
 .dark.palette-red .table-sub{color:rgb(255,73,90)}
 .palette-red li a:hover,.palette-red .link a:hover,.palette-red p a:hover{color:#e00b27;border-color:#e00b27}
 .dark.palette-red li a:hover,.dark.palette-red .link a:hover,.dark.palette-red p a:hover{color:#ff495a;border-color:#ff495a}
-.palette-red [type=checkbox]:hover:before,.palette-red [type=checkbox]:checked:before,.palette-red [type=checkbox]:hover:after,.palette-red [type=checkbox]:checked:after{border-color:rgb(205,58,70)}
+.palette-red [type=checkbox]:hover,.palette-red [type=checkbox]:checked,.palette-red [type=checkbox]:hover:before,.palette-red [type=checkbox]:checked:before{border-color:rgb(205,58,70)}
 .palette-red .check:before,.palette-red .check:after{background:rgb(205,58,70)}
-.dark.palette-red [type=checkbox]:hover:before,.dark.palette-red [type=checkbox]:checked:before,.dark.palette-red [type=checkbox]:hover:after,.dark.palette-red [type=checkbox]:checked:after{border-color:rgb(225,78,90)}
+.dark.palette-red [type=checkbox]:hover,.dark.palette-red [type=checkbox]:checked,.dark.palette-red [type=checkbox]:hover:before,.dark.palette-red [type=checkbox]:checked:before{border-color:rgb(225,78,90)}
 .dark.palette-red .check:before,.dark.palette-red .check:after{background:rgb(225,78,90)}
 .palette-red .div-color i{color:#e00b27}
 .dark.palette-red .div-color i{color:#e34358}
@@ -520,9 +516,9 @@ li a:hover,.link a:hover,p a:hover{color:#2a6bc1;border-color:#2a6bc1}
 .dark.palette-purple .table-sub{color:#b596d6}
 .palette-purple li a:hover,.palette-purple .link a:hover,.palette-purple p a:hover{color:#7a27d1;border-color:#7a27d1}
 .dark.palette-purple li a:hover,.dark.palette-purple .link a:hover,.dark.palette-purple p a:hover{color:#b596d6;border-color:#b596d6}
-.palette-purple [type=checkbox]:hover:before,.palette-purple [type=checkbox]:checked:before,.palette-purple [type=checkbox]:hover:after,.palette-purple [type=checkbox]:checked:after{border-color:rgb(140,90,190)}
+.palette-purple [type=checkbox]:hover,.palette-purple [type=checkbox]:checked,.palette-purple [type=checkbox]:hover:before,.palette-purple [type=checkbox]:checked:before{border-color:rgb(140,90,190)}
 .palette-purple .check:before,.palette-purple .check:after{background:rgb(140,90,190)}
-.dark.palette-purple [type=checkbox]:hover:before,.dark.palette-purple [type=checkbox]:checked:before,.dark.palette-purple [type=checkbox]:hover:after,.dark.palette-purple [type=checkbox]:checked:after{border-color:rgb(180,130,230)}
+.dark.palette-purple [type=checkbox]:hover,.dark.palette-purple [type=checkbox]:checked,.dark.palette-purple [type=checkbox]:hover:before,.dark.palette-purple [type=checkbox]:checked:before{border-color:rgb(180,130,230)}
 .dark.palette-purple .check:before,.dark.palette-purple .check:after{background:rgb(180,130,230)}
 .palette-purple .div-color i{color:#7a27d1}
 .dark.palette-purple .div-color i{color:#b596d6}
@@ -537,9 +533,9 @@ li a:hover,.link a:hover,p a:hover{color:#2a6bc1;border-color:#2a6bc1}
 .dark.palette-ice .table-sub{color:#80d5ff}
 .palette-ice li a:hover,.palette-ice .link a:hover,.palette-ice p a:hover{color:#2a9cc1;border-color:#2a9cc1}
 .dark.palette-ice li a:hover,.dark.palette-ice .link a:hover,.dark.palette-ice p a:hover{color:#80d5ff;border-color:#80d5ff}
-.palette-ice [type=checkbox]:hover:before,.palette-ice [type=checkbox]:checked:before,.palette-ice [type=checkbox]:hover:after,.palette-ice [type=checkbox]:checked:after{border-color:rgb(13,130,223)}
+.palette-ice [type=checkbox]:hover,.palette-ice [type=checkbox]:checked,.palette-ice [type=checkbox]:hover:before,.palette-ice [type=checkbox]:checked:before{border-color:rgb(13,130,223)}
 .palette-ice .check:before,.palette-ice .check:after{background:rgb(13,130,223)}
-.dark.palette-ice [type=checkbox]:hover:before,.dark.palette-ice [type=checkbox]:checked:before,.dark.palette-ice [type=checkbox]:hover:after,.dark.palette-ice [type=checkbox]:checked:after{border-color:#2196f3}
+.dark.palette-ice [type=checkbox]:hover,.dark.palette-ice [type=checkbox]:checked,.dark.palette-ice [type=checkbox]:hover:before,.dark.palette-ice [type=checkbox]:checked:before{border-color:#2196f3}
 .dark.palette-ice .check:before,.dark.palette-ice .check:after{background:#2196f3}
 .palette-ice .div-color i{color:#2a9cc1}
 .dark.palette-ice .div-color i{color:#80d5ff}
