@@ -155,8 +155,7 @@ header .headerText{position:relative;top:-10px;pointer-events:none}
 #cheatList,#log,#romBrowser{height:400px;overflow-y:scroll;border:2px solid #444;padding:15px 15px 0 15px;background-color:rgba(150,150,150,.1);outline:0;overscroll-behavior:contain}
 #cheatList{padding-left:25px}
 #cheatList input[id*=_]{margin-left:40px}
-#cheatList input{left:-12px}
-#cheatList label{padding-left:0;left:-7px}
+#cheatList input,#cheatList label{left:-12px}
 #log{height:340px;user-select:text}
 #log p{padding-bottom:20px}
 #romBrowser{height:310px;padding-bottom:15px}
