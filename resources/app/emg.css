@@ -186,32 +186,27 @@ button,select,input,.box,.pointer,.hotkeys label,[type=checkbox] + label,[type=c
 .dark.palette-ice [type=range]:hover::-webkit-slider-runnable-track{background-color:rgba(33,150,243,.5)}
 
 [type=text]{max-width:100px;text-align:center;height:19px}
-[type=text]{border:0;outline:0;padding:5px;transition:background-color .2s cubic-bezier(.4,0,.22,1);margin:0;background-color:#eee;appearance:none}
-[type=text]:hover{background-color:#ddd}
-[type=text]:active,[type=text]:focus{background-color:#ccc}
+[type=text]{border:0;outline:0;padding:5px;transition:background-color .2s cubic-bezier(.4,0,.22,1);margin:0;background-color:#ddd;appearance:none}
+[type=text]:hover,[type=text]:active,[type=text]:focus{background-color:#ccc}
 
 [type=checkbox]{margin:0}
 [type=checkbox] + label{position:relative;top:-2px;padding-left:10px}
 [type=checkbox]:disabled,[type=checkbox]:disabled:checked:before,[type=checkbox]:disabled:hover{border-color:#444}
 .dark [type=checkbox]:disabled,.dark [type=checkbox]:disabled:checked:before,.dark [type=checkbox]:disabled:hover{border-color:#ccc}
 
-button{font-size:17px;line-height:23px;border:0;outline:0;background:#eee;padding:3px 10px;transition:background-color .2s cubic-bezier(.4,0,.22,1)}
-button:hover,select:hover{background:#ddd}
-button:active,select:active,select:focus{background:#ccc}
+button{font-size:17px;line-height:23px;border:0;outline:0;background-color:#ddd;padding:3px 10px;transition:background-color .2s cubic-bezier(.4,0,.22,1)}
+button:hover,select:hover,button:active,select:active,select:focus{background-color:#ccc}
 
-select{border:0;outline:0;padding:5px 35px 5px 8px;transition:background-color .2s cubic-bezier(.4,0,.22,1);margin:0;background:url(svg/arrow-down.svg) no-repeat 99% #eee;appearance:none;height:29px}
+select{border:0;outline:0;padding:5px 35px 5px 8px;transition:background-color .2s cubic-bezier(.4,0,.22,1);margin:0;background:url(svg/arrow-down.svg) no-repeat 99% #ddd;appearance:none;height:29px}
 
 .dark select{background:url(svg/arrow-down-dark.svg) no-repeat 99% #222}
 .dark button,.dark select,.dark [type=text]{background-color:#222;color:#fff}
-.dark button:hover,.dark select:hover,.dark [type=text]:hover{background-color:#333}
-.dark button:active,.dark select:active,.dark select:focus,.dark [type=text]:active,.dark [type=text]:focus{background-color:#444}
+.dark button:hover,.dark select:hover,.dark [type=text]:hover,.dark button:active,.dark select:active,.dark select:focus,.dark [type=text]:active,.dark [type=text]:focus{background-color:#333}
 
 .custom select,.custom button,.custom [type=text]{background-color:rgba(200,200,200,.5)}
 .dark.custom select,.dark.custom button,.dark.custom [type=text]{background-color:rgba(40,40,40,.5)}
-.custom select:hover,.custom button:hover,.custom [type=text]:hover{background-color:rgba(200,200,200,.75)}
-.dark.custom select:hover,.dark.custom button:hover,.dark.custom [type=text]:hover{background-color:rgba(40,40,40,.75)}
-.custom select:active,.custom select:focus,.custom button:active,.custom [type=text]:active,.custom [type=text]:focus{background-color:rgba(200,200,200,1)}
-.dark.custom select:active,.dark.custom select:focus,.dark.custom button:active,.dark.custom [type=text]:active,.dark.custom [type=text]:focus{background-color:rgba(40,40,40,1)}
+.custom select:hover,.custom button:hover,.custom [type=text]:hover,.custom select:active,.custom select:focus,.custom button:active,.custom [type=text]:active,.custom [type=text]:focus{background-color:rgba(200,200,200,.75)}
+.dark.custom select:hover,.dark.custom button:hover,.dark.custom [type=text]:hover,.dark.custom select:active,.dark.custom select:focus,.dark.custom button:active,.dark.custom [type=text]:active,.dark.custom [type=text]:focus{background-color:rgba(40,40,40,.75)}
 
 option{background:#efefef}
 .dark option{background:#222}
@@ -225,8 +220,8 @@ option{background:#efefef}
 input.floatright,select.floatright{top:-5px}
 input:disabled,select:disabled,input:disabled + label,input:disabled + span + label,select:disabled + label{opacity:.5}
 select + label,[type=text] + label{padding-left:10px}
-.hotkeys{text-align:center;display:inline-block;width:660px;padding:20px;margin-top:10px;background-color:rgba(0,0,0,.1)}
-.custom .hotkeys{background-color:rgba(0,0,0,.02)}
+.hotkeys{text-align:center;display:inline-block;width:660px;padding:20px;margin-top:10px;background-color:rgba(255,255,255,.4)}
+.custom .hotkeys{background-color:rgba(255,255,255,.4)}
 .dark .hotkeys{background-color:rgba(0,0,0,.2)}
 .dark.custom .hotkeys{background-color:rgba(255,255,255,.02)}
 .hotkeys label{float:left;text-align:left;min-width:150px}
