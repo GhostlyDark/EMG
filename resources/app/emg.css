@@ -44,22 +44,18 @@ a,p,button,input{-webkit-tap-highlight-color:rgba(255,255,255,0);-webkit-focus-r
 [type=checkbox]:before{content:'';position:absolute;left:-2px;top:1px;width:100%;height:50%;border:4px solid #444;border-radius:0;border-top-style:none;border-right-style:none;border-color:transparent;transform:scale(.5) rotate(-45deg);transition:border-color .1s cubic-bezier(.4,0,.22,1)}
 .dark [type=checkbox]{border-color:#ccc}
 
-footer button{background:rgba(200,200,200,.5);border:0;outline:0;padding:5px 10px;cursor:pointer;transition:background-color .2s cubic-bezier(.4,0,.22,1);z-index:4;pointer-events:auto}
+footer button{background:rgb(210,210,210);border:0;outline:0;padding:5px 10px;cursor:pointer;transition:background-color .2s cubic-bezier(.4,0,.22,1);z-index:4;pointer-events:auto}
 footer button svg{position:relative;top:3px}
 #fancy,#moon,#palettes,#reset{transition:visibility 0s .2s,opacity .2s cubic-bezier(.4,0,.22,1),background .2s cubic-bezier(.4,0,.22,1);visibility:hidden;opacity:.001;position:absolute}
 #fancy,#moon,#palettes,#reset{right:15px}
-footer button:hover{background:rgba(190,190,190,.8)}
+footer button:hover{background:rgb(180,180,180)}
 #moon svg g path, #fancy svg path,#palettes svg path:nth-child(2),#palettes svg circle,#settings svg,#reset svg{fill:#000}
-.dark footer button{background:rgba(50,50,50,.5)}
-.dark footer button:hover{background:rgba(70,70,70,.8)}
+.dark footer button{background:rgb(30,30,30)}
+.dark footer button:hover{background:rgb(50,50,50)}
 .dark #moon svg g path,.dark #fancy svg path,.dark #palettes svg path:nth-child(2),.dark #palettes svg circle,.dark #settings svg,.dark #reset svg{fill:#fff}
-.custom footer button{background:rgba(175,175,175,.5)}
-.custom footer button:hover{background:rgba(160,160,160,.8)}
-.dark.custom footer button{background:rgba(75,75,75,.5)}
-.dark.custom footer button:hover{background:rgba(80,80,80,.8)}
 
 footer{position:fixed;bottom:0;width:100%;max-width:730px;left:50%;transform:translateX(-50%);height:56px;z-index:9;pointer-events:none}
-#settings{position:absolute;bottom:15px;left:15px}
+#settings{position:absolute;bottom:15px;left:14px}
 #moon{bottom:15px}
 #palettes{bottom:75px}
 #reset{bottom:135px}
