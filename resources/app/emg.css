@@ -234,7 +234,7 @@ header li:first-child{margin-right:60px;padding-top:1px}
 header li:last-child{float:right;padding-right:0}
 header img,header svg{pointer-events:none;opacity:.6;transition:opacity .2s cubic-bezier(.4,0,.22,1)}
 header li a:hover img,header li a:hover svg{opacity:1}
-header .headerText{position:relative;top:-10px;pointer-events:none}
+header span{position:relative;top:-10px;pointer-events:none}
 
 #launch{margin-bottom:-14.5px}
 #launch img{width:32px;height:32px;margin-bottom:0;filter:grayscale(100%);transition:filter .2s cubic-bezier(.4,0,.22,1),opacity .2s cubic-bezier(.4,0,.22,1)}
