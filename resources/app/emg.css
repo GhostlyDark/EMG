@@ -193,9 +193,9 @@ button,select,input,.box,.pointer,.hotkeys label,[type=checkbox] + label,[type=c
 button{font-size:17px;line-height:23px;border:0;outline:0;background-color:#ddd;padding:3px 10px;transition:background-color .2s cubic-bezier(.4,0,.22,1)}
 button:hover,select:hover,button:active,select:active,select:focus{background-color:#ccc}
 
-select{border:0;outline:0;padding:5px 35px 5px 8px;transition:background-color .2s cubic-bezier(.4,0,.22,1);margin:0;background:url(svg/arrow-down.svg) no-repeat 99% #ddd;appearance:none;height:29px}
+select{border:0;outline:0;padding:5px 35px 5px 8px;transition:background-color .2s cubic-bezier(.4,0,.22,1);margin:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 24 24'%3E%3Cpath opacity='.87' fill='none' d='M24 24H0V0h24v24z'/%3E%3Cpath d='M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z'/%3E%3C/svg%3E") no-repeat 99% #ddd;appearance:none;height:29px}
 
-.dark select{background:url(svg/arrow-down-dark.svg) no-repeat 99% #222}
+.dark select{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' width='30' height='30' viewBox='0 0 24 24'%3E%3Cpath opacity='.87' fill='none' d='M24 24H0V0h24v24z'/%3E%3Cpath d='M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z'/%3E%3C/svg%3E") no-repeat 99% #222}
 .dark button,.dark select,.dark [type=text]{background-color:#222;color:#fff}
 .dark button:hover,.dark select:hover,.dark [type=text]:hover,.dark button:active,.dark select:active,.dark select:focus,.dark [type=text]:active,.dark [type=text]:focus{background-color:#333}
 
@@ -232,12 +232,12 @@ header li a{color:#fff;cursor:pointer;display:block;text-align:center;padding:14
 header li a:hover,header li a.active{background-color:rgba(0,0,0,.3)}
 header li:first-child{margin-right:60px;padding-top:1px}
 header li:last-child{float:right;padding-right:0}
-header img{width:32px;pointer-events:none;opacity:.6;transition:opacity .2s cubic-bezier(.4,0,.22,1)}
-header li a:hover img,header li a.active img{opacity:1}
+header img,header svg{pointer-events:none;opacity:.6;transition:opacity .2s cubic-bezier(.4,0,.22,1)}
+header li a:hover img,header li a.active img,header li a:hover svg,header li a.active svg{opacity:1}
 header .headerText{position:relative;top:-10px;pointer-events:none}
 
 #launch{margin-bottom:-14.5px}
-#launch img{width:32px;margin-bottom:0;filter:grayscale(100%);transition:filter .2s cubic-bezier(.4,0,.22,1),opacity .2s cubic-bezier(.4,0,.22,1)}
+#launch img{width:32px;height:32px;margin-bottom:0;filter:grayscale(100%);transition:filter .2s cubic-bezier(.4,0,.22,1),opacity .2s cubic-bezier(.4,0,.22,1)}
 #launch:hover img{filter:grayscale(0)}
 
 .ul-buttons{list-style-type:none;margin:5px auto -5px auto;padding:0;overflow:hidden;text-align:center}
