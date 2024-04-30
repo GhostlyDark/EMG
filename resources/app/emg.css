@@ -81,7 +81,7 @@ footer{position:fixed;bottom:0;width:100%;max-width:730px;left:50%;transform:tra
 .dark.custom #overlay{background:rgba(0,0,0,.85)}
 
 .transition #moon svg g path,.transition #fancy svg path,.transition #palettes svg path:nth-child(2),.transition #palettes svg circle,.transition #settings svg,.transition #reset svg{transition:fill .2s cubic-bezier(.4,0,.22,1)}
-.transition body,.transition #overlay{transition:background-color .2s cubic-bezier(.4,0,.22,1),color .2s cubic-bezier(.4,0,.22,1)}
+.transition body,.transition #overlay,.transition select,.transition button{transition:background-color .2s cubic-bezier(.4,0,.22,1),color .2s cubic-bezier(.4,0,.22,1)}
 .transition .sub{transition:background-color .2s cubic-bezier(.4,0,.22,1)}
 
 html{scrollbar-color:#bbb #eaeaea}
@@ -189,7 +189,7 @@ button,select,input,.box,.pointer,.hotkeys label,[type=checkbox] + label,[type=c
 .dark.palette-ice [type=range]:focus::-webkit-slider-runnable-track{background-color:rgba(33,150,243,.5)}
 .dark.palette-ice [type=range]:hover::-webkit-slider-runnable-track{background-color:rgba(33,150,243,.5)}
 
-[type=text]{max-width:100px;text-align:center;height:19px}
+[type=text]{font-size:16px;max-width:100px;text-align:center;height:19px}
 [type=text]{border:0;outline:0;padding:5px;transition:background-color .2s cubic-bezier(.4,0,.22,1);margin:0;background-color:#ddd;appearance:none}
 [type=text]:hover,[type=text]:active,[type=text]:focus{background-color:#ccc}
 
@@ -198,25 +198,22 @@ button,select,input,.box,.pointer,.hotkeys label,[type=checkbox] + label,[type=c
 [type=checkbox]:disabled,[type=checkbox]:disabled:checked:before,[type=checkbox]:disabled:hover{border-color:#444}
 .dark [type=checkbox]:disabled,.dark [type=checkbox]:disabled:checked:before,.dark [type=checkbox]:disabled:hover{border-color:#ccc}
 
-button{font-size:17px;line-height:23px;border:0;outline:0;background-color:#ddd;padding:3px 10px;transition:background-color .2s cubic-bezier(.4,0,.22,1)}
+button{font-size:15px;line-height:23px;border:0;outline:0;background-color:#ddd;border-radius:7px;text-transform:uppercase;padding:3px 10px;transition:background-color .2s cubic-bezier(.4,0,.22,1)}
 button:hover,select:hover,button:active,select:active,select:focus{background-color:#ccc}
 
-select{border:0;outline:0;padding:5px 35px 5px 8px;transition:background-color .2s cubic-bezier(.4,0,.22,1);margin:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 24 24'%3E%3Cpath opacity='.87' fill='none' d='M24 24H0V0h24v24z'/%3E%3Cpath d='M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z'/%3E%3C/svg%3E") no-repeat 99% #ddd;appearance:none;height:29px}
-
-.dark select{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' width='30' height='30' viewBox='0 0 24 24'%3E%3Cpath opacity='.87' fill='none' d='M24 24H0V0h24v24z'/%3E%3Cpath d='M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z'/%3E%3C/svg%3E") no-repeat 99% #222}
+select{font-size:16px;border:0;outline:0;padding:5px 35px 5px 8px;transition:background-color .2s cubic-bezier(.4,0,.22,1);margin:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 24 24'%3E%3Cpath opacity='.87' fill='none' d='M24 24H0V0h24v24z'/%3E%3Cpath d='M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z'/%3E%3C/svg%3E") no-repeat 99% #ddd;appearance:none;height:29px}
+.dark select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' width='30' height='30' viewBox='0 0 24 24'%3E%3Cpath opacity='.87' fill='none' d='M24 24H0V0h24v24z'/%3E%3Cpath d='M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z'/%3E%3C/svg%3E")}
 .dark button,.dark select,.dark [type=text]{background-color:#222;color:#fff}
 .dark button:hover,.dark select:hover,.dark [type=text]:hover,.dark button:active,.dark select:active,.dark select:focus,.dark [type=text]:active,.dark [type=text]:focus{background-color:#333}
-
 .custom select,.custom button,.custom [type=text]{background-color:rgba(200,200,200,.5)}
 .dark.custom select,.dark.custom button,.dark.custom [type=text]{background-color:rgba(40,40,40,.5)}
-.custom select:hover,.custom button:hover,.custom [type=text]:hover,.custom select:active,.custom select:focus,.custom button:active,.custom [type=text]:active,.custom [type=text]:focus{background-color:rgba(200,200,200,.75)}
-.dark.custom select:hover,.dark.custom button:hover,.dark.custom [type=text]:hover,.dark.custom select:active,.dark.custom select:focus,.dark.custom button:active,.dark.custom [type=text]:active,.dark.custom [type=text]:focus{background-color:rgba(40,40,40,.75)}
+.custom select:hover,.custom button:hover,.custom [type=text]:hover,.custom select:active,.custom select:focus,.custom button:active,.custom [type=text]:active,.custom [type=text]:focus{background-color:rgba(200,200,200,.9)}
+.dark.custom select:hover,.dark.custom button:hover,.dark.custom [type=text]:hover,.dark.custom select:active,.dark.custom select:focus,.dark.custom button:active,.dark.custom [type=text]:active,.dark.custom [type=text]:focus{background-color:rgba(40,40,40,.9)}
 
-option{background:#efefef}
+option{font-size:16px;background:#efefef}
 .dark option{background:#222}
 
-.box{padding:20px;border:2px dotted #111;word-wrap:break-word}
-.dark .box{border:2px dotted #eee}
+.box{padding:20px;border:2px dotted currentcolor;word-wrap:break-word}
 #fileInput{min-height:50px}
 
 .floatleft{float:left}
