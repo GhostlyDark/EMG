@@ -194,7 +194,7 @@ button,select,input,.box,.pointer,.hotkeys label,[type=checkbox] + label,[type=c
 [type=text]:hover,[type=text]:active,[type=text]:focus{background-color:#ccc}
 
 [type=checkbox]{margin:0}
-[type=checkbox] + label{position:relative;top:-2px;padding-left:10px}
+[type=checkbox] + label{position:relative;top:-2px;padding-left:11px}
 [type=checkbox]:disabled,[type=checkbox]:disabled:checked:before,[type=checkbox]:disabled:hover{border-color:#444}
 .dark [type=checkbox]:disabled,.dark [type=checkbox]:disabled:checked:before,.dark [type=checkbox]:disabled:hover{border-color:#ccc}
 
