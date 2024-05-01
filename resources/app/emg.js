@@ -542,7 +542,7 @@ prevent(e);if(e.dataTransfer.files[0] === undefined)return
 let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
 if(n64.includes(fileExtension(fPath)))filePath = fPath
-if(filePath != undefined){id('fileText').textContent = filePath;localStorage.setItem('filePath', filePath);if(!recentFiles.includes(filePath))recentFiles.unshift(filePath);recentFiles.splice(10);recentFilesUpdate();localStorage.setItem('recentFiles',JSON.stringify(recentFiles));if(id('cheatList').textContent!='')id('cheatList').textContent=''}}})
+if(filePath != undefined){id('fileText').textContent = filePath;localStorage.setItem('filePath', filePath);if(id('cheatList').textContent!='')id('cheatList').textContent=''}}})
 
 id('IPLROM').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
@@ -621,7 +621,7 @@ if(localStorage.getItem('filePath') != null){filePath = localStorage.getItem('fi
 id('fileInput').addEventListener('click', function(){ /* click event for file inputs */
 fileResult = dialogFile({name:'N64 ROM',extensions:n64});
 if(fileResult != undefined){filePath = fileResult;
-if(filePath != undefined){id('fileText').textContent = filePath;localStorage.setItem('filePath', filePath);if(!recentFiles.includes(filePath.toString()))recentFiles.unshift(filePath.toString());recentFiles.splice(10);recentFilesUpdate();localStorage.setItem('recentFiles',JSON.stringify(recentFiles));hideCheats()}}})
+if(filePath != undefined){id('fileText').textContent = filePath;localStorage.setItem('filePath', filePath);hideCheats()}}})
 
 id('clearIPLROM').addEventListener('click', function(){IPLROM = id('IPLROMText').textContent = '';localStorage.removeItem('IPLROM')})
 if(localStorage.getItem('IPLROM') === null){IPLROM = id('IPLROMText').textContent = ''}
@@ -816,6 +816,8 @@ document.addEventListener('keyup', function(e){if(e.ctrlKey && e.which == 76){id
 
 
 id('launch').addEventListener('click', function(){
+if(!recentFiles.includes(filePath))recentFiles.unshift(filePath);recentFiles.splice(10);recentFilesUpdate();localStorage.setItem('recentFiles',JSON.stringify(recentFiles));
+
 var configdir = ConfigPath,
 exp = 'Core[DisableExtraMem]=' + id('exp').checked,
 SaveFilenameFormat = 'Core[SaveFilenameFormat]=' + (id('SaveFilenameFormat').checked ? '1' : '0'),
