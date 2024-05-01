@@ -542,7 +542,7 @@ prevent(e);if(e.dataTransfer.files[0] === undefined)return
 let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
 if(n64.includes(fileExtension(fPath)))filePath = fPath
-if(filePath != undefined){id('fileText').textContent = filePath;localStorage.setItem('filePath', filePath);if(id('cheatList').textContent!='')id('cheatList').textContent=''}}})
+if(filePath != undefined){id('fileText').textContent = filePath;localStorage.setItem('filePath', filePath);hideCheats()}}})
 
 id('IPLROM').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
