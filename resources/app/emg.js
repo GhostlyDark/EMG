@@ -829,7 +829,7 @@ document.addEventListener('keyup', function(e){if(e.ctrlKey && e.which == 76){id
 
 
 id('launch').addEventListener('click', function(){
-if(!recentFiles.includes(filePath))recentFiles.unshift(filePath);recentFiles.splice(10);recentFilesUpdate();localStorage.setItem('recentFiles',JSON.stringify(recentFiles));
+if(!recentFiles.includes(filePath.toString()))recentFiles.unshift(filePath.toString());recentFiles.splice(10);recentFilesUpdate();localStorage.setItem('recentFiles',JSON.stringify(recentFiles));
 
 var configdir = ConfigPath,
 exp = 'Core[DisableExtraMem]=' + id('exp').checked,
