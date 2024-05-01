@@ -21,6 +21,7 @@ writeGCA = (gcaSettings, configdir) => {ipcRenderer.sendSync('writeGCA', configd
 emuLaunch = (parameters) => {ipcRenderer.send('emuLaunch', parameters)},
 showCheats = (parameters) => {return ipcRenderer.sendSync('showCheats', parameters)},
 jsRefresh = () => {return ipcRenderer.sendSync('jsRefresh')},
+jsRumble = (padId) => {return ipcRenderer.sendSync('jsRumble', padId)},
 jsMapping = (padId) => {return ipcRenderer.sendSync('jsMapping', padId)},
 
 jstest = (joyinput) => {
@@ -100,6 +101,7 @@ contextBridge.exposeInMainWorld('romDirFile',romDirFile)
 contextBridge.exposeInMainWorld('emuLaunch',emuLaunch)
 contextBridge.exposeInMainWorld('jstest',jstest)
 contextBridge.exposeInMainWorld('jsRefresh',jsRefresh)
+contextBridge.exposeInMainWorld('jsRumble',jsRumble)
 contextBridge.exposeInMainWorld('jsMapping',jsMapping)
 contextBridge.exposeInMainWorld('showCheats',showCheats)
 contextBridge.exposeInMainWorld('writeGCA',writeGCA)

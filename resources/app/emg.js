@@ -120,6 +120,19 @@ localStorage.setItem(drop.id+'Element',(drop.innerHTML))}
 
 
 
+['rumble1','rumble2','rumble3','rumble4'].forEach(rumble => {id(rumble).addEventListener('click', function(){testRumble(id(rumble))})}) /* test rumble */
+
+function testRumble(rumble){
+var padId, tId;
+if(rumble.id.includes(1))tId = id('c1')
+if(rumble.id.includes(2))tId = id('c2')
+if(rumble.id.includes(3))tId = id('c3')
+if(rumble.id.includes(4))tId = id('c4')
+padId = tId.value.substring(0,2).replace(/\:/g,'');
+jsRumble(padId)}
+
+
+
 ['auto1','auto2','auto3','auto4'].forEach(auto => {id(auto).addEventListener('click', function(){autoConfig(id(auto))})}) /* gamepad auto config */
 
 function autoConfig(auto){

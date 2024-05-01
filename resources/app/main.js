@@ -1,4 +1,4 @@
-let win, jstestChild;
+let win, jstestChild, jstestRumble;
 const {app, BrowserWindow, dialog, globalShortcut, ipcMain, session, shell} = require('electron'),
 {existsSync, mkdirSync, readdirSync, writeFileSync} = require('node:fs'),
 {spawn, spawnSync} = require('node:child_process'),
@@ -70,6 +70,12 @@ ipcMain.on('jstestChild', (e, jstestConfig) => {
 ipcMain.on('jsRefresh', (e) => {
 	const child = spawnSync(jstestPath, ['-ls'], jsOptions);
 	e.returnValue = child.stdout.toString()
+})
+
+ipcMain.on('jsRumble', (e, padId) => {
+	if(jstestRumble != undefined)jstestRumble.kill('SIGTERM')
+	jstestRumble = spawn(jstestPath, ['-r', padId], jsOptions);
+	e.returnValue = ''
 })
 
 ipcMain.on('jsMapping', (e, padId) => {
