@@ -90,7 +90,8 @@ newPlugins.forEach(name => addPlugin(name));
 
 function addPlugin(name){
 var newPlugin = document.createElement('option');
-newPlugin.value = newPlugin.textContent = name;
+newPlugin.value = name;
+newPlugin.textContent = name.replace(/mupen64plus-audio-|mupen64plus-input-|mupen64plus-rsp-|mupen64plus-video-/,'');
 if(name != ''){
 if(name.includes('mupen64plus-audio-')){id('audio').appendChild(newPlugin)}
 else if(name.includes('mupen64plus-input-')){id('input').appendChild(newPlugin)}
