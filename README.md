@@ -29,18 +29,32 @@ Can be found in `build/EMG` after running `compile.sh`. See below for more detai
 ## Linux
 
 Install dependencies:
-
 ```
 sudo apt install -y build-essential cmake curl freeglut3-dev gcc git libfreetype-dev libhidapi-dev libhidapi-hidraw0 libpng-dev libsamplerate0-dev libsdl2-dev libspeexdsp-dev libvulkan-dev make nasm ninja-build p7zip-full wget zlib1g-dev
+```
+
+Install Rust:
+```
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+```
+
+Configure Rust:
+```
 source "$HOME/.cargo/env"
 ```
 
-Clone repository, change directory and run `compile.sh`:
-
+Clone repository:
 ```
 git clone https://github.com/GhostlyDark/EMG EMG
+```
+
+Change directory:
+```
 cd EMG
+```
+
+Run `compile.sh`:
+```
 chmod u+x compile.sh && ./compile.sh
 ```
 
@@ -49,17 +63,23 @@ chmod u+x compile.sh && ./compile.sh
 
 Releases can be found [here](https://github.com/GhostlyDark/EMG/releases/latest).
 
-To build EMG instead, download and install [MSYS2](https://www.msys2.org/). Run `MSYS2 MinGW x64` and install dependencies.
-
+To build EMG instead, download and install [MSYS2](https://www.msys2.org/). Run `MSYS2 MinGW x64` and install dependencies:
 ```
 pacman -S --needed git make mingw-w64-x86_64-cmake mingw-w64-x86_64-freetype mingw-w64-x86_64-gcc mingw-w64-x86_64-hidapi mingw-w64-x86_64-libpng mingw-w64-x86_64-libsamplerate mingw-w64-x86_64-nasm mingw-w64-x86_64-ninja mingw-w64-x86_64-rust mingw-w64-x86_64-SDL2 mingw-w64-x86_64-speex mingw-w64-x86_64-vulkan p7zip
 ```
 
-Clone repository, change directory and run `compile.sh`:
-
+Clone repository:
 ```
 git clone https://github.com/GhostlyDark/EMG EMG
+```
+
+Change directory:
+```
 cd EMG
+```
+
+Run `compile.sh`:
+```
 ./compile.sh
 ```
 
@@ -67,13 +87,11 @@ cd EMG
 ## Building options
 
 The build script `compile.sh` can be run with additional parameters:
-
 ```
 ./compile.sh [threads] [electron]
 ```
 
 Limit the building process to one thread and grab Electron v26.6.9:
-
 ```
 ./compile.sh 1 v26.6.9
 ```
