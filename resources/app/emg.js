@@ -841,6 +841,7 @@ verbose = id('verbose').checked ? '--verbose' : [],
 fullscreen = 'Video-General[Fullscreen]=' + id('fullscreen').checked,
 ParallelFullscreen = 'Video-Parallel[Fullscreen]=' + id('fullscreen').checked,
 vsync = 'Video-General[VerticalSync]=' + id('vsync').checked,
+ViVsync = 'Video-AngrylionPlus[ViVsync]=' + id('vsync').checked,
 ParallelVSync = 'Video-Parallel[Vsync]=' + id('vsync').checked,
 m64pGFX = 'Rsp-HLE[DisplayListToGraphicsPlugin]=true',
 cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=' + id('rspGFX').checked,
@@ -1218,7 +1219,7 @@ if(gfx.includes('angrylion') || gfx.includes('parallel')){cxd4GFX = 'rsp-cxd4[Di
 if(gfx.includes('angrylion') && rsp.includes('rsp-hle')){rsp = 'mupen64plus-rsp-cxd4' + ext}
 else if(gfx.includes('parallel') && rsp.includes('rsp-hle')){rsp = 'mupen64plus-rsp-parallel' + ext}
 
-if(id('nospeedlimit').checked){audio = 'dummy';vsync = 'Video-General[VerticalSync]=false';ParallelVSync = 'Video-Parallel[Vsync]=false'} /* force muted audio and disabled V-Sync */
+if(id('nospeedlimit').checked){audio = 'dummy';vsync = 'Video-General[VerticalSync]=false';ViVsync = 'Video-AngrylionPlus[ViVsync]=false';ParallelVSync = 'Video-Parallel[Vsync]=false'} /* force muted audio and disabled V-Sync */
 
 if(id('audio').value === 'dummy')audio = 'dummy'
 if(id('input').value === 'dummy')input = 'dummy'
@@ -1580,7 +1581,7 @@ AButton3,BButton3,LTrig3,RTrig3,ZTrig3,Start3,DPadU3,DPadL3,DPadR3,DPadD3,CButto
 
 AButton4,BButton4,LTrig4,RTrig4,ZTrig4,Start4,DPadU4,DPadL4,DPadR4,DPadD4,CButtonU4,CButtonL4,CButtonR4,CButtonD4,MempakSwitch4,RumblepakSwitch4,XAxis4,YAxis4,analogdeadzone4,analogpeak4,mouse4,msensitivity4, /* Controller 4 */
 
-Parallel,NumWorkers,BusyLoop,ViMode,ViInterpolation,ViWidescreen,ViHideOverscan,ViIntegerScaling,DpCompat, /* Angrylion Plus */
+Parallel,NumWorkers,BusyLoop,ViMode,ViInterpolation,ViWidescreen,ViHideOverscan,ViIntegerScaling,ViVsync,DpCompat, /* Angrylion Plus */
 
 threadedVideo,msaa,fxaa,aspectRatio,bufferSwapMode,useNativeResolutionFactor,bilinearMode,enableHalosRemoval,anisotropy,cache,txDump,txStrongCRC,txHiresEnable,txNoTextureFileStorage,EnableInaccurateTextureCoordinates,EnableDitheringPattern,EnableHiresNoiseDithering,DitheringQuantization,RDRAMImageDitheringMode,EnableLOD,EnableHWLighting,EnableCoverage,EnableClipping,EnableShadersStorage,EnableLegacyBlending,EnableHybridFilter,EnableCustomSettings,CorrectTexrectCoords,EnableNativeResTexrects,BackgroundsMode,EnableTexCoordBounds,EnableFBEmulation,EnableCopyAuxiliaryToRDRAM,EnableN64DepthCompare,ForceDepthBufferClear,DisableFBInfo,FBInfoReadColorChunk,FBInfoReadDepthChunk,EnableCopyColorToRDRAM,EnableCopyDepthToRDRAM,EnableCopyColorFromRDRAM,EnableCopyDepthToMainDepthBuffer,EnableOverscan,OverscanNtscTop,OverscanNtscLeft,OverscanNtscRight,OverscanNtscBottom,OverscanPalTop,OverscanPalLeft,OverscanPalRight,OverscanPalBottom,txFilterMode,txEnhancementMode,txDeposterize,txFilterIgnoreBG,txCacheSize,txHiresVramLimit,txHiresFullAlphaChannel,txHresAltCRC,txCacheCompression, txForce16bpp, txSaveCache,txPathSetting,txCachePathSetting,txDumpPathSetting,hkTexDump,hkStrongCRC,hkHdTexReload,hkHdTexToggle,hkInaccurateTexCords,hkVsync,hkFBEmulation,hkN64DepthCompare,hkOsdVis,hkOsdFps,hkOsdPercent,hkOsdInternalResolution,hkOsdRenderingResolution,hkTexCoordBounds,hkNativeResTexrects,hkForceGammaCorrection,ForceGammaCorrection,GammaCorrectionLevel,fontName,fontSize,fontColor,ShowFPS,ShowVIS,ShowPercent,ShowInternalResolution,ShowRenderingResolution,ShowStatistics,CountersPos, /* GLideN64 */
 
