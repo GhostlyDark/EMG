@@ -1221,10 +1221,6 @@ else if(gfx.includes('parallel') && rsp.includes('rsp-hle')){rsp = 'mupen64plus-
 
 if(id('nospeedlimit').checked){audio = 'dummy';vsync = 'Video-General[VerticalSync]=false';ViVsync = 'Video-AngrylionPlus[ViVsync]=false';ParallelVSync = 'Video-Parallel[Vsync]=false'} /* force muted audio and disabled V-Sync */
 
-if(id('audio').value === 'dummy')audio = 'dummy'
-if(id('input').value === 'dummy')input = 'dummy'
-if(id('RspFallback').value === '')RspFallback = 'Rsp-HLE[RspFallback]='
-
 
 
 if(name1.includes('Keyboard'))device1 = 'Input-SDL-Control1[device]=-1' /* controller 1 */
