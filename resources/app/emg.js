@@ -98,7 +98,9 @@ if(name != ''){
 if(name.includes('mupen64plus-audio-')){id('audioCustom').appendChild(newPlugin);id('audioCustom').style.display = 'block'}
 else if(name.includes('mupen64plus-input-')){id('inputCustom').appendChild(newPlugin);id('inputCustom').style.display = 'block'}
 else if(name.includes('mupen64plus-rsp-')){id('rspCustom').appendChild(newPlugin);id('RspFallbackCustom').appendChild(newPlugin.cloneNode(true));id('rspCustom').style.display = id('RspFallbackCustom').style.display = 'block'}
-else if(name.includes('mupen64plus-video-')){id('gfxCustom').appendChild(newPlugin);id('gfxCustom').style.display = 'block'}}}
+else if(name.includes('mupen64plus-video-')){
+if(newPlugin.textContent === 'rt64'){newPlugin.textContent = 'RT64';id('gfxModern').appendChild(newPlugin)}
+else{id('gfxCustom').appendChild(newPlugin);id('gfxCustom').style.display = 'block'}}}}
 
 
 
