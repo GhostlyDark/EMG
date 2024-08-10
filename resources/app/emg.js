@@ -36,6 +36,7 @@ hk = ['hk_keyboard','hk_controller1','hk_controller2','hk_controller3','hk_contr
 gliden64_setting = ['gliden64_video','gliden64_overscan','gliden64_emulation','gliden64_framebuffer','gliden64_textures','gliden64_osd','gliden64_hotkeys'],
 parallel_setting = ['parallel_video','parallel_emulation'],
 rice_setting = ['rice_video','rice_emulation','rice_textures'],
+glide_setting = ['glide_emulation','glide_enhancement','glide_hd','glide_advanced'],
 
 n64_buttons = ['AButton1','AButton2','AButton3','AButton4','BButton1','BButton2','BButton3','BButton4','LTrig1','LTrig2','LTrig3','LTrig4','RTrig1','RTrig2','RTrig3','RTrig4','ZTrig1','ZTrig2','ZTrig3','ZTrig4','Start1','Start2','Start3','Start4','DPadU1','DPadU2','DPadU3','DPadU4','DPadD1','DPadD2','DPadD3','DPadD4','DPadL1','DPadL2','DPadL3','DPadL4','DPadR1','DPadR2','DPadR3','DPadR4','StickU1','StickU2','StickU3','StickU4','StickD1','StickD2','StickD3','StickD4','StickL1','StickL2','StickL3','StickL4','StickR1','StickR2','StickR3','StickR4','CButtonU1','CButtonU2','CButtonU3','CButtonU4','CButtonD1','CButtonD2','CButtonD3','CButtonD4','CButtonL1','CButtonL2','CButtonL3','CButtonL4','CButtonR1','CButtonR2','CButtonR3','CButtonR4','MempakSwitch1','MempakSwitch2','MempakSwitch3','MempakSwitch4','RumblepakSwitch1','RumblepakSwitch2','RumblepakSwitch3','RumblepakSwitch4'],
 
@@ -51,11 +52,11 @@ m64p_joykeys = [
 'JoyMappingStop3','JoyMappingFullscreen3','JoyMappingSaveState3','JoyMappingLoadState3','JoyMappingIncrementSlot3','JoyMappingReset3','JoyMappingSpeedDown3','JoyMappingSpeedUp3','JoyMappingScreenshot3','JoyMappingPause3','JoyMappingMute3','JoyMappingIncreaseVolume3','JoyMappingDecreaseVolume3','JoyMappingFastForward3','JoyMappingFrameAdvance3','JoyMappingGameshark3',
 'JoyMappingStop4','JoyMappingFullscreen4','JoyMappingSaveState4','JoyMappingLoadState4','JoyMappingIncrementSlot4','JoyMappingReset4','JoyMappingSpeedDown4','JoyMappingSpeedUp4','JoyMappingScreenshot4','JoyMappingPause4','JoyMappingMute4','JoyMappingIncreaseVolume4','JoyMappingDecreaseVolume4','JoyMappingFastForward4','JoyMappingFrameAdvance4','JoyMappingGameshark4'],
 
-defaultPlugins = ['mupen64plus-audio-sdl','mupen64plus-input-gca','mupen64plus-input-raphnetraw','mupen64plus-input-sdl','mupen64plus-rsp-cxd4','mupen64plus-rsp-hle','mupen64plus-rsp-parallel','mupen64plus-video-angrylion-plus','mupen64plus-video-GLideN64','mupen64plus-video-parallel','mupen64plus-video-rice'],
+defaultPlugins = ['mupen64plus-audio-sdl','mupen64plus-input-gca','mupen64plus-input-raphnetraw','mupen64plus-input-sdl','mupen64plus-rsp-cxd4','mupen64plus-rsp-hle','mupen64plus-rsp-parallel','mupen64plus-video-angrylion-plus','mupen64plus-video-GLideN64','mupen64plus-video-parallel','mupen64plus-video-rice','mupen64plus-video-glide64mk2'],
 
 overscan = ['OverscanNtscTop','OverscanNtscLeft','OverscanNtscRight','OverscanNtscBottom','OverscanPalTop','OverscanPalLeft','OverscanPalRight','OverscanPalBottom'],
 
-sliders = [...overscan,'SiDmaDuration','VOLUME_ADJUST','VOLUME_DEFAULT','AnalogDeadzone1','AnalogDeadzone2','AnalogDeadzone3','AnalogDeadzone4','AnalogPeak1','AnalogPeak2','AnalogPeak3','AnalogPeak4','control_stick_deadzone','control_stick_sensitivity','c_stick_deadzone','trigger_threshold','MouseSensitivityX','MouseSensitivityY','NumWorkers','GammaCorrectionLevel','txCacheSize','txHiresVramLimit','fontSize','ParallelCropOverscan','ParallelVerticalStretch','PolygonOffsetFactor','PolygonOffsetUnits'],
+sliders = [...overscan,'SiDmaDuration','VOLUME_ADJUST','VOLUME_DEFAULT','AnalogDeadzone1','AnalogDeadzone2','AnalogDeadzone3','AnalogDeadzone4','AnalogPeak1','AnalogPeak2','AnalogPeak3','AnalogPeak4','control_stick_deadzone','control_stick_sensitivity','c_stick_deadzone','trigger_threshold','MouseSensitivityX','MouseSensitivityY','NumWorkers','GammaCorrectionLevel','txCacheSize','txHiresVramLimit','fontSize','ParallelCropOverscan','ParallelVerticalStretch','PolygonOffsetFactor','PolygonOffsetUnits','polygon_offset_factor','polygon_offset_units','ghq_cache_size'],
 
 dropdowns = [
 'emumode','resolution','CountPerOp','CountPerOpDenomPot','CurrentStateSlot','SaveDiskFormat', /* mupen64plus */
@@ -66,7 +67,8 @@ dropdowns = [
 'msaa','aspectRatio','bufferSwapMode','CountersPos','useNativeResolutionFactor','anisotropy','cache','RDRAMImageDitheringMode','CorrectTexrectCoords','EnableNativeResTexrects','BackgroundsMode','EnableN64DepthCompare','EnableCopyColorToRDRAM','EnableCopyDepthToRDRAM','txFilterMode','txEnhancementMode', /* GLideN64 */
 'ViMode','ViInterpolation','DpCompat', /* Angrylion-Plus */
 'ParallelUpscaling','ParallelDeinterlaceMode','ParallelDownScale', /* Parallel */
-'FrameBufferWriteBackControl','RenderToTexture','ScreenUpdateSetting','Mipmapping','ForceTextureFilter','RiceMultiSampling','AnisotropicFiltering' /* Rice */];
+'FrameBufferWriteBackControl','RenderToTexture','ScreenUpdateSetting','Mipmapping','ForceTextureFilter','RiceMultiSampling','AnisotropicFiltering', /* Rice */
+'show_fps','ghq_fltr','ghq_enht','alt_tex_size','use_sts1_only','force_calc_sphere','correct_viewport','increase_texrect_edge','decrease_fillrect_edge','texture_correction','pal230','force_microcheck','force_quad3d','clip_zmin','clip_zmax','fast_crc','adjust_aspect','zmode_compare_less','old_style_adither','n64_z_scale','optimize_texrect','ignore_aux_copy','hires_buf_clear','fb_read_alpha','useless_is_useless','fb_crc_mode','filtering','fog','buff_clear','swapmode','aspect','lodmode','fb_smart','fb_hires','fb_read_always','read_back_to_screen','detect_cpu_write','fb_get_info','fb_render' /* Glide64 MK2 */];
 
 
 
@@ -359,6 +361,18 @@ else{id('PolygonOffsetFactor').disabled = id('PolygonOffsetUnits').disabled = tr
 id('ForcePolygonOffset').addEventListener('change', ForcePolygonOffsetDisable)
 ForcePolygonOffsetDisable()
 
+function force_polygon_offsetDisable(){if(id('force_polygon_offset').checked){id('polygon_offset_factor').disabled = false;id('polygon_offset_units').disabled = false}else{id('polygon_offset_factor').disabled = true;id('polygon_offset_units').disabled = true}}
+id('force_polygon_offset').addEventListener('change', force_polygon_offsetDisable)
+force_polygon_offsetDisable()
+
+function clockDisable(){if(id('clock').checked){id('clock_24_hr').disabled = false}else{id('clock_24_hr').disabled = true}}
+id('clock').addEventListener('change', clockDisable)
+clockDisable()
+
+function ghq_hirsDisable(){if(id('ghq_hirs').checked){id('ghq_hirs_cmpr').disabled = false;id('ghq_hirs_tile').disabled = false;id('ghq_hirs_f16bpp').disabled = false;id('ghq_hirs_gz').disabled = false;id('ghq_hirs_altcrc').disabled = false;id('ghq_hirs_let_texartists_fly').disabled = false}else{id('ghq_hirs_cmpr').disabled = true;id('ghq_hirs_tile').disabled = true;id('ghq_hirs_f16bpp').disabled = true;id('ghq_hirs_gz').disabled = true;id('ghq_hirs_altcrc').disabled = true;id('ghq_hirs_let_texartists_fly').disabled = true}}
+id('ghq_hirs').addEventListener('change', ghq_hirsDisable)
+ghq_hirsDisable()
+
 function c1Disable(){
 if(id('c1').value === 'Keyboard'){id('AnalogDeadzone1').disabled = id('AnalogPeak1').disabled = true}
 else{id('AnalogDeadzone1').disabled = false;id('AnalogPeak1').disabled = false}}
@@ -575,6 +589,21 @@ currentUL.classList.add('active');localStorage.setItem('RiceULActive',currentUL.
 currentDIV.classList.remove('hide');localStorage.setItem('RiceDIVActive',currentDIV.id)}
 
 rice_setting.forEach(rice_setting => {id('ul_'+rice_setting).addEventListener('click', function(){currentRice(id('ul_'+rice_setting),id(rice_setting))})})
+
+
+
+
+if(localStorage.getItem('GlideULActive') != null && localStorage.getItem('GlideDIVActive') != null){ /* Glide64 MK2 settings tabs */
+if(id(localStorage.getItem('GlideULActive')) != null && id(localStorage.getItem('GlideDIVActive')) != null){
+currentGlide(id(localStorage.getItem('GlideULActive')),id(localStorage.getItem('GlideDIVActive')))}}
+
+function currentGlide(currentUL,currentDIV){glide_setting.forEach(glide_setting => {
+id('ul_'+glide_setting).classList.remove('active')
+id(glide_setting).classList.add('hide')})
+currentUL.classList.add('active');localStorage.setItem('GlideULActive',currentUL.id);
+currentDIV.classList.remove('hide');localStorage.setItem('GlideDIVActive',currentDIV.id)}
+
+glide_setting.forEach(glide_setting => {id('ul_'+glide_setting).addEventListener('click', function(){currentGlide(id('ul_'+glide_setting),id(glide_setting))})})
 
 
 
@@ -882,6 +911,7 @@ ParallelFullscreen = 'Video-Parallel[Fullscreen]=' + id('fullscreen').checked,
 vsync = 'Video-General[VerticalSync]=' + id('vsync').checked,
 ViVsync = 'Video-AngrylionPlus[ViVsync]=' + id('vsync').checked,
 ParallelVSync = 'Video-Parallel[Vsync]=' + id('vsync').checked,
+Glide64VSync = 'Video-Glide64mk2[vsync]=' + id('vsync').checked,
 m64pGFX = 'Rsp-HLE[DisplayListToGraphicsPlugin]=true',
 cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=' + id('rspGFX').checked,
 m64pAudio = 'Rsp-HLE[AudioListToAudioPlugin]=false',
@@ -984,6 +1014,24 @@ FogMethod = 'Video-Rice[FogMethod]=' + (id('FogMethod').checked ? '1' : '0'),
 OpenGLRenderSetting = 'Video-Rice[OpenGLRenderSetting]=0',
 ForcePolygonOffset = 'Video-Rice[ForcePolygonOffset]=' + id('ForcePolygonOffset').checked,
 
+force_polygon_offset = 'Video-Glide64mk2[force_polygon_offset]=' + id('force_polygon_offset').checked,
+clock = 'Video-Glide64mk2[clock]=' + id('clock').checked,
+clock_24_hr = 'Video-Glide64mk2[clock_24_hr]=' + id('clock_24_hr').checked,
+wrpFBO = 'Video-Glide64mk2[wrpFBO]=' + id('wrpFBO').checked,
+wrpAnisotropic = 'Video-Glide64mk2[wrpAnisotropic]=' + id('wrpAnisotropic').checked,
+ghq_hirs = 'Video-Glide64mk2[ghq_hirs]=' + (id('ghq_hirs').checked ? '1' : '0'),
+ghq_enht_cmpr = 'Video-Glide64mk2[ghq_enht_cmpr]=' + id('ghq_enht_cmpr').checked,
+ghq_enht_tile = 'Video-Glide64mk2[ghq_enht_tile]=' + (id('ghq_enht_tile').checked ? '1' : '0'),
+ghq_enht_f16bpp = 'Video-Glide64mk2[ghq_enht_f16bpp]=' + id('ghq_enht_f16bpp').checked,
+ghq_enht_gz = 'Video-Glide64mk2[ghq_enht_gz]=' + id('ghq_enht_gz').checked,
+ghq_enht_nobg = 'Video-Glide64mk2[ghq_enht_nobg]=' + id('ghq_enht_nobg').checked,
+ghq_hirs_cmpr = 'Video-Glide64mk2[ghq_hirs_cmpr]=' + id('ghq_hirs_cmpr').checked,
+ghq_hirs_tile = 'Video-Glide64mk2[ghq_hirs_tile]=' + id('ghq_hirs_tile').checked,
+ghq_hirs_f16bpp = 'Video-Glide64mk2[ghq_hirs_f16bpp]=' + id('ghq_hirs_f16bpp').checked,
+ghq_hirs_gz = 'Video-Glide64mk2[ghq_hirs_gz]=' + id('ghq_hirs_gz').checked,
+ghq_hirs_altcrc = 'Video-Glide64mk2[ghq_hirs_altcrc]=' + id('ghq_hirs_altcrc').checked,
+ghq_hirs_let_texartists_fly = 'Video-Glide64mk2[ghq_hirs_let_texartists_fly]=' + id('ghq_hirs_let_texartists_fly').checked,
+
 ScreenWidth = 'Video-General[ScreenWidth]=' + id('resolution').value,
 ScreenHeight = 'Video-General[ScreenHeight]=' + id('resolution').value*0.75,
 ParallelScreenWidth = 'Video-Parallel[ScreenWidth]=' + id('resolution').value,
@@ -1045,6 +1093,48 @@ RiceMultiSampling = 'Video-Rice[MultiSampling]=' + id('RiceMultiSampling').value
 ColorQuality = 'Video-Rice[ColorQuality]=0',
 AnisotropicFiltering = 'Video-Rice[AnisotropicFiltering]=' + id('AnisotropicFiltering').value,
 
+wrpAntiAliasing = id('wrpAntiAliasing').value,
+show_fps = id('show_fps').value,
+ghq_fltr = id('ghq_fltr').value,
+ghq_cmpr = 'Video-Glide64mk2[ghq_cmpr]=0',
+ghq_enht = id('ghq_enht').value,
+alt_tex_size = id('alt_tex_size').value,
+use_sts1_only = id('use_sts1_only').value,
+force_calc_sphere = id('force_calc_sphere').value,
+correct_viewport = id('correct_viewport').value,
+increase_texrect_edge = id('increase_texrect_edge').value,
+decrease_fillrect_edge = id('decrease_fillrect_edge').value,
+texture_correction = id('texture_correction').value,
+pal230 = id('pal230').value,
+force_microcheck = id('force_microcheck').value,
+force_quad3d = id('force_quad3d').value,
+clip_zmin = id('clip_zmin').value,
+clip_zmax = id('clip_zmax').value,
+fast_crc = id('fast_crc').value,
+adjust_aspect = id('adjust_aspect').value,
+zmode_compare_less = id('zmode_compare_less').value,
+old_style_adither = id('old_style_adither').value,
+n64_z_scale = id('n64_z_scale').value,
+optimize_texrect = id('optimize_texrect').value,
+ignore_aux_copy = id('ignore_aux_copy').value,
+hires_buf_clear = id('hires_buf_clear').value,
+fb_read_alpha = id('fb_read_alpha').value,
+useless_is_useless = id('useless_is_useless').value,
+fb_crc_mode = id('fb_crc_mode').value,
+filtering = id('filtering').value,
+fog = id('fog').value,
+buff_clear = id('buff_clear').value,
+swapmode = id('swapmode').value,
+aspect = id('aspect').value,
+lodmode = id('lodmode').value,
+fb_smart = id('fb_smart').value,
+fb_hires = id('fb_hires').value,
+fb_read_always = id('fb_read_always').value,
+read_back_to_screen = id('read_back_to_screen').value,
+detect_cpu_write = id('detect_cpu_write').value,
+fb_get_info = id('fb_get_info').value,
+fb_render = id('fb_render').value,
+
 OverscanNtscTop = 'Video-GLideN64[OverscanNtscTop]=' + id('OverscanNtscTop').value,
 OverscanNtscLeft = 'Video-GLideN64[OverscanNtscLeft]=' + id('OverscanNtscLeft').value,
 OverscanNtscRight = 'Video-GLideN64[OverscanNtscRight]=' + id('OverscanNtscRight').value,
@@ -1079,6 +1169,10 @@ VOLUME_DEFAULT = 'Audio-SDL[VOLUME_DEFAULT]=' + id('VOLUME_DEFAULT').value,
 
 PolygonOffsetFactor = 'Video-Rice[PolygonOffsetFactor]=' + id('PolygonOffsetFactor').value,
 PolygonOffsetUnits = 'Video-Rice[PolygonOffsetUnits]=' + id('PolygonOffsetUnits').value,
+
+polygon_offset_factor = 'Video-Glide64mk2[polygon_offset_factor]=' + id('polygon_offset_factor').value,
+polygon_offset_units = 'Video-Glide64mk2[polygon_offset_units]=' + id('polygon_offset_units').value,
+ghq_cache_size = 'Video-Glide64mk2[ghq_cache_size]=' + id('ghq_cache_size').value,
 
 IPLROMSetting = '64DD[IPL-ROM]=' + IPLROM,
 DiskSetting = '64DD[Disk]=' + Disk,
@@ -1295,10 +1389,10 @@ buttonType1 = buttonType1B = buttonType2 = buttonType2B = buttonType3 = buttonTy
 gcaSettings = "control_stick_deadzone = " + id('control_stick_deadzone').value + "\n" + "control_stick_sensitivity = " + id('control_stick_sensitivity').value + "\n" + "c_stick_deadzone = " + id('c_stick_deadzone').value + "\n" + "trigger_threshold = " + id('trigger_threshold').value + "\n\n" + '[controller_mapping]' + "\n" + "a = '" + id('a').value + "'\n" + "b = '" + id('b').value + "'\n" + "x = '" + id('x').value + "'\n" + "y = '" + id('y').value + "'\n" + "start = '" + id('start').value + "'\n" + "z = '" + id('z').value + "'\n" + "l = '" + id('l').value + "'\n" + "r = '" + id('r').value + "'\n" + "d_pad_left = '" + id('d_pad_left').value + "'\n" + "d_pad_right = '" + id('d_pad_right').value + "'\n" + "d_pad_down = '" + id('d_pad_down').value + "'\n" + "d_pad_up = '" + id('d_pad_up').value + "'\n" + "c_stick_left = '" + id('c_stick_left').value + "'\n" + "c_stick_right = '" + id('c_stick_right').value + "'\n" + "c_stick_down = '" + id('c_stick_down').value + "'\n" + "c_stick_up = '" + id('c_stick_up').value + "'";
 
 if(gfx.includes('angrylion') || gfx.includes('parallel')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=false'} /* prevent crashes caused by wrong RSP settings */
-else if(gfx.includes('rice')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=true'}
+else if(gfx.includes('rice') || gfx.includes('glide64mk2')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=true'}
 if(gfx.includes('angrylion') && rsp.includes('rsp-hle')){rsp = 'mupen64plus-rsp-cxd4' + ext}
 else if(gfx.includes('parallel') && rsp.includes('rsp-hle')){rsp = 'mupen64plus-rsp-parallel' + ext}
-else if(gfx.includes('rice') && rsp.includes('rsp-parallel')){rsp = 'mupen64plus-rsp-hle' + ext}
+else if((gfx.includes('rice') || gfx.includes('glide64mk2')) && rsp.includes('rsp-parallel')){rsp = 'mupen64plus-rsp-hle' + ext}
 
 if(id('nospeedlimit').checked){audio = 'dummy';vsync = 'Video-General[VerticalSync]=false';ViVsync = 'Video-AngrylionPlus[ViVsync]=false';ParallelVSync = 'Video-Parallel[Vsync]=false'} /* force muted audio and disabled V-Sync */
 
@@ -1664,7 +1758,9 @@ threadedVideo,msaa,fxaa,aspectRatio,bufferSwapMode,useNativeResolutionFactor,bil
 
 ParallelFullscreen,ParallelUpscaling,ParallelScreenWidth,ParallelScreenHeight,ParallelSuperscaledReads,ParallelSuperscaledDither,ParallelDeinterlaceMode,ParallelCropOverscan,ParallelVerticalStretch,ParallelVIAA,ParallelDivot,ParallelGammaDither,ParallelVIBilerp,ParallelVIDither,ParallelDownScale,ParallelNativeTextLOD,ParallelNativeTextRECT,ParallelSynchronousRDP,ParallelWidescreenStretch,ParallelVSync, /* Parallel */
 
-FrameBufferSetting,FrameBufferWriteBackControl,RenderToTexture,ScreenUpdateSetting,NormalAlphaBlender,FastTextureLoading,AccurateTextureMapping,InN64Resolution,SaveVRAM,DoubleSizeForSmallTxtrBuf,DefaultCombinerDisable,EnableHacks,WinFrameMode,FullTMEMEmulation,OpenGLVertexClipper,EnableSSE,SkipFrame,TexRectOnly,SmallTextureOnly,LoadHiResCRCOnly,LoadHiResTextures,DumpTexturesToFiles,RiceShowFPS,Mipmapping,FogMethod,ForceTextureFilter,TextureEnhancement,TextureEnhancementControl,TextureQuality,OpenGLDepthBufferSetting,RiceMultiSampling,ColorQuality,OpenGLRenderSetting,AnisotropicFiltering,ForcePolygonOffset,PolygonOffsetFactor,PolygonOffsetUnits], /* Rice */
+FrameBufferSetting,FrameBufferWriteBackControl,RenderToTexture,ScreenUpdateSetting,NormalAlphaBlender,FastTextureLoading,AccurateTextureMapping,InN64Resolution,SaveVRAM,DoubleSizeForSmallTxtrBuf,DefaultCombinerDisable,EnableHacks,WinFrameMode,FullTMEMEmulation,OpenGLVertexClipper,EnableSSE,SkipFrame,TexRectOnly,SmallTextureOnly,LoadHiResCRCOnly,LoadHiResTextures,DumpTexturesToFiles,RiceShowFPS,Mipmapping,FogMethod,ForceTextureFilter,TextureEnhancement,TextureEnhancementControl,TextureQuality,OpenGLDepthBufferSetting,RiceMultiSampling,ColorQuality,OpenGLRenderSetting,AnisotropicFiltering,ForcePolygonOffset,PolygonOffsetFactor,PolygonOffsetUnits, /* Rice */
+
+Glide64VSync,wrpAntiAliasing,force_polygon_offset,polygon_offset_factor,polygon_offset_units,show_fps,clock,clock_24_hr,wrpFBO,wrpAnisotropic,ghq_fltr,ghq_cmpr,ghq_enht,ghq_hirs,ghq_enht_cmpr,ghq_enht_tile,ghq_enht_f16bpp,ghq_enht_gz,ghq_enht_nobg,ghq_hirs_cmpr,ghq_hirs_tile,ghq_hirs_f16bpp,ghq_hirs_gz,ghq_hirs_altcrc,ghq_cache_size,ghq_hirs_let_texartists_fly,alt_tex_size,use_sts1_only,force_calc_sphere,correct_viewport,increase_texrect_edge,decrease_fillrect_edge,texture_correction,pal230,force_microcheck,force_quad3d,clip_zmin,clip_zmax,fast_crc,adjust_aspect,zmode_compare_less,old_style_adither,n64_z_scale,optimize_texrect,ignore_aux_copy,hires_buf_clear,fb_read_alpha,useless_is_useless,fb_crc_mode,filtering,fog,buff_clear,swapmode,aspect,lodmode,fb_smart,fb_hires,fb_read_always,read_back_to_screen,detect_cpu_write,fb_get_info,fb_render], /* Glide64 MK2 */
 
 cheats = [], activeCheats = '';
 

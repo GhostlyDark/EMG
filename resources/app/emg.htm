@@ -64,7 +64,8 @@ Double click launches a ROM instantly.">ROM browser&nbsp;&nbsp;<button class="fl
 <div title="Angrylion Plus: LLE,
 GLideN64: HLE (recommended) and LLE,
 Parallel RDP: LLE,
-Rice: HLE"><select class="width250m" id="gfx">
+Rice: HLE,
+Glide64 MK2: HLE"><select class="width250m" id="gfx">
 <optgroup label="Modern" id="gfxModern">
 <option value="mupen64plus-video-angrylion-plus">Angrylion Plus</option>
 <option value="mupen64plus-video-GLideN64" selected>GLideN64</option>
@@ -72,6 +73,7 @@ Rice: HLE"><select class="width250m" id="gfx">
 </optgroup>
 <optgroup label="Legacy">
 <option value="mupen64plus-video-rice">Rice</option>
+<option value="mupen64plus-video-glide64mk2">Glide64 MK2</option>
 </optgroup>
 <optgroup label="Custom" id="gfxCustom">
 </optgroup>
@@ -1563,7 +1565,6 @@ HTS: Read textures as they are needed from hard disk."><select id="cache">
 <p><input id="ParallelVIDither" type="checkbox" data-store="ParallelVIDither" checked><label for="ParallelVIDither">VI dither</label></p>
 </div>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
-<div id="riceAnchor" class="anchor"></div>
 <p class="headline">Rice</p>
 <p>&nbsp;</p>
 <ul class="ul-buttons">
@@ -1657,6 +1658,320 @@ HTS: Read textures as they are needed from hard disk."><select id="cache">
 <p><input id="LoadHiResTextures" type="checkbox" data-store="LoadHiResTextures"><label for="LoadHiResTextures">Enable HD textures</label></p>
 <p>&nbsp;</p>
 <p><input id="DumpTexturesToFiles" type="checkbox" data-store="DumpTexturesToFiles"><label for="DumpTexturesToFiles">Enable texture dumping</label></p>
+</div>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<p class="headline">Glide64 MK2</p>
+<p>&nbsp;</p>
+<ul class="ul-buttons">
+<li id="ul_glide_emulation" class="active">Video</li>
+<li id="ul_glide_enhancement">Enhancement</li>
+<li id="ul_glide_hd">HD Textures</li>
+<li id="ul_glide_advanced">Advanced</li>
+</ul>
+<p>&nbsp;</p>
+<div id="glide_emulation" class="mt-10">
+<p><input id="wrpAnisotropic" type="checkbox" data-store="wrpAnisotropic"><label for="wrpAnisotropic">Anisotropic filtering</label></p>
+<p>&nbsp;</p>
+<p><input id="clock" type="checkbox" data-store="clock"><label for="clock">Show clock</label></p>
+<p>&nbsp;</p>
+<p><input id="clock_24_hr" type="checkbox" data-store="clock_24_hr" checked><label for="clock_24_hr">24-hour clock</label></p>
+<p>&nbsp;</p>
+<p><input id="wrpFBO" type="checkbox" data-store="wrpFBO" checked><label for="wrpFBO">Enable FBO</label></p>
+<p>&nbsp;</p>
+<p><input id="force_polygon_offset" type="checkbox" data-store="force_polygon_offset"><label for="force_polygon_offset">Use polygon offset</label></p>
+<p>&nbsp;</p>
+<p title="Specifies a scale factor that is used to create a variable depth offset for each polygon."><input id="polygon_offset_factor" type="range" min="0" max="10" step="0.1" value="0"><label for="polygon_offset_factor"><span id="polygon_offset_factorText">0.00</span>: Polygon offset factor</label><button class="floatright" data-value="0" id="resetpolygon_offset_factor">Reset</button></p>
+<p>&nbsp;</p>
+<p title="Is multiplied by an implementation-specific value to create a constant depth offset."><input id="polygon_offset_units" type="range" min="0" max="10" step="0.1" value="0"><label for="polygon_offset_units"><span id="polygon_offset_unitsText">0.00</span>: Polygon offset units</label><button class="floatright" data-value="0" id="resetpolygon_offset_units">Reset</button></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<select class="width200m" name="wrpAntiAliasing" id="wrpAntiAliasing">
+<option value="Video-Glide64mk2[wrpAntiAliasing]=0" selected>Disabled</option>
+<option value="Video-Glide64mk2[wrpAntiAliasing]=2">2x</option>
+<option value="Video-Glide64mk2[wrpAntiAliasing]=4">4x</option>
+<option value="Video-Glide64mk2[wrpAntiAliasing]=8">8x</option>
+<option value="Video-Glide64mk2[wrpAntiAliasing]=16">16x</option>
+</select><label for="wrpAntiAliasing">Anti-aliasing</label>
+<p>&nbsp;</p>
+<select class="width200m" name="aspect" id="aspect">
+<option value="Video-Glide64mk2[aspect]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[aspect]=0">4:3</option>
+<option value="Video-Glide64mk2[aspect]=1">16:9</option>
+<option value="Video-Glide64mk2[aspect]=2">Stretch</option>
+<option value="Video-Glide64mk2[aspect]=3">Original</option>
+</select><label for="aspect">Aspect ratio</label>
+<p>&nbsp;</p>
+<div title="Adjust screen aspect for widescreen."><select class="width200m" name="adjust_aspect" id="adjust_aspect">
+<option value="Video-Glide64mk2[adjust_aspect]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[adjust_aspect]=0">Disable</option>
+<option value="Video-Glide64mk2[adjust_aspect]=1">Enable</option>
+</select><label for="adjust_aspect">Adjust aspect ratio</label></div>
+<p>&nbsp;</p>
+<select class="width200m" name="filtering" id="filtering">
+<option value="Video-Glide64mk2[filtering]=-1" selected>Default</option>
+<option value="Video-Glide64mk2[filtering]=0">Automatic</option>
+<option value="Video-Glide64mk2[filtering]=1">Bilinear</option>
+<option value="Video-Glide64mk2[filtering]=2">N64 3-point</option>
+</select><label for="filtering">Filtering</label>
+<p>&nbsp;</p>
+<div title="Mipmapping. Causes huge performance issues with HD textures."><select class="width200m" name="lodmode" id="lodmode">
+<option value="Video-Glide64mk2[lodmode]=-1">Auto</option>
+<option value="Video-Glide64mk2[lodmode]=0" selected>Disable</option>
+<option value="Video-Glide64mk2[lodmode]=1">Fast</option>
+<option value="Video-Glide64mk2[lodmode]=2">Precise</option>
+</select><label for="lodmode">LOD calculation</label></div>
+<p>&nbsp;</p>
+<select class="width200m" name="show_fps" id="show_fps">
+<option value="Video-Glide64mk2[show_fps]=0" selected>Hidden</option>
+<option value="Video-Glide64mk2[show_fps]=1">FPS</option>
+<option value="Video-Glide64mk2[show_fps]=2">VI/s</option>
+<option value="Video-Glide64mk2[show_fps]=4">Speed in %</option>
+<option value="Video-Glide64mk2[show_fps]=8">FPS (transparent)</option>
+</select><label for="show_fps">Show FPS</label>
+</div>
+<div id="glide_enhancement" class="hide mt-10">
+<select class="width200m" name="ghq_fltr" id="ghq_fltr">
+<option value="Video-Glide64mk2[ghq_fltr]=0" selected>None</option>
+<option value="Video-Glide64mk2[ghq_fltr]=1">Smooth Filtering 1</option>
+<option value="Video-Glide64mk2[ghq_fltr]=2">Smooth Filtering 2</option>
+<option value="Video-Glide64mk2[ghq_fltr]=3">Smooth Filtering 3</option>
+<option value="Video-Glide64mk2[ghq_fltr]=4">Smooth Filtering 4</option>
+<option value="Video-Glide64mk2[ghq_fltr]=5">Sharp Filtering 1</option>
+<option value="Video-Glide64mk2[ghq_fltr]=6">Sharp Filtering 2</option>
+</select><label for="ghq_fltr">Texture filter</label>
+<p>&nbsp;</p>
+<select class="width200m" name="ghq_enht" id="ghq_enht">
+<option value="Video-Glide64mk2[ghq_enht]=0" selected>None</option>
+<option value="Video-Glide64mk2[ghq_enht]=1">Store</option>
+<option value="Video-Glide64mk2[ghq_enht]=2">X2</option>
+<option value="Video-Glide64mk2[ghq_enht]=3">X2SAI</option>
+<option value="Video-Glide64mk2[ghq_enht]=4">HQ2X</option>
+<option value="Video-Glide64mk2[ghq_enht]=5">HQ2XS</option>
+<option value="Video-Glide64mk2[ghq_enht]=6">LQ2X</option>
+<option value="Video-Glide64mk2[ghq_enht]=7">LQ2XS</option>
+<option value="Video-Glide64mk2[ghq_enht]=8">HQ4X</option>
+</select><label for="ghq_enht">Texture enhancement</label>
+<p>&nbsp;</p>
+<p title="Size of memory cache for enhanced textures in megabytes."><input id="ghq_cache_size" type="range" min="0" max="1024" step="1" value="1024"><label for="ghq_cache_size"><span id="ghq_cache_sizeText">1024</span> MB: Memory cache size</label><button class="floatright" data-value="1024" id="resetghq_cache_size">Reset</button></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p title="Compress enhanced textures with lossy texture compression."><input id="ghq_enht_cmpr" type="checkbox" data-store="ghq_enht_cmpr"><label for="ghq_enht_cmpr">Lossy compression for enhanced textures</label></p>
+<p>&nbsp;</p>
+<p title="Saves memory but may cause issues."><input id="ghq_enht_tile" type="checkbox" data-store="ghq_enht_tile"><label for="ghq_enht_tile">Tile enhanced textures</label></p>
+<p>&nbsp;</p>
+<p title="Saves memory but lowers quality."><input id="ghq_enht_f16bpp" type="checkbox" data-store="ghq_enht_f16bpp"><label for="ghq_enht_f16bpp">16-bit enhanced textures</label></p>
+<p>&nbsp;</p>
+<p><input id="ghq_enht_gz" type="checkbox" data-store="ghq_enht_gz" checked><label for="ghq_enht_gz">Compress enhanced cache</label></p>
+<p>&nbsp;</p>
+<p><input id="ghq_enht_nobg" type="checkbox" data-store="ghq_enht_nobg"><label for="ghq_enht_nobg">Ignore backgrounds for enhancements</label></p>
+</div>
+<div id="glide_hd" class="hide mt-10">
+<p><input id="ghq_hirs" type="checkbox" data-store="ghq_hirs"><label for="ghq_hirs">Enable HD textures</label></p>
+<p>&nbsp;</p>
+<p title="Compress HD textures with lossy texture compression."><input id="ghq_hirs_cmpr" type="checkbox" data-store="ghq_hirs_cmpr"><label for="ghq_hirs_cmpr">Lossy compression for HD textures</label></p>
+<p>&nbsp;</p>
+<p title="Saves memory but may cause issues."><input id="ghq_hirs_tile" type="checkbox" data-store="ghq_hirs_tile"><label for="ghq_hirs_tile">Tile HD textures</label></p>
+<p>&nbsp;</p>
+<p title="Saves memory but lowers quality."><input id="ghq_hirs_f16bpp" type="checkbox" data-store="ghq_hirs_f16bpp"><label for="ghq_hirs_f16bpp">16-bit HD textures</label></p>
+<p>&nbsp;</p>
+<p><input id="ghq_hirs_gz" type="checkbox" data-store="ghq_hirs_gz"><label for="ghq_hirs_gz">Compress HD cache</label></p>
+<p>&nbsp;</p>
+<p title="Emulates Rice bug."><input id="ghq_hirs_altcrc" type="checkbox" data-store="ghq_hirs_altcrc"><label for="ghq_hirs_altcrc">Alternative CRC calculation</label></p>
+<p>&nbsp;</p>
+<p><input id="ghq_hirs_let_texartists_fly" type="checkbox" data-store="ghq_hirs_let_texartists_fly" checked><label for="ghq_hirs_let_texartists_fly">Use full alpha channel</label></p>
+</div>
+<div id="glide_advanced" class="hide mt-10">
+<select class="width150m" name="alt_tex_size" id="alt_tex_size">
+<option value="Video-Glide64mk2[alt_tex_size]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[alt_tex_size]=0">Disable</option>
+<option value="Video-Glide64mk2[alt_tex_size]=1">Enable</option>
+</select><label for="alt_tex_size">Alternate texture size method</label>
+<p>&nbsp;</p>
+<select class="width150m" name="use_sts1_only" id="use_sts1_only">
+<option value="Video-Glide64mk2[use_sts1_only]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[use_sts1_only]=0">Disable</option>
+<option value="Video-Glide64mk2[use_sts1_only]=1">Enable</option>
+</select><label for="use_sts1_only">First SETTILESIZE only</label>
+<p>&nbsp;</p>
+<select class="width150m" name="force_calc_sphere" id="force_calc_sphere">
+<option value="Video-Glide64mk2[force_calc_sphere]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[force_calc_sphere]=0">Disable</option>
+<option value="Video-Glide64mk2[force_calc_sphere]=1">Enable</option>
+</select><label for="force_calc_sphere">Spheric mapping only</label>
+<p>&nbsp;</p>
+<select class="width150m" name="correct_viewport" id="correct_viewport">
+<option value="Video-Glide64mk2[correct_viewport]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[correct_viewport]=0">Disable</option>
+<option value="Video-Glide64mk2[correct_viewport]=1">Enable</option>
+</select><label for="correct_viewport">Positive viewport</label>
+<p>&nbsp;</p>
+<select class="width150m" name="increase_texrect_edge" id="increase_texrect_edge">
+<option value="Video-Glide64mk2[increase_texrect_edge]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[increase_texrect_edge]=0">Disable</option>
+<option value="Video-Glide64mk2[increase_texrect_edge]=1">Enable</option>
+</select><label for="increase_texrect_edge">Texrect size integral value</label>
+<p>&nbsp;</p>
+<select class="width150m" name="decrease_fillrect_edge" id="decrease_fillrect_edge">
+<option value="Video-Glide64mk2[decrease_fillrect_edge]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[decrease_fillrect_edge]=0">Disable</option>
+<option value="Video-Glide64mk2[decrease_fillrect_edge]=1">Enable</option>
+</select><label for="decrease_fillrect_edge">Reduce fillrect size by 1</label>
+<p>&nbsp;</p>
+<select class="width150m" name="texture_correction" id="texture_correction">
+<option value="Video-Glide64mk2[texture_correction]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[texture_correction]=0">Disable</option>
+<option value="Video-Glide64mk2[texture_correction]=1">Enable</option>
+</select><label for="texture_correction">Perspective texture correction emulation</label>
+<p>&nbsp;</p>
+<select class="width150m" name="pal230" id="pal230">
+<option value="Video-Glide64mk2[pal230]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[pal230]=0">Disable</option>
+<option value="Video-Glide64mk2[pal230]=1">Enable</option>
+</select><label for="pal230">Special scale for PAL games</label>
+<p>&nbsp;</p>
+<select class="width150m" name="force_microcheck" id="force_microcheck">
+<option value="Video-Glide64mk2[force_microcheck]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[force_microcheck]=0">Disable</option>
+<option value="Video-Glide64mk2[force_microcheck]=1">Enable</option>
+</select><label for="force_microcheck">Check microcode each frame</label>
+<p>&nbsp;</p>
+<div title="Force 0xb5 command to be quad, not line 3D."><select class="width150m" name="force_quad3d" id="force_quad3d">
+<option value="Video-Glide64mk2[force_quad3d]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[force_quad3d]=0">Disable</option>
+<option value="Video-Glide64mk2[force_quad3d]=1">Enable</option>
+</select><label for="force_quad3d">Force quad</label></div>
+<p>&nbsp;</p>
+<select class="width150m" name="clip_zmin" id="clip_zmin">
+<option value="Video-Glide64mk2[clip_zmin]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[clip_zmin]=0">Disable</option>
+<option value="Video-Glide64mk2[clip_zmin]=1">Enable</option>
+</select><label for="clip_zmin">Near Z clipping</label>
+<p>&nbsp;</p>
+<select class="width150m" name="clip_zmax" id="clip_zmax">
+<option value="Video-Glide64mk2[clip_zmax]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[clip_zmax]=0">Disable</option>
+<option value="Video-Glide64mk2[clip_zmax]=1">Enable</option>
+</select><label for="clip_zmax">Far plane clipping</label>
+<p>&nbsp;</p>
+<select class="width150m" name="fast_crc" id="fast_crc">
+<option value="Video-Glide64mk2[fast_crc]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[fast_crc]=0">Disable</option>
+<option value="Video-Glide64mk2[fast_crc]=1">Enable</option>
+</select><label for="fast_crc">Fast CRC algorithm</label>
+<p>&nbsp;</p>
+<div title="Force strict check in depth buffer test."><select class="width150m" name="zmode_compare_less" id="zmode_compare_less">
+<option value="Video-Glide64mk2[zmode_compare_less]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[zmode_compare_less]=0">Disable</option>
+<option value="Video-Glide64mk2[zmode_compare_less]=1">Enable</option>
+</select><label for="zmode_compare_less">Strict check depth buffer</label></div>
+<p>&nbsp;</p>
+<div title="Apply alpha dither regardless of alpha dither mode."><select class="width150m" name="old_style_adither" id="old_style_adither">
+<option value="Video-Glide64mk2[old_style_adither]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[old_style_adither]=0">Disable</option>
+<option value="Video-Glide64mk2[old_style_adither]=1">Enable</option>
+</select><label for="old_style_adither">Ignore alpha dither mode</label></div>
+<p>&nbsp;</p>
+<div title="Scale vertex z value before writing to depth buffer."><select class="width150m" name="n64_z_scale" id="n64_z_scale">
+<option value="Video-Glide64mk2[n64_z_scale]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[n64_z_scale]=0">Disable</option>
+<option value="Video-Glide64mk2[n64_z_scale]=1">Enable</option>
+</select><label for="n64_z_scale">N64 Z Scale</label></div>
+<p>&nbsp;</p>
+<div title="Fast texrect rendering with hwfbe."><select class="width150m" name="optimize_texrect" id="optimize_texrect">
+<option value="Video-Glide64mk2[optimize_texrect]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[optimize_texrect]=0">Disable</option>
+<option value="Video-Glide64mk2[optimize_texrect]=1">Enable</option>
+</select><label for="optimize_texrect">Optimize texrect</label></div>
+<p>&nbsp;</p>
+<select class="width150m" name="ignore_aux_copy" id="ignore_aux_copy">
+<option value="Video-Glide64mk2[ignore_aux_copy]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[ignore_aux_copy]=0">Disable</option>
+<option value="Video-Glide64mk2[ignore_aux_copy]=1">Enable</option>
+</select><label for="ignore_aux_copy">Ignore auxiliary frame buffers</label>
+<p>&nbsp;</p>
+<select class="width150m" name="hires_buf_clear" id="hires_buf_clear">
+<option value="Video-Glide64mk2[hires_buf_clear]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[hires_buf_clear]=0">Disable</option>
+<option value="Video-Glide64mk2[hires_buf_clear]=1">Enable</option>
+</select><label for="hires_buf_clear">Clear auxiliary frame buffers</label>
+<p>&nbsp;</p>
+<select class="width150m" name="fb_read_alpha" id="fb_read_alpha">
+<option value="Video-Glide64mk2[fb_read_alpha]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[fb_read_alpha]=0">Disable</option>
+<option value="Video-Glide64mk2[fb_read_alpha]=1">Enable</option>
+</select><label for="fb_read_alpha">Read alpha from framebuffer</label>
+<p>&nbsp;</p>
+<select class="width150m" name="useless_is_useless" id="useless_is_useless">
+<option value="Video-Glide64mk2[useless_is_useless]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[useless_is_useless]=0">Disable</option>
+<option value="Video-Glide64mk2[useless_is_useless]=1">Enable</option>
+</select><label for="useless_is_useless">Handle unchanged framebuffer</label>
+<p>&nbsp;</p>
+<select class="width150m" name="fb_crc_mode" id="fb_crc_mode">
+<option value="Video-Glide64mk2[fb_crc_mode]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[fb_crc_mode]=0">Disable CRC</option>
+<option value="Video-Glide64mk2[fb_crc_mode]=1">Fast CRC</option>
+<option value="Video-Glide64mk2[fb_crc_mode]=2">Safe CRC</option>
+</select><label for="fb_crc_mode">Frambuffer CRC mode</label>
+<p>&nbsp;</p>
+<select class="width150m" name="fog" id="fog">
+<option value="Video-Glide64mk2[fog]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[fog]=0">Disable</option>
+<option value="Video-Glide64mk2[fog]=1">Enable</option>
+</select><label for="fog">Fog</label>
+<p>&nbsp;</p>
+<select class="width150m" name="buff_clear" id="buff_clear">
+<option value="Video-Glide64mk2[buff_clear]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[buff_clear]=0">Disable</option>
+<option value="Video-Glide64mk2[buff_clear]=1">Enable</option>
+</select><label for="buff_clear">Clear buffer every frame</label>
+<p>&nbsp;</p>
+<select class="width150m" name="swapmode" id="swapmode">
+<option value="Video-Glide64mk2[swapmode]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[swapmode]=0">VI</option>
+<option value="Video-Glide64mk2[swapmode]=1">Conditional</option>
+<option value="Video-Glide64mk2[swapmode]=2">Hybrid</option>
+</select><label for="swapmode">Buffer swap mode</label>
+<p>&nbsp;</p>
+<select class="width150m" name="fb_smart" id="fb_smart">
+<option value="Video-Glide64mk2[fb_smart]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[fb_smart]=0">Disable</option>
+<option value="Video-Glide64mk2[fb_smart]=1">Enable</option>
+</select><label for="fb_smart">Smart framebuffer</label>
+<p>&nbsp;</p>
+<select class="width150m" name="fb_hires" id="fb_hires">
+<option value="Video-Glide64mk2[fb_hires]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[fb_hires]=0">Disable</option>
+<option value="Video-Glide64mk2[fb_hires]=1">Enable</option>
+</select><label for="fb_hires">Hardware framebuffer emulation</label>
+<p>&nbsp;</p>
+<div title="Slow. Only use when needed."><select class="width150m" name="fb_read_always" id="fb_read_always">
+<option value="Video-Glide64mk2[fb_read_always]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[fb_read_always]=0">Disable</option>
+<option value="Video-Glide64mk2[fb_read_always]=1">Enable</option>
+</select><label for="fb_read_always">Read framebuffer every frame</label></div>
+<p>&nbsp;</p>
+<div title="Render N64 frame buffer as texture."><select class="width150m" name="read_back_to_screen" id="read_back_to_screen">
+<option value="Video-Glide64mk2[read_back_to_screen]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[read_back_to_screen]=0">Disable</option>
+<option value="Video-Glide64mk2[read_back_to_screen]=1">Enable</option>
+</select><label for="read_back_to_screen">Read back to screen</label></div>
+<p>&nbsp;</p>
+<div title="Show images written directly by CPU."><select class="width150m" name="detect_cpu_write" id="detect_cpu_write">
+<option value="Video-Glide64mk2[detect_cpu_write]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[detect_cpu_write]=0">Disable</option>
+<option value="Video-Glide64mk2[detect_cpu_write]=1">Enable</option>
+</select><label for="detect_cpu_write">Detect CPU write</label></div>
+<p>&nbsp;</p>
+<select class="width150m" name="fb_get_info" id="fb_get_info">
+<option value="Video-Glide64mk2[fb_get_info]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[fb_get_info]=0">Disable</option>
+<option value="Video-Glide64mk2[fb_get_info]=1">Enable</option>
+</select><label for="fb_get_info">Get frame buffer info</label>
+<p>&nbsp;</p>
+<select class="width150m" name="fb_render" id="fb_render">
+<option value="Video-Glide64mk2[fb_render]=-1" selected>Auto</option>
+<option value="Video-Glide64mk2[fb_render]=0">Disable</option>
+<option value="Video-Glide64mk2[fb_render]=1">Enable</option>
+</select><label for="fb_render">Software depth render</label>
 </div>
 <p>&nbsp;</p><p>&nbsp;</p>
 </main>
