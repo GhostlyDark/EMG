@@ -6,16 +6,17 @@ EMG is a launcher for [mupen64plus](https://github.com/GhostlyDark/mupen64plus-c
 
 **Bundled plugins:**
 
-- **GFX:** [Angrylion Plus](https://github.com/GhostlyDark/angrylion-rdp-plus), [GLideN64](https://github.com/GhostlyDark/GLideN64), [Parallel](https://github.com/GhostlyDark/parallel-rdp-standalone)
+- **GFX:** [Angrylion Plus](https://github.com/GhostlyDark/angrylion-rdp-plus), [GLideN64](https://github.com/GhostlyDark/GLideN64), [Parallel RDP](https://github.com/GhostlyDark/parallel-rdp-standalone), [Rice](https://github.com/GhostlyDark/mupen64plus-video-rice)
 - **Audio:** [Mupen64Plus Audio SDL](https://github.com/GhostlyDark/mupen64plus-audio-sdl)
 - **Input:** [GameCube Adapter](https://github.com/GhostlyDark/mupen64plus-input-gca), [Mupen64Plus Input SDL](https://github.com/GhostlyDark/mupen64plus-input-sdl), [Raphnetraw](https://github.com/GhostlyDark/mupen64plus-input-raphnetraw)
 - **RSP:** [Mupen64Plus HLE](https://github.com/GhostlyDark/mupen64plus-rsp-hle), [Static Interpreter](https://github.com/GhostlyDark/rsp), [Parallel RSP](https://github.com/GhostlyDark/parallel-rsp)
 
-**Hardware requirements:**
+**System requirements:**
 
 - **CPU:** SSE3 capable (Electron)
-- **GPU:** OpenGL 3.3 (Angrylion Plus, GLideN64), Vulkan 1.1 (Parallel)
-- **OS:** Linux or Windows 7+ (64-bit), CMake v3.15 or newer (Ubuntu 20.04, Debian 11 or similar) for compiliation
+- **GPU:** OpenGL 2.1 (Rice), OpenGL 3.3 (Angrylion Plus, GLideN64), Vulkan 1.1 (Parallel RDP)
+- **OS:** Linux or Windows 7 (64-bit)
+- **Compilation:** CMake v3.15 (Ubuntu 20.04, Debian 11 or similar)
 
 **GameCube adapter:**
 
@@ -91,9 +92,9 @@ The build script `compile.sh` can be run with additional parameters:
 ./compile.sh [threads] [electron]
 ```
 
-Limit the building process to one thread and grab Electron v26.6.9:
+Limit the building process to one thread and grab Electron v22.3.27:
 ```
-./compile.sh 1 v26.6.9
+./compile.sh 1 v22.3.27
 ```
 
 
