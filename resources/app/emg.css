@@ -34,7 +34,7 @@ a,p,button,input{-webkit-tap-highlight-color:rgba(255,255,255,0);-webkit-focus-r
 .dark.custom body{color:#fff}
 .dark.custom .sub{background:rgba(255,255,255,.1)}
 
-#background_input{display:none}
+#background_input,.hide,#audioCustom,#inputCustom,#rspCustom,#RspFallbackCustom,#gfxCustom{display:none}
 .center{text-align:center}
 .width125m{min-width:125px}
 .width150m{min-width:150px}
@@ -256,7 +256,6 @@ header span{position:relative;top:-10px;pointer-events:none}
 .custom .ul-buttons li:hover,.custom .ul-buttons li.active{background-color:rgba(50,50,50,.1)}
 .dark.custom .ul-buttons li:hover,.dark.custom .ul-buttons li.active{background-color:rgba(255,255,255,.1)}
 
-.hide{display:none}
 .ml--50{margin-left:-50px}
 .ml-13{margin-left:13px}
 .ml-20{margin-left:20px}

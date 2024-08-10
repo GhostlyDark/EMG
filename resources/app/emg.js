@@ -95,10 +95,10 @@ var newPlugin = document.createElement('option');
 newPlugin.value = name;
 newPlugin.textContent = name.replace(/mupen64plus-audio-|mupen64plus-input-|mupen64plus-rsp-|mupen64plus-video-/,'');
 if(name != ''){
-if(name.includes('mupen64plus-audio-')){id('audio').appendChild(newPlugin)}
-else if(name.includes('mupen64plus-input-')){id('input').appendChild(newPlugin)}
-else if(name.includes('mupen64plus-rsp-')){id('rsp').appendChild(newPlugin);id('RspFallback').appendChild(newPlugin.cloneNode(true))}
-else if(name.includes('mupen64plus-video-')){id('gfx').appendChild(newPlugin)}}}
+if(name.includes('mupen64plus-audio-')){id('audioCustom').appendChild(newPlugin);id('audioCustom').style.display = 'block'}
+else if(name.includes('mupen64plus-input-')){id('inputCustom').appendChild(newPlugin);id('inputCustom').style.display = 'block'}
+else if(name.includes('mupen64plus-rsp-')){id('rspCustom').appendChild(newPlugin);id('RspFallbackCustom').appendChild(newPlugin.cloneNode(true));id('rspCustom').style.display = id('RspFallbackCustom').style.display = 'block'}
+else if(name.includes('mupen64plus-video-')){id('gfxCustom').appendChild(newPlugin);id('gfxCustom').style.display = 'block'}}}
 
 
 
