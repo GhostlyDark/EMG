@@ -195,8 +195,8 @@ button,select,input,.box,.pointer,.hotkeys label,[type=checkbox] + label,[type=c
 
 [type=checkbox]{margin:0}
 [type=checkbox] + label{position:relative;top:-2px;padding-left:11px}
-[type=checkbox]:disabled,[type=checkbox]:disabled:checked:before,[type=checkbox]:disabled:hover{border-color:#444}
-.dark [type=checkbox]:disabled,.dark [type=checkbox]:disabled:checked:before,.dark [type=checkbox]:disabled:hover{border-color:#ccc}
+[type=checkbox]:disabled,[type=checkbox]:disabled:checked:before{border-color:#444!important}
+.dark [type=checkbox]:disabled,.dark [type=checkbox]:disabled:checked:before{border-color:#ccc!important}
 
 button{font-size:15px;line-height:23px;border:0;outline:0;background-color:#ddd;border-radius:7px;text-transform:uppercase;padding:3px 10px;transition:background-color .2s cubic-bezier(.4,0,.22,1)}
 button:hover,select:hover,button:active,select:active,select:focus{background-color:#ccc}
