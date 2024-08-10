@@ -63,10 +63,16 @@ Double click launches a ROM instantly.">ROM browser&nbsp;&nbsp;<button class="fl
 <div id="core_plugins" class="hide mt-15">
 <div title="Angrylion Plus: LLE,
 GLideN64: HLE (recommended) and LLE,
-Parallel: LLE"><select class="width250m" id="gfx">
+Parallel: LLE,
+Rice: HLE"><select class="width250m" id="gfx">
+<optgroup label="Modern">
 <option value="mupen64plus-video-angrylion-plus">Angrylion Plus</option>
 <option value="mupen64plus-video-GLideN64" selected>GLideN64</option>
 <option value="mupen64plus-video-parallel">Parallel</option>
+</optgroup>
+<optgroup label="Legacy">
+<option value="mupen64plus-video-rice">Rice</option>
+</optgroup>
 </select><label for="gfx">Graphics plugin</label></div>
 <p>&nbsp;</p>
 <select class="width250m" id="audio">
@@ -1534,6 +1540,102 @@ HTS: Read textures as they are needed from hard disk."><select id="cache">
 <p title="Enable synchronizing of RDP and CPU."><input id="ParallelSynchronousRDP" type="checkbox" data-store="ParallelSynchronousRDP" checked><label for="ParallelSynchronousRDP">Synchronize RDP and CPU</label></p>
 <p>&nbsp;</p>
 <p><input id="ParallelVIDither" type="checkbox" data-store="ParallelVIDither" checked><label for="ParallelVIDither">VI dither</label></p>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<div id="riceAnchor" class="anchor"></div>
+<p class="headline">Rice</p>
+<p>&nbsp;</p>
+<ul class="ul-buttons">
+<li id="ul_rice_video" class="active">Video</li>
+<li id="ul_rice_emulation">Emulation</li>
+<li id="ul_rice_textures">Texture</li>
+</ul>
+<p>&nbsp;</p>
+<div id="rice_video" class="mt-10">
+<p title="Show framerate as part of the window title."><input id="RiceShowFPS" type="checkbox" data-store="RiceShowFPS"><label for="RiceShowFPS">Show FPS</label></p>
+<p>&nbsp;</p>
+<p><input id="ForcePolygonOffset" type="checkbox" data-store="ForcePolygonOffset"><label for="ForcePolygonOffset">Use polygon offset</label></p>
+<p>&nbsp;</p>
+<p title="Specifies a scale factor that is used to create a variable depth offset for each polygon."><input id="PolygonOffsetFactor" type="range" min="0" max="10" step="0.1" value="0"><label for="PolygonOffsetFactor"><span id="PolygonOffsetFactorText">0.00</span>: Polygon offset factor</label><button class="floatright" data-value="0" id="resetPolygonOffsetFactor">Reset</button></p>
+<p>&nbsp;</p>
+<p title="Is multiplied by an implementation-specific value to create a constant depth offset."><input id="PolygonOffsetUnits" type="range" min="0" max="10" step="0.1" value="0"><label for="PolygonOffsetUnits"><span id="PolygonOffsetUnitsText">0.00</span>: Polygon offset units</label><button class="floatright" data-value="0" id="resetPolygonOffsetUnits">Reset</button></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<select class="width200m" id="AnisotropicFiltering">
+<option value="0" selected>Off</option>
+<option value="2">2x</option>
+<option value="4">4x</option>
+<option value="8">8x</option>
+<option value="16">16x</option>
+</select><label for="AnisotropicFiltering">Anisotropic filtering</label>
+<p>&nbsp;</p>
+<select class="width200m" id="RiceMultiSampling">
+<option value="0" selected>Off</option>
+<option value="2">2x</option>
+<option value="4">4x</option>
+<option value="8">8x</option>
+</select><label for="RiceMultiSampling">Multisample anti-aliasing</label>
+<p>&nbsp;</p>
+<select class="width200m" id="Mipmapping">
+<option value="0" selected>Disabled</option>
+<option value="1">Nearest-neighbor</option>
+<option value="2">Bilinear</option>
+<option value="3">Trilinear</option>
+</select><label for="Mipmapping">Mipmapping</label>
+<p>&nbsp;</p>
+<select class="width200m" id="ForceTextureFilter">
+<option value="0" selected>Auto</option>
+<option value="1">No filtering</option>
+<option value="2">Filtering</option>
+</select><label for="ForceTextureFilter">Texture filtering</label>
+</div>
+<div id="rice_emulation" class="hide mt-10">
+<p><input id="EnableHacks" type="checkbox" data-store="EnableHacks" checked><label for="EnableHacks">Game-specific settings</label></p>
+<p>&nbsp;</p>
+<p><input id="FogMethod" type="checkbox" data-store="FogMethod" checked><label for="FogMethod">Enable fog generation</label></p>
+<p>&nbsp;</p>
+<p title="Use different texture coordinate clamping code."><input id="AccurateTextureMapping" type="checkbox" data-store="AccurateTextureMapping" checked><label for="AccurateTextureMapping">Accurate texture mapping</label></p>
+<p>&nbsp;</p>
+<p><input id="FrameBufferSetting" type="checkbox" data-store="FrameBufferSetting"><label for="FrameBufferSetting">Disable framebuffer emulation</label></p>
+<p>&nbsp;</p>
+<p title="Improve render-to-texture quality."><input id="DoubleSizeForSmallTxtrBuf" type="checkbox" data-store="DoubleSizeForSmallTxtrBuf"><label for="DoubleSizeForSmallTxtrBuf">Double size texture buffer</label></p>
+<p>&nbsp;</p>
+<p title="Use a faster algorithm to speed up texture loading and CRC computation."><input id="FastTextureLoading" type="checkbox" data-store="FastTextureLoading"><label for="FastTextureLoading">Fast texture loading</label></p>
+<p>&nbsp;</p>
+<p title="Force emulated frame buffers to be in N64 native resolution."><input id="InN64Resolution" type="checkbox" data-store="InN64Resolution"><label for="InN64Resolution">Native resolution framebuffers</label></p>
+<p>&nbsp;</p>
+<p title="Enable vertex clipper for fog operations."><input id="OpenGLVertexClipper" type="checkbox" data-store="OpenGLVertexClipper"><label for="OpenGLVertexClipper">Vertex clipper</label></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<div title="Frequency to write back the frame buffer."><select class="width225m" id="FrameBufferWriteBackControl">
+<option value="0" selected>Every frame</option>
+<option value="1">Every 2 frames</option>
+<option value="2">Every 3 frames</option>
+<option value="3">Every 4 frames</option>
+<option value="4">Every 5 frames</option>
+<option value="5">Every 6 frames</option>
+<option value="6">Every 7 frames</option>
+<option value="7">Every 8 frames</option>
+</select><label for="FrameBufferWriteBackControl">Framebuffer write back</label></div>
+<p>&nbsp;</p>
+<select class="width225m" id="RenderToTexture">
+<option value="0" selected>None</option>
+<option value="1">Ignore</option>
+<option value="2">Normal</option>
+<option value="3">Write back</option>
+<option value="4">Write back and reload</option>
+</select><label for="RenderToTexture">Render-to-texture emulation</label>
+<p>&nbsp;</p>
+<div title="Control when the screen will be updated."><select class="width225m" id="ScreenUpdateSetting">
+<option value="4" selected>First CI change</option>
+<option value="5">First primitive draw</option>
+<option value="7">After screen drawn</option>
+</select><label for="ScreenUpdateSetting">Screen update</label></div>
+</div>
+<div id="rice_textures" class="hide mt-10">
+<p title="Select hi-resolution textures based only on the CRC and ignore format and size information (Glide64 compatibility)."><input id="LoadHiResCRCOnly" type="checkbox" data-store="LoadHiResCRCOnly" checked><label for="LoadHiResCRCOnly">Hi-res CRC only</label></p>
+<p>&nbsp;</p>
+<p><input id="LoadHiResTextures" type="checkbox" data-store="LoadHiResTextures"><label for="LoadHiResTextures">Enable HD textures</label></p>
+<p>&nbsp;</p>
+<p><input id="DumpTexturesToFiles" type="checkbox" data-store="DumpTexturesToFiles"><label for="DumpTexturesToFiles">Enable texture dumping</label></p>
+</div>
 <p>&nbsp;</p><p>&nbsp;</p>
 </main>
 <footer id="footer">
