@@ -1510,8 +1510,12 @@ HTS: Read textures as they are needed from hard disk."><select id="cache">
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
 <p class="headline">Parallel</p>
 <p>&nbsp;</p>
-<p class="sub">Video</p>
+<ul class="ul-buttons">
+<li id="ul_parallel_video" class="active">Video</li>
+<li id="ul_parallel_emulation">Emulation</li>
+</ul>
 <p>&nbsp;</p>
+<div id="parallel_video" class="mt-10">
 <p><input id="ParallelWidescreenStretch" type="checkbox" data-store="ParallelWidescreenStretch"><label for="ParallelWidescreenStretch">Widescreen (stretch)</label></p>
 <p>&nbsp;</p>
 <p title="Amount of overscan pixels to crop."><input id="ParallelCropOverscan" type="range" min="0" max="99" step="1" value="0"><label for="ParallelCropOverscan"><span id="ParallelCropOverscanText">0</span>: Crop overscan</label><button class="floatright" data-value="0" id="resetParallelCropOverscan">Reset</button></p>
@@ -1536,9 +1540,8 @@ HTS: Read textures as they are needed from hard disk."><select id="cache">
 <option value="false" selected>Bob</option>
 <option value="true">Weave</option>
 </select><label for="ParallelDeinterlaceMode">Deinterlacing method</label></div>
-<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
-<p class="sub">Emulation</p>
-<p>&nbsp;</p>
+</div>
+<div id="parallel_emulation" class="hide mt-10">
 <p title="Smooths polygon edges."><input id="ParallelVIAA" type="checkbox" data-store="ParallelVIAA" checked><label for="ParallelVIAA">Anti-aliasing</label></p>
 <p>&nbsp;</p>
 <p><input id="ParallelVIBilerp" type="checkbox" data-store="ParallelVIBilerp" checked><label for="ParallelVIBilerp">Bilinear scaling</label></p>
@@ -1558,6 +1561,7 @@ HTS: Read textures as they are needed from hard disk."><select id="cache">
 <p title="Enable synchronizing of RDP and CPU."><input id="ParallelSynchronousRDP" type="checkbox" data-store="ParallelSynchronousRDP" checked><label for="ParallelSynchronousRDP">Synchronize RDP and CPU</label></p>
 <p>&nbsp;</p>
 <p><input id="ParallelVIDither" type="checkbox" data-store="ParallelVIDither" checked><label for="ParallelVIDither">VI dither</label></p>
+</div>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
 <div id="riceAnchor" class="anchor"></div>
 <p class="headline">Rice</p>
