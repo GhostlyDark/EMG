@@ -1663,13 +1663,12 @@ HTS: Read textures as they are needed from hard disk."><select id="cache">
 <p class="headline">Glide64 MK2</p>
 <p>&nbsp;</p>
 <ul class="ul-buttons">
-<li id="ul_glide_emulation" class="active">Video</li>
-<li id="ul_glide_enhancement">Enhancement</li>
-<li id="ul_glide_hd">HD Textures</li>
-<li id="ul_glide_advanced">Advanced</li>
+<li id="ul_glide_video" class="active">Video</li>
+<li id="ul_glide_emulation">Emulation</li>
+<li id="ul_glide_textures">Texture</li>
 </ul>
 <p>&nbsp;</p>
-<div id="glide_emulation" class="mt-10">
+<div id="glide_video" class="mt-10">
 <p><input id="wrpAnisotropic" type="checkbox" data-store="wrpAnisotropic"><label for="wrpAnisotropic">Anisotropic filtering</label></p>
 <p>&nbsp;</p>
 <p><input id="clock" type="checkbox" data-store="clock"><label for="clock">Show clock</label></p>
@@ -1728,57 +1727,7 @@ HTS: Read textures as they are needed from hard disk."><select id="cache">
 <option value="Video-Glide64mk2[show_fps]=8">FPS (transparent)</option>
 </select><label for="show_fps">Show FPS</label>
 </div>
-<div id="glide_enhancement" class="hide mt-10">
-<select class="width200m" name="ghq_fltr" id="ghq_fltr">
-<option value="Video-Glide64mk2[ghq_fltr]=0" selected>None</option>
-<option value="Video-Glide64mk2[ghq_fltr]=1">Smooth Filtering 1</option>
-<option value="Video-Glide64mk2[ghq_fltr]=2">Smooth Filtering 2</option>
-<option value="Video-Glide64mk2[ghq_fltr]=3">Smooth Filtering 3</option>
-<option value="Video-Glide64mk2[ghq_fltr]=4">Smooth Filtering 4</option>
-<option value="Video-Glide64mk2[ghq_fltr]=5">Sharp Filtering 1</option>
-<option value="Video-Glide64mk2[ghq_fltr]=6">Sharp Filtering 2</option>
-</select><label for="ghq_fltr">Texture filter</label>
-<p>&nbsp;</p>
-<select class="width200m" name="ghq_enht" id="ghq_enht">
-<option value="Video-Glide64mk2[ghq_enht]=0" selected>None</option>
-<option value="Video-Glide64mk2[ghq_enht]=1">Store</option>
-<option value="Video-Glide64mk2[ghq_enht]=2">X2</option>
-<option value="Video-Glide64mk2[ghq_enht]=3">X2SAI</option>
-<option value="Video-Glide64mk2[ghq_enht]=4">HQ2X</option>
-<option value="Video-Glide64mk2[ghq_enht]=5">HQ2XS</option>
-<option value="Video-Glide64mk2[ghq_enht]=6">LQ2X</option>
-<option value="Video-Glide64mk2[ghq_enht]=7">LQ2XS</option>
-<option value="Video-Glide64mk2[ghq_enht]=8">HQ4X</option>
-</select><label for="ghq_enht">Texture enhancement</label>
-<p>&nbsp;</p>
-<p title="Size of memory cache for enhanced textures in megabytes."><input id="ghq_cache_size" type="range" min="0" max="1024" step="1" value="1024"><label for="ghq_cache_size"><span id="ghq_cache_sizeText">1024</span> MB: Memory cache size</label><button class="floatright" data-value="1024" id="resetghq_cache_size">Reset</button></p>
-<p>&nbsp;</p><p>&nbsp;</p>
-<p title="Compress enhanced textures with lossy texture compression."><input id="ghq_enht_cmpr" type="checkbox" data-store="ghq_enht_cmpr"><label for="ghq_enht_cmpr">Lossy compression for enhanced textures</label></p>
-<p>&nbsp;</p>
-<p title="Saves memory but may cause issues."><input id="ghq_enht_tile" type="checkbox" data-store="ghq_enht_tile"><label for="ghq_enht_tile">Tile enhanced textures</label></p>
-<p>&nbsp;</p>
-<p title="Saves memory but lowers quality."><input id="ghq_enht_f16bpp" type="checkbox" data-store="ghq_enht_f16bpp"><label for="ghq_enht_f16bpp">16-bit enhanced textures</label></p>
-<p>&nbsp;</p>
-<p><input id="ghq_enht_gz" type="checkbox" data-store="ghq_enht_gz" checked><label for="ghq_enht_gz">Compress enhanced cache</label></p>
-<p>&nbsp;</p>
-<p><input id="ghq_enht_nobg" type="checkbox" data-store="ghq_enht_nobg"><label for="ghq_enht_nobg">Ignore backgrounds for enhancements</label></p>
-</div>
-<div id="glide_hd" class="hide mt-10">
-<p><input id="ghq_hirs" type="checkbox" data-store="ghq_hirs"><label for="ghq_hirs">Enable HD textures</label></p>
-<p>&nbsp;</p>
-<p title="Compress HD textures with lossy texture compression."><input id="ghq_hirs_cmpr" type="checkbox" data-store="ghq_hirs_cmpr"><label for="ghq_hirs_cmpr">Lossy compression for HD textures</label></p>
-<p>&nbsp;</p>
-<p title="Saves memory but may cause issues."><input id="ghq_hirs_tile" type="checkbox" data-store="ghq_hirs_tile"><label for="ghq_hirs_tile">Tile HD textures</label></p>
-<p>&nbsp;</p>
-<p title="Saves memory but lowers quality."><input id="ghq_hirs_f16bpp" type="checkbox" data-store="ghq_hirs_f16bpp"><label for="ghq_hirs_f16bpp">16-bit HD textures</label></p>
-<p>&nbsp;</p>
-<p><input id="ghq_hirs_gz" type="checkbox" data-store="ghq_hirs_gz"><label for="ghq_hirs_gz">Compress HD cache</label></p>
-<p>&nbsp;</p>
-<p title="Emulates Rice bug."><input id="ghq_hirs_altcrc" type="checkbox" data-store="ghq_hirs_altcrc"><label for="ghq_hirs_altcrc">Alternative CRC calculation</label></p>
-<p>&nbsp;</p>
-<p><input id="ghq_hirs_let_texartists_fly" type="checkbox" data-store="ghq_hirs_let_texartists_fly" checked><label for="ghq_hirs_let_texartists_fly">Use full alpha channel</label></p>
-</div>
-<div id="glide_advanced" class="hide mt-10">
+<div id="glide_emulation" class="hide mt-10">
 <select class="width150m" name="alt_tex_size" id="alt_tex_size">
 <option value="Video-Glide64mk2[alt_tex_size]=-1" selected>Auto</option>
 <option value="Video-Glide64mk2[alt_tex_size]=0">Disable</option>
@@ -1972,6 +1921,55 @@ HTS: Read textures as they are needed from hard disk."><select id="cache">
 <option value="Video-Glide64mk2[fb_render]=0">Disable</option>
 <option value="Video-Glide64mk2[fb_render]=1">Enable</option>
 </select><label for="fb_render">Software depth render</label>
+</div>
+<div id="glide_textures" class="hide mt-10">
+<select class="width200m" name="ghq_fltr" id="ghq_fltr">
+<option value="Video-Glide64mk2[ghq_fltr]=0" selected>None</option>
+<option value="Video-Glide64mk2[ghq_fltr]=1">Smooth Filtering 1</option>
+<option value="Video-Glide64mk2[ghq_fltr]=2">Smooth Filtering 2</option>
+<option value="Video-Glide64mk2[ghq_fltr]=3">Smooth Filtering 3</option>
+<option value="Video-Glide64mk2[ghq_fltr]=4">Smooth Filtering 4</option>
+<option value="Video-Glide64mk2[ghq_fltr]=5">Sharp Filtering 1</option>
+<option value="Video-Glide64mk2[ghq_fltr]=6">Sharp Filtering 2</option>
+</select><label for="ghq_fltr">Texture filter</label>
+<p>&nbsp;</p>
+<select class="width200m" name="ghq_enht" id="ghq_enht">
+<option value="Video-Glide64mk2[ghq_enht]=0" selected>None</option>
+<option value="Video-Glide64mk2[ghq_enht]=1">Store</option>
+<option value="Video-Glide64mk2[ghq_enht]=2">X2</option>
+<option value="Video-Glide64mk2[ghq_enht]=3">X2SAI</option>
+<option value="Video-Glide64mk2[ghq_enht]=4">HQ2X</option>
+<option value="Video-Glide64mk2[ghq_enht]=5">HQ2XS</option>
+<option value="Video-Glide64mk2[ghq_enht]=6">LQ2X</option>
+<option value="Video-Glide64mk2[ghq_enht]=7">LQ2XS</option>
+<option value="Video-Glide64mk2[ghq_enht]=8">HQ4X</option>
+</select><label for="ghq_enht">Texture enhancement</label>
+<p>&nbsp;</p>
+<p title="Size of memory cache for enhanced textures in megabytes."><input id="ghq_cache_size" type="range" min="0" max="1024" step="1" value="1024"><label for="ghq_cache_size"><span id="ghq_cache_sizeText">1024</span> MB: Memory cache size</label><button class="floatright" data-value="1024" id="resetghq_cache_size">Reset</button></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p title="Compress enhanced textures with lossy texture compression."><input id="ghq_enht_cmpr" type="checkbox" data-store="ghq_enht_cmpr"><label for="ghq_enht_cmpr">Lossy compression for enhanced textures</label></p>
+<p>&nbsp;</p>
+<p title="Saves memory but may cause issues."><input id="ghq_enht_tile" type="checkbox" data-store="ghq_enht_tile"><label for="ghq_enht_tile">Tile enhanced textures</label></p>
+<p>&nbsp;</p>
+<p title="Saves memory but lowers quality."><input id="ghq_enht_f16bpp" type="checkbox" data-store="ghq_enht_f16bpp"><label for="ghq_enht_f16bpp">16-bit enhanced textures</label></p>
+<p>&nbsp;</p>
+<p><input id="ghq_enht_gz" type="checkbox" data-store="ghq_enht_gz" checked><label for="ghq_enht_gz">Compress enhanced cache</label></p>
+<p>&nbsp;</p>
+<p><input id="ghq_enht_nobg" type="checkbox" data-store="ghq_enht_nobg"><label for="ghq_enht_nobg">Ignore backgrounds for enhancements</label></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p><input id="ghq_hirs" type="checkbox" data-store="ghq_hirs"><label for="ghq_hirs">Enable HD textures</label></p>
+<p>&nbsp;</p>
+<p title="Compress HD textures with lossy texture compression."><input id="ghq_hirs_cmpr" type="checkbox" data-store="ghq_hirs_cmpr"><label for="ghq_hirs_cmpr">Lossy compression for HD textures</label></p>
+<p>&nbsp;</p>
+<p title="Saves memory but may cause issues."><input id="ghq_hirs_tile" type="checkbox" data-store="ghq_hirs_tile"><label for="ghq_hirs_tile">Tile HD textures</label></p>
+<p>&nbsp;</p>
+<p title="Saves memory but lowers quality."><input id="ghq_hirs_f16bpp" type="checkbox" data-store="ghq_hirs_f16bpp"><label for="ghq_hirs_f16bpp">16-bit HD textures</label></p>
+<p>&nbsp;</p>
+<p><input id="ghq_hirs_gz" type="checkbox" data-store="ghq_hirs_gz"><label for="ghq_hirs_gz">Compress HD cache</label></p>
+<p>&nbsp;</p>
+<p title="Emulates Rice bug."><input id="ghq_hirs_altcrc" type="checkbox" data-store="ghq_hirs_altcrc"><label for="ghq_hirs_altcrc">Alternative CRC calculation</label></p>
+<p>&nbsp;</p>
+<p><input id="ghq_hirs_let_texartists_fly" type="checkbox" data-store="ghq_hirs_let_texartists_fly" checked><label for="ghq_hirs_let_texartists_fly">Use full alpha channel</label></p>
 </div>
 <p>&nbsp;</p><p>&nbsp;</p>
 </main>

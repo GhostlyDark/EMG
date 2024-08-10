@@ -36,7 +36,7 @@ hk = ['hk_keyboard','hk_controller1','hk_controller2','hk_controller3','hk_contr
 gliden64_setting = ['gliden64_video','gliden64_overscan','gliden64_emulation','gliden64_framebuffer','gliden64_textures','gliden64_osd','gliden64_hotkeys'],
 parallel_setting = ['parallel_video','parallel_emulation'],
 rice_setting = ['rice_video','rice_emulation','rice_textures'],
-glide_setting = ['glide_emulation','glide_enhancement','glide_hd','glide_advanced'],
+glide_setting = ['glide_video','glide_emulation','glide_textures'],
 
 n64_buttons = ['AButton1','AButton2','AButton3','AButton4','BButton1','BButton2','BButton3','BButton4','LTrig1','LTrig2','LTrig3','LTrig4','RTrig1','RTrig2','RTrig3','RTrig4','ZTrig1','ZTrig2','ZTrig3','ZTrig4','Start1','Start2','Start3','Start4','DPadU1','DPadU2','DPadU3','DPadU4','DPadD1','DPadD2','DPadD3','DPadD4','DPadL1','DPadL2','DPadL3','DPadL4','DPadR1','DPadR2','DPadR3','DPadR4','StickU1','StickU2','StickU3','StickU4','StickD1','StickD2','StickD3','StickD4','StickL1','StickL2','StickL3','StickL4','StickR1','StickR2','StickR3','StickR4','CButtonU1','CButtonU2','CButtonU3','CButtonU4','CButtonD1','CButtonD2','CButtonD3','CButtonD4','CButtonL1','CButtonL2','CButtonL3','CButtonL4','CButtonR1','CButtonR2','CButtonR3','CButtonR4','MempakSwitch1','MempakSwitch2','MempakSwitch3','MempakSwitch4','RumblepakSwitch1','RumblepakSwitch2','RumblepakSwitch3','RumblepakSwitch4'],
 
@@ -361,39 +361,48 @@ else{id('PolygonOffsetFactor').disabled = id('PolygonOffsetUnits').disabled = tr
 id('ForcePolygonOffset').addEventListener('change', ForcePolygonOffsetDisable)
 ForcePolygonOffsetDisable()
 
-function force_polygon_offsetDisable(){if(id('force_polygon_offset').checked){id('polygon_offset_factor').disabled = false;id('polygon_offset_units').disabled = false}else{id('polygon_offset_factor').disabled = true;id('polygon_offset_units').disabled = true}}
+function force_polygon_offsetDisable(){
+if(id('force_polygon_offset').checked){id('polygon_offset_factor').disabled = id('polygon_offset_units').disabled = false}
+else{id('polygon_offset_factor').disabled = id('polygon_offset_units').disabled = true}}
 id('force_polygon_offset').addEventListener('change', force_polygon_offsetDisable)
 force_polygon_offsetDisable()
 
-function clockDisable(){if(id('clock').checked){id('clock_24_hr').disabled = false}else{id('clock_24_hr').disabled = true}}
+function clockDisable(){
+if(id('clock').checked){id('clock_24_hr').disabled = false}
+else{id('clock_24_hr').disabled = true}}
 id('clock').addEventListener('change', clockDisable)
 clockDisable()
 
-function ghq_hirsDisable(){if(id('ghq_hirs').checked){id('ghq_hirs_cmpr').disabled = false;id('ghq_hirs_tile').disabled = false;id('ghq_hirs_f16bpp').disabled = false;id('ghq_hirs_gz').disabled = false;id('ghq_hirs_altcrc').disabled = false;id('ghq_hirs_let_texartists_fly').disabled = false}else{id('ghq_hirs_cmpr').disabled = true;id('ghq_hirs_tile').disabled = true;id('ghq_hirs_f16bpp').disabled = true;id('ghq_hirs_gz').disabled = true;id('ghq_hirs_altcrc').disabled = true;id('ghq_hirs_let_texartists_fly').disabled = true}}
+function ghq_hirsDisable(){
+if(id('ghq_hirs').checked){
+id('ghq_fltr').disabled = id('ghq_enht').disabled = id('ghq_cache_size').disabled = id('ghq_enht_cmpr').disabled = id('ghq_enht_tile').disabled = id('ghq_enht_f16bpp').disabled = id('ghq_enht_gz').disabled = id('ghq_enht_nobg').disabled = true;
+id('ghq_hirs_cmpr').disabled = id('ghq_hirs_tile').disabled = id('ghq_hirs_f16bpp').disabled = id('ghq_hirs_gz').disabled = id('ghq_hirs_altcrc').disabled = id('ghq_hirs_let_texartists_fly').disabled = false}
+else{id('ghq_fltr').disabled = id('ghq_enht').disabled = id('ghq_cache_size').disabled = id('ghq_enht_cmpr').disabled = id('ghq_enht_tile').disabled = id('ghq_enht_f16bpp').disabled = id('ghq_enht_gz').disabled = id('ghq_enht_nobg').disabled = false;
+id('ghq_hirs_cmpr').disabled = id('ghq_hirs_tile').disabled = id('ghq_hirs_f16bpp').disabled = id('ghq_hirs_gz').disabled = id('ghq_hirs_altcrc').disabled = id('ghq_hirs_let_texartists_fly').disabled = true}}
 id('ghq_hirs').addEventListener('change', ghq_hirsDisable)
 ghq_hirsDisable()
 
 function c1Disable(){
 if(id('c1').value === 'Keyboard'){id('AnalogDeadzone1').disabled = id('AnalogPeak1').disabled = true}
-else{id('AnalogDeadzone1').disabled = false;id('AnalogPeak1').disabled = false}}
+else{id('AnalogDeadzone1').disabled = id('AnalogPeak1').disabled = false}}
 id('c1').addEventListener('change', c1Disable)
 c1Disable()
 
 function c2Disable(){
 if(id('c2').value === 'Keyboard'){id('AnalogDeadzone2').disabled = id('AnalogPeak2').disabled = true}
-else{id('AnalogDeadzone2').disabled = false;id('AnalogPeak2').disabled = false}}
+else{id('AnalogDeadzone2').disabled = id('AnalogPeak2').disabled = false}}
 id('c2').addEventListener('change', c2Disable)
 c2Disable()
 
 function c3Disable(){
 if(id('c3').value === 'Keyboard'){id('AnalogDeadzone3').disabled = id('AnalogPeak3').disabled = true}
-else{id('AnalogDeadzone3').disabled = false;id('AnalogPeak3').disabled = false}}
+else{id('AnalogDeadzone3').disabled = id('AnalogPeak3').disabled = false}}
 id('c3').addEventListener('change', c3Disable)
 c3Disable()
 
 function c4Disable(){
 if(id('c4').value === 'Keyboard'){id('AnalogDeadzone4').disabled = id('AnalogPeak4').disabled = true}
-else{id('AnalogDeadzone4').disabled = false;id('AnalogPeak4').disabled = false}}
+else{id('AnalogDeadzone4').disabled = id('AnalogPeak4').disabled = false}}
 id('c4').addEventListener('change', c4Disable)
 c4Disable()
 
@@ -451,7 +460,8 @@ else{id('VOLUME_DEFAULT').disabled = false}}
 id('VOLUME_CONTROL_TYPE').addEventListener('change', disableVolumeDefault)
 disableVolumeDefault()
 
-function hideCheats(){if(id('cheatList').textContent!=''){id('cheatList').textContent='';id('cheatList').classList.add('hide')}}
+function hideCheats(){
+if(id('cheatList').textContent!=''){id('cheatList').textContent='';id('cheatList').classList.add('hide')}}
 id('hideCheats').addEventListener('click', function(){hideCheats()})
 
 
