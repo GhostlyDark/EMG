@@ -43,22 +43,96 @@
 <p class="headline">Main</p>
 <p>&nbsp;</p>
 <ul class="ul-buttons">
-<li id="ul_core_rom" class="active">File &amp; Cheats</li>
-<li id="ul_core_plugins">Plugins</li>
-<li id="ul_core_core">Core</li>
-<li id="ul_core_advanced">Advanced</li>
+<li id="ul_core_core" class="active">Core</li>
+<li id="ul_core_plugins">Plugin</li>
 <li id="ul_core_audio">Audio</li>
-<li id="ul_core_directories">Directories</li>
+<li id="ul_core_directories">Directory</li>
 <li id="ul_core_64dd">64DD</li>
+<li id="ul_core_rom">Browser</li>
+<li id="ul_core_cheat">Cheat</li>
+<li id="ul_core_advanced">Debug</li>
 </ul>
 <p>&nbsp;</p>
-<div id="core_rom" class="mt-15">
-<p title="Click the box below to set up a directory for the ROM browser.
-Double click launches a ROM instantly.">ROM browser&nbsp;&nbsp;<button class="floatright ml-13" id="resetRomPath">Reset</button><button class="floatright ml-13" id="openRomPath">Open</button><button class="floatright" id="loadRomPath">Refresh</button><br><br><div id="RomPath" class="box"><span id="RomPathText"></span></div></p>
-<div class="mt-30 hide" id="romBrowser" tabindex="-1"></div>
+<div id="core_core" class="hide mt-10">
+<p><input id="vsync" type="checkbox" data-store="vsync"><label for="vsync">Enable V-Sync</label></p>
+<p>&nbsp;</p>
+<p><input id="fullscreen" type="checkbox" data-store="fullscreen"><label for="fullscreen">Launch in fullscreen</label></p>
+<p>&nbsp;</p>
+<p title="Disable extra memory (4 MB Expansion Pak)."><input id="exp" type="checkbox" data-store="exp"><label for="exp">Use 4 MB RAM</label></p>
+<p>&nbsp;</p>
+<p title="Use unique SRAM saves per ROM."><input id="SaveFilenameFormat" type="checkbox" data-store="SaveFilenameFormat" checked><label for="SaveFilenameFormat">Unique game saves</label></p>
 <p>&nbsp;</p><p>&nbsp;</p>
-<div>&nbsp;<button class="floatright ml-13" id="hideCheats">Remove cheats</button><button class="floatright" id="listCheats">List cheats</button></div>
-<div class="mt-25 hide" id="cheatList" tabindex="-1"></div>
+<p title="Increment the save state slot after each save operation."><input id="AutoStateSlotIncrement" type="checkbox" data-store="AutoStateSlotIncrement"><label for="AutoStateSlotIncrement">Auto increment state slot</label></p>
+<p>&nbsp;</p>
+<select id="CurrentStateSlot">
+<option value="0" selected>0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+</select><label for="CurrentStateSlot">Default save state slot</label>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p title="Disable compiled jump commands in dynamic recompiler (not recommended)."><input id="NoCompiledJump" type="checkbox" data-store="NoCompiledJump"><label for="NoCompiledJump">Disable compiled jump</label></p>
+<p>&nbsp;</p>
+<p title="Randomize PI/SI interrupt timing."><input id="RandomizeInterrupt" type="checkbox" data-store="RandomizeInterrupt" checked><label for="RandomizeInterrupt">Randomize interrupt</label></p>
+<p>&nbsp;</p>
+<p title="Duration of SI DMA. Use -1 for per-game settings."><input id="SiDmaDuration" type="range" min="-1" max="100000" step="1" value="-1"><label for="SiDmaDuration"><span id="SiDmaDurationText">-1</span>: SI DMA duration</label><button class="floatright" data-value="-1" id="resetSiDmaDuration">Reset</button></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<div title="Force number of cycles per emulated instruction."><select class="width225m" id="CountPerOp">
+<option value="0" selected>Automatic</option>
+<option value="1">1: Highest speed</option>
+<option value="2">2: Default</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6: Lowest speed</option>
+</select><label for="CountPerOp">Counter factor</label></div>
+<p>&nbsp;</p>
+<div title="Reduce number of cycles per update by power of two."><select class="width225m" id="CountPerOpDenomPot">
+<option value="0" selected>Disabled</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20">20</option>
+</select><label for="CountPerOpDenomPot">Overclocking factor</label></div>
+<p>&nbsp;</p>
+<div title="Dynamic Recompiler offers the best performance. Change this upon encountering issues."><select class="width225m" id="emumode">
+<option value="0">Pure Interpreter</option>
+<option value="1">Cached Interpreter</option>
+<option value="2" selected>Dynamic Recompiler</option>
+</select><label for="emumode">R4300 emulator</label></div>
+<p>&nbsp;</p>
+<select class="width225m" id="resolution">
+<option value="320">320x240</option>
+<option value="640">640x480</option>
+<option value="960">960x720</option>
+<option value="1280" selected>1280x960</option>
+<option value="1600">1600x1200</option>
+<option value="1920">1920x1440</option>
+<option value="2240">2240x1680</option>
+<option value="2560">2560x1920</option>
+</select><label for="resolution">Windowed resolution</label>
 </div>
 <div id="core_plugins" class="hide mt-15">
 <div title="Angrylion Plus: LLE,
@@ -121,95 +195,6 @@ Parallel: LLE only"><select class="width250m" id="rsp">
 <p>&nbsp;</p>
 <p title="Use High Level Emulation for graphics if RSP plugin is Static Interpreter."><input id="rspGFX" type="checkbox" data-store="rspGFX" checked><label for="rspGFX">Use HLE for graphics</label></p>
 </div>
-<div id="core_core" class="hide mt-10">
-<p><input id="vsync" type="checkbox" data-store="vsync"><label for="vsync">Enable V-Sync</label></p>
-<p>&nbsp;</p>
-<p><input id="fullscreen" type="checkbox" data-store="fullscreen"><label for="fullscreen">Launch in fullscreen</label></p>
-<p>&nbsp;</p>
-<p title="Disable extra memory (4 MB Expansion Pak)."><input id="exp" type="checkbox" data-store="exp"><label for="exp">Use 4 MB RAM</label></p>
-<p>&nbsp;</p>
-<p title="Use unique SRAM saves per ROM."><input id="SaveFilenameFormat" type="checkbox" data-store="SaveFilenameFormat" checked><label for="SaveFilenameFormat">Unique game saves</label></p>
-<p>&nbsp;</p><p>&nbsp;</p>
-<p title="Disable compiled jump commands in dynamic recompiler (not recommended)."><input id="NoCompiledJump" type="checkbox" data-store="NoCompiledJump"><label for="NoCompiledJump">Disable compiled jump</label></p>
-<p>&nbsp;</p>
-<p title="Randomize PI/SI interrupt timing."><input id="RandomizeInterrupt" type="checkbox" data-store="RandomizeInterrupt" checked><label for="RandomizeInterrupt">Randomize interrupt</label></p>
-<p>&nbsp;</p>
-<p title="Duration of SI DMA. Use -1 for per-game settings."><input id="SiDmaDuration" type="range" min="-1" max="100000" step="1" value="-1"><label for="SiDmaDuration"><span id="SiDmaDurationText">-1</span>: SI DMA duration</label><button class="floatright" data-value="-1" id="resetSiDmaDuration">Reset</button></p>
-<p>&nbsp;</p><p>&nbsp;</p>
-<div title="Force number of cycles per emulated instruction."><select class="width225m" id="CountPerOp">
-<option value="0" selected>Automatic</option>
-<option value="1">1: Highest speed</option>
-<option value="2">2: Default</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-<option value="6">6: Lowest speed</option>
-</select><label for="CountPerOp">Counter factor</label></div>
-<p>&nbsp;</p>
-<div title="Reduce number of cycles per update by power of two."><select class="width225m" id="CountPerOpDenomPot">
-<option value="0" selected>Disabled</option>
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-<option value="6">6</option>
-<option value="7">7</option>
-<option value="8">8</option>
-<option value="9">9</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>
-<option value="13">13</option>
-<option value="14">14</option>
-<option value="15">15</option>
-<option value="16">16</option>
-<option value="17">17</option>
-<option value="18">18</option>
-<option value="19">19</option>
-<option value="20">20</option>
-</select><label for="CountPerOpDenomPot">Overclocking factor</label></div>
-<p>&nbsp;</p>
-<div title="Dynamic Recompiler offers the best performance. Change this upon encountering issues."><select class="width225m" id="emumode">
-<option value="0">Pure Interpreter</option>
-<option value="1">Cached Interpreter</option>
-<option value="2" selected>Dynamic Recompiler</option>
-</select><label for="emumode">R4300 emulator</label></div>
-<p>&nbsp;</p>
-<select class="width225m" id="resolution">
-<option value="320">320x240</option>
-<option value="640">640x480</option>
-<option value="960">960x720</option>
-<option value="1280" selected>1280x960</option>
-<option value="1600">1600x1200</option>
-<option value="1920">1920x1440</option>
-<option value="2240">2240x1680</option>
-<option value="2560">2560x1920</option>
-</select><label for="resolution">Windowed resolution</label>
-</div>
-<div id="core_advanced" class="hide mt-10">
-<p title="Disables speed limit, V-Sync and mutes audio. Useful for performance testing."><input id="nospeedlimit" type="checkbox" data-store="nospeedlimit"><label for="nospeedlimit">Disable speed limit</label></p>
-<p>&nbsp;</p>
-<p title="Print more information on logging."><input id="verbose" type="checkbox" data-store="verbose"><label for="verbose">Enable verbose logging</label></p>
-<p>&nbsp;</p><p>&nbsp;</p>
-<p title="Increment the save state slot after each save operation."><input id="AutoStateSlotIncrement" type="checkbox" data-store="AutoStateSlotIncrement"><label for="AutoStateSlotIncrement">Auto increment state slot</label></p>
-<p>&nbsp;</p>
-<select id="CurrentStateSlot">
-<option value="0" selected>0</option>
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-<option value="6">6</option>
-<option value="7">7</option>
-<option value="8">8</option>
-<option value="9">9</option>
-</select><label for="CurrentStateSlot">Default save state slot</label>
-<p>&nbsp;</p><p>&nbsp;</p>
-<p>mupen64plus error log</p>
-<div class="mt-15" id="log"></div>
-</div>
 <div id="core_audio" class="hide mt-10">
 <p><input id="AUDIO_SYNC" type="checkbox" data-store="AUDIO_SYNC"><label for="AUDIO_SYNC">Audio sync</label></p>
 <div id="master_volume">
@@ -265,6 +250,23 @@ Higher values increase audio latency but reduce the chance of audio drop-outs.">
 <p title="Path to 64DD ROM file. Click the box or drag and drop a .64d or .ndd file into the box below.">64DD Disk&nbsp;&nbsp;<button class="floatright ml-13" id="clearDisk">Clear</button><button class="floatright" id="showDisk">Show</button><br><br><div id="Disk" class="box"><span id="DiskText"></span></div></p>
 <p>&nbsp;</p><p>&nbsp;</p>
 <p title="Disable to use the full disk copy as the save disk format instead."><input id="SaveDiskFormat" type="checkbox" data-store="SaveDiskFormat" checked><label for="SaveDiskFormat">Save RAM area only</label></p>
+</div>
+<div id="core_rom" class="mt-15">
+<p title="Click the box below to set up a directory for the ROM browser.
+Double click launches a ROM instantly.">ROM browser&nbsp;&nbsp;<button class="floatright ml-13" id="resetRomPath">Reset</button><button class="floatright ml-13" id="openRomPath">Open</button><button class="floatright" id="loadRomPath">Refresh</button><br><br><div id="RomPath" class="box"><span id="RomPathText"></span></div></p>
+<div class="mt-30 hide" id="romBrowser" tabindex="-1"></div>
+</div>
+<div id="core_cheat" class="mt-15">
+<div>Cheats&nbsp;&nbsp;<button class="floatright ml-13" id="hideCheats">Remove cheats</button><button class="floatright" id="listCheats">List cheats</button></div>
+<div class="mt-25" id="cheatList" tabindex="-1"></div>
+</div>
+<div id="core_advanced" class="hide mt-10">
+<p title="Disables speed limit, V-Sync and mutes audio. Useful for performance testing."><input id="nospeedlimit" type="checkbox" data-store="nospeedlimit"><label for="nospeedlimit">Disable speed limit</label></p>
+<p>&nbsp;</p>
+<p title="Print more information on logging."><input id="verbose" type="checkbox" data-store="verbose"><label for="verbose">Enable verbose logging</label></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p>mupen64plus error log</p>
+<div class="mt-15" id="log"></div>
 </div>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
 <div id="inputAnchor" class="anchor"></div>
@@ -1174,7 +1176,7 @@ For gamepad hotkey combos, press another button by focusing the box a second tim
 <li id="ul_gliden64_framebuffer">Framebuffer</li>
 <li id="ul_gliden64_textures">Texture</li>
 <li id="ul_gliden64_osd">OSD</li>
-<li id="ul_gliden64_hotkeys">Hotkeys</li>
+<li id="ul_gliden64_hotkeys">Hotkey</li>
 </ul>
 <p>&nbsp;</p>
 <div id="gliden64_video" class="mt-10">

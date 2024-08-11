@@ -30,7 +30,7 @@ n64Ext = ['*.n64','*.v64','*.z64'], nddExt = ['*.d64','*.ndd'], gbExt = ['*.gb',
 n64 = ['n64','v64','z64'], ndd = ['d64','ndd'], gb = ['gb','gbc'], save = ['sav'], bios = ['bin','rom',...n64],
 
 dragDrop = ['fileInput','IPLROM','Disk','gbROM1','gbROM2','gbROM3','gbROM4','gbRAM1','gbRAM2','gbRAM3','gbRAM4'],
-core_main = ['core_rom','core_plugins','core_core','core_advanced','core_audio','core_directories','core_64dd'],
+core_main = ['core_rom','core_cheat','core_plugins','core_core','core_advanced','core_audio','core_directories','core_64dd'],
 input_controller = ['input_controller1','input_controller2','input_controller3','input_controller4','input_gca','input_mouse'],
 hk = ['hk_keyboard','hk_controller1','hk_controller2','hk_controller3','hk_controller4'],
 gliden64_setting = ['gliden64_video','gliden64_overscan','gliden64_emulation','gliden64_framebuffer','gliden64_textures','gliden64_osd','gliden64_hotkeys'],
@@ -461,7 +461,7 @@ id('VOLUME_CONTROL_TYPE').addEventListener('change', disableVolumeDefault)
 disableVolumeDefault()
 
 function hideCheats(){
-if(id('cheatList').textContent!=''){id('cheatList').textContent='';id('cheatList').classList.add('hide')}}
+if(id('cheatList').textContent!=''){id('cheatList').textContent=''}}
 id('hideCheats').addEventListener('click', function(){hideCheats()})
 
 
