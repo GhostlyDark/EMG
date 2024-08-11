@@ -907,6 +907,15 @@ document.addEventListener('keyup', function(e){if(e.ctrlKey && e.which == 76){id
 
 
 
+id('videoLink').addEventListener('click', function(){
+if(id('gfx').value.includes('angrylion')){id('videoLink').href = '#angrylionAnchor'}
+else if(id('gfx').value.includes('parallel')){id('videoLink').href = '#parallelAnchor'}
+else if(id('gfx').value.includes('rice')){id('videoLink').href = '#riceAnchor'}
+else if(id('gfx').value.includes('glide64mk2')){id('videoLink').href = '#glideAnchor'}
+else{id('videoLink').href = '#videoAnchor'}})
+
+
+
 id('launch').addEventListener('click', function(){
 if(!recentFiles.includes(filePath.toString()))recentFiles.unshift(filePath.toString());recentFiles.splice(10);recentFilesUpdate();localStorage.setItem('recentFiles',JSON.stringify(recentFiles));
 
