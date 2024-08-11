@@ -226,7 +226,7 @@ option{font-size:16px;background:#efefef}
 .floatright{float:right}
 input.floatright,select.floatright{top:-5px}
 input:disabled,select:disabled,input:disabled + label,input:disabled + span + label,select:disabled + label{opacity:.5}
-select + label,[type=text] + label{padding-left:10px}
+select + label,[type=text] + label{padding-left:11px}
 .hotkeys{text-align:center;display:inline-block;width:660px;padding:20px;margin-top:10px;background-color:rgba(255,255,255,.4)}
 .custom .hotkeys{background-color:rgba(255,255,255,.4)}
 .dark .hotkeys{background-color:rgba(0,0,0,.2)}
