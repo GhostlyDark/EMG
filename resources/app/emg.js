@@ -59,7 +59,7 @@ overscan = ['OverscanNtscTop','OverscanNtscLeft','OverscanNtscRight','OverscanNt
 sliders = [...overscan,'SiDmaDuration','VOLUME_ADJUST','VOLUME_DEFAULT','AnalogDeadzone1','AnalogDeadzone2','AnalogDeadzone3','AnalogDeadzone4','AnalogPeak1','AnalogPeak2','AnalogPeak3','AnalogPeak4','control_stick_deadzone','control_stick_sensitivity','c_stick_deadzone','trigger_threshold','MouseSensitivityX','MouseSensitivityY','NumWorkers','GammaCorrectionLevel','txCacheSize','txHiresVramLimit','fontSize','ParallelCropOverscan','ParallelVerticalStretch','PolygonOffsetFactor','PolygonOffsetUnits','polygon_offset_factor','polygon_offset_units','ghq_cache_size'],
 
 dropdowns = [
-'emumode','resolution','CountPerOp','CountPerOpDenomPot','CurrentStateSlot','SaveDiskFormat', /* mupen64plus */
+'emumode','resolution','CountPerOp','CountPerOpDenomPot','CurrentStateSlot', /* mupen64plus */
 'gfx','audio','input','rsp','RspFallback', /* mupen64plus plugins */
 'plugin1','plugin2','plugin3','plugin4','c1','c2','c3','c4','mb1','mb2','mb3', /* mupen64plus-input */
 'PRIMARY_BUFFER_TARGET','RESAMPLE', /* mupen64plus-audio */
@@ -983,6 +983,7 @@ ShowInternalResolution = 'Video-GLideN64[ShowInternalResolution]=' + id('ShowInt
 ShowRenderingResolution = 'Video-GLideN64[ShowRenderingResolution]=' + id('ShowRenderingResolution').checked,
 ShowStatistics = 'Video-GLideN64[ShowStatistics]=' + id('ShowStatistics').checked,
 
+SaveDiskFormat = 'Core[SaveDiskFormat]=' + (id('SaveDiskFormat').checked ? '1' : '0'),
 NoCompiledJump = 'Core[NoCompiledJump]=' + id('NoCompiledJump').checked,
 AutoStateSlotIncrement = 'Core[AutoStateSlotIncrement]=' + id('AutoStateSlotIncrement').checked,
 RandomizeInterrupt = 'Core[RandomizeInterrupt]=' + id('RandomizeInterrupt').checked,
@@ -1092,7 +1093,6 @@ ParallelUpscaling = 'Video-Parallel[Upscaling]=' + id('ParallelUpscaling').value
 ParallelDeinterlaceMode = 'Video-Parallel[DeinterlaceMode]=' + id('ParallelDeinterlaceMode').value,
 ParallelDownScale = 'Video-Parallel[DownScale]=' + id('ParallelDownScale').value,
 CountersPos = 'Video-GLideN64[CountersPos]=' + id('CountersPos').value,
-SaveDiskFormat = 'Core[SaveDiskFormat]=' + id('SaveDiskFormat').value,
 DEFAULT_FREQUENCY = 'Audio-SDL[DEFAULT_FREQUENCY]=33600',
 PRIMARY_BUFFER_SIZE = 'Audio-SDL[PRIMARY_BUFFER_SIZE]=16384',
 PRIMARY_BUFFER_TARGET = 'Audio-SDL[PRIMARY_BUFFER_TARGET]=' + id('PRIMARY_BUFFER_TARGET').value,
