@@ -641,70 +641,70 @@ prevent(e);if(e.dataTransfer.files[0] === undefined)return
 let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
 if(bios.includes(fileExtension(fPath)))IPLROM = fPath
-if(IPLROM != undefined){id('IPLROMText').textContent = IPLROM;localStorage.setItem('IPLROM', IPLROM)}}})
+if(IPLROM != undefined){id('IPLROMText').textContent = IPLROM;id('IPLROMText').style.opacity = '';localStorage.setItem('IPLROM', IPLROM)}}})
 
 id('Disk').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
 let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
 if(ndd.includes(fileExtension(fPath)))Disk = fPath
-if(Disk != undefined){id('DiskText').textContent = Disk;localStorage.setItem('Disk', Disk)}}})
+if(Disk != undefined){id('DiskText').textContent = Disk;id('DiskText').style.opacity = '';localStorage.setItem('Disk', Disk)}}})
 
 id('gbROM1').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
 let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
 if(gb.includes(fileExtension(fPath)))gbROM1 = fPath
-if(gbROM1 != undefined){id('gbROM1Text').textContent = gbROM1;localStorage.setItem('gbROM1', gbROM1)}}})
+if(gbROM1 != undefined){id('gbROM1Text').textContent = gbROM1;id('gbROM1Text').style.opacity = '';localStorage.setItem('gbROM1', gbROM1)}}})
 
 id('gbROM2').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
 let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
 if(gb.includes(fileExtension(fPath)))gbROM2 = fPath
-if(gbROM2 != undefined){id('gbROM2Text').textContent = gbROM2;localStorage.setItem('gbROM2', gbROM2)}}})
+if(gbROM2 != undefined){id('gbROM2Text').textContent = gbROM2;id('gbROM2Text').style.opacity = '';localStorage.setItem('gbROM2', gbROM2)}}})
 
 id('gbROM3').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
 let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
 if(gb.includes(fileExtension(fPath)))gbROM3 = fPath
-if(gbROM3 != undefined){id('gbROM3Text').textContent = gbROM3;localStorage.setItem('gbROM3', gbROM3)}}})
+if(gbROM3 != undefined){id('gbROM3Text').textContent = gbROM3;id('gbROM3Text').style.opacity = '';localStorage.setItem('gbROM3', gbROM3)}}})
 
 id('gbROM4').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
 let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
 if(gb.includes(fileExtension(fPath)))gbROM4 = fPath
-if(gbROM4 != undefined){id('gbROM4Text').textContent = gbROM4;localStorage.setItem('gbROM4', gbROM4)}}})
+if(gbROM4 != undefined){id('gbROM4Text').textContent = gbROM4;id('gbROM4Text').style.opacity = '';localStorage.setItem('gbROM4', gbROM4)}}})
 
 id('gbRAM1').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
 let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
 if(save.includes(fileExtension(fPath)))gbRAM1 = fPath
-if(gbRAM1 != undefined){id('gbRAM1Text').textContent = gbRAM1;localStorage.setItem('gbRAM1', gbRAM1)}}})
+if(gbRAM1 != undefined){id('gbRAM1Text').textContent = gbRAM1;id('gbRAM1Text').style.opacity = '';localStorage.setItem('gbRAM1', gbRAM1)}}})
 
 id('gbRAM2').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
 let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
 if(save.includes(fileExtension(fPath)))gbRAM2 = fPath
-if(gbRAM2 != undefined){id('gbRAM2Text').textContent = gbRAM2;localStorage.setItem('gbRAM2', gbRAM2)}}})
+if(gbRAM2 != undefined){id('gbRAM2Text').textContent = gbRAM2;id('gbRAM2Text').style.opacity = '';localStorage.setItem('gbRAM2', gbRAM2)}}})
 
 id('gbRAM3').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
 let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
 if(save.includes(fileExtension(fPath)))gbRAM3 = fPath
-if(gbRAM3 != undefined){id('gbRAM3Text').textContent = gbRAM3;localStorage.setItem('gbRAM3', gbRAM3)}}})
+if(gbRAM3 != undefined){id('gbRAM3Text').textContent = gbRAM3;id('gbRAM3Text').style.opacity = '';localStorage.setItem('gbRAM3', gbRAM3)}}})
 
 id('gbRAM4').addEventListener('drop', function(e){
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
 let fPath = e.dataTransfer.files[0].path;
 if(fPath != undefined){
 if(save.includes(fileExtension(fPath)))gbRAM4 = fPath
-if(gbRAM4 != undefined){id('gbRAM4Text').textContent = gbRAM4;localStorage.setItem('gbRAM4', gbRAM4)}}})
+if(gbRAM4 != undefined){id('gbRAM4Text').textContent = gbRAM4;id('gbRAM4Text').style.opacity = '';localStorage.setItem('gbRAM4', gbRAM4)}}})
 
 
 
@@ -715,85 +715,85 @@ fileResult = dialogFile({name:'N64 ROM',extensions:n64});
 if(fileResult != undefined){filePath = fileResult;
 if(filePath != undefined){id('fileText').textContent = filePath;localStorage.setItem('filePath', filePath);hideCheats()}}})
 
-id('clearIPLROM').addEventListener('click', function(){IPLROM = id('IPLROMText').textContent = '';localStorage.removeItem('IPLROM')})
-if(localStorage.getItem('IPLROM') === null){IPLROM = id('IPLROMText').textContent = ''}
-if(localStorage.getItem('IPLROM') != null){IPLROM = localStorage.getItem('IPLROM');id('IPLROMText').textContent = IPLROM}
+id('clearIPLROM').addEventListener('click', function(){IPLROM = id('IPLROMText').textContent = '.bin, .rom, .n64, .v64, .z64';id('IPLROMText').style.opacity = '0.7';localStorage.removeItem('IPLROM')})
+if(localStorage.getItem('IPLROM') === null){IPLROM = id('IPLROMText').textContent = '.bin, .rom, .n64, .v64, .z64';id('IPLROMText').style.opacity = '0.7'}
+if(localStorage.getItem('IPLROM') != null){IPLROM = localStorage.getItem('IPLROM');id('IPLROMText').textContent = IPLROM;id('IPLROMText').style.opacity = ''}
 id('IPLROM').addEventListener('click', function(){
 IPLROMResult = dialogFile({name:'64DD IPL',extensions:bios})
 if(IPLROMResult != undefined){IPLROM = IPLROMResult.toString();
-if(IPLROM != undefined){id('IPLROMText').textContent = IPLROM;localStorage.setItem('IPLROM', IPLROM)}}})
+if(IPLROM != undefined){id('IPLROMText').textContent = IPLROM;id('IPLROMText').style.opacity = '';localStorage.setItem('IPLROM', IPLROM)}}})
 
-id('clearDisk').addEventListener('click', function(){Disk = id('DiskText').textContent = '';localStorage.removeItem('Disk')})
-if(localStorage.getItem('Disk') === null){Disk = id('DiskText').textContent = ''}
-if(localStorage.getItem('Disk') != null){Disk = localStorage.getItem('Disk');id('DiskText').textContent = Disk}
+id('clearDisk').addEventListener('click', function(){Disk = id('DiskText').textContent = '.d64, .ndd';id('DiskText').style.opacity = '0.7';localStorage.removeItem('Disk')})
+if(localStorage.getItem('Disk') === null){Disk = id('DiskText').textContent = '.d64, .ndd';id('DiskText').style.opacity = '0.7'}
+if(localStorage.getItem('Disk') != null){Disk = localStorage.getItem('Disk');id('DiskText').textContent = Disk;id('DiskText').style.opacity = ''}
 id('Disk').addEventListener('click', function(){
 DiskResult = dialogFile({name:'64DD Disk',extensions:ndd})
 if(DiskResult != undefined){Disk = DiskResult.toString();
-if(Disk != undefined){id('DiskText').textContent = Disk;localStorage.setItem('Disk', Disk)}}})
+if(Disk != undefined){id('DiskText').textContent = Disk;id('DiskText').style.opacity = '';localStorage.setItem('Disk', Disk)}}})
 
-id('cleargbROM1').addEventListener('click', function(){gbROM1 = id('gbROM1Text').textContent = '';localStorage.removeItem('gbROM1')})
-if(localStorage.getItem('gbROM1') === null){gbROM1 = id('gbROM1Text').textContent = ''}
-if(localStorage.getItem('gbROM1') != null){gbROM1 = localStorage.getItem('gbROM1');id('gbROM1Text').textContent = gbROM1}
+id('cleargbROM1').addEventListener('click', function(){gbROM1 = id('gbROM1Text').textContent = '.gb, .gbc';id('gbROM1Text').style.opacity = '0.7';localStorage.removeItem('gbROM1')})
+if(localStorage.getItem('gbROM1') === null){gbROM1 = id('gbROM1Text').textContent = '.gb, .gbc';id('gbROM1Text').style.opacity = '0.7'}
+if(localStorage.getItem('gbROM1') != null){gbROM1 = localStorage.getItem('gbROM1');id('gbROM1Text').textContent = gbROM1;id('gbROM1Text').style.opacity = ''}
 id('gbROM1').addEventListener('click', function(){
 gbROM1Result = dialogFile({name:'GB ROM',extensions:gb})
 if(gbROM1Result != undefined){gbROM1 = gbROM1Result.toString();
-if(gbROM1 != undefined){id('gbROM1Text').textContent = gbROM1;localStorage.setItem('gbROM1', gbROM1)}}})
+if(gbROM1 != undefined){id('gbROM1Text').textContent = gbROM1;id('gbROM1Text').style.opacity = '';localStorage.setItem('gbROM1', gbROM1)}}})
 
-id('cleargbROM2').addEventListener('click', function(){gbROM2 = id('gbROM2Text').textContent = '';localStorage.removeItem('gbROM2')})
-if(localStorage.getItem('gbROM2') === null){gbROM2 = id('gbROM2Text').textContent = ''}
-if(localStorage.getItem('gbROM2') != null){gbROM2 = localStorage.getItem('gbROM2');id('gbROM2Text').textContent = gbROM2}
+id('cleargbROM2').addEventListener('click', function(){gbROM2 = id('gbROM2Text').textContent = '.gb, .gbc';id('gbROM2Text').style.opacity = '0.7';localStorage.removeItem('gbROM2')})
+if(localStorage.getItem('gbROM2') === null){gbROM2 = id('gbROM2Text').textContent = '.gb, .gbc';id('gbROM2Text').style.opacity = '0.7'}
+if(localStorage.getItem('gbROM2') != null){gbROM2 = localStorage.getItem('gbROM2');id('gbROM2Text').textContent = gbROM2;id('gbROM2Text').style.opacity = ''}
 id('gbROM2').addEventListener('click', function(){
 gbROM2Result = dialogFile({name:'GB ROM',extensions:gb})
 if(gbROM2Result != undefined){gbROM2 = gbROM2Result.toString();
-if(gbROM2 != undefined){id('gbROM2Text').textContent = gbROM2;localStorage.setItem('gbROM2', gbROM2)}}})
+if(gbROM2 != undefined){id('gbROM2Text').textContent = gbROM2;id('gbROM2Text').style.opacity = '';localStorage.setItem('gbROM2', gbROM2)}}})
 
-id('cleargbROM3').addEventListener('click', function(){gbROM3 = id('gbROM3Text').textContent = '';localStorage.removeItem('gbROM3')})
-if(localStorage.getItem('gbROM3') === null){gbROM3 = id('gbROM3Text').textContent = ''}
-if(localStorage.getItem('gbROM3') != null){gbROM3 = localStorage.getItem('gbROM3');id('gbROM3Text').textContent = gbROM3}
+id('cleargbROM3').addEventListener('click', function(){gbROM3 = id('gbROM3Text').textContent = '.gb, .gbc';id('gbROM3Text').style.opacity = '0.7';localStorage.removeItem('gbROM3')})
+if(localStorage.getItem('gbROM3') === null){gbROM3 = id('gbROM3Text').textContent = '.gb, .gbc';id('gbROM3Text').style.opacity = '0.7'}
+if(localStorage.getItem('gbROM3') != null){gbROM3 = localStorage.getItem('gbROM3');id('gbROM3Text').textContent = gbROM3;id('gbROM3Text').style.opacity = ''}
 id('gbROM3').addEventListener('click', function(){
 gbROM3Result = dialogFile({name:'GB ROM',extensions:gb})
 if(gbROM3Result != undefined){gbROM3 = gbROM3Result.toString();
-if(gbROM3 != undefined){id('gbROM3Text').textContent = gbROM3;localStorage.setItem('gbROM3', gbROM3)}}})
+if(gbROM3 != undefined){id('gbROM3Text').textContent = gbROM3;id('gbROM3Text').style.opacity = '';localStorage.setItem('gbROM3', gbROM3)}}})
 
-id('cleargbROM4').addEventListener('click', function(){gbROM4 = id('gbROM4Text').textContent = '';localStorage.removeItem('gbROM4')})
-if(localStorage.getItem('gbROM4') === null){gbROM4 = id('gbROM4Text').textContent = ''}
-if(localStorage.getItem('gbROM4') != null){gbROM4 = localStorage.getItem('gbROM4');id('gbROM4Text').textContent = gbROM4}
+id('cleargbROM4').addEventListener('click', function(){gbROM4 = id('gbROM4Text').textContent = '.gb, .gbc';id('gbROM4Text').style.opacity = '0.7';localStorage.removeItem('gbROM4')})
+if(localStorage.getItem('gbROM4') === null){gbROM4 = id('gbROM4Text').textContent = '.gb, .gbc';id('gbROM4Text').style.opacity = '0.7'}
+if(localStorage.getItem('gbROM4') != null){gbROM4 = localStorage.getItem('gbROM4');id('gbROM4Text').textContent = gbROM4;id('gbROM4Text').style.opacity = ''}
 id('gbROM4').addEventListener('click', function(){
 gbROM4Result = dialogFile({name:'GB ROM',extensions:gb})
 if(gbROM4Result != undefined){gbROM4 = gbROM4Result.toString();
-if(gbROM4 != undefined){id('gbROM4Text').textContent = gbROM4;localStorage.setItem('gbROM4', gbROM4)}}})
+if(gbROM4 != undefined){id('gbROM4Text').textContent = gbROM4;id('gbROM4Text').style.opacity = '';localStorage.setItem('gbROM4', gbROM4)}}})
 
-id('cleargbRAM1').addEventListener('click', function(){gbRAM1 = id('gbRAM1Text').textContent = '';localStorage.removeItem('gbRAM1')})
-if(localStorage.getItem('gbRAM1') === null){gbRAM1 = id('gbRAM1Text').textContent = ''}
-if(localStorage.getItem('gbRAM1') != null){gbRAM1 = localStorage.getItem('gbRAM1');id('gbRAM1Text').textContent = gbRAM1}
+id('cleargbRAM1').addEventListener('click', function(){gbRAM1 = id('gbRAM1Text').textContent = '.sav';id('gbRAM1Text').style.opacity = '0.7';localStorage.removeItem('gbRAM1')})
+if(localStorage.getItem('gbRAM1') === null){gbRAM1 = id('gbRAM1Text').textContent = '.sav';id('gbRAM1Text').style.opacity = '0.7'}
+if(localStorage.getItem('gbRAM1') != null){gbRAM1 = localStorage.getItem('gbRAM1');id('gbRAM1Text').textContent = gbRAM1;id('gbRAM1Text').style.opacity = ''}
 id('gbRAM1').addEventListener('click', function(){
 gbRAM1Result = dialogFile({name:'GB Save File',extensions:save})
 if(gbRAM1Result != undefined){gbRAM1 = gbRAM1Result.toString();
-if(gbRAM1 != undefined){id('gbRAM1Text').textContent = gbRAM1;localStorage.setItem('gbRAM1', gbRAM1)}}})
+if(gbRAM1 != undefined){id('gbRAM1Text').textContent = gbRAM1;id('gbRAM1Text').style.opacity = '';localStorage.setItem('gbRAM1', gbRAM1)}}})
 
-id('cleargbRAM2').addEventListener('click', function(){gbRAM2 = id('gbRAM2Text').textContent = '';localStorage.removeItem('gbRAM2')})
-if(localStorage.getItem('gbRAM2') === null){gbRAM2 = id('gbRAM2Text').textContent = ''}
-if(localStorage.getItem('gbRAM2') != null){gbRAM2 = localStorage.getItem('gbRAM2');id('gbRAM2Text').textContent = gbRAM2}
+id('cleargbRAM2').addEventListener('click', function(){gbRAM2 = id('gbRAM2Text').textContent = '.sav';id('gbRAM2Text').style.opacity = '0.7';localStorage.removeItem('gbRAM2')})
+if(localStorage.getItem('gbRAM2') === null){gbRAM2 = id('gbRAM2Text').textContent = '.sav';id('gbRAM2Text').style.opacity = '0.7'}
+if(localStorage.getItem('gbRAM2') != null){gbRAM2 = localStorage.getItem('gbRAM2');id('gbRAM2Text').textContent = gbRAM2;id('gbRAM2Text').style.opacity = ''}
 id('gbRAM2').addEventListener('click', function(){
 gbRAM2Result = dialogFile({name:'GB Save File',extensions:save})
 if(gbRAM2Result != undefined){gbRAM2 = gbRAM2Result.toString();
-if(gbRAM2 != undefined){id('gbRAM2Text').textContent = gbRAM2;localStorage.setItem('gbRAM2', gbRAM2)}}})
+if(gbRAM2 != undefined){id('gbRAM2Text').textContent = gbRAM2;id('gbRAM2Text').style.opacity = '';localStorage.setItem('gbRAM2', gbRAM2)}}})
 
-id('cleargbRAM3').addEventListener('click', function(){gbRAM3 = id('gbRAM3Text').textContent = '';localStorage.removeItem('gbRAM3')})
-if(localStorage.getItem('gbRAM3') === null){gbRAM3 = id('gbRAM3Text').textContent = ''}
-if(localStorage.getItem('gbRAM3') != null){gbRAM3 = localStorage.getItem('gbRAM3');id('gbRAM3Text').textContent = gbRAM3}
+id('cleargbRAM3').addEventListener('click', function(){gbRAM3 = id('gbRAM3Text').textContent = '.sav';id('gbRAM3Text').style.opacity = '0.7';localStorage.removeItem('gbRAM3')})
+if(localStorage.getItem('gbRAM3') === null){gbRAM3 = id('gbRAM3Text').textContent = '.sav';id('gbRAM3Text').style.opacity = '0.7'}
+if(localStorage.getItem('gbRAM3') != null){gbRAM3 = localStorage.getItem('gbRAM3');id('gbRAM3Text').textContent = gbRAM3;id('gbRAM3Text').style.opacity = ''}
 id('gbRAM3').addEventListener('click', function(){
 gbRAM3Result = dialogFile({name:'GB Save File',extensions:save})
 if(gbRAM3Result != undefined){gbRAM3 = gbRAM3Result.toString();
-if(gbRAM3 != undefined){id('gbRAM3Text').textContent = gbRAM3;localStorage.setItem('gbRAM3', gbRAM3)}}})
+if(gbRAM3 != undefined){id('gbRAM3Text').textContent = gbRAM3;id('gbRAM3Text').style.opacity = '';localStorage.setItem('gbRAM3', gbRAM3)}}})
 
-id('cleargbRAM4').addEventListener('click', function(){gbRAM4 = id('gbRAM4Text').textContent = '';localStorage.removeItem('gbRAM4')})
-if(localStorage.getItem('gbRAM4') === null){gbRAM4 = id('gbRAM4Text').textContent = ''}
-if(localStorage.getItem('gbRAM4') != null){gbRAM4 = localStorage.getItem('gbRAM4');id('gbRAM4Text').textContent = gbRAM4}
+id('cleargbRAM4').addEventListener('click', function(){gbRAM4 = id('gbRAM4Text').textContent = '.sav';id('gbRAM4Text').style.opacity = '0.7';localStorage.removeItem('gbRAM4')})
+if(localStorage.getItem('gbRAM4') === null){gbRAM4 = id('gbRAM4Text').textContent = '.sav';id('gbRAM4Text').style.opacity = '0.7'}
+if(localStorage.getItem('gbRAM4') != null){gbRAM4 = localStorage.getItem('gbRAM4');id('gbRAM4Text').textContent = gbRAM4;id('gbRAM4Text').style.opacity = ''}
 id('gbRAM4').addEventListener('click', function(){
 gbRAM4Result = dialogFile({name:'GB Save File',extensions:save})
 if(gbRAM4Result != undefined){gbRAM4 = gbRAM4Result.toString();
-if(gbRAM4 != undefined){id('gbRAM4Text').textContent = gbRAM4;localStorage.setItem('gbRAM4', gbRAM4)}}})
+if(gbRAM4 != undefined){id('gbRAM4Text').textContent = gbRAM4;id('gbRAM4Text').style.opacity = '';localStorage.setItem('gbRAM4', gbRAM4)}}})
 
 
 
@@ -852,12 +852,12 @@ id('fontColor').addEventListener('change', function(){localStorage.setItem('font
 
 
 
-id('resetRomPath').addEventListener('click', function(){RomPath = id('RomPathText').textContent = id('romBrowser').textContent = '';localStorage.removeItem('RomPath');id('romBrowser').classList.add('hide')})
-if(localStorage.getItem('RomPath') === null){RomPath = id('RomPathText').textContent = ''}
-if(localStorage.getItem('RomPath') != null){RomPath = localStorage.getItem('RomPath');id('RomPathText').textContent = RomPath}
+id('resetRomPath').addEventListener('click', function(){RomPath = id('RomPathText').textContent = 'Choose a directory';id('RomPathText').style.opacity = '0.7';id('romBrowser').textContent = '';localStorage.removeItem('RomPath');id('romBrowser').classList.add('hide')})
+if(localStorage.getItem('RomPath') === null){RomPath = '';id('RomPathText').textContent = 'Choose a directory';id('RomPathText').style.opacity = '0.7'}
+if(localStorage.getItem('RomPath') != null){RomPath = localStorage.getItem('RomPath');id('RomPathText').textContent = RomPath;id('RomPathText').style.opacity = ''}
 id('RomPath').addEventListener('click', function(){
 RomPathResult = dialogDirectory()
-if(RomPathResult != undefined){RomPath = RomPathResult.toString();id('RomPathText').textContent = RomPath;localStorage.setItem('RomPath', RomPath);id('loadRomPath').click()}})
+if(RomPathResult != undefined){RomPath = RomPathResult.toString();id('RomPathText').textContent = RomPath;id('RomPathText').style.opacity = '';localStorage.setItem('RomPath', RomPath);id('loadRomPath').click()}})
 
 function romUpdate(rom){ /* ROM browser */
 if(rom === '' || rom === null || rom === undefined)return

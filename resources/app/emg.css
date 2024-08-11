@@ -213,7 +213,13 @@ select{font-size:16px;border:0;outline:0;padding:5px 35px 5px 8px;transition:bac
 option{font-size:16px;background:#efefef}
 .dark option{background:#222}
 
-.box{padding:20px;border:2px dotted currentcolor;word-wrap:break-word}
+.box{padding:20px;border-left:4px solid currentcolor;background-color:rgba(150,150,150,.2);transition:background-color .2s cubic-bezier(.4,0,.22,1);word-wrap:break-word}
+.dark .box{background-color:rgba(50,50,50,.2)}
+.dark.custom .box{background-color:rgba(50,50,50,.2)}
+.box:hover{background-color:rgba(50,50,50,.2)}
+.dark .box:hover{background-color:rgba(150,150,150,.2)}
+.custom .box:hover{background-color:rgba(50,50,50,.2)}
+.dark.custom .box:hover{background-color:rgba(150,150,150,.2)}
 #fileInput{min-height:50px}
 
 .floatleft{float:left}
