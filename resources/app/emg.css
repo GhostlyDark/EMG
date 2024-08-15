@@ -125,7 +125,7 @@ html{scrollbar-color:#bbb #eaeaea}
 
 html{user-select:none}
 [type=text]{text-transform:capitalize}
-button,select,input,.box,.pointer,.hotkeys label,[type=checkbox] + label,[type=color] + label,[type=range]{cursor:pointer}
+button,select,input,.box,.pointer,.hotkeys label,[type=checkbox] + label,[type=color] + label,[type=range],[type=range] + label{cursor:pointer}
 
 [type=color]{border:0;outline:0;background:none;position:relative;top:2px}
 [type=color] + label{padding-left:5px}
