@@ -6,8 +6,6 @@ recentFiles = [];
 
 const buttons = document.querySelectorAll('button'),
 
-boxes = document.querySelectorAll('input[type=checkbox]'),
-
 textInputs = document.querySelectorAll('input[type=text]'),
 
 links = document.querySelectorAll('a'),
@@ -79,7 +77,6 @@ if(!isLinux)id('master_volume').style.display = 'none'; /* hide platform specifi
 id('fontColor').tabIndex = -1;
 function tabindex(el){el.tabIndex = -1} /* prevent tab focus */
 buttons.forEach(el => {tabindex(el);el.addEventListener('focus', function(){el.blur()})})
-boxes.forEach(el => {tabindex(el)})
 textInputs.forEach(el => {tabindex(el)})
 links.forEach(el => {tabindex(el)})
 
