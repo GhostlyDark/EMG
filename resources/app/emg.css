@@ -126,6 +126,7 @@ html{scrollbar-color:#bbb #eaeaea}
 html{user-select:none}
 [type=text]{text-transform:capitalize}
 button,select,input,.box,.pointer,.hotkeys label,select + label,[type=checkbox] + label,[type=color] + label,[type=range],[type=range] + label{cursor:pointer}
+[type=checkbox]:disabled,[type=checkbox]:disabled + label,select:disabled,select:disabled + label,[type=range]:disabled,[type=range]:disabled + label{cursor:initial}
 
 [type=color]{border:0;outline:0;background:none;position:relative;top:2px}
 [type=color] + label{padding-left:5px}
@@ -150,12 +151,12 @@ button,select,input,.box,.pointer,.hotkeys label,select + label,[type=checkbox] 
 .dark [type=range]:focus::-webkit-slider-thumb{background-color:rgb(87,230,148)!important}
 .dark [type=range]:hover::-webkit-slider-thumb{background-color:rgb(87,230,148)!important}
 
-[type=range]:disabled::-webkit-slider-thumb{background-color:rgb(150,150,150)!important;cursor:initial}
-[type=range]:disabled::-webkit-slider-runnable-track{background-color:rgba(100,100,100,.25)!important;cursor:initial}
+[type=range]:disabled::-webkit-slider-thumb{background-color:rgb(150,150,150)!important}
+[type=range]:disabled::-webkit-slider-runnable-track{background-color:rgba(100,100,100,.25)!important}
 [type=range]:disabled:focus::-webkit-slider-thumb{background-color:rgb(150,150,150)!important}
 [type=range]:disabled:hover::-webkit-slider-runnable-track{background-color:rgba(100,100,100,.25)!important}
-.dark [type=range]:disabled::-webkit-slider-thumb{background-color:rgb(150,150,150)!important;cursor:initial}
-.dark [type=range]:disabled::-webkit-slider-runnable-track{background-color:rgba(100,100,100,.5)!important;cursor:initial}
+.dark [type=range]:disabled::-webkit-slider-thumb{background-color:rgb(150,150,150)!important}
+.dark [type=range]:disabled::-webkit-slider-runnable-track{background-color:rgba(100,100,100,.5)!important}
 .dark [type=range]:disabled:focus::-webkit-slider-thumb{background-color:rgb(150,150,150)!important}
 .dark [type=range]:disabled:hover::-webkit-slider-runnable-track{background-color:rgba(100,100,100,.5)!important}
 
@@ -194,6 +195,10 @@ select{font-size:16px;border:0;outline:0;padding:5px 35px 5px 8px;transition:bac
 .dark.custom select,.dark.custom button,.dark.custom [type=text]{background-color:rgba(40,40,40,.5)}
 .custom select:hover,.custom button:hover,.custom [type=text]:hover,.custom select:active,.custom select:focus,.custom button:active,.custom [type=text]:active,.custom [type=text]:focus{background-color:rgba(200,200,200,.9)}
 .dark.custom select:hover,.dark.custom button:hover,.dark.custom [type=text]:hover,.dark.custom select:active,.dark.custom select:focus,.dark.custom button:active,.dark.custom [type=text]:active,.dark.custom [type=text]:focus{background-color:rgba(40,40,40,.9)}
+select:disabled:hover{background-color:#ddd}
+.dark select:disabled:hover{background-color:#222}
+.custom select:disabled:hover{background-color:rgba(200,200,200,.5)}
+.dark.custom select:disabled:hover{background-color:rgba(40,40,40,.5)}
 
 option{font-size:16px;background:#efefef}
 .dark option{background:#222}
