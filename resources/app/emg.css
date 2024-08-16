@@ -106,18 +106,18 @@ html{scrollbar-color:#bbb #eaeaea}
 
 .palette-red .headline,.palette-red header{background:rgb(188,53,70)}
 .dark.palette-red .headline,.dark.palette-red header{background:rgb(158,33,50)}
-.palette-red [type=checkbox]:hover,.palette-red [type=checkbox]:checked,.palette-red [type=checkbox]:checked:before{border-color:rgb(205,58,70)}
-.dark.palette-red [type=checkbox]:hover,.dark.palette-red [type=checkbox]:checked,.dark.palette-red [type=checkbox]:checked:before{border-color:rgb(225,78,90)}
+.palette-red [type=checkbox]:checked,.palette-red [type=checkbox]:checked:before{border-color:rgb(205,58,70)}
+.dark.palette-red [type=checkbox]:checked,.dark.palette-red [type=checkbox]:checked:before{border-color:rgb(225,78,90)}
 
 .palette-purple .headline,.palette-purple header{background:rgb(115,80,200)}
 .dark.palette-purple .headline,.dark.palette-purple header{background:rgb(100,65,195)}
-.palette-purple [type=checkbox]:hover,.palette-purple [type=checkbox]:checked,.palette-purple [type=checkbox]:checked:before{border-color:rgb(140,90,190)}
-.dark.palette-purple [type=checkbox]:hover,.dark.palette-purple [type=checkbox]:checked,.dark.palette-purple [type=checkbox]:checked:before{border-color:rgb(180,130,230)}
+.palette-purple [type=checkbox]:checked,.palette-purple [type=checkbox]:checked:before{border-color:rgb(140,90,190)}
+.dark.palette-purple [type=checkbox]:checked,.dark.palette-purple [type=checkbox]:checked:before{border-color:rgb(180,130,230)}
 
 .palette-ice .headline,.palette-ice header{background:rgb(30,135,200)}
 .dark.palette-ice .headline,.dark.palette-ice header{background:rgb(10,115,180)}
-.palette-ice [type=checkbox]:hover,.palette-ice [type=checkbox]:checked,.palette-ice [type=checkbox]:checked:before{border-color:rgb(13,130,223)}
-.dark.palette-ice [type=checkbox]:hover,.dark.palette-ice [type=checkbox]:checked,.dark.palette-ice [type=checkbox]:checked:before{border-color:#2196f3}
+.palette-ice [type=checkbox]:checked,.palette-ice [type=checkbox]:checked:before{border-color:rgb(13,130,223)}
+.dark.palette-ice [type=checkbox]:checked,.dark.palette-ice [type=checkbox]:checked:before{border-color:#2196f3}
 
 
 
