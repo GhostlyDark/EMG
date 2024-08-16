@@ -125,7 +125,7 @@ html{scrollbar-color:#bbb #eaeaea}
 
 html{user-select:none}
 [type=text]{text-transform:capitalize}
-button,select,input,.box,.pointer,.hotkeys label,select + label,[type=checkbox] + label,[type=color] + label,[type=range],[type=range] + label{cursor:pointer}
+button,select,input,.box,.pointer,select + label,[type=checkbox] + label,[type=color] + label,[type=range],[type=range] + label{cursor:pointer}
 [type=checkbox]:disabled,[type=checkbox]:disabled + label,select:disabled,select:disabled + label,[type=range]:disabled,[type=range]:disabled + label{cursor:initial}
 
 [type=color]{border:0;outline:0;background:none;position:relative;top:2px}
