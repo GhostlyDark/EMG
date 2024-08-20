@@ -29,9 +29,14 @@ Can be found in `build/EMG` after running `compile.sh`. See below for more detai
 
 ## Linux
 
-Install dependencies:
+Install dependencies (Ubuntu/Debian):
 ```
-sudo apt install -y build-essential cmake curl freeglut3-dev gcc git libfreetype-dev libhidapi-dev libhidapi-hidraw0 libpng-dev libsamplerate0-dev libsdl2-dev libspeexdsp-dev libvulkan-dev make nasm ninja-build p7zip-full wget zlib1g-dev
+sudo apt install -y build-essential cmake curl freeglut3-dev gcc git libfreetype-dev libgtk-3-dev libhidapi-dev libhidapi-hidraw0 libpng-dev libsamplerate0-dev libsdl2-dev libspeexdsp-dev libvulkan-dev make nasm ninja-build p7zip-full wget zlib1g-dev
+```
+
+Install dependencies (Fedora):
+```
+sudo dnf install cmake curl freeglut-devel freetype-devel gcc gcc-c++ git gtk3-devel hidapi-devel libpng-devel libsamplerate-devel make nasm ninja-build p7zip p7zip-plugins SDL2-devel speexdsp-devel vulkan-devel wget zlib-ng-devel
 ```
 
 Install Rust:
