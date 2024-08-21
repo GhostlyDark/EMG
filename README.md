@@ -29,30 +29,38 @@ Can be found in `build/EMG` after running `compile.sh`. See below for more detai
 
 ## Linux
 
-Install dependencies (Ubuntu/Debian):
-```
-sudo apt install -y build-essential cmake curl freeglut3-dev gcc git libfreetype-dev libgtk-3-dev libhidapi-dev libhidapi-hidraw0 libpng-dev libsamplerate0-dev libsdl2-dev libspeexdsp-dev libvulkan-dev make nasm ninja-build p7zip-full wget zlib1g-dev
-```
+Install dependencies (including rust):
 
-Install dependencies (Fedora):
-```
-sudo dnf install cmake curl freeglut-devel freetype-devel gcc gcc-c++ git gtk3-devel hidapi-devel libpng-devel libsamplerate-devel make nasm ninja-build p7zip p7zip-plugins SDL2-devel speexdsp-devel vulkan-devel wget zlib-ng-devel
-```
+- Ubuntu/Debian (apt):
+  ```
+  sudo apt install -y build-essential cmake curl freeglut3-dev gcc git libfreetype-dev libgtk-3-dev libhidapi-dev libhidapi-hidraw0 libpng-dev libsamplerate0-dev libsdl2-dev libspeexdsp-dev libvulkan-dev make nasm ninja-build p7zip-full wget zlib1g-dev
+  ```
 
-Install dependencies (Arch Linux):
-```
-sudo pacman -S --needed cmake freetype2 gcc git glew hidapi libpng libsamplerate make nasm ninja p7zip rust sdl2 speex vulkan-headers wget
-```
+  ```
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+  ```
 
-Install Rust:
-```
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-```
+  ```
+  source "$HOME/.cargo/env"
+  ```
 
-Configure Rust:
-```
-source "$HOME/.cargo/env"
-```
+- Fedora (dnf):
+  ```
+  sudo dnf install cmake curl freeglut-devel freetype-devel gcc gcc-c++ git gtk3-devel hidapi-devel libpng-devel libsamplerate-devel make nasm ninja-build p7zip p7zip-plugins SDL2-devel speexdsp-devel vulkan-devel wget zlib-ng-devel
+  ```
+
+  ```
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+  ```
+
+  ```
+  source "$HOME/.cargo/env"
+  ```
+
+- Arch Linux (pacman):
+  ```
+  sudo pacman -S --needed cmake freetype2 gcc git glew hidapi libpng libsamplerate make nasm ninja p7zip rust sdl2 speex vulkan-headers wget
+  ```
 
 Clone repository:
 ```
