@@ -39,6 +39,11 @@ Install dependencies (Fedora):
 sudo dnf install cmake curl freeglut-devel freetype-devel gcc gcc-c++ git gtk3-devel hidapi-devel libpng-devel libsamplerate-devel make nasm ninja-build p7zip p7zip-plugins SDL2-devel speexdsp-devel vulkan-devel wget zlib-ng-devel
 ```
 
+Install dependencies (Arch Linux):
+```
+sudo pacman -S --needed cmake freetype2 gcc git glew hidapi libpng libsamplerate make nasm ninja p7zip rust sdl2 speex vulkan-headers wget
+```
+
 Install Rust:
 ```
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
@@ -71,7 +76,7 @@ Releases can be found [here](https://github.com/GhostlyDark/EMG/releases/latest)
 
 To build EMG instead, download and install [MSYS2](https://www.msys2.org/). Run `MSYS2 MinGW x64` and install dependencies:
 ```
-pacman -S --needed git make mingw-w64-x86_64-cmake mingw-w64-x86_64-freetype mingw-w64-x86_64-gcc mingw-w64-x86_64-glew mingw-w64-x86_64-hidapi mingw-w64-x86_64-libpng mingw-w64-x86_64-libsamplerate mingw-w64-x86_64-nasm mingw-w64-x86_64-ninja mingw-w64-x86_64-rust mingw-w64-x86_64-SDL2 mingw-w64-x86_64-speex mingw-w64-x86_64-vulkan p7zip
+pacman -S --needed git make mingw-w64-x86_64-cmake mingw-w64-x86_64-freetype mingw-w64-x86_64-gcc mingw-w64-x86_64-glew mingw-w64-x86_64-hidapi mingw-w64-x86_64-libpng mingw-w64-x86_64-libsamplerate mingw-w64-x86_64-nasm mingw-w64-x86_64-ninja mingw-w64-x86_64-rust mingw-w64-x86_64-SDL2 mingw-w64-x86_64-speex mingw-w64-x86_64-vulkan-headers p7zip
 ```
 
 Clone repository:
