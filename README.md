@@ -22,12 +22,25 @@ EMG is a launcher for [mupen64plus](https://github.com/GhostlyDark/mupen64plus-c
 
 Follow the [instructions](https://dolphin-emu.org/docs/guides/how-use-official-gc-controller-adapter-wii-u/#Installation) to set up the adapter. Third party adapters may fail to work.
 
+**Shortcuts:**
+
+- `Ctrl` + `I`: Toggle developer tools
+- `Ctrl` + `L`: Launch mupen64plus
+- `Ctrl` + `N`: Reset all settings
+- `Ctrl` + `O`: Open ROM
+- `Ctrl` + `R`: Reload
+- `Ctrl` + `Numpad+`: Zoom in
+- `Ctrl` + `Numpad-`: Zoom out
+- `Ctrl` + `Numpad0`: Zoom reset
+
 **Build files:**
 
 Can be found in `build/EMG` after running `compile.sh`. See below for more details.
 
 
-## Windows
+## Supported platforms
+
+### Windows
 
 Releases can be found [here](https://github.com/GhostlyDark/EMG/releases/latest).
 
@@ -52,7 +65,7 @@ Run `compile.sh`:
 ```
 
 
-## Linux
+### Linux
 
 Prebuilt binaries can be found [here](https://github.com/GhostlyDark/EMG/releases/latest). Cloning and compiling can be skipped this way, but dependencies must have been installed regardless.
 
@@ -105,7 +118,9 @@ chmod u+x compile.sh && ./compile.sh
 ```
 
 
-## Building options
+## Additional info
+
+### Build options
 
 The build script `compile.sh` can be run with additional parameters:
 ```
@@ -118,12 +133,12 @@ Limit the building process to one thread and grab Electron v22.3.27:
 ```
 
 
-## Adding plugins
+### Custom plugins
 
-Plugin files are stored in `resources/m64p/plugin`. EMG does allow for plugins to be added, as long as they follow the `mupen64plus-[type]-[name].[extension]` naming scheme. Accepted plugin types are `audio`, `input`, `rsp` and `video`.
+Plugin files are stored in `resources/m64p/plugin`. EMG does allow for unknown plugins to be added, as long as they follow the `mupen64plus-[type]-[name].[extension]` naming scheme. Accepted plugin types are `audio`, `input`, `rsp` and `video`.
 
 
-## Portable mode
+### Portable mode
 
 By default, EMG stores its settings (userData) in `%appdata%/EMG` on Windows and either `$XDG_CONFIG_HOME/EMG` or `~/.config/EMG` on Linux. To override the default location, create a folder `resources/data`.
 
@@ -132,18 +147,6 @@ If that directory exists, userData is instead stored in `resources/data/user`. A
 Delete or rename the `data` directory to restore original behavior.
 
 
-## Shortcuts
+### Troubleshooting
 
-- `Ctrl` + `I`: Toggle developer tools
-- `Ctrl` + `L`: Launch mupen64plus
-- `Ctrl` + `N`: Reset all settings
-- `Ctrl` + `O`: Open ROM
-- `Ctrl` + `R`: Reload
-- `Ctrl` + `Numpad+`: Zoom in
-- `Ctrl` + `Numpad-`: Zoom out
-- `Ctrl` + `Numpad0`: Zoom reset
-
-
-## Troubleshooting
-
-Logging happens once mupen64plus closes after pressing `Launch`. To view the log, open developer tools and switch to the `Console` tab. Right click on the relevant log -> `Save as...` to save it as text file.
+Logging happens once a mupen64plus instance closes successfully. To view the log, open developer tools by pressing `Ctrl` + `I` and switch to the `Console` tab. Right click on the relevant log -> `Save as...` to save it as text file.
