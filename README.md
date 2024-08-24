@@ -27,7 +27,34 @@ Follow the [instructions](https://dolphin-emu.org/docs/guides/how-use-official-g
 Can be found in `build/EMG` after running `compile.sh`. See below for more details.
 
 
+## Windows
+
+Releases can be found [here](https://github.com/GhostlyDark/EMG/releases/latest).
+
+To build EMG instead, download and install [MSYS2](https://www.msys2.org/). Run `MSYS2 MinGW x64` and install dependencies:
+```
+pacman -S --needed git make mingw-w64-x86_64-cmake mingw-w64-x86_64-freetype mingw-w64-x86_64-gcc mingw-w64-x86_64-glew mingw-w64-x86_64-hidapi mingw-w64-x86_64-libpng mingw-w64-x86_64-libsamplerate mingw-w64-x86_64-nasm mingw-w64-x86_64-ninja mingw-w64-x86_64-rust mingw-w64-x86_64-SDL2 mingw-w64-x86_64-speex mingw-w64-x86_64-vulkan-headers p7zip
+```
+
+Clone repository:
+```
+git clone https://github.com/GhostlyDark/EMG EMG
+```
+
+Change directory:
+```
+cd EMG
+```
+
+Run `compile.sh`:
+```
+./compile.sh
+```
+
+
 ## Linux
+
+Prebuilt binaries can be found [here](https://github.com/GhostlyDark/EMG/releases/latest). Cloning and compiling can be skipped this way, but dependencies must have been installed regardless.
 
 Install dependencies (including rust):
 
@@ -75,31 +102,6 @@ cd EMG
 Run `compile.sh`:
 ```
 chmod u+x compile.sh && ./compile.sh
-```
-
-
-## Windows
-
-Releases can be found [here](https://github.com/GhostlyDark/EMG/releases/latest).
-
-To build EMG instead, download and install [MSYS2](https://www.msys2.org/). Run `MSYS2 MinGW x64` and install dependencies:
-```
-pacman -S --needed git make mingw-w64-x86_64-cmake mingw-w64-x86_64-freetype mingw-w64-x86_64-gcc mingw-w64-x86_64-glew mingw-w64-x86_64-hidapi mingw-w64-x86_64-libpng mingw-w64-x86_64-libsamplerate mingw-w64-x86_64-nasm mingw-w64-x86_64-ninja mingw-w64-x86_64-rust mingw-w64-x86_64-SDL2 mingw-w64-x86_64-speex mingw-w64-x86_64-vulkan-headers p7zip
-```
-
-Clone repository:
-```
-git clone https://github.com/GhostlyDark/EMG EMG
-```
-
-Change directory:
-```
-cd EMG
-```
-
-Run `compile.sh`:
-```
-./compile.sh
 ```
 
 
