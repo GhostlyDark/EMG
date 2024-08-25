@@ -28,7 +28,7 @@ ext=".so"
 gca="libmupen64plus_input_gca.so"
 platform="linux"
 
-if [[ "$OSTYPE" == "msys"* ]]; then
+if [[ $(uname -s) = MINGW64* ]]; then
     exe=".exe"
     ext=".dll"
     gca="mupen64plus_input_gca.dll"
@@ -59,7 +59,7 @@ cp -R source/* $cmake_dir
 
 
 # Fix script file permissions
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+if [[ $(uname -s) = Linux* ]]; then
     pushd "$cmake_dir"
     chmod u+x mupen64plus-video-GLideN64/src/getRevision.sh
 fi
@@ -73,7 +73,7 @@ pushd "$build_dir"
 7z x electron-$electron-$platform-x64.zip -oEMG '-x!LICENSE' '-x!LICENSES.chromium.html' '-x!version' '-x!resources/default_app.asar' '-x!locales/*.pak' -y
 7z x electron-$electron-$platform-x64.zip -oEMG '-i!locales/en-US.pak' -y
 
-if [[ "$OSTYPE" == "msys"* ]]; then
+if [[ $(uname -s) = MINGW64* ]]; then
     [ ! -f rcedit-x64.exe ] && wget https://github.com/electron/rcedit/releases/download/v1.1.1/rcedit-x64.exe
 fi
 
@@ -86,7 +86,7 @@ cmake "$toplvl_dir" -G "Ninja"
 cmake --build "$cmake_dir" --parallel "$threads"
 cmake --install "$cmake_dir"
 
-if [[ "$OSTYPE" == "msys"* ]]; then
+if [[ $(uname -s) = MINGW64* ]]; then
     cmake --build "$cmake_dir" --target=bundle_dependencies
 fi
 
@@ -102,7 +102,7 @@ mv $gca mupen64plus-input-gca$ext
 
 
 # Fix executable file permissions
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+if [[ $(uname -s) = Linux* ]]; then
     pushd "$m64p_dir"
     chmod u+x mupen64plus
     chmod u+x sdl2-jstest
@@ -113,7 +113,7 @@ fi
 # rcedit
 pushd "$toplvl_dir"
 
-if [[ "$OSTYPE" == "msys"* ]]; then
+if [[ $(uname -s) = MINGW64* ]]; then
     cmd //c $build_dir/rcedit-x64 $m64p_dir/mupen64plus.exe --set-icon $ico_dir/mupen64plus.ico
     cmd //c $build_dir/rcedit-x64 $emg_dir/EMG.exe --set-icon $ico_dir/emg.ico --set-version-string LegalCopyright "(C) 2024 EvilGames.eu" --set-version-string OriginalFilename "electron.exe" --set-version-string FileDescription "EMG" --set-version-string ProductName "EMG" --set-version-string CompanyName "EvilGames.eu"
 fi

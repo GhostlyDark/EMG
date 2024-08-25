@@ -22,7 +22,7 @@ rt64_release_dir="$rt64_build_dir/Release"
 # Platform specific settings
 ext=".so"
 
-if [[ "$OSTYPE" == "msys"* ]]; then
+if [[ $(uname -s) = MINGW64* ]]; then
     ext=".dll"
 fi
 
@@ -56,12 +56,12 @@ fi
 mkdir build
 cd build
 
-if [[ "$OSTYPE" == "msys"* ]]; then
+if [[ $(uname -s) = MINGW64* ]]; then
     cmake .. -G "Visual Studio 17 2022"
     cmake --build . --config Release
 fi
 
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+if [[ $(uname -s) = Linux* ]]; then
     cmake .. -DCMAKE_BUILD_TYPE=Release
     cmake --build .
 fi
@@ -71,12 +71,12 @@ fi
 # Copy files
 pushd "$build_dir"
 
-if [[ "$OSTYPE" == "msys"* ]]; then
+if [[ $(uname -s) = MINGW64* ]]; then
     cp $rt64_build_dir/dxcompiler.dll $rt64_build_dir/dxil.dll $m64p_dir
     cp $rt64_build_dir/dxcompiler.dll $rt64_build_dir/dxil.dll $rt64_release_dir/rt64$ext $plugin_dir
 fi
 
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+if [[ $(uname -s) = Linux* ]]; then
     cp $rt64_build_dir/rt64$ext $plugin_dir
 fi
 
