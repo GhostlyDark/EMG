@@ -102,6 +102,11 @@ Install dependencies (including rust):
   sudo pacman -S --needed cmake freetype2 gcc git glew hidapi libpng libsamplerate make nasm ninja p7zip rust sdl2 speex vulkan-headers wget
   ```
 
+- openSUSE Tumbleweed (zypper):
+  ```
+  sudo zypper install 7zip SDL2-devel cmake curl freeglut-devel freetype2-devel gcc gcc-c++ git gtk3-devel libhidapi-devel libhidapi-hidraw0 libpng16-devel libsamplerate-devel make nasm ninja rust speex-devel vulkan-devel wget zlib-devel
+  ```
+
 Clone repository:
 ```
 git clone https://github.com/GhostlyDark/EMG EMG
