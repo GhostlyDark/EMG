@@ -2,13 +2,15 @@ cmake_minimum_required(VERSION 3.15)
 
 project(EMG)
 
-set(INSTALL_PATH "${CMAKE_SOURCE_DIR}/build/EMG/resources/m64p")
+set(INSTALL_PATH ${CMAKE_SOURCE_DIR}/build/EMG/resources/m64p)
 
 add_custom_target(bundle_dependencies
 	COMMAND bash "${CMAKE_SOURCE_DIR}/dependencies.sh" "${INSTALL_PATH}/mupen64plus.exe" "${INSTALL_PATH}" "/mingw64/bin"
 )
 
 include(ExternalProject)
+
+
 
 if(WIN32)
     set(SO_EXT ".dll")
@@ -22,17 +24,20 @@ else()
     set(CORE_FILE "mupen64plus.so")
 endif()
 
-set(M64P_CORE_DIR ${CMAKE_BINARY_DIR}/mupen64plus-core)
-set(APIDIR ${M64P_CORE_DIR}/src/api)
 
-set(GLIDEN64_DIR "${CMAKE_BINARY_DIR}/mupen64plus-video-GLideN64")
 
-set(GLIDEN64_BUILD_DIR "${GLIDEN64_DIR}/projects/cmake")
+set(APIDIR ${CMAKE_BINARY_DIR}/mupen64plus-core/src/api)
+
+set(GLIDEN64_DIR ${CMAKE_BINARY_DIR}/mupen64plus-video-GLideN64)
+
+set(GLIDEN64_BUILD_DIR ${GLIDEN64_DIR}/projects/cmake)
 if(WIN32)
-	set(GLIDEN64_LIB "${GLIDEN64_BUILD_DIR}/mupen64plus-video-GLideN64${SO_EXT}")
+	set(GLIDEN64_LIB ${GLIDEN64_BUILD_DIR}/mupen64plus-video-GLideN64${SO_EXT})
 else()
-	set(GLIDEN64_LIB "${GLIDEN64_BUILD_DIR}/plugin/Release/mupen64plus-video-GLideN64${SO_EXT}")
+	set(GLIDEN64_LIB ${GLIDEN64_BUILD_DIR}/plugin/Release/mupen64plus-video-GLideN64${SO_EXT})
 endif()
+
+
 
 ExternalProject_Add(mupen64plus-core
     SOURCE_DIR mupen64plus-core/
@@ -43,9 +48,9 @@ ExternalProject_Add(mupen64plus-core
     BUILD_COMMAND make all ACCURATE_FPU=1 OSD=0 TARGET=${CORE_FILE}
     BUILD_IN_SOURCE False
 
-    BINARY_DIR ${M64P_CORE_DIR}/projects/unix
+    BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-core/projects/unix
     
-    BUILD_BYPRODUCTS ${M64P_CORE_DIR}/projects/unix/${CORE_FILE}
+    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-core/projects/unix/${CORE_FILE}
 )
 
 ExternalProject_Add(mupen64plus-ui-console
@@ -243,10 +248,12 @@ ExternalProject_Add(sdl-jstest
     BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/sdl-jstest/sdl2-jstest${EXE_EXT}
 )
 
+
+
 ExternalProject_Get_property(mupen64plus-core BUILD_BYPRODUCTS)
 set(MUPEN64PLUSCORE_LIB ${BUILD_BYPRODUCTS})
-set(MUPEN64PLUSCORE_INI ${M64P_CORE_DIR}/data/mupen64plus.ini)
-set(MUPEN64PLUSCORE_CHT ${M64P_CORE_DIR}/data/mupencheat.txt)
+set(MUPEN64PLUSCORE_INI ${CMAKE_BINARY_DIR}/mupen64plus-core/data/mupen64plus.ini)
+set(MUPEN64PLUSCORE_CHT ${CMAKE_BINARY_DIR}/mupen64plus-core/data/mupencheat.txt)
 
 ExternalProject_Get_property(mupen64plus-ui-console BUILD_BYPRODUCTS)
 set(MUPEN64PLUS_UI ${BUILD_BYPRODUCTS})
@@ -291,6 +298,8 @@ set(MUPEN64PLUS_PLUGIN_AUDIO_SDL ${BUILD_BYPRODUCTS})
 
 ExternalProject_Get_property(sdl-jstest BUILD_BYPRODUCTS)
 set(SDL_JSTEST ${BUILD_BYPRODUCTS})
+
+
 
 install(FILES ${MUPEN64PLUS_UI}
     DESTINATION ${INSTALL_PATH}
