@@ -241,7 +241,6 @@ ExternalProject_Add(sdl-jstest
     INSTALL_COMMAND ""
 
     BUILD_IN_SOURCE True
-    CMAKE_ARGS
     
     BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/sdl-jstest/sdl2-jstest${BIN_EXT}
 )
