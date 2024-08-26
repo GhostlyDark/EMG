@@ -13,15 +13,13 @@ include(ExternalProject)
 
 
 if(WIN32)
-    set(SO_EXT ".dll")
-    set(EXE_EXT ".exe")
+    set(LIB_EXT ".dll")
+    set(BIN_EXT ".exe")
     set(GCA_LIB "mupen64plus_input_gca.dll")
-    set(CORE_FILE "mupen64plus.dll")
 else()
-    set(SO_EXT ".so")
-    set(EXE_EXT "")
+    set(LIB_EXT ".so")
+    set(BIN_EXT "")
     set(GCA_LIB "libmupen64plus_input_gca.so")
-    set(CORE_FILE "mupen64plus.so")
 endif()
 
 
@@ -32,9 +30,9 @@ set(GLIDEN64_DIR ${CMAKE_BINARY_DIR}/mupen64plus-video-GLideN64)
 
 set(GLIDEN64_BUILD_DIR ${GLIDEN64_DIR}/projects/cmake)
 if(WIN32)
-	set(GLIDEN64_LIB ${GLIDEN64_BUILD_DIR}/mupen64plus-video-GLideN64${SO_EXT})
+	set(GLIDEN64_LIB ${GLIDEN64_BUILD_DIR}/mupen64plus-video-GLideN64${LIB_EXT})
 else()
-	set(GLIDEN64_LIB ${GLIDEN64_BUILD_DIR}/plugin/Release/mupen64plus-video-GLideN64${SO_EXT})
+	set(GLIDEN64_LIB ${GLIDEN64_BUILD_DIR}/plugin/Release/mupen64plus-video-GLideN64${LIB_EXT})
 endif()
 
 
@@ -45,12 +43,12 @@ ExternalProject_Add(mupen64plus-core
     CONFIGURE_COMMAND ""
     INSTALL_COMMAND ""
 
-    BUILD_COMMAND make all ACCURATE_FPU=1 OSD=0 TARGET=${CORE_FILE}
+    BUILD_COMMAND make all ACCURATE_FPU=1 OSD=0 TARGET=mupen64plus${LIB_EXT}
     BUILD_IN_SOURCE False
 
     BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-core/projects/unix
     
-    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-core/projects/unix/${CORE_FILE}
+    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-core/projects/unix/mupen64plus${LIB_EXT}
 )
 
 ExternalProject_Add(mupen64plus-ui-console
@@ -64,7 +62,7 @@ ExternalProject_Add(mupen64plus-ui-console
 
     BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-ui-console/projects/unix
     
-    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-ui-console/projects/unix/mupen64plus${EXE_EXT}
+    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-ui-console/projects/unix/mupen64plus${BIN_EXT}
     DEPENDS mupen64plus-core
 )
 
@@ -79,7 +77,7 @@ ExternalProject_Add(mupen64plus-rsp-cxd4
 
     BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-rsp-cxd4/projects/unix
     
-    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-rsp-cxd4/projects/unix/mupen64plus-rsp-cxd4${SO_EXT}
+    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-rsp-cxd4/projects/unix/mupen64plus-rsp-cxd4${LIB_EXT}
     DEPENDS mupen64plus-core
 )
 
@@ -94,7 +92,7 @@ ExternalProject_Add(mupen64plus-rsp-hle
 
     BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-rsp-hle/projects/unix
     
-    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-rsp-hle/projects/unix/mupen64plus-rsp-hle${SO_EXT}
+    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-rsp-hle/projects/unix/mupen64plus-rsp-hle${LIB_EXT}
     DEPENDS mupen64plus-core
 )
 
@@ -106,7 +104,7 @@ ExternalProject_Add(mupen64plus-rsp-parallel
     BUILD_IN_SOURCE True
     CMAKE_ARGS -DCMAKE_BUILD_TYPE=Release
 
-    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-rsp-parallel/mupen64plus-rsp-parallel${SO_EXT}
+    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-rsp-parallel/mupen64plus-rsp-parallel${LIB_EXT}
     DEPENDS mupen64plus-core
 )
 
@@ -121,7 +119,7 @@ ExternalProject_Add(mupen64plus-input-sdl
 
     BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-input-sdl/projects/unix
     
-    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-input-sdl/projects/unix/mupen64plus-input-sdl${SO_EXT}
+    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-input-sdl/projects/unix/mupen64plus-input-sdl${LIB_EXT}
     DEPENDS mupen64plus-core
 )
 
@@ -136,7 +134,7 @@ ExternalProject_Add(mupen64plus-input-raphnetraw
 
     BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-input-raphnetraw/projects/unix
     
-    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-input-raphnetraw/projects/unix/mupen64plus-input-raphnetraw${SO_EXT}
+    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-input-raphnetraw/projects/unix/mupen64plus-input-raphnetraw${LIB_EXT}
     DEPENDS mupen64plus-core
 )
 
@@ -161,7 +159,7 @@ ExternalProject_Add(mupen64plus-video-angrylion-plus
     BUILD_IN_SOURCE True
     CMAKE_ARGS -DBUILD_MUPEN64PLUS=ON -DBUILD_PROJECT64=OFF
 
-    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-video-angrylion-plus/mupen64plus-video-angrylion-plus${SO_EXT}
+    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-video-angrylion-plus/mupen64plus-video-angrylion-plus${LIB_EXT}
     DEPENDS mupen64plus-core
 )
 
@@ -188,7 +186,7 @@ ExternalProject_Add(mupen64plus-video-parallel
     BUILD_IN_SOURCE True
     CMAKE_ARGS -DCMAKE_BUILD_TYPE=Release
 
-    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-video-parallel/mupen64plus-video-parallel${SO_EXT}
+    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-video-parallel/mupen64plus-video-parallel${LIB_EXT}
     DEPENDS mupen64plus-core
 )
 
@@ -203,7 +201,7 @@ ExternalProject_Add(mupen64plus-video-rice
 
     BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-video-rice/projects/unix
 
-    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-video-rice/projects/unix/mupen64plus-video-rice${SO_EXT}
+    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-video-rice/projects/unix/mupen64plus-video-rice${LIB_EXT}
     DEPENDS mupen64plus-core
 )
 
@@ -218,7 +216,7 @@ ExternalProject_Add(mupen64plus-video-glide64mk2
 
     BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-video-glide64mk2/projects/unix
 
-    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-video-glide64mk2/projects/unix/mupen64plus-video-glide64mk2${SO_EXT}
+    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-video-glide64mk2/projects/unix/mupen64plus-video-glide64mk2${LIB_EXT}
     DEPENDS mupen64plus-core
 )
 
@@ -233,7 +231,7 @@ ExternalProject_Add(mupen64plus-audio-sdl
 
     BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-audio-sdl/projects/unix
     
-    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-audio-sdl/projects/unix/mupen64plus-audio-sdl${SO_EXT}
+    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-audio-sdl/projects/unix/mupen64plus-audio-sdl${LIB_EXT}
     DEPENDS mupen64plus-core
 )
 
@@ -245,7 +243,7 @@ ExternalProject_Add(sdl-jstest
     BUILD_IN_SOURCE True
     CMAKE_ARGS
     
-    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/sdl-jstest/sdl2-jstest${EXE_EXT}
+    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/sdl-jstest/sdl2-jstest${BIN_EXT}
 )
 
 
