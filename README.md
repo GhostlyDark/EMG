@@ -129,12 +129,12 @@ chmod u+x compile.sh && ./compile.sh
 
 The build script `compile.sh` can be run with additional parameters:
 ```
-./compile.sh [threads] [electron]
+./compile.sh [threads]
 ```
 
-Limit the building process to one thread and grab Electron v22.3.27:
+Limit the building process to one thread:
 ```
-./compile.sh 1 v22.3.27
+./compile.sh 1
 ```
 
 
