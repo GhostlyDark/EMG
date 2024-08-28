@@ -39,17 +39,15 @@ fi
 
 # Clone rt64 recursively
 
-pushd "$build_dir"
-
-if [ ! -d "$rt64_dir" ]; then
-    git clone https://github.com/GhostlyDark/rt64 rt64 --recursive -b plugin --depth 1
+if [[ ! -d $rt64_dir ]]; then
+    git clone https://github.com/GhostlyDark/rt64 $rt64_dir --recursive -b plugin --depth 1
 fi
 
 
 
 # Remove previous build files
 
-if [ -d $rt64_build_dir ]; then
+if [[ -d $rt64_build_dir ]]; then
     echo "Build directory for rt64 already exist. Delete folder to proceed?"
     select yn in "Continue" "Exit"; do
         case $yn in
@@ -63,19 +61,16 @@ fi
 
 # Build rt64
 
-pushd "$rt64_dir"
-
-mkdir build
-cd build
+mkdir -p "$rt64_build_dir"
 
 if [[ $(uname -s) = MINGW64* ]]; then
-    cmake .. -G "Visual Studio 17 2022"
-    cmake --build . --config Release --parallel "$threads"
+    cmake -S $rt64_dir -B $rt64_build_dir -G "Visual Studio 17 2022"
+    cmake --build $rt64_build_dir --config Release --parallel "$threads"
 fi
 
 if [[ $(uname -s) = Linux* ]]; then
-    cmake .. -DCMAKE_BUILD_TYPE=Release
-    cmake --build . --parallel "$threads"
+    cmake -S $rt64_dir -B $rt64_build_dir -DCMAKE_BUILD_TYPE=Release
+    cmake --build $rt64_build_dir --parallel "$threads"
 fi
 
 

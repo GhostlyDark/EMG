@@ -81,12 +81,11 @@ mkdir -p "$build_dir" "$cmake_dir" "$emg_dir"
 # Download and extract Electron
 
 if [[ ! -f $emg_dir/EMG$exe ]]; then
-    pushd "$build_dir"
 
-    [ ! -f electron-$electron-$platform-x64.zip ] && wget https://github.com/electron/electron/releases/download/$electron/electron-$electron-$platform-x64.zip
+    [ ! -f $build_dir/electron-$electron-$platform-x64.zip ] && wget https://github.com/electron/electron/releases/download/$electron/electron-$electron-$platform-x64.zip -P $build_dir/
 
-    7z x electron-$electron-$platform-x64.zip -oEMG '-x!LICENSE' '-x!LICENSES.chromium.html' '-x!version' '-x!resources/default_app.asar' '-x!locales/*.pak' -y
-    7z x electron-$electron-$platform-x64.zip -oEMG '-i!locales/en-US.pak' -y
+    7z x $build_dir/electron-$electron-$platform-x64.zip -o$build_dir/EMG '-x!LICENSE' '-x!LICENSES.chromium.html' '-x!version' '-x!resources/default_app.asar' '-x!locales/*.pak' -y
+    7z x $build_dir/electron-$electron-$platform-x64.zip -o$build_dir/EMG '-i!locales/en-US.pak' -y
 
     mv $emg_dir/electron$exe $emg_dir/EMG$exe
 
@@ -113,8 +112,6 @@ fi
 
 
 # Build
-
-pushd "$cmake_dir"
 
 cmake -S "$toplvl_dir" -B "$cmake_dir" -G "Ninja"
 cmake --build "$cmake_dir" --parallel "$threads"
