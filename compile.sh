@@ -60,7 +60,7 @@ fi
 
 # Remove files from previous build
 
-if [ -d $cmake_dir ] || [ -d $rsc_dir ] ; then
+if [[ -d $cmake_dir ]] || [[ -d $rsc_dir ]] ; then
     echo "Working directories (CMake, EMG/resources) already exist. Delete folders to proceed?"
     select yn in "Continue" "Exit"; do
         case $yn in
@@ -97,13 +97,17 @@ if [[ ! -f $emg_dir/EMG$exe ]]; then
 fi
 
 
+
 # Copy files
 
 cp -R $toplvl_dir/resources $rsc_dir
-cp -R $toplvl_dir/source/* $cmake_dir
+
+
+
+# Fix getRevision.sh file permissions
 
 if [[ $(uname -s) = Linux* ]]; then
-    chmod u+x $cmake_dir/mupen64plus-video-GLideN64/src/getRevision.sh
+    chmod u+x $toplvl_dir/source/mupen64plus-video-GLideN64/src/getRevision.sh
 fi
 
 
@@ -112,7 +116,7 @@ fi
 
 pushd "$cmake_dir"
 
-cmake "$toplvl_dir" -G "Ninja"
+cmake -S "$toplvl_dir" -B "$cmake_dir" -G "Ninja"
 cmake --build "$cmake_dir" --parallel "$threads"
 cmake --install "$cmake_dir"
 
