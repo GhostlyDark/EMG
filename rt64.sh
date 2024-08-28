@@ -21,7 +21,7 @@ rsc_dir="$emg_dir/resources"
 m64p_dir="$rsc_dir/m64p"
 plugin_dir="$m64p_dir/plugin"
 
-rt64_dir="$cmake_dir/rt64"
+rt64_dir="$build_dir/rt64"
 rt64_build_dir="$rt64_dir/build"
 rt64_release_dir="$rt64_build_dir/Release"
 
@@ -39,7 +39,7 @@ fi
 
 # Clone rt64 recursively
 
-pushd "$cmake_dir"
+pushd "$build_dir"
 
 if [ ! -d "$rt64_dir" ]; then
     git clone https://github.com/GhostlyDark/rt64 rt64 --recursive -b plugin --depth 1
