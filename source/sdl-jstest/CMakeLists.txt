@@ -17,10 +17,8 @@
 cmake_minimum_required(VERSION 3.9)
 project(sdl-jstest)
 
-find_package(PkgConfig REQUIRED)
-pkg_search_module(SDL2 REQUIRED sdl2)
+find_package(SDL2 REQUIRED)
 
-link_directories(${SDL2_LIBRARY_DIRS})
 add_executable(sdl2-jstest sdl2-jstest.c)
 target_link_libraries(sdl2-jstest ${SDL2_LIBRARIES})
 target_include_directories(sdl2-jstest PUBLIC ${SDL2_INCLUDE_DIRS})

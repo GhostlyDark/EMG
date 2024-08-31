@@ -22,8 +22,30 @@ Requirements
 
 `sdl2-jstest` requires the following packages to build:
 
-* cmake
-* libsdl2-dev
+- Windows (MSYS2 MINGW64):
+  ```
+  pacman -S --needed mingw-w64-x86_64-cmake mingw-w64-x86_64-SDL2
+  ```
+
+- Ubuntu/Debian (apt):
+  ```
+  sudo apt install -y cmake libsdl2-dev
+  ```
+
+- Fedora (dnf):
+  ```
+  sudo dnf install cmake SDL2-devel
+  ```
+
+- Arch Linux (pacman):
+  ```
+  sudo pacman -S --needed cmake sdl2
+  ```
+
+- openSUSE Tumbleweed (zypper):
+  ```
+  sudo zypper install SDL2-devel cmake
+  ```
 
 Optionally, put `gamecontrollerdb.txt` from [SDL_GameControllerDB](https://github.com/gabomdq/SDL_GameControllerDB) into the same folder as the binary to improve the joystick mapping function.
 
