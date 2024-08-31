@@ -82,10 +82,10 @@ mkdir -p "$build_dir" "$cmake_dir" "$emg_dir"
 
 if [[ ! -f $emg_dir/EMG$exe ]]; then
 
-    [ ! -f $build_dir/electron-$electron-$platform-x64.zip ] && wget https://github.com/electron/electron/releases/download/$electron/electron-$electron-$platform-x64.zip -P $build_dir/
+    [[ ! -f $build_dir/electron-$electron-$platform-x64.zip ]] && wget https://github.com/electron/electron/releases/download/$electron/electron-$electron-$platform-x64.zip -P $build_dir/
 
-    7z x $build_dir/electron-$electron-$platform-x64.zip -o$build_dir/EMG '-x!LICENSE' '-x!LICENSES.chromium.html' '-x!version' '-x!resources/default_app.asar' '-x!locales/*.pak' -y
-    7z x $build_dir/electron-$electron-$platform-x64.zip -o$build_dir/EMG '-i!locales/en-US.pak' -y
+    unzip -o $build_dir/electron-$electron-$platform-x64.zip -d $build_dir/EMG -x LICENSE LICENSES.chromium.html version resources/default_app.asar 'locales/*.pak'
+    unzip -o $build_dir/electron-$electron-$platform-x64.zip locales/en-US.pak -d $build_dir/EMG
 
     mv $emg_dir/electron$exe $emg_dir/EMG$exe
 
