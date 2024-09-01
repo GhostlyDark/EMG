@@ -117,9 +117,14 @@ Change directory:
 cd EMG
 ```
 
+Make `compile.sh` executable:
+```
+chmod u+x compile.sh
+```
+
 Run `compile.sh`:
 ```
-chmod u+x compile.sh && ./compile.sh
+./compile.sh
 ```
 
 
