@@ -104,7 +104,7 @@ Install dependencies (including rust):
 
 - openSUSE Tumbleweed (zypper):
   ```
-  sudo zypper install SDL2-devel cmake curl freeglut-devel freetype2-devel gcc gcc-c++ git gtk3-devel libhidapi-devel libhidapi-hidraw0 libpng16-devel libsamplerate-devel make nasm ninja pkgconf-pkg-config rust speex-devel unzip vulkan-devel wget zlib-devel
+  sudo zypper install SDL2-devel cmake freeglut-devel freetype2-devel gcc gcc-c++ git gtk3-devel libhidapi-devel libhidapi-hidraw0 libpng16-devel libsamplerate-devel make nasm ninja pkgconf-pkg-config rust speex-devel unzip vulkan-devel wget zlib-devel
   ```
 
 Clone repository:
