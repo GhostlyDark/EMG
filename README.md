@@ -1,6 +1,8 @@
 # EMG
 
-EMG is a launcher for [mupen64plus](https://github.com/GhostlyDark/mupen64plus-core) using [Electron](https://github.com/electron/electron). For controller input, a custom build of [sdl2-jstest](https://github.com/GhostlyDark/sdl-jstest) is used.
+EMG is a launcher for [mupen64plus](https://github.com/GhostlyDark/mupen64plus-core) using [Electron](https://github.com/electron/electron) to launch [mupen64plus-ui-console](https://github.com/GhostlyDark/mupen64plus-ui-console).
+
+For configuring controller input, a custom build of [sdl2-jstest](https://github.com/GhostlyDark/sdl-jstest) is used.
 
 ![](/emg.jpg)
 
