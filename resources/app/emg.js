@@ -2,6 +2,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 var cheatRadio,filePath,fileResult,RomPath,RomPathResult,txPath,txPathResult,txCachePath,txCachePathResult,txDumpPath,txDumpPathResult,IPLROM,IPLROMResult,Disk,DiskResult,ConfigPath,ConfigPathResult,ScreenshotPath,ScreenshotPathResult,SaveStatePath,SaveStatePathResult,SaveSRAMPath,SaveSRAMPathResult,gbROM1,gbROM1Result,gbROM2,gbROM2Result,gbROM3,gbROM3Result,gbROM4,gbROM4Result,gbRAM1,gbRAM1Result,gbRAM2,gbRAM2Result,gbRAM3,gbRAM3Result,gbRAM4,gbRAM4Result,
 
+ext = isLinux ? '.so' : '.dll',
+
+corelib = './mupen64plus' + ext,
+
 recentFiles = [];
 
 const buttons = document.querySelectorAll('button'),
@@ -9,10 +13,6 @@ const buttons = document.querySelectorAll('button'),
 textInputs = document.querySelectorAll('input[type=text]'),
 
 links = document.querySelectorAll('a'),
-
-ext = isLinux ? '.so' : '.dll',
-
-corelib = './mupen64plus' + ext,
 
 regjoy = /axis|button|hat|\(|\)/g, regsplit = /\s*\n/, regradio = /^\s\s\s/g, regbox = /_.*/g, regc = /\:/g, regid = /^\d: |^\d\d: /,
 
@@ -70,7 +70,8 @@ dropdowns = [
 
 
 
-if(!isLinux)id('master_volume').style.display = 'none'; /* hide platform specific settings */
+if(isMac){ext = '.dylib';corelib = './mupen64plus' + ext}; /* macOS */
+if(!isLinux)id('master_volume').style.display = 'none'; /* hide Linux exclusive settings */
 
 
 

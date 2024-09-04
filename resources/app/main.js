@@ -15,6 +15,7 @@ testROM = path(cwd, 'mupen64plus.z64'),
 executablePath = path(cwd, 'mupen64plus'),
 jstestPath = path(cwd, 'sdl2-jstest'),
 isLinux = process.platform === 'linux',
+isMac = process.platform === 'darwin',
 stdio = ['ignore', 'pipe', 'ignore'],
 emuOptions = {cwd: cwd, detached: true, stdio: stdio},
 cheatOptions = {cwd: cwd, stdio: stdio, windowsHide: true},
@@ -29,6 +30,7 @@ let m64pCache = m64pShare = m64pConfig = path(appData, 'mupen64plus');
 
 if(app.requestSingleInstanceLock())server.deploy()
 if(isLinux){m64pCache = path(appData, '../', '.cache', 'mupen64plus');m64pShare = path(appData, '../', '.local', 'share', 'mupen64plus')}
+if(isMac){m64pCache = m64pShare = m64pConfig = path(appData, 'Mupen64Plus')}
 if(existsSync(dataDir)){
 	if(!existsSync(userDataDir))mkdirSync(userDataDir,{recursive:true})
 	if(!existsSync(n64DataDir))mkdirSync(n64DataDir,{recursive:true})
@@ -105,6 +107,7 @@ ipcMain.on('hires_texture', (e) => {e.returnValue = hires_texture})
 ipcMain.on('cache', (e) => {e.returnValue = cache})
 ipcMain.on('texture_dump', (e) => {e.returnValue = texture_dump})
 ipcMain.on('isLinux', (e) => {e.returnValue = isLinux})
+ipcMain.on('isMac', (e) => {e.returnValue = isMac})
 ipcMain.on('dialogDirectory', (e) => {e.returnValue = dialog.showOpenDialogSync({properties:['openDirectory']})})
 ipcMain.on('dialogFile', (e, data) => {e.returnValue = dialog.showOpenDialogSync({properties:['openFile'],filters:[data]})})
 ipcMain.on('dialogError', (e, title, data) => {e.returnValue = dialog.showErrorBox(title,data)})
