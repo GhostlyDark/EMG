@@ -2,24 +2,53 @@ cmake_minimum_required(VERSION 3.15)
 
 project(EMG)
 
-set(INSTALL_PATH ${CMAKE_SOURCE_DIR}/build/EMG/resources/m64p)
+
+
+if(APPLE)
+    set(INSTALL_PATH ${CMAKE_SOURCE_DIR}/build/EMG/EMG.app/Contents/Resources/m64p)
+else()
+    set(INSTALL_PATH ${CMAKE_SOURCE_DIR}/build/EMG/resources/m64p)
+endif()
+
+
 
 add_custom_target(bundle_dependencies
-	COMMAND bash "${CMAKE_SOURCE_DIR}/dependencies.sh" "${INSTALL_PATH}/mupen64plus.exe" "${INSTALL_PATH}" "/mingw64/bin"
+    COMMAND bash "${CMAKE_SOURCE_DIR}/dependencies.sh" "${INSTALL_PATH}/mupen64plus.exe" "${INSTALL_PATH}" "/mingw64/bin"
 )
+
+
 
 include(ExternalProject)
 
 
 
 if(WIN32)
+
+    set(NO_ASM 0)
+    set(C11 "")
+
     set(LIB_EXT ".dll")
     set(BIN_EXT ".exe")
     set(GCA_LIB "mupen64plus_input_gca.dll")
+
+elseif(APPLE)
+
+    set(NO_ASM 1)
+    set(C11 "-DCMAKE_CXX_FLAGS=-std=c++11")
+
+    set(LIB_EXT ".dylib")
+    set(BIN_EXT "")
+    set(GCA_LIB "libmupen64plus_input_gca.dylib")
+
 else()
+
+    set(NO_ASM 0)
+    set(C11 "")
+
     set(LIB_EXT ".so")
     set(BIN_EXT "")
     set(GCA_LIB "libmupen64plus_input_gca.so")
+
 endif()
 
 
@@ -48,7 +77,7 @@ ExternalProject_Add(mupen64plus-core
     BUILD_COMMAND make all -f ${SOURCEDIR}/mupen64plus-core/projects/unix/Makefile 
         SRCDIR=${SOURCEDIR}/mupen64plus-core/src
         SUBDIR=${SOURCEDIR}/mupen64plus-core/subprojects 
-        ACCURATE_FPU=1 OSD=0 TARGET=mupen64plus${LIB_EXT}
+        ACCURATE_FPU=1 NO_ASM=${NO_ASM} OSD=0 TARGET=mupen64plus${LIB_EXT}
 
     BUILD_IN_SOURCE False
 
@@ -189,7 +218,7 @@ ExternalProject_Add(mupen64plus-video-GLideN64
     INSTALL_COMMAND ""
 
     BUILD_IN_SOURCE False
-    CMAKE_ARGS -DMUPENPLUSAPI=ON -DUSE_SYSTEM_LIBS=ON
+    CMAKE_ARGS -DMUPENPLUSAPI=ON -DUSE_SYSTEM_LIBS=ON ${C11}
 
     SOURCE_SUBDIR ./src/
     BINARY_DIR ${GLIDEN64_BUILD_DIR}
