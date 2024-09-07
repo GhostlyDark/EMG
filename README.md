@@ -17,7 +17,7 @@ For configuring controller input, a custom build of [sdl2-jstest](https://github
 
 - **CPU:** SSE3 capable (Electron)
 - **GPU:** OpenGL 2.1 (Rice), OpenGL 3.3 (Angrylion Plus, GLideN64), Vulkan 1.1 (Parallel RDP)
-- **OS:** Linux or Windows 7 (64-bit)
+- **OS:** Windows 7 (64-bit), Linux, macOS 10.15
 - **Compilation:** CMake v3.15 (Ubuntu 20.04, Debian 11 or similar)
 
 **GameCube adapter:**
@@ -108,6 +108,56 @@ Install dependencies (including rust):
   ```
   sudo zypper -n install SDL2-devel cmake freeglut-devel freetype2-devel gcc gcc-c++ git gtk3-devel libhidapi-devel libhidapi-hidraw0 libpng16-devel libsamplerate-devel make nasm ninja pkgconf-pkg-config rust speex-devel unzip vulkan-devel wget zlib-devel
   ```
+
+Clone repository:
+```
+git clone https://github.com/GhostlyDark/EMG EMG
+```
+
+Change directory:
+```
+cd EMG
+```
+
+Make `compile.sh` executable:
+```
+chmod u+x compile.sh
+```
+
+Run `compile.sh`:
+```
+./compile.sh
+```
+
+
+## macOS
+
+Install a compatible version of XCode, such as v12.5.1 on macOS 11. You may download XCode from Apple (requires account) or from a third party site (like archive.org).
+
+(Help) You may delete an existing installation in case you encounter an error message:
+```
+sudo rm -rf /Library/Developer/CommandLineTools
+```
+
+Once installed, run this command from the terminal:
+```
+xcode-select --install
+```
+
+Install [MacPorts](https://www.macports.org/install.php), reboot the system and install dependencies:
+```
+sudo port -N install cargo cmake coreutils freeglut freetype gcc11 gcc_select git glew gmake gtk3 hidapi libgcc libpng libsamplerate libsdl2 nasm ninja pkgconfig rust speex speexDSP vulkan-headers wget zlib
+```
+
+(Help) List available compilers:
+```
+sudo port select --summary
+```
+
+Configure gcc compiler (and restart terminal for it to take effect):
+```
+sudo port select gcc mp-gcc11
+```
 
 Clone repository:
 ```
