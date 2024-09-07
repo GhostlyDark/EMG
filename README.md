@@ -48,7 +48,7 @@ Releases can be found [here](https://github.com/GhostlyDark/EMG/releases/latest)
 
 To build EMG instead, download and install [MSYS2](https://www.msys2.org/). Run `MSYS2 MinGW x64` and install dependencies:
 ```
-pacman -S --needed git make mingw-w64-x86_64-cmake mingw-w64-x86_64-freetype mingw-w64-x86_64-gcc mingw-w64-x86_64-glew mingw-w64-x86_64-hidapi mingw-w64-x86_64-libpng mingw-w64-x86_64-libsamplerate mingw-w64-x86_64-nasm mingw-w64-x86_64-ninja mingw-w64-x86_64-rust mingw-w64-x86_64-SDL2 mingw-w64-x86_64-speex mingw-w64-x86_64-vulkan-headers unzip
+pacman -S --needed --noconfirm git make mingw-w64-x86_64-cmake mingw-w64-x86_64-freetype mingw-w64-x86_64-gcc mingw-w64-x86_64-glew mingw-w64-x86_64-hidapi mingw-w64-x86_64-libpng mingw-w64-x86_64-libsamplerate mingw-w64-x86_64-nasm mingw-w64-x86_64-ninja mingw-w64-x86_64-rust mingw-w64-x86_64-SDL2 mingw-w64-x86_64-speex mingw-w64-x86_64-vulkan-headers unzip
 ```
 
 Clone repository:
@@ -88,7 +88,7 @@ Install dependencies (including rust):
 
 - Fedora (dnf):
   ```
-  sudo dnf install cmake curl freeglut-devel freetype-devel gcc gcc-c++ git gtk3-devel hidapi-devel libpng-devel libsamplerate-devel make nasm ninja-build pkgconfig SDL2-devel speexdsp-devel unzip vulkan-devel wget zlib-ng-devel
+  sudo dnf -y install cmake curl freeglut-devel freetype-devel gcc gcc-c++ git gtk3-devel hidapi-devel libpng-devel libsamplerate-devel make nasm ninja-build pkgconfig SDL2-devel speexdsp-devel unzip vulkan-devel wget zlib-ng-devel
   ```
 
   ```
@@ -101,12 +101,12 @@ Install dependencies (including rust):
 
 - Arch Linux (pacman):
   ```
-  sudo pacman -S --needed cmake freetype2 gcc git glew hidapi libpng libsamplerate make nasm ninja pkgconf rust sdl2 speex unzip vulkan-headers wget
+  sudo pacman -S --needed --noconfirm cmake freetype2 gcc git glew hidapi libpng libsamplerate make nasm ninja pkgconf rust sdl2 speex unzip vulkan-headers wget
   ```
 
 - openSUSE Tumbleweed (zypper):
   ```
-  sudo zypper install SDL2-devel cmake freeglut-devel freetype2-devel gcc gcc-c++ git gtk3-devel libhidapi-devel libhidapi-hidraw0 libpng16-devel libsamplerate-devel make nasm ninja pkgconf-pkg-config rust speex-devel unzip vulkan-devel wget zlib-devel
+  sudo zypper -n install SDL2-devel cmake freeglut-devel freetype2-devel gcc gcc-c++ git gtk3-devel libhidapi-devel libhidapi-hidraw0 libpng16-devel libsamplerate-devel make nasm ninja pkgconf-pkg-config rust speex-devel unzip vulkan-devel wget zlib-devel
   ```
 
 Clone repository:
