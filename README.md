@@ -1,10 +1,6 @@
 # EMG
 
-EMG is a launcher for [mupen64plus](https://github.com/GhostlyDark/mupen64plus-core) using [Electron](https://github.com/electron/electron) that launches [mupen64plus-ui-console](https://github.com/GhostlyDark/mupen64plus-ui-console).
-
-For configuring controller input, a custom build of [sdl2-jstest](https://github.com/GhostlyDark/sdl-jstest) is used.
-
-A custom build of [macdylibbundler](https://github.com/GhostlyDark/macdylibbundler) bundles dependencies on macOS.
+EMG is a launcher for [mupen64plus](https://github.com/GhostlyDark/mupen64plus-core) and its [mupen64plus-ui-console](https://github.com/GhostlyDark/mupen64plus-ui-console) using [Electron](https://github.com/electron/electron).
 
 ![](/emg.jpg)
 
@@ -14,6 +10,10 @@ A custom build of [macdylibbundler](https://github.com/GhostlyDark/macdylibbundl
 - **Audio:** [Mupen64Plus Audio SDL](https://github.com/GhostlyDark/mupen64plus-audio-sdl)
 - **Input:** [GameCube Adapter](https://github.com/GhostlyDark/mupen64plus-input-gca), [Mupen64Plus Input SDL](https://github.com/GhostlyDark/mupen64plus-input-sdl), [Raphnetraw](https://github.com/GhostlyDark/mupen64plus-input-raphnetraw)
 - **RSP:** [Mupen64Plus HLE](https://github.com/GhostlyDark/mupen64plus-rsp-hle), [Static Interpreter](https://github.com/GhostlyDark/rsp), [Parallel RSP](https://github.com/GhostlyDark/parallel-rsp)
+
+**Bundled tools:**
+- [macdylibbundler](https://github.com/GhostlyDark/macdylibbundler): Bundle dependencies on macOS
+- [sdl2-jstest](https://github.com/GhostlyDark/sdl-jstest): Configure controller input
 
 **System requirements:**
 
