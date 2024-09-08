@@ -19,7 +19,7 @@ A custom build of [macdylibbundler](https://github.com/GhostlyDark/macdylibbundl
 
 - **CPU:** SSE3 capable (Electron)
 - **GPU:** OpenGL 2.1 (Rice), OpenGL 3.3 (Angrylion Plus, GLideN64), Vulkan 1.1 (Parallel RDP)
-- **OS:** Windows 7 (64-bit), Linux, macOS 10.15
+- **OS:** Windows 7 (64-bit), Linux, macOS 10.13 (10.15 for Glide64MK2)
 - **Compilation:** CMake v3.15 (Ubuntu 20.04, Debian 11 or similar)
 
 **GameCube adapter:**
