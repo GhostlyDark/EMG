@@ -1,6 +1,6 @@
 # EMG
 
-EMG is a launcher for [mupen64plus](https://github.com/GhostlyDark/mupen64plus-core) using [Electron](https://github.com/electron/electron) to launch [mupen64plus-ui-console](https://github.com/GhostlyDark/mupen64plus-ui-console).
+EMG is a launcher for [mupen64plus](https://github.com/GhostlyDark/mupen64plus-core) using [Electron](https://github.com/electron/electron) that launches [mupen64plus-ui-console](https://github.com/GhostlyDark/mupen64plus-ui-console).
 
 For configuring controller input, a custom build of [sdl2-jstest](https://github.com/GhostlyDark/sdl-jstest) is used.
 
@@ -55,7 +55,7 @@ pacman -S --needed --noconfirm git make mingw-w64-x86_64-cmake mingw-w64-x86_64-
 
 Clone repository:
 ```
-git clone https://github.com/GhostlyDark/EMG EMG
+git clone https://github.com/GhostlyDark/EMG
 ```
 
 Change directory:
@@ -113,7 +113,7 @@ Install dependencies (including rust):
 
 Clone repository:
 ```
-git clone https://github.com/GhostlyDark/EMG EMG
+git clone https://github.com/GhostlyDark/EMG
 ```
 
 Change directory:
@@ -121,12 +121,11 @@ Change directory:
 cd EMG
 ```
 
-Make `compile.sh` executable:
+Make `compile.sh` executable and run it:
 ```
 chmod u+x compile.sh
 ```
 
-Run `compile.sh`:
 ```
 ./compile.sh
 ```
@@ -165,7 +164,7 @@ sudo port select gcc mp-gcc11
 
 Clone repository:
 ```
-git clone https://github.com/GhostlyDark/EMG EMG
+git clone https://github.com/GhostlyDark/EMG
 ```
 
 Change directory:
@@ -173,12 +172,11 @@ Change directory:
 cd EMG
 ```
 
-Make `compile.sh` executable:
+Make `compile.sh` executable and run it:
 ```
 chmod u+x compile.sh
 ```
 
-Run `compile.sh`:
 ```
 ./compile.sh
 ```
