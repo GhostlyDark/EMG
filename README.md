@@ -131,11 +131,18 @@ chmod u+x compile.sh
 ```
 
 
-## macOS
+### macOS
 
 Releases can be found [here](https://github.com/GhostlyDark/EMG/releases/latest).
 
-To build EMG instead, install a compatible version of Xcode, such as v12.5.1 on macOS 11. You may download Xcode from Apple (requires account) or from a third party site (like archive.org).
+To build EMG instead, install a compatible version of Xcode:
+
+- macOS 10.13: Xcode 9.4.1
+- macOS 10.14: Xcode 10.3
+- macOS 10.15: Xcode 11.7
+- macOS 11: Xcode 12.5.1
+
+You may download Xcode from Apple (requires account) or from a third party site (like archive.org).
 
 (Help) You may delete an existing installation in case you encounter an error message:
 ```
