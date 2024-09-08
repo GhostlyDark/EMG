@@ -1,5 +1,11 @@
 cmake_minimum_required(VERSION 3.15)
 
+
+
+option(USE_GLIDE64MK2 "Build mupen64plus-video-glide64mk2" ON)
+
+
+
 project(EMG)
 
 
@@ -258,22 +264,24 @@ ExternalProject_Add(mupen64plus-video-rice
     BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-video-rice/projects/unix/mupen64plus-video-rice${LIB_EXT}
 )
 
-ExternalProject_Add(mupen64plus-video-glide64mk2
-    SOURCE_DIR ${SOURCEDIR}/mupen64plus-video-glide64mk2/
-
-    CONFIGURE_COMMAND ""
-    INSTALL_COMMAND ""
-
-    BUILD_COMMAND make all -f ${SOURCEDIR}/mupen64plus-video-glide64mk2/projects/unix/Makefile
-        SRCDIR=${SOURCEDIR}/mupen64plus-video-glide64mk2/src
-        APIDIR=${APIDIR}
-
-    BUILD_IN_SOURCE False
-
-    BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-video-glide64mk2/projects/unix
-
-    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-video-glide64mk2/projects/unix/mupen64plus-video-glide64mk2${LIB_EXT}
-)
+if(USE_GLIDE64MK2)
+    ExternalProject_Add(mupen64plus-video-glide64mk2
+        SOURCE_DIR ${SOURCEDIR}/mupen64plus-video-glide64mk2/
+    
+        CONFIGURE_COMMAND ""
+        INSTALL_COMMAND ""
+    
+        BUILD_COMMAND make all -f ${SOURCEDIR}/mupen64plus-video-glide64mk2/projects/unix/Makefile
+            SRCDIR=${SOURCEDIR}/mupen64plus-video-glide64mk2/src
+            APIDIR=${APIDIR}
+    
+        BUILD_IN_SOURCE False
+    
+        BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-video-glide64mk2/projects/unix
+    
+        BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-video-glide64mk2/projects/unix/mupen64plus-video-glide64mk2${LIB_EXT}
+    )
+endif()
 
 ExternalProject_Add(mupen64plus-audio-sdl
     SOURCE_DIR ${SOURCEDIR}/mupen64plus-audio-sdl/
@@ -359,8 +367,10 @@ ExternalProject_Get_property(mupen64plus-video-rice BUILD_BYPRODUCTS)
 set(MUPEN64PLUS_PLUGIN_GFX_RICE ${BUILD_BYPRODUCTS})
 set(RICE_INI ${SOURCEDIR}/mupen64plus-video-rice/data/RiceVideoLinux.ini)
 
-ExternalProject_Get_property(mupen64plus-video-glide64mk2 BUILD_BYPRODUCTS)
-set(MUPEN64PLUS_PLUGIN_GFX_GLIDE ${BUILD_BYPRODUCTS})
+if(USE_GLIDE64MK2)
+    ExternalProject_Get_property(mupen64plus-video-glide64mk2 BUILD_BYPRODUCTS)
+    set(MUPEN64PLUS_PLUGIN_GFX_GLIDE ${BUILD_BYPRODUCTS})
+endif()
 set(GLIDE_INI ${SOURCEDIR}/mupen64plus-video-glide64mk2/data/Glide64mk2.ini)
 
 ExternalProject_Get_property(mupen64plus-audio-sdl BUILD_BYPRODUCTS)
@@ -422,9 +432,11 @@ install(FILES ${MUPEN64PLUS_PLUGIN_GFX_PARALLEL}
 install(FILES ${MUPEN64PLUS_PLUGIN_GFX_RICE}
     DESTINATION ${INSTALL_PATH}/plugin
 )
-install(FILES ${MUPEN64PLUS_PLUGIN_GFX_GLIDE}
-    DESTINATION ${INSTALL_PATH}/plugin
-)
+if(USE_GLIDE64MK2)
+    install(FILES ${MUPEN64PLUS_PLUGIN_GFX_GLIDE}
+        DESTINATION ${INSTALL_PATH}/plugin
+    )
+endif()
 install(FILES ${MUPEN64PLUS_PLUGIN_AUDIO_SDL}
     DESTINATION ${INSTALL_PATH}/plugin
 )

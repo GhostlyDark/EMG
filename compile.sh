@@ -8,6 +8,7 @@ set -ex
 
 threads="${1:-$(nproc || getconf _NPROCESSORS_ONLN)}"
 electron="v22.3.27"
+glide64mk2="ON"
 
 
 
@@ -50,6 +51,15 @@ elif [[ $(uname -s) = Darwin* ]]; then
     rsc_dir="$emg_dir/EMG.app/Contents/Resources"
     m64p_dir="$rsc_dir/m64p"
     plugin_dir="$m64p_dir/plugin"
+
+    version="$(sw_vers -productVersion | cut -d '.' -f 1,2)"
+    function ver { printf "%03d%03d" $(echo "$1" | tr '.' ' '); }
+
+    if [[ $(ver $version) -lt $(ver 10.15) ]]; then
+
+        glide64mk2="OFF"
+
+	fi
 
 else
 
@@ -162,7 +172,7 @@ fi
 
 # Build
 
-cmake -S "$toplvl_dir" -B "$cmake_dir" -G "Ninja"
+cmake -S "$toplvl_dir" -B "$cmake_dir" -G "Ninja" -DUSE_GLIDE64MK2=$glide64mk2
 cmake --build "$cmake_dir" --parallel "$threads"
 cmake --install "$cmake_dir"
 
