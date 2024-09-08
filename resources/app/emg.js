@@ -50,7 +50,7 @@ m64p_joykeys = [
 'JoyMappingStop3','JoyMappingFullscreen3','JoyMappingSaveState3','JoyMappingLoadState3','JoyMappingIncrementSlot3','JoyMappingReset3','JoyMappingSpeedDown3','JoyMappingSpeedUp3','JoyMappingScreenshot3','JoyMappingPause3','JoyMappingMute3','JoyMappingIncreaseVolume3','JoyMappingDecreaseVolume3','JoyMappingFastForward3','JoyMappingFrameAdvance3','JoyMappingGameshark3',
 'JoyMappingStop4','JoyMappingFullscreen4','JoyMappingSaveState4','JoyMappingLoadState4','JoyMappingIncrementSlot4','JoyMappingReset4','JoyMappingSpeedDown4','JoyMappingSpeedUp4','JoyMappingScreenshot4','JoyMappingPause4','JoyMappingMute4','JoyMappingIncreaseVolume4','JoyMappingDecreaseVolume4','JoyMappingFastForward4','JoyMappingFrameAdvance4','JoyMappingGameshark4'],
 
-defaultPlugins = ['mupen64plus-audio-sdl','mupen64plus-input-gca','mupen64plus-input-raphnetraw','mupen64plus-input-sdl','mupen64plus-rsp-cxd4','mupen64plus-rsp-hle','mupen64plus-rsp-parallel','mupen64plus-video-angrylion-plus','mupen64plus-video-GLideN64','mupen64plus-video-parallel','mupen64plus-video-rice','mupen64plus-video-glide64mk2'],
+defaultPlugins = ['mupen64plus-audio-sdl','mupen64plus-input-gca','mupen64plus-input-raphnetraw','mupen64plus-input-sdl','mupen64plus-rsp-cxd4','mupen64plus-rsp-hle','mupen64plus-rsp-parallel','mupen64plus-video-angrylion-plus','mupen64plus-video-GLideN64','mupen64plus-video-parallel','mupen64plus-video-rice'],
 
 overscan = ['OverscanNtscTop','OverscanNtscLeft','OverscanNtscRight','OverscanNtscBottom','OverscanPalTop','OverscanPalLeft','OverscanPalRight','OverscanPalBottom'],
 
@@ -101,6 +101,7 @@ else if(name.includes('mupen64plus-input-')){id('inputCustom').appendChild(newPl
 else if(name.includes('mupen64plus-rsp-')){id('rspCustom').appendChild(newPlugin);id('RspFallbackCustom').appendChild(newPlugin.cloneNode(true));id('rspCustom').style.display = id('RspFallbackCustom').style.display = 'block'}
 else if(name.includes('mupen64plus-video-')){
 if(newPlugin.textContent === 'rt64'){newPlugin.textContent = 'RT64';id('gfxModern').appendChild(newPlugin)}
+else if(newPlugin.textContent === 'glide64mk2'){newPlugin.textContent = 'Glide64 MK2';id('gfxLegacy').appendChild(newPlugin)}
 else{id('gfxCustom').appendChild(newPlugin);id('gfxCustom').style.display = 'block'}}}}
 
 
