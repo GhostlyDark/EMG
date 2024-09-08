@@ -4,6 +4,8 @@ EMG is a launcher for [mupen64plus](https://github.com/GhostlyDark/mupen64plus-c
 
 For configuring controller input, a custom build of [sdl2-jstest](https://github.com/GhostlyDark/sdl-jstest) is used.
 
+A custom build of [macdylibbundler](https://github.com/GhostlyDark/macdylibbundler) bundles dependencies on macOS.
+
 ![](/emg.jpg)
 
 **Bundled plugins:**
@@ -132,7 +134,9 @@ Run `compile.sh`:
 
 ## macOS
 
-Install a compatible version of XCode, such as v12.5.1 on macOS 11. You may download XCode from Apple (requires account) or from a third party site (like archive.org).
+Releases can be found [here](https://github.com/GhostlyDark/EMG/releases/latest).
+
+To build EMG instead, install a compatible version of Xcode, such as v12.5.1 on macOS 11. You may download Xcode from Apple (requires account) or from a third party site (like archive.org).
 
 (Help) You may delete an existing installation in case you encounter an error message:
 ```
