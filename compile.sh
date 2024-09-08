@@ -202,13 +202,19 @@ if [[ $(uname -s) = Linux* ]] || [[ $(uname -s) = Darwin* ]]; then
 
 fi
 
+if [[ $(uname -s) = Darwin* ]]; then
+
+    chmod u+x "$m64p_dir"/dylibbundler
+
+fi
+
 
 
 # Strip binaries
 
 if [[ $(uname -s) = MINGW64* ]] || [[ $(uname -s) = Linux* ]]; then
 
-    for f in "$m64p_dir"/*$ext; do strip --strip-unneeded $f; done
+    for f in "$m64p_dir"/*$ext;   do strip --strip-unneeded $f; done
     for f in "$plugin_dir"/*$ext; do strip --strip-unneeded $f; done
 
 fi

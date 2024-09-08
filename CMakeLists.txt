@@ -304,6 +304,20 @@ ExternalProject_Add(sdl-jstest
     BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/sdl-jstest/sdl2-jstest${BIN_EXT}
 )
 
+if(APPLE)
+    ExternalProject_Add(macdylibbundler
+        SOURCE_DIR ${SOURCEDIR}/macdylibbundler/
+    
+        INSTALL_COMMAND ""
+    
+        BUILD_IN_SOURCE False
+    
+        BINARY_DIR ${CMAKE_BINARY_DIR}/macdylibbundler
+        
+        BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/macdylibbundler/dylibbundler${BIN_EXT}
+    )
+endif()
+
 
 
 ExternalProject_Get_property(mupen64plus-core BUILD_BYPRODUCTS)
@@ -355,6 +369,10 @@ set(MUPEN64PLUS_PLUGIN_AUDIO_SDL ${BUILD_BYPRODUCTS})
 ExternalProject_Get_property(sdl-jstest BUILD_BYPRODUCTS)
 set(SDL_JSTEST ${BUILD_BYPRODUCTS})
 
+if(APPLE)
+    ExternalProject_Get_property(macdylibbundler BUILD_BYPRODUCTS)
+    set(DYLIBBUNDLER ${BUILD_BYPRODUCTS})
+endif()
 
 
 install(FILES ${MUPEN64PLUS_UI}
@@ -363,6 +381,11 @@ install(FILES ${MUPEN64PLUS_UI}
 install(FILES ${SDL_JSTEST}
     DESTINATION ${INSTALL_PATH}
 )
+if(APPLE)
+    install(FILES ${DYLIBBUNDLER}
+        DESTINATION ${INSTALL_PATH}
+    )
+endif()
 install(FILES ${MUPEN64PLUSCORE_LIB}
     DESTINATION ${INSTALL_PATH}
 )

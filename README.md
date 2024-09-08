@@ -179,6 +179,15 @@ Run `compile.sh`:
 ./compile.sh
 ```
 
+(Optional) Bundle dependencies to make the application portable:
+```
+chmod u+x ./macdep.sh
+```
+
+```
+./macdep.sh
+```
+
 
 ## Additional info
 
