@@ -8,6 +8,15 @@ set -ex
 
 threads="${1:-$(nproc || getconf _NPROCESSORS_ONLN)}"
 electron="v22.3.27"
+
+
+
+# Build settings
+
+raphnetraw="ON"
+gca="ON"     
+angrylion="ON" 
+parallel="ON" 
 glide64mk2="ON"
 
 
@@ -35,14 +44,14 @@ if [[ $(uname -s) = MINGW64* ]]; then
 
     exe=".exe"
     ext=".dll"
-    gca="mupen64plus_input_gca.dll"
+    gca_name="mupen64plus_input_gca.dll"
     platform="win32"
 
 elif [[ $(uname -s) = Darwin* ]]; then
 
     exe=""
     ext=".dylib"
-    gca="libmupen64plus_input_gca.dylib"
+    gca_name="libmupen64plus_input_gca.dylib"
     platform="darwin"
 
     electron_dir="$emg_dir/Electron.app/Contents"
@@ -65,7 +74,7 @@ else
 
     exe=""
     ext=".so"
-    gca="libmupen64plus_input_gca.so"
+    gca_name="libmupen64plus_input_gca.so"
     platform="linux"
 
 fi
@@ -172,7 +181,7 @@ fi
 
 # Build
 
-cmake -S "$toplvl_dir" -B "$cmake_dir" -G "Ninja" -DUSE_GLIDE64MK2=$glide64mk2
+cmake -S "$toplvl_dir" -B "$cmake_dir" -G "Ninja" -DUSE_RAPHNETRAW=$raphnetraw -DUSE_GCA=$gca -DUSE_RAPHNETRAW=$angrylion -DUSE_RAPHNETRAW=$parallel -DUSE_GLIDE64MK2=$glide64mk2
 cmake --build "$cmake_dir" --parallel "$threads"
 cmake --install "$cmake_dir"
 
@@ -186,9 +195,9 @@ fi
 
 # Rename files
 
-if [[ -f "$plugin_dir"/$gca ]]; then
+if [[ -f "$plugin_dir"/$gca_name ]]; then
 
-    mv "$plugin_dir"/$gca "$plugin_dir"/mupen64plus-input-gca$ext
+    mv "$plugin_dir"/$gca_name "$plugin_dir"/mupen64plus-input-gca$ext
 
 fi
 

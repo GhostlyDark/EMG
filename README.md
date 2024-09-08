@@ -207,9 +207,18 @@ The build script `compile.sh` can be run with additional parameters:
 ./compile.sh [threads]
 ```
 
-Limit the building process to one thread:
+To limit the building process to one thread:
 ```
 ./compile.sh 1
+```
+
+Additionally, changing the boolean values from `ON` to `OFF` near the start of `compile.sh` disables building the corresponding plugins:
+```
+raphnetraw="ON"
+gca="ON"     
+angrylion="ON" 
+parallel="ON" 
+glide64mk2="ON"
 ```
 
 
