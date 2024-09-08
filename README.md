@@ -37,6 +37,11 @@ Follow the [instructions](https://dolphin-emu.org/docs/guides/how-use-official-g
 - `Ctrl` + `Numpad-`: Zoom out
 - `Ctrl` + `Numpad0`: Zoom reset
 
+**Release files:**
+
+> [!NOTE]
+> Prebuilt binaries can be found [here](https://github.com/GhostlyDark/EMG/releases/latest). Linux users may need to install required dependencies.
+
 **Build files:**
 
 Can be found in `build/EMG` after running `compile.sh`. See below for more details.
@@ -46,9 +51,7 @@ Can be found in `build/EMG` after running `compile.sh`. See below for more detai
 
 ### Windows
 
-Releases can be found [here](https://github.com/GhostlyDark/EMG/releases/latest).
-
-To build EMG instead, download and install [MSYS2](https://www.msys2.org/). Run `MSYS2 MinGW x64` and install dependencies:
+Download and install [MSYS2](https://www.msys2.org/). Run `MSYS2 MinGW x64` and install dependencies:
 ```
 pacman -S --needed --noconfirm git make mingw-w64-x86_64-cmake mingw-w64-x86_64-freetype mingw-w64-x86_64-gcc mingw-w64-x86_64-glew mingw-w64-x86_64-hidapi mingw-w64-x86_64-libpng mingw-w64-x86_64-libsamplerate mingw-w64-x86_64-nasm mingw-w64-x86_64-ninja mingw-w64-x86_64-rust mingw-w64-x86_64-SDL2 mingw-w64-x86_64-speex mingw-w64-x86_64-vulkan-headers unzip
 ```
@@ -70,8 +73,6 @@ Run `compile.sh`:
 
 
 ### Linux
-
-Prebuilt binaries can be found [here](https://github.com/GhostlyDark/EMG/releases/latest). Cloning and compiling can be skipped this way, but dependencies must have been installed regardless.
 
 Install dependencies (including rust):
 
@@ -133,9 +134,7 @@ chmod u+x compile.sh
 
 ### macOS
 
-Releases can be found [here](https://github.com/GhostlyDark/EMG/releases/latest).
-
-To build EMG instead, install a compatible version of Xcode:
+Install a compatible version of Xcode:
 
 - macOS 10.13: Xcode 9.4.1
 - macOS 10.14: Xcode 10.3
@@ -144,10 +143,11 @@ To build EMG instead, install a compatible version of Xcode:
 
 You may download Xcode from Apple (requires account) or from a third party site (like archive.org).
 
-(Help) You may delete an existing installation in case you encounter an error message:
-```
-sudo rm -rf /Library/Developer/CommandLineTools
-```
+> [!TIP]
+> In case you encounter an error message, delete any files from a previous installation:
+>```
+>sudo rm -rf /Library/Developer/CommandLineTools
+>```
 
 Once installed, run this command from the terminal:
 ```
@@ -159,10 +159,11 @@ Install [MacPorts](https://www.macports.org/install.php), reboot the system and 
 sudo port -N install cargo cmake coreutils freeglut freetype gcc11 gcc_select git glew gmake gtk3 hidapi libgcc libpng libsamplerate libsdl2 nasm ninja pkgconfig rust speex speexDSP vulkan-headers wget zlib
 ```
 
-(Help) List available compilers:
-```
-sudo port select --summary
-```
+> [!TIP]
+> List available compilers:
+>```
+>sudo port select --summary
+>```
 
 Configure gcc compiler (and restart terminal for it to take effect):
 ```
@@ -188,14 +189,15 @@ chmod u+x compile.sh
 ./compile.sh
 ```
 
-(Optional) Bundle dependencies to make the application portable:
-```
-chmod u+x ./macdep.sh
-```
-
-```
-./macdep.sh
-```
+> [!IMPORTANT]
+> Bundle dependencies to make the application portable (optional, but required for distribution):
+>```
+>chmod u+x ./macdep.sh
+>```
+>
+>```
+>./macdep.sh
+>```
 
 
 ## Additional info
