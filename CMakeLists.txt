@@ -156,7 +156,6 @@ if(USE_PARALLEL_RSP)
         INSTALL_COMMAND ""
     
         BUILD_IN_SOURCE False
-        CMAKE_ARGS -DCMAKE_BUILD_TYPE=Release
     
         BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-rsp-parallel
     
@@ -255,7 +254,6 @@ if(USE_PARALLEL_RDP)
         INSTALL_COMMAND ""
     
         BUILD_IN_SOURCE False
-        CMAKE_ARGS -DCMAKE_BUILD_TYPE=Release
     
         BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-video-parallel
     
