@@ -3,6 +3,9 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_C_STANDARD 99)
 project(parallel-rsp LANGUAGES CXX C)
 
+if(NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE Release)
+endif()
 
 set(NAME_PLUGIN_M64P "mupen64plus-rsp-parallel")
 
