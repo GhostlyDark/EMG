@@ -224,7 +224,7 @@ if(USE_ANGRYLION)
         INSTALL_COMMAND ""
     
         BUILD_IN_SOURCE False
-        CMAKE_ARGS -DBUILD_MUPEN64PLUS=ON -DBUILD_PROJECT64=OFF
+        CMAKE_ARGS -DBUILD_PROJECT64=OFF
     
         BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-video-angrylion-plus
     
