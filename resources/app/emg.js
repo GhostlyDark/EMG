@@ -50,7 +50,7 @@ m64p_joykeys = [
 'JoyMappingStop3','JoyMappingFullscreen3','JoyMappingSaveState3','JoyMappingLoadState3','JoyMappingIncrementSlot3','JoyMappingReset3','JoyMappingSpeedDown3','JoyMappingSpeedUp3','JoyMappingScreenshot3','JoyMappingPause3','JoyMappingMute3','JoyMappingIncreaseVolume3','JoyMappingDecreaseVolume3','JoyMappingFastForward3','JoyMappingFrameAdvance3','JoyMappingGameshark3',
 'JoyMappingStop4','JoyMappingFullscreen4','JoyMappingSaveState4','JoyMappingLoadState4','JoyMappingIncrementSlot4','JoyMappingReset4','JoyMappingSpeedDown4','JoyMappingSpeedUp4','JoyMappingScreenshot4','JoyMappingPause4','JoyMappingMute4','JoyMappingIncreaseVolume4','JoyMappingDecreaseVolume4','JoyMappingFastForward4','JoyMappingFrameAdvance4','JoyMappingGameshark4'],
 
-defaultPlugins = ['mupen64plus-audio-sdl','mupen64plus-input-sdl','mupen64plus-rsp-cxd4','mupen64plus-rsp-hle','mupen64plus-rsp-parallel','mupen64plus-video-GLideN64','mupen64plus-video-rice'],
+defaultPlugins = ['mupen64plus-audio-sdl','mupen64plus-input-sdl','mupen64plus-rsp-cxd4','mupen64plus-rsp-hle','mupen64plus-video-GLideN64'],
 
 overscan = ['OverscanNtscTop','OverscanNtscLeft','OverscanNtscRight','OverscanNtscBottom','OverscanPalTop','OverscanPalLeft','OverscanPalRight','OverscanPalBottom'],
 
@@ -83,7 +83,7 @@ links.forEach(el => {tabindex(el)})
 
 
 
-const pluginFiles = pluginDir.filter(name => name.includes(ext)), pluginNames = []; /* add unknown plugins */
+const pluginFiles = pluginDir.filter(name => name.includes(ext)), pluginNames = []; /* add optional and unknown plugins */
 pluginFiles.forEach(name => pluginNames.push(name.replace(/\..*/,'')));
 
 const [dirSet,defaultSet] = [new Set(pluginNames), new Set(defaultPlugins)],
@@ -101,12 +101,15 @@ else if(name.includes('mupen64plus-input-')){
 if(newPlugin.textContent === 'gca'){newPlugin.textContent = 'GameCube Adapter';id('inputBundled').appendChild(newPlugin)}
 else if(newPlugin.textContent === 'raphnetraw'){newPlugin.textContent = 'Raphnetraw';id('inputBundled').appendChild(newPlugin)}
 else{id('inputCustom').appendChild(newPlugin);id('inputCustom').style.display = 'block'}}
-else if(name.includes('mupen64plus-rsp-')){id('rspCustom').appendChild(newPlugin);id('RspFallbackCustom').appendChild(newPlugin.cloneNode(true));id('rspCustom').style.display = id('RspFallbackCustom').style.display = 'block'}
+else if(name.includes('mupen64plus-rsp-')){
+if(newPlugin.textContent === 'parallel'){newPlugin.textContent = 'Parallel RSP';id('rspBundled').appendChild(newPlugin);id('RspFallbackBundled').appendChild(newPlugin.cloneNode(true))}
+else{id('rspCustom').appendChild(newPlugin);id('RspFallbackCustom').appendChild(newPlugin.cloneNode(true));id('rspCustom').style.display = id('RspFallbackCustom').style.display = 'block'}}
 else if(name.includes('mupen64plus-video-')){
 if(newPlugin.textContent === 'angrylion-plus'){newPlugin.textContent = 'Angrylion Plus';id('gfxModern').appendChild(newPlugin)}
 else if(newPlugin.textContent === 'parallel'){newPlugin.textContent = 'Parallel RDP';id('gfxModern').appendChild(newPlugin)}
 else if(newPlugin.textContent === 'rt64'){newPlugin.textContent = 'RT64';id('gfxModern').appendChild(newPlugin)}
-else if(newPlugin.textContent === 'glide64mk2'){newPlugin.textContent = 'Glide64 MK2';id('gfxLegacy').appendChild(newPlugin)}
+else if(newPlugin.textContent === 'rice'){newPlugin.textContent = 'Rice';id('gfxLegacy').insertBefore(newPlugin,id('gfxLegacy').children[0]);id('gfxLegacy').style.display = 'block'}
+else if(newPlugin.textContent === 'glide64mk2'){newPlugin.textContent = 'Glide64 MK2';id('gfxLegacy').appendChild(newPlugin);id('gfxLegacy').style.display = 'block'}
 else{id('gfxCustom').appendChild(newPlugin);id('gfxCustom').style.display = 'block'}}}}
 
 
@@ -1413,8 +1416,7 @@ gcaSettings = "control_stick_deadzone = " + id('control_stick_deadzone').value +
 
 if(gfx.includes('angrylion') || gfx.includes('parallel')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=false'} /* prevent crashes caused by wrong RSP settings */
 else if(gfx.includes('rice') || gfx.includes('glide64mk2')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=true'}
-if(gfx.includes('angrylion') && rsp.includes('rsp-hle')){rsp = 'mupen64plus-rsp-cxd4' + ext}
-else if(gfx.includes('parallel') && rsp.includes('rsp-hle')){rsp = 'mupen64plus-rsp-parallel' + ext}
+if((gfx.includes('angrylion') || gfx.includes('parallel')) && rsp.includes('rsp-hle')){rsp = 'mupen64plus-rsp-cxd4' + ext}
 else if((gfx.includes('rice') || gfx.includes('glide64mk2')) && rsp.includes('rsp-parallel')){rsp = 'mupen64plus-rsp-hle' + ext}
 
 if(id('nospeedlimit').checked){audio = 'dummy';vsync = 'Video-General[VerticalSync]=false';ViVsync = 'Video-AngrylionPlus[ViVsync]=false';ParallelVSync = 'Video-Parallel[Vsync]=false'} /* force muted audio and disabled V-Sync */

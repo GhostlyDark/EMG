@@ -216,10 +216,12 @@ To limit the building process to one thread:
 
 Additionally, changing the boolean values from `ON` to `OFF` near the start of `compile.sh` disables building the corresponding plugins:
 ```
+parallelRSP="ON"
 raphnetraw="ON"
-gca="ON"     
-angrylion="ON" 
-parallel="ON" 
+gca="ON"
+angrylion="ON"
+parallelRDP="ON"
+rice="ON"
 glide64mk2="ON"
 ```
 

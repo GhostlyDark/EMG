@@ -34,7 +34,7 @@ a,p,button,input{-webkit-tap-highlight-color:rgba(255,255,255,0);-webkit-focus-r
 .dark.custom body{color:#fff}
 .dark.custom .sub{background:rgba(255,255,255,.1)}
 
-#background_input,.hide,#audioCustom,#inputCustom,#rspCustom,#RspFallbackCustom,#gfxCustom{display:none}
+#background_input,.hide,#audioCustom,#inputCustom,#rspCustom,#RspFallbackCustom,#gfxCustom,#gfxLegacy{display:none}
 .center{text-align:center}
 .width125m{min-width:125px}
 .width150m{min-width:150px}

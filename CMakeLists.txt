@@ -2,11 +2,13 @@ cmake_minimum_required(VERSION 3.15)
 
 
 
-option(USE_RAPHNETRAW "Build mupen64plus-input-raphnetraw"     ON)
-option(USE_GCA        "Build mupen64plus-input-gca"            ON)
-option(USE_ANGRYLION  "Build mupen64plus-video-angrylion-plus" ON)
-option(USE_PARALLEL   "Build mupen64plus-video-parallel"       ON)
-option(USE_GLIDE64MK2 "Build mupen64plus-video-glide64mk2"     ON)
+option(USE_PARALLEL_RSP "Build mupen64plus-rsp-parallel"         ON)
+option(USE_RAPHNETRAW   "Build mupen64plus-input-raphnetraw"     ON)
+option(USE_GCA          "Build mupen64plus-input-gca"            ON)
+option(USE_ANGRYLION    "Build mupen64plus-video-angrylion-plus" ON)
+option(USE_PARALLEL_RDP "Build mupen64plus-video-parallel"       ON)
+option(USE_RICE         "Build mupen64plus-video-rice"           ON)
+option(USE_GLIDE64MK2   "Build mupen64plus-video-glide64mk2"     ON)
 
 
 
@@ -147,18 +149,20 @@ ExternalProject_Add(mupen64plus-rsp-hle
     BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-rsp-hle/projects/unix/mupen64plus-rsp-hle${LIB_EXT}
 )
 
-ExternalProject_Add(mupen64plus-rsp-parallel
-    SOURCE_DIR ${SOURCEDIR}/mupen64plus-rsp-parallel
-
-    INSTALL_COMMAND ""
-
-    BUILD_IN_SOURCE False
-    CMAKE_ARGS -DCMAKE_BUILD_TYPE=Release
-
-    BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-rsp-parallel
-
-    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-rsp-parallel/mupen64plus-rsp-parallel${LIB_EXT}
-)
+if(USE_PARALLEL_RSP)
+    ExternalProject_Add(mupen64plus-rsp-parallel
+        SOURCE_DIR ${SOURCEDIR}/mupen64plus-rsp-parallel
+    
+        INSTALL_COMMAND ""
+    
+        BUILD_IN_SOURCE False
+        CMAKE_ARGS -DCMAKE_BUILD_TYPE=Release
+    
+        BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-rsp-parallel
+    
+        BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-rsp-parallel/mupen64plus-rsp-parallel${LIB_EXT}
+    )
+endif()
 
 ExternalProject_Add(mupen64plus-input-sdl
     SOURCE_DIR ${SOURCEDIR}/mupen64plus-input-sdl/
@@ -244,7 +248,7 @@ ExternalProject_Add(mupen64plus-video-GLideN64
 
 )
 
-if(USE_PARALLEL)
+if(USE_PARALLEL_RDP)
     ExternalProject_Add(mupen64plus-video-parallel
         SOURCE_DIR ${SOURCEDIR}/mupen64plus-video-parallel
     
@@ -259,22 +263,24 @@ if(USE_PARALLEL)
 )
 endif()
 
-ExternalProject_Add(mupen64plus-video-rice
-    SOURCE_DIR ${SOURCEDIR}/mupen64plus-video-rice/
-
-    CONFIGURE_COMMAND ""
-    INSTALL_COMMAND ""
-
-    BUILD_COMMAND make all -f ${SOURCEDIR}/mupen64plus-video-rice/projects/unix/Makefile
-        SRCDIR=${SOURCEDIR}/mupen64plus-video-rice/src
-        APIDIR=${APIDIR}
-
-    BUILD_IN_SOURCE False
-
-    BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-video-rice/projects/unix
-
-    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-video-rice/projects/unix/mupen64plus-video-rice${LIB_EXT}
+if(USE_RICE)
+    ExternalProject_Add(mupen64plus-video-rice
+        SOURCE_DIR ${SOURCEDIR}/mupen64plus-video-rice/
+    
+        CONFIGURE_COMMAND ""
+        INSTALL_COMMAND ""
+    
+        BUILD_COMMAND make all -f ${SOURCEDIR}/mupen64plus-video-rice/projects/unix/Makefile
+            SRCDIR=${SOURCEDIR}/mupen64plus-video-rice/src
+            APIDIR=${APIDIR}
+    
+        BUILD_IN_SOURCE False
+    
+        BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-video-rice/projects/unix
+    
+        BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-video-rice/projects/unix/mupen64plus-video-rice${LIB_EXT}
 )
+endif()
 
 if(USE_GLIDE64MK2)
     ExternalProject_Add(mupen64plus-video-glide64mk2
@@ -354,8 +360,10 @@ set(MUPEN64PLUS_PLUGIN_RSP_CXD4 ${BUILD_BYPRODUCTS})
 ExternalProject_Get_property(mupen64plus-rsp-hle BUILD_BYPRODUCTS)
 set(MUPEN64PLUS_PLUGIN_RSP_HLE ${BUILD_BYPRODUCTS})
 
-ExternalProject_Get_property(mupen64plus-rsp-parallel BUILD_BYPRODUCTS)
-set(MUPEN64PLUS_PLUGIN_RSP_PARALLEL ${BUILD_BYPRODUCTS})
+if(USE_PARALLEL_RSP)
+    ExternalProject_Get_property(mupen64plus-rsp-parallel BUILD_BYPRODUCTS)
+    set(MUPEN64PLUS_PLUGIN_RSP_PARALLEL ${BUILD_BYPRODUCTS})
+endif()
 
 ExternalProject_Get_property(mupen64plus-input-sdl BUILD_BYPRODUCTS)
 set(MUPEN64PLUS_PLUGIN_INPUT_SDL ${BUILD_BYPRODUCTS})
@@ -378,13 +386,15 @@ endif()
 ExternalProject_Get_property(mupen64plus-video-GLideN64 BUILD_BYPRODUCTS)
 set(MUPEN64PLUS_PLUGIN_GFX_GLIDEN64 ${BUILD_BYPRODUCTS})
 
-if(USE_PARALLEL)
+if(USE_PARALLEL_RDP)
     ExternalProject_Get_property(mupen64plus-video-parallel BUILD_BYPRODUCTS)
     set(MUPEN64PLUS_PLUGIN_GFX_PARALLEL ${BUILD_BYPRODUCTS})
 endif()
 
-ExternalProject_Get_property(mupen64plus-video-rice BUILD_BYPRODUCTS)
-set(MUPEN64PLUS_PLUGIN_GFX_RICE ${BUILD_BYPRODUCTS})
+if(USE_RICE)
+    ExternalProject_Get_property(mupen64plus-video-rice BUILD_BYPRODUCTS)
+    set(MUPEN64PLUS_PLUGIN_GFX_RICE ${BUILD_BYPRODUCTS})
+endif()
 set(RICE_INI ${SOURCEDIR}/mupen64plus-video-rice/data/RiceVideoLinux.ini)
 
 if(USE_GLIDE64MK2)
@@ -436,9 +446,11 @@ install(FILES ${MUPEN64PLUS_PLUGIN_RSP_HLE}
     DESTINATION ${INSTALL_PATH}/plugin
 )
 
-install(FILES ${MUPEN64PLUS_PLUGIN_RSP_PARALLEL}
-    DESTINATION ${INSTALL_PATH}/plugin
-)
+if(USE_PARALLEL_RSP)
+    install(FILES ${MUPEN64PLUS_PLUGIN_RSP_PARALLEL}
+        DESTINATION ${INSTALL_PATH}/plugin
+    )
+endif()
 
 install(FILES ${MUPEN64PLUS_PLUGIN_INPUT_SDL}
     DESTINATION ${INSTALL_PATH}/plugin
@@ -466,15 +478,17 @@ install(FILES ${MUPEN64PLUS_PLUGIN_GFX_GLIDEN64}
     DESTINATION ${INSTALL_PATH}/plugin
 
 )
-if(USE_PARALLEL)
+if(USE_PARALLEL_RDP)
     install(FILES ${MUPEN64PLUS_PLUGIN_GFX_PARALLEL}
         DESTINATION ${INSTALL_PATH}/plugin
     )
 endif()
 
-install(FILES ${MUPEN64PLUS_PLUGIN_GFX_RICE}
-    DESTINATION ${INSTALL_PATH}/plugin
-)
+if(USE_RICE)
+    install(FILES ${MUPEN64PLUS_PLUGIN_GFX_RICE}
+        DESTINATION ${INSTALL_PATH}/plugin
+    )
+endif()
 
 if(USE_GLIDE64MK2)
     install(FILES ${MUPEN64PLUS_PLUGIN_GFX_GLIDE}
