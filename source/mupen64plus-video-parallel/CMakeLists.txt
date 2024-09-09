@@ -12,6 +12,10 @@ option(CONFIG_GUI "Enables Qt configuration GUI)" OFF)
 # check for INTERPROCEDURAL_OPTIMIZATION support
 cmake_policy(SET CMP0069 NEW)
 
+if(NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE Release)
+endif()
+
 include(CheckIPOSupported)
 check_ipo_supported(RESULT ENABLE_IPO)
 if(ENABLE_IPO)
@@ -61,6 +65,7 @@ set(PARALLEL_SOURCES
     vulkan/wsi.cpp
     vulkan/texture/texture_format.cpp
     util/arena_allocator.cpp
+    util/environment.cpp
     util/logging.cpp
     util/thread_id.cpp
     util/aligned_alloc.cpp
