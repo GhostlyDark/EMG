@@ -63,15 +63,6 @@ elif [[ $(uname -s) = Darwin* ]]; then
     m64p_dir="$rsc_dir/m64p"
     plugin_dir="$m64p_dir/plugin"
 
-    version="$(sw_vers -productVersion | cut -d '.' -f 1,2)"
-    function ver { printf "%03d%03d" $(echo "$1" | tr '.' ' '); }
-
-    if [[ $(ver $version) -lt $(ver 10.15) ]]; then
-
-        glide64mk2="OFF"
-
-	fi
-
 else
 
     exe=""
