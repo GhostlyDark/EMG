@@ -19,7 +19,7 @@ EMG is a launcher for [mupen64plus](https://github.com/GhostlyDark/mupen64plus-c
 
 - **CPU:** SSE3 capable (Electron)
 - **GPU:** OpenGL 2.1 (Rice), OpenGL 3.3 (Angrylion Plus, GLideN64), Vulkan 1.1 (Parallel RDP)
-- **OS:** Windows 7 (64-bit), Linux, macOS 10.13 (10.15 for Glide64MK2)
+- **OS:** 64-bit version of Windows 7, Linux or macOS 10.13
 - **Compilation:** CMake v3.15 (Ubuntu 20.04, Debian 11 or similar)
 
 **GameCube adapter:**
@@ -134,43 +134,37 @@ chmod u+x compile.sh
 
 ### macOS
 
-Install a compatible version of Xcode:
+Download a compatible version of Xcode:
 
-- macOS 10.13: Xcode 9.4.1
-- macOS 10.14: Xcode 10.3
-- macOS 10.15: Xcode 11.7
-- macOS 11: Xcode 12.5.1
+- macOS 10.13: Xcode 10.1
+- macOS 10.14: Xcode 11.3.1
+- macOS 10.15: Xcode 12.4
+- macOS 11: Xcode 13.2.1
 
-You may download Xcode from Apple (requires account) or from a third party site (like archive.org).
+If you downloaded an `.xip` archive, extract and move `Xcode.app` into the `/Applications` folder and run it.
 
-> [!TIP]
-> In case you encounter an error message, delete any files from a previous installation:
+>[!TIP]
+>If an older Xcode installation exists, delete `/Applications/Xcode.app` as well as the command line tools:
 >```
 >sudo rm -rf /Library/Developer/CommandLineTools
 >```
-
-Once installed, run this command from the terminal:
-```
-xcode-select --install
-```
-
-Install [MacPorts](https://www.macports.org/install.php), reboot the system and install dependencies:
-```
-sudo port -N install cargo cmake coreutils freeglut freetype gcc11 gcc_select git glew gmake gtk3 hidapi libgcc libpng libsamplerate libsdl2 nasm ninja pkgconfig rust speex speexDSP vulkan-headers wget zlib
-```
-
-> [!TIP]
-> List available compilers:
+>
+>Command line tools can be installed separately:
 >```
->sudo port select --summary
+>xcode-select --install
+>```
+>
+>If needed, agree to the Xcode license:
+>```
+>sudo xcodebuild -license accept
 >```
 
-Configure gcc compiler (and restart terminal for it to take effect):
+Install [MacPorts](https://www.macports.org/install.php), start a new terminal session and install dependencies:
 ```
-sudo port select gcc mp-gcc11
+sudo port -N install cargo cmake coreutils freeglut freetype git glew gtk3 hidapi libgcc libpng libsamplerate libsdl2 nasm ninja pkgconfig rust speex speexDSP vulkan-headers wget zlib
 ```
 
-Clone repository:
+Reboot terminal and clone the repository:
 ```
 git clone https://github.com/GhostlyDark/EMG
 ```
@@ -189,8 +183,8 @@ chmod u+x compile.sh
 ./compile.sh
 ```
 
-> [!IMPORTANT]
-> Bundle dependencies to make the application portable (optional, but required for distribution):
+>[!IMPORTANT]
+>Bundle dependencies to make the application portable:
 >```
 >chmod u+x ./macdep.sh
 >```
