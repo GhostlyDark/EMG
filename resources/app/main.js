@@ -23,7 +23,7 @@ jsOptions = {cwd: cwd, stdio: stdio, timeout: 5000, windowsHide: true},
 load = 'http://localhost:64064',
 name = ' ' + app.name + ' v' + app.getVersion(),
 preferences = {preload:path(dir, 'preload.js'), disableDialogs:true},
-mainWindow = {backgroundColor:'#0f0f0f', width:923, height:0, minWidth:923, minHeight:640, title:name, show:false, webPreferences:preferences},
+mainWindow = {backgroundColor:'#0f0f0f', width:923, height:36, minWidth:923, minHeight:640, title:name, show:false, webPreferences:preferences},
 deleteDialog = {defaultId:1, cancelId:1, icon:path(dir, 'img', 'delete.png'), buttons:['Confirm','Abort'], title:' Reset settings', message:'Reset all settings?'},
 server = require(path(dir,'server.js'));
 let m64pCache = m64pShare = m64pConfig = path(appData, 'mupen64plus');
