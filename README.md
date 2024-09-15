@@ -174,24 +174,14 @@ Change directory:
 cd EMG
 ```
 
-Make `compile.sh` executable and run it:
+Make scripts executable and run them:
 ```
-chmod u+x compile.sh
-```
-
-```
-./compile.sh
+chmod u+x compile.sh && chmod u+x macdep.sh
 ```
 
->[!IMPORTANT]
->Bundle dependencies to make the application portable:
->```
->chmod u+x ./macdep.sh
->```
->
->```
->./macdep.sh
->```
+```
+./compile.sh && ./macdep.sh
+```
 
 
 ## Additional info
@@ -208,16 +198,7 @@ To limit the building process to one thread:
 ./compile.sh 1
 ```
 
-Additionally, changing the boolean values from `ON` to `OFF` near the start of `compile.sh` disables building the corresponding plugins:
-```
-parallelRSP="ON"
-raphnetraw="ON"
-gca="ON"
-angrylion="ON"
-parallelRDP="ON"
-rice="ON"
-glide64mk2="ON"
-```
+Additionally, near the beginning of `CMakeLists.txt`, compile options for `mupen64plus-core` and settings to disable building certain plugins can be set. Activate `NO_ASM` if compiling the core fails (which can happen on macOS) or use `NEW_DYNAREC` to compile the core with a faster, but less stable dynamic recompiler.
 
 
 ### Custom plugins

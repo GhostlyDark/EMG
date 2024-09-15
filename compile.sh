@@ -11,18 +11,6 @@ electron="v22.3.27"
 
 
 
-# Build settings
-
-parallelRSP="ON"
-raphnetraw="ON"
-gca="ON"
-angrylion="ON"
-parallelRDP="ON"
-rice="ON"
-glide64mk2="ON"
-
-
-
 # Paths
 
 script_dir="$(dirname "$0")"
@@ -174,7 +162,7 @@ fi
 
 # Build
 
-cmake -S "$toplvl_dir" -B "$cmake_dir" -G "Ninja" -DUSE_PARALLEL_RSP=$parallelRSP -DUSE_RAPHNETRAW=$raphnetraw -DUSE_GCA=$gca -DUSE_ANGRYLION=$angrylion -DUSE_PARALLEL_RDP=$parallelRDP -DUSE_RICE=$rice -DUSE_GLIDE64MK2=$glide64mk2
+cmake -S "$toplvl_dir" -B "$cmake_dir" -G "Ninja"
 cmake --build "$cmake_dir" --parallel "$threads"
 cmake --install "$cmake_dir"
 

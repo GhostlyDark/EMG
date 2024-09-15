@@ -2,13 +2,17 @@ cmake_minimum_required(VERSION 3.15)
 
 
 
-option(USE_PARALLEL_RSP "Build mupen64plus-rsp-parallel"         ON)
-option(USE_RAPHNETRAW   "Build mupen64plus-input-raphnetraw"     ON)
-option(USE_GCA          "Build mupen64plus-input-gca"            ON)
-option(USE_ANGRYLION    "Build mupen64plus-video-angrylion-plus" ON)
-option(USE_PARALLEL_RDP "Build mupen64plus-video-parallel"       ON)
-option(USE_RICE         "Build mupen64plus-video-rice"           ON)
-option(USE_GLIDE64MK2   "Build mupen64plus-video-glide64mk2"     ON)
+option(ACCURATE_FPU     "Build mupen64plus-core with accurate FPU behavior" ON)
+option(NEW_DYNAREC      "Build mupen64plus-core with experimental dynarec"  OFF)
+option(NO_ASM           "Build mupen64plus-core without assembly"           OFF)
+
+option(USE_PARALLEL_RSP "Build mupen64plus-rsp-parallel"                    ON)
+option(USE_RAPHNETRAW   "Build mupen64plus-input-raphnetraw"                ON)
+option(USE_GCA          "Build mupen64plus-input-gca"                       ON)
+option(USE_ANGRYLION    "Build mupen64plus-video-angrylion-plus"            ON)
+option(USE_PARALLEL_RDP "Build mupen64plus-video-parallel"                  ON)
+option(USE_RICE         "Build mupen64plus-video-rice"                      ON)
+option(USE_GLIDE64MK2   "Build mupen64plus-video-glide64mk2"                ON)
 
 
 
@@ -36,27 +40,21 @@ include(ExternalProject)
 
 if(WIN32)
 
-    set(NO_ASM 0)
     set(C11 "")
-
     set(LIB_EXT ".dll")
     set(BIN_EXT ".exe")
     set(GCA_LIB "mupen64plus_input_gca.dll")
 
 elseif(APPLE)
 
-    set(NO_ASM 1)
     set(C11 "-DCMAKE_CXX_FLAGS=-std=c++11")
-
     set(LIB_EXT ".dylib")
     set(BIN_EXT "")
     set(GCA_LIB "libmupen64plus_input_gca.dylib")
 
 else()
 
-    set(NO_ASM 0)
     set(C11 "")
-
     set(LIB_EXT ".so")
     set(BIN_EXT "")
     set(GCA_LIB "libmupen64plus_input_gca.so")
@@ -89,7 +87,7 @@ ExternalProject_Add(mupen64plus-core
     BUILD_COMMAND make all -f ${SOURCEDIR}/mupen64plus-core/projects/unix/Makefile 
         SRCDIR=${SOURCEDIR}/mupen64plus-core/src
         SUBDIR=${SOURCEDIR}/mupen64plus-core/subprojects 
-        ACCURATE_FPU=1 NO_ASM=${NO_ASM} OSD=0 TARGET=mupen64plus${LIB_EXT}
+        ACCURATE_FPU=$<BOOL:${ACCURATE_FPU} NEW_DYNAREC=$<BOOL:${NEW_DYNAREC} NO_ASM=$<BOOL:${NO_ASM} OSD=0 TARGET=mupen64plus${LIB_EXT}
 
     BUILD_IN_SOURCE False
 
