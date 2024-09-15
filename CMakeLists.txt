@@ -86,7 +86,7 @@ ExternalProject_Add(mupen64plus-core
     BUILD_COMMAND make all -f ${SOURCEDIR}/mupen64plus-core/projects/unix/Makefile 
         SRCDIR=${SOURCEDIR}/mupen64plus-core/src
         SUBDIR=${SOURCEDIR}/mupen64plus-core/subprojects 
-        ACCURATE_FPU=$<BOOL:${ACCURATE_FPU} NEW_DYNAREC=0 NO_ASM=$<BOOL:${NO_ASM} OSD=0 TARGET=mupen64plus${LIB_EXT}
+        ACCURATE_FPU=$<BOOL:${ACCURATE_FPU}> NEW_DYNAREC=0 NO_ASM=$<BOOL:${NO_ASM}> OSD=0 TARGET=mupen64plus${LIB_EXT}
 
     BUILD_IN_SOURCE False
 
@@ -104,7 +104,7 @@ ExternalProject_Add(mupen64plus-core-nd
     BUILD_COMMAND make all -f ${SOURCEDIR}/mupen64plus-core/projects/unix/Makefile 
         SRCDIR=${SOURCEDIR}/mupen64plus-core/src
         SUBDIR=${SOURCEDIR}/mupen64plus-core/subprojects 
-        ACCURATE_FPU=$<BOOL:${ACCURATE_FPU} NEW_DYNAREC=1 NO_ASM=$<BOOL:${NO_ASM} OSD=0 TARGET=mupen64plus-nd${LIB_EXT}
+        ACCURATE_FPU=$<BOOL:${ACCURATE_FPU}> NEW_DYNAREC=1 NO_ASM=$<BOOL:${NO_ASM}> OSD=0 TARGET=mupen64plus-nd${LIB_EXT}
 
     BUILD_IN_SOURCE False
 
