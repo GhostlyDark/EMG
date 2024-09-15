@@ -133,7 +133,7 @@ app.on('ready', () => {
 win = new BrowserWindow(mainWindow)
 win.removeMenu()
 win.loadURL(load)
-win.once('ready-to-show', () => {win.maximize()})
+win.once('ready-to-show', () => {win.maximize();win.focus()})
 win.on('page-title-updated', (e) => {e.preventDefault()})
 if(isLinux)win.setIcon(path(dir, 'img', 'emg-96.png'))
 win.webContents.setWindowOpenHandler((details) => {return {action:'deny'}})
