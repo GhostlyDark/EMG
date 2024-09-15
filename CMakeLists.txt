@@ -3,7 +3,6 @@ cmake_minimum_required(VERSION 3.15)
 
 
 option(ACCURATE_FPU     "Build mupen64plus-core with accurate FPU behavior" ON)
-option(NEW_DYNAREC      "Build mupen64plus-core with experimental dynarec"  OFF)
 option(NO_ASM           "Build mupen64plus-core without assembly"           OFF)
 
 option(USE_PARALLEL_RSP "Build mupen64plus-rsp-parallel"                    ON)
@@ -87,13 +86,31 @@ ExternalProject_Add(mupen64plus-core
     BUILD_COMMAND make all -f ${SOURCEDIR}/mupen64plus-core/projects/unix/Makefile 
         SRCDIR=${SOURCEDIR}/mupen64plus-core/src
         SUBDIR=${SOURCEDIR}/mupen64plus-core/subprojects 
-        ACCURATE_FPU=$<BOOL:${ACCURATE_FPU} NEW_DYNAREC=$<BOOL:${NEW_DYNAREC} NO_ASM=$<BOOL:${NO_ASM} OSD=0 TARGET=mupen64plus${LIB_EXT}
+        ACCURATE_FPU=$<BOOL:${ACCURATE_FPU} NEW_DYNAREC=0 NO_ASM=$<BOOL:${NO_ASM} OSD=0 TARGET=mupen64plus${LIB_EXT}
 
     BUILD_IN_SOURCE False
 
     BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-core/projects/unix
     
     BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-core/projects/unix/mupen64plus${LIB_EXT}
+)
+
+ExternalProject_Add(mupen64plus-core-nd
+    SOURCE_DIR ${SOURCEDIR}/mupen64plus-core/
+
+    CONFIGURE_COMMAND ""
+    INSTALL_COMMAND ""
+
+    BUILD_COMMAND make all -f ${SOURCEDIR}/mupen64plus-core/projects/unix/Makefile 
+        SRCDIR=${SOURCEDIR}/mupen64plus-core/src
+        SUBDIR=${SOURCEDIR}/mupen64plus-core/subprojects 
+        ACCURATE_FPU=$<BOOL:${ACCURATE_FPU} NEW_DYNAREC=1 NO_ASM=$<BOOL:${NO_ASM} OSD=0 TARGET=mupen64plus-nd${LIB_EXT}
+
+    BUILD_IN_SOURCE False
+
+    BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-core-nd/projects/unix
+    
+    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-core-nd/projects/unix/mupen64plus-nd${LIB_EXT}
 )
 
 ExternalProject_Add(mupen64plus-ui-console
@@ -347,6 +364,9 @@ set(MUPEN64PLUSCORE_LIB ${BUILD_BYPRODUCTS})
 set(MUPEN64PLUSCORE_INI ${SOURCEDIR}/mupen64plus-core/data/mupen64plus.ini)
 set(MUPEN64PLUSCORE_CHT ${SOURCEDIR}/mupen64plus-core/data/mupencheat.txt)
 
+ExternalProject_Get_property(mupen64plus-core-nd BUILD_BYPRODUCTS)
+set(MUPEN64PLUSCORE_ND_LIB ${BUILD_BYPRODUCTS})
+
 ExternalProject_Get_property(mupen64plus-ui-console BUILD_BYPRODUCTS)
 set(MUPEN64PLUS_UI ${BUILD_BYPRODUCTS})
 
@@ -427,6 +447,10 @@ if(APPLE)
 endif()
 
 install(FILES ${MUPEN64PLUSCORE_LIB}
+    DESTINATION ${INSTALL_PATH}
+)
+
+install(FILES ${MUPEN64PLUSCORE_ND_LIB}
     DESTINATION ${INSTALL_PATH}
 )
 

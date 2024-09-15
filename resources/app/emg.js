@@ -924,7 +924,8 @@ else{id('videoLink').href = '#videoAnchor'}})
 
 
 id('launch').addEventListener('click', function(){
-if(!recentFiles.includes(filePath.toString()))recentFiles.unshift(filePath.toString());recentFiles.splice(10);recentFilesUpdate();localStorage.setItem('recentFiles',JSON.stringify(recentFiles));
+if(!recentFiles.includes(filePath.toString())){recentFiles.unshift(filePath.toString());recentFiles.splice(10);recentFilesUpdate();localStorage.setItem('recentFiles',JSON.stringify(recentFiles))};
+if(id('newDynarec').checked){corelib = corelib.replace('mupen64plus','mupen64plus-nd')};
 
 var configdir = ConfigPath,
 exp = 'Core[DisableExtraMem]=' + id('exp').checked,
