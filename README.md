@@ -210,6 +210,14 @@ EMG does allow for unknown plugins to be added, as long as they follow the `mupe
 Accepted plugin types are `audio`, `input`, `rsp` and `video`.
 
 
+### Launching via Steam
+
+The application may not boot unless the following parameter is passed as launch option:
+```
+--no-sandbox
+```
+
+
 ### Portable mode
 
 By default, EMG stores its settings in: 
