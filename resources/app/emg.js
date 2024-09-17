@@ -10,8 +10,6 @@ recentFiles = [];
 
 const textInputs = document.querySelectorAll('input[type=text]'),
 
-links = document.querySelectorAll('a'),
-
 regjoy = /axis|button|hat|\(|\)/g, regsplit = /\s*\n/, regradio = /^\s\s\s/g, regbox = /_.*/g, regc = /\:/g, regid = /^\d: |^\d\d: /,
 
 keyScroll = {32:1,33:1,34:1,35:1,36:1,37:1,38:1,39:1,40:1}, /* spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36, left: 37, up: 38, right: 39, down: 40 */
@@ -75,7 +73,6 @@ if(!isLinux)id('master_volume').style.display = 'none'; /* hide Linux exclusive 
 
 function tabindex(el){el.tabIndex = -1} /* prevent tab focus */
 textInputs.forEach(el => {tabindex(el)})
-links.forEach(el => {tabindex(el)})
 
 
 
