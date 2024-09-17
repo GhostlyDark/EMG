@@ -71,11 +71,6 @@ if(!isLinux)id('master_volume').style.display = 'none'; /* hide Linux exclusive 
 
 
 
-function tabindex(el){el.tabIndex = -1} /* prevent tab focus */
-textInputs.forEach(el => {tabindex(el)})
-
-
-
 const pluginFiles = pluginDir.filter(name => name.includes(ext)), pluginNames = []; /* add optional and unknown plugins */
 pluginFiles.forEach(name => pluginNames.push(name.replace(/\..*/,'')));
 
@@ -617,11 +612,11 @@ glide_setting.forEach(glide_setting => {id('ul_'+glide_setting).addEventListener
 
 
 
-function noScroll(e){if(keyScroll[e.keyCode]){e.preventDefault();return false}} /* prevent scrolling while focusing text inputs */
-for (var i = 0; i < textInputs.length; i++){var textInput = textInputs[i];preventScroll(textInput)}
+function noScroll(e){if(keyScroll[e.keyCode]){e.preventDefault();return false}} /* prevent scroll and tab focus using text inputs */
 function preventScroll(textInput){
 textInput.addEventListener('focus',(e) => {html.addEventListener('keydown',noScroll,false)})
 textInput.addEventListener('blur',(e) => {html.removeEventListener('keydown',noScroll,false)})}
+for (var i = 0; i < textInputs.length; i++){var textInput = textInputs[i];preventScroll(textInput);textInput.tabIndex = -1}
 
 
 
