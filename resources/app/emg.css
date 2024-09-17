@@ -66,8 +66,8 @@ footer{position:fixed;bottom:0;width:100%;max-width:730px;left:50%;transform:tra
 #settings{position:absolute;bottom:15px;left:14px}
 #moon{bottom:15px}
 #palettes{bottom:75px}
-#reset{bottom:135px}
-#fancy{bottom:195px}
+#fancy{bottom:135px}
+#reset{bottom:195px}
 @media (min-width:906px){#moon,#palettes,#fancy,#reset{margin-right:-75px}#settings{margin-left:-75px}}
 
 #background{z-index:-2;background-size:cover;background-repeat:no-repeat;background-position:center center;background-attachment:fixed}
