@@ -39,21 +39,18 @@ include(ExternalProject)
 
 if(WIN32)
 
-    set(C11 "")
     set(LIB_EXT ".dll")
     set(BIN_EXT ".exe")
     set(GCA_LIB "mupen64plus_input_gca.dll")
 
 elseif(APPLE)
 
-    set(C11 "-DCMAKE_CXX_FLAGS=-std=c++11")
     set(LIB_EXT ".dylib")
     set(BIN_EXT "")
     set(GCA_LIB "libmupen64plus_input_gca.dylib")
 
 else()
 
-    set(C11 "")
     set(LIB_EXT ".so")
     set(BIN_EXT "")
     set(GCA_LIB "libmupen64plus_input_gca.so")
@@ -252,7 +249,7 @@ ExternalProject_Add(mupen64plus-video-GLideN64
     INSTALL_COMMAND ""
 
     BUILD_IN_SOURCE False
-    CMAKE_ARGS -DMUPENPLUSAPI=ON -DUSE_SYSTEM_LIBS=ON ${C11}
+    CMAKE_ARGS -DMUPENPLUSAPI=ON -DUSE_SYSTEM_LIBS=ON
 
     SOURCE_SUBDIR ./src/
     BINARY_DIR ${GLIDEN64_BUILD_DIR}
