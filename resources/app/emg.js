@@ -75,7 +75,6 @@ if(!isLinux)id('master_volume').style.display = 'none'; /* hide Linux exclusive 
 
 
 
-id('fontColor').tabIndex = -1;
 function tabindex(el){el.tabIndex = -1} /* prevent tab focus */
 buttons.forEach(el => {tabindex(el);el.addEventListener('focus', function(){el.blur()})})
 textInputs.forEach(el => {tabindex(el)})
