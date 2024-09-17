@@ -9,6 +9,7 @@ savePath = ipcRenderer.sendSync('savePath'),
 hires_texture = ipcRenderer.sendSync('hires_texture'),
 cache = ipcRenderer.sendSync('cache'),
 texture_dump = ipcRenderer.sendSync('texture_dump'),
+isWindows = ipcRenderer.sendSync('isWindows'),
 isLinux = ipcRenderer.sendSync('isLinux'),
 isMac = ipcRenderer.sendSync('isMac'),
 dialogDirectory = () => {return ipcRenderer.sendSync('dialogDirectory')},
@@ -92,6 +93,7 @@ contextBridge.exposeInMainWorld('savePath',savePath)
 contextBridge.exposeInMainWorld('hires_texture',hires_texture)
 contextBridge.exposeInMainWorld('cache',cache)
 contextBridge.exposeInMainWorld('texture_dump',texture_dump)
+contextBridge.exposeInMainWorld('isWindows',isWindows)
 contextBridge.exposeInMainWorld('isLinux',isLinux)
 contextBridge.exposeInMainWorld('isMac',isMac)
 contextBridge.exposeInMainWorld('dialogDirectory',dialogDirectory)

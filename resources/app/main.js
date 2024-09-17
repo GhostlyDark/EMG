@@ -14,6 +14,7 @@ pluginDir = path(cwd, 'plugin'),
 testROM = path(cwd, 'mupen64plus.z64'),
 executablePath = path(cwd, 'mupen64plus'),
 jstestPath = path(cwd, 'sdl2-jstest'),
+isWindows = process.platform === 'win32',
 isLinux = process.platform === 'linux',
 isMac = process.platform === 'darwin',
 stdio = ['ignore', 'pipe', 'ignore'],
@@ -23,7 +24,7 @@ jsOptions = {cwd: cwd, stdio: stdio, timeout: 5000, windowsHide: true},
 load = 'http://localhost:64064',
 name = ' ' + app.name + ' v' + app.getVersion(),
 preferences = {preload:path(dir, 'preload.js'), disableDialogs:true},
-mainWindow = {backgroundColor:'#0f0f0f', width:1280, height:800, minWidth:923, minHeight:640, title:name, show:false, webPreferences:preferences},
+mainWindow = {backgroundColor:'#0f0f0f', width:1280, height:800, minWidth:923, minHeight:640, title:name, webPreferences:preferences},
 deleteDialog = {defaultId:1, cancelId:1, icon:path(dir, 'img', 'delete.png'), buttons:['Confirm','Abort'], title:' Reset settings', message:'Reset all settings?'},
 server = require(path(dir,'server.js'));
 let m64pCache = m64pShare = m64pConfig = path(appData, 'mupen64plus');
@@ -106,6 +107,7 @@ ipcMain.on('savePath', (e) => {e.returnValue = save})
 ipcMain.on('hires_texture', (e) => {e.returnValue = hires_texture})
 ipcMain.on('cache', (e) => {e.returnValue = cache})
 ipcMain.on('texture_dump', (e) => {e.returnValue = texture_dump})
+ipcMain.on('isWindows', (e) => {e.returnValue = isWindows})
 ipcMain.on('isLinux', (e) => {e.returnValue = isLinux})
 ipcMain.on('isMac', (e) => {e.returnValue = isMac})
 ipcMain.on('dialogDirectory', (e) => {e.returnValue = dialog.showOpenDialogSync({properties:['openDirectory']})})
@@ -132,8 +134,10 @@ if(!app.requestSingleInstanceLock()){return app.quit()}
 app.on('ready', () => {
 win = new BrowserWindow(mainWindow)
 win.removeMenu()
+if(isWindows)win.minimize()
+win.maximize()
+win.focus()
 win.loadURL(load)
-win.once('ready-to-show', () => {win.show();win.maximize();win.focus()})
 win.on('page-title-updated', (e) => {e.preventDefault()})
 if(isLinux)win.setIcon(path(dir, 'img', 'emg-96.png'))
 win.webContents.setWindowOpenHandler((details) => {return {action:'deny'}})
