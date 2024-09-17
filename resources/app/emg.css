@@ -215,16 +215,16 @@ button,select,input,.box,.pointer,select + label,[type=checkbox] + label,[type=c
 .dark [type=checkbox]:disabled,.dark [type=checkbox]:disabled:checked:before{border-color:#ccc!important}
 
 button{font-size:15px;line-height:23px;border:0;outline:0;background-color:#ddd;border-radius:7px;text-transform:uppercase;padding:3px 10px;transition:background-color .2s cubic-bezier(.4,0,.22,1)}
-button:hover,select:hover,button:active,select:active,select:focus{background-color:#ccc}
+button:hover,select:hover,button:active,select:active,button:focus,select:focus{background-color:#ccc}
 
 select{font-size:16px;border:0;outline:0;padding:5px 35px 5px 8px;transition:background-color .2s cubic-bezier(.4,0,.22,1);margin:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 24 24'%3E%3Cpath opacity='.87' fill='none' d='M24 24H0V0h24v24z'/%3E%3Cpath d='M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z'/%3E%3C/svg%3E") no-repeat 99% #ddd;appearance:none;height:29px}
 .dark select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' width='30' height='30' viewBox='0 0 24 24'%3E%3Cpath opacity='.87' fill='none' d='M24 24H0V0h24v24z'/%3E%3Cpath d='M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z'/%3E%3C/svg%3E")}
 .dark button,.dark select,.dark [type=text]{background-color:#222;color:#fff}
-.dark button:hover,.dark select:hover,.dark [type=text]:hover,.dark button:active,.dark select:active,.dark select:focus,.dark [type=text]:active,.dark [type=text]:focus{background-color:#333}
+.dark button:hover,.dark select:hover,.dark [type=text]:hover,.dark button:active,.dark select:active,.dark button:focus,.dark select:focus,.dark [type=text]:active,.dark [type=text]:focus{background-color:#333}
 .custom select,.custom button,.custom [type=text]{background-color:rgba(200,200,200,.5)}
 .dark.custom select,.dark.custom button,.dark.custom [type=text]{background-color:rgba(40,40,40,.5)}
-.custom select:hover,.custom button:hover,.custom [type=text]:hover,.custom select:active,.custom select:focus,.custom button:active,.custom [type=text]:active,.custom [type=text]:focus{background-color:rgba(200,200,200,.9)}
-.dark.custom select:hover,.dark.custom button:hover,.dark.custom [type=text]:hover,.dark.custom select:active,.dark.custom select:focus,.dark.custom button:active,.dark.custom [type=text]:active,.dark.custom [type=text]:focus{background-color:rgba(40,40,40,.9)}
+.custom select:hover,.custom button:hover,.custom [type=text]:hover,.custom select:active,.custom button:focus,.custom select:focus,.custom button:active,.custom [type=text]:active,.custom [type=text]:focus{background-color:rgba(200,200,200,.9)}
+.dark.custom select:hover,.dark.custom button:hover,.dark.custom [type=text]:hover,.dark.custom select:active,.dark.custom button:focus,.dark.custom select:focus,.dark.custom button:active,.dark.custom [type=text]:active,.dark.custom [type=text]:focus{background-color:rgba(40,40,40,.9)}
 select:disabled:hover{background-color:#ddd}
 .dark select:disabled:hover{background-color:#222}
 .custom select:disabled:hover{background-color:rgba(200,200,200,.5)}

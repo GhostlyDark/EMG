@@ -8,9 +8,7 @@ corelib = './mupen64plus' + ext,
 
 recentFiles = [];
 
-const buttons = document.querySelectorAll('button'),
-
-textInputs = document.querySelectorAll('input[type=text]'),
+const textInputs = document.querySelectorAll('input[type=text]'),
 
 links = document.querySelectorAll('a'),
 
@@ -76,7 +74,6 @@ if(!isLinux)id('master_volume').style.display = 'none'; /* hide Linux exclusive 
 
 
 function tabindex(el){el.tabIndex = -1} /* prevent tab focus */
-buttons.forEach(el => {tabindex(el);el.addEventListener('focus', function(){el.blur()})})
 textInputs.forEach(el => {tabindex(el)})
 links.forEach(el => {tabindex(el)})
 
