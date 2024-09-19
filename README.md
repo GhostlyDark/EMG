@@ -141,7 +141,7 @@ Download a compatible version of Xcode:
 - macOS 10.15: Xcode 12.4
 - macOS 11: Xcode 13.2.1
 
-If you downloaded an `.xip` archive, extract and move `Xcode.app` into the `/Applications` folder and run it.
+After downloading an `.xip` archive, extract and move `Xcode.app` into the `/Applications` folder and run it.
 
 >[!TIP]
 >If an older Xcode installation exists, delete `/Applications/Xcode.app` as well as the command line tools:
@@ -149,17 +149,9 @@ If you downloaded an `.xip` archive, extract and move `Xcode.app` into the `/App
 >sudo rm -rf /Library/Developer/CommandLineTools
 >```
 >
->Command line tools can be installed separately:
->```
->xcode-select --install
->```
->
->If needed, agree to the Xcode license:
->```
->sudo xcodebuild -license accept
->```
+>If the installation fails, it may be caused by an expired certificate. This can be worked around by changing the system date back to a specific year in the past, when the certificate was still valid.
 
-Install [MacPorts](https://www.macports.org/install.php), start a new terminal session and install dependencies:
+Install [MacPorts](https://www.macports.org/install.php#installing), start a new terminal session and install dependencies:
 ```
 sudo port -N install cargo cmake coreutils freeglut freetype git glew gtk3 hidapi libgcc libpng libsamplerate libsdl2 nasm ninja pkgconfig rust speex speexDSP vulkan-headers wget zlib
 ```
