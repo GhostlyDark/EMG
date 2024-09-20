@@ -913,7 +913,7 @@ else{id('videoLink').href = '#videoAnchor'}})
 
 id('launch').addEventListener('click', function(){
 if(!recentFiles.includes(filePath.toString())){recentFiles.unshift(filePath.toString());recentFiles.splice(10);recentFilesUpdate();localStorage.setItem('recentFiles',JSON.stringify(recentFiles))};
-if(id('newDynarec').checked){corelib = corelib.replace('mupen64plus','mupen64plus-nd')};
+id('newDynarec').checked ? corelib = './mupen64plus-nd' + ext : corelib = './mupen64plus' + ext;
 
 var configdir = ConfigPath,
 exp = 'Core[DisableExtraMem]=' + id('exp').checked,
