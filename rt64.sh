@@ -6,14 +6,14 @@ set -ex
 
 # Parameters
 
-threads="${1:-$(nproc)}"
+threads="${1:-$(nproc || getconf _NPROCESSORS_ONLN)}"
 
 
 
 # Paths
 
 script_dir="$(dirname "$0")"
-toplvl_dir="$(realpath "$script_dir")"
+toplvl_dir="$(realpath "$script_dir" || grealpath "$script_dir")"
 build_dir="$toplvl_dir/build"
 cmake_dir="$build_dir/CMake"
 emg_dir="$build_dir/EMG"
@@ -90,7 +90,7 @@ fi
 if [[ $(uname -s) = MINGW64* ]]; then
 
     cp "$rt64_build_dir"/dxcompiler.dll "$rt64_build_dir"/dxil.dll "$m64p_dir"
-    cp "$rt64_build_dir"/dxcompiler.dll "$rt64_build_dir"/dxil.dll "$rt64_release_dir"/rt64$ext "$plugin_dir"
+    cp "$rt64_release_dir"/rt64$ext "$plugin_dir"
 
 fi
 
