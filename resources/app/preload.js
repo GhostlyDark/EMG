@@ -82,7 +82,7 @@ if(line.includes('Error:') && !data.includes(line))data += '<p>' + line + '</p>'
 if(data.includes("couldn't open ROM file") || data.includes('failed to open ROM image file')){dialogError('ROM failure','ROM file failed to load')}
 else if(data.includes('plugin not found')){dialogError('Plugin failure','Plugin failed to load')}
 else if(data.includes('AttachCoreLib() Error:')){dialogError('Core failure','Core failed to load')}
-else if(stdout === ''){data = 'Emulator crashed';dialogError('Crash',data)}
+else if(stdout === ''){data = 'Emulator crashed'}
 log.innerHTML = data})
 
 contextBridge.exposeInMainWorld('testROM',testROM)
