@@ -4,7 +4,6 @@
 #include "m64p_common.h"
 #include "m64p_config.h"
 #include "m64p_vidext.h"
-#include "m64p_frontend.h"
 
 #define PLUGIN_VERSION              0x020000
 #define VIDEO_PLUGIN_API_VERSION	0x020200
@@ -53,9 +52,6 @@ extern ptr_VidExt_GL_SwapBuffers        CoreVideo_GL_SwapBuffers;
 extern ptr_VidExt_GL_GetDefaultFramebuffer CoreVideo_GL_GetDefaultFramebuffer;
 
 extern ptr_PluginGetVersion             CoreGetVersion;
-
-extern void*                            CoreDebugCallbackContext;
-extern ptr_DebugCallback                CoreDebugCallback;
 
 extern const unsigned int* rdram_size;
 
