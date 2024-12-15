@@ -469,7 +469,7 @@ recentFiles.forEach(rf => {var i = recentFiles.indexOf(rf);if(recentFiles[i] != 
 recentFilesUpdate()
 
 id('recent').addEventListener('change', function(){
-if(id('recent').value != null && id('recent').value != ''){filePath = id('recent').value;id('fileText').textContent = filePath;localStorage.setItem('filePath', filePath);if(!recentFiles.includes(filePath))recentFiles.unshift(filePath);recentFiles.splice(10);localStorage.setItem('recentFiles',JSON.stringify(recentFiles));hideCheats()}})
+if(id('recent').value != null && id('recent').value != ''){filePath = id('recent').value;id('fileText').textContent = filePath;localStorage.setItem('filePath', filePath);hideCheats()}})
 
 id('clearRecent').addEventListener('click', function(){
 hideCheats();
@@ -912,7 +912,10 @@ else{id('videoLink').href = '#videoAnchor'}})
 
 
 id('launch').addEventListener('click', function(){
-if(!recentFiles.includes(filePath.toString())){recentFiles.unshift(filePath.toString());recentFiles.splice(10);recentFilesUpdate();localStorage.setItem('recentFiles',JSON.stringify(recentFiles))};
+if(filePath.toString() != testROM){
+if(recentFiles.includes(filePath.toString())){recentFiles = recentFiles.filter(item => item !== filePath.toString())};
+recentFiles.unshift(filePath.toString());recentFiles.splice(10);recentFilesUpdate();localStorage.setItem('recentFiles',JSON.stringify(recentFiles))};
+
 id('newDynarec').checked ? corelib = './mupen64plus-nd' + ext : corelib = './mupen64plus' + ext;
 
 var configdir = ConfigPath,
