@@ -12,6 +12,7 @@ n64DataDir = path(dataDir, 'n64'),
 cwd = path(dir, '../', 'm64p'),
 pluginDir = path(cwd, 'plugin'),
 testROM = path(cwd, 'mupen64plus.z64'),
+mupencheat = path(cwd, 'data', 'mupencheat.txt'),
 executablePath = path(cwd, 'mupen64plus'),
 jstestPath = path(cwd, 'sdl2-jstest'),
 isWindows = process.platform === 'win32',
@@ -98,6 +99,7 @@ ipcMain.on('writeGCA', (e, gcaSettings, configdir) => {
 })
 
 ipcMain.on('testROM', (e) => {e.returnValue = testROM})
+ipcMain.on('mupencheat', (e) => {e.returnValue = mupencheat})
 ipcMain.on('pluginDir', (e) => {e.returnValue = readdirSync(pluginDir)})
 ipcMain.on('jstestPath', (e) => {e.returnValue = jstestPath})
 ipcMain.on('jstestKill', () => {if(jstestChild != undefined)jstestChild.kill('SIGTERM')})

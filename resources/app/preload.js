@@ -2,6 +2,7 @@ var id = function(id){return document.getElementById(id)};
 
 const {contextBridge,ipcRenderer} = require('electron'),
 testROM = ipcRenderer.sendSync('testROM'),
+mupencheat = ipcRenderer.sendSync('mupencheat'),
 pluginDir = ipcRenderer.sendSync('pluginDir'),
 config = ipcRenderer.sendSync('config'),
 screenshot = ipcRenderer.sendSync('screenshot'),
@@ -86,6 +87,7 @@ else if(stdout === ''){data = 'Emulator crashed'}
 log.innerHTML = data})
 
 contextBridge.exposeInMainWorld('testROM',testROM)
+contextBridge.exposeInMainWorld('mupencheat',mupencheat)
 contextBridge.exposeInMainWorld('pluginDir',pluginDir)
 contextBridge.exposeInMainWorld('config',config)
 contextBridge.exposeInMainWorld('screenshot',screenshot)
