@@ -232,6 +232,7 @@ m64p_error open_rom(const unsigned char* romimage, unsigned int size)
     imagestring(imagetype, buffer);
     DebugMessage(M64MSG_INFO, "MD5: %s", ROM_SETTINGS.MD5);
     DebugMessage(M64MSG_INFO, "CRC: %08" PRIX32 " %08" PRIX32, tohl(ROM_HEADER.CRC1), tohl(ROM_HEADER.CRC2));
+    DebugMessage(M64MSG_INFO, "Cheat: %08X-%08X-C:%X", tohl(ROM_HEADER.CRC1), tohl(ROM_HEADER.CRC2), ROM_HEADER.Country_code);
     DebugMessage(M64MSG_INFO, "Imagetype: %s", buffer);
     DebugMessage(M64MSG_INFO, "Rom size: %d bytes (or %d Mb or %d Megabits)", g_rom_size, g_rom_size/1024/1024, g_rom_size/1024/1024*8);
     DebugMessage(M64MSG_VERBOSE, "ClockRate = %" PRIX32, tohl(ROM_HEADER.ClockRate));
