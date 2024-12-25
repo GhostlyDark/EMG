@@ -496,7 +496,6 @@ id('cheatPrint').innerHTML = 'crc ' + print})
 id('listCheats').addEventListener('click', function(){ /* generate cheat list */
 var cheats = '';
 id('cheatList').textContent = '';
-id('cheatList').classList.remove('hide');
 const parameters = ['--corelib',corelib,'--datadir','data','--cheats','list',filePath],
 child = showCheats(parameters);
 if(child.includes('AttachCoreLib() Error:') || child === ''){id('cheatList').textContent = 'Failed to open Mupen64Plus.';return}
@@ -857,7 +856,7 @@ id('fontColor').addEventListener('change', function(){localStorage.setItem('font
 
 
 
-id('resetRomPath').addEventListener('click', function(){RomPath = id('RomPathText').textContent = 'Choose a directory';id('RomPathText').style.opacity = '0.7';id('romBrowser').textContent = '';localStorage.removeItem('RomPath');id('romBrowser').classList.add('hide')})
+id('resetRomPath').addEventListener('click', function(){RomPath = id('RomPathText').textContent = 'Choose a directory';id('RomPathText').style.opacity = '0.7';id('romBrowser').textContent = '';localStorage.removeItem('RomPath')})
 if(localStorage.getItem('RomPath') === null){RomPath = '';id('RomPathText').textContent = 'Choose a directory';id('RomPathText').style.opacity = '0.7'}
 if(localStorage.getItem('RomPath') != null){RomPath = localStorage.getItem('RomPath');id('RomPathText').textContent = RomPath;id('RomPathText').style.opacity = ''}
 id('RomPath').addEventListener('click', function(){
@@ -878,9 +877,7 @@ romFiles.forEach(rom => romUpdate(rom))
 const romFile = id('romBrowser').children;
 for(var i = 0; i < romFile.length; i++){
 romFile[i].onclick = function(){filePath = romDirFile(RomPath,this.dataset.value);id('fileText').textContent = filePath;localStorage.setItem('filePath', filePath);id('optionDefault').selected = true;hideCheats()}
-romFile[i].ondblclick = function(){id('launch').click()}}
-id('romBrowser').classList.remove('hide')})
-
+romFile[i].ondblclick = function(){id('launch').click()}}})
 id('loadRomPath').click()
 
 
