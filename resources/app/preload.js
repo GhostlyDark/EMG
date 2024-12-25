@@ -4,6 +4,7 @@ const {contextBridge,ipcRenderer} = require('electron'),
 testROM = ipcRenderer.sendSync('testROM'),
 mupencheat = ipcRenderer.sendSync('mupencheat'),
 pluginDir = ipcRenderer.sendSync('pluginDir'),
+pluginFolder = ipcRenderer.sendSync('pluginFolder'),
 config = ipcRenderer.sendSync('config'),
 screenshot = ipcRenderer.sendSync('screenshot'),
 savePath = ipcRenderer.sendSync('savePath'),
@@ -89,6 +90,7 @@ log.innerHTML = data})
 contextBridge.exposeInMainWorld('testROM',testROM)
 contextBridge.exposeInMainWorld('mupencheat',mupencheat)
 contextBridge.exposeInMainWorld('pluginDir',pluginDir)
+contextBridge.exposeInMainWorld('pluginFolder',pluginFolder)
 contextBridge.exposeInMainWorld('config',config)
 contextBridge.exposeInMainWorld('screenshot',screenshot)
 contextBridge.exposeInMainWorld('savePath',savePath)

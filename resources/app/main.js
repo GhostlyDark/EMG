@@ -101,6 +101,7 @@ ipcMain.on('writeGCA', (e, gcaSettings, configdir) => {
 ipcMain.on('testROM', (e) => {e.returnValue = testROM})
 ipcMain.on('mupencheat', (e) => {e.returnValue = mupencheat})
 ipcMain.on('pluginDir', (e) => {e.returnValue = readdirSync(pluginDir)})
+ipcMain.on('pluginFolder', (e) => {e.returnValue = pluginDir})
 ipcMain.on('jstestPath', (e) => {e.returnValue = jstestPath})
 ipcMain.on('jstestKill', () => {if(jstestChild != undefined)jstestChild.kill('SIGTERM')})
 ipcMain.on('config', (e) => {e.returnValue = m64pConfig})

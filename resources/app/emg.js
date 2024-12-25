@@ -876,6 +876,7 @@ id('loadRomPath').click()
 
 
 id('openRomPath').addEventListener('click', function(){openPath(RomPath)})
+id('openPluginFolder').addEventListener('click', function(){openPath(pluginFolder)})
 id('openConfigPath').addEventListener('click', function(){openPath(ConfigPath)})
 id('openScreenshotPath').addEventListener('click', function(){openPath(ScreenshotPath)})
 id('openSaveStatePath').addEventListener('click', function(){openPath(SaveStatePath)})
