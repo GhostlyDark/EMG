@@ -483,6 +483,16 @@ Array.from(id('recent').getElementsByTagName('option')).forEach(opt => {if(opt.t
 
 
 
+id('cheatInfo').addEventListener('click', function(){ /* print ROM info */
+const parameters = ['--corelib',corelib,'--datadir','data','--cheats','list',filePath],
+child = showCheats(parameters);
+if(child.includes('AttachCoreLib() Error:') || child === ''){id('cheatList').textContent = 'Failed to open Mupen64Plus.';return}
+if(child.includes("couldn't open ROM file")){id('cheatList').textContent = 'Unable to open ROM file.';return}
+var string = child.replace(/^((?!Cheat\:.*).)*$/gm,''),
+filter = string.replace(/Cheat\:\s|Core\:\s/gm,''),
+print = filter.replace(/\r/gm,'');
+id('cheatPrint').innerHTML = 'crc ' + print})
+
 id('listCheats').addEventListener('click', function(){ /* generate cheat list */
 var cheats = '';
 id('cheatList').textContent = '';

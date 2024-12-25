@@ -293,18 +293,21 @@ header span{position:relative;top:-10px;pointer-events:none}
 .pl-6{padding-left:6px}
 #recent{width:620px;height:29.5px}
 #c1,#c2,#c3,#c4{width:600px}
-#cheatList,#log,#romBrowser{height:400px;overflow-y:scroll;border:2px solid #444;padding:15px 15px 0 15px;background-color:rgba(150,150,150,.1);outline:0;overscroll-behavior:contain}
+#cheatList,#cheatPrint,#log,#romBrowser{height:400px;overflow-y:scroll;border:2px solid #444;padding:15px 15px 0 15px;background-color:rgba(150,150,150,.1);outline:0;overscroll-behavior:contain}
 #cheatList{padding-left:25px}
 #cheatList input[id*=_]{margin-left:40px}
 #cheatList input,#cheatList label{left:-12px}
+#cheatPrint{height:40px;user-select:text;overflow-y:auto}
 #log{height:340px;user-select:text}
 #log p{padding-bottom:20px}
 #romBrowser{height:310px;padding-bottom:15px}
 #romBrowser p{padding:5px;cursor:pointer;transition:background-color .2s cubic-bezier(.4,0,.22,1)}
 #romBrowser p:hover{background-color:rgba(0,0,0,.2)}
 .dark #romBrowser p:hover{background-color:rgba(255,255,255,.2)}
-.dark #cheatList,.dark #log,.dark #romBrowser{border-color:#ccc;background-color:rgba(0,0,0,.2)}
-.dark.custom #cheatList,.dark.custom #log,.dark.custom #romBrowser{background-color:rgba(50,50,50,.1)}
+.dark #cheatList,.dark #cheatPrint,.dark #log,.dark #romBrowser{border-color:#ccc;background-color:rgba(0,0,0,.2)}
+.dark.custom #cheatList,.dark.custom #cheatPrint,.dark.custom #log,.dark.custom #romBrowser{background-color:rgba(50,50,50,.1)}
+#cheatPrint{border-color:#aaa}
+.dark #cheatPrint{border-color:#666}
 
 
 
