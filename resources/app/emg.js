@@ -299,8 +299,7 @@ slider_input.addEventListener('input', function(){localStorage.setItem(slider, s
 
 function rspDropdownDisable(){ /* disable or hide inputs */
 if(id('rsp').value.includes('rsp-hle')){id('RspFallback').disabled = false;id('rspGFX').disabled = true}
-else if(id('rsp').value.includes('rsp-cxd4')){id('RspFallback').disabled = true;id('rspGFX').disabled = false}
-else if(id('rsp').value.includes('rsp-parallel')){id('RspFallback').disabled = id('rspGFX').disabled = true}
+else if(id('rsp').value.includes('rsp-cxd4') || id('rsp').value.includes('rsp-parallel')){id('RspFallback').disabled = true;id('rspGFX').disabled = false}
 else{id('RspFallback').disabled = true}}
 id('rsp').addEventListener('change', rspDropdownDisable)
 rspDropdownDisable()
@@ -941,8 +940,10 @@ ParallelVSync = 'Video-Parallel[Vsync]=' + id('vsync').checked,
 Glide64VSync = 'Video-Glide64mk2[vsync]=' + id('vsync').checked,
 m64pGFX = 'Rsp-HLE[DisplayListToGraphicsPlugin]=true',
 cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=' + id('rspGFX').checked,
+parallelGFX = 'RSP-Parallel[DisplayListToGraphicsPlugin]=' + id('rspGFX').checked,
 m64pAudio = 'Rsp-HLE[AudioListToAudioPlugin]=false',
 cxd4Audio = 'rsp-cxd4[AudioListToAudioPlugin]=false',
+parallelAudio = 'RSP-Parallel[AudioListToAudioPlugin]=false',
 WaitForCPUHost = 'rsp-cxd4[WaitForCPUHost]=false',
 SupportCPUSemaphoreLock = 'rsp-cxd4[SupportCPUSemaphoreLock]=false',
 threadedVideo = 'Video-GLideN64[threadedVideo]=false',
@@ -1415,10 +1416,9 @@ buttonType1 = buttonType1B = buttonType2 = buttonType2B = buttonType3 = buttonTy
 
 gcaSettings = "control_stick_deadzone = " + id('control_stick_deadzone').value + "\n" + "control_stick_sensitivity = " + id('control_stick_sensitivity').value + "\n" + "c_stick_deadzone = " + id('c_stick_deadzone').value + "\n" + "trigger_threshold = " + id('trigger_threshold').value + "\n\n" + '[controller_mapping]' + "\n" + "a = '" + id('a').value + "'\n" + "b = '" + id('b').value + "'\n" + "x = '" + id('x').value + "'\n" + "y = '" + id('y').value + "'\n" + "start = '" + id('start').value + "'\n" + "z = '" + id('z').value + "'\n" + "l = '" + id('l').value + "'\n" + "r = '" + id('r').value + "'\n" + "d_pad_left = '" + id('d_pad_left').value + "'\n" + "d_pad_right = '" + id('d_pad_right').value + "'\n" + "d_pad_down = '" + id('d_pad_down').value + "'\n" + "d_pad_up = '" + id('d_pad_up').value + "'\n" + "c_stick_left = '" + id('c_stick_left').value + "'\n" + "c_stick_right = '" + id('c_stick_right').value + "'\n" + "c_stick_down = '" + id('c_stick_down').value + "'\n" + "c_stick_up = '" + id('c_stick_up').value + "'";
 
-if(gfx.includes('angrylion') || gfx.includes('parallel')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=false'} /* prevent crashes caused by wrong RSP settings */
-else if(gfx.includes('rice') || gfx.includes('glide64mk2')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=true'}
+if(gfx.includes('angrylion') || gfx.includes('parallel')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=false';parallelGFX = 'RSP-Parallel[DisplayListToGraphicsPlugin]=false'} /* prevent crashes caused by wrong RSP settings */
+else if(gfx.includes('rice') || gfx.includes('glide64mk2')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=true';parallelGFX = 'RSP-Parallel[DisplayListToGraphicsPlugin]=true'}
 if((gfx.includes('angrylion') || gfx.includes('parallel')) && rsp.includes('rsp-hle')){rsp = 'mupen64plus-rsp-cxd4' + ext}
-else if((gfx.includes('rice') || gfx.includes('glide64mk2')) && rsp.includes('rsp-parallel')){rsp = 'mupen64plus-rsp-hle' + ext}
 
 if(id('nospeedlimit').checked){audio = 'dummy';vsync = 'Video-General[VerticalSync]=false';ViVsync = 'Video-AngrylionPlus[ViVsync]=false';ParallelVSync = 'Video-Parallel[Vsync]=false'} /* force muted audio and disabled V-Sync */
 
@@ -1754,7 +1754,7 @@ if(mb3 === 'rs')RumblepakSwitch4 += ' mouse(3)'}
 
 var core = ['--corelib',corelib,'--configdir',configdir,'--datadir','data','--plugindir','plugin','--gfx',gfx,'--audio',audio,'--input',input,'--rsp',rsp],
 
-settings = [RspFallback,cxd4GFX,m64pGFX,cxd4Audio,m64pAudio,WaitForCPUHost,SupportCPUSemaphoreLock, /* RSP */
+settings = [RspFallback,cxd4GFX,m64pGFX,parallelGFX,cxd4Audio,m64pAudio,parallelAudio,WaitForCPUHost,SupportCPUSemaphoreLock, /* RSP */
 
 exp,SaveFilenameFormat,osd,emumode,NoCompiledJump,CountPerOp,CountPerOpDenomPot,SiDmaDuration,AutoStateSlotIncrement,CurrentStateSlot,SharedDataPath,ScreenshotPathSetting,SaveStatePathSetting,SaveSRAMPathSetting,RandomizeInterrupt,EnableDebugger,SaveDiskFormat, /* Core */
 
