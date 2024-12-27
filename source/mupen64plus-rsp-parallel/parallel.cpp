@@ -34,6 +34,9 @@ ptr_ConfigSetDefaultBool   ConfigSetDefaultBool = NULL;
 ptr_ConfigGetParamBool     ConfigGetParamBool = NULL;
 ptr_CoreDoCommand          CoreDoCommand = NULL;
 
+bool CFG_HLE_GFX = 0;
+bool CFG_HLE_AUD = 0;
+
 #define ATTR_FMT(fmtpos, attrpos) __attribute__ ((format (printf, fmtpos, attrpos)))
 static void DebugMessage(int level, const char *message, ...) ATTR_FMT(2, 3);
 
@@ -94,9 +97,6 @@ extern "C"
 
 	EXPORT unsigned int CALL DoRspCycles(unsigned int cycles)
 	{
-		bool CFG_HLE_GFX = ConfigGetParamBool(l_ConfigRsp, "DisplayListToGraphicsPlugin");
-		bool CFG_HLE_AUD = ConfigGetParamBool(l_ConfigRsp, "AudioListToAudioPlugin");
-
 		uint32_t TaskType = *(uint32_t*)(RSP::rsp.DMEM + 0xFC0);
 		bool compareTaskType = *(uint32_t*)(RSP::rsp.DMEM + 0x0ff0) != 0;
 
@@ -206,6 +206,9 @@ extern "C"
 	{
 		if (CycleCount)
 			*CycleCount = 0;
+
+		CFG_HLE_GFX = ConfigGetParamBool(l_ConfigRsp, "DisplayListToGraphicsPlugin");
+		CFG_HLE_AUD = ConfigGetParamBool(l_ConfigRsp, "AudioListToAudioPlugin");
 
 		if (Rsp_Info.DMEM == Rsp_Info.IMEM) /* usually dummy RSP data for testing */
 			return; /* DMA is not executed just because plugin initiates. */
