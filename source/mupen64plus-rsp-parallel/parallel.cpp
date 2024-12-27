@@ -9,12 +9,30 @@
 #include "m64p_plugin.h"
 #include "rsp_1.1.h"
 
+#include "m64p_frontend.h"
+#include "osal_dynamiclib.h"
+
 #define RSP_PARALLEL_VERSION 0x0101
 #define RSP_PLUGIN_API_VERSION 0x020000
 
+#define CONFIG_API_VERSION       0x020100
+#define CONFIG_PARAM_VERSION     1.00
+
 static void (*l_DebugCallback)(void *, int, const char *) = NULL;
 static void *l_DebugCallContext = NULL;
+static int l_PluginInit = 0;
+static m64p_handle l_ConfigRsp;
 
+#define VERSION_PRINTF_SPLIT(x) (((x) >> 16) & 0xffff), (((x) >> 8) & 0xff), ((x) & 0xff)
+
+ptr_ConfigOpenSection      ConfigOpenSection = NULL;
+ptr_ConfigDeleteSection    ConfigDeleteSection = NULL;
+ptr_ConfigSetParameter     ConfigSetParameter = NULL;
+ptr_ConfigGetParameter     ConfigGetParameter = NULL;
+ptr_ConfigSetDefaultFloat  ConfigSetDefaultFloat;
+ptr_ConfigSetDefaultBool   ConfigSetDefaultBool = NULL;
+ptr_ConfigGetParamBool     ConfigGetParamBool = NULL;
+ptr_CoreDoCommand          CoreDoCommand = NULL;
 
 #define ATTR_FMT(fmtpos, attrpos) __attribute__ ((format (printf, fmtpos, attrpos)))
 static void DebugMessage(int level, const char *message, ...) ATTR_FMT(2, 3);
@@ -76,6 +94,42 @@ extern "C"
 
 	EXPORT unsigned int CALL DoRspCycles(unsigned int cycles)
 	{
+		bool CFG_HLE_GFX = ConfigGetParamBool(l_ConfigRsp, "DisplayListToGraphicsPlugin");
+		bool CFG_HLE_AUD = ConfigGetParamBool(l_ConfigRsp, "AudioListToAudioPlugin");
+
+		uint32_t TaskType = *(uint32_t*)(RSP::rsp.DMEM + 0xFC0);
+		bool compareTaskType = *(uint32_t*)(RSP::rsp.DMEM + 0x0ff0) != 0;
+
+		if (TaskType == 1 && compareTaskType && CFG_HLE_GFX != 0)
+		{
+			if (RSP::rsp.ProcessDlistList)
+			{
+				RSP::rsp.ProcessDlistList();
+			}
+			*RSP::rsp.SP_STATUS_REG |= (0x0203 );
+			if ((*RSP::rsp.SP_STATUS_REG & SP_STATUS_INTR_BREAK) != 0 )
+			{
+				*RSP::rsp.MI_INTR_REG |= 1;
+				RSP::rsp.CheckInterrupts();
+			}
+			return cycles;
+		}
+
+		else if (TaskType == 2 && compareTaskType && CFG_HLE_AUD != 0)
+		{
+			if (RSP::rsp.ProcessAlistList)
+			{
+				RSP::rsp.ProcessAlistList();
+			}
+			*RSP::rsp.SP_STATUS_REG |= (0x0203 );
+			if ((*RSP::rsp.SP_STATUS_REG & SP_STATUS_INTR_BREAK) != 0 )
+			{
+				*RSP::rsp.MI_INTR_REG |= 1;
+				RSP::rsp.CheckInterrupts();
+			}
+			return cycles;
+		}
+
 		if (*RSP::rsp.SP_STATUS_REG & SP_STATUS_HALT)
 			return 0;
 
@@ -191,9 +245,82 @@ extern "C"
 	EXPORT m64p_error CALL PluginStartup(m64p_dynlib_handle CoreLibHandle, void *Context,
 									 void (*DebugCallback)(void *, int, const char *))
 	{
+		ptr_CoreGetAPIVersions CoreAPIVersionFunc;
+		
+		int ConfigAPIVersion, DebugAPIVersion, VidextAPIVersion;
+		float fConfigParamsVersion = 0.0f;
+		
+		if (l_PluginInit)
+		    return M64ERR_ALREADY_INIT;
+		
 		/* first thing is to set the callback function for debug info */
 		l_DebugCallback = DebugCallback;
 		l_DebugCallContext = Context;
+		
+		/* attach and call the CoreGetAPIVersions function, check Config API version for compatibility */
+		CoreAPIVersionFunc = (ptr_CoreGetAPIVersions) osal_dynlib_getproc(CoreLibHandle, "CoreGetAPIVersions");
+		if (CoreAPIVersionFunc == NULL)
+		{
+		    DebugMessage(M64MSG_ERROR, "Core emulator broken; no CoreAPIVersionFunc() function found.");
+		    return M64ERR_INCOMPATIBLE;
+		}
+		
+		(*CoreAPIVersionFunc)(&ConfigAPIVersion, &DebugAPIVersion, &VidextAPIVersion, NULL);
+		if ((ConfigAPIVersion & 0xffff0000) != (CONFIG_API_VERSION & 0xffff0000))
+		{
+		    DebugMessage(M64MSG_ERROR, "Emulator core Config API (v%i.%i.%i) incompatible with plugin (v%i.%i.%i)",
+		            VERSION_PRINTF_SPLIT(ConfigAPIVersion), VERSION_PRINTF_SPLIT(CONFIG_API_VERSION));
+		    return M64ERR_INCOMPATIBLE;
+		}
+		
+		/* Get the core config function pointers from the library handle */
+		ConfigOpenSection = (ptr_ConfigOpenSection) osal_dynlib_getproc(CoreLibHandle, "ConfigOpenSection");
+		ConfigDeleteSection = (ptr_ConfigDeleteSection) osal_dynlib_getproc(CoreLibHandle, "ConfigDeleteSection");
+		ConfigSetParameter = (ptr_ConfigSetParameter) osal_dynlib_getproc(CoreLibHandle, "ConfigSetParameter");
+		ConfigGetParameter = (ptr_ConfigGetParameter) osal_dynlib_getproc(CoreLibHandle, "ConfigGetParameter");
+		ConfigSetDefaultFloat = (ptr_ConfigSetDefaultFloat) osal_dynlib_getproc(CoreLibHandle, "ConfigSetDefaultFloat");
+		ConfigSetDefaultBool = (ptr_ConfigSetDefaultBool) osal_dynlib_getproc(CoreLibHandle, "ConfigSetDefaultBool");
+		ConfigGetParamBool = (ptr_ConfigGetParamBool) osal_dynlib_getproc(CoreLibHandle, "ConfigGetParamBool");
+		CoreDoCommand = (ptr_CoreDoCommand) osal_dynlib_getproc(CoreLibHandle, "CoreDoCommand");
+		
+		if (!ConfigOpenSection || !ConfigDeleteSection || !ConfigSetParameter || !ConfigGetParameter ||
+		    !ConfigSetDefaultBool || !ConfigGetParamBool || !ConfigSetDefaultFloat)
+		    return M64ERR_INCOMPATIBLE;
+		
+		/* get a configuration section handle */
+		if (ConfigOpenSection("RSP-Parallel", &l_ConfigRsp) != M64ERR_SUCCESS)
+		{
+		    DebugMessage(M64MSG_ERROR, "Couldn't open config section 'RSP-Parallel'");
+		    return M64ERR_INPUT_NOT_FOUND;
+		}
+		
+		/* check the section version number */
+		if (ConfigGetParameter(l_ConfigRsp, "Version", M64TYPE_FLOAT, &fConfigParamsVersion, sizeof(float)) != M64ERR_SUCCESS)
+		{
+		    DebugMessage(M64MSG_WARNING, "No version number in 'RSP-Parallel' config section. Setting defaults.");
+		    ConfigDeleteSection("RSP-Parallel");
+		    ConfigOpenSection("RSP-Parallel", &l_ConfigRsp);
+		}
+		else if (((int) fConfigParamsVersion) != ((int) CONFIG_PARAM_VERSION))
+		{
+		    DebugMessage(M64MSG_WARNING, "Incompatible version %.2f in 'RSP-Parallel' config section: current is %.2f. Setting defaults.", fConfigParamsVersion, (float) CONFIG_PARAM_VERSION);
+		    ConfigDeleteSection("RSP-Parallel");
+		    ConfigOpenSection("RSP-Parallel", &l_ConfigRsp);
+		}
+		else if ((CONFIG_PARAM_VERSION - fConfigParamsVersion) >= 0.0001f)
+		{
+		    /* handle upgrades */
+		    float fVersion = CONFIG_PARAM_VERSION;
+		    ConfigSetParameter(l_ConfigRsp, "Version", M64TYPE_FLOAT, &fVersion);
+		    DebugMessage(M64MSG_INFO, "Updating parameter set version in 'RSP-Parallel' config section to %.2f", fVersion);
+		}
+		
+		/* set the default values for this plugin */
+		ConfigSetDefaultFloat(l_ConfigRsp, "Version", CONFIG_PARAM_VERSION,  "Mupen64Plus Parallel RSP Plugin config parameter version number");
+		ConfigSetDefaultBool(l_ConfigRsp, "DisplayListToGraphicsPlugin", 0, "Send display lists to the graphics plugin");
+		ConfigSetDefaultBool(l_ConfigRsp, "AudioListToAudioPlugin", 0, "Send audio lists to the audio plugin");
+		
+		l_PluginInit = 1;
 		return M64ERR_SUCCESS;
 	}
 

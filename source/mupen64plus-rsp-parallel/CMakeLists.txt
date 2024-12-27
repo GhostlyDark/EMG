@@ -34,6 +34,12 @@ elseif (MSVC)
     set(PARALLEL_RSP_CXX_FLAGS /D_CRT_SECURE_NO_WARNINGS /wd4267 /wd4244 /wd4309 /wd4005 /MP /DNOMINMAX)
 endif()
 
+if(WIN32)
+    set(OSAL "osal_dynamiclib_win32.c")
+else()
+    set(OSAL "osal_dynamiclib_unix.c")
+endif()
+
 add_library(${NAME_PLUGIN_M64P} SHARED
 		parallel.cpp
 		rsp/vfunctions.cpp
@@ -44,6 +50,7 @@ add_library(${NAME_PLUGIN_M64P} SHARED
 		rsp/reciprocal.cpp rsp/reciprocal.h
 		rsp_1.1.h
 		rsp/cp0.cpp rsp/cp2.cpp
+		${OSAL}
 		arch/simd/rsp/rsp_core.cpp
 		arch/simd/rsp/clamp.h
 		arch/simd/rsp/rsp_common.h
