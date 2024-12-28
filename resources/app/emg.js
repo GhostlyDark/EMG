@@ -300,8 +300,7 @@ slider_input.addEventListener('input', function(){localStorage.setItem(slider, s
 
 function rspDropdownDisable(){ /* disable or hide inputs */
 if(id('rsp').value.includes('rsp-hle')){id('RspFallback').disabled = false;id('rspGFX').disabled = true}
-else if(id('rsp').value.includes('rsp-cxd4') || id('rsp').value.includes('rsp-parallel')){id('RspFallback').disabled = true;id('rspGFX').disabled = false}
-else{id('RspFallback').disabled = true}}
+else{id('RspFallback').disabled = true;id('rspGFX').disabled = false}}
 id('rsp').addEventListener('change', rspDropdownDisable)
 rspDropdownDisable()
 
