@@ -91,6 +91,7 @@ else if(newPlugin.textContent === 'raphnetraw'){newPlugin.textContent = 'Raphnet
 else{id('inputCustom').appendChild(newPlugin);id('inputCustom').style.display = 'block'}}
 else if(name.includes('mupen64plus-rsp-')){
 if(newPlugin.textContent === 'parallel'){newPlugin.textContent = 'Parallel RSP';id('rspBundled').appendChild(newPlugin);id('RspFallbackBundled').appendChild(newPlugin.cloneNode(true))}
+else if(newPlugin.textContent === 'z64'){newPlugin.textContent = 'Z64 RSP';id('rspBundled').appendChild(newPlugin);id('RspFallbackBundled').appendChild(newPlugin.cloneNode(true))}
 else{id('rspCustom').appendChild(newPlugin);id('RspFallbackCustom').appendChild(newPlugin.cloneNode(true));id('rspCustom').style.display = id('RspFallbackCustom').style.display = 'block'}}
 else if(name.includes('mupen64plus-video-')){
 if(newPlugin.textContent === 'angrylion-plus'){newPlugin.textContent = 'Angrylion Plus';id('gfxModern').appendChild(newPlugin)}
@@ -941,9 +942,11 @@ Glide64VSync = 'Video-Glide64mk2[vsync]=' + id('vsync').checked,
 m64pGFX = 'Rsp-HLE[DisplayListToGraphicsPlugin]=true',
 cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=' + id('rspGFX').checked,
 parallelGFX = 'RSP-Parallel[DisplayListToGraphicsPlugin]=' + id('rspGFX').checked,
+z64GFX = 'rsp-z64[DisplayListToGraphicsPlugin]=' + id('rspGFX').checked,
 m64pAudio = 'Rsp-HLE[AudioListToAudioPlugin]=false',
 cxd4Audio = 'rsp-cxd4[AudioListToAudioPlugin]=false',
 parallelAudio = 'RSP-Parallel[AudioListToAudioPlugin]=false',
+z64Audio = 'z64-rsp[AudioListToAudioPlugin]=false',
 WaitForCPUHost = 'rsp-cxd4[WaitForCPUHost]=false',
 SupportCPUSemaphoreLock = 'rsp-cxd4[SupportCPUSemaphoreLock]=false',
 threadedVideo = 'Video-GLideN64[threadedVideo]=false',
@@ -1416,8 +1419,8 @@ buttonType1 = buttonType1B = buttonType2 = buttonType2B = buttonType3 = buttonTy
 
 gcaSettings = "control_stick_deadzone = " + id('control_stick_deadzone').value + "\n" + "control_stick_sensitivity = " + id('control_stick_sensitivity').value + "\n" + "c_stick_deadzone = " + id('c_stick_deadzone').value + "\n" + "trigger_threshold = " + id('trigger_threshold').value + "\n\n" + '[controller_mapping]' + "\n" + "a = '" + id('a').value + "'\n" + "b = '" + id('b').value + "'\n" + "x = '" + id('x').value + "'\n" + "y = '" + id('y').value + "'\n" + "start = '" + id('start').value + "'\n" + "z = '" + id('z').value + "'\n" + "l = '" + id('l').value + "'\n" + "r = '" + id('r').value + "'\n" + "d_pad_left = '" + id('d_pad_left').value + "'\n" + "d_pad_right = '" + id('d_pad_right').value + "'\n" + "d_pad_down = '" + id('d_pad_down').value + "'\n" + "d_pad_up = '" + id('d_pad_up').value + "'\n" + "c_stick_left = '" + id('c_stick_left').value + "'\n" + "c_stick_right = '" + id('c_stick_right').value + "'\n" + "c_stick_down = '" + id('c_stick_down').value + "'\n" + "c_stick_up = '" + id('c_stick_up').value + "'";
 
-if(gfx.includes('angrylion') || gfx.includes('parallel')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=false';parallelGFX = 'RSP-Parallel[DisplayListToGraphicsPlugin]=false'} /* prevent crashes caused by wrong RSP settings */
-else if(gfx.includes('rice') || gfx.includes('glide64mk2')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=true';parallelGFX = 'RSP-Parallel[DisplayListToGraphicsPlugin]=true'}
+if(gfx.includes('angrylion') || gfx.includes('parallel')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=false';parallelGFX = 'RSP-Parallel[DisplayListToGraphicsPlugin]=false';z64GFX = 'rsp-z64[DisplayListToGraphicsPlugin]=false'} /* prevent crashes caused by wrong RSP settings */
+else if(gfx.includes('rice') || gfx.includes('glide64mk2')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=true';parallelGFX = 'RSP-Parallel[DisplayListToGraphicsPlugin]=true';z64GFX = 'rsp-z64[DisplayListToGraphicsPlugin]=true'}
 if((gfx.includes('angrylion') || gfx.includes('parallel')) && rsp.includes('rsp-hle')){rsp = 'mupen64plus-rsp-cxd4' + ext}
 
 if(id('nospeedlimit').checked){audio = 'dummy';vsync = 'Video-General[VerticalSync]=false';ViVsync = 'Video-AngrylionPlus[ViVsync]=false';ParallelVSync = 'Video-Parallel[Vsync]=false'} /* force muted audio and disabled V-Sync */
@@ -1754,7 +1757,7 @@ if(mb3 === 'rs')RumblepakSwitch4 += ' mouse(3)'}
 
 var core = ['--corelib',corelib,'--configdir',configdir,'--datadir','data','--plugindir','plugin','--gfx',gfx,'--audio',audio,'--input',input,'--rsp',rsp],
 
-settings = [RspFallback,cxd4GFX,m64pGFX,parallelGFX,cxd4Audio,m64pAudio,parallelAudio,WaitForCPUHost,SupportCPUSemaphoreLock, /* RSP */
+settings = [RspFallback,cxd4GFX,m64pGFX,parallelGFX,z64GFX,cxd4Audio,m64pAudio,parallelAudio,z64Audio,WaitForCPUHost,SupportCPUSemaphoreLock, /* RSP */
 
 exp,SaveFilenameFormat,osd,emumode,NoCompiledJump,CountPerOp,CountPerOpDenomPot,SiDmaDuration,AutoStateSlotIncrement,CurrentStateSlot,SharedDataPath,ScreenshotPathSetting,SaveStatePathSetting,SaveSRAMPathSetting,RandomizeInterrupt,EnableDebugger,SaveDiskFormat, /* Core */
 

@@ -6,6 +6,7 @@ option(ACCURATE_FPU     "Build mupen64plus-core with accurate FPU behavior" ON)
 option(NO_ASM           "Build mupen64plus-core without assembly"           OFF)
 
 option(USE_PARALLEL_RSP "Build mupen64plus-rsp-parallel"                    ON)
+option(USE_Z64_RSP      "Build mupen64plus-rsp-z64"                         ON)
 option(USE_RAPHNETRAW   "Build mupen64plus-input-raphnetraw"                ON)
 option(USE_GCA          "Build mupen64plus-input-gca"                       ON)
 option(USE_ANGRYLION    "Build mupen64plus-video-angrylion-plus"            ON)
@@ -173,6 +174,25 @@ if(USE_PARALLEL_RSP)
     
         BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-rsp-parallel/mupen64plus-rsp-parallel${LIB_EXT}
     )
+endif()
+
+if(USE_Z64_RSP)
+    ExternalProject_Add(mupen64plus-rsp-z64
+        SOURCE_DIR ${SOURCEDIR}/mupen64plus-rsp-z64/src
+
+        CONFIGURE_COMMAND ""
+        INSTALL_COMMAND ""
+
+        BUILD_COMMAND make all -f ${SOURCEDIR}/mupen64plus-rsp-z64/projects/unix/Makefile
+            SRCDIR=${SOURCEDIR}/mupen64plus-rsp-z64/src
+            APIDIR=${APIDIR} POSTFIX=
+
+        BUILD_IN_SOURCE False
+
+        BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-rsp-z64/projects/unix
+    
+        BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-rsp-z64/projects/unix/mupen64plus-rsp-z64${LIB_EXT}
+)
 endif()
 
 ExternalProject_Add(mupen64plus-input-sdl
@@ -378,6 +398,11 @@ if(USE_PARALLEL_RSP)
     set(MUPEN64PLUS_PLUGIN_RSP_PARALLEL ${BUILD_BYPRODUCTS})
 endif()
 
+if(USE_Z64_RSP)
+    ExternalProject_Get_property(mupen64plus-rsp-z64 BUILD_BYPRODUCTS)
+    set(MUPEN64PLUS_PLUGIN_RSP_Z64 ${BUILD_BYPRODUCTS})
+endif()
+
 ExternalProject_Get_property(mupen64plus-input-sdl BUILD_BYPRODUCTS)
 set(MUPEN64PLUS_PLUGIN_INPUT_SDL ${BUILD_BYPRODUCTS})
 
@@ -465,6 +490,12 @@ install(FILES ${MUPEN64PLUS_PLUGIN_RSP_HLE}
 
 if(USE_PARALLEL_RSP)
     install(FILES ${MUPEN64PLUS_PLUGIN_RSP_PARALLEL}
+        DESTINATION ${INSTALL_PATH}/plugin
+    )
+endif()
+
+if(USE_Z64_RSP)
+    install(FILES ${MUPEN64PLUS_PLUGIN_RSP_Z64}
         DESTINATION ${INSTALL_PATH}/plugin
     )
 endif()

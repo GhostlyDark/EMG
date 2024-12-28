@@ -1,0 +1,122 @@
+name: Z64 RSP - Scheduled
+
+on:
+  schedule:
+    - cron: '0 14 21 * *'
+
+jobs:
+
+  Linux:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - cc: GCC
+            arch: x64
+          - cc: GCC
+            arch: x86
+          - cc: Clang
+            arch: x64
+          - cc: Clang
+            arch: x86
+    name: Linux / ${{ matrix.cc }} / ${{ matrix.arch }}
+    runs-on: ubuntu-22.04
+    if: github.repository == 'mupen64plus/mupen64plus-rsp-z64'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Get build dependencies and arrange the environment
+        run: |
+          git clone --depth 1 https://github.com/mupen64plus/mupen64plus-core.git ../mupen64plus-core
+          export C_CLANG_SUFFIX="-15" C_GCC_SUFFIX="-12"
+          ./../mupen64plus-core/.github/workflows/scripts/ci_install_ubuntu_deps.sh ${{ matrix.arch }} ${{ matrix.cc }}
+      - name: Build and related stuff, backup binaries
+        run: |
+          export C_CLANG_SUFFIX="-15" C_GCC_SUFFIX="-12"
+          export PATH="$(pwd)/../mupen64plus-core/.github/workflows/scripts:${PATH}"
+          export CONFIG_OVERRIDE="HLEVIDEO=0"
+          ci_build.sh ${{ matrix.arch }} ${{ matrix.cc }}
+          export CONFIG_OVERRIDE="HLEVIDEO=1"
+          ci_build.sh ${{ matrix.arch }} ${{ matrix.cc }} makepkg
+      - name: Upload artifact
+        if: matrix.cc == 'GCC'
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.PKG_NAME }}
+          path: pkg/*.tar.gz
+
+  MSYS2:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - cc: GCC
+            arch: x64
+            cross: x86_64
+            env: MINGW64
+          - cc: GCC
+            arch: x86
+            cross: i686
+            env: MINGW32
+    name: Windows / MSYS2 ${{ matrix.cc }} / ${{ matrix.arch }}
+    runs-on: windows-2022
+    if: github.repository == 'mupen64plus/mupen64plus-rsp-z64'
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: msys2/setup-msys2@v2
+        with:
+          msystem: ${{ matrix.env }}
+          update: true
+          install: >-
+            git
+            libtool
+            make
+            mingw-w64-${{ matrix.cross }}-gcc
+            mingw-w64-${{ matrix.cross }}-toolchain
+            mingw-w64-${{ matrix.cross }}-ntldd
+      - name: Build and related stuff, backup binaries
+        run: |
+          git clone --depth 1 https://github.com/mupen64plus/mupen64plus-core.git ../mupen64plus-core
+          export PATH="$(pwd)/../mupen64plus-core/.github/workflows/scripts:${PATH}"
+          export CONFIG_OVERRIDE="HLEVIDEO=0"
+          ci_build.sh ${{ matrix.arch }} ${{ matrix.cc }}
+          export CONFIG_OVERRIDE="HLEVIDEO=1"
+          ci_build.sh ${{ matrix.arch }} ${{ matrix.cc }}
+      - name: Backup dependencies, etc...
+        run: |
+          ./../mupen64plus-core/.github/workflows/scripts/ci_backup_mingw_deps.sh ${{ matrix.env }}
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.PKG_NAME }}
+          path: pkg/*
+
+  Nightly-build:
+    runs-on: ubuntu-latest
+    if: github.ref_name == 'master'
+    needs: [Linux, MSYS2]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: binaries
+      - name: Get some tools
+        run: |
+          git clone --depth 1 https://github.com/mupen64plus/mupen64plus-core.git ../mupen64plus-core
+          sudo apt-get update
+          sudo apt-get -y install hashdeep
+      - name: Creating new artifacts and update nightly-build
+        run: |
+          ./../mupen64plus-core/.github/workflows/scripts/ci_nightly_artifacts.sh
+      - name: Nightly-build
+        uses: ncipollo/release-action@v1
+        with:
+          prerelease: true
+          allowUpdates: true
+          removeArtifacts: true
+          replacesArtifacts: false
+          tag: nightly-build
+          artifacts: pkg/*
