@@ -10,7 +10,6 @@
 #include "rsp_1.1.h"
 
 #include "m64p_frontend.h"
-#include "osal_dynamiclib.h"
 
 #define RSP_PARALLEL_VERSION 0x0101
 #define RSP_PLUGIN_API_VERSION 0x020000
@@ -36,6 +35,13 @@ ptr_CoreDoCommand          CoreDoCommand = NULL;
 
 bool CFG_HLE_GFX = 0;
 bool CFG_HLE_AUD = 0;
+
+#ifdef _WIN32
+#define DLSYM(a, b) GetProcAddress(a, b)
+#else
+#include <dlfcn.h>
+#define DLSYM(a, b) dlsym(a, b)
+#endif
 
 #define ATTR_FMT(fmtpos, attrpos) __attribute__ ((format (printf, fmtpos, attrpos)))
 static void DebugMessage(int level, const char *message, ...) ATTR_FMT(2, 3);
@@ -261,7 +267,7 @@ extern "C"
 		l_DebugCallContext = Context;
 		
 		/* attach and call the CoreGetAPIVersions function, check Config API version for compatibility */
-		CoreAPIVersionFunc = (ptr_CoreGetAPIVersions) osal_dynlib_getproc(CoreLibHandle, "CoreGetAPIVersions");
+		CoreAPIVersionFunc = (ptr_CoreGetAPIVersions) DLSYM(CoreLibHandle, "CoreGetAPIVersions");
 		if (CoreAPIVersionFunc == NULL)
 		{
 		    DebugMessage(M64MSG_ERROR, "Core emulator broken; no CoreAPIVersionFunc() function found.");
@@ -277,14 +283,14 @@ extern "C"
 		}
 		
 		/* Get the core config function pointers from the library handle */
-		ConfigOpenSection = (ptr_ConfigOpenSection) osal_dynlib_getproc(CoreLibHandle, "ConfigOpenSection");
-		ConfigDeleteSection = (ptr_ConfigDeleteSection) osal_dynlib_getproc(CoreLibHandle, "ConfigDeleteSection");
-		ConfigSetParameter = (ptr_ConfigSetParameter) osal_dynlib_getproc(CoreLibHandle, "ConfigSetParameter");
-		ConfigGetParameter = (ptr_ConfigGetParameter) osal_dynlib_getproc(CoreLibHandle, "ConfigGetParameter");
-		ConfigSetDefaultFloat = (ptr_ConfigSetDefaultFloat) osal_dynlib_getproc(CoreLibHandle, "ConfigSetDefaultFloat");
-		ConfigSetDefaultBool = (ptr_ConfigSetDefaultBool) osal_dynlib_getproc(CoreLibHandle, "ConfigSetDefaultBool");
-		ConfigGetParamBool = (ptr_ConfigGetParamBool) osal_dynlib_getproc(CoreLibHandle, "ConfigGetParamBool");
-		CoreDoCommand = (ptr_CoreDoCommand) osal_dynlib_getproc(CoreLibHandle, "CoreDoCommand");
+		ConfigOpenSection = (ptr_ConfigOpenSection) DLSYM(CoreLibHandle, "ConfigOpenSection");
+		ConfigDeleteSection = (ptr_ConfigDeleteSection) DLSYM(CoreLibHandle, "ConfigDeleteSection");
+		ConfigSetParameter = (ptr_ConfigSetParameter) DLSYM(CoreLibHandle, "ConfigSetParameter");
+		ConfigGetParameter = (ptr_ConfigGetParameter) DLSYM(CoreLibHandle, "ConfigGetParameter");
+		ConfigSetDefaultFloat = (ptr_ConfigSetDefaultFloat) DLSYM(CoreLibHandle, "ConfigSetDefaultFloat");
+		ConfigSetDefaultBool = (ptr_ConfigSetDefaultBool) DLSYM(CoreLibHandle, "ConfigSetDefaultBool");
+		ConfigGetParamBool = (ptr_ConfigGetParamBool) DLSYM(CoreLibHandle, "ConfigGetParamBool");
+		CoreDoCommand = (ptr_CoreDoCommand) DLSYM(CoreLibHandle, "CoreDoCommand");
 		
 		if (!ConfigOpenSection || !ConfigDeleteSection || !ConfigSetParameter || !ConfigGetParameter ||
 		    !ConfigSetDefaultBool || !ConfigGetParamBool || !ConfigSetDefaultFloat)
