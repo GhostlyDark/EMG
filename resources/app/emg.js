@@ -305,6 +305,12 @@ else{id('RspFallback').disabled = true}}
 id('rsp').addEventListener('change', rspDropdownDisable)
 rspDropdownDisable()
 
+function dynarecDisable(){
+if(id('emumode').value === '2'){id('newDynarec').disabled = false}
+else{id('newDynarec').disabled = true}}
+id('emumode').addEventListener('change', dynarecDisable)
+dynarecDisable()
+
 function EnableFBEmulationDisable(){
 if(id('EnableFBEmulation').checked){id('EnableCopyColorFromRDRAM').disabled = id('EnableCopyDepthToMainDepthBuffer').disabled = id('EnableCopyAuxiliaryToRDRAM').disabled = id('ForceDepthBufferClear').disabled = id('FBInfoReadColorChunk').disabled = id('FBInfoReadDepthChunk').disabled = false}
 else{id('EnableCopyColorFromRDRAM').disabled = id('EnableCopyDepthToMainDepthBuffer').disabled = id('EnableCopyAuxiliaryToRDRAM').disabled = id('ForceDepthBufferClear').disabled = id('FBInfoReadColorChunk').disabled = id('FBInfoReadDepthChunk').disabled = true}}
@@ -925,7 +931,7 @@ if(filePath.toString() != testROM){
 if(recentFiles.includes(filePath.toString())){recentFiles = recentFiles.filter(item => item !== filePath.toString())};
 recentFiles.unshift(filePath.toString());recentFiles.splice(10);recentFilesUpdate();localStorage.setItem('recentFiles',JSON.stringify(recentFiles))};
 
-id('newDynarec').checked ? corelib = './mupen64plus-nd' + ext : corelib = './mupen64plus' + ext;
+if(id('emumode').value === '2')id('newDynarec').checked ? corelib = './mupen64plus-nd' + ext : corelib = './mupen64plus' + ext;
 
 var configdir = ConfigPath,
 exp = 'Core[DisableExtraMem]=' + id('exp').checked,

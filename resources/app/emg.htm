@@ -77,8 +77,6 @@
 <option value="9">9</option>
 </select><label for="CurrentStateSlot">Default save state slot</label>
 <p>&nbsp;</p><p>&nbsp;</p>
-<p title="Offers better performance, but some games may not work properly."><input id="newDynarec" type="checkbox" data-store="newDynarec"><label for="newDynarec">Use new dynamic recompiler</label></p>
-<p>&nbsp;</p>
 <p title="Disable compiled jump commands in dynamic recompiler (not recommended)."><input id="NoCompiledJump" type="checkbox" data-store="NoCompiledJump"><label for="NoCompiledJump">Disable compiled jump</label></p>
 <p>&nbsp;</p>
 <p title="Randomize PI/SI interrupt timing."><input id="RandomizeInterrupt" type="checkbox" data-store="RandomizeInterrupt" checked><label for="RandomizeInterrupt">Randomize interrupt</label></p>
@@ -123,7 +121,9 @@
 <option value="0">Pure Interpreter</option>
 <option value="1">Cached Interpreter</option>
 <option value="2" selected>Dynamic Recompiler</option>
-</select><label for="emumode">R4300 emulator</label></div>
+</select><label for="emumode">R4300 emulator</label>
+<span class="floatright" title="Offers better performance, but some games may not work properly."><input id="newDynarec" type="checkbox" data-store="newDynarec"><label for="newDynarec">New dynamic recompiler</label></span>
+</div>
 <p>&nbsp;</p>
 <select class="width225m" id="resolution">
 <option value="320">320x240</option>
