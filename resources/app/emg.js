@@ -636,7 +636,7 @@ for (var i = 0; i < textInputs.length; i++){var textInput = textInputs[i];preven
 
 dragDrop.forEach(inp => {id(inp).addEventListener('dragover', prevent, false)}) /* prevent dragover event */
 function prevent(e){e.preventDefault();e.stopPropagation()}
-function fileExtension(fpath){return fpath.slice((fpath.lastIndexOf('.') - 1 >>> 0) + 2)} /* return file extension */
+function fileExtension(fpath){return fpath.slice((fpath.lastIndexOf('.') - 1 >>> 0) + 2).toLowerCase()} /* return file extension */
 
 id('fileInput').addEventListener('drop', function(e){ /* drag and drop for file inputs */
 prevent(e);if(e.dataTransfer.files[0] === undefined)return
