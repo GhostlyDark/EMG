@@ -169,10 +169,10 @@ Raphnetraw: Only works with Raphnetraw adapters"><select class="width250m" id="i
 </optgroup>
 </select><label for="input">Input plugin</label></div>
 <p>&nbsp;</p>
-<div title="Mupen64Plus HLE: HLE only,
-Static Interpreter: HLE and LLE,
-Parallel: HLE and LLE,
-Z64: HLE and LLE"><select class="width250m" id="rsp">
+<div title="Mupen64Plus HLE: HLE only (fastest),
+Static Interpreter: HLE and LLE (3rd fastest),
+Parallel RSP: HLE and LLE (2nd fastest),
+Z64 RSP: HLE and LLE (slowest)"><select class="width250m" id="rsp">
 <optgroup label="Bundled" id="rspBundled">
 <option value="mupen64plus-rsp-hle" selected>Mupen64Plus HLE</option>
 <option value="mupen64plus-rsp-cxd4">Static Interpreter</option>
@@ -183,7 +183,7 @@ Z64: HLE and LLE"><select class="width250m" id="rsp">
 <span class="floatright" title="Use High Level Emulation for graphics."><input id="rspGFX" type="checkbox" data-store="rspGFX" checked><label for="rspGFX">Use HLE for graphics</label></span>
 </div>
 <p>&nbsp;</p>
-<div title="RSP plugin used when encountering an unknown ucode. HLE RSP only."><select class="width250m" id="RspFallback">
+<div title="RSP plugin used when encountering an unknown ucode (Mupen64Plus HLE RSP only)."><select class="width250m" id="RspFallback">
 <optgroup label="Bundled" id="RspFallbackBundled">
 <option value="mupen64plus-rsp-cxd4" selected>Static Interpreter</option>
 </optgroup>
