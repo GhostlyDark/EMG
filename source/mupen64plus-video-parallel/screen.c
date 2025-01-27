@@ -39,7 +39,7 @@ bool screen_init()
         return false;
     }
 
-    CoreVideo_SetCaption("Mupen64Plus-Parallel");
+    CoreVideo_SetCaption("Parallel RDP");
     return true;
 }
 
