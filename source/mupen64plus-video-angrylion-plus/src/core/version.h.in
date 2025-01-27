@@ -5,12 +5,12 @@
 #define GIT_COMMIT_HASH "@GIT_COMMIT_HASH@"
 #define GIT_COMMIT_DATE "@GIT_COMMIT_DATE@"
 
-#define CORE_BASE_NAME "angrylion's RDP Plus"
+#define CORE_BASE_NAME "Angrylion RDP Plus"
 
 #ifdef _DEBUG
-#define CORE_NAME CORE_BASE_NAME " " GIT_TAG " (Debug)"
+#define CORE_NAME CORE_BASE_NAME " (Debug)"
 #else
-#define CORE_NAME CORE_BASE_NAME " " GIT_TAG
+#define CORE_NAME CORE_BASE_NAME
 #endif
 
 #define CORE_SIMPLE_NAME "angrylion-plus"
