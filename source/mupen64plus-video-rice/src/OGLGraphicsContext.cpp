@@ -128,7 +128,7 @@ bool COGLGraphicsContext::Initialize(uint32 dwWidth, uint32 dwHeight, BOOL bWind
 #endif
 
     char caption[500];
-    sprintf(caption, "%s v%i.%i.%i", PLUGIN_NAME, VERSION_PRINTF_SPLIT(PLUGIN_VERSION));
+    sprintf(caption, "%s", PLUGIN_NAME);
     CoreVideo_SetCaption(caption);
     SetWindowMode();
 

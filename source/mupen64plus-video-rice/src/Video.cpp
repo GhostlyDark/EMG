@@ -787,7 +787,7 @@ EXPORT void CALL UpdateScreen(void)
         if(lastTick + 5000 <= nowTick)
         {
             char caption[200];
-            sprintf(caption, "%s v%i.%i.%i - %.3f VI/S", PLUGIN_NAME, VERSION_PRINTF_SPLIT(PLUGIN_VERSION), frames/5.0);
+            sprintf(caption, "%s - %.3f VI/S", PLUGIN_NAME, frames/5.0);
             CoreVideo_SetCaption(caption);
             frames = 0;
             lastTick = nowTick;
