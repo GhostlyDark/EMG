@@ -74,7 +74,7 @@ footer{position:fixed;bottom:0;width:100%;max-width:730px;left:50%;transform:tra
 #overlay{z-index:-1}
 #background,#overlay{position:fixed;left:0;top:0;display:none;width:100vw;height:100vh}
 .headline,header{transition:background-color .2s cubic-bezier(.4,0,.22,1),color .2s cubic-bezier(.4,0,.22,1)}
-.custom #background{filter:blur(1vh)}
+.blur #background{filter:blur(1vh)}
 .footer #moon,.footer #palettes,.footer #fancy,.footer #reset{visibility:visible;opacity:1;transition-delay:0s}
 .dark body{background:#0f0f0f;color:#eee}
 .custom #overlay{background:rgba(255,255,255,.85)}
