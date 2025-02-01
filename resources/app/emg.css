@@ -63,7 +63,7 @@ footer button:hover,.custom footer button:hover{background:rgb(180,180,180)}
 .dark #moon svg g path,.dark #fancy svg path,.dark #palettes svg path:nth-child(2),.dark #palettes svg circle,.dark #settings svg,.dark #reset svg{fill:#fff}
 
 footer{position:fixed;bottom:0;width:100%;max-width:730px;left:50%;transform:translateX(-50%);height:56px;z-index:9;pointer-events:none}
-#settings{position:absolute;bottom:15px;left:14px}
+#settings{position:absolute;bottom:15px;left:15px}
 #moon{bottom:15px}
 #palettes{bottom:75px}
 #fancy{bottom:135px}
@@ -256,7 +256,7 @@ select + label,[type=text] + label{padding-left:11px}
 .hotkeys button{float:right}
 #gliden64_hotkeys .hotkeys label{min-width:315px}
 
-header{padding:0;max-width:730px}
+header{max-width:730px}
 header ul{list-style-type:none;margin:0;padding:0;overflow:hidden}
 header li{float:left;margin:0}
 header li a{color:#fff;cursor:pointer;display:block;text-align:center;padding:14px 15px 6.5px 15px;border:0;transition:background-color .2s cubic-bezier(.4,0,.22,1)}
