@@ -57,10 +57,10 @@ footer button,.custom footer button{background:rgb(210,210,210);border:0;outline
 footer button svg{position:relative;top:3px}
 #fancy,#moon,#palettes,#reset{transition:visibility 0s .2s,opacity .2s cubic-bezier(.4,0,.22,1),background .2s cubic-bezier(.4,0,.22,1);visibility:hidden;opacity:.001;position:absolute;width:44px;height:41px;right:15px}
 footer button:hover,.custom footer button:hover{background:rgb(180,180,180)}
-#moon svg g path, #fancy svg path,#palettes svg path:nth-child(2),#palettes svg circle,#settings svg,#reset svg{fill:#000}
+#moon svg, #fancy svg,#palettes svg,#settings svg,#reset svg{fill:#000}
 .dark footer button,.dark.custom footer button{background:rgb(30,30,30)}
 .dark footer button:hover,.dark.custom footer button:hover{background:rgb(50,50,50)}
-.dark #moon svg g path,.dark #fancy svg path,.dark #palettes svg path:nth-child(2),.dark #palettes svg circle,.dark #settings svg,.dark #reset svg{fill:#fff}
+.dark #moon svg,.dark #fancy svg,.dark #palettes svg,.dark #settings svg,.dark #reset svg{fill:#fff}
 
 footer{position:fixed;bottom:0;width:100%;max-width:730px;left:50%;transform:translateX(-50%);height:56px;z-index:9;pointer-events:none}
 #settings{position:absolute;bottom:15px;left:15px}
@@ -80,7 +80,7 @@ footer{position:fixed;bottom:0;width:100%;max-width:730px;left:50%;transform:tra
 .custom #overlay{background:rgba(255,255,255,.85)}
 .dark.custom #overlay{background:rgba(0,0,0,.85)}
 
-.transition #moon svg g path,.transition #fancy svg path,.transition #palettes svg path:nth-child(2),.transition #palettes svg circle,.transition #settings svg,.transition #reset svg{transition:fill .2s cubic-bezier(.4,0,.22,1)}
+.transition #moon svg,.transition #fancy svg,.transition #palettes svg,.transition #settings svg,.transition #reset svg{transition:fill .2s cubic-bezier(.4,0,.22,1)}
 .transition body,.transition #overlay,.transition select,.transition button{transition:background-color .2s cubic-bezier(.4,0,.22,1),color .2s cubic-bezier(.4,0,.22,1)}
 .transition .sub{transition:background-color .2s cubic-bezier(.4,0,.22,1)}
 
@@ -217,8 +217,8 @@ button,select,input,.box,.pointer,select + label,[type=checkbox] + label,[type=c
 button{font-size:15px;line-height:23px;border:0;outline:0;background-color:#ddd;border-radius:7px;text-transform:uppercase;padding:3px 10px;transition:background-color .2s cubic-bezier(.4,0,.22,1)}
 button:hover,select:hover,button:active,select:active,button:focus,select:focus{background-color:#ccc}
 
-select{font-size:16px;border:0;outline:0;padding:5px 35px 5px 8px;transition:background-color .2s cubic-bezier(.4,0,.22,1);margin:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 24 24'%3E%3Cpath opacity='.87' fill='none' d='M24 24H0V0h24v24z'/%3E%3Cpath d='M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z'/%3E%3C/svg%3E") no-repeat 99% #ddd;appearance:none;height:29px}
-.dark select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' width='30' height='30' viewBox='0 0 24 24'%3E%3Cpath opacity='.87' fill='none' d='M24 24H0V0h24v24z'/%3E%3Cpath d='M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z'/%3E%3C/svg%3E")}
+select{font-size:16px;border:0;outline:0;padding:5px 35px 5px 8px;transition:background-color .2s cubic-bezier(.4,0,.22,1);margin:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z'/%3E%3C/svg%3E") no-repeat 99% #ddd;appearance:none;height:29px}
+.dark select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 24 24'%3E%3Cpath d='M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z'/%3E%3C/svg%3E")}
 .dark button,.dark select,.dark [type=text]{background-color:#222;color:#fff}
 .dark button:hover,.dark select:hover,.dark [type=text]:hover,.dark button:active,.dark select:active,.dark button:focus,.dark select:focus,.dark [type=text]:active,.dark [type=text]:focus{background-color:#333}
 .custom select,.custom button,.custom [type=text]{background-color:rgba(200,200,200,.5)}
