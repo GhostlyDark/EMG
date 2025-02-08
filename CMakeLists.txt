@@ -64,15 +64,6 @@ set(SOURCEDIR ${CMAKE_SOURCE_DIR}/source)
 
 set(APIDIR ${SOURCEDIR}/mupen64plus-core/src/api)
 
-set(GLIDEN64_DIR ${CMAKE_BINARY_DIR}/mupen64plus-video-GLideN64)
-
-set(GLIDEN64_BUILD_DIR ${GLIDEN64_DIR}/projects/cmake)
-if(WIN32)
-	set(GLIDEN64_LIB ${GLIDEN64_BUILD_DIR}/mupen64plus-video-GLideN64${LIB_EXT})
-else()
-	set(GLIDEN64_LIB ${GLIDEN64_BUILD_DIR}/plugin/Release/mupen64plus-video-GLideN64${LIB_EXT})
-endif()
-
 
 
 ExternalProject_Add(mupen64plus-core
@@ -272,9 +263,9 @@ ExternalProject_Add(mupen64plus-video-GLideN64
     CMAKE_ARGS -DMUPENPLUSAPI=ON -DUSE_SYSTEM_LIBS=ON
 
     SOURCE_SUBDIR ./src/
-    BINARY_DIR ${GLIDEN64_BUILD_DIR}
+    BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-video-GLideN64/projects/cmake
 
-    BUILD_BYPRODUCTS ${GLIDEN64_LIB}
+    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-video-GLideN64/projects/cmake/plugin/Release/mupen64plus-video-GLideN64${LIB_EXT}
     BUILD_BYPRODUCTS ${SOURCEDIR}/mupen64plus-video-GLideN64/ini/GLideN64.custom.ini
 
 )
