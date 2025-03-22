@@ -51,9 +51,9 @@ Can be found in `build/EMG` after running `compile.sh`. See below for more detai
 
 ### Windows
 
-Download and install [MSYS2](https://www.msys2.org/). Run `MSYS2 MinGW x64` and install dependencies:
+Download and install [MSYS2](https://www.msys2.org/). Run `MSYS2 UCRT64` and install dependencies:
 ```
-pacman -S --needed --noconfirm git make mingw-w64-x86_64-cmake mingw-w64-x86_64-freetype mingw-w64-x86_64-gcc mingw-w64-x86_64-glew mingw-w64-x86_64-hidapi mingw-w64-x86_64-libpng mingw-w64-x86_64-libsamplerate mingw-w64-x86_64-nasm mingw-w64-x86_64-ninja mingw-w64-x86_64-rust mingw-w64-x86_64-SDL2 mingw-w64-x86_64-speex mingw-w64-x86_64-vulkan-headers unzip
+pacman -S --needed --noconfirm git make mingw-w64-ucrt-x86_64-cmake mingw-w64-ucrt-x86_64-freetype mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x86_64-glew mingw-w64-ucrt-x86_64-hidapi mingw-w64-ucrt-x86_64-libpng mingw-w64-ucrt-x86_64-libsamplerate mingw-w64-ucrt-x86_64-nasm mingw-w64-ucrt-x86_64-ninja mingw-w64-ucrt-x86_64-rust mingw-w64-ucrt-x86_64-SDL2 mingw-w64-ucrt-x86_64-speex mingw-w64-ucrt-x86_64-vulkan-headers unzip
 ```
 
 Clone repository:
