@@ -92,7 +92,7 @@ else{id('inputCustom').appendChild(newPlugin);id('inputCustom').style.display = 
 else if(name.includes('mupen64plus-rsp-')){
 if(newPlugin.textContent === 'parallel'){newPlugin.textContent = 'Parallel RSP';id('rspBundled').appendChild(newPlugin);id('RspFallbackBundled').appendChild(newPlugin.cloneNode(true))}
 else if(newPlugin.textContent === 'z64'){newPlugin.textContent = 'Z64 RSP';id('rspBundled').appendChild(newPlugin);id('RspFallbackBundled').appendChild(newPlugin.cloneNode(true))}
-else{id('rspCustom').appendChild(newPlugin);id('RspFallbackCustom').appendChild(newPlugin.cloneNode(true));id('rspCustom').style.display = id('RspFallbackCustom').style.display = 'block'}}
+else{id('rspCustom').appendChild(newPlugin);id('rspCustom').style.display = 'block'}}
 else if(name.includes('mupen64plus-video-')){
 if(newPlugin.textContent === 'angrylion-plus'){newPlugin.textContent = 'Angrylion Plus';id('gfxModern').appendChild(newPlugin)}
 else if(newPlugin.textContent === 'parallel'){newPlugin.textContent = 'Parallel RDP';id('gfxModern').appendChild(newPlugin)}
