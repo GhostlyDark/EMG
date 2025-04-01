@@ -299,8 +299,8 @@ slider_input.addEventListener('input', function(){localStorage.setItem(slider, s
 
 
 function rspDropdownDisable(){ /* disable or hide inputs */
-if(id('rsp').value.includes('rsp-hle')){id('RspFallback').disabled = false;id('rspGFX').disabled = true}
-else{id('RspFallback').disabled = true;id('rspGFX').disabled = false}}
+if(id('rsp').value.includes('rsp-hle')){id('RspFallback').disabled = false;id('rspGFX').disabled = true;id('rspJPG').disabled = false}
+else{id('RspFallback').disabled = true;id('rspGFX').disabled = false;id('rspJPG').disabled = true}}
 id('rsp').addEventListener('change', rspDropdownDisable)
 rspDropdownDisable()
 
@@ -944,6 +944,7 @@ vsync = 'Video-General[VerticalSync]=' + id('vsync').checked,
 ViVsync = 'Video-AngrylionPlus[ViVsync]=' + id('vsync').checked,
 ParallelVSync = 'Video-Parallel[Vsync]=' + id('vsync').checked,
 Glide64VSync = 'Video-Glide64mk2[vsync]=' + id('vsync').checked,
+m64pJPG = 'Rsp-HLE[ForwardJPEGTasks]=' + id('rspJPG').checked,
 m64pGFX = 'Rsp-HLE[DisplayListToGraphicsPlugin]=true',
 cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=' + id('rspGFX').checked,
 parallelGFX = 'RSP-Parallel[DisplayListToGraphicsPlugin]=' + id('rspGFX').checked,
@@ -1762,7 +1763,7 @@ if(mb3 === 'rs')RumblepakSwitch4 += ' mouse(3)'}
 
 var core = ['--corelib',corelib,'--configdir',configdir,'--datadir','data','--plugindir','plugin','--gfx',gfx,'--audio',audio,'--input',input,'--rsp',rsp],
 
-settings = [RspFallback,cxd4GFX,m64pGFX,parallelGFX,z64GFX,cxd4Audio,m64pAudio,parallelAudio,z64Audio,WaitForCPUHost,SupportCPUSemaphoreLock, /* RSP */
+settings = [RspFallback,m64pJPG,cxd4GFX,m64pGFX,parallelGFX,z64GFX,cxd4Audio,m64pAudio,parallelAudio,z64Audio,WaitForCPUHost,SupportCPUSemaphoreLock, /* RSP */
 
 exp,SaveFilenameFormat,osd,emumode,NoCompiledJump,CountPerOp,CountPerOpDenomPot,SiDmaDuration,AutoStateSlotIncrement,CurrentStateSlot,SharedDataPath,ScreenshotPathSetting,SaveStatePathSetting,SaveSRAMPathSetting,RandomizeInterrupt,EnableDebugger,SaveDiskFormat, /* Core */
 
