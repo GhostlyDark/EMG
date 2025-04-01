@@ -49,6 +49,7 @@
 #define RSP_HLE_CONFIG_SECTION "Rsp-HLE"
 #define RSP_HLE_CONFIG_VERSION "Version"
 #define RSP_HLE_CONFIG_FALLBACK "RspFallback"
+#define RSP_HLE_CONFIG_JPG      "ForwardJPEGTasks"
 #define RSP_HLE_CONFIG_HLE_GFX  "DisplayListToGraphicsPlugin"
 #define RSP_HLE_CONFIG_HLE_AUD  "AudioListToAudioPlugin"
 
@@ -117,12 +118,14 @@ static void setup_rsp_fallback(const char* rsp_fallback_path)
 
     if (rsp_fallback_path == NULL || strlen(rsp_fallback_path) == 0) {
         HleInfoMessage(NULL, "RSP Fallback disabled !");
+        g_hle.jpg = 0;
         return;
     }
 
     /* load plugin */
     if (osal_dynlib_open(&handle, rsp_fallback_path) != M64ERR_SUCCESS) {
         HleErrorMessage(NULL, "Can't load library: %s", rsp_fallback_path);
+        g_hle.jpg = 0;
         return;
     }
 
@@ -131,6 +134,7 @@ static void setup_rsp_fallback(const char* rsp_fallback_path)
     if (PluginGetVersion == NULL)
     {
         HleErrorMessage(NULL, "library '%s' is not a Mupen64Plus library.", rsp_fallback_path);
+        g_hle.jpg = 0;
         goto close_handle;
     }
 
@@ -143,6 +147,7 @@ static void setup_rsp_fallback(const char* rsp_fallback_path)
 
     if (plugin_type != M64PLUGIN_RSP) {
         HleErrorMessage(NULL, "plugin %s is not an RSP plugin (%u)", plugin_name, plugin_type);
+        g_hle.jpg = 0;
         goto close_handle;
     }
 
@@ -152,6 +157,7 @@ static void setup_rsp_fallback(const char* rsp_fallback_path)
             (uint16_t)(api_version >> 16),
             (uint16_t)(api_version),
             (uint16_t)(RSP_API_VERSION >> 16));
+        g_hle.jpg = 0;
         goto close_handle;
     }
 
@@ -169,12 +175,14 @@ static void setup_rsp_fallback(const char* rsp_fallback_path)
         l_DoRspCycles = NULL;
         l_InitiateRSP = NULL;
         l_RomClosed = NULL;
+        g_hle.jpg = 0;
         goto close_handle;
     }
 
     /* call the plugin's initialization function and make sure it starts okay */
     if ((*PluginStartup)(l_CoreHandle, l_DebugCallContext, l_DebugCallback) != M64ERR_SUCCESS) {
         HleErrorMessage(NULL, "Error: %s plugin library '%s' failed to start.", plugin_name, rsp_fallback_path);
+        g_hle.jpg = 0;
         goto close_handle;
     }
 
@@ -373,6 +381,8 @@ EXPORT m64p_error CALL PluginStartup(m64p_dynlib_handle CoreLibHandle, void *Con
     ConfigSetDefaultString(l_ConfigRspHle, RSP_HLE_CONFIG_FALLBACK, "",
         "Path to a RSP plugin which will be used when encountering an unknown ucode."
         "You can disable this by letting an empty string.");
+    ConfigSetDefaultBool(l_ConfigRspHle, RSP_HLE_CONFIG_JPG, 0,
+        "Forward JPEG decoding tasks to another RSP plugin if a working fallback has been found");
     ConfigSetDefaultBool(l_ConfigRspHle, RSP_HLE_CONFIG_HLE_GFX, 1,
         "Send display lists to the graphics plugin");
     ConfigSetDefaultBool(l_ConfigRspHle, RSP_HLE_CONFIG_HLE_AUD, 0,
@@ -459,6 +469,7 @@ EXPORT void CALL InitiateRSP(RSP_INFO Rsp_Info, unsigned int* CycleCount)
     l_ProcessRdpList = Rsp_Info.ProcessRdpList;
     l_ShowCFB = Rsp_Info.ShowCFB;
 
+    g_hle.jpg = ConfigGetParamBool(l_ConfigRspHle, RSP_HLE_CONFIG_JPG);
     setup_rsp_fallback(ConfigGetParamString(l_ConfigRspHle, RSP_HLE_CONFIG_FALLBACK));
 
     g_hle.hle_gfx = ConfigGetParamBool(l_ConfigRspHle, RSP_HLE_CONFIG_HLE_GFX);

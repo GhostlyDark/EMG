@@ -57,6 +57,7 @@ struct hle_t
     /* for user convenience, this will be passed to "external" functions */
     void* user_defined;
 
+    int jpg;
     int hle_gfx;
     int hle_aud;
 

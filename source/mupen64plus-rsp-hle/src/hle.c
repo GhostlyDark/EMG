@@ -342,16 +342,31 @@ static ucode_func_t try_normal_task_detection(struct hle_t* hle)
 
     /* JPEG: found in Pokemon Stadium J */
     case 0x2c85a:
-        return &unknown_task; //&jpeg_decode_PS0;
+        if (hle->jpg) {
+            return &unknown_task;
+        }
+        else {
+            return &jpeg_decode_PS0;
+        }
 
     /* JPEG: found in Zelda Ocarina of Time, Pokemon Stadium 1, Pokemon Stadium 2 */
     case 0x2caa6:
-        return &unknown_task; //&jpeg_decode_PS;
+        if (hle->jpg) {
+            return &unknown_task;
+        }
+        else {
+            return &jpeg_decode_PS;
+        }
 
     /* JPEG: found in Ogre Battle, Bottom of the 9th */
     case 0x130de:
     case 0x278b0:
-        return &unknown_task; //&jpeg_decode_OB;
+        if (hle->jpg) {
+            return &unknown_task;
+        }
+        else {
+            return &jpeg_decode_OB;
+        }
     }
 
     /* Resident Evil 2 */
@@ -359,13 +374,18 @@ static ucode_func_t try_normal_task_detection(struct hle_t* hle)
     switch (sum) {
 
     case 0x450f:
-        return &unknown_task; //&resize_bilinear_task;
+        if (hle->jpg) {
+            return &unknown_task;
+        }
+        else {
+            return &resize_bilinear_task;
+        }
 
     case 0x3b44:
-        return &unknown_task; //&decode_video_frame_task;
+        return &decode_video_frame_task;
 
     case 0x3d84:
-        return &unknown_task; //&fill_video_double_buffer_task;
+        return &fill_video_double_buffer_task;
     }
 
     /* HVQM */
