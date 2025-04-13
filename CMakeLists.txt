@@ -100,6 +100,8 @@ ExternalProject_Add(mupen64plus-core-nd
     BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-core-nd/projects/unix
     
     BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-core-nd/projects/unix/mupen64plus-nd${LIB_EXT}
+
+    DEPENDS mupen64plus-core
 )
 
 ExternalProject_Add(mupen64plus-ui-console
