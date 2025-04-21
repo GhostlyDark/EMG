@@ -134,7 +134,7 @@ if [[ ! $(uname -s) = Darwin* && ! -f "$emg_dir"/EMG$exe ]] || [[ $(uname -s) = 
 
     if [[ $(uname -s) = MINGW64* ]]; then
 
-        cmd //c "$tools_dir"/rcedit-x64 "$emg_dir"/EMG.exe --set-icon "$ico_dir"/emg.ico --set-version-string LegalCopyright "(C) 2024 EvilGames.eu" --set-version-string OriginalFilename "electron.exe" --set-version-string FileDescription "EMG" --set-version-string ProductName "EMG" --set-version-string CompanyName "EvilGames.eu"
+        "$tools_dir"/rcedit-x64 "$emg_dir"/EMG.exe --set-icon "$ico_dir"/emg.ico --set-version-string LegalCopyright "(C) 2024 EvilGames.eu" --set-version-string OriginalFilename "electron.exe" --set-version-string FileDescription "EMG" --set-version-string ProductName "EMG" --set-version-string CompanyName "EvilGames.eu"
 
     fi
 
@@ -187,7 +187,7 @@ fi
 
 if [[ $(uname -s) = MINGW64* ]]; then
 
-    cmd //c "$tools_dir"/rcedit-x64 "$m64p_dir"/mupen64plus.exe --set-icon "$ico_dir"/mupen64plus.ico
+    "$tools_dir"/rcedit-x64 "$m64p_dir"/mupen64plus.exe --set-icon "$ico_dir"/mupen64plus.ico
 
 fi
 
