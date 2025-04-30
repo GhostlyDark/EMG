@@ -28,6 +28,7 @@
 #include "m64p_frontend.h"
 #include "m64p_plugin.h"
 #include "m64p_types.h"
+#include "osal_dynamiclib.h"
 #include "rsp.h"
 #include "z64.h"
 
@@ -38,13 +39,6 @@
 #define CONFIG_PARAM_VERSION     1.00
 
 #define L_NAME "Z64 RSP Plugin"
-
-#ifdef _WIN32
-#define DLSYM(a, b) GetProcAddress(a, b)
-#else
-#include <dlfcn.h>
-#define DLSYM(a, b) dlsym(a, b)
-#endif
 
 static void (*l_DebugCallback)(void *, int, const char *) = NULL;
 static void *l_DebugCallContext = NULL;
@@ -145,14 +139,14 @@ extern "C" {
         l_DebugCallContext = Context;
 
         ///* Get the core config function pointers from the library handle */
-        ConfigOpenSection = (ptr_ConfigOpenSection) DLSYM(CoreLibHandle, "ConfigOpenSection");
-        ConfigDeleteSection = (ptr_ConfigDeleteSection) DLSYM(CoreLibHandle, "ConfigDeleteSection");
-        ConfigSetParameter = (ptr_ConfigSetParameter) DLSYM(CoreLibHandle, "ConfigSetParameter");
-        ConfigGetParameter = (ptr_ConfigGetParameter) DLSYM(CoreLibHandle, "ConfigGetParameter");
-        ConfigSetDefaultFloat = (ptr_ConfigSetDefaultFloat) DLSYM(CoreLibHandle, "ConfigSetDefaultFloat");
-        ConfigSetDefaultBool = (ptr_ConfigSetDefaultBool) DLSYM(CoreLibHandle, "ConfigSetDefaultBool");
-        ConfigGetParamBool = (ptr_ConfigGetParamBool) DLSYM(CoreLibHandle, "ConfigGetParamBool");
-        CoreDoCommand = (ptr_CoreDoCommand) DLSYM(CoreLibHandle, "CoreDoCommand");
+        ConfigOpenSection = (ptr_ConfigOpenSection) osal_dynlib_getproc(CoreLibHandle, "ConfigOpenSection");
+        ConfigDeleteSection = (ptr_ConfigDeleteSection) osal_dynlib_getproc(CoreLibHandle, "ConfigDeleteSection");
+        ConfigSetParameter = (ptr_ConfigSetParameter) osal_dynlib_getproc(CoreLibHandle, "ConfigSetParameter");
+        ConfigGetParameter = (ptr_ConfigGetParameter) osal_dynlib_getproc(CoreLibHandle, "ConfigGetParameter");
+        ConfigSetDefaultFloat = (ptr_ConfigSetDefaultFloat) osal_dynlib_getproc(CoreLibHandle, "ConfigSetDefaultFloat");
+        ConfigSetDefaultBool = (ptr_ConfigSetDefaultBool) osal_dynlib_getproc(CoreLibHandle, "ConfigSetDefaultBool");
+        ConfigGetParamBool = (ptr_ConfigGetParamBool) osal_dynlib_getproc(CoreLibHandle, "ConfigGetParamBool");
+        CoreDoCommand = (ptr_CoreDoCommand) osal_dynlib_getproc(CoreLibHandle, "CoreDoCommand");
 
         if (!ConfigOpenSection || !ConfigDeleteSection || !ConfigSetParameter || !ConfigGetParameter ||
             !ConfigSetDefaultBool || !ConfigGetParamBool || !ConfigSetDefaultFloat)
@@ -240,7 +234,7 @@ extern "C" {
     EXPORT unsigned int CALL DoRspCycles(unsigned int Cycles)
     {
         uint32_t TaskType = *(uint32_t*)(z64_rspinfo.DMEM + 0xFC0);
-        bool compareTaskType = *(uint32_t*)(z64_rspinfo.DMEM + 0x0ff0) != 0;
+        bool compareTaskType = *(uint32_t*)(z64_rspinfo.DMEM + 0x0ff0) != 0; /* Resident Evil 2, null task pointers */
 
 #if 0
         if (TaskType == 1) {
