@@ -60,7 +60,7 @@ dropdowns = [
 'a','b','x','y','start','z','l','r','d_pad_left','d_pad_right','d_pad_down','d_pad_up','c_stick_left','c_stick_right','c_stick_down','c_stick_up', /* mupen64plus-input-gca */
 'msaa','aspectRatio','bufferSwapMode','CountersPos','useNativeResolutionFactor','anisotropy','cache','RDRAMImageDitheringMode','CorrectTexrectCoords','EnableNativeResTexrects','BackgroundsMode','EnableN64DepthCompare','EnableCopyColorToRDRAM','EnableCopyDepthToRDRAM','txFilterMode','txEnhancementMode', /* GLideN64 */
 'ViMode','ViInterpolation','DpCompat', /* Angrylion-Plus */
-'ParallelUpscaling','ParallelDeinterlaceMode','ParallelDownScale', /* Parallel */
+'ParallelUpscaling', /* Parallel */
 'FrameBufferWriteBackControl','RenderToTexture','ScreenUpdateSetting','Mipmapping','ForceTextureFilter','RiceMultiSampling','AnisotropicFiltering', /* Rice */
 'show_fps','ghq_fltr','ghq_enht','alt_tex_size','use_sts1_only','force_calc_sphere','correct_viewport','increase_texrect_edge','decrease_fillrect_edge','texture_correction','pal230','force_microcheck','force_quad3d','clip_zmin','clip_zmax','fast_crc','adjust_aspect','zmode_compare_less','old_style_adither','n64_z_scale','optimize_texrect','ignore_aux_copy','hires_buf_clear','fb_read_alpha','useless_is_useless','fb_crc_mode','filtering','fog','buff_clear','swapmode','aspect','lodmode','fb_smart','fb_hires','fb_read_always','read_back_to_screen','detect_cpu_write','fb_get_info','fb_render' /* Glide64 MK2 */];
 
@@ -1108,8 +1108,8 @@ ViMode = 'Video-AngrylionPlus[ViMode]=' + id('ViMode').value,
 ViInterpolation = 'Video-AngrylionPlus[ViInterpolation]=' + id('ViInterpolation').value,
 DpCompat = 'Video-AngrylionPlus[DpCompat]=' + id('DpCompat').value,
 ParallelUpscaling = 'Video-Parallel[Upscaling]=' + id('ParallelUpscaling').value,
-ParallelDeinterlaceMode = 'Video-Parallel[DeinterlaceMode]=' + id('ParallelDeinterlaceMode').value,
-ParallelDownScale = 'Video-Parallel[DownScale]=' + id('ParallelDownScale').value,
+ParallelDeinterlaceMode = 'Video-Parallel[DeinterlaceMode]=true',
+ParallelDownScale = 'Video-Parallel[DownScale]=0',
 CountersPos = 'Video-GLideN64[CountersPos]=' + id('CountersPos').value,
 DEFAULT_FREQUENCY = 'Audio-SDL[DEFAULT_FREQUENCY]=33600',
 PRIMARY_BUFFER_SIZE = 'Audio-SDL[PRIMARY_BUFFER_SIZE]=16384',

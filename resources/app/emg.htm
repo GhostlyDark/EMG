@@ -1532,12 +1532,6 @@ HTS: Read textures as they are needed from hard disk."><select id="cache">
 </ul>
 <p>&nbsp;</p>
 <div id="parallel_video" class="mt-10">
-<p><input id="ParallelWidescreenStretch" type="checkbox" data-store="ParallelWidescreenStretch"><label for="ParallelWidescreenStretch">Widescreen (stretch)</label></p>
-<p>&nbsp;</p>
-<p title="Amount of overscan pixels to crop."><input id="ParallelCropOverscan" type="range" min="0" max="99" step="1" value="0"><label for="ParallelCropOverscan"><span id="ParallelCropOverscanText">0</span>: Crop overscan</label><button class="floatright" data-value="0" id="resetParallelCropOverscan">Reset</button></p>
-<p>&nbsp;</p>
-<p title="Amount of pixels to stretch by vertically. Can fix PAL ports that didn't fill the PAL resolution of 288p (use value of 24 in that case)."><input id="ParallelVerticalStretch" type="range" min="0" max="99" step="1" value="0"><label for="ParallelVerticalStretch"><span id="ParallelVerticalStretchText">0</span>: Vertical stretch</label><button class="floatright" data-value="0" id="resetParallelVerticalStretch">Reset</button></p>
-<p>&nbsp;</p><p>&nbsp;</p>
 <select class="width125m" id="ParallelUpscaling">
 <option value="1">1x</option>
 <option value="2" selected>2x</option>
@@ -1545,17 +1539,11 @@ HTS: Read textures as they are needed from hard disk."><select id="cache">
 <option value="8">8x</option>
 </select><label for="ParallelUpscaling">Upscaling</label>
 <p>&nbsp;</p>
-<div title="Downscales output after VI, equivalent to SSAA."><select class="width125m" id="ParallelDownScale">
-<option value="0" selected>Disabled</option>
-<option value="1">1/2</option>
-<option value="2">1/4</option>
-<option value="3">1/8</option>
-</select><label for="ParallelDownScale">Downsampling</label></div>
+<p><input id="ParallelWidescreenStretch" type="checkbox" data-store="ParallelWidescreenStretch"><label for="ParallelWidescreenStretch">Widescreen (stretch)</label></p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p title="Amount of overscan pixels to crop."><input id="ParallelCropOverscan" type="range" min="0" max="99" step="1" value="0"><label for="ParallelCropOverscan"><span id="ParallelCropOverscanText">0</span>: Crop overscan</label><button class="floatright" data-value="0" id="resetParallelCropOverscan">Reset</button></p>
 <p>&nbsp;</p>
-<div title="Weave should only be used with 1x scaling factor."><select class="width125m" id="ParallelDeinterlaceMode">
-<option value="false" selected>Bob</option>
-<option value="true">Weave</option>
-</select><label for="ParallelDeinterlaceMode">Deinterlacing method</label></div>
+<p title="Amount of pixels to stretch by vertically. Can fix PAL ports that didn't fill the PAL resolution of 288p (use value of 24 in that case)."><input id="ParallelVerticalStretch" type="range" min="0" max="99" step="1" value="0"><label for="ParallelVerticalStretch"><span id="ParallelVerticalStretchText">0</span>: Vertical stretch</label><button class="floatright" data-value="0" id="resetParallelVerticalStretch">Reset</button></p>
 </div>
 <div id="parallel_emulation" class="hide mt-10">
 <p title="Smooths polygon edges."><input id="ParallelVIAA" type="checkbox" data-store="ParallelVIAA" checked><label for="ParallelVIAA">Anti-aliasing</label></p>
