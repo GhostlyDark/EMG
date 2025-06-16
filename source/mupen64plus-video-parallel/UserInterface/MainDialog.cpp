@@ -71,6 +71,7 @@ MainDialog::MainDialog(QWidget* parent) : QDialog(parent)
     this->viDivotFilterCheckBox->setChecked(ConfigGetParamBool(configVideoParallel, KEY_DIVOT));
     this->viDeDitheringCheckBox->setChecked(ConfigGetParamBool(configVideoParallel, KEY_VIDITHER));
     this->nativeTextureLodCheckBox->setChecked(ConfigGetParamBool(configVideoParallel, KEY_NATIVETEXTLOD));
+    this->fullscreenCheckBox->setChecked(ConfigGetParamBool(configVideoParallel, KEY_FULLSCREEN));
     this->forceWidescreenCheckBox->setChecked(ConfigGetParamBool(configVideoParallel, KEY_WIDESCREEN));
 
     this->supersampledRdramReadsCheckBox->setChecked(ConfigGetParamBool(configVideoParallel, KEY_SSREADBACKS));
@@ -131,24 +132,26 @@ void MainDialog::on_buttonBox_clicked(QAbstractButton* button)
     ConfigSetParameter(configVideoParallel, KEY_VERTICAL_STRETCH, M64TYPE_INT, &verticalStretchValue);
 
     // checkboxes
-    int superSampledDitherValue = this->superSampledDitherCheckBox->isChecked() ? 1 : 0;
-    int viAaValue = this->viAaCheckBox->isChecked() ? 1 : 0;
-    int viDivotFilterValue = this->viDivotFilterCheckBox->isChecked() ? 1 : 0; 
-    int viDeDitheringValue = this->viDeDitheringCheckBox->isChecked() ? 1 : 0;
-    int nativeTextureLodValue = this->nativeTextureLodCheckBox->isChecked() ? 1 : 0; 
-    int forceWidescreenValue = this->forceWidescreenCheckBox->isChecked() ? 1 : 0; 
-    int supersampledRdramReadsValue = this->supersampledRdramReadsCheckBox->isChecked() ? 1 : 0;
-    int viBilinearFilteringValue = this->viBilinearFilteringCheckBox->isChecked() ? 1 : 0;
-    int viGammaDitherValue = this->viGammaDitherCheckBox->isChecked() ? 1 : 0;
-    int nativeTextRectsValue = this->nativeTextRectsCheckBox->isChecked() ? 1 : 0;
-    int verticalSyncValue = this->verticalSyncCheckBox->isChecked() ? 1 : 0;
-    int synchronizeValue = this->synchronizeCheckBox->isChecked() ? 1 : 0;
+    int superSampledDitherValue = this->superSampledDitherCheckBox->isChecked() ? 1 : 0; //(ConfigGetParamBool(configVideoParallel, KEY_SSDITHER));
+    int viAaValue = this->viAaCheckBox->isChecked() ? 1 : 0; //(ConfigGetParamBool(configVideoParallel, KEY_AA));
+    int viDivotFilterValue = this->viDivotFilterCheckBox->isChecked() ? 1 : 0; //(ConfigGetParamBool(configVideoParallel, KEY_DIVOT));
+    int viDeDitheringValue = this->viDeDitheringCheckBox->isChecked() ? 1 : 0; //(ConfigGetParamBool(configVideoParallel, KEY_VIDITHER));
+    int nativeTextureLodValue = this->nativeTextureLodCheckBox->isChecked() ? 1 : 0; //(ConfigGetParamBool(configVideoParallel, KEY_NATIVETEXTLOD));
+    int fullscreenValue = this->fullscreenCheckBox->isChecked() ? 1 : 0; //(ConfigGetParamBool(configVideoParallel, KEY_FULLSCREEN));
+    int forceWidescreenValue = this->forceWidescreenCheckBox->isChecked() ? 1 : 0; //(ConfigGetParamBool(configVideoParallel, KEY_WIDESCREEN));
+    int supersampledRdramReadsValue = this->supersampledRdramReadsCheckBox->isChecked() ? 1 : 0; //(ConfigGetParamBool(configVideoParallel, KEY_SSREADBACKS));
+    int viBilinearFilteringValue = this->viBilinearFilteringCheckBox->isChecked() ? 1 : 0; //(ConfigGetParamBool(configVideoParallel, KEY_VIBILERP));
+    int viGammaDitherValue = this->viGammaDitherCheckBox->isChecked() ? 1 : 0; //(ConfigGetParamBool(configVideoParallel, KEY_GAMMADITHER));
+    int nativeTextRectsValue = this->nativeTextRectsCheckBox->isChecked() ? 1 : 0; //(ConfigGetParamBool(configVideoParallel, KEY_NATIVETEXTRECT));
+    int verticalSyncValue = this->verticalSyncCheckBox->isChecked() ? 1 : 0; //(ConfigGetParamBool(configVideoParallel, KEY_VSYNC));
+    int synchronizeValue = this->synchronizeCheckBox->isChecked() ? 1 : 0; //(ConfigGetParamBool(configVideoParallel, KEY_SYNCHRONOUS));
 
     ConfigSetParameter(configVideoParallel, KEY_SSDITHER, M64TYPE_BOOL, &superSampledDitherValue);
     ConfigSetParameter(configVideoParallel, KEY_AA, M64TYPE_BOOL, &viAaValue);
     ConfigSetParameter(configVideoParallel, KEY_DIVOT, M64TYPE_BOOL, &viDivotFilterValue);
     ConfigSetParameter(configVideoParallel, KEY_VIDITHER, M64TYPE_BOOL, &viDeDitheringValue);
     ConfigSetParameter(configVideoParallel, KEY_NATIVETEXTLOD, M64TYPE_BOOL, &nativeTextureLodValue);
+    ConfigSetParameter(configVideoParallel, KEY_FULLSCREEN, M64TYPE_BOOL, &fullscreenValue);
     ConfigSetParameter(configVideoParallel, KEY_WIDESCREEN, M64TYPE_BOOL, &forceWidescreenValue);
     ConfigSetParameter(configVideoParallel, KEY_SSREADBACKS, M64TYPE_BOOL, &supersampledRdramReadsValue);
     ConfigSetParameter(configVideoParallel, KEY_VIBILERP, M64TYPE_BOOL, &viBilinearFilteringValue);

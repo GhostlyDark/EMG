@@ -29,12 +29,10 @@
 #include <stdarg.h>
 
 #include "gfx_m64p.h"
-#include "screen.h"
+#include "glguts.h"
 #include "parallel_imp.h"
 #include "util/logging.hpp"
-#ifdef CONFIG_GUI
 #include "UserInterface/MainDialog.hpp"
-#endif // CONFIG_GUI
 
 #include "m64p_types.h"
 #include "m64p_config.h"
@@ -249,7 +247,6 @@ EXPORT m64p_error CALL PluginGetVersion(m64p_plugin_type *PluginType, int *Plugi
     return M64ERR_SUCCESS;
 }
 
-#ifdef CONFIG_GUI
 extern "C"
 {
     EXPORT m64p_error CALL PluginConfig(void)
@@ -265,7 +262,6 @@ extern "C"
         return M64ERR_SUCCESS;
     }
 }
-#endif // CONFIG_GUI
 
 EXPORT int CALL InitiateGFX(GFX_INFO Gfx_Info)
 {
@@ -311,6 +307,15 @@ EXPORT int CALL RomOpen(void)
     vk_vertical_stretch = ConfigGetParamInt(configVideoParallel, KEY_VERTICAL_STRETCH);
 
     vk_synchronous = ConfigGetParamBool(configVideoParallel, KEY_SYNCHRONOUS);
+
+    char romname[21];
+    for (int i = 0; i < 20; ++i)
+        romname[i] = gfx.HEADER[(32 + i) ^ 3];
+    romname[20] = 0;
+    if (strstr(romname, (const char *)"S.F. RUSH") != NULL)
+        skip_swap_clear = true;
+    else
+        skip_swap_clear = false;
 
     plugin_init();
 
@@ -360,11 +365,16 @@ EXPORT void CALL ChangeWindow(void)
 
 EXPORT void CALL ReadScreen2(void *dest, int *width, int *height, int front)
 {
-    *width = window_width;
-    *height = window_height;
+    struct frame_buffer fb = {0};
+    screen_read(&fb, false);
+
+    *width = fb.width;
+    *height = fb.height;
+
     if (dest)
     {
-        vk_read_screen((unsigned char*)dest);
+        fb.pixels = (video_pixel*)dest;
+        screen_read(&fb, false);
     }
 }
 
@@ -377,7 +387,6 @@ EXPORT void CALL ResizeVideoOutput(int width, int height)
 {
     window_width = width;
     window_height = height;
-    vk_resize();
 }
 
 EXPORT void CALL FBWrite(unsigned int addr, unsigned int size)

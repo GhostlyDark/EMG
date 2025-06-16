@@ -1,7 +1,6 @@
-#pragma once
 
 #include "gfx_m64p.h"
-#include "screen.h"
+#include "glguts.h"
 #include "gfxstructdefs.h"
 
 #ifdef __cplusplus
@@ -22,13 +21,12 @@ extern "C"
     extern bool vk_vi_aa, vk_vi_scale, vk_dither_filter;
     extern bool vk_interlacing;
     extern bool vk_synchronous;
+    extern bool skip_swap_clear;
 
     void vk_rasterize();
     void vk_process_commands();
     bool vk_init();
     void vk_destroy();
-    void vk_resize();
-    void vk_read_screen(unsigned char* dest);
 
 #ifdef __cplusplus
 }
