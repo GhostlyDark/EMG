@@ -1430,7 +1430,7 @@ gcaSettings = "control_stick_deadzone = " + id('control_stick_deadzone').value +
 
 if(gfx.includes('angrylion') || gfx.includes('parallel')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=false';parallelGFX = 'RSP-Parallel[DisplayListToGraphicsPlugin]=false';z64GFX = 'rsp-z64[DisplayListToGraphicsPlugin]=false'} /* prevent crashes caused by wrong RSP settings */
 else if(gfx.includes('rice') || gfx.includes('glide64mk2')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=true';parallelGFX = 'RSP-Parallel[DisplayListToGraphicsPlugin]=true';z64GFX = 'rsp-z64[DisplayListToGraphicsPlugin]=true'}
-if((gfx.includes('angrylion') || gfx.includes('parallel')) && rsp.includes('rsp-hle')){rsp = 'mupen64plus-rsp-cxd4' + ext}
+if((gfx.includes('angrylion') || gfx.includes('parallel')) && rsp.includes('rsp-hle')){rsp = 'mupen64plus-rsp-parallel' + ext}
 
 if(id('nospeedlimit').checked){audio = 'dummy';vsync = 'Video-General[VerticalSync]=false';ViVsync = 'Video-AngrylionPlus[ViVsync]=false';ParallelVSync = 'Video-Parallel[Vsync]=false'} /* force muted audio and disabled V-Sync */
 
