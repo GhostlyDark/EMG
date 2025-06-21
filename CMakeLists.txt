@@ -14,8 +14,24 @@ endif()
 
 
 
+if(WIN32 AND CLANG64)
+        set(CC_COMPILER "CC=clang")
+        set(CXX_COMPILER "CXX=clang++")
+        set(DEPENDENCY_PATH "/clang64/bin")
+elseif(WIN32 AND UCRT64)
+        set(CC_COMPILER "")
+        set(CXX_COMPILER "")
+        set(DEPENDENCY_PATH "/ucrt64/bin")
+else()
+        set(CC_COMPILER "")
+        set(CXX_COMPILER "")
+        set(DEPENDENCY_PATH "/mingw64/bin")
+endif()
+
+
+
 add_custom_target(bundle_dependencies
-    COMMAND bash "${CMAKE_SOURCE_DIR}/dependencies.sh" "${INSTALL_PATH}/mupen64plus.exe" "${INSTALL_PATH}" "/mingw64/bin"
+    COMMAND bash "${CMAKE_SOURCE_DIR}/dependencies.sh" "${INSTALL_PATH}/mupen64plus.exe" "${INSTALL_PATH}" "${DEPENDENCY_PATH}"
 )
 
 
@@ -25,23 +41,17 @@ include(ExternalProject)
 
 
 if(WIN32)
-
     set(LIB_EXT ".dll")
     set(BIN_EXT ".exe")
     set(GCA_LIB "mupen64plus_input_gca.dll")
-
 elseif(APPLE)
-
     set(LIB_EXT ".dylib")
     set(BIN_EXT "")
     set(GCA_LIB "libmupen64plus_input_gca.dylib")
-
 else()
-
     set(LIB_EXT ".so")
     set(BIN_EXT "")
     set(GCA_LIB "libmupen64plus_input_gca.so")
-
 endif()
 
 
@@ -58,9 +68,10 @@ ExternalProject_Add(mupen64plus-core
     CONFIGURE_COMMAND ""
     INSTALL_COMMAND ""
 
-    BUILD_COMMAND make all -f ${SOURCEDIR}/mupen64plus-core/projects/unix/Makefile 
+    BUILD_COMMAND make all -f ${SOURCEDIR}/mupen64plus-core/projects/unix/Makefile
         SRCDIR=${SOURCEDIR}/mupen64plus-core/src
-        SUBDIR=${SOURCEDIR}/mupen64plus-core/subprojects 
+        SUBDIR=${SOURCEDIR}/mupen64plus-core/subprojects
+        "${CC_COMPILER}" "${CXX_COMPILER}"
         ACCURATE_FPU=1 NEW_DYNAREC=0 OSD=0 TARGET=mupen64plus${LIB_EXT}
 
     BUILD_IN_SOURCE False
@@ -76,9 +87,10 @@ ExternalProject_Add(mupen64plus-core-nd
     CONFIGURE_COMMAND ""
     INSTALL_COMMAND ""
 
-    BUILD_COMMAND make all -f ${SOURCEDIR}/mupen64plus-core/projects/unix/Makefile 
+    BUILD_COMMAND make all -f ${SOURCEDIR}/mupen64plus-core/projects/unix/Makefile
         SRCDIR=${SOURCEDIR}/mupen64plus-core/src
-        SUBDIR=${SOURCEDIR}/mupen64plus-core/subprojects 
+        SUBDIR=${SOURCEDIR}/mupen64plus-core/subprojects
+        "${CC_COMPILER}" "${CXX_COMPILER}"
         ACCURATE_FPU=1 NEW_DYNAREC=1 OSD=0 TARGET=mupen64plus-nd${LIB_EXT}
 
     BUILD_IN_SOURCE False
@@ -99,6 +111,7 @@ ExternalProject_Add(mupen64plus-ui-console
     BUILD_COMMAND make all -f ${SOURCEDIR}/mupen64plus-ui-console/projects/unix/Makefile 
         SRCDIR=${SOURCEDIR}/mupen64plus-ui-console/src
         APIDIR=${APIDIR}
+        "${CC_COMPILER}" "${CXX_COMPILER}"
 
     BUILD_IN_SOURCE False
 
@@ -116,6 +129,7 @@ ExternalProject_Add(mupen64plus-rsp-cxd4
     BUILD_COMMAND make all -f ${SOURCEDIR}/mupen64plus-rsp-cxd4/projects/unix/Makefile
         SRCDIR=${SOURCEDIR}/mupen64plus-rsp-cxd4
         APIDIR=${APIDIR} POSTFIX=
+        "${CC_COMPILER}" "${CXX_COMPILER}"
 
     BUILD_IN_SOURCE False
 
@@ -133,6 +147,7 @@ ExternalProject_Add(mupen64plus-rsp-hle
     BUILD_COMMAND make all -f ${SOURCEDIR}/mupen64plus-rsp-hle/projects/unix/Makefile
         SRCDIR=${SOURCEDIR}/mupen64plus-rsp-hle/src
         APIDIR=${APIDIR} POSTFIX=
+        "${CC_COMPILER}" "${CXX_COMPILER}"
 
     BUILD_IN_SOURCE False
 
@@ -162,6 +177,7 @@ ExternalProject_Add(mupen64plus-rsp-z64
     BUILD_COMMAND make all -f ${SOURCEDIR}/mupen64plus-rsp-z64/projects/unix/Makefile
         SRCDIR=${SOURCEDIR}/mupen64plus-rsp-z64/src
         APIDIR=${APIDIR} POSTFIX=
+        "${CC_COMPILER}" "${CXX_COMPILER}"
 
     BUILD_IN_SOURCE False
 
@@ -179,6 +195,7 @@ ExternalProject_Add(mupen64plus-input-sdl
     BUILD_COMMAND make all -f ${SOURCEDIR}/mupen64plus-input-sdl/projects/unix/Makefile
         SRCDIR=${SOURCEDIR}/mupen64plus-input-sdl/src
         APIDIR=${APIDIR}
+        "${CC_COMPILER}" "${CXX_COMPILER}"
 
     BUILD_IN_SOURCE False
 
@@ -196,6 +213,7 @@ ExternalProject_Add(mupen64plus-input-raphnetraw
     BUILD_COMMAND make all -f ${SOURCEDIR}/mupen64plus-input-raphnetraw/projects/unix/Makefile
         SRCDIR=${SOURCEDIR}/mupen64plus-input-raphnetraw/src
         APIDIR=${APIDIR}
+        "${CC_COMPILER}" "${CXX_COMPILER}"
 
     BUILD_IN_SOURCE False
 
@@ -269,6 +287,7 @@ ExternalProject_Add(mupen64plus-video-rice
     BUILD_COMMAND make all -f ${SOURCEDIR}/mupen64plus-video-rice/projects/unix/Makefile
         SRCDIR=${SOURCEDIR}/mupen64plus-video-rice/src
         APIDIR=${APIDIR}
+        "${CC_COMPILER}" "${CXX_COMPILER}"
 
     BUILD_IN_SOURCE False
 
@@ -286,6 +305,7 @@ ExternalProject_Add(mupen64plus-video-glide64mk2
     BUILD_COMMAND make all -f ${SOURCEDIR}/mupen64plus-video-glide64mk2/projects/unix/Makefile
         SRCDIR=${SOURCEDIR}/mupen64plus-video-glide64mk2/src
         APIDIR=${APIDIR}
+        "${CC_COMPILER}" "${CXX_COMPILER}"
 
     BUILD_IN_SOURCE False
 
@@ -303,6 +323,7 @@ ExternalProject_Add(mupen64plus-audio-sdl
     BUILD_COMMAND make all -f ${SOURCEDIR}/mupen64plus-audio-sdl/projects/unix/Makefile
         SRCDIR=${SOURCEDIR}/mupen64plus-audio-sdl/src
         APIDIR=${APIDIR}
+        "${CC_COMPILER}" "${CXX_COMPILER}"
 
     BUILD_IN_SOURCE False
 

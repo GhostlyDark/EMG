@@ -62,6 +62,27 @@ fi
 
 
 
+# Detect what MSYS2 environment is used
+
+if [[ "$MSYSTEM" = "UCRT64" ]]; then
+
+    clang64="-DCLANG64=0"
+    ucrt64="-DUCRT64=1"
+
+elif [[ "$MSYSTEM" = "CLANG64" ]]; then
+
+    clang64="-DCLANG64=1"
+    ucrt64="-DUCRT64=0"
+
+else
+
+    clang64="-DCLANG64=0"
+    ucrt64="-DUCRT64=0"
+
+fi
+
+
+
 # Check if Electron was already extracted
 
 if [[ ! $(uname -s) = Darwin* && -d "$emg_dir" && ! -f "$emg_dir"/EMG$exe ]] || [[ $(uname -s) = Darwin* && -d "$emg_dir" && ! -d "$emg_dir"/EMG.app ]]; then
@@ -162,7 +183,7 @@ fi
 
 # Build
 
-cmake -S "$toplvl_dir" -B "$cmake_dir" -G "Ninja"
+cmake -S "$toplvl_dir" -B "$cmake_dir" -G "Ninja" $clang64 $ucrt64
 cmake --build "$cmake_dir" --parallel "$threads"
 cmake --install "$cmake_dir"
 
