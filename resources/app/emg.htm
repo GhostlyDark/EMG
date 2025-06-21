@@ -137,11 +137,20 @@
 </div>
 <div id="core_plugins" class="hide mt-15">
 <button class="floatright" id="openPluginFolder">Show folder</button>
-<div title="Angrylion Plus: LLE,
-GLideN64: HLE (recommended) and LLE,
-Parallel RDP: LLE,
-Rice: HLE,
-Glide64 MK2: HLE"><select class="width250m" id="gfx">
+<div title="HLE and LLE:
+- GLideN64
+
+LLE:
+- Angrylion Plus:
+- Parallel RDP
+
+HLE:
+- Rice
+- Glide64 MK2
+
+Some video plugins can only run in either HLE or LLE, in which case the
+required setting is enforced and Parallel RSP is used as the RSP plugin if
+Mupen64Plus HLE is selected for LLE video plugins (Angrylion, Parallel RDP)."><select class="width250m" id="gfx">
 <optgroup label="Modern" id="gfxModern">
 <option value="mupen64plus-video-GLideN64" selected>GLideN64</option>
 <option value="mupen64plus-video-angrylion-plus">Angrylion Plus</option>
@@ -163,7 +172,7 @@ Glide64 MK2: HLE"><select class="width250m" id="gfx">
 </optgroup>
 </select><label for="audio">Audio plugin</label>
 <p>&nbsp;</p>
-<div title="GameCube Adapter: Only works with official Wii U GameCube Adapter,
+<div title="GameCube Adapter: Only works with official Wii U GameCube Adapter
 Raphnetraw: Only works with Raphnetraw adapters"><select class="width250m" id="input">
 <optgroup label="Bundled" id="inputBundled">
 <option value="mupen64plus-input-sdl" selected>Mupen64Plus Input SDL</option>
@@ -174,10 +183,15 @@ Raphnetraw: Only works with Raphnetraw adapters"><select class="width250m" id="i
 </optgroup>
 </select><label for="input">Input plugin</label></div>
 <p>&nbsp;</p>
-<div title="Mupen64Plus HLE: HLE only (fastest),
-Parallel RSP: HLE and LLE (2nd fastest),
-Static Interpreter: HLE and LLE (3rd fastest),
-Z64 RSP: HLE and LLE (slowest)"><select class="width250m" id="rsp">
+<div title="RSPs from fastest to slowest:
+- Mupen64Plus HLE: HLE only
+- Parallel RSP: HLE and LLE
+- Static Interpreter: HLE and LLE
+- Z64 RSP: HLE and LLE
+
+Some video plugins can only run in either HLE or LLE, in which case the
+required setting is enforced and Parallel RSP is used as the RSP plugin if
+Mupen64Plus HLE is selected for LLE video plugins (Angrylion, Parallel RDP)."><select class="width250m" id="rsp">
 <optgroup label="Bundled" id="rspBundled">
 <option value="mupen64plus-rsp-hle" selected>Mupen64Plus HLE</option>
 <option value="mupen64plus-rsp-parallel">Parallel RSP</option>
