@@ -1541,8 +1541,16 @@ HTS: Read textures as they are needed from hard disk."><select id="cache">
 <p>&nbsp;</p>
 <p><input id="ParallelWidescreenStretch" type="checkbox" data-store="ParallelWidescreenStretch"><label for="ParallelWidescreenStretch">Widescreen (stretch)</label></p>
 <p>&nbsp;</p><p>&nbsp;</p>
-<p title="Amount of overscan pixels to crop."><input id="ParallelCropOverscan" type="range" min="0" max="99" step="1" value="0"><label for="ParallelCropOverscan"><span id="ParallelCropOverscanText">0</span>: Crop overscan</label><button class="floatright" data-value="0" id="resetParallelCropOverscan">Reset</button></p>
+<p title="Crop image to remove black bars."><input id="ParallelCropOverscanEnable" type="checkbox" data-store="ParallelCropOverscanEnable"><label for="ParallelCropOverscanEnable">Use overscan</label><button class="floatright" id="reset_overscan_parallel">Reset all</button></p>
 <p>&nbsp;</p>
+<p><input id="ParallelCropOverscanTop" type="range" min="0" max="99" step="1" value="0"><label for="ParallelCropOverscanTop"><span id="ParallelCropOverscanTopText">0</span>: Top</label><button class="floatright" data-value="0" id="resetParallelCropOverscanTop">Reset</button></p>
+<p>&nbsp;</p>
+<p><input id="ParallelCropOverscanLeft" type="range" min="0" max="99" step="1" value="0"><label for="ParallelCropOverscanLeft"><span id="ParallelCropOverscanLeftText">0</span>: Left</label><button class="floatright" data-value="0" id="resetParallelCropOverscanLeft">Reset</button></p>
+<p>&nbsp;</p>
+<p><input id="ParallelCropOverscanRight" type="range" min="0" max="99" step="1" value="0"><label for="ParallelCropOverscanRight"><span id="ParallelCropOverscanRightText">0</span>: Right</label><button class="floatright" data-value="0" id="resetParallelCropOverscanRight">Reset</button></p>
+<p>&nbsp;</p>
+<p><input id="ParallelCropOverscanBottom" type="range" min="0" max="99" step="1" value="0"><label for="ParallelCropOverscanBottom"><span id="ParallelCropOverscanBottomText">0</span>: Bottom</label><button class="floatright" data-value="0" id="resetParallelCropOverscanBottom">Reset</button></p>
+<p>&nbsp;</p><p>&nbsp;</p>
 <p title="Amount of pixels to stretch by vertically. Can fix PAL ports that didn't fill the PAL resolution of 288p (use value of 24 in that case)."><input id="ParallelVerticalStretch" type="range" min="0" max="99" step="1" value="0"><label for="ParallelVerticalStretch"><span id="ParallelVerticalStretchText">0</span>: Vertical stretch</label><button class="floatright" data-value="0" id="resetParallelVerticalStretch">Reset</button></p>
 </div>
 <div id="parallel_emulation" class="hide mt-10">

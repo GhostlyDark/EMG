@@ -21,7 +21,11 @@ bool vk_ssreadbacks;
 bool vk_ssdither;
 bool running = false;
 unsigned width, height;
-unsigned vk_overscan;
+unsigned vk_overscan_left;
+unsigned vk_overscan_right;
+unsigned vk_overscan_top;
+unsigned vk_overscan_bottom;
+bool vk_overscan_enable;
 unsigned vk_vertical_stretch;
 unsigned vk_downscaling_steps;
 bool vk_native_texture_lod;
@@ -76,9 +80,12 @@ void vk_rasterize()
 	opts.blend_previous_frame = vk_interlacing;
 	opts.upscale_deinterlacing = !vk_interlacing;
 	opts.downscale_steps = vk_downscaling_steps;
-	opts.crop_overscan_pixels = vk_overscan;
-	if (vk_vertical_stretch)
-	{
+	opts.crop_rect.left = vk_overscan_left;
+	opts.crop_rect.right = vk_overscan_right;
+	opts.crop_rect.top = vk_overscan_top;
+	opts.crop_rect.bottom = vk_overscan_bottom;
+	opts.crop_rect.enable = vk_overscan_enable;
+	if (vk_vertical_stretch) {
 		opts.crop_rect.top = vk_vertical_stretch;
 		opts.crop_rect.bottom = vk_vertical_stretch;
 		opts.crop_rect.enable = true;

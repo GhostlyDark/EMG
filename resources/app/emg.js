@@ -50,7 +50,9 @@ defaultPlugins = ['mupen64plus-audio-sdl','mupen64plus-input-sdl','mupen64plus-r
 
 overscan = ['OverscanNtscTop','OverscanNtscLeft','OverscanNtscRight','OverscanNtscBottom','OverscanPalTop','OverscanPalLeft','OverscanPalRight','OverscanPalBottom'],
 
-sliders = [...overscan,'SiDmaDuration','VOLUME_ADJUST','VOLUME_DEFAULT','AnalogDeadzone1','AnalogDeadzone2','AnalogDeadzone3','AnalogDeadzone4','AnalogPeak1','AnalogPeak2','AnalogPeak3','AnalogPeak4','control_stick_deadzone','control_stick_sensitivity','c_stick_deadzone','trigger_threshold','MouseSensitivityX','MouseSensitivityY','NumWorkers','GammaCorrectionLevel','txCacheSize','txHiresVramLimit','fontSize','ParallelCropOverscan','ParallelVerticalStretch','PolygonOffsetFactor','PolygonOffsetUnits','polygon_offset_factor','polygon_offset_units','ghq_cache_size'],
+overscan_parallel = ['ParallelCropOverscanTop','ParallelCropOverscanLeft','ParallelCropOverscanRight','ParallelCropOverscanBottom'],
+
+sliders = [...overscan,'SiDmaDuration','VOLUME_ADJUST','VOLUME_DEFAULT','AnalogDeadzone1','AnalogDeadzone2','AnalogDeadzone3','AnalogDeadzone4','AnalogPeak1','AnalogPeak2','AnalogPeak3','AnalogPeak4','control_stick_deadzone','control_stick_sensitivity','c_stick_deadzone','trigger_threshold','MouseSensitivityX','MouseSensitivityY','NumWorkers','GammaCorrectionLevel','txCacheSize','txHiresVramLimit','fontSize',...overscan_parallel,'ParallelVerticalStretch','PolygonOffsetFactor','PolygonOffsetUnits','polygon_offset_factor','polygon_offset_units','ghq_cache_size'],
 
 dropdowns = [
 'emumode','resolution','CountPerOp','CountPerOpDenomPot','CurrentStateSlot', /* mupen64plus */
@@ -218,6 +220,7 @@ id('clear_joymappings4').addEventListener('click', function(){clear_joymappings(
 
 id('clear_hk_gliden64').addEventListener('click', function(){gliden64_hotkeys.forEach(hk => {id('clear'+hk).click()})}) /* clear GLideN64 hotkeys */
 id('reset_overscan').addEventListener('click', function(){overscan.forEach(os => {id('reset'+os).click()})}) /* reset GLideN64 overscan values */
+id('reset_overscan_parallel').addEventListener('click', function(){overscan_parallel.forEach(os => {id('reset'+os).click()})}) /* reset Parallel overscan values */
 
 
 
@@ -334,6 +337,12 @@ if(id('EnableOverscan').checked){overscan.forEach(os => {id(os).disabled = false
 else{overscan.forEach(os => {id(os).disabled = true})}}
 id('EnableOverscan').addEventListener('change', EnableOverscanDisable)
 EnableOverscanDisable()
+
+function EnableParallelOverscanDisable(){
+if(id('ParallelCropOverscanEnable').checked){overscan_parallel.forEach(os => {id(os).disabled = false})}
+else{overscan_parallel.forEach(os => {id(os).disabled = true})}}
+id('ParallelCropOverscanEnable').addEventListener('change', EnableOverscanDisable)
+EnableParallelOverscanDisable()
 
 function txNoTextureFileStorageDisable(){
 if(id('txNoTextureFileStorage').checked){id('cache').disabled = true}
@@ -1027,6 +1036,7 @@ ParallelNativeTextLOD = 'Video-Parallel[NativeTextLOD]=' + id('ParallelNativeTex
 ParallelNativeTextRECT = 'Video-Parallel[NativeTextRECT]=' + id('ParallelNativeTextRECT').checked,
 ParallelSynchronousRDP = 'Video-Parallel[SynchronousRDP]=' + id('ParallelSynchronousRDP').checked,
 ParallelWidescreenStretch = 'Video-Parallel[WidescreenStretch]=' + id('ParallelWidescreenStretch').checked,
+ParallelCropOverscanEnable = 'Video-Parallel[CropOverscanEnable]=' + id('ParallelCropOverscanEnable').checked,
 
 FrameBufferSetting = 'Video-Rice[FrameBufferSetting]=' + (id('FrameBufferSetting').checked ? '1' : '0'),
 NormalAlphaBlender = 'Video-Rice[NormalAlphaBlender]=false',
@@ -1180,7 +1190,10 @@ OverscanPalTop = 'Video-GLideN64[OverscanPalTop]=' + id('OverscanPalTop').value,
 OverscanPalLeft = 'Video-GLideN64[OverscanPalLeft]=' + id('OverscanPalLeft').value,
 OverscanPalRight = 'Video-GLideN64[OverscanPalRight]=' + id('OverscanPalRight').value,
 OverscanPalBottom = 'Video-GLideN64[OverscanPalBottom]=' + id('OverscanPalBottom').value,
-ParallelCropOverscan = 'Video-Parallel[CropOverscan]=' + id('ParallelCropOverscan').value,
+ParallelCropOverscanTop = 'Video-Parallel[CropOverscanTop]=' + id('ParallelCropOverscanTop').value,
+ParallelCropOverscanLeft = 'Video-Parallel[CropOverscanLeft]=' + id('ParallelCropOverscanLeft').value,
+ParallelCropOverscanRight = 'Video-Parallel[CropOverscanRight]=' + id('ParallelCropOverscanRight').value,
+ParallelCropOverscanBottom = 'Video-Parallel[CropOverscanBottom]=' + id('ParallelCropOverscanBottom').value,
 ParallelVerticalStretch = 'Video-Parallel[VerticalStretch]=' + id('ParallelVerticalStretch').value,
 txCacheSize = 'Video-GLideN64[txCacheSize]=' + id('txCacheSize').value,
 txHiresVramLimit = 'Video-GLideN64[txHiresVramLimit]=' + id('txHiresVramLimit').value,
@@ -1791,7 +1804,7 @@ Parallel,NumWorkers,BusyLoop,ViMode,ViInterpolation,ViWidescreen,ViHideOverscan,
 
 threadedVideo,msaa,fxaa,aspectRatio,bufferSwapMode,useNativeResolutionFactor,bilinearMode,enableHalosRemoval,anisotropy,cache,txDump,txStrongCRC,txHiresEnable,txNoTextureFileStorage,EnableInaccurateTextureCoordinates,EnableDitheringPattern,EnableHiresNoiseDithering,DitheringQuantization,RDRAMImageDitheringMode,EnableLOD,EnableHWLighting,EnableCoverage,EnableClipping,EnableShadersStorage,EnableLegacyBlending,EnableHybridFilter,EnableCustomSettings,CorrectTexrectCoords,EnableNativeResTexrects,BackgroundsMode,EnableTexCoordBounds,EnableFBEmulation,EnableCopyAuxiliaryToRDRAM,EnableN64DepthCompare,ForceDepthBufferClear,DisableFBInfo,FBInfoReadColorChunk,FBInfoReadDepthChunk,EnableCopyColorToRDRAM,EnableCopyDepthToRDRAM,EnableCopyColorFromRDRAM,EnableCopyDepthToMainDepthBuffer,EnableOverscan,OverscanNtscTop,OverscanNtscLeft,OverscanNtscRight,OverscanNtscBottom,OverscanPalTop,OverscanPalLeft,OverscanPalRight,OverscanPalBottom,txFilterMode,txEnhancementMode,txDeposterize,txFilterIgnoreBG,txCacheSize,txHiresVramLimit,txHiresFullAlphaChannel,txHresAltCRC,txCacheCompression, txForce16bpp, txSaveCache,txPathSetting,txCachePathSetting,txDumpPathSetting,hkTexDump,hkStrongCRC,hkHdTexReload,hkHdTexToggle,hkInaccurateTexCords,hkVsync,hkFBEmulation,hkN64DepthCompare,hkOsdVis,hkOsdFps,hkOsdPercent,hkOsdInternalResolution,hkOsdRenderingResolution,hkTexCoordBounds,hkNativeResTexrects,hkForceGammaCorrection,ForceGammaCorrection,GammaCorrectionLevel,fontName,fontSize,fontColor,ShowFPS,ShowVIS,ShowPercent,ShowInternalResolution,ShowRenderingResolution,ShowStatistics,CountersPos, /* GLideN64 */
 
-ParallelFullscreen,ParallelUpscaling,ParallelScreenWidth,ParallelScreenHeight,ParallelSuperscaledReads,ParallelSuperscaledDither,ParallelDeinterlaceMode,ParallelCropOverscan,ParallelVerticalStretch,ParallelVIAA,ParallelDivot,ParallelGammaDither,ParallelVIBilerp,ParallelVIDither,ParallelDownScale,ParallelNativeTextLOD,ParallelNativeTextRECT,ParallelSynchronousRDP,ParallelWidescreenStretch,ParallelVSync, /* Parallel */
+ParallelFullscreen,ParallelUpscaling,ParallelScreenWidth,ParallelScreenHeight,ParallelSuperscaledReads,ParallelSuperscaledDither,ParallelDeinterlaceMode,ParallelCropOverscanEnable,ParallelCropOverscanTop,ParallelCropOverscanLeft,ParallelCropOverscanRight,ParallelCropOverscanBottom,ParallelVerticalStretch,ParallelVIAA,ParallelDivot,ParallelGammaDither,ParallelVIBilerp,ParallelVIDither,ParallelDownScale,ParallelNativeTextLOD,ParallelNativeTextRECT,ParallelSynchronousRDP,ParallelWidescreenStretch,ParallelVSync, /* Parallel */
 
 FrameBufferSetting,FrameBufferWriteBackControl,RenderToTexture,ScreenUpdateSetting,NormalAlphaBlender,FastTextureLoading,AccurateTextureMapping,InN64Resolution,SaveVRAM,DoubleSizeForSmallTxtrBuf,DefaultCombinerDisable,EnableHacks,WinFrameMode,FullTMEMEmulation,OpenGLVertexClipper,EnableSSE,SkipFrame,TexRectOnly,SmallTextureOnly,LoadHiResCRCOnly,LoadHiResTextures,DumpTexturesToFiles,RiceShowFPS,Mipmapping,FogMethod,ForceTextureFilter,TextureEnhancement,TextureEnhancementControl,TextureQuality,OpenGLDepthBufferSetting,RiceMultiSampling,ColorQuality,OpenGLRenderSetting,AnisotropicFiltering,ForcePolygonOffset,PolygonOffsetFactor,PolygonOffsetUnits, /* Rice */
 
