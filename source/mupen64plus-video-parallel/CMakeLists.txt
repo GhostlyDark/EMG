@@ -7,13 +7,7 @@ set(NAME_PLUGIN_M64P "mupen64plus-video-parallel")
 include_directories(../mupen64plus-core/src/api)
 add_definitions(-DM64P_PLUGIN_API -DGRANITE_VULKAN_MT)
 
-option(USE_QT5 "Enables Qt5 instead of Qt6 (will be removed in the future)" OFF)
-
-if (USE_QT5)
-    set(QT_VERSION Qt5)
-else(USE_QT5)
-    set(QT_VERSION Qt6)
-endif(USE_QT5)
+option(CONFIG_GUI "Enables Qt configuration GUI)" OFF)
 
 if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE Release)
@@ -40,14 +34,17 @@ if(WIN32)
 endif()
 
 
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
-set(CMAKE_AUTOUIC ON)
-find_package(${QT_VERSION} COMPONENTS Gui Widgets Core REQUIRED)
+if (CONFIG_GUI)
+    set(CMAKE_AUTOMOC ON)
+    set(CMAKE_AUTORCC ON)
+    set(CMAKE_AUTOUIC ON)
+
+    find_package(Qt6 COMPONENTS Gui Widgets Core REQUIRED)
+endif(CONFIG_GUI)
 
 FILE(GLOB RDPSources parallel-rdp/*.cpp)
 
-add_library(${NAME_PLUGIN_M64P} SHARED
+set(PARALLEL_SOURCES
     ${RDPSources}
     vulkan/buffer.cpp
     vulkan/buffer_pool.cpp
@@ -83,8 +80,18 @@ add_library(${NAME_PLUGIN_M64P} SHARED
     gfx_m64p.cpp
     glguts.c
     parallel_imp.cpp
-    UserInterface/MainDialog.cpp
-    UserInterface/MainDialog.ui
+)
+
+if (CONFIG_GUI)
+    list(APPEND PARALLEL_SOURCES
+        UserInterface/MainDialog.cpp
+        UserInterface/MainDialog.ui
+    )
+    add_definitions(-DCONFIG_GUI)
+endif(CONFIG_GUI)
+
+add_library(${NAME_PLUGIN_M64P} SHARED
+    ${PARALLEL_SOURCES}
 )
 
 target_include_directories(${NAME_PLUGIN_M64P} PUBLIC
@@ -98,6 +105,8 @@ if(WIN32)
     target_link_libraries(${NAME_PLUGIN_M64P} ${OPENGL_LIBRARIES} -lwinmm)
 endif()
 
-target_link_libraries(${NAME_PLUGIN_M64P} ${QT_VERSION}::Gui ${QT_VERSION}::Widgets)
+if (CONFIG_GUI)
+    target_link_libraries(${NAME_PLUGIN_M64P} Qt6::Gui Qt6::Widgets)
+endif(CONFIG_GUI)
 
 set_target_properties(${NAME_PLUGIN_M64P} PROPERTIES PREFIX "")

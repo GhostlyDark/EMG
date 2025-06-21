@@ -32,7 +32,9 @@
 #include "glguts.h"
 #include "parallel_imp.h"
 #include "util/logging.hpp"
+#ifdef CONFIG_GUI
 #include "UserInterface/MainDialog.hpp"
+#endif // CONFIG_GUI
 
 #include "m64p_types.h"
 #include "m64p_config.h"
@@ -251,21 +253,23 @@ EXPORT m64p_error CALL PluginGetVersion(m64p_plugin_type *PluginType, int *Plugi
     return M64ERR_SUCCESS;
 }
 
+#ifdef CONFIG_GUI
 extern "C"
 {
-    EXPORT m64p_error CALL PluginConfig(void)
+    EXPORT m64p_error CALL PluginConfig(void* parent)
     {
         if (!plugin_initialized)
         {
             return M64ERR_NOT_INIT;
         }
 
-        UserInterface::MainDialog dialog(nullptr);
+        UserInterface::MainDialog dialog((QWidget*)parent);
         dialog.exec();
 
         return M64ERR_SUCCESS;
     }
 }
+#endif // CONFIG_GUI
 
 EXPORT int CALL InitiateGFX(GFX_INFO Gfx_Info)
 {
