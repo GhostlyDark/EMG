@@ -190,8 +190,6 @@ To limit the building process to one thread:
 ./compile.sh 1
 ```
 
-Additionally, near the beginning of `CMakeLists.txt`, compile options for `mupen64plus-core` and settings to disable building certain plugins can be set. Activate `NO_ASM` if compiling the core fails (which can happen on macOS).
-
 
 ### Custom plugins
 

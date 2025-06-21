@@ -2,20 +2,6 @@ cmake_minimum_required(VERSION 3.15)
 
 
 
-option(ACCURATE_FPU     "Build mupen64plus-core with accurate FPU behavior" ON)
-option(NO_ASM           "Build mupen64plus-core without assembly"           OFF)
-
-option(USE_PARALLEL_RSP "Build mupen64plus-rsp-parallel"                    ON)
-option(USE_Z64_RSP      "Build mupen64plus-rsp-z64"                         ON)
-option(USE_RAPHNETRAW   "Build mupen64plus-input-raphnetraw"                ON)
-option(USE_GCA          "Build mupen64plus-input-gca"                       ON)
-option(USE_ANGRYLION    "Build mupen64plus-video-angrylion-plus"            ON)
-option(USE_PARALLEL_RDP "Build mupen64plus-video-parallel"                  ON)
-option(USE_RICE         "Build mupen64plus-video-rice"                      ON)
-option(USE_GLIDE64MK2   "Build mupen64plus-video-glide64mk2"                ON)
-
-
-
 project(EMG)
 
 
@@ -75,7 +61,7 @@ ExternalProject_Add(mupen64plus-core
     BUILD_COMMAND make all -f ${SOURCEDIR}/mupen64plus-core/projects/unix/Makefile 
         SRCDIR=${SOURCEDIR}/mupen64plus-core/src
         SUBDIR=${SOURCEDIR}/mupen64plus-core/subprojects 
-        ACCURATE_FPU=$<BOOL:${ACCURATE_FPU}> NEW_DYNAREC=0 NO_ASM=$<BOOL:${NO_ASM}> OSD=0 TARGET=mupen64plus${LIB_EXT}
+        ACCURATE_FPU=1 NEW_DYNAREC=0 OSD=0 TARGET=mupen64plus${LIB_EXT}
 
     BUILD_IN_SOURCE False
 
@@ -93,7 +79,7 @@ ExternalProject_Add(mupen64plus-core-nd
     BUILD_COMMAND make all -f ${SOURCEDIR}/mupen64plus-core/projects/unix/Makefile 
         SRCDIR=${SOURCEDIR}/mupen64plus-core/src
         SUBDIR=${SOURCEDIR}/mupen64plus-core/subprojects 
-        ACCURATE_FPU=$<BOOL:${ACCURATE_FPU}> NEW_DYNAREC=1 NO_ASM=$<BOOL:${NO_ASM}> OSD=0 TARGET=mupen64plus-nd${LIB_EXT}
+        ACCURATE_FPU=1 NEW_DYNAREC=1 OSD=0 TARGET=mupen64plus-nd${LIB_EXT}
 
     BUILD_IN_SOURCE False
 
@@ -155,38 +141,34 @@ ExternalProject_Add(mupen64plus-rsp-hle
     BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-rsp-hle/projects/unix/mupen64plus-rsp-hle${LIB_EXT}
 )
 
-if(USE_PARALLEL_RSP)
-    ExternalProject_Add(mupen64plus-rsp-parallel
-        SOURCE_DIR ${SOURCEDIR}/mupen64plus-rsp-parallel
-    
-        INSTALL_COMMAND ""
-    
-        BUILD_IN_SOURCE False
-    
-        BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-rsp-parallel
-    
-        BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-rsp-parallel/mupen64plus-rsp-parallel${LIB_EXT}
-    )
-endif()
+ExternalProject_Add(mupen64plus-rsp-parallel
+    SOURCE_DIR ${SOURCEDIR}/mupen64plus-rsp-parallel
 
-if(USE_Z64_RSP)
-    ExternalProject_Add(mupen64plus-rsp-z64
-        SOURCE_DIR ${SOURCEDIR}/mupen64plus-rsp-z64/src
+    INSTALL_COMMAND ""
 
-        CONFIGURE_COMMAND ""
-        INSTALL_COMMAND ""
+    BUILD_IN_SOURCE False
 
-        BUILD_COMMAND make all -f ${SOURCEDIR}/mupen64plus-rsp-z64/projects/unix/Makefile
-            SRCDIR=${SOURCEDIR}/mupen64plus-rsp-z64/src
-            APIDIR=${APIDIR} POSTFIX=
+    BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-rsp-parallel
 
-        BUILD_IN_SOURCE False
-
-        BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-rsp-z64/projects/unix
-    
-        BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-rsp-z64/projects/unix/mupen64plus-rsp-z64${LIB_EXT}
+    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-rsp-parallel/mupen64plus-rsp-parallel${LIB_EXT}
 )
-endif()
+
+ExternalProject_Add(mupen64plus-rsp-z64
+    SOURCE_DIR ${SOURCEDIR}/mupen64plus-rsp-z64/src
+
+    CONFIGURE_COMMAND ""
+    INSTALL_COMMAND ""
+
+    BUILD_COMMAND make all -f ${SOURCEDIR}/mupen64plus-rsp-z64/projects/unix/Makefile
+        SRCDIR=${SOURCEDIR}/mupen64plus-rsp-z64/src
+        APIDIR=${APIDIR} POSTFIX=
+
+    BUILD_IN_SOURCE False
+
+    BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-rsp-z64/projects/unix
+
+    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-rsp-z64/projects/unix/mupen64plus-rsp-z64${LIB_EXT}
+)
 
 ExternalProject_Add(mupen64plus-input-sdl
     SOURCE_DIR ${SOURCEDIR}/mupen64plus-input-sdl/
@@ -205,56 +187,50 @@ ExternalProject_Add(mupen64plus-input-sdl
     BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-input-sdl/projects/unix/mupen64plus-input-sdl${LIB_EXT}
 )
 
-if(USE_RAPHNETRAW)
-    ExternalProject_Add(mupen64plus-input-raphnetraw
-        SOURCE_DIR ${SOURCEDIR}/mupen64plus-input-raphnetraw/
-    
-        CONFIGURE_COMMAND ""
-        INSTALL_COMMAND ""
-    
-        BUILD_COMMAND make all -f ${SOURCEDIR}/mupen64plus-input-raphnetraw/projects/unix/Makefile
-            SRCDIR=${SOURCEDIR}/mupen64plus-input-raphnetraw/src
-            APIDIR=${APIDIR}
-    
-        BUILD_IN_SOURCE False
-    
-        BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-input-raphnetraw/projects/unix
-        
-        BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-input-raphnetraw/projects/unix/mupen64plus-input-raphnetraw${LIB_EXT}
-    )
-endif()
+ExternalProject_Add(mupen64plus-input-raphnetraw
+    SOURCE_DIR ${SOURCEDIR}/mupen64plus-input-raphnetraw/
 
-if(USE_GCA)
-    ExternalProject_Add(mupen64plus-input-gca
-        SOURCE_DIR ${SOURCEDIR}/mupen64plus-input-gca/
-    
-        CONFIGURE_COMMAND ""
-        INSTALL_COMMAND ""
-    
-        BUILD_COMMAND cargo build --manifest-path ${SOURCEDIR}/mupen64plus-input-gca/Cargo.toml --release --features "m64p_compat" --target-dir=${CMAKE_BINARY_DIR}/mupen64plus-input-gca/target
-    
-        BUILD_IN_SOURCE False
-    
-        BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-input-gca/target/release
-    
-        BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-input-gca/target/release/${GCA_LIB}
-    )
-endif()
+    CONFIGURE_COMMAND ""
+    INSTALL_COMMAND ""
 
-if(USE_ANGRYLION)
-    ExternalProject_Add(mupen64plus-video-angrylion-plus
-        SOURCE_DIR ${SOURCEDIR}/mupen64plus-video-angrylion-plus
+    BUILD_COMMAND make all -f ${SOURCEDIR}/mupen64plus-input-raphnetraw/projects/unix/Makefile
+        SRCDIR=${SOURCEDIR}/mupen64plus-input-raphnetraw/src
+        APIDIR=${APIDIR}
+
+    BUILD_IN_SOURCE False
+
+    BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-input-raphnetraw/projects/unix
     
-        INSTALL_COMMAND ""
-    
-        BUILD_IN_SOURCE False
-        CMAKE_ARGS -DBUILD_PROJECT64=OFF
-    
-        BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-video-angrylion-plus
-    
-        BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-video-angrylion-plus/mupen64plus-video-angrylion-plus${LIB_EXT}
-    )
-endif()
+    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-input-raphnetraw/projects/unix/mupen64plus-input-raphnetraw${LIB_EXT}
+)
+
+ExternalProject_Add(mupen64plus-input-gca
+    SOURCE_DIR ${SOURCEDIR}/mupen64plus-input-gca/
+
+    CONFIGURE_COMMAND ""
+    INSTALL_COMMAND ""
+
+    BUILD_COMMAND cargo build --manifest-path ${SOURCEDIR}/mupen64plus-input-gca/Cargo.toml --release --features "m64p_compat" --target-dir=${CMAKE_BINARY_DIR}/mupen64plus-input-gca/target
+
+    BUILD_IN_SOURCE False
+
+    BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-input-gca/target/release
+
+    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-input-gca/target/release/${GCA_LIB}
+)
+
+ExternalProject_Add(mupen64plus-video-angrylion-plus
+    SOURCE_DIR ${SOURCEDIR}/mupen64plus-video-angrylion-plus
+
+    INSTALL_COMMAND ""
+
+    BUILD_IN_SOURCE False
+    CMAKE_ARGS -DBUILD_PROJECT64=OFF
+
+    BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-video-angrylion-plus
+
+    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-video-angrylion-plus/mupen64plus-video-angrylion-plus${LIB_EXT}
+)
 
 ExternalProject_Add(mupen64plus-video-GLideN64
     SOURCE_DIR ${SOURCEDIR}/mupen64plus-video-GLideN64
@@ -272,57 +248,51 @@ ExternalProject_Add(mupen64plus-video-GLideN64
 
 )
 
-if(USE_PARALLEL_RDP)
-    ExternalProject_Add(mupen64plus-video-parallel
-        SOURCE_DIR ${SOURCEDIR}/mupen64plus-video-parallel
-    
-        INSTALL_COMMAND ""
-    
-        BUILD_IN_SOURCE False
-    
-        BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-video-parallel
-    
-        BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-video-parallel/mupen64plus-video-parallel${LIB_EXT}
-)
-endif()
+ExternalProject_Add(mupen64plus-video-parallel
+    SOURCE_DIR ${SOURCEDIR}/mupen64plus-video-parallel
 
-if(USE_RICE)
-    ExternalProject_Add(mupen64plus-video-rice
-        SOURCE_DIR ${SOURCEDIR}/mupen64plus-video-rice/
-    
-        CONFIGURE_COMMAND ""
-        INSTALL_COMMAND ""
-    
-        BUILD_COMMAND make all -f ${SOURCEDIR}/mupen64plus-video-rice/projects/unix/Makefile
-            SRCDIR=${SOURCEDIR}/mupen64plus-video-rice/src
-            APIDIR=${APIDIR}
-    
-        BUILD_IN_SOURCE False
-    
-        BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-video-rice/projects/unix
-    
-        BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-video-rice/projects/unix/mupen64plus-video-rice${LIB_EXT}
-)
-endif()
+    INSTALL_COMMAND ""
 
-if(USE_GLIDE64MK2)
-    ExternalProject_Add(mupen64plus-video-glide64mk2
-        SOURCE_DIR ${SOURCEDIR}/mupen64plus-video-glide64mk2/
-    
-        CONFIGURE_COMMAND ""
-        INSTALL_COMMAND ""
-    
-        BUILD_COMMAND make all -f ${SOURCEDIR}/mupen64plus-video-glide64mk2/projects/unix/Makefile
-            SRCDIR=${SOURCEDIR}/mupen64plus-video-glide64mk2/src
-            APIDIR=${APIDIR}
-    
-        BUILD_IN_SOURCE False
-    
-        BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-video-glide64mk2/projects/unix
-    
-        BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-video-glide64mk2/projects/unix/mupen64plus-video-glide64mk2${LIB_EXT}
-    )
-endif()
+    BUILD_IN_SOURCE False
+
+    BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-video-parallel
+
+    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-video-parallel/mupen64plus-video-parallel${LIB_EXT}
+)
+
+ExternalProject_Add(mupen64plus-video-rice
+    SOURCE_DIR ${SOURCEDIR}/mupen64plus-video-rice/
+
+    CONFIGURE_COMMAND ""
+    INSTALL_COMMAND ""
+
+    BUILD_COMMAND make all -f ${SOURCEDIR}/mupen64plus-video-rice/projects/unix/Makefile
+        SRCDIR=${SOURCEDIR}/mupen64plus-video-rice/src
+        APIDIR=${APIDIR}
+
+    BUILD_IN_SOURCE False
+
+    BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-video-rice/projects/unix
+
+    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-video-rice/projects/unix/mupen64plus-video-rice${LIB_EXT}
+)
+
+ExternalProject_Add(mupen64plus-video-glide64mk2
+    SOURCE_DIR ${SOURCEDIR}/mupen64plus-video-glide64mk2/
+
+    CONFIGURE_COMMAND ""
+    INSTALL_COMMAND ""
+
+    BUILD_COMMAND make all -f ${SOURCEDIR}/mupen64plus-video-glide64mk2/projects/unix/Makefile
+        SRCDIR=${SOURCEDIR}/mupen64plus-video-glide64mk2/src
+        APIDIR=${APIDIR}
+
+    BUILD_IN_SOURCE False
+
+    BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-video-glide64mk2/projects/unix
+
+    BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-video-glide64mk2/projects/unix/mupen64plus-video-glide64mk2${LIB_EXT}
+)
 
 ExternalProject_Add(mupen64plus-audio-sdl
     SOURCE_DIR ${SOURCEDIR}/mupen64plus-audio-sdl/
@@ -386,52 +356,36 @@ set(MUPEN64PLUS_PLUGIN_RSP_CXD4 ${BUILD_BYPRODUCTS})
 ExternalProject_Get_property(mupen64plus-rsp-hle BUILD_BYPRODUCTS)
 set(MUPEN64PLUS_PLUGIN_RSP_HLE ${BUILD_BYPRODUCTS})
 
-if(USE_PARALLEL_RSP)
-    ExternalProject_Get_property(mupen64plus-rsp-parallel BUILD_BYPRODUCTS)
-    set(MUPEN64PLUS_PLUGIN_RSP_PARALLEL ${BUILD_BYPRODUCTS})
-endif()
+ExternalProject_Get_property(mupen64plus-rsp-parallel BUILD_BYPRODUCTS)
+set(MUPEN64PLUS_PLUGIN_RSP_PARALLEL ${BUILD_BYPRODUCTS})
 
-if(USE_Z64_RSP)
-    ExternalProject_Get_property(mupen64plus-rsp-z64 BUILD_BYPRODUCTS)
-    set(MUPEN64PLUS_PLUGIN_RSP_Z64 ${BUILD_BYPRODUCTS})
-endif()
+ExternalProject_Get_property(mupen64plus-rsp-z64 BUILD_BYPRODUCTS)
+set(MUPEN64PLUS_PLUGIN_RSP_Z64 ${BUILD_BYPRODUCTS})
 
 ExternalProject_Get_property(mupen64plus-input-sdl BUILD_BYPRODUCTS)
 set(MUPEN64PLUS_PLUGIN_INPUT_SDL ${BUILD_BYPRODUCTS})
 
-if(USE_RAPHNETRAW)
-    ExternalProject_Get_property(mupen64plus-input-raphnetraw BUILD_BYPRODUCTS)
-    set(MUPEN64PLUS_PLUGIN_INPUT_RAPHNET ${BUILD_BYPRODUCTS})
-endif()
+ExternalProject_Get_property(mupen64plus-input-raphnetraw BUILD_BYPRODUCTS)
+set(MUPEN64PLUS_PLUGIN_INPUT_RAPHNET ${BUILD_BYPRODUCTS})
 
-if(USE_GCA)
-    ExternalProject_Get_property(mupen64plus-input-gca BUILD_BYPRODUCTS)
-    set(MUPEN64PLUS_PLUGIN_INPUT_GCA ${BUILD_BYPRODUCTS})
-endif()
+ExternalProject_Get_property(mupen64plus-input-gca BUILD_BYPRODUCTS)
+set(MUPEN64PLUS_PLUGIN_INPUT_GCA ${BUILD_BYPRODUCTS})
 
-if(USE_ANGRYLION)
-    ExternalProject_Get_property(mupen64plus-video-angrylion-plus BUILD_BYPRODUCTS)
-    set(MUPEN64PLUS_PLUGIN_GFX_ANGRYLION ${BUILD_BYPRODUCTS})
-endif()
+ExternalProject_Get_property(mupen64plus-video-angrylion-plus BUILD_BYPRODUCTS)
+set(MUPEN64PLUS_PLUGIN_GFX_ANGRYLION ${BUILD_BYPRODUCTS})
 
 ExternalProject_Get_property(mupen64plus-video-GLideN64 BUILD_BYPRODUCTS)
 set(MUPEN64PLUS_PLUGIN_GFX_GLIDEN64 ${BUILD_BYPRODUCTS})
 
-if(USE_PARALLEL_RDP)
-    ExternalProject_Get_property(mupen64plus-video-parallel BUILD_BYPRODUCTS)
-    set(MUPEN64PLUS_PLUGIN_GFX_PARALLEL ${BUILD_BYPRODUCTS})
-endif()
+ExternalProject_Get_property(mupen64plus-video-parallel BUILD_BYPRODUCTS)
+set(MUPEN64PLUS_PLUGIN_GFX_PARALLEL ${BUILD_BYPRODUCTS})
 
-if(USE_RICE)
-    ExternalProject_Get_property(mupen64plus-video-rice BUILD_BYPRODUCTS)
-    set(MUPEN64PLUS_PLUGIN_GFX_RICE ${BUILD_BYPRODUCTS})
-endif()
+ExternalProject_Get_property(mupen64plus-video-rice BUILD_BYPRODUCTS)
+set(MUPEN64PLUS_PLUGIN_GFX_RICE ${BUILD_BYPRODUCTS})
 set(RICE_INI ${SOURCEDIR}/mupen64plus-video-rice/data/RiceVideoLinux.ini)
 
-if(USE_GLIDE64MK2)
-    ExternalProject_Get_property(mupen64plus-video-glide64mk2 BUILD_BYPRODUCTS)
-    set(MUPEN64PLUS_PLUGIN_GFX_GLIDE ${BUILD_BYPRODUCTS})
-endif()
+ExternalProject_Get_property(mupen64plus-video-glide64mk2 BUILD_BYPRODUCTS)
+set(MUPEN64PLUS_PLUGIN_GFX_GLIDE ${BUILD_BYPRODUCTS})
 set(GLIDE_INI ${SOURCEDIR}/mupen64plus-video-glide64mk2/data/Glide64mk2.ini)
 
 ExternalProject_Get_property(mupen64plus-audio-sdl BUILD_BYPRODUCTS)
@@ -481,61 +435,46 @@ install(FILES ${MUPEN64PLUS_PLUGIN_RSP_HLE}
     DESTINATION ${INSTALL_PATH}/plugin
 )
 
-if(USE_PARALLEL_RSP)
-    install(FILES ${MUPEN64PLUS_PLUGIN_RSP_PARALLEL}
-        DESTINATION ${INSTALL_PATH}/plugin
-    )
-endif()
+install(FILES ${MUPEN64PLUS_PLUGIN_RSP_PARALLEL}
+    DESTINATION ${INSTALL_PATH}/plugin
+)
 
-if(USE_Z64_RSP)
-    install(FILES ${MUPEN64PLUS_PLUGIN_RSP_Z64}
-        DESTINATION ${INSTALL_PATH}/plugin
-    )
-endif()
+install(FILES ${MUPEN64PLUS_PLUGIN_RSP_Z64}
+    DESTINATION ${INSTALL_PATH}/plugin
+)
 
 install(FILES ${MUPEN64PLUS_PLUGIN_INPUT_SDL}
     DESTINATION ${INSTALL_PATH}/plugin
 )
 
-if(USE_RAPHNETRAW)
-    install(FILES ${MUPEN64PLUS_PLUGIN_INPUT_RAPHNET}
-        DESTINATION ${INSTALL_PATH}/plugin
-    )
-endif()
+install(FILES ${MUPEN64PLUS_PLUGIN_INPUT_RAPHNET}
+    DESTINATION ${INSTALL_PATH}/plugin
+)
 
-if(USE_GCA)
-    install(FILES ${MUPEN64PLUS_PLUGIN_INPUT_GCA}
-        DESTINATION ${INSTALL_PATH}/plugin
-    )
-endif()
+install(FILES ${MUPEN64PLUS_PLUGIN_INPUT_GCA}
+    DESTINATION ${INSTALL_PATH}/plugin
+)
 
-if(USE_ANGRYLION)
-    install(FILES ${MUPEN64PLUS_PLUGIN_GFX_ANGRYLION}
-        DESTINATION ${INSTALL_PATH}/plugin
-    )
-endif()
+install(FILES ${MUPEN64PLUS_PLUGIN_GFX_ANGRYLION}
+    DESTINATION ${INSTALL_PATH}/plugin
+)
 
 install(FILES ${MUPEN64PLUS_PLUGIN_GFX_GLIDEN64}
     DESTINATION ${INSTALL_PATH}/plugin
 
 )
-if(USE_PARALLEL_RDP)
-    install(FILES ${MUPEN64PLUS_PLUGIN_GFX_PARALLEL}
-        DESTINATION ${INSTALL_PATH}/plugin
-    )
-endif()
 
-if(USE_RICE)
-    install(FILES ${MUPEN64PLUS_PLUGIN_GFX_RICE}
-        DESTINATION ${INSTALL_PATH}/plugin
-    )
-endif()
+install(FILES ${MUPEN64PLUS_PLUGIN_GFX_PARALLEL}
+    DESTINATION ${INSTALL_PATH}/plugin
+)
 
-if(USE_GLIDE64MK2)
-    install(FILES ${MUPEN64PLUS_PLUGIN_GFX_GLIDE}
-        DESTINATION ${INSTALL_PATH}/plugin
-    )
-endif()
+install(FILES ${MUPEN64PLUS_PLUGIN_GFX_RICE}
+    DESTINATION ${INSTALL_PATH}/plugin
+)
+
+install(FILES ${MUPEN64PLUS_PLUGIN_GFX_GLIDE}
+    DESTINATION ${INSTALL_PATH}/plugin
+)
 
 install(FILES ${MUPEN64PLUS_PLUGIN_AUDIO_SDL}
     DESTINATION ${INSTALL_PATH}/plugin
