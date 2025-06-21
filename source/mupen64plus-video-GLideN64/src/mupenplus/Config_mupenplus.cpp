@@ -130,7 +130,7 @@ bool Config_SetDefault()
 	assert(res == M64ERR_SUCCESS);
 	res = ConfigSetDefaultBool(g_configVideoGliden64, "FXAA", config.video.fxaa, "Toggle Fast Approximate Anti-Aliasing (FXAA).");
 	assert(res == M64ERR_SUCCESS);
-	res = ConfigSetDefaultInt(g_configVideoGliden64, "AspectRatio", config.frameBufferEmulation.aspect, "Screen aspect ratio. (0=stretch, 1=force 4:3, 2=force 16:9, 3=adjust 4:3, 4=adjust 16:9)");
+	res = ConfigSetDefaultInt(g_configVideoGliden64, "AspectRatio", config.frameBufferEmulation.aspect, "Screen aspect ratio. (0=stretch, 1=force 4:3, 2=force 16:9, 3=adjust 4:3, 4=adjust 16:9), 5=automatic");
 	assert(res == M64ERR_SUCCESS);
 	res = ConfigSetDefaultInt(g_configVideoGliden64, "BufferSwapMode", config.frameBufferEmulation.bufferSwapMode, "Swap frame buffers. (0=On VI update call, 1=On VI origin change, 2=On buffer update)");
 	assert(res == M64ERR_SUCCESS);
@@ -396,6 +396,8 @@ void Config_LoadCustomConfig()
 	if (result == M64ERR_SUCCESS) config.generalEmulation.enableLegacyBlending = atoi(value);
 	result = ConfigExternalGetParameter(fileHandle, sectionName, "generalEmulation\\enableFragmentDepthWrite", value, sizeof(value));
 	if (result == M64ERR_SUCCESS) config.generalEmulation.enableFragmentDepthWrite = atoi(value);
+	result = ConfigExternalGetParameter(fileHandle, sectionName, "generalEmulation\\hacks", value, sizeof(value));
+	if (result == M64ERR_SUCCESS) config.generalEmulation.hacks |= atoi(value);
 
 	result = ConfigExternalGetParameter(fileHandle, sectionName, "graphics2D\\correctTexrectCoords", value, sizeof(value));
 	if (result == M64ERR_SUCCESS) config.graphics2D.correctTexrectCoords = atoi(value);

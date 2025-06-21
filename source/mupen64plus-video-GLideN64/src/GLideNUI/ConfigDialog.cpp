@@ -341,6 +341,9 @@ void ConfigDialog::_init(bool reInit, bool blockCustomSettings)
 	case Config::aAdjust169:
 		ui->aspectComboBox->setCurrentIndex(4);
 		break;
+	case Config::aAutomatic:
+		ui->aspectComboBox->setCurrentIndex(5);
+		break;
 	}
 
 	ui->resolutionFactorSpinBox->valueChanged(2);
@@ -661,6 +664,8 @@ void ConfigDialog::accept(bool justSave) {
 		config.frameBufferEmulation.aspect = Config::aAdjust43;
 	else if (ui->aspectComboBox->currentIndex() == 4)
 		config.frameBufferEmulation.aspect = Config::aAdjust169;
+	else if (ui->aspectComboBox->currentIndex() == 5)
+		config.frameBufferEmulation.aspect = Config::aAutomatic;
 
 	if (ui->factor0xRadioButton->isChecked())
 		config.frameBufferEmulation.nativeResFactor = 0;

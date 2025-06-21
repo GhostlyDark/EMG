@@ -479,6 +479,7 @@ void CVideoTab::LoadSettings(bool /*blockCustomSettings*/) {
 	case Config::a169: aspectComboBox.SetCurSel(1); break;
 	case Config::aAdjust43: aspectComboBox.SetCurSel(3); break;
 	case Config::aAdjust169: aspectComboBox.SetCurSel(4); break;
+	case Config::aAutomatic: aspectComboBox.SetCurSel(5); break;
 	}
 
 	CComboBox(GetDlgItem(IDC_CMB_PATTERN)).SetCurSel(config.generalEmulation.rdramImageDitheringMode);
@@ -525,6 +526,7 @@ void CVideoTab::SaveSettings()
 	else if (AspectIndx == 1) { config.frameBufferEmulation.aspect = Config::a169; }
 	else if (AspectIndx == 3) { config.frameBufferEmulation.aspect = Config::aAdjust43; }
 	else if (AspectIndx == 4) { config.frameBufferEmulation.aspect = Config::aAdjust169; }
+	else if (AspectIndx == 5) { config.frameBufferEmulation.aspect = Config::aAutomatic; }
 
 	config.video.verticalSync = CButton(GetDlgItem(IDC_CHK_VERTICAL_SYNC)).GetCheck() == BST_CHECKED;
 	config.video.threadedVideo = CButton(GetDlgItem(IDC_CHK_THREADED_VIDEO)).GetCheck() == BST_CHECKED;

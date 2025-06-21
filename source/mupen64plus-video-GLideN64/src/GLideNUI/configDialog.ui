@@ -220,6 +220,11 @@
                    <string extracomment="This option activates a widescreen hack. The language &quot;Try to&quot; implies it may it may not work and the language &quot;adjust 16:9 game&quot; implies the emulation will be inaccurate.">Try to adjust 16:9 game to fit</string>
                   </property>
                  </item>
+                 <item>
+                  <property name="text">
+                   <string>Automatic</string>
+                  </property>
+                 </item>
                 </widget>
                </item>
               </layout>

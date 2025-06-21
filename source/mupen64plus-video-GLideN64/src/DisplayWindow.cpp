@@ -144,11 +144,27 @@ void DisplayWindow::updateScale()
 
 void DisplayWindow::_setBufferSize()
 {
+	float vi_width = static_cast<f32>(VI.width);
+	float vi_height = static_cast<f32>(VI.height);
+	float aspect_ratio_w = vi_width / vi_height;
+	float aspect_ratio_h = vi_height / vi_width;
 	m_bAdjustScreen = false;
 	switch (config.frameBufferEmulation.aspect) {
 	case Config::aStretch: // stretch
 		m_width = m_screenWidth;
 		m_height = m_screenHeight;
+		break;
+	case Config::aAutomatic: // automatic aspect ratio
+		if (m_screenWidth * aspect_ratio_h > m_screenHeight) {
+			m_height = m_screenHeight;
+			m_width = m_screenHeight * aspect_ratio_w;
+		} else if (m_screenHeight * aspect_ratio_w > m_screenWidth) {
+			m_width = m_screenWidth;
+			m_height = m_screenWidth * aspect_ratio_h;
+		} else {
+			m_width = m_screenWidth;
+			m_height = m_screenHeight;
+		}
 		break;
 	case Config::a43: // force 4/3
 		if (m_screenWidth * 3 / 4 > m_screenHeight) {
