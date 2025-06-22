@@ -62,20 +62,6 @@ fi
 
 
 
-# Check for MSYS2 CLANG64
-
-if [[ "$MSYSTEM" = "CLANG64" ]]; then
-
-    clang64="-DCLANG64=1"
-
-else
-
-    clang64=""
-
-fi
-
-
-
 # Check if Electron was already extracted
 
 if [[ ! $(uname -s) = Darwin* && -d "$emg_dir" && ! -f "$emg_dir"/EMG$exe ]] || [[ $(uname -s) = Darwin* && -d "$emg_dir" && ! -d "$emg_dir"/EMG.app ]]; then
