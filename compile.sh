@@ -62,22 +62,15 @@ fi
 
 
 
-# Detect what MSYS2 environment is used
+# Check for MSYS2 CLANG64
 
-if [[ "$MSYSTEM" = "UCRT64" ]]; then
-
-    clang64=""
-    ucrt64="-DUCRT64=1"
-
-elif [[ "$MSYSTEM" = "CLANG64" ]]; then
+if [[ "$MSYSTEM" = "CLANG64" ]]; then
 
     clang64="-DCLANG64=1"
-    ucrt64=""
 
 else
 
     clang64=""
-    ucrt64=""
 
 fi
 
@@ -183,7 +176,7 @@ fi
 
 # Build
 
-cmake -S "$toplvl_dir" -B "$cmake_dir" -G "Ninja" $clang64 $ucrt64
+cmake -S "$toplvl_dir" -B "$cmake_dir" -G "Ninja" $clang64
 cmake --build "$cmake_dir" --parallel "$threads"
 cmake --install "$cmake_dir"
 

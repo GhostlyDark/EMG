@@ -5,15 +5,9 @@ project(EMG)
 if(WIN32 AND CLANG64)
     set(CC_COMPILER "CC=clang")
     set(CXX_COMPILER "CXX=clang++")
-    set(DEPENDENCY_PATH "/clang64/bin")
-elseif(WIN32 AND UCRT64)
-    set(CC_COMPILER "")
-    set(CXX_COMPILER "")
-    set(DEPENDENCY_PATH "/ucrt64/bin")
 else()
     set(CC_COMPILER "")
     set(CXX_COMPILER "")
-    set(DEPENDENCY_PATH "/mingw64/bin")
 endif()
 
 if(WIN32)
@@ -40,7 +34,7 @@ set(SOURCEDIR ${CMAKE_SOURCE_DIR}/source)
 set(APIDIR ${SOURCEDIR}/mupen64plus-core/src/api)
 
 add_custom_target(bundle_dependencies
-    COMMAND bash "${CMAKE_SOURCE_DIR}/dependencies.sh" "${INSTALL_PATH}/mupen64plus.exe" "${INSTALL_PATH}" "${DEPENDENCY_PATH}"
+    COMMAND bash "${CMAKE_SOURCE_DIR}/dependencies.sh" "${INSTALL_PATH}/mupen64plus.exe" "${INSTALL_PATH}"
 )
 
 

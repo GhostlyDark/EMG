@@ -2,7 +2,7 @@
 
 exe="$1"
 bin_dir="$2"
-path="$3"
+path="/$MSYSTEM/bin"
 
 function copyForOBJ() {
     local deps=`objdump.exe -p $1 | grep 'DLL Name:' | sed -e "s/\t*DLL Name: //g"`
