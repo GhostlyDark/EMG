@@ -66,18 +66,18 @@ fi
 
 if [[ "$MSYSTEM" = "UCRT64" ]]; then
 
-    clang64="-DCLANG64=0"
+    clang64=""
     ucrt64="-DUCRT64=1"
 
 elif [[ "$MSYSTEM" = "CLANG64" ]]; then
 
     clang64="-DCLANG64=1"
-    ucrt64="-DUCRT64=0"
+    ucrt64=""
 
 else
 
-    clang64="-DCLANG64=0"
-    ucrt64="-DUCRT64=0"
+    clang64=""
+    ucrt64=""
 
 fi
 

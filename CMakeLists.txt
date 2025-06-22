@@ -1,44 +1,20 @@
 cmake_minimum_required(VERSION 3.15)
 
-
-
 project(EMG)
 
-
-
-if(APPLE)
-    set(INSTALL_PATH ${CMAKE_SOURCE_DIR}/build/EMG/EMG.app/Contents/Resources/m64p)
-else()
-    set(INSTALL_PATH ${CMAKE_SOURCE_DIR}/build/EMG/resources/m64p)
-endif()
-
-
-
 if(WIN32 AND CLANG64)
-        set(CC_COMPILER "CC=clang")
-        set(CXX_COMPILER "CXX=clang++")
-        set(DEPENDENCY_PATH "/clang64/bin")
+    set(CC_COMPILER "CC=clang")
+    set(CXX_COMPILER "CXX=clang++")
+    set(DEPENDENCY_PATH "/clang64/bin")
 elseif(WIN32 AND UCRT64)
-        set(CC_COMPILER "")
-        set(CXX_COMPILER "")
-        set(DEPENDENCY_PATH "/ucrt64/bin")
+    set(CC_COMPILER "")
+    set(CXX_COMPILER "")
+    set(DEPENDENCY_PATH "/ucrt64/bin")
 else()
-        set(CC_COMPILER "")
-        set(CXX_COMPILER "")
-        set(DEPENDENCY_PATH "/mingw64/bin")
+    set(CC_COMPILER "")
+    set(CXX_COMPILER "")
+    set(DEPENDENCY_PATH "/mingw64/bin")
 endif()
-
-
-
-add_custom_target(bundle_dependencies
-    COMMAND bash "${CMAKE_SOURCE_DIR}/dependencies.sh" "${INSTALL_PATH}/mupen64plus.exe" "${INSTALL_PATH}" "${DEPENDENCY_PATH}"
-)
-
-
-
-include(ExternalProject)
-
-
 
 if(WIN32)
     set(LIB_EXT ".dll")
@@ -54,13 +30,22 @@ else()
     set(GCA_LIB "libmupen64plus_input_gca.so")
 endif()
 
-
+if(APPLE)
+    set(INSTALL_PATH ${CMAKE_SOURCE_DIR}/build/EMG/EMG.app/Contents/Resources/m64p)
+else()
+    set(INSTALL_PATH ${CMAKE_SOURCE_DIR}/build/EMG/resources/m64p)
+endif()
 
 set(SOURCEDIR ${CMAKE_SOURCE_DIR}/source)
-
 set(APIDIR ${SOURCEDIR}/mupen64plus-core/src/api)
 
+add_custom_target(bundle_dependencies
+    COMMAND bash "${CMAKE_SOURCE_DIR}/dependencies.sh" "${INSTALL_PATH}/mupen64plus.exe" "${INSTALL_PATH}" "${DEPENDENCY_PATH}"
+)
 
+
+
+include(ExternalProject)
 
 ExternalProject_Add(mupen64plus-core
     SOURCE_DIR ${SOURCEDIR}/mupen64plus-core/
