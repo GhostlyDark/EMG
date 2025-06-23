@@ -16,6 +16,7 @@ function findAndCopyDLL() {
     local file="$path/$1"
 	if [ -f $file ] && [ ! -f "$bin_dir/$1" ]
 	then
+		echo "==> Copying $1"
 		cp "$file" "$bin_dir"
         copyForOBJ $file
 		return 0
@@ -25,7 +26,7 @@ function findAndCopyDLL() {
 
 for file in "$bin_dir"/*.exe "$bin_dir"/*.dll "$bin_dir"/*/*.dll
 do
-	echo "=> Copying dependencies for $file"
+	echo "=> Finding dependencies for $file"
 	copyForOBJ "$file"
 done
 
