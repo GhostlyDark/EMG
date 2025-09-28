@@ -225,7 +225,6 @@ ExternalProject_Add(mupen64plus-video-GLideN64
     BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-video-GLideN64/projects/cmake
 
     BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/mupen64plus-video-GLideN64/projects/cmake/plugin/Release/mupen64plus-video-GLideN64${LIB_EXT}
-    BUILD_BYPRODUCTS ${SOURCEDIR}/mupen64plus-video-GLideN64/ini/GLideN64.custom.ini
 
 )
 
@@ -357,6 +356,7 @@ set(MUPEN64PLUS_PLUGIN_GFX_ANGRYLION ${BUILD_BYPRODUCTS})
 
 ExternalProject_Get_property(mupen64plus-video-GLideN64 BUILD_BYPRODUCTS)
 set(MUPEN64PLUS_PLUGIN_GFX_GLIDEN64 ${BUILD_BYPRODUCTS})
+set(GLIDEN64_INI ${SOURCEDIR}/mupen64plus-video-GLideN64/ini/GLideN64.custom.ini)
 
 ExternalProject_Get_property(mupen64plus-video-parallel BUILD_BYPRODUCTS)
 set(MUPEN64PLUS_PLUGIN_GFX_PARALLEL ${BUILD_BYPRODUCTS})
@@ -404,7 +404,7 @@ install(FILES ${MUPEN64PLUSCORE_ND_LIB}
     DESTINATION ${INSTALL_PATH}
 )
 
-install(FILES ${MUPEN64PLUSCORE_INI} ${MUPEN64PLUSCORE_CHT} ${RICE_INI} ${GLIDE_INI}
+install(FILES ${MUPEN64PLUSCORE_INI} ${MUPEN64PLUSCORE_CHT} ${RICE_INI} ${GLIDE_INI} ${GLIDEN64_INI}
     DESTINATION ${INSTALL_PATH}/data
 )
 
