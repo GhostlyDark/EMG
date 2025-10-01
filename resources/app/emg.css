@@ -39,8 +39,7 @@ footer svg{position:relative;top:3px;fill:#fff;transition:fill .2s cubic-bezier(
 .footer #moon,.footer #palettes,.footer #fancy,.footer #reset{visibility:visible;opacity:1;transition-delay:0s}
 .light #overlay{background-color:rgba(255,255,255,.85)}
 
-select::-webkit-scrollbar{width:32px}
-html::-webkit-scrollbar,#cheatList::-webkit-scrollbar,#cheatPrint::-webkit-scrollbar,#log::-webkit-scrollbar,#romBrowser::-webkit-scrollbar{width:16px}
+html::-webkit-scrollbar,#cheatList::-webkit-scrollbar,#cheatPrint::-webkit-scrollbar,#log::-webkit-scrollbar,#romBrowser::-webkit-scrollbar,select::-webkit-scrollbar{width:16px}
 html::-webkit-scrollbar-track,#cheatList::-webkit-scrollbar-track,#cheatPrint::-webkit-scrollbar-track,#log::-webkit-scrollbar-track,#romBrowser::-webkit-scrollbar-track,select::-webkit-scrollbar-track{background-color:#0f0f0f}
 html::-webkit-scrollbar-thumb,#cheatList::-webkit-scrollbar-thumb,#cheatPrint::-webkit-scrollbar-thumb,#log::-webkit-scrollbar-thumb,#romBrowser::-webkit-scrollbar-thumb,select::-webkit-scrollbar-thumb{background-color:#777}
 html::-webkit-scrollbar-thumb:hover,#cheatList::-webkit-scrollbar-thumb:hover,#cheatPrint::-webkit-scrollbar-thumb:hover,#log::-webkit-scrollbar-thumb:hover,#romBrowser::-webkit-scrollbar-thumb:hover,select::-webkit-scrollbar-thumb:hover{background-color:#555}

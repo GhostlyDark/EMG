@@ -15,6 +15,11 @@ document.head.appendChild(bgStyle);
 bgStyle.appendChild(document.createTextNode(bgCSS));
 bgStyle.setAttribute('id','bgCSS')}
 
+var selectStyle = document.createElement('style'),
+selectScroll = "select::-webkit-scrollbar{width:" + devicePixelRatio * 16 + "px}";
+document.head.appendChild(selectStyle);
+selectStyle.appendChild(document.createTextNode(selectScroll))
+
 document.addEventListener('DOMContentLoaded', function(){
 id('settings').addEventListener('click', function(){id('footer').classList.toggle('footer')})
 
