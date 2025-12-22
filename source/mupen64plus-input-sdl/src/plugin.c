@@ -130,6 +130,61 @@ void DebugMessage(int level, const char *message, ...)
 
 static CONTROL temp_core_controlinfo[4];
 
+static void PluginStartupPump(void)
+{
+#if defined(__APPLE__)
+    /* On macOS, SDL joystick discovery requires VIDEO + PumpEvents() delay. */
+#define PUMP_DELAY   10   /* Poll Interval = 10ms */
+#define PUMP_TIMEOUT 2000 /* Timout = 2s */
+#define PUMP_STABLE  200  /* Stability threshold  */
+
+    Uint32 TimeStart, TimeStable, TimeNow;
+    int VidWasInit, N0, NLast, N;
+
+    VidWasInit = SDL_WasInit(SDL_INIT_VIDEO);
+    if (!VidWasInit)
+    {
+        if (SDL_InitSubSystem(SDL_INIT_VIDEO) == -1)
+        {
+            DebugMessage(M64MSG_ERROR, "Couldn't init SDL video subsystem: %s", SDL_GetError());
+            return;
+        }
+    }
+
+    /* Pump until discovery happens or timeout. */
+    TimeStart = SDL_GetTicks();
+    N0 = SDL_NumJoysticks();
+    NLast = N0;
+    TimeStable = TimeStart;
+    TimeNow = SDL_GetTicks();
+    while ((TimeNow - TimeStart < PUMP_TIMEOUT) &&
+           (TimeNow - TimeStable < PUMP_STABLE))
+    {
+        SDL_PumpEvents();
+        SDL_Delay(PUMP_DELAY);
+
+        N = SDL_NumJoysticks();
+        TimeNow = SDL_GetTicks();
+        if (N != NLast)
+        {
+            NLast = N;
+            TimeStable = TimeNow;
+        }
+    }
+
+    if (NLast != N0)
+    {
+        DebugMessage(M64MSG_INFO, "Discovered %d controllers after %dms delay.", NLast - N0, TimeStable - TimeStart);
+    }
+
+    /* If video initialized just for discovery, unwind it. */
+    if (!VidWasInit)
+    {
+        SDL_QuitSubSystem(SDL_INIT_VIDEO);
+    }
+#endif
+}
+
 /* Mupen64Plus plugin functions */
 EXPORT m64p_error CALL PluginStartup(m64p_dynlib_handle CoreLibHandle, void *Context,
                                    void (*DebugCallback)(void *, int, const char *))
@@ -210,6 +265,8 @@ EXPORT m64p_error CALL PluginStartup(m64p_dynlib_handle CoreLibHandle, void *Con
             DebugMessage(M64MSG_ERROR, "Couldn't init SDL joystick subsystem: %s", SDL_GetError() );
             return M64ERR_SYSTEM_FAIL;
         }
+
+    PluginStartupPump();
 
     /* read plugin config from core config database, auto-config if necessary and update core database */
     load_configuration(1);
@@ -884,4 +941,3 @@ EXPORT void CALL SDL_KeyUp(int keymod, int keysym)
 {
     myKeyState[keysym] = 0;
 }
-
