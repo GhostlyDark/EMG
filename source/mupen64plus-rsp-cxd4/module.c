@@ -13,6 +13,8 @@
 * If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.             *
 \******************************************************************************/
 
+#define _POSIX_SOURCE 1
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -42,11 +44,13 @@
 #define ATTR_FMT(fmtpos, attrpos)
 #endif
 
-static jmp_buf CPU_state;
+#ifndef WIN32
+static sigjmp_buf CPU_state;
 static void seg_av_handler(int signal_code)
 {
-    longjmp(CPU_state, signal_code);
+    siglongjmp(CPU_state, signal_code);
 }
+#endif
 static void ISA_op_illegal(int signal_code)
 {
     message("Plugin built for SIMD extensions this CPU does not support!");
@@ -520,8 +524,6 @@ void no_LLE(void)
 }
 EXPORT void CALL InitiateRSP(RSP_INFO Rsp_Info, pu32 CycleCount)
 {
-    int recovered_from_exception;
-
     if (CycleCount != NULL) /* cycle-accuracy not doable with today's hosts */
         *CycleCount = 0;
     update_conf(CFG_FILE);
@@ -562,13 +564,16 @@ EXPORT void CALL InitiateRSP(RSP_INFO Rsp_Info, pu32 CycleCount)
 
     signal(SIGILL, ISA_op_illegal);
 #ifndef _WIN32
-    signal(SIGSEGV, seg_av_handler);
+    struct sigaction sa = {.sa_handler = seg_av_handler};
+    struct sigaction prev_sa;
+    sigaction(SIGSEGV, &sa, &prev_sa);
     for (SR[ra] = 0; SR[ra] < 0x80000000ul; SR[ra] += 0x200000) {
-        recovered_from_exception = setjmp(CPU_state);
+        int recovered_from_exception = sigsetjmp(CPU_state, 1);
         if (recovered_from_exception)
             break;
         SR[at] += DRAM[SR[ra]];
     }
+    sigaction(SIGSEGV, &prev_sa, NULL);
     for (SR[at] = 0; SR[at] < 31; SR[at]++) {
         SR[ra] = (SR[ra] & ~1) >> 1;
         if (SR[ra] == 0)
