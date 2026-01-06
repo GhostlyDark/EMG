@@ -7,8 +7,8 @@ body{font-family:hind,sans-serif;font-size:17px;letter-spacing:.5px;background-c
 @keyframes fadeIn{from{opacity:.001}to{opacity:1}}
 main{display:block;max-width:700px;margin:auto;padding:24px 15px 15px 15px;line-height:25px;animation:fadeIn .25s cubic-bezier(.4,0,.22,1) 1 forwards}
 
-#cheatPrint::selection,#log p::selection{background-color:rgba(255,255,255,.3);color:#fff}
-.light #cheatPrint::selection,.light #log p::selection{background-color:rgba(0,0,0,.3)}
+#cheatPrint::selection,#log::selection{background-color:rgba(255,255,255,.3);color:#fff}
+.light #cheatPrint::selection,.light #log::selection{background-color:rgba(0,0,0,.3)}
 
 p{margin:0}
 a{text-decoration:none;color:#fff;outline:0}
