@@ -623,7 +623,7 @@ TxFilter::dmptx(uint8 *src, int width, int height, int rowStridePixel,
 		if (!osal_path_existsW(tmpbuf.c_str()) && osal_mkdirp(tmpbuf.c_str()) != 0)
 			return 0;
 
-		if (n64FmtSz._format == 0x2) {
+		if ((n64FmtSz._format == 0x0 && n64FmtSz._size == 0x0) || n64FmtSz._format == 0x2) {
 			wchar_t wbuf[256];
 			tx_swprintf(wbuf, 256, wst("/%ls#%08X#%01X#%01X#%08X_ciByRGBA.png"), _ident.c_str(), r_crc64._texture, n64FmtSz._format, n64FmtSz._size, r_crc64._palette);
 			tmpbuf.append(wbuf);
