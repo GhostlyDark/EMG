@@ -49,39 +49,43 @@ html::-webkit-scrollbar-thumb:hover,#cheatList::-webkit-scrollbar-thumb:hover,#c
 
 [type=checkbox]{position:relative;top:5.5px;left:2px;width:23px;height:23px;margin:0 5px;cursor:pointer;-moz-appearance:none;-webkit-appearance:none;appearance:none;outline:0;border:2px solid #ccc;border-radius:3px;transition:border-color .2s cubic-bezier(.4,0,.22,1)}
 [type=checkbox]:before{content:'';position:absolute;left:-2px;top:1px;width:100%;height:50%;border:4px solid #ccc;border-radius:0;border-top-style:none;border-right-style:none;border-color:transparent;transform:scale(.5) rotate(-45deg);transition:border-color .1s cubic-bezier(.4,0,.22,1)}
-[type=checkbox]:checked,[type=checkbox]:checked:before{border-color:rgb(33,125,255)}
-[type=checkbox]:focus,[type=checkbox]:hover,[type=checkbox]:focus:checked:before,[type=checkbox]:hover:checked:before{border-color:rgb(63,155,255)}
-.light [type=checkbox]{border-color:#333}
-.light [type=checkbox]:checked,.light [type=checkbox]:checked:before{border-color:rgb(13,105,235)}
-.light [type=checkbox]:focus,.light [type=checkbox]:hover,.light [type=checkbox]:focus:checked:before,.light [type=checkbox]:hover:checked:before{border-color:rgb(43,135,255)}
+
+[type=radio]{position:relative;top:5.5px;left:2px;width:23px;height:23px;margin:0 5px;cursor:pointer;-moz-appearance:none;-webkit-appearance:none;appearance:none;outline:0;border:2px solid #ccc;border-radius:50%;transition:border-color .2s cubic-bezier(.4,0,.22,1)}
+[type=radio]:before{content:'';position:absolute;left:-2px;top:1.5px;width:100%;height:50%;border:4px solid #ccc;border-radius:0;border-top-style:none;border-right-style:none;border-color:transparent;transform:scale(.4) rotate(-45deg);transition:border-color .1s cubic-bezier(.4,0,.22,1)}
+
+[type=checkbox]:checked,[type=checkbox]:checked:before,[type=radio]:checked,[type=radio]:checked:before{border-color:rgb(33,125,255)}
+[type=checkbox]:focus,[type=checkbox]:hover,[type=checkbox]:focus:checked:before,[type=checkbox]:hover:checked:before,[type=radio]:focus,[type=radio]:hover,[type=radio]:focus:checked:before,[type=radio]:hover:checked:before{border-color:rgb(63,155,255)}
+.light [type=checkbox],.light [type=radio]{border-color:#333}
+.light [type=checkbox]:checked,.light [type=checkbox]:checked:before,.light [type=radio]:checked,.light [type=radio]:checked:before{border-color:rgb(13,105,235)}
+.light [type=checkbox]:focus,.light [type=checkbox]:hover,.light [type=checkbox]:focus:checked:before,.light [type=checkbox]:hover:checked:before,.light [type=radio]:focus,.light [type=radio]:hover,.light [type=radio]:focus:checked:before,.light [type=radio]:hover:checked:before{border-color:rgb(43,135,255)}
 
 .palette-red .headline,.palette-red header{background-color:rgb(158,33,50)}
-.palette-red [type=checkbox]:checked,.palette-red [type=checkbox]:checked:before{border-color:rgb(225,78,90)}
-.palette-red [type=checkbox]:focus,.palette-red [type=checkbox]:hover,.palette-red [type=checkbox]:focus:checked:before,.palette-red [type=checkbox]:hover:checked:before{border-color:rgb(255,108,120)}
+.palette-red [type=checkbox]:checked,.palette-red [type=checkbox]:checked:before,.palette-red [type=radio]:checked,.palette-red [type=radio]:checked:before{border-color:rgb(225,78,90)}
+.palette-red [type=checkbox]:focus,.palette-red [type=checkbox]:hover,.palette-red [type=checkbox]:focus:checked:before,.palette-red [type=checkbox]:hover:checked:before,.palette-red [type=radio]:focus,.palette-red [type=radio]:hover,.palette-red [type=radio]:focus:checked:before,.palette-red [type=radio]:hover:checked:before{border-color:rgb(255,108,120)}
 .light.palette-red .headline,.light.palette-red header{background-color:rgb(188,53,70)}
-.light.palette-red [type=checkbox]:checked,.light.palette-red [type=checkbox]:checked:before{border-color:rgb(205,58,70)}
-.light.palette-red [type=checkbox]:focus,.light.palette-red [type=checkbox]:hover,.light.palette-red [type=checkbox]:focus:checked:before,.light.palette-red [type=checkbox]:hover:checked:before{border-color:rgb(235,88,100)}
+.light.palette-red [type=checkbox]:checked,.light.palette-red [type=checkbox]:checked:before,.light.palette-red [type=radio]:checked,.light.palette-red [type=radio]:checked:before{border-color:rgb(205,58,70)}
+.light.palette-red [type=checkbox]:focus,.light.palette-red [type=checkbox]:hover,.light.palette-red [type=checkbox]:focus:checked:before,.light.palette-red [type=checkbox]:hover:checked:before,.light.palette-red [type=radio]:focus,.light.palette-red [type=radio]:hover,.light.palette-red [type=radio]:focus:checked:before,.light.palette-red [type=radio]:hover:checked:before{border-color:rgb(235,88,100)}
 
 .palette-purple .headline,.palette-purple header{background-color:rgb(100,65,195)}
-.palette-purple [type=checkbox]:checked,.palette-purple [type=checkbox]:checked:before{border-color:rgb(180,130,230)}
-.palette-purple [type=checkbox]:focus,.palette-purple [type=checkbox]:hover,.palette-purple [type=checkbox]:focus:checked:before,.palette-purple [type=checkbox]:hover:checked:before{border-color:rgb(210,160,255)}
+.palette-purple [type=checkbox]:checked,.palette-purple [type=checkbox]:checked:before,.palette-purple [type=radio]:checked,.palette-purple [type=radio]:checked:before{border-color:rgb(180,130,230)}
+.palette-purple [type=checkbox]:focus,.palette-purple [type=checkbox]:hover,.palette-purple [type=checkbox]:focus:checked:before,.palette-purple [type=checkbox]:hover:checked:before,.palette-purple [type=radio]:focus,.palette-purple [type=radio]:hover,.palette-purple [type=radio]:focus:checked:before,.palette-purple [type=radio]:hover:checked:before{border-color:rgb(210,160,255)}
 .light.palette-purple .headline,.light.palette-purple header{background-color:rgb(115,80,200)}
-.light.palette-purple [type=checkbox]:checked,.light.palette-purple [type=checkbox]:checked:before{border-color:rgb(140,90,190)}
-.light.palette-purple [type=checkbox]:focus,.light.palette-purple [type=checkbox]:hover,.light.palette-purple [type=checkbox]:focus:checked:before,.light.palette-purple [type=checkbox]:hover:checked:before{border-color:rgb(170,120,220)}
+.light.palette-purple [type=checkbox]:checked,.light.palette-purple [type=checkbox]:checked:before,.light.palette-purple [type=radio]:checked,.light.palette-purple [type=radio]:checked:before{border-color:rgb(140,90,190)}
+.light.palette-purple [type=checkbox]:focus,.light.palette-purple [type=checkbox]:hover,.light.palette-purple [type=checkbox]:focus:checked:before,.light.palette-purple [type=checkbox]:hover:checked:before,.light.palette-purple [type=radio]:focus,.light.palette-purple [type=radio]:hover,.light.palette-purple [type=radio]:focus:checked:before,.light.palette-purple [type=radio]:hover:checked:before{border-color:rgb(170,120,220)}
 
 .palette-ice .headline,.palette-ice header{background-color:rgb(10,115,180)}
-.palette-ice [type=checkbox]:checked,.palette-ice [type=checkbox]:checked:before{border-color:rgb(33,150,243)}
-.palette-ice [type=checkbox]:focus,.palette-ice [type=checkbox]:hover,.palette-ice [type=checkbox]:focus:checked:before,.palette-ice [type=checkbox]:hover:checked:before{border-color:rgb(63,180,255)}
+.palette-ice [type=checkbox]:checked,.palette-ice [type=checkbox]:checked:before,.palette-ice [type=radio]:checked,.palette-ice [type=radio]:checked:before{border-color:rgb(33,150,243)}
+.palette-ice [type=checkbox]:focus,.palette-ice [type=checkbox]:hover,.palette-ice [type=checkbox]:focus:checked:before,.palette-ice [type=checkbox]:hover:checked:before,.palette-ice [type=radio]:focus,.palette-ice [type=radio]:hover,.palette-ice [type=radio]:focus:checked:before,.palette-ice [type=radio]:hover:checked:before{border-color:rgb(63,180,255)}
 .light.palette-ice .headline,.light.palette-ice header{background-color:rgb(30,135,200)}
-.light.palette-ice [type=checkbox]:checked,.light.palette-ice [type=checkbox]:checked:before{border-color:rgb(13,130,223)}
-.light.palette-ice [type=checkbox]:focus,.light.palette-ice [type=checkbox]:hover,.light.palette-ice [type=checkbox]:focus:checked:before,.light.palette-ice [type=checkbox]:hover:checked:before{border-color:rgb(43,160,253)}
+.light.palette-ice [type=checkbox]:checked,.light.palette-ice [type=checkbox]:checked:before,.light.palette-ice [type=radio]:checked,.light.palette-ice [type=radio]:checked:before{border-color:rgb(13,130,223)}
+.light.palette-ice [type=checkbox]:focus,.light.palette-ice [type=checkbox]:hover,.light.palette-ice [type=checkbox]:focus:checked:before,.light.palette-ice [type=checkbox]:hover:checked:before,.light.palette-ice [type=radio]:focus,.light.palette-ice [type=radio]:hover,.light.palette-ice [type=radio]:focus:checked:before,.light.palette-ice [type=radio]:hover:checked:before{border-color:rgb(43,160,253)}
 
 input{font-family:hind,sans-serif;font-size:17px;letter-spacing:.5px;color:#fff}
 [type=text]{text-transform:capitalize;font-size:16px;max-width:100px;text-align:center;height:19px;border:0;outline:0;padding:5px;transition:background-color .2s cubic-bezier(.4,0,.22,1);margin:0;background-color:rgba(255,255,255,.08);appearance:none}
 [type=text]:hover,[type=text]:active,[type=text]:focus{background-color:#ccc}
 
-button,select,input,.box,.pointer,select + label,[type=checkbox] + label,[type=color] + label,[type=range],[type=range] + label{cursor:pointer}
-[type=checkbox]:disabled,[type=checkbox]:disabled + label,select:disabled,select:disabled + label,[type=range]:disabled,[type=range]:disabled + label{cursor:initial}
+button,select,input,.box,.pointer,select + label,[type=checkbox] + label,[type=radio] + label,[type=color] + label,[type=range],[type=range] + label{cursor:pointer}
+[type=checkbox]:disabled,[type=checkbox]:disabled + label,[type=radio]:disabled + label,select:disabled,select:disabled + label,[type=range]:disabled,[type=range]:disabled + label{cursor:initial}
 
 [type=color]{border:0;outline:0;background:none;position:relative;top:2px}
 [type=color] + label{padding-left:5px;transition:opacity .2s cubic-bezier(.4,0,.22,1)}
@@ -138,12 +142,10 @@ button,select,input,.box,.pointer,select + label,[type=checkbox] + label,[type=c
 .light.palette-ice [type=range]:hover::-webkit-slider-thumb,.light.palette-ice [type=range]:focus::-webkit-slider-thumb{background-color:rgb(28,145,225)}
 .light.palette-ice [type=range]:hover::-webkit-slider-runnable-track,.light.palette-ice [type=range]:focus::-webkit-slider-runnable-track{background-color:rgba(3,120,213,.5)}
 
-[type=checkbox]{margin:0}
-[type=checkbox] + label{padding-left:11px}
-#cheatList [type=checkbox]{margin-right:-1px}
-#cheatList [type=checkbox] + label{position:relative;top:-1px;left:-12px}
-[type=checkbox]:disabled,[type=checkbox]:disabled:checked:before{border-color:#ccc!important}
-.light [type=checkbox]:disabled,.light [type=checkbox]:disabled:checked:before{border-color:#333!important}
+[type=checkbox],[type=radio]{margin:0}
+[type=checkbox] + label,[type=radio] + label{padding-left:11px}
+[type=checkbox]:disabled,[type=checkbox]:disabled:checked:before,[type=radio]:disabled,[type=radio]:disabled:checked:before{border-color:#ccc!important}
+.light [type=checkbox]:disabled,.light [type=checkbox]:disabled:checked:before,.light [type=radio]:disabled,.light [type=radio]:disabled:checked:before{border-color:#333!important}
 
 button{font-family:hind,sans-serif;letter-spacing:.5px;color:#fff;font-size:15px;line-height:23px;border:0;outline:0;background-color:rgba(255,255,255,.08);color:#fff;border-radius:7px;text-transform:uppercase;padding:3px 10px;transition:background-color .2s cubic-bezier(.4,0,.22,1),color .2s cubic-bezier(.4,0,.22,1)}
 button:hover,select:hover,button:active,select:active,button:focus,select:focus{background-color:rgba(255,255,255,.15)}
@@ -203,9 +205,15 @@ header span{position:relative;top:-10px;pointer-events:none}
 #fileInput{min-height:50px}
 #recent{width:620px;height:29.5px}
 #c1,#c2,#c3,#c4{width:600px}
+
 #cheatList{height:400px;overflow-y:auto;border:2px solid rgba(255,255,255,.3);padding:15px 15px 0 15px;outline:0;overscroll-behavior:contain;padding-left:25px}
-#cheatList input[id*=_]{margin-left:40px}
-#cheatList input,#cheatList label{left:-12px}
+#cheatList [type=checkbox]{margin-right:-1px;left:-12px}
+#cheatList [type=checkbox]:disabled{border:0;margin-left:-30px}
+#cheatList [type=checkbox] + label{position:relative;top:-1px;left:-12px}
+#cheatList [type=checkbox]:disabled + label{font-weight:700;opacity:1}
+#cheatList [type=checkbox][id*=_]{border-radius:50%;margin-left:30px}
+#cheatList [type=checkbox][id*=_]:before{top:1.5px;transform:scale(.4) rotate(-45deg)}
+
 #cheatPrint{overflow-y:auto;border:2px solid rgba(255,255,255,.3);padding:15px 15px 0 15px;outline:0;overscroll-behavior:contain;height:40px;user-select:text}
 #log{height:340px;overflow-y:auto;border:2px solid rgba(255,255,255,.3);padding:15px 15px 0 15px;outline:0;overscroll-behavior:contain;user-select:text}
 #log p{padding-bottom:20px}
