@@ -723,7 +723,7 @@ EXPORT m64p_error CALL ConfigExternalGetParameter(m64p_handle Handle, const char
                 {
                     if (osal_insensitive_strcmp(ParamName, l.name) == 0)
                     {
-                        strncpy(ParamPtr, l.value, ParamMaxLength);
+                        snprintf(ParamPtr, ParamMaxLength, "%s", l.value);
                         free(buffer);
                         return M64ERR_SUCCESS;
                     }
@@ -1178,7 +1178,7 @@ EXPORT m64p_error CALL ConfigGetParameter(m64p_handle ConfigSectionHandle, const
             if (MaxSize < 1) return M64ERR_INPUT_INVALID;
             if (var->type != M64TYPE_STRING && var->type != M64TYPE_BOOL) return M64ERR_WRONG_TYPE;
             string = ConfigGetParamString(ConfigSectionHandle, ParamName);
-            strncpy((char *) ParamValue, string, MaxSize);
+            snprintf((char *) ParamValue, MaxSize, "%s", string);
             *((char *) ParamValue + MaxSize - 1) = 0;
             break;
         }
