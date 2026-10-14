@@ -27,6 +27,7 @@
 #include "bitops.hpp"
 #include "luts.hpp"
 #include "timer.hpp"
+#include <cstdlib>
 #include <limits>
 #include <stdlib.h>
 #ifdef PARALLEL_RDP_SHADER_DIR
