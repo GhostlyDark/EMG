@@ -9,16 +9,10 @@ if(localStorage.no_bg != null && localStorage.no_bg === 'no_bg'){html.classList.
 
 if(localStorage.blur != null && localStorage.blur != '' && localStorage.background != null && localStorage.background != ''){
 html.classList.add('blur');
-var bgStyle = document.createElement('style'),
-bgCSS = "#background{background-image:url('" + localStorage.background + "')";
+var bgStyle = document.createElement('style');
 document.head.appendChild(bgStyle);
-bgStyle.appendChild(document.createTextNode(bgCSS));
-bgStyle.setAttribute('id','bgCSS')}
-
-var selectStyle = document.createElement('style'),
-selectScroll = "select::-webkit-scrollbar{width:" + devicePixelRatio * 16 + "px}";
-document.head.appendChild(selectStyle);
-selectStyle.appendChild(document.createTextNode(selectScroll))
+bgStyle.setAttribute('id','bgCSS');
+bgStyle.appendChild(document.createTextNode("#background{background-image:url('" + localStorage.background + "')"))}
 
 document.addEventListener('DOMContentLoaded', function(){
 id('settings').addEventListener('click', function(){id('footer').classList.toggle('footer')})
@@ -71,10 +65,10 @@ id('background_input').value = file = '';return}
 var reader = new FileReader();
 reader.addEventListener('load',(function(){return function(e){
 localStorage.background = e.target.result;
-var bgStyle = document.createElement('style'),
-bgCSS = "#background{background-image:url('" + e.target.result + "')";
+if(id('bgCSS') != null)id('bgCSS').outerHTML = ''
+var bgStyle = document.createElement('style');
 document.head.appendChild(bgStyle);
-bgStyle.appendChild(document.createTextNode(bgCSS));
+bgStyle.appendChild(document.createTextNode("#background{background-image:url('" + e.target.result + "')"));
 bgStyle.setAttribute('id','bgCSS');
 html.classList.remove('no_bg');localStorage.no_bg = '';html.classList.add('blur');localStorage.blur = 'blur'}})(file),false);
 reader.readAsDataURL(file);id('background_input').value = file = ''}
