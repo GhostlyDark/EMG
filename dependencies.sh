@@ -30,4 +30,7 @@ do
 	copyForOBJ "$file"
 done
 
+# Required by sdl2-compat
+cp "$path/SDL3.dll" "$bin_dir"
+
 exit 0
