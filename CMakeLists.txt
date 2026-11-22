@@ -240,7 +240,7 @@ ExternalProject_Add(mupen64plus-video-GLideN64
     INSTALL_COMMAND ""
 
     BUILD_IN_SOURCE False
-    CMAKE_ARGS -DMUPENPLUSAPI=ON
+    CMAKE_ARGS -DCRC_OPT=ON -DMUPENPLUSAPI=ON -DUSE_SYSTEM_LIBS=ON
 
     SOURCE_SUBDIR ./src/
     BINARY_DIR ${CMAKE_BINARY_DIR}/mupen64plus-video-GLideN64/projects/cmake
