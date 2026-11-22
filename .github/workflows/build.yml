@@ -4,19 +4,19 @@ on: [push, pull_request, workflow_dispatch]
 
 jobs:
   Linux:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     strategy:
       matrix:
         image: ["emg-linux-x64"]
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Install Packages
         run: |
           # fix for "error processing package grub-efi-amd64-signed"
           sudo apt-mark hold grub-common grub-efi-amd64-bin shim-signed
           sudo apt-get -qq update
           sudo apt-get -y upgrade
-          sudo apt-get -y install build-essential cmake curl freeglut3-dev gcc git libfreetype-dev libgtk-3-dev libhidapi-dev libhidapi-hidraw0 libpng-dev libsamplerate0-dev libsdl2-dev libspeexdsp-dev libvulkan-dev make nasm ninja-build pkg-config unzip wget zlib1g-dev
+          sudo apt-get -y install build-essential cmake curl freeglut3-dev gcc git libfreetype-dev libgtk-3-dev libhidapi-dev libhidapi-hidraw0 libpng-dev libsamplerate0-dev libsdl2-dev libspeexdsp-dev libvulkan-dev libzstd-dev make nasm ninja-build pkg-config unzip wget zlib1g-dev
       - name: Prepare Environment
         run: |
           echo "GIT_REVISION=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
@@ -35,7 +35,7 @@ jobs:
       matrix:
         image: ["emg-win-x64"]
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: msys2/setup-msys2@v2
         with:
           msystem: CLANG64
