@@ -91,6 +91,7 @@ else if(name.includes('mupen64plus-input-')){id('inputCustom').appendChild(newPl
 else if(name.includes('mupen64plus-rsp-')){id('rspCustom').appendChild(newPlugin);id('rspCustom').style.display = 'block'}
 else if(name.includes('mupen64plus-video-')){
 if(newPlugin.textContent === 'rt64'){newPlugin.textContent = 'RT64';id('gfxModern').appendChild(newPlugin)}
+else if(newPlugin.textContent === 'softrdp'){newPlugin.textContent = 'SoftRDP';id('gfxModern').appendChild(newPlugin)}
 else{id('gfxCustom').appendChild(newPlugin);id('gfxCustom').style.display = 'block'}}}}
 
 
@@ -1436,9 +1437,10 @@ buttonType4B = '',
 
 gcaSettings = "control_stick_deadzone = " + id('control_stick_deadzone').value + "\n" + "control_stick_sensitivity = " + id('control_stick_sensitivity').value + "\n" + "c_stick_deadzone = " + id('c_stick_deadzone').value + "\n" + "trigger_threshold = " + id('trigger_threshold').value + "\n\n" + '[controller_mapping]' + "\n" + "a = '" + id('a').value + "'\n" + "b = '" + id('b').value + "'\n" + "x = '" + id('x').value + "'\n" + "y = '" + id('y').value + "'\n" + "start = '" + id('start').value + "'\n" + "z = '" + id('z').value + "'\n" + "l = '" + id('l').value + "'\n" + "r = '" + id('r').value + "'\n" + "d_pad_left = '" + id('d_pad_left').value + "'\n" + "d_pad_right = '" + id('d_pad_right').value + "'\n" + "d_pad_down = '" + id('d_pad_down').value + "'\n" + "d_pad_up = '" + id('d_pad_up').value + "'\n" + "c_stick_left = '" + id('c_stick_left').value + "'\n" + "c_stick_right = '" + id('c_stick_right').value + "'\n" + "c_stick_down = '" + id('c_stick_down').value + "'\n" + "c_stick_up = '" + id('c_stick_up').value + "'";
 
-if(gfx.includes('angrylion') || gfx.includes('parallel')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=false';parallelGFX = 'RSP-Parallel[DisplayListToGraphicsPlugin]=false';z64GFX = 'rsp-z64[DisplayListToGraphicsPlugin]=false'} /* prevent crashes caused by wrong RSP settings */
+/* prevent crashes caused by wrong RSP settings */
+if(gfx.includes('angrylion') || gfx.includes('parallel') || gfx.includes('softrdp')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=false';parallelGFX = 'RSP-Parallel[DisplayListToGraphicsPlugin]=false';z64GFX = 'rsp-z64[DisplayListToGraphicsPlugin]=false'}
 else if(gfx.includes('rice') || gfx.includes('glide64mk2')){cxd4GFX = 'rsp-cxd4[DisplayListToGraphicsPlugin]=true';parallelGFX = 'RSP-Parallel[DisplayListToGraphicsPlugin]=true';z64GFX = 'rsp-z64[DisplayListToGraphicsPlugin]=true'}
-if((gfx.includes('angrylion') || gfx.includes('parallel')) && rsp.includes('rsp-hle')){rsp = 'mupen64plus-rsp-parallel' + ext}
+if((gfx.includes('angrylion') || gfx.includes('parallel') || gfx.includes('softrdp')) && rsp.includes('rsp-hle')){rsp = 'mupen64plus-rsp-parallel' + ext}
 
 if(id('nospeedlimit').checked){audio = 'dummy';vsync = 'Video-General[VerticalSync]=false';ViVsync = 'Video-AngrylionPlus[ViVsync]=false';ParallelVSync = 'Video-Parallel[Vsync]=false'} /* force muted audio and disabled V-Sync */
 
