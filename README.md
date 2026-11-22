@@ -55,12 +55,12 @@ Download and install [MSYS2](https://www.msys2.org/). Run either of the followin
 
 - MSYS2 CLANG64:
   ```
-  pacman -S --needed --noconfirm git make mingw-w64-clang-x86_64-cmake mingw-w64-clang-x86_64-freetype mingw-w64-clang-x86_64-gcc mingw-w64-clang-x86_64-glew mingw-w64-clang-x86_64-hidapi mingw-w64-clang-x86_64-libpng mingw-w64-clang-x86_64-libsamplerate mingw-w64-clang-x86_64-libusb mingw-w64-clang-x86_64-nasm mingw-w64-clang-x86_64-ninja mingw-w64-clang-x86_64-rust mingw-w64-clang-x86_64-sdl2-compat mingw-w64-clang-x86_64-sdl3 mingw-w64-clang-x86_64-speex mingw-w64-clang-x86_64-vulkan-headers unzip
+  pacman -S --needed --noconfirm git make mingw-w64-clang-x86_64-cmake mingw-w64-clang-x86_64-freetype mingw-w64-clang-x86_64-gcc mingw-w64-clang-x86_64-glew mingw-w64-clang-x86_64-hidapi mingw-w64-clang-x86_64-libpng mingw-w64-clang-x86_64-libsamplerate mingw-w64-clang-x86_64-libusb mingw-w64-clang-x86_64-nasm mingw-w64-clang-x86_64-ninja mingw-w64-clang-x86_64-rust mingw-w64-clang-x86_64-sdl2-compat mingw-w64-clang-x86_64-sdl3 mingw-w64-clang-x86_64-speex mingw-w64-clang-x86_64-vulkan-headers mingw-w64-clang-x86_64-zstd unzip
   ```
 
 - MSYS2 UCRT64:
   ```
-  pacman -S --needed --noconfirm git make mingw-w64-ucrt-x86_64-cmake mingw-w64-ucrt-x86_64-freetype mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x86_64-glew mingw-w64-ucrt-x86_64-hidapi mingw-w64-ucrt-x86_64-libpng mingw-w64-ucrt-x86_64-libsamplerate mingw-w64-ucrt-x86_64-libusb mingw-w64-ucrt-x86_64-nasm mingw-w64-ucrt-x86_64-ninja mingw-w64-ucrt-x86_64-rust mingw-w64-ucrt-x86_64-sdl2-compat mingw-w64-ucrt-x86_64-sdl3 mingw-w64-ucrt-x86_64-speex mingw-w64-ucrt-x86_64-vulkan-headers unzip
+  pacman -S --needed --noconfirm git make mingw-w64-ucrt-x86_64-cmake mingw-w64-ucrt-x86_64-freetype mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x86_64-glew mingw-w64-ucrt-x86_64-hidapi mingw-w64-ucrt-x86_64-libpng mingw-w64-ucrt-x86_64-libsamplerate mingw-w64-ucrt-x86_64-libusb mingw-w64-ucrt-x86_64-nasm mingw-w64-ucrt-x86_64-ninja mingw-w64-ucrt-x86_64-rust mingw-w64-ucrt-x86_64-sdl2-compat mingw-w64-ucrt-x86_64-sdl3 mingw-w64-ucrt-x86_64-speex mingw-w64-ucrt-x86_64-vulkan-headers mingw-w64-ucrt-x86_64-zstd unzip
   ```
 
 Clone repository:
@@ -85,7 +85,7 @@ Install dependencies (including rust):
 
 - Ubuntu/Debian (apt):
   ```
-  sudo apt install -y build-essential cmake curl freeglut3-dev gcc git libfreetype-dev libgtk-3-dev libhidapi-dev libhidapi-hidraw0 libpng-dev libsamplerate0-dev libsdl2-dev libspeexdsp-dev libvulkan-dev make nasm ninja-build pkg-config unzip wget zlib1g-dev
+  sudo apt install -y build-essential cmake curl freeglut3-dev gcc git libfreetype-dev libgtk-3-dev libhidapi-dev libhidapi-hidraw0 libpng-dev libsamplerate0-dev libsdl2-dev libspeexdsp-dev libvulkan-dev libzstd-dev make nasm ninja-build pkg-config unzip wget zlib1g-dev
   ```
 
   ```
@@ -98,7 +98,7 @@ Install dependencies (including rust):
 
 - Fedora (dnf):
   ```
-  sudo dnf -y install cmake curl freeglut-devel freetype-devel gcc gcc-c++ git gtk3-devel hidapi-devel libpng-devel libsamplerate-devel make nasm ninja-build pkgconfig SDL2-devel speexdsp-devel unzip vulkan-devel wget zlib-ng-devel
+  sudo dnf -y install cmake curl freeglut-devel freetype-devel gcc gcc-c++ git gtk3-devel hidapi-devel libpng-devel libsamplerate-devel libzstd-devel make nasm ninja-build pkgconfig SDL2-devel speexdsp-devel unzip vulkan-devel wget zlib-ng-devel
   ```
 
   ```
@@ -111,12 +111,12 @@ Install dependencies (including rust):
 
 - Arch Linux (pacman):
   ```
-  sudo pacman -S --needed --noconfirm cmake freetype2 gcc git glew hidapi libpng libsamplerate make nasm ninja pkgconf rust sdl2-compat sdl3 speex unzip vulkan-headers wget
+  sudo pacman -S --needed --noconfirm cmake freetype2 gcc git glew hidapi libpng libsamplerate make nasm ninja pkgconf rust sdl2-compat sdl3 speex unzip vulkan-headers wget zstd
   ```
 
 - openSUSE Tumbleweed (zypper):
   ```
-  sudo zypper -n install SDL2-devel cmake freeglut-devel freetype2-devel gcc gcc-c++ git gtk3-devel libhidapi-devel libhidapi-hidraw0 libpng16-devel libsamplerate-devel make nasm ninja pkgconf-pkg-config rust speex-devel unzip vulkan-devel wget zlib-devel
+  sudo zypper -n install SDL2-devel cmake freeglut-devel freetype2-devel gcc gcc-c++ git gtk3-devel libhidapi-devel libhidapi-hidraw0 libpng16-devel libsamplerate-devel libzstd-devel make nasm ninja pkgconf-pkg-config rust speex-devel unzip vulkan-devel wget zlib-devel
   ```
 
 Clone repository:
@@ -160,7 +160,7 @@ After downloading an `.xip` archive, extract and move `Xcode.app` into the `/App
 
 Install [MacPorts](https://www.macports.org/install.php#installing), start a new terminal session and install dependencies:
 ```
-sudo port -N install cargo cmake coreutils freeglut freetype git glew gtk3 hidapi libgcc libpng libsamplerate libsdl2 nasm ninja pkgconfig rust speex speexDSP vulkan-headers wget zlib
+sudo port -N install cargo cmake coreutils freeglut freetype git glew gtk3 hidapi libgcc libpng libsamplerate libsdl2 nasm ninja pkgconfig rust speex speexDSP vulkan-headers wget zlib zstd
 ```
 
 Reboot terminal and clone the repository:
