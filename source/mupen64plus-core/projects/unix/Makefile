@@ -55,7 +55,11 @@ ifeq ("$(OS)","NONE")
 endif
 
 # detect system architecture
-HOST_CPU ?= $(shell uname -m)
+ifeq ($(UNAME), FreeBSD)
+  HOST_CPU ?= $(shell uname -p)
+else
+  HOST_CPU ?= $(shell uname -m)
+endif
 CPU := NONE
 ifneq ("$(filter x86_64 amd64,$(HOST_CPU))","")
   CPU := X86
@@ -142,6 +146,13 @@ ifneq ("$(filter aarch64,$(HOST_CPU))","")
 endif
 ifneq ("$(filter riscv64,$(HOST_CPU))","")
     CPU := RISCV64
+    ARCH_DETECTED := 64BITS
+    PIC ?= 1
+    NO_ASM := 1
+    $(warning Architecture "$(HOST_CPU)" not officially supported.)
+endif
+ifneq ("$(filter loongarch64,$(HOST_CPU))","")
+    CPU := LOONGARCH64
     ARCH_DETECTED := 64BITS
     PIC ?= 1
     NO_ASM := 1

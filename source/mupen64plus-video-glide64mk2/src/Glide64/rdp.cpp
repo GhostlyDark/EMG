@@ -207,6 +207,28 @@ wxUint8 microcode[4096];
 wxUint32 uc_crc;
 void microcheck ();
 
+static bool load_microcode(wxUint32 addr, wxUint32 size)
+{
+  if (size > sizeof(microcode))
+  {
+    RDP_E ("microcode destination out of range\n");
+    FRDP ("microcode destination out of range: size: %u\n",
+      (unsigned int) size);
+    return false;
+  }
+
+  if (addr > BMASK || (unsigned long) size > BMASK - addr + 1)
+  {
+    RDP_E ("microcode source out of range\n");
+    FRDP ("microcode source out of range: addr: %08x, size: %u\n",
+      addr, (unsigned int) size);
+    return false;
+  }
+
+  memcpy (microcode, gfx.RDRAM + addr, size);
+  return true;
+}
+
 // ** UCODE FUNCTIONS **
 #include "ucode00.h"
 #include "ucode01.h"
@@ -646,8 +668,8 @@ EXPORT void CALL ProcessDList(void)
     {
       // Thanks to ZeZu for ucode autodetection!!!
       wxUint32 startUcode = *(wxUint32*)(gfx.DMEM+0xFD0);
-      memcpy (microcode, gfx.RDRAM+startUcode, 4096);
-      microcheck ();
+      if (load_microcode(startUcode, sizeof(microcode)))
+        microcheck ();
     }
     else
       memset (microcode, 0, 4096);
@@ -655,8 +677,8 @@ EXPORT void CALL ProcessDList(void)
   else if ( ((old_ucode == ucode_S2DEX) && (settings.ucode == ucode_F3DEX)) || settings.force_microcheck)
   {
     wxUint32 startUcode = *(wxUint32*)(gfx.DMEM+0xFD0);
-    memcpy (microcode, gfx.RDRAM+startUcode, 4096);
-    microcheck ();
+    if (load_microcode(startUcode, sizeof(microcode)))
+      microcheck ();
   }
 
   if (exception)
@@ -1657,6 +1679,26 @@ static void rdp_setothermode()
 void load_palette (wxUint32 addr, wxUint16 start, wxUint16 count)
 {
   LRDP("Loading palette... ");
+
+  if (count == 0)
+    return;
+
+  if (start >= 256 || count > 256 - start)
+  {
+    RDP_E ("load_palette destination out of range\n");
+    FRDP ("load_palette destination out of range: start: %u, count: %u\n",
+      (unsigned int) start, (unsigned int) count);
+    return;
+  }
+
+  if (addr > BMASK || ((unsigned long) count << 1) > BMASK - addr + 1)
+  {
+    RDP_E ("load_palette source out of range\n");
+    FRDP ("load_palette source out of range: addr: %08x, count: %u\n",
+      addr, (unsigned int) count);
+    return;
+  }
+
   wxUint16 *dpal = rdp.pal_8 + start;
   wxUint16 end = start+count;
 #ifdef TEXTURE_FILTER
@@ -1691,6 +1733,13 @@ void load_palette (wxUint32 addr, wxUint16 start, wxUint16 count)
 static void rdp_loadtlut()
 {
   wxUint32 tile = (rdp.cmd1 >> 24) & 0x07;
+
+  if (rdp.tiles[tile].t_mem < 256)
+  {
+    RDP_E ("loadtlut destination out of range\n");
+    return;
+  }
+
   wxUint16 start = rdp.tiles[tile].t_mem - 256; // starting location in the palettes
   //  wxUint16 start = ((wxUint16)(rdp.cmd1 >> 2) & 0x3FF) + 1;
   wxUint16 count = ((wxUint16)(rdp.cmd1 >> 14) & 0x3FF) + 1;    // number to copy
@@ -3610,7 +3659,8 @@ void DetectFrameBufferUsage ()
 
 static wxUint32 rdp_cmd_ptr = 0;
 static wxUint32 rdp_cmd_cur = 0;
-static wxUint32 rdp_cmd_data[0x1000];
+static const wxUint32 RDP_CMD_WORDS = 0x1000;
+static wxUint32 rdp_cmd_data[RDP_CMD_WORDS];
 
 void lle_triangle(wxUint32 w1, wxUint32 w2, int shade, int texture, int zbuffer,
                   wxUint32 * rdp_cmd)
@@ -4160,6 +4210,12 @@ static void rdphalf_1()
 
     do
     {
+      if (rdp_cmd_ptr >= RDP_CMD_WORDS)
+      {
+        RDP_E("rdphalf_1 command buffer overflow\n");
+        rdp.halt = TRUE;
+        return;
+      }
       rdp_cmd_data[rdp_cmd_ptr++] = rdp.cmd1;
       // check DL counter
       if (rdp.dl_count != -1)
@@ -4185,6 +4241,12 @@ static void rdphalf_1()
       rdp.pc[rdp.pc_i] = (a+8) & BMASK;
 
     }while ((rdp.cmd0 >> 24) != 0xb3);
+    if (rdp_cmd_ptr >= RDP_CMD_WORDS)
+    {
+      RDP_E("rdphalf_1 command buffer overflow\n");
+      rdp.halt = TRUE;
+      return;
+    }
     rdp_cmd_data[rdp_cmd_ptr++] = rdp.cmd1;
     cmd = (rdp_cmd_data[rdp_cmd_cur] >> 24) & 0x3f;
     rdp.cmd0 = rdp_cmd_data[rdp_cmd_cur+0];
@@ -4250,20 +4312,25 @@ EXPORT void CALL ProcessRDPList(void)
   if (dp_end <= dp_current) return;
   length = dp_end - dp_current;
 
+  if (length > sizeof(rdp_cmd_data))
+  {
+    RDP_E("rdp_process_list command buffer overflow\n");
+    FRDP("rdp_process_list: command buffer overflow %x %x --> %x\n",
+      length, dp_current, dp_end);
+    dp_current = dp_end;
+    return;
+  }
+
   // load command data
   for (i=0; i < length; i += 4)
   {
     rdp_cmd_data[rdp_cmd_ptr++] = READ_RDP_DATA(dp_current + i);
-    if (rdp_cmd_ptr >= 0x1000)
-    {
-      FRDP("rdp_process_list: rdp_cmd_ptr overflow %x %x --> %x\n", length, dp_current, dp_end);
-    }
   }
 
   dp_current = dp_end;
 
   cmd = (rdp_cmd_data[0] >> 24) & 0x3f;
-  cmd_length = (rdp_cmd_ptr + 1) * 4;
+  cmd_length = rdp_cmd_ptr * 4;
 
   // check if more data is needed
   if (cmd_length < rdp_command_length[cmd])
@@ -4279,8 +4346,8 @@ EXPORT void CALL ProcessRDPList(void)
     // execute the command
     rdp.cmd0 = rdp_cmd_data[rdp_cmd_cur+0];
     rdp.cmd1 = rdp_cmd_data[rdp_cmd_cur+1];
-    rdp.cmd2 = rdp_cmd_data[rdp_cmd_cur+2];
-    rdp.cmd3 = rdp_cmd_data[rdp_cmd_cur+3];
+    rdp.cmd2 = rdp_command_length[cmd] > 8 ? rdp_cmd_data[rdp_cmd_cur+2] : 0;
+    rdp.cmd3 = rdp_command_length[cmd] > 12 ? rdp_cmd_data[rdp_cmd_cur+3] : 0;
     rdp_command_table[cmd]();
 
     rdp_cmd_cur += rdp_command_length[cmd] / 4;

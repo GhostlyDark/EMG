@@ -251,10 +251,10 @@ INLINE static void do_ch(pi16 VD, pi16 VS, pi16 VT)
  * Note that if (VT == INT16_MIN) a.k.a. cch[i], -(-32768) is undefined.
  */
     for (i = 0; i < N; i++)
-        VC[i] -= sn[i] & ~cch[i]; /* cch[i] causes -(-32768) to stay ~-32768. */
+        VC[i] -= sn[i] & ~cch[i]; /* cch[i]:  -(-32768) stays +32767 for le. */
 
     for (i = 0; i < N; i++)
-        eq[i]  = (VS[i] == VC[i]) & ~cch[i]; /* VS = -(-32768) never happens. */
+        eq[i]  = (VS[i] == VC[i]); /* cch[i] & sn[i]:  VCE covers VS = +32767 */
     for (i = 0; i < N; i++)
         eq[i] |= cf_vce[i];
 
@@ -278,13 +278,14 @@ INLINE static void do_ch(pi16 VD, pi16 VS, pi16 VT)
         sn[i] = (u16)(sn[i]) >> 15; /* ~0 to 1, 0 to 0 */
 
     for (i = 0; i < N; i++)
-        diff[i] = VC[i] - VS[i];
-    for (i = 0; i < N; i++)
-        diff[i] = (diff[i] >= 0);
+        diff[i] = (VC[i] >= VS[i]); /* VC - VS overflows i16 at VS = -32768 */
     for (i = 0; i < N; i++)
         le[i] = (VT[i] < 0);
     merge(le, sn, diff, le);
 #endif
+
+    for (i = 0; i < N; i++)
+        VC[i] ^= (VC[i] ^ VT[i]) & cch[i]; /* VD:  -(-32768) wraps to -32768. */
 
     merge(cf_comp, sn, le, ge);
     merge(VACC_L, cf_comp, VC, VS);
@@ -327,6 +328,8 @@ INLINE static void do_cr(pi16 VD, pi16 VS, pi16 VT)
 #endif
     for (i = 0; i < N; i++)
         VC[i] ^= sn[i]; /* if (sn == ~0) {VT = ~VT;} else {VT =  VT;} */
+    for (i = 0; i < N; i++)
+        sn[i] = (u16)(sn[i]) >> 15; /* ~0 to 1, 0 to 0 (as do_ch does) */
     merge(cmp, sn, le, ge);
     merge(VACC_L, cmp, VC, VS);
     vector_copy(VD, VACC_L);
@@ -540,6 +543,8 @@ VECTOR_OPERATION VMRG(v16 vs, v16 vt)
     VT = vt;
 #endif
     do_mrg(VD, VS, VT);
+    vector_wipe(cf_ne);
+    vector_wipe(cf_co);
 #ifdef ARCH_MIN_SSE2
     COMPILER_FENCE();
     vs = *(v16 *)VD;
