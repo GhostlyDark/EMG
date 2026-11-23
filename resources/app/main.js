@@ -1,5 +1,5 @@
 let win, jstestChild, jstestRumble;
-const {app, BrowserWindow, dialog, globalShortcut, ipcMain, session, shell} = require('electron'),
+const {app, BrowserWindow, dialog, globalShortcut, ipcMain, Menu, session, shell} = require('electron'),
 {existsSync, mkdirSync, readdirSync, writeFileSync} = require('node:fs'),
 {spawn, spawnSync} = require('node:child_process'),
 url = require('node:url').URL,
@@ -121,22 +121,23 @@ ipcMain.on('romDirFile', (e, dir, data) => {e.returnValue = path(dir,data)})
 ipcMain.on('openPath', (e, data) => {if(existsSync(data)){e.returnValue = shell.openPath(data).toString()}else{e.returnValue = ''}})
 ipcMain.on('showInFolder', (e, data) => {e.returnValue = shell.showItemInFolder(data)})
 
-app.on('browser-window-focus', () => {
-globalShortcut.register('CmdOrCtrl+I', () => {win.webContents.toggleDevTools()})
-globalShortcut.register('CmdOrCtrl+N', () => {const choice = dialog.showMessageBoxSync(win,deleteDialog);if(choice !== 1){session.defaultSession.clearStorageData();session.defaultSession.clearCache()}})
-globalShortcut.register('CmdOrCtrl+R', () => {win.reload()})
-globalShortcut.register('CmdOrCtrl+num0', () => {win.webContents.setZoomFactor(1.0)})
-globalShortcut.register('CmdOrCtrl+numsub', () => {if(win.webContents.getZoomFactor().toFixed(1) != 0.1)win.webContents.setZoomFactor(win.webContents.getZoomFactor()-0.1)})
-globalShortcut.register('CmdOrCtrl+numadd', () => {if(win.webContents.getZoomFactor().toFixed(1) != 5.0)win.webContents.setZoomFactor(win.webContents.getZoomFactor()+0.1)})})
-
-app.on('browser-window-blur', () => {globalShortcut.unregisterAll()})
-
 app.on('second-instance', (e) => {if(win.isMinimized()){win.restore()}else{win.focus()}})
 if(!app.requestSingleInstanceLock()){return app.quit()}
 
+Menu.setApplicationMenu(Menu.buildFromTemplate([
+	{label: 'Window', submenu: [
+		{label: 'Reload window', accelerator: 'CmdOrCtrl+R', role: 'reload'},
+		{label: 'Developer tools', accelerator: 'CmdOrCtrl+I', role: 'toggleDevTools'},
+		{label: 'Increase zoom', accelerator: 'CmdOrCtrl+numadd', role: 'zoomin'},
+		{label: 'Decrease zoom', accelerator: 'CmdOrCtrl+numsub', role: 'zoomout'},
+		{label: 'Reset zoom', accelerator: 'CmdOrCtrl+num0', role: 'resetzoom'},
+		{label: 'Reset settings', accelerator: 'CmdOrCtrl+N', click() {const choice = dialog.showMessageBoxSync(win,deleteDialog);if(choice !== 1){session.defaultSession.clearStorageData();session.defaultSession.clearCache()}}},
+	]}
+]))
+
 app.on('ready', () => {
 win = new BrowserWindow(mainWindow)
-win.removeMenu()
+win.setMenuBarVisibility(false)
 if(isWindows)win.minimize()
 win.maximize()
 win.focus()
